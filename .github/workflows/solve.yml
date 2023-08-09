@@ -1,4 +1,4 @@
-name: SkeetFrameworkCli
+name: EpicsDAOSolv
 
 on:
   push:

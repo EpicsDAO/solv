@@ -10,6 +10,12 @@ dotenv.config()
 
 async function main() {
   try {
+    program
+      .command('solv')
+      .description('CLI for Solana Validators')
+      .action(() => {
+        console.log('solv')
+      })
     await program.parseAsync(process.argv)
   } catch (error) {
     console.log(error)
