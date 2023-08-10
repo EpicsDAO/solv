@@ -11,8 +11,8 @@ export const logCommands = async () => {
     .option('-i, --info', 'Follow INFO output', false)
     .option('-w, --warning', 'Follow WARN output', false)
     .option('-e, --error', 'Follow ERR output', false)
-    .option('-a, --all', 'Follow WARN and ERR output', true)
-    .action(async (options) => {
-      await tail(options)
+    .option('-a, --all', 'Follow WARN and ERR output', false)
+    .action((options) => {
+      tail(options)
     })
 }
