@@ -10,17 +10,17 @@ export type TailOptions = {
 
 export const tail = async (options: TailOptions) => {
   try {
-    const cmd = [`tail -f ${LOG_PATH}/solana-validator.log`]
+    let cmd = `tail -f ${LOG_PATH}/solana-validator.log`
     if (options.all) {
-      cmd.push(`| grep '\(WARN\|ERR\)'`)
+      cmd += ` | grep '\(WARN\|ERR\)'`
     } else if (options.info) {
-      cmd.push(`| grep INFO`)
+      cmd += ` | grep INFO`
     } else if (options.warning) {
-      cmd.push(`| grep WARN`)
+      cmd += ` | grep WARN`
     } else {
-      cmd.push(`| grep ERR`)
+      cmd += ` | grep ERR`
     }
-    spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
+    spawnSync(cmd, { shell: true, stdio: 'inherit' })
   } catch (error) {
     throw new Error(`tail Error: ${error}`)
   }
