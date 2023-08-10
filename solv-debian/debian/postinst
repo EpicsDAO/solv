@@ -46,10 +46,10 @@ if [ ! -d "/mt/solana" ]; then
     echo "Making solana directory"
     mkdir -p /mt/solana/solana-validator/log
     mkdir -p /mnt/ramdrive
-    chown solv:solv -R /mt/solana
-    chmod 755 -R /mt/solana
-    chown solv:solv -R /mnt/ramdrive
-    chmod 755 -R /mnt/ramdrive
+    chown solv:solv /mt/solana/solana-validator/log
+    chmod 755 /mt/solana/solana-validator/log
+    chown solv:solv /mnt/ramdrive
+    chmod 755 /mnt/ramdrive
 fi
 
 # dh_installdeb will replace this with shell code automatically
