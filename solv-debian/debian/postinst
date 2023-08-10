@@ -32,6 +32,7 @@ sudo -u solv -H sh -c 'if [ ! -d "/home/solv/.nodenv" ]; then
     if ! grep -q "nodenv init" /home/solv/.zshrc; then
         echo "$(nodenv init - zsh)" >> /home/solv/.zshrc
     fi
+    npm install -g @epics-dao/solv
     exec zsh
 fi
 '

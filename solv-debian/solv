@@ -1,2 +1,2 @@
 #!/bin/sh
-node /usr/bin/index.js "$@"
+/home/solv/.nodenv/shims/solv "$@"
