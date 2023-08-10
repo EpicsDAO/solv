@@ -1,20 +1,19 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
-Binary: solv
-Architecture: amd64 source
-Version: 0.1.4
+Architecture: source
+Version: 0.1.5
 Checksums-Md5:
- b3cd597e50e607448e9efa9807b8181e 504 solv_0.1.4.dsc
- 7b8390730e3279f0e81118714fbe82d3 2490 solv_0.1.4_amd64.deb
+ ed1c658c746c5bd6bf0fb4373bb70599 1213 solv_0.1.5.dsc
 Checksums-Sha1:
- 066f70b4669104726bb4d99b3b162802563a5f60 504 solv_0.1.4.dsc
- 7121ef8a99ad2db70646e90c8c927585e69ed6e6 2490 solv_0.1.4_amd64.deb
+ 3b902329b495073f513f9756b7771ac0a03b42dc 1213 solv_0.1.5.dsc
 Checksums-Sha256:
- 2ae70d90958d1dcc4a7e598ac505fe147379a48c145804d1b873041cc07fb8bc 504 solv_0.1.4.dsc
- fc43371a0e4314774fc67cdc00b74b482a80d2593d78c0987e33b1f2c6727fe7 2490 solv_0.1.4_amd64.deb
+ dc7a2fe7ba17023460b5762ffd39e21fa8666594ce3166c7438f153d11313e31 1213 solv_0.1.5.dsc
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 10 Aug 2023 19:57:08 +0200
+Build-Date: Thu, 10 Aug 2023 19:58:15 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +188,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTVJVIACgkQ2kHJnU2w
+0wRNIwwAgpR9Adv47OsHwmrV5iiSNV5fV4vGUh1vNxseaHBOKpFUclnp4F41JVAR
+plvLMPwi/AV38vPDSqCLnX3lcARyGvuH4yaY/yVfCM35FHl/a3ggo4Q0Lvo6107V
+/Y8riKLn4lWlmku+DU05ckFl0tHUOhqc54/nBEeFsN2Abw68D82tzWoeSDHpl7n6
+0Y8fjNQVE53cQbQh2zELNLWtB/nTMtKmcS5E3yyv/9ILmdsRHVFHFrjJyFGVhkBj
+9Yokto3vVRd2ZFcdAUp541cN/i+oXm4oeJo0zDa/L1mU5bexfxk5hgQhb+680MHN
+fLXI8koOES7lq10kvAWw64f+y6JztSWGcD9my0ziGVrUC008eRM+w7RHzXWlDsTu
+Pc0trewVGLPtjLDyj/ilzTZgIchu0iOKxCMoW3juAWfhIY3wl2RuaHrHz9z9rKmU
+mqNPvnNSUz4Krl3aSJQsTkuRWAYnL7C0ve6i389VvVCG8QKaXXzc6HIxbP2+n2hp
+FTL+mZLa
+=SiVF
+-----END PGP SIGNATURE-----

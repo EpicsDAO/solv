@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.5
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.5) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 3b902329b495073f513f9756b7771ac0a03b42dc 1213 solv_0.1.5.dsc
+ d8e5b0ecd534ddea531b5161f9882c7c19511eef 2288 solv_0.1.5.tar.xz
+ 50be0c617530cad4f2d9e81b30b418fdb689f49e 6868 solv_0.1.5_amd64.buildinfo
+ 042db541d97050dc09f3b94782a14012ea0fd8fc 2494 solv_0.1.5_amd64.deb
+Checksums-Sha256:
+ dc7a2fe7ba17023460b5762ffd39e21fa8666594ce3166c7438f153d11313e31 1213 solv_0.1.5.dsc
+ bb9782223b83312d93e6aadb7fc18bb083a692a2dc6d2dcbc19bba9dd2738ac5 2288 solv_0.1.5.tar.xz
+ 1eb03e216e45ddbbb67db96e693956b4b0f6b6814aae918e0ed8c772d9d02bb3 6868 solv_0.1.5_amd64.buildinfo
+ fc11fe4779e7741bdb3d350db4be38e7328608d39e416ad1ac10f716aa105e00 2494 solv_0.1.5_amd64.deb
+Files:
+ ed1c658c746c5bd6bf0fb4373bb70599 1213 utils optional solv_0.1.5.dsc
+ 70d9bb444b455c139a4a859f238fdeb7 2288 utils optional solv_0.1.5.tar.xz
+ 4708a4af2060506755bdedef599e0d39 6868 utils optional solv_0.1.5_amd64.buildinfo
+ 3fbe5b3747dd4638f63e1b9bb1b107ea 2494 utils optional solv_0.1.5_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTVJU4ACgkQ2kHJnU2w
+0wSuKQwAgmZDP364sk0jpkl/PuIfO+kYttDpt0plsocZ2m3nBzYX/cr1Am0tZS2z
+TLAGElfcjop2YpRkmOYv8MWPhbUKMXFQapHUUi7BHvxs5kygT6vh0Qu1wTJTVCTs
+n0tGiQ4YICbgpgigcKWDzhXNnPsSrIfZ+m/ZmJ8iI5B7MXepzUZS+lsH9MEOay8K
+B8jjhRkBHDbPo15PbUnzHw1DAsLw5M0V/9lY0VcGZ0oo0ccJPeMIq3/FkAxX/FZw
+PYH8SDYSR/5la659gF9Z+Ppx9oHLDWfkX99gsTesCrYrTSwhfC/9oqetwH5V3ufF
+WLVfrBP+EhwfgW1XfQndqi0QBKcyRtUHiHFjj+gET1VttIQBYljy4/MXFoJtNpE9
+di2XMpxjv5rV9nLGCo9uiG5vbLOPF09H4hculOODq4PsuxoGmZAKcG/UiFZXImJx
+FWooCcL8LgDWB5GGhWsYf0q+yiw29chDgLjJZxM0P3By8ZdY2ExyFvUZGGyXCjFW
+YVPWBvTW
+=jmYQ
+-----END PGP SIGNATURE-----
