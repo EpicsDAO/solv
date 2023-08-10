@@ -8,6 +8,12 @@ override_dh_auto_install:
 	mkdir -p debian/solv/usr/bin/
 	mkdir -p debian/solv/usr/share/solv/
 
+	# Check if index.js exists in the expected location
+	if [ ! -f usr/share/solv/index.js ]; then
+		echo "Error: index.js is not found in usr/share/solv/"
+		exit 1
+	fi
+
 	# Install the solv script to the appropriate location
 	echo '#!/bin/sh' > solv
 	echo 'node /usr/share/solv/index.js' >> solv
