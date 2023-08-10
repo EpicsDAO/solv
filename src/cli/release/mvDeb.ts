@@ -9,5 +9,3 @@ export const mvDeb = (version: string) => {
   const cmd = `mv solv_${version}* ${fileDir}`
   spawn(cmd, { shell: true, stdio: 'inherit' })
 }
-
-mvDeb('0.1.4')

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import { Command } from 'commander'
 import { VERSION } from '@/lib/version'
-import { logCommands, updateCommands } from './cli'
+import { logCommands, releaseCommands, updateCommands } from './cli'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
@@ -28,6 +28,7 @@ async function main() {
 
     await updateCommands()
     await logCommands()
+    await releaseCommands()
     await program.parseAsync(process.argv)
   } catch (error) {
     console.log(error)
