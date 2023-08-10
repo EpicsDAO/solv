@@ -26,7 +26,7 @@
     "publish": "npm publish",
     "solv:build": "cd solv-debian/debian && debuild -us -uc",
     "solv:pro": "cd solv-debian/debian && debuild -S -sa",
-    "solv:sign": "cd solv-debian && debsign *.changes",
+    "solv:sign": "cd solv-debian && debsign solv_*.changes",
     "dev": "nodemon",
     "start": "node dist/index.js"
   },
