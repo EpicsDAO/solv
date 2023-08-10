@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.4
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.4) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 17b27c77809a332c62feef87863c37ca24458e25 1213 solv_0.1.4.dsc
+ 949cb89db6dc3ad6ae37e51fb3dbdf4b564a5ced 2224 solv_0.1.4.tar.xz
+ 2da380f3187912c6b946b3ba0be160ab91cc4edd 6868 solv_0.1.4_amd64.buildinfo
+ 4a9348c92907337402226aaa8c651e092958a642 2414 solv_0.1.4_amd64.deb
+Checksums-Sha256:
+ 287985ab0dc0e848a41b901178aa803cdb9a7e68712d16ccaf829cdd461fe101 1213 solv_0.1.4.dsc
+ 809e0559c9adfe084b60d6d90ceef45e11c330c012af846ead166b76fd0bff77 2224 solv_0.1.4.tar.xz
+ c4128e4817d7130297c9fcd0ab8f126502a09acc1b86450b19fb6c5cb3107445 6868 solv_0.1.4_amd64.buildinfo
+ 09f2b6476d084a97da8fa2a3d3ad76480b706dad1c60feeec13f10a47a2956e1 2414 solv_0.1.4_amd64.deb
+Files:
+ 0f24656ab0d2df3bea43ed418ffc6bb1 1213 utils optional solv_0.1.4.dsc
+ 5a3ddb28112540943fb65623efb2b5eb 2224 utils optional solv_0.1.4.tar.xz
+ 2e82941676e195dd4837d35363526898 6868 utils optional solv_0.1.4_amd64.buildinfo
+ f124a788070b63a9808d0bca746b7e14 2414 utils optional solv_0.1.4_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTVBv8ACgkQ2kHJnU2w
+0wQxBwwAv1cYaV58knhFdNm1hbIinxGDj2YwC0AAS+O+zZi+OfQD4e463yi842Gb
+hVA5gCMTJLls+9aSoEDJHpGahF5dCBMSJ0HYHnDGMWxr0LtjvmxSQ2KsUgbrXqA3
+TfU03sLtjRyRyuU+jZpWbQjTInO1Pc9Yed6B61yUQVWVjj1tiSOcyTL6dqMrQ8XN
+PhRc9ZCo0n5D9lP3D1se7aMa5AVTWVPPc+es8CBjhJEneEz3EmZlIw9l4tnav7jG
+0cKMbLpjvHLXr/SfkkA4l6k0LpgG0D5+b8Et6EsCZkSHytMbpfS7AsXcYacz741I
+jUmj/TJn5nUevXCdAVm3NL4wXzlydCSxstffCMB+/fnpVjuOMwihc1fpmXertkUi
+vx16e2eTEyw1d0xa5EdA0XvIii7Lx3D3FDUyfDMRNuvNyqRk3GZCU1UfT+J79ve+
+yd1XdpwZCjB8Nv545Y4cbAHv9wgNHnBM72NswtAvhlpBlTZjT6H2msBXavFZv10p
+reL3dnkA
+=7W6s
+-----END PGP SIGNATURE-----

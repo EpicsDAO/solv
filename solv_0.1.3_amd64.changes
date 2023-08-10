@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.3
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.3) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 9e81b24a018402228630eeeb54d6c645cbd3f2fe 507 solv_0.1.3.dsc
+ 91c944f51e8480aa06364e7ff7f9ccfc3e231127 17544 solv_0.1.3.tar.xz
+ a6a1bff310f7b1643f027e754a91198f753c687a 6159 solv_0.1.3_amd64.buildinfo
+ 37786c50fee89a157f50d30f2320627a8c624373 18312 solv_0.1.3_amd64.deb
+Checksums-Sha256:
+ 643401dbb448480608b264e7b292f4f99cecdf484a1b14d20cc131c86dffbe47 507 solv_0.1.3.dsc
+ 8c7ff47f83575f3842836bcf646b72f5859220b64ed22e4ffcd50f32d9d63420 17544 solv_0.1.3.tar.xz
+ 67d0197bdb2fc1f6149ced961ee45000f3e7fde226ab837738a415dbf704fcf8 6159 solv_0.1.3_amd64.buildinfo
+ 33b7d23073e627e115072e9a4943d4f081dea788a2d640bdfd32603c5a0db999 18312 solv_0.1.3_amd64.deb
+Files:
+ 4f854d6f1612e2cbd1ba7afc3da9fed7 507 utils optional solv_0.1.3.dsc
+ 15f31a6861817d79bcc43c96f1a0a773 17544 utils optional solv_0.1.3.tar.xz
+ 618a8e8efcebcc920a91510df4ec6d72 6159 utils optional solv_0.1.3_amd64.buildinfo
+ 202d0a35cd12cf5847bfbad45b228d02 18312 utils optional solv_0.1.3_amd64.deb

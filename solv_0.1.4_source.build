@@ -1,0 +1,25 @@
+ dpkg-buildpackage -us -uc -ui -S -sa
+dpkg-buildpackage: info: source package solv
+dpkg-buildpackage: info: source version 0.1.4
+dpkg-buildpackage: info: source distribution focal
+dpkg-buildpackage: info: source changed by EpicsDAO <info@epics.dev>
+ dpkg-source --before-build .
+ debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building solv in solv_0.1.4.tar.xz
+dpkg-source: info: building solv in solv_0.1.4.dsc
+ dpkg-genbuildinfo --build=source -O../solv_0.1.4_source.buildinfo
+ dpkg-genchanges -sa --build=source -O../solv_0.1.4_source.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: source-only upload: Debian-native package
+Now running lintian solv_0.1.4_source.changes ...
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile dsc solv_0.1.4.dsc EpicsDAO <info@epics.dev>
+gpg: skipped "EpicsDAO <info@epics.dev>": No secret key
+gpg: /tmp/debsign.Hhl58yVF/solv_0.1.4.dsc: clear-sign failed: No secret key
+debsign: gpg error occurred!  Aborting....
