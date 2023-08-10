@@ -19,27 +19,24 @@ esac
 # Check if nodenv is already installed for solv user
 if [ ! -d "/home/solv/.nodenv" ]; then
     echo "Installing nodenv for solv user"
-    sudo -u solv -H sh -c '
-        git clone https://github.com/nodenv/nodenv.git /home/solv/.nodenv;
-        sudo ln -vs /home/solv/.nodenv/bin/nodenv /usr/local/bin/nodenv;
-        echo "allow firewall ports";
-        sudo ufw enable
-        sudo ufw allow ssh
-        sudo ufw allow 53 
-        sudo ufw allow 8000:10000/udp
-        sudo ufw allow 8000:10000/tcp
-        sudo ufw reload
-        cd /home/solv/.nodenv && src/configure && make -C src || true;
-        mkdir -p /home/solv/.nodenv/plugins;
-        git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build;
-        git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases;
-        nodenv install 18.17.1;
-        nodenv global 18.17.1;
-        nodenv init
-        echo "$(nodenv init - zsh)" >> /home/solv/.zshrc;
-        npm install -g @epics-dao/solv;
-        exec zsh -l
-    '
+    git clone https://github.com/nodenv/nodenv.git /home/solv/.nodenv;
+    ln -vs /home/solv/.nodenv/bin/nodenv /usr/local/bin/nodenv;
+    echo "allow firewall ports";
+    ufw enable
+    ufw allow ssh
+    ufw allow 53 
+    ufw allow 8000:10000/udp
+    ufw allow 8000:10000/tcp
+    ufw reload
+    cd /home/solv/.nodenv && src/configure && make -C src || true;
+    mkdir -p /home/solv/.nodenv/plugins;
+    git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build;
+    git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases;
+    nodenv install 18.17.1;
+    nodenv global 18.17.1;
+    nodenv init
+    echo "$(nodenv init - zsh)" >> /home/solv/.zshrc;
+    exec zsh -l
 fi
 
 if [ ! -d "/mt/solana" ]; then
