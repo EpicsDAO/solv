@@ -16,33 +16,23 @@ case "$1" in
     ;;
 esac
 
-# Create solv user if it doesn't exist
-if ! id -u solv > /dev/null 2>&1; then
-    useradd -m solv
-fi
-
-# Install zsh
-apt-get install -y zsh
-
-# Change the default shell for solv user to zsh
-chsh -s $(which zsh) solv
-
-# Install oh-my-zsh for solv user
-sudo -u solv -H sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Check if nodenv is already installed for solv user
 sudo -u solv -H sh -c 'if [ ! -d "/home/solv/.nodenv" ]; then
-    git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+    echo "Installing nodenv for solv user"
+    git clone https://github.com/nodenv/nodenv.git /home/solv/.nodenv
     ln -vs /home/solv/.nodenv/bin/nodenv /usr/local/bin/nodenv
     cd /home/solv/.nodenv && src/configure && make -C src || true
-    mkdir -p "$(nodenv root)"/plugins
-    git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
-    git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
+    mkdir -p /home/solv/.nodenv/plugins
+    echo "Installing nodenv plugins"
+    git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build
+    git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases
     nodenv install 18.17.1
     nodenv global 18.17.1
-    if ! grep -q "nodenv init" ~/.zshrc; then
-        echo "$(nodenv init - zsh)" >> ~/.zshrc
+    if ! grep -q "nodenv init" /home/solv/.zshrc; then
+        echo "$(nodenv init - zsh)" >> /home/solv/.zshrc
     fi
+    source /home/solv/.zshrc
 fi
 '
 
