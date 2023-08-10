@@ -3,7 +3,7 @@ Upstream-Name: solv
 Upstream-Contact: EpicsDAO <info@epics.dev>
 Source: https://github.com/EpicsDAO/solv-debian
 
-Files: solv debian/README.md debian/changelog debian/control debian/compat debian/copyright debian/postinst debian/rules debian/source/format
+Files: solv debian/README.md debian/changelog debian/control debian/compat debian/copyright debian/postinst debian/rules debian/source/format usr/*
 Copyright: 2023 EpicsDAO <info@epics.dev>
 License: GPL-3.0+
 

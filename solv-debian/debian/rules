@@ -1,12 +1,18 @@
 #!/usr/bin/make -f
 
-
 %:
 	dh $@
 
 override_dh_auto_install:
 	# Make sure the destination directory exists
 	mkdir -p debian/solv/usr/bin/
+	mkdir -p debian/solv/usr/share/solv/
 
-	# Install the solv script (or binary) to the appropriate location
+	# Install the solv script to the appropriate location
+	echo '#!/bin/sh' > solv
+	echo 'node /usr/share/solv/index.js' >> solv
+	chmod +x solv
 	install -m 755 solv debian/solv/usr/bin/
+
+	# Install the index.js file
+	install -m 644 index.js debian/solv/usr/share/solv/
