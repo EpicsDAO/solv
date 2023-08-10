@@ -21,9 +21,14 @@
   </a>
 </p>
 
-## Solv is Solana Validator CLI tool for Solana Validators
+## CLI Tool for Managing Solana Validators - Solv
 
-Coming soon...
+Solv is a comprehensive command-line utility designed for Solana network
+validators. It simplifies the process of setting up, monitoring, and
+managing Solana validators, offering streamlined operations and enhanced
+performance insights. Whether you're a seasoned Solana validator or just
+getting started, Solv provides the tools you need to ensure optimal validator
+operations on the Solana blockchain.
 
 ## Contributing
 

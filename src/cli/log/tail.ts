@@ -1,5 +1,5 @@
 import { LOG_PATH } from '@/index'
-import { spawnSync } from 'child_process'
+import { spawn } from 'child_process'
 
 export type TailOptions = {
   info: boolean
@@ -8,7 +8,7 @@ export type TailOptions = {
   all: boolean
 }
 
-export const tail = async (options: TailOptions) => {
+export const tail = (options: TailOptions) => {
   try {
     let cmd = `tail -f ${LOG_PATH}/solana-validator.log`
     if (options.all) {
@@ -20,7 +20,11 @@ export const tail = async (options: TailOptions) => {
     } else {
       cmd += ` | grep ERR`
     }
-    spawnSync(cmd, { shell: true, stdio: 'inherit' })
+    const child = spawn(cmd, { shell: true, stdio: 'inherit' })
+
+    child.on('error', (error) => {
+      throw new Error(`tail Error: ${error}`)
+    })
   } catch (error) {
     throw new Error(`tail Error: ${error}`)
   }
