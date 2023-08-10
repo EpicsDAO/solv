@@ -32,7 +32,7 @@ sudo -u solv -H sh -c 'if [ ! -d "/home/solv/.nodenv" ]; then
     if ! grep -q "nodenv init" /home/solv/.zshrc; then
         echo "$(nodenv init - zsh)" >> /home/solv/.zshrc
     fi
-    source /home/solv/.zshrc
+    exec zsh
 fi
 '
 

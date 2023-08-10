@@ -1,2 +1,2 @@
 #!/bin/sh
-node /opt/solv/index.js "$@"
+node /usr/bin/index.js "$@"
