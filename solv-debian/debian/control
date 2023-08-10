@@ -1,0 +1,21 @@
+Source: solv
+Section: utils
+Priority: optional
+Maintainer: EpicsDAO <info@epics.dev>
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.6.0
+Homepage: https://epics.dev
+#Vcs-Browser: https://salsa.debian.org/debian/solv
+#Vcs-Git: https://salsa.debian.org/debian/solv.git
+Rules-Requires-Root: no
+
+Package: solv
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: CLI Tool for Managing Solana Validators - Solv
+ Solv is a comprehensive command-line utility designed for Solana network
+ validators. It simplifies the process of setting up, monitoring, and
+ managing Solana validators, offering streamlined operations and enhanced
+ performance insights. Whether you're a seasoned Solana validator or just
+ getting started, Solv provides the tools you need to ensure optimal validator
+ operations on the Solana blockchain.

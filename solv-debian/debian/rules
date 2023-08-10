@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	# Make sure the destination directory exists
+	mkdir -p debian/solv/usr/bin/
+
+	# Install the solv script (or binary) to the appropriate location
+	install -m 755 solv debian/solv/usr/bin/

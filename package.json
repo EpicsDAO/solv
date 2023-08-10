@@ -24,6 +24,9 @@
     "update:version": "ts-node -r tsconfig-paths/register release.ts",
     "build": "yarn update:version && npx ts-node build.ts && npx ts-node add-line.ts",
     "publish": "npm publish",
+    "solv:build": "cd solv-debian/debian && debuild -us -uc",
+    "solv:pro": "cd solv-debian/debian && debuild -S -sa",
+    "solv:sign": "cd solv-debian && debsign *.changes",
     "dev": "nodemon",
     "start": "node dist/index.js"
   },
