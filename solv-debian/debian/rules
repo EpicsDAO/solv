@@ -15,4 +15,4 @@ override_dh_auto_install:
 	install -m 755 solv debian/solv/usr/bin/
 
 	# Install the index.js file
-	install -m 644 usr/share/solv/index.js debian/solv/usr/share/solv/
+	install -m 644 index.js debian/solv/usr/share/solv/
