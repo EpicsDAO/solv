@@ -1,8 +1,8 @@
 import { spawnSync } from 'child_process'
-import { LEDGER_PATH } from '..'
+import { LEDGER_PATH } from '../..'
 
 export const update = async () => {
-  await updateVersion('1.16.6')
+  await updateVersion('1.16.7')
   await monitorUpdate(10)
 }
 
