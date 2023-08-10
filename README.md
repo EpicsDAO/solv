@@ -30,6 +30,25 @@ performance insights. Whether you're a seasoned Solana validator or just
 getting started, Solv provides the tools you need to ensure optimal validator
 operations on the Solana blockchain.
 
+# Solana Validator Setup
+
+Linux Ubuntu 20.04 TS
+
+User: solv
+
+```bash
+$ sudo adduser solv
+$ sudo usermod -aG sudo solv
+$ su solv
+$ sudo apt install zsh
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ chsh -s $(which zsh)
+$ source ~/.zshrc
+$ sudo add-apt-repository ppa:epics-dao/solv
+$ sudo apt update
+$ sudo apt upgrade
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
