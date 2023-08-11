@@ -1,20 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
 Binary: solv
 Architecture: amd64 source
-Version: 0.1.6
+Version: 0.1.7
 Checksums-Md5:
- 0493ea5606f380b25c267053667e9ba8 507 solv_0.1.6.dsc
- 58acaca166135a00eecf4d933fffa9d8 18382 solv_0.1.6_amd64.deb
+ 989967df93f8c74c4333cf9b1a6fa7d6 1216 solv_0.1.7.dsc
+ 5fdb6c952b4b6e93c903c67c82ca06a7 20462 solv_0.1.7_amd64.deb
 Checksums-Sha1:
- 14a18832c76892d759dcda815985fd8197cc82e8 507 solv_0.1.6.dsc
- badc8b8448e923276ef8cea7a3ade7b6e963428a 18382 solv_0.1.6_amd64.deb
+ 3e4d6a02428f1ad266ea22c09fce799f6c5315be 1216 solv_0.1.7.dsc
+ 9c45d2b9aeddc281d52c72e348b326c07a97a456 20462 solv_0.1.7_amd64.deb
 Checksums-Sha256:
- da3b7f31bbfebaabadae9f4eb369a0a7907f07f14b2deddb78a6040a8b853e6e 507 solv_0.1.6.dsc
- f211d92b01215cc866d9eb1ac70e1be5024b74e925007c67a5002aeded73af0c 18382 solv_0.1.6_amd64.deb
+ 177de557b749511a4bc64b07c35349fc02088718df528f9fcb2f3d399caf5d02 1216 solv_0.1.7.dsc
+ eba1ce05eaa615e679c4656da27c47b14119100d92443911198f37984b942089 20462 solv_0.1.7_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 10 Aug 2023 21:49:01 +0200
+Build-Date: Thu, 10 Aug 2023 23:32:42 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +192,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTVV6IACgkQ2kHJnU2w
+0wSciwwAj6dyFJqESoAMryaGFPTPNYnxgVyShsbtPbzl4j7z6Kjgehji1sDR6kWI
+ha8RYbsqGZeEXDh8s+2hjsUqIJEqf2Q6GKyHCh9H+MY2E2PWN5XGeqIRuwinbmIh
+QJrxNwo+SQ3oQpH6x6pAmM30Ndi2qkqmMcRYQ6twVq+cbIbHUn/t76iAVDrs7eHL
+oTgslt/o9T/sPx2VjNJz2XNs1TmSFKQHOXbcggaV9jwXsdlIyzK52DW2YIZA3jvR
+UY0pelMDNNjsxg00HyQfZuBNwcITbfp6xOHc6hUNGUCWDOtmyaV0AXoaGaO6cmbp
+h5brUoWHWHg2eTH3xwzPbnrtAm5yodOcfqKgnq7JXTc2LiQNzIlZpei4BGqmisLl
+zM7y53wCqOS9Q245t1+5IKkGnIGff3pR+nQEby6s1yFWWmeHWE/WGAxkRrkJ6ImW
+R8g2kmcoG4w9C7OD1M/UxeljURrJbuqNJ5sYtvNNgBYN0LD9TpfUCPFSPUPINxJO
+DOo/7STK
+=10pl
+-----END PGP SIGNATURE-----

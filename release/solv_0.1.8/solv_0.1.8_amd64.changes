@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.8
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.8) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 48152461f35a36502d5b4a67f79ec5ed69159b89 1216 solv_0.1.8.dsc
+ 82d52f8c25fb6418e160f5ca487b670948860be6 19916 solv_0.1.8.tar.xz
+ 2e00aa88f52dc252c3e89eacc521da4e78e05acf 6871 solv_0.1.8_amd64.buildinfo
+ 0b31fc0557dc71df69befdefe00e29348437707e 20486 solv_0.1.8_amd64.deb
+Checksums-Sha256:
+ 24fcaaf11f567edbf37f741f024cfd7781fca400fefd1424fff12c8bad4b16f5 1216 solv_0.1.8.dsc
+ 95dcb023da25582897090a3e8eda5eab1e314d42987f6ac5edd17f8c178119df 19916 solv_0.1.8.tar.xz
+ 573ad8d34890f8c6087c11fe35a417c8013bc8e8a2454d66c539ed2b7581276f 6871 solv_0.1.8_amd64.buildinfo
+ 5b9a76e5bb5a0a881c565fcceac3852422a59085b5b344f3712dc71df1116234 20486 solv_0.1.8_amd64.deb
+Files:
+ e95c95084a23e06e07618247acca5193 1216 utils optional solv_0.1.8.dsc
+ df4f0fa80f598c377f7e3fbb96d05e56 19916 utils optional solv_0.1.8.tar.xz
+ 35f334f3346ddd47bb0af3beaf8552f0 6871 utils optional solv_0.1.8_amd64.buildinfo
+ 550388bf0605ab6312e3bc2077175bf7 20486 utils optional solv_0.1.8_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTV6ZAACgkQ2kHJnU2w
+0wRZjwv/cBtrv1gjqQQRs3/ib7DmJQiv995r9s/li+FGE13VScQ2JXd5CllkJSFA
+TeBcPMzR05XIOwPK1Umr2Hz2on3n7xxm0n8r+bsX9kWT4hlLCS3vqaegWENDGQEr
+yOWdFBI5k2v7AgFyMRp8otFP+n0J+6yrj0hvj1hBWsziC1/pDicZpdp/ykMNgSmI
+KzhYrLEsAhc4tkj1MA4IeiY6Rbh5Ix+Coq0IJ5UrKkY5j3+c9OnIx5G125q5PXce
+KLDTu4aaD4M0+cujIE1935xjiSBmTYdFnhRKHwjRmt439P8Tn0MjJ0faykz78Ky9
+gLz1ra4NK9X9iqA7cWM3QldIiVkHxqreRUjkWPhPhDgUbnPIqcMcoeoPWmHZ0SzP
+XJuGhmaJbXifbELus6SbFUgaGhSozEHWE4ONeB0dG6ROHJrDAAC4XIsQHrAyLXg2
+jRtlL+w/mezR2SHPvmiabnOAYcjJo2zNeo80IUxOKPJ9J2r7FLSkeBtZ66PLmwzC
++L2A3xRk
+=7ETV
+-----END PGP SIGNATURE-----

@@ -1,17 +1,19 @@
  dpkg-buildpackage -us -uc -ui
 dpkg-buildpackage: info: source package solv
-dpkg-buildpackage: info: source version 0.1.6
+dpkg-buildpackage: info: source version 0.1.8
 dpkg-buildpackage: info: source distribution focal
 dpkg-buildpackage: info: source changed by EpicsDAO <info@epics.dev>
  dpkg-source --before-build .
 dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js$
  debian/rules clean
 dh clean
    dh_clean
  dpkg-source -b .
+dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js$
 dpkg-source: info: using source format '3.0 (native)'
-dpkg-source: info: building solv in solv_0.1.6.tar.xz
-dpkg-source: info: building solv in solv_0.1.6.dsc
+dpkg-source: info: building solv in solv_0.1.8.tar.xz
+dpkg-source: info: building solv in solv_0.1.8.dsc
  debian/rules binary
 dh binary
    dh_update_autotools_config
@@ -48,14 +50,13 @@ make[1]: Leaving directory '/home/kaien/dev/ts/solv/solv-debian'
 dpkg-gencontrol: warning: Depends field of package solv: substitution variable ${shlibs:Depends} used, but is not defined
    dh_md5sums
    dh_builddeb
-dpkg-deb: building package 'solv' in '../solv_0.1.6_amd64.deb'.
- dpkg-genbuildinfo -O../solv_0.1.6_amd64.buildinfo
- dpkg-genchanges -O../solv_0.1.6_amd64.changes
+dpkg-deb: building package 'solv' in '../solv_0.1.8_amd64.deb'.
+ dpkg-genbuildinfo -O../solv_0.1.8_amd64.buildinfo
+ dpkg-genchanges -O../solv_0.1.8_amd64.changes
 dpkg-genchanges: info: including full source code in upload
  dpkg-source --after-build .
+dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js$
 dpkg-buildpackage: info: full upload; Debian-native package (full source is included)
-Now running lintian solv_0.1.6_amd64.changes ...
-E: solv source: source-is-missing usr/share/solv/index.js
+Now running lintian solv_0.1.8_amd64.changes ...
 W: solv: no-manual-page usr/bin/solv
-W: solv: script-not-executable [usr/share/solv/index.js]
 Finished running lintian.

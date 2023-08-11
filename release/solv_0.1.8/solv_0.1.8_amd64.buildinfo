@@ -1,20 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
 Binary: solv
 Architecture: amd64 source
-Version: 0.1.6
+Version: 0.1.8
 Checksums-Md5:
- 0493ea5606f380b25c267053667e9ba8 507 solv_0.1.6.dsc
- 58acaca166135a00eecf4d933fffa9d8 18382 solv_0.1.6_amd64.deb
+ e95c95084a23e06e07618247acca5193 1216 solv_0.1.8.dsc
+ 550388bf0605ab6312e3bc2077175bf7 20486 solv_0.1.8_amd64.deb
 Checksums-Sha1:
- 14a18832c76892d759dcda815985fd8197cc82e8 507 solv_0.1.6.dsc
- badc8b8448e923276ef8cea7a3ade7b6e963428a 18382 solv_0.1.6_amd64.deb
+ 48152461f35a36502d5b4a67f79ec5ed69159b89 1216 solv_0.1.8.dsc
+ 0b31fc0557dc71df69befdefe00e29348437707e 20486 solv_0.1.8_amd64.deb
 Checksums-Sha256:
- da3b7f31bbfebaabadae9f4eb369a0a7907f07f14b2deddb78a6040a8b853e6e 507 solv_0.1.6.dsc
- f211d92b01215cc866d9eb1ac70e1be5024b74e925007c67a5002aeded73af0c 18382 solv_0.1.6_amd64.deb
+ 24fcaaf11f567edbf37f741f024cfd7781fca400fefd1424fff12c8bad4b16f5 1216 solv_0.1.8.dsc
+ 5b9a76e5bb5a0a881c565fcceac3852422a59085b5b344f3712dc71df1116234 20486 solv_0.1.8_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 10 Aug 2023 21:49:01 +0200
+Build-Date: Fri, 11 Aug 2023 09:55:42 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +192,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTV6Y8ACgkQ2kHJnU2w
+0wS6Xgv+NJe43cUQLoSeBe+0CPtyLP8P4uYrBDytqrneZKsC5ramLOC9j1dkS1jQ
+KjJFwGdHvGg1zfW/1Dn1YOSoGiB4k1iy7XmgNrh4bgzu/YoOGmJ2xmbAmJ4Q4ptu
+z1kfJIEhC5cpVERXvbiCHx/nl/PyirO7QA+cdrStJ16+TpIwCBKwZWUAiEZmFZi+
+u92chsz3cWTmvCF3i645FOffQBxlTGbhtazEFls+MXGD1F6hGdhqRadpb/M3W6Ki
+rIF0f4mBJpWjPBkGIKSyT5oPNIm49QVgXg6UexMUL+LJMUBf8M2j/JnNW3Rzo6y1
+j4twGm5J7h0sY4AEDq8LoUNvgzpVrYuYiusl6NKNYcDl9KMAA4RU/kEICmMRx4+x
+Zi8lOSVR5amewjP+w7hqXji4dHoCQMXRIpZz+TLDHVE4UY4uLpkwjSb8Njv6QPy/
+v0LOwBL56j2MP8pnGl1jcoic7Y/Jy0xyV85XDYK5LKP4M1NgcbbtuEtGf2+eyieB
+9X+ZbaGV
+=Jf78
+-----END PGP SIGNATURE-----

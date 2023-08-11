@@ -1,6 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
-
 Format: 1.8
 Date: Thu, 10 Aug 2023 10:50:16 +0200
 Source: solv
@@ -19,32 +16,17 @@ Changes:
  .
    * Initial Release.
 Checksums-Sha1:
- 68873ce3ba704bae0f9283cd5992a7358fbd0f73 1213 solv_0.1.6.dsc
- f936f6129a5c24f74b496fd1c497c56e3a80d176 2348 solv_0.1.6.tar.xz
- 2b447f59b4653633dc3188ea9a997e78b168776c 6868 solv_0.1.6_amd64.buildinfo
- 97cb418c5d7c8b1d19fa246131ff2f64c4d664f7 2542 solv_0.1.6_amd64.deb
+ 14a18832c76892d759dcda815985fd8197cc82e8 507 solv_0.1.6.dsc
+ 59c886310ed3220efe4f2b121f7799f22634f44c 17728 solv_0.1.6.tar.xz
+ 408d3ccd4a5132915d0d8abaebeab6c0f8970215 6159 solv_0.1.6_amd64.buildinfo
+ badc8b8448e923276ef8cea7a3ade7b6e963428a 18382 solv_0.1.6_amd64.deb
 Checksums-Sha256:
- f92bbf95082b90acca1f639db3018a68645aeb4e5989a3614c43f8c17fbc8ac7 1213 solv_0.1.6.dsc
- a9e10997051d62c47737e7d54dda10dc25d6db973eb6ed1a22a71beaf0b5b335 2348 solv_0.1.6.tar.xz
- 422852f8390bf1bfd5c423a6099d34f04e7200452ebe52a1ded33a01d461ec22 6868 solv_0.1.6_amd64.buildinfo
- c39369e647cef57194b9a826256f4cd1721bdb2ad3bba7c5dfd86a4f375ec755 2542 solv_0.1.6_amd64.deb
+ da3b7f31bbfebaabadae9f4eb369a0a7907f07f14b2deddb78a6040a8b853e6e 507 solv_0.1.6.dsc
+ bc524bfd2de5a3b621f4556c03f2f6ac1aef5a68eeab88fb508853075c50f193 17728 solv_0.1.6.tar.xz
+ 6cb7fcf0f05a773a7bd25ed222c00415fb912ea2edf497ec0a9eb0a13676186e 6159 solv_0.1.6_amd64.buildinfo
+ f211d92b01215cc866d9eb1ac70e1be5024b74e925007c67a5002aeded73af0c 18382 solv_0.1.6_amd64.deb
 Files:
- e7acce347c42e5b64516b715b00002cc 1213 utils optional solv_0.1.6.dsc
- 4859f025d2f606c833b3c57d52686e7f 2348 utils optional solv_0.1.6.tar.xz
- 7ea95f3c0980a9938a468b0ff005591c 6868 utils optional solv_0.1.6_amd64.buildinfo
- 5c469986023a28eb29efaf9ba338f42c 2542 utils optional solv_0.1.6_amd64.deb
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTVO8EACgkQ2kHJnU2w
-0wQveQv9GjtFS0/2M4AUuIKyaP2opHBFIpF60RR85ygvxKGOQMQxDPhPk9EDgkdg
-1QgwOaq5l3/7DtvlLwyaxBDTZoDbfdOnlvVR0U369natLViJO7AnuXLlwaTDvIq0
-magH6oIVoq3kQdYKzVhoFQrbGBELyLL5JLkQGLJzqwhYh5moeNjpERjIX2/XUN7I
-41J6ib5YH2z5eUr4TpMGlFnbPv0MQRx+2hxo53MqSK/cirigVnCYZ03aoB7dHGdb
-WxqVsN1Ij3mGyFxSlcQ9Vi1rP/595xfSft0VCnawquDDfvJEIgjYn9TxfmyYzz/4
-i/QfXkz89yOQRu4SKgBwLfcak+EcHj8EyPcxnksgOP9INUveHzNJgavE6b4O3uSb
-JdAybptXV2WnOk8gyyV8vhUPR8xieEm7oE/IB+bWRhQ/d0BSpDJ0hE4CLLsIInus
-cA9yDX0LwuJ/1JifbXv97OM6+WQVQaeGwGI3qw0yRWcasHC+sOZOOyxRYr+e9WRO
-v5fexPMt
-=qpMh
------END PGP SIGNATURE-----
+ 0493ea5606f380b25c267053667e9ba8 507 utils optional solv_0.1.6.dsc
+ 0b5669dd9f8c1f0e625783e509debc2e 17728 utils optional solv_0.1.6.tar.xz
+ b166d0b9a6dc9ba4ad9cae4cc1e1387e 6159 utils optional solv_0.1.6_amd64.buildinfo
+ 58acaca166135a00eecf4d933fffa9d8 18382 utils optional solv_0.1.6_amd64.deb
