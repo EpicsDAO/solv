@@ -21,6 +21,8 @@ export const releaseDebian = async (version: string) => {
   })
   const design = ['debsign', `-k${GPG_SECRET}`, `solv_${version}_*.changes`]
   spawnSync(design.join(' '), { shell: true, stdio: 'inherit' })
+  const dput = ['dput', 'ppa:epics-dao/solv', `solv_${version}_source.changes`]
+  spawnSync(dput.join(' '), { shell: true, stdio: 'inherit' })
   mvDeb(version)
   Logger.normal(`Release ${version} complete!`)
 }
