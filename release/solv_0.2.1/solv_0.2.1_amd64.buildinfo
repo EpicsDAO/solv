@@ -1,23 +1,20 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
-
 Format: 1.0
 Source: solv
 Binary: solv
 Architecture: amd64 source
 Version: 0.2.1
 Checksums-Md5:
- 11b2845b517670c77b9709ac0d5a96d7 1216 solv_0.2.1.dsc
+ bc5f0491f87907d9f8a0a8c780ec9bab 507 solv_0.2.1.dsc
  aff03fae757f5a518e4b386d3a2c3ad2 19864 solv_0.2.1_amd64.deb
 Checksums-Sha1:
- edc60c860099d2a689a67f0c43426434258480e3 1216 solv_0.2.1.dsc
+ 9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
  c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
 Checksums-Sha256:
- f06bc678c13016bcce67946a33f8f52aeed9eca65cec6d459cd0edb76c444243 1216 solv_0.2.1.dsc
+ 746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
  5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 20:37:44 +0200
+Build-Date: Fri, 11 Aug 2023 22:20:02 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -192,18 +189,3 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWf/8ACgkQ2kHJnU2w
-0wTcsgv/TBjnu2s+ZBwMv40JFF+p+z4W5DCnStOuGUuZDJj/kOoxi2Vr+3fwvAkH
-okv6J6+NrJcBOUMHjo1K5+aKld0HB3qsR6T7EykYsfgcJs10byoYhuCutSq1ErYy
-oSVXhK9INfXry1bf3EgEur9etmkLDU1ZgSVGpUeDhU7y2Tw1JKZDl5UpNlSuEoxg
-ct8VVqsB4FhfA+ivoZ73A/a8JEtrWP6LE+JaA0Zap1/PRsNb09lbDP61JV8BhB8n
-AgnLNn+Kqle/CxyqYTTU4rF1LopLTE07V5gD3/P3caN1VkDm4xzXm4GTKEQ5/fm3
-Nev3xxct/tZjS32rO8kGiwdiJuZij7TQuMA8suoXPDXIK/CzEYrqeXVSf8UrVCmA
-H8vnB0NefWcBtlhAW1THUsfAnoVd6ZBuvoi/ddCHA1qSuTpLA4d2V7iQx1q/Vb3+
-qG86wvSfQoSVvyI3HiXtPYLF8iEc842gd/NT6RX+3bv0zdTBd+14lJbTt/z3ZlRA
-ixTD3OqC
-=9jzy
------END PGP SIGNATURE-----

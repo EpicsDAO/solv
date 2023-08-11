@@ -58,3 +58,8 @@ dpkg-genchanges: info: including full source code in upload
 dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js$
 dpkg-buildpackage: info: full upload; Debian-native package (full source is included)
 Now running lintian solv_0.2.1_amd64.changes ...
+E: solv source: source-is-missing usr/share/solv/index.js
+W: solv: maintainer-script-calls-systemctl [postinst:113]
+W: solv source: maintainer-script-lacks-debhelper-token [debian/postinst]
+W: solv: no-manual-page usr/bin/solv
+Finished running lintian.

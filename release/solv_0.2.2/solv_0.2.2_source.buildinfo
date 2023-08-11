@@ -1,16 +1,19 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
 Architecture: source
-Version: 0.2.1
+Version: 0.2.2
 Checksums-Md5:
- bc5f0491f87907d9f8a0a8c780ec9bab 507 solv_0.2.1.dsc
+ ec5060cf1f11421d3974cc8b767d73c3 1216 solv_0.2.2.dsc
 Checksums-Sha1:
- 9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
+ a3a59136a5458e247a2b62046b1c4fa66e332fd6 1216 solv_0.2.2.dsc
 Checksums-Sha256:
- 746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
+ ce0a582f905fd476a1940f323f4884b8cc1155f9be95aa0a029966f7da1141ce 1216 solv_0.2.2.dsc
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 22:19:07 +0200
+Build-Date: Fri, 11 Aug 2023 22:20:57 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -185,3 +188,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWmDAACgkQ2kHJnU2w
+0wRfaAv9GY306qrfqkeuEG4YOu7rhxHTBC7V1oCBU8Ea8Ur63DodItwZVp/ruYjg
+DbognErKXIAYA2xeSHEXH6f59AiZGqBh4lw1ZgltpEpUGziGn2FF3A3KtAPTsJVh
+jUgg7oBoSzhHloJPw4uY9Xt2mv07lRf6zJZbB7oZeXU4/8mnuaRIaMLMcwV7c3Ji
++m42wa5PeHzq98CoHQrZLd2YjzVvNAob4W+eDjBFjrNNm+5rJ80vVNeWyiBEN7QK
+1OvTPOfGbq/NzaQKcNFki2VFHrNrz7eb+Ulr89zfVfImu8qh7cS+rMRRDWL4JRtY
+nCxSYCcKw7+Ai4uM36rA7r/MOs+3iHMDWnB2FFWDTAyPcRHiwc1wyN8bFM7LfetZ
+15vzUrIeTEqGMqhfs1GGNHmZ/KFR2VncH6K6g4Jk26VfgWGaBX8+0wQrQF20qcXt
+rsOeFYKAMVjGw9miCGaED+eIh5KLwXYx/GjwyeslTm5gyakmUTxYMJt5Cl4Hk10g
+tE0YtLpe
+=O+Cg
+-----END PGP SIGNATURE-----

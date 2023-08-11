@@ -1,16 +1,20 @@
 Format: 1.0
 Source: solv
-Architecture: source
+Binary: solv
+Architecture: amd64 source
 Version: 0.2.1
 Checksums-Md5:
  bc5f0491f87907d9f8a0a8c780ec9bab 507 solv_0.2.1.dsc
+ aff03fae757f5a518e4b386d3a2c3ad2 19864 solv_0.2.1_amd64.deb
 Checksums-Sha1:
  9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
+ c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
 Checksums-Sha256:
  746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
+ 5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 22:19:07 +0200
+Build-Date: Fri, 11 Aug 2023 22:20:19 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs

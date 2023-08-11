@@ -19,15 +19,15 @@ Changes:
 Checksums-Sha1:
  9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
  8e4b8cb29dd8e9cbb07d738b815f47e6c6fdef99 19212 solv_0.2.1.tar.xz
- e46b94b0dc47e04f3ac95aa0f7c66bb868a52fa1 6159 solv_0.2.1_amd64.buildinfo
+ 982826fd68b104a85e5f7ddb7deb2afcf72b5bea 6159 solv_0.2.1_amd64.buildinfo
  c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
 Checksums-Sha256:
  746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
  e78d385f0f190859cdf12eeb5cbd3923f9b4798760dfd2a86abc8552ff552079 19212 solv_0.2.1.tar.xz
- 693bc0b3efa87d0df5c6c606bec3b46803b5e37997f01c8d1b7c7136bff757f8 6159 solv_0.2.1_amd64.buildinfo
+ 7763872ae97b28ce7d904c9d73cd7d322b3d9004e5e887be0ab109ed62ecc50e 6159 solv_0.2.1_amd64.buildinfo
  5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
 Files:
  bc5f0491f87907d9f8a0a8c780ec9bab 507 utils optional solv_0.2.1.dsc
  06aff20c2d4867c242fe14cf27d2d78e 19212 utils optional solv_0.2.1.tar.xz
- c0a44031f65d2e7138c80692bcc4fcbe 6159 utils optional solv_0.2.1_amd64.buildinfo
+ 3eba2744d171dd0b35b3bb644a16b83e 6159 utils optional solv_0.2.1_amd64.buildinfo
  aff03fae757f5a518e4b386d3a2c3ad2 19864 utils optional solv_0.2.1_amd64.deb
