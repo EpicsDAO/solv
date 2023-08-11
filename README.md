@@ -45,7 +45,6 @@ $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/instal
 $ chsh -s $(which zsh)
 $ source ~/.zshrc
 $ sudo add-apt-repository ppa:epics-dao/solv
-$ sudo apt update
 $ sudo apt install solv
 ```
 

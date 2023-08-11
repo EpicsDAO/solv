@@ -8,6 +8,7 @@ USERNAME="solv"
 NODENV_DIR="/home/$USERNAME/.nodenv"
 NODENV_REPO="https://github.com/nodenv/nodenv.git"
 SOLANA_DIR="/mt/solana"
+SOLANA_LEDGER_DIR="/mt/ledger"
 SOLANA_VALIDATOR_DIR="$SOLANA_DIR/solana-validator"
 LOG_DIR="$SOLANA_VALIDATOR_DIR/log"
 START_VALIDATOR_SCRIPT="$SOLANA_VALIDATOR_DIR/start-validator.sh"
@@ -56,23 +57,23 @@ if [ ! -d "$SOLANA_DIR" ]; then
     echo "Making solana directory"
     mkdir -p $LOG_DIR
     mkdir -p $SOLANA_DIR-accounts
-    mkdir -p $SOLANA_DIR/ledger/validator-ledger
+    mkdir -p $SOLANA_LEDGER_DIR/validator-ledger
     mkdir -p /mnt/ramdrive
     chown $USERNAME:$USERNAME /mt
     chown $USERNAME:$USERNAME $SOLANA_DIR
     chown $USERNAME:$USERNAME $SOLANA_DIR-accounts
-    chown $USERNAME:$USERNAME /mt/ledger
+    chown $USERNAME:$USERNAME $SOLANA_LEDGER_DIR
     chown $USERNAME:$USERNAME /mnt/ramdrive
     chown $USERNAME:$USERNAME $LOG_DIR
-    chown $USERNAME:$USERNAME /mt/ledger/validator-ledger
+    chown $USERNAME:$USERNAME $SOLANA_LEDGER_DIR/validator-ledger
     chown $USERNAME:$USERNAME $SOLANA_VALIDATOR_DIR
     chmod 755 /mt
     chmod 755 $SOLANA_DIR
     chmod 755 $SOLANA_DIR-accounts
-    chmod 755 /mt/ledger
+    chmod 755 $SOLANA_LEDGER_DIR
     chmod 755 /mnt/ramdrive
     chmod 777 $LOG_DIR
-    chmod 755 /mt/ledger/validator-ledger
+    chmod 755 $SOLANA_LEDGER_DIR/validator-ledger
     chmod 755 $SOLANA_VALIDATOR_DIR
 fi
 
