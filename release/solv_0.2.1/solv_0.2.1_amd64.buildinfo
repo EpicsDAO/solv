@@ -3,17 +3,21 @@ Hash: SHA512
 
 Format: 1.0
 Source: solv
-Architecture: source
-Version: 0.2.0
+Binary: solv
+Architecture: amd64 source
+Version: 0.2.1
 Checksums-Md5:
- 088d1f8991d86a2cb333ff6f2ef0e45f 1216 solv_0.2.0.dsc
+ 11b2845b517670c77b9709ac0d5a96d7 1216 solv_0.2.1.dsc
+ aff03fae757f5a518e4b386d3a2c3ad2 19864 solv_0.2.1_amd64.deb
 Checksums-Sha1:
- 78d369b8e66611de7e14d9d3a914be5bf3ecec67 1216 solv_0.2.0.dsc
+ edc60c860099d2a689a67f0c43426434258480e3 1216 solv_0.2.1.dsc
+ c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
 Checksums-Sha256:
- 2ec5b623113084985497bf624ab7f1d80fa7326ffbdfa50f8e3974128c887e15 1216 solv_0.2.0.dsc
+ f06bc678c13016bcce67946a33f8f52aeed9eca65cec6d459cd0edb76c444243 1216 solv_0.2.1.dsc
+ 5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 18:50:06 +0200
+Build-Date: Fri, 11 Aug 2023 20:37:44 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -191,15 +195,15 @@ Environment:
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWZs0ACgkQ2kHJnU2w
-0wQo6gv/f4tehRD45zcAq1HdiWUuzsOMMWGLKO53P3+ycnPWQqIB8sWw76Smdfcr
-l7cMUtDCh+vnY7qg4JsnWTsThBUXcUBSB1TM6YDUBwVPhV+rUOGssoVjq1m8aPB1
-nWpjNKPU4rsyrdyG6uDvloZZMvrkSSSfCSfL/hMzqRYA2DU7YXFs72fcOS89KvwF
-MiyNoxRHWFKVqCwFujI+8Upmp8aEQGF+UMRMJ/WSvXq6ASvAHBUkfpbFEOrBlCWt
-hW6s3NYWwKq+ZRNVYgrEKnbIZi8HuBqWDd7yqIjee4hcsTm2qwVXBwgDBKxutI1M
-BhJkzTTLR2AVIvx9XgSz/Ata4tEkJZWI5KYrUPuT/+9dbaB7EiHlzw3obd5buIlR
-W93r+lMF6HZH+Gd+okCpiXkLhLjiCIW+Lf2DVzWDdzBdkx5ja7swgeiqIiixcLNm
-8qhgjpsoa8qKoXV7b+5GHu8cAW8UoX35kIkLeNzK8hi88IfhlyBQkFa0GJZBfAFq
-0d+Vu3Mw
-=C/Z0
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWf/8ACgkQ2kHJnU2w
+0wTcsgv/TBjnu2s+ZBwMv40JFF+p+z4W5DCnStOuGUuZDJj/kOoxi2Vr+3fwvAkH
+okv6J6+NrJcBOUMHjo1K5+aKld0HB3qsR6T7EykYsfgcJs10byoYhuCutSq1ErYy
+oSVXhK9INfXry1bf3EgEur9etmkLDU1ZgSVGpUeDhU7y2Tw1JKZDl5UpNlSuEoxg
+ct8VVqsB4FhfA+ivoZ73A/a8JEtrWP6LE+JaA0Zap1/PRsNb09lbDP61JV8BhB8n
+AgnLNn+Kqle/CxyqYTTU4rF1LopLTE07V5gD3/P3caN1VkDm4xzXm4GTKEQ5/fm3
+Nev3xxct/tZjS32rO8kGiwdiJuZij7TQuMA8suoXPDXIK/CzEYrqeXVSf8UrVCmA
+H8vnB0NefWcBtlhAW1THUsfAnoVd6ZBuvoi/ddCHA1qSuTpLA4d2V7iQx1q/Vb3+
+qG86wvSfQoSVvyI3HiXtPYLF8iEc842gd/NT6RX+3bv0zdTBd+14lJbTt/z3ZlRA
+ixTD3OqC
+=9jzy
 -----END PGP SIGNATURE-----

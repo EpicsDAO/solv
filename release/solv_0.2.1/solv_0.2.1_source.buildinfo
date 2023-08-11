@@ -4,16 +4,16 @@ Hash: SHA512
 Format: 1.0
 Source: solv
 Architecture: source
-Version: 0.2.0
+Version: 0.2.1
 Checksums-Md5:
- 088d1f8991d86a2cb333ff6f2ef0e45f 1216 solv_0.2.0.dsc
+ 11b2845b517670c77b9709ac0d5a96d7 1216 solv_0.2.1.dsc
 Checksums-Sha1:
- 78d369b8e66611de7e14d9d3a914be5bf3ecec67 1216 solv_0.2.0.dsc
+ edc60c860099d2a689a67f0c43426434258480e3 1216 solv_0.2.1.dsc
 Checksums-Sha256:
- 2ec5b623113084985497bf624ab7f1d80fa7326ffbdfa50f8e3974128c887e15 1216 solv_0.2.0.dsc
+ f06bc678c13016bcce67946a33f8f52aeed9eca65cec6d459cd0edb76c444243 1216 solv_0.2.1.dsc
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 18:50:06 +0200
+Build-Date: Fri, 11 Aug 2023 20:37:46 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -191,15 +191,15 @@ Environment:
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWZs0ACgkQ2kHJnU2w
-0wQo6gv/f4tehRD45zcAq1HdiWUuzsOMMWGLKO53P3+ycnPWQqIB8sWw76Smdfcr
-l7cMUtDCh+vnY7qg4JsnWTsThBUXcUBSB1TM6YDUBwVPhV+rUOGssoVjq1m8aPB1
-nWpjNKPU4rsyrdyG6uDvloZZMvrkSSSfCSfL/hMzqRYA2DU7YXFs72fcOS89KvwF
-MiyNoxRHWFKVqCwFujI+8Upmp8aEQGF+UMRMJ/WSvXq6ASvAHBUkfpbFEOrBlCWt
-hW6s3NYWwKq+ZRNVYgrEKnbIZi8HuBqWDd7yqIjee4hcsTm2qwVXBwgDBKxutI1M
-BhJkzTTLR2AVIvx9XgSz/Ata4tEkJZWI5KYrUPuT/+9dbaB7EiHlzw3obd5buIlR
-W93r+lMF6HZH+Gd+okCpiXkLhLjiCIW+Lf2DVzWDdzBdkx5ja7swgeiqIiixcLNm
-8qhgjpsoa8qKoXV7b+5GHu8cAW8UoX35kIkLeNzK8hi88IfhlyBQkFa0GJZBfAFq
-0d+Vu3Mw
-=C/Z0
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWgAMACgkQ2kHJnU2w
+0wSNpAv/U20h1DDQOxfR0HeVnHn+O7wTxD6ySVTehNw7i4lqSlEvP6Sbd8nZ8DgY
+sb7tvzWCQY7cQisOPJhjq/sswwiwlDv9M/uuFXmhCnEM5xof5v5WJ94uEnmEDtWi
+D8G/DIgb0kVxIghE9ac6C/JwMjdIN9quoSTHFHRJtUF04ifR6LL/ZNOUaRHUPKYe
+LNWF92ccvGdVuHp01aC80IhvCBInKYuxbgN6ikcDEF8gKdnQpfmgEDGCBPCJycYc
+VMXygYHBs1RqT/FCPHP47G9njb3Zn5d/CQgpNOh2WoFsEDu27sRc+P/OgIhQh18A
+w/Zphl19BM3QrMs7NCRGYaPhMZcxElsNBdKNwZNfzYufz4RVhh5dsu/9hBtVUlvP
+J0mdRD24HqC/iTpS/djLhlputVH9d9H2TL4q33cw7yEdYY3HaNWp6v1gsstM8kX3
+FHISRJdFZFqv67+PseQyYr3R4PoUIkYwWajOGIsGFMsjGG6CQIjJ+rsk8fI6jPlj
+hcktyPsR
+=q7GC
 -----END PGP SIGNATURE-----
