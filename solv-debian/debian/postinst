@@ -156,6 +156,6 @@ sudo systemctl daemon-reload
 sudo systemctl restart logrotate
 
 echo "Success! You can now run solv!"
-source /home/$USERNAME/.zshrc
+exec $SHELL -l
 
 exit 0
