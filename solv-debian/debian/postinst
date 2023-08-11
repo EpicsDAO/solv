@@ -156,6 +156,6 @@ sudo systemctl daemon-reload
 sudo systemctl restart logrotate
 
 echo "Success! You can now run solv!"
-. /home/solv/.bashrc
+bash -l
 
 exit 0
