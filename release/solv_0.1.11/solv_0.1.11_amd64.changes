@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.11
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.11) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ b9c6a53051fb77d6216808bd20409fb2cbf232d1 1220 solv_0.1.11.dsc
+ b811d768fdaa924255d16b7ff80816d07d98c915 20012 solv_0.1.11.tar.xz
+ ce1d9b9a07c97079e840c36fe152503b801ff01c 6878 solv_0.1.11_amd64.buildinfo
+ 956ce3b93a7c8b44a9581ec0ab659a86d42c3c12 20618 solv_0.1.11_amd64.deb
+Checksums-Sha256:
+ 77662025ba090147a80162cdbea5453d668c5475a47235e2bd91ee23dee8167d 1220 solv_0.1.11.dsc
+ 9423b885b805e4c959ba2ad831fa60fffc2a7b0c699644b6608f0e331f797740 20012 solv_0.1.11.tar.xz
+ 8743ebe3e8169389a7fdbccc565b2a80a2dc0e4f82668ad8c0049093356fc3d3 6878 solv_0.1.11_amd64.buildinfo
+ a369678a5801540cc6cc84d267816611cfc70a58059d022b80f500d07ef8d39d 20618 solv_0.1.11_amd64.deb
+Files:
+ 71a17780339deb021241e3aadf5485c7 1220 utils optional solv_0.1.11.dsc
+ 452bd512ab79703b00b9ee50fecc0902 20012 utils optional solv_0.1.11.tar.xz
+ e1c20294e104430e25e60717a2dee78b 6878 utils optional solv_0.1.11_amd64.buildinfo
+ b091bfd3720d1c67ef077948b207ec24 20618 utils optional solv_0.1.11_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWO2oACgkQ2kHJnU2w
+0wSY3gv/RNVW+a7+MLuN/xPGsUlTnPef+kARPZ5H/Fdc8VxTMVfsNJgEID9k8Vwq
+mXMAtvICkZOh2XHtLgBBfCNht1rybFsy9sPQ6Dbv3WiHucuHO3fEgmMphHRhY7Cc
+y5rNjMjZqVnlIV7XYfxrO4eWBWWXNC/0njOGRXvxthmThd2dDFR50k0L+/EkEWog
+wPPmBlbv4pVT00f9nAOoTxzdoUQlmaCljO6AaCNMx/SqmDOPqyxyIIOJmNi4tbxW
+VsPUf5TiMcII5+JTjBuiz/Eo8KAQQf1uK5qBbOgYLY68jZrV1C5A5DyEsplR+fxe
+RsWGKwsnI3lEVJH0erlE5wS0wnitfEbnmSJ0T/wnABxiTLZrhng8fAZMY6iMlnMU
+5fYmPE/4DYJtZUjojPcVvEtNuM+f9biXj1qRcOHF2skQu4Qaz5coe/NUcqcH3PQI
+kpxnVaP/AUjX73EnAdheVvFWWhbp7HFMKgn0PVftKGyc1wjer6kcnuIl2DzyHpgh
+2f6P4Mx2
+=hNGm
+-----END PGP SIGNATURE-----

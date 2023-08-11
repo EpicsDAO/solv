@@ -1,0 +1,44 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Built-For-Profiles: noudeb
+Architecture: source
+Version: 0.1.11
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Changes:
+ solv (0.1.11) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ b9c6a53051fb77d6216808bd20409fb2cbf232d1 1220 solv_0.1.11.dsc
+ b811d768fdaa924255d16b7ff80816d07d98c915 20012 solv_0.1.11.tar.xz
+ 37d0345dc98d8aabb4317b7fac5d9c8a3e16f001 6633 solv_0.1.11_source.buildinfo
+Checksums-Sha256:
+ 77662025ba090147a80162cdbea5453d668c5475a47235e2bd91ee23dee8167d 1220 solv_0.1.11.dsc
+ 9423b885b805e4c959ba2ad831fa60fffc2a7b0c699644b6608f0e331f797740 20012 solv_0.1.11.tar.xz
+ 48118d8e4350f875b2c079df97c839ce73adf59be70be4450e09e278e0cc511d 6633 solv_0.1.11_source.buildinfo
+Files:
+ 71a17780339deb021241e3aadf5485c7 1220 utils optional solv_0.1.11.dsc
+ 452bd512ab79703b00b9ee50fecc0902 20012 utils optional solv_0.1.11.tar.xz
+ b79ace5d2007c9fae07503bc84d804d7 6633 utils optional solv_0.1.11_source.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWO2wACgkQ2kHJnU2w
+0wSvkgwAknIBgx56v/O5kpmcUP5DqVKtCm+6VrqHjLCPE48WNdcjkxq0ULidVo/t
+WfmPWntCme7nFudFk44mit8Em+2LOsaav9WlDrM6e56sTd8CIc9MtrpSPl6K6SfY
+008KiFaqKTwNueuSjhzBhA/2PUerQ4YM1pnagdBZkGNJSctR7BnTT63C+xIQ/fbk
+TH/1zlXhbXbXzzmCbPXvj4BbRxkbznesbwBQ7ZiRlxbMoPCZirq8UecTv9+lTebn
++UUyZlLltOJK43MIKEIwH4NoENlKO9n7/Wrs4Vlf8dVuHQl9JIPh/PTvEILGT7Mn
+CvadNT8PJ0pvHE3dfmRwL+k0mmRjvAWFJAvjtPPqAFxzo/btS82UxYrgVg5eul/s
+z94ciRL3XBB5d64wPBssSsm992WtASNAEf/xFKjvUPDt6LvcL5iwYkCMuBkHBU9f
+lhQb6FmyxqusxVDldznXcq+tHgAv7BwbKZVREWe7dHztX5/yNKYykhlhZ/l4sqkz
+Q4e9rGGn
+=WkY7
+-----END PGP SIGNATURE-----
