@@ -1,20 +1,19 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
-Binary: solv
-Architecture: amd64 source
-Version: 0.2.1
+Architecture: source
+Version: 0.2.5
 Checksums-Md5:
- bc5f0491f87907d9f8a0a8c780ec9bab 507 solv_0.2.1.dsc
- aff03fae757f5a518e4b386d3a2c3ad2 19864 solv_0.2.1_amd64.deb
+ c3748ef3260fe35cd0c4c7958ee98886 1216 solv_0.2.5.dsc
 Checksums-Sha1:
- 9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
- c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
+ 5fd195a0793a2e41a609397721647e0e5d9cc2d1 1216 solv_0.2.5.dsc
 Checksums-Sha256:
- 746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
- 5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
+ a93ab22d4c7635c010829de7a82cc0cc2b8132a48a2f94261ae76497d91cd3a4 1216 solv_0.2.5.dsc
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 22:20:19 +0200
+Build-Date: Sat, 12 Aug 2023 00:10:23 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +188,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWsdkACgkQ2kHJnU2w
+0wRHSgv/cEO/CUaDqXK/FH0lEa2gWq/WCVuxW5YD7rT2IfYzD5kKPrc2RT3bwCNm
+hyZV/NWKeFlouJvkrg0nFJY0MB9Y2sOkYegu7/OlU04FGeIKKvtGlfUjitMYteMl
+N+sPq55JbrD6NTnDZTOcp1tOkS9j5sMM50d/MfxrsWNHrQ9Lx5lZfh2eQ8IPv8Ls
+Oi/ic2nWeLnRSdiQ+TFooH7Uwmy5RRPPEhLKv6TOsbjLl0UTiaaVf6tOBoI/9QJX
+Y61BHSIP1yBbPhaCI2EfrpAOPEcZuYtjXIzgBGd+A/FYGf4hS+fwx95YTe2B45FQ
+8PJcUYtHm+i5MT2XUmjI5Iww1t0cK220beyyb+3pQxCuNex4URFMPXkUI05bZPQF
+r0rq26jrp1K+W1GaK4SsyrdwZqLOGJUH/8TGQ5yjKPGm7i3KDfyPKRrkVuODtGwE
+W3k+mBXiK1kiEp7oRRzMxYJIrOoiFBJKAdpFVAQigIbtkZQhX69+PHbcGZXSAmpX
+SGsec1IK
+=Sq0U
+-----END PGP SIGNATURE-----

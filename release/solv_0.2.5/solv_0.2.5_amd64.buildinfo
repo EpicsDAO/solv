@@ -1,20 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
 Binary: solv
 Architecture: amd64 source
-Version: 0.2.1
+Version: 0.2.5
 Checksums-Md5:
- bc5f0491f87907d9f8a0a8c780ec9bab 507 solv_0.2.1.dsc
- aff03fae757f5a518e4b386d3a2c3ad2 19864 solv_0.2.1_amd64.deb
+ c3748ef3260fe35cd0c4c7958ee98886 1216 solv_0.2.5.dsc
+ 1e45c0e4d472880823ec280039db93ce 19856 solv_0.2.5_amd64.deb
 Checksums-Sha1:
- 9b6b91c36520c52153c3bd7693547d24b7c04b69 507 solv_0.2.1.dsc
- c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
+ 5fd195a0793a2e41a609397721647e0e5d9cc2d1 1216 solv_0.2.5.dsc
+ f36e39659a003e7156cc4fe04e5b0c82a4af540a 19856 solv_0.2.5_amd64.deb
 Checksums-Sha256:
- 746f1d7baf6b3b19e313fb880fbe8a3e2e3b197b462b9d8e1eaaca98d6911123 507 solv_0.2.1.dsc
- 5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
+ a93ab22d4c7635c010829de7a82cc0cc2b8132a48a2f94261ae76497d91cd3a4 1216 solv_0.2.5.dsc
+ e5ef615f8f40056a15fea66d14ff58f9689175d465392c36390042abcbeff30a 19856 solv_0.2.5_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 11 Aug 2023 22:20:19 +0200
+Build-Date: Sat, 12 Aug 2023 00:10:21 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +192,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWsdUACgkQ2kHJnU2w
+0wT1XQwAtVeJ4PTRIFhFZJTNpLex+FImnzsteUkLrG69hA0w4R+jHA5wirwblyrw
+b9AZsVl5ly+VkETE34b7LPWT/ubcuCgVMbO4gOASbD9nFKkEZ8gpRPDnww4KYQik
+5WhRmvjP8BfxuHxK3p3C5zMND3Lxw5DkkUaagO+KUX1sF93cVbSwNwWK0UfmSm+2
+LmEgG2Z5a6M5A50V9kQqeEFZTxfJWyZix4vXgFKHS8PwmjmQ19bBNL7yF5/L33kR
+uZG8COGehDqtxZ1eHe99uArw25U9u7p3isIB3lXr5/EF0T/AJfvZPgDWeCNT+9/o
+YuR9eGMr7sN+Z1KBecmK7C5lGZLWRR9bHY4MrByQ3Vywa2Kf20s8tW5Ee16fWlhH
+45aWoVhoeDb52jrZmHoI4vgs6HMQg23SJ4FsZruB1nIAEFdYdGXQjEfD4F96YiTX
+I6o/20lyl1TupjwIh21oNX2ZBghhRjsRuSvVihyhuEYa45HcOFZB7T+yp5dpnvUy
+rlCAa9xe
+=wD7o
+-----END PGP SIGNATURE-----
