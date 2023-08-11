@@ -1,5 +1,6 @@
-solv (0.1.12) focal; urgency=medium
+solv (0.2.0) focal; urgency=medium
 
-  * Initial Release.
+  * solv 0.2.0
+  * Add solv CLI
 
  -- EpicsDAO <info@epics.dev>  Thu, 10 Aug 2023 10:50:16 +0200
