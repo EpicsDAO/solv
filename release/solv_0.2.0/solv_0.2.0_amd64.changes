@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.2.0
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.2.0) focal; urgency=medium
+ .
+   * solv 0.2.0
+   * Add solv CLI
+Checksums-Sha1:
+ 3ce2ddfc4ea3091085805f393b780cb052b3e1b9 1216 solv_0.2.0.dsc
+ b45a6e4c103afa4d664d927383acb23a8440cf57 19176 solv_0.2.0.tar.xz
+ 55a720ce2d32a40e7c5b1ffb5ca9178ed5695afe 6871 solv_0.2.0_amd64.buildinfo
+ d7cf1dc3279e5d5e92cc058dfa16be6865483c8a 19826 solv_0.2.0_amd64.deb
+Checksums-Sha256:
+ c1211215ae9b6caa7b864a988452c95a48a3aa80c0571be4a8415ff702b60f05 1216 solv_0.2.0.dsc
+ 49e377743447c6be5b8fe707eb44350a0b7090378aa7ded2193c4ab5940b3472 19176 solv_0.2.0.tar.xz
+ 48aaa7ed17785c82628e14ac09972bdaceff4a962cb488ceb9c5929cfb8bb63a 6871 solv_0.2.0_amd64.buildinfo
+ 1584b29cd25e2ad4cf262a1d5c2238134979c4e69633cae1e08d01783c2e48cc 19826 solv_0.2.0_amd64.deb
+Files:
+ 48c071be1e3d32bc62b9896f6188c0cc 1216 utils optional solv_0.2.0.dsc
+ 011e6eaa83266be446d705d35ad03ecc 19176 utils optional solv_0.2.0.tar.xz
+ cd1513d1fb2d6ea050b622652cbe8500 6871 utils optional solv_0.2.0_amd64.buildinfo
+ 0e2a5505d64b946934baec877926d509 19826 utils optional solv_0.2.0_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWZkcACgkQ2kHJnU2w
+0wSPsAwAnBSXkhhQf17wZGolW0izoL3KHlLACpNmJwy7jTRV7Xiaffxp6/ksWOkw
+axNGMg8c5N6fy3ew9ODQXdl1Q3n0Ewwrho7l/mnxaqS/nZY2kxnOxCg3kAYxR0ak
+JvTEgKEzyUHubRJed0dVDSpPM9Zk4T98L6mzFkccw4mOBlaWgETW7oFnOv5Jslb6
+4E/0my+QooAAXdqZ988xoZRSpKuRkFYl6YzMKuTM+BEv3yhcuubof+dMmfHKQ6b6
+wQUkjFqsdFv19EEuLR8xER4vNT1ODXrooyk/XpyrQvRQxV6yfiHF+uI6Bc8b16Ic
+c8cwtTsnO9Vnmoslsaza3EvHOTrz0K0dXbVphCchUh5L8vOln2wdZAF/zN4W4rRi
+/QTyGjCIN3S6LMH3YVaeWNf+d4gB8riL69rmkPPBmWfQsREv6nHcULNMewvaFNFD
++cs013eAmTeTz+irhY+tIEeuUKPV2H3GnWxnKm97HNMBTgzmoWWL5IE1A+8pDKec
+sG/gLj1L
+=s63C
+-----END PGP SIGNATURE-----
