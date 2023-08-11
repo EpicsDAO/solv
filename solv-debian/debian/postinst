@@ -43,14 +43,14 @@ if [ ! -d "$NODENV_DIR" ]; then
     ufw allow 8000:10000/udp
     ufw allow 8000:10000/tcp
     ufw reload
-    cd $NODENV_DIR && src/configure && make -C src || true;
+
     sudo -u $USERNAME mkdir -p $NODENV_DIR/plugins;
     sudo -u $USERNAME git clone https://github.com/nodenv/node-build.git $NODENV_DIR/plugins/node-build
     sudo -u $USERNAME git clone https://github.com/nodenv/nodenv-aliases.git $NODENV_DIR/plugins/nodenv-aliases;
     chown $USERNAME:$USERNAME $NODENV_DIR/bin/nodenv;
     sudo -u $USERNAME nodenv install 18.17.1 || handle_error "Failed to install node version 18.17.1";
     sudo -u $USERNAME nodenv global 18.17.1 || handle_error "Failed to set global node version to 18.17.1";
-    echo "eval \"\$(nodenv init - zsh)\"" >> /home/$USERNAME/.bashrc || handle_error "Failed to add nodenv init to bashrc";
+    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.bashrc || handle_error "Failed to add nodenv init to bashrc";
 fi
 
 if [ ! -d "$SOLANA_DIR" ]; then
