@@ -16,10 +16,14 @@ case "$1" in
     ;;
 esac
 
+## Install build-essential
+apt-get update
+apt-get install -y build-essential
+
 # Check if nodenv is already installed for solv user
 if [ ! -d "/home/solv/.nodenv" ]; then
     echo "Installing nodenv for solv user"
-    git clone https://github.com/nodenv/nodenv.git /home/solv/.nodenv;
+    sudo -u solv git clone https://github.com/nodenv/nodenv.git /home/solv/.nodenv
     ln -vs /home/solv/.nodenv/bin/nodenv /usr/local/bin/nodenv;
     echo "allow firewall ports";
     yes | ufw enable
@@ -29,23 +33,30 @@ if [ ! -d "/home/solv/.nodenv" ]; then
     ufw allow 8000:10000/tcp
     ufw reload
     cd /home/solv/.nodenv && src/configure && make -C src || true;
-    mkdir -p /home/solv/.nodenv/plugins;
-    git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build;
-    git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases;
+    sudo -u solv mkdir -p /home/solv/.nodenv/plugins;
+    sudo -u solv git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build
+    sudo -u solv git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases;
+    chown solv:solv /home/solv/.nodenv/bin/nodenv;
     nodenv install 18.17.1;
     nodenv global 18.17.1;
     nodenv init
-    echo "$(nodenv init - zsh)" >> /home/solv/.zshrc;
+    echo "eval \"\$(nodenv init - zsh)\"" >> /home/solv/.zshrc;
 fi
 
 if [ ! -d "/mt/solana" ]; then
     echo "Making solana directory"
     mkdir -p /mt/solana/solana-validator/log
+    mkdir -p /mt/solana-accounts
+    mkdir -p /mt/ledger/validator-ledger
     mkdir -p /mnt/ramdrive
     chown solv:solv /mt/solana/solana-validator/log
     chmod 755 /mt/solana/solana-validator/log
     chown solv:solv /mnt/ramdrive
     chmod 755 /mnt/ramdrive
+    chown solv:solv /mt/solana-accounts
+    chmod 755 /mt/solana-accounts
+    chown solv:solv /mt/ledger/validator-ledger
+    chmod 755 /mt/ledger/validator-ledger
 fi
 
     echo "Success! You can now run solv"

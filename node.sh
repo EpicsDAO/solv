@@ -15,8 +15,8 @@ git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node
 git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
 
 # install a node version to bootstrap shims
-nodenv install 18.17.1
-nodenv global 18.17.1
+/usr/local/bin/nodenv install 18.17.1
+/usr/local/bin/nodenv global 18.17.1
 
 # Add nodenv init to your shell to enable shims and autocompletion
 echo "$(nodenv init - zsh)" >> ~/.zshrc

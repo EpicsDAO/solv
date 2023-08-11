@@ -40,13 +40,13 @@ User: solv
 $ sudo adduser solv
 $ sudo usermod -aG sudo solv
 $ su solv
-$ sudo apt install zsh
+$ sudo apt install -y zsh
 $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 $ chsh -s $(which zsh)
 $ source ~/.zshrc
 $ sudo add-apt-repository ppa:epics-dao/solv
 $ sudo apt update
-$ sudo apt upgrade
+$ sudo apt install solv
 ```
 
 ## Contributing
