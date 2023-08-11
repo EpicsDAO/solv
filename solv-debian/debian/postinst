@@ -17,8 +17,8 @@ case "$1" in
 esac
 
 ## Install build-essential
-apt-get update
-apt-get install -y build-essential
+sudo apt update
+sudo apt install -y build-essential
 
 # Check if nodenv is already installed for solv user
 if [ ! -d "/home/solv/.nodenv" ]; then
@@ -37,9 +37,8 @@ if [ ! -d "/home/solv/.nodenv" ]; then
     sudo -u solv git clone https://github.com/nodenv/node-build.git /home/solv/.nodenv/plugins/node-build
     sudo -u solv git clone https://github.com/nodenv/nodenv-aliases.git /home/solv/.nodenv/plugins/nodenv-aliases;
     chown solv:solv /home/solv/.nodenv/bin/nodenv;
-    nodenv install 18.17.1;
-    nodenv global 18.17.1;
-    nodenv init
+    sudo -u solv nodenv install 18.17.1;
+    sudo -u solv nodenv global 18.17.1;
     echo "eval \"\$(nodenv init - zsh)\"" >> /home/solv/.zshrc;
 fi
 
