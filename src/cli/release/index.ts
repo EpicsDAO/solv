@@ -1,15 +1,15 @@
 import { program } from '@/index'
 import { mvDeb } from './mvDeb'
+import { releaseDebian } from './releaseDebian'
 
 export const releaseCommands = async () => {
-  const release = program.command('release').description('release commands')
-
-  release
-    .command('mvDeb')
-    .alias('m')
-    .description('move deb files to release folder')
+  program
+    .command('release')
+    .description('release commands')
+    .alias('r')
+    .description('publish release')
     .argument('<version>', 'Solana Version e.g. 1.16.7')
-    .action((version: string) => {
-      mvDeb(version)
+    .action(async (version: string) => {
+      await releaseDebian(version)
     })
 }
