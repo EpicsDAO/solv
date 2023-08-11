@@ -1,3 +1,4 @@
+import { spawnSync } from 'child_process'
 import fs from 'fs/promises'
 
 const writer = async (file: string) => {
@@ -10,5 +11,8 @@ const writer = async (file: string) => {
     console.log(e)
   }
 }
+
+const cmd = `cp ./dist/index.js solv-debian/usr/share/solv/index.js`
+spawnSync(cmd, { shell: true, stdio: 'inherit' })
 
 writer('./dist/index.js')
