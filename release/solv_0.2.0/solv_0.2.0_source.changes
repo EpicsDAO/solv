@@ -17,29 +17,29 @@ Changes:
    * solv 0.2.0
    * Add solv CLI
 Checksums-Sha1:
- 3ce2ddfc4ea3091085805f393b780cb052b3e1b9 1216 solv_0.2.0.dsc
+ 78d369b8e66611de7e14d9d3a914be5bf3ecec67 1216 solv_0.2.0.dsc
  b45a6e4c103afa4d664d927383acb23a8440cf57 19176 solv_0.2.0.tar.xz
- d8457f8d3ea9a790a3e1b5b496a14af82d6c5692 6629 solv_0.2.0_source.buildinfo
+ 15a136ac624751a9f183d88973ee8b4c63f80a27 6629 solv_0.2.0_source.buildinfo
 Checksums-Sha256:
- c1211215ae9b6caa7b864a988452c95a48a3aa80c0571be4a8415ff702b60f05 1216 solv_0.2.0.dsc
+ 2ec5b623113084985497bf624ab7f1d80fa7326ffbdfa50f8e3974128c887e15 1216 solv_0.2.0.dsc
  49e377743447c6be5b8fe707eb44350a0b7090378aa7ded2193c4ab5940b3472 19176 solv_0.2.0.tar.xz
- 0d0775cc9e66a77ff7e1900d61190aa9cf422bf86d15aa526bde7010ee8e3904 6629 solv_0.2.0_source.buildinfo
+ 0590df2dbcd1d0a06ad07ac7deb2e70f1e7a0eb79e4ba558d3a9a2f40b078284 6629 solv_0.2.0_source.buildinfo
 Files:
- 48c071be1e3d32bc62b9896f6188c0cc 1216 utils optional solv_0.2.0.dsc
+ 088d1f8991d86a2cb333ff6f2ef0e45f 1216 utils optional solv_0.2.0.dsc
  011e6eaa83266be446d705d35ad03ecc 19176 utils optional solv_0.2.0.tar.xz
- d8e831028f0056e5b9ef831609951d21 6629 utils optional solv_0.2.0_source.buildinfo
+ faf1d1173c38dbd5347d58eea3ab07dc 6629 utils optional solv_0.2.0_source.buildinfo
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWZksACgkQ2kHJnU2w
-0wRRewwA0v5ByvIvo9+633fFNMcoFkI70+tQrBQ0CYi3ZqiPH6iuw3TwyNg1GYeh
-36nusgNBopD5GKZ3+3pAJQkm6FCbYAcb6m9Uv+2OSJZDLEclRvcqHuev6Of4Kabn
-Ms1h+hc56A3cDGfVVHQ9VaPhCm+LvsULP2gLmymRCJMl/OfrbtHB4fqqBFZU5D68
-EvXx88pvojpPRhBnxZ1SYPdbzkUJIrHdBIr+MGghHy/cNRuZ8SF5BJjiLbPMQI4r
-UkmSwUJCiUEhFQ4rgK3nKmbiuC57EZmK/ATuk9Bd3kHL+ySADggYaOlMavHHy4k3
-cmG2+HynoLC1Nhc0/QBO64qboUpN/EaY+QVbq9lnUlxk9jvv2AmG9gcu4gPZ55rQ
-7FJ474vB665P7/AuVEOXEPepjBg42sGCWVXcf7nKo+il/ydueC+hIcA/I1txRU97
-HXPB5ovZXyRrYsFJzd4cAKcLTfAeSG2zpV6zal1QP2Z0jcmZ9plLkdPIlkzGT1Pl
-nOL1Wvih
-=bVh+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWZs4ACgkQ2kHJnU2w
+0wSq6gwAnxo5hzKDUYVzAuk7jUwJXhetNGnGykToOs7Oa2VyNQ3LiIYnRgcvVxbS
+KDEV6n4yVcy6DYKmO3yQnII2FLkSHfUQd4pqJT7u2bhp3Q/DQKg2RADqeGteS0HI
+mhcnydtVlozaOFqYdRJPa6rXbv0ihtuQkotjGp5gsvbn+Zh5wrHBHW5KYp7jYlXP
+cI2uFbE6LX+qblNvJPwV6sXBhNmSvDK4+quCXq3SjMaUBXjNpHQZN1bAe82t8OFm
+Pq4VSLGkxfsoOFPBO+mp27tmdyg8ssZbrGVSpD/S5Jl9pO9oYWz+ggStUGD/0GP+
+BMKj8earHSe6/uCTQFojhWRKv3M44dEh+XMqpyHP6mPdyVzTUaEBXZ0EOcx7Wjhz
+tvQR8Arn4eDkazHsi8qA52wcGcen+Nd6J5oFaDzcEiQwWpoMJJqhZIVcT/a3jeme
+7RxtLJ3M5gADiQmLxXQawWWsQfvFFf/cXTsTTp024WqySnWqHGxzjzJrulDL94QQ
+CYuPShUv
+=KIEZ
 -----END PGP SIGNATURE-----

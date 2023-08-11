@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.2.1
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.2.1) focal; urgency=medium
+ .
+   * solv 0.2.1
+   * Add solv CLI
+Checksums-Sha1:
+ edc60c860099d2a689a67f0c43426434258480e3 1216 solv_0.2.1.dsc
+ 8e4b8cb29dd8e9cbb07d738b815f47e6c6fdef99 19212 solv_0.2.1.tar.xz
+ 908b01f9a200aab0985f48ee3fdfaae17c135585 6871 solv_0.2.1_amd64.buildinfo
+ c6feb2e113b1ca17a709974b78e313f28c7979b1 19864 solv_0.2.1_amd64.deb
+Checksums-Sha256:
+ f06bc678c13016bcce67946a33f8f52aeed9eca65cec6d459cd0edb76c444243 1216 solv_0.2.1.dsc
+ e78d385f0f190859cdf12eeb5cbd3923f9b4798760dfd2a86abc8552ff552079 19212 solv_0.2.1.tar.xz
+ 81a35098f900e42b19bdeb268cf918c7bcc6153b36c19e8a0f68f5a48f2369f1 6871 solv_0.2.1_amd64.buildinfo
+ 5ecd21cbc7eaae102042f22e5bde5a349ca4755ec0b7227304b581fa98e9e846 19864 solv_0.2.1_amd64.deb
+Files:
+ 11b2845b517670c77b9709ac0d5a96d7 1216 utils optional solv_0.2.1.dsc
+ 06aff20c2d4867c242fe14cf27d2d78e 19212 utils optional solv_0.2.1.tar.xz
+ ede39fd2a4723be739de1ebae5086242 6871 utils optional solv_0.2.1_amd64.buildinfo
+ aff03fae757f5a518e4b386d3a2c3ad2 19864 utils optional solv_0.2.1_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWgAAACgkQ2kHJnU2w
+0wSu9wwA1eZtd4I+U7ZGcAcFWL60bwyA+0C4k625YzCv/VdrG/j0NB2geVcyvZoZ
+oPESbjHtySaBvUA0bPXJjAXILQQAgKKKH7WQSAU1Un1o/aJYv0H3IP0XLxER7j85
+X6VOhPlzdgviWLqtGynP/aa3X831NZXRS6vGOcMjZFT16oL3eKxumZdEtiLR4uUe
+ixBqaokIaCUliARyavykkXfVNyTjBJ01iylqocsEf3mY6eV3E1TdULoiUqZEUp+w
+m3bo18uLDa131AaiJ03aR4N6aWHSQ4BIIvPSUGP4Stpt0Ui/5Pnfew/oCBXkHyPn
+QD+RtSnpU5LZJGOKIQy37CGEijDimnM4t4L2SwWYSd5dM5GQh6DJdY3dIZWoskPg
+kXRtZ52vwNPjUG15JVWFyoQsOSLGj5CAASWG5A7xB4Ib8wnEgv5/2wrqTky7RS4+
+PnqOmY32EzwTY7r4j1cLPETjD0tcZxjxPMpFbc5XWMMn+ipHEldqfkgyXwOcJX0g
+kpJLXz9u
+=NU1v
+-----END PGP SIGNATURE-----
