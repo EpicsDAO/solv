@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.1.12
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.1.12) focal; urgency=medium
+ .
+   * Initial Release.
+Checksums-Sha1:
+ 60b27d66c5f134abb08e63b69561c09a6c7d1cf0 1220 solv_0.1.12.dsc
+ d24588e40b1c0cc8c12d7e727828aa8f4f7791e9 17904 solv_0.1.12.tar.xz
+ 6c8d8a3416655d7a77d6e79649cf2f997296888f 6878 solv_0.1.12_amd64.buildinfo
+ 00ee35d61e5c6cdd94dc81f6af93f14c6ba1651c 18506 solv_0.1.12_amd64.deb
+Checksums-Sha256:
+ 5c05feb766d592739833a6d16461ff223e54411a30d164da69425f9ff22760b3 1220 solv_0.1.12.dsc
+ 4bfb5c2c3f31f20d33a7e0dc3388d82eb26c2284ba02b8d7d60a1672c872c5fc 17904 solv_0.1.12.tar.xz
+ 4a31917d800545ecd8fa4cf8a34d597356911b1240d6c5019ac73e90211453f9 6878 solv_0.1.12_amd64.buildinfo
+ 96ada20d53e9f2a64e9a9b00c2abc2b553cb2ac62745685ea8785488e5e9cda9 18506 solv_0.1.12_amd64.deb
+Files:
+ 34934e0aee7cedadbbd8c129cc0f65ba 1220 utils optional solv_0.1.12.dsc
+ ecebcd03e9eeae7d30111424cb54ffc9 17904 utils optional solv_0.1.12.tar.xz
+ bdccffcf6ab9d2abf4b5377e604d7922 6878 utils optional solv_0.1.12_amd64.buildinfo
+ ab321bbe9869b1be52133d86df164dd5 18506 utils optional solv_0.1.12_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTWT2MACgkQ2kHJnU2w
+0wS1nAwAqEyyvOPbV4Os3FupUSt5QZ9WcO7n4n+QXToPlRZ1GRI1FE1Xm9ck1n1P
+6DaOZYvmmBVUeNJD3EdXtZ5qRqya+qKjTmA4Vm7S7xMraDTRU2KY0hLj/CXWCar6
+ceZt7TwJzMGmPY99KgRacUradLtF/UYgi34LPUiiEPSVxylVLoHAfkSZZLZG8+Mz
++Pjj4q23LuHA4+C0e7Sj2ZRBnTIehJo6W+WZHZNYe2M+aVaLMoVRAPL8btsRVyKa
+peOc+/eM6lkg558ESjwkktzwp5y9SSFaEBmecAhDVDAggYu3ZywMqpfLPr2UiPBO
+FCI5GswxDOjFKvR0VDOPJCCNWHDZmDYPz2Ttcy0qQGFMVtSMlOW79tVhFPHvXwOn
+4i/roOGdMEXFGXboHjCGi7SC+5VT5NUzGbBgoSxLvn7LQTu+h8Sy4isTNOfdooC6
+VFHHWtTZJjWjgZYFmle64xJBvZshJ4jYMXtwdrcS4vM+ll0XJJHTzC+c53X8hXOX
+vW/uE64m
+=Kmd/
+-----END PGP SIGNATURE-----
