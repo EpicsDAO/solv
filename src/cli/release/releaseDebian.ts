@@ -29,9 +29,9 @@ export const releaseDebian = async (version: string) => {
   const commitCmds = [
     'git add .',
     `git commit -m "Release ${version}"`,
-    `git tag -a ${version} -m "Release ${version}"`,
-    'git push',
-    `git push origin ${version}`,
+    // `git tag -a ${version} -m "Release ${version}"`,
+    // 'git push',
+    `git push origin main`,
   ]
   for (const cmd of commitCmds) {
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
