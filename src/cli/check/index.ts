@@ -2,6 +2,7 @@ import { program } from '@/index'
 import { df } from '../df/df'
 import chalk from 'chalk'
 import { UbuntuDhParams } from '@/types/solvTypes'
+import { displayTable } from '@/lib/logger/table'
 
 export const checkCommpands = () => {
   program
@@ -10,14 +11,6 @@ export const checkCommpands = () => {
     .action(() => {
       console.log(`checking ...`)
       const dirs = df()
-      console.log(
-        chalk.white(
-          `${dirs
-            .map((dir: UbuntuDhParams) => {
-              return `${dir.Filesystem} ${dir.Avail} ${dir.Use}% ${dir.MountedOn}`
-            })
-            .join('\n')}`
-        )
-      )
+      displayTable(dirs)
     })
 }
