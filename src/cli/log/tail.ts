@@ -12,13 +12,13 @@ export const tail = (options: TailOptions) => {
   try {
     let cmd = `tail -f ${LOG_PATH}/solana-validator.log`
     if (options.error) {
-      cmd += ` | grep '\(WARN\|ERR\)'`
+      cmd += ` | grep '\\(WARN\\|ERR\\)'`
     } else if (options.info) {
       cmd += ` | grep INFO`
     } else if (options.warning) {
       cmd += ` | grep WARN`
-    } else {
     }
+
     console.log(cmd)
     const child = spawn(cmd, { shell: true, stdio: 'inherit' })
 
