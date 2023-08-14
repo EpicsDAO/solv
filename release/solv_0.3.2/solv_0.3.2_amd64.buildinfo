@@ -1,20 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
 Source: solv
 Binary: solv
 Architecture: amd64 source
-Version: 0.3.1
+Version: 0.3.2
 Checksums-Md5:
- 41897ece7ffd4082bf14dfb8812ca6a5 507 solv_0.3.1.dsc
- d751f7096dfbb00cb1f89352a6661f42 20170 solv_0.3.1_amd64.deb
+ f6debb56f4508d80c1990fe280f45675 1216 solv_0.3.2.dsc
+ 06fa632ee58c7db38789cd1a20abb95a 20178 solv_0.3.2_amd64.deb
 Checksums-Sha1:
- acb49f1840a17209fb75c42522aed23b840fc942 507 solv_0.3.1.dsc
- 229ce1ea4c518e70443bc84cd6ed1dbef82d65d0 20170 solv_0.3.1_amd64.deb
+ 267bf221e8d94af98574327b6f33600faaa188d4 1216 solv_0.3.2.dsc
+ d8c022c2888995dd604b8ddfdad79af464ab64f3 20178 solv_0.3.2_amd64.deb
 Checksums-Sha256:
- fcc68d19701db8793ff2ef4a2de518da7f0ca9ac0afc9acc743f72e860352200 507 solv_0.3.1.dsc
- d0067f4e0a07bc5a8d376096eb2891042a01447681478e8e18765f0933cd15db 20170 solv_0.3.1_amd64.deb
+ 0e822f0f2e40599e049a15814ce9691f838a93f83d5a5c45ea67554bc104daee 1216 solv_0.3.2.dsc
+ b29a41e92dbdbdb4200832c80653419c2f9468c19e2e04616a753480ca255aa0 20178 solv_0.3.2_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Mon, 14 Aug 2023 15:23:16 +0200
+Build-Date: Mon, 14 Aug 2023 15:30:50 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -189,3 +192,18 @@ Environment:
  LC_TELEPHONE="nl_NL.UTF-8"
  LC_TIME="nl_NL.UTF-8"
  SOURCE_DATE_EPOCH="1691657416"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTaLJAACgkQ2kHJnU2w
+0wSHKQv/RlX/fnbow4U97ay4xyEOGgFV0Z/3LN1Yg/pd4hc8nTuFnsz4zFKLBPHb
+6TneeJBNsrbdPpGu8r/IrhKJ+WQX/0OFAvUVByemxhRspn+/PLZGE/guM2XU7cme
+DP8wYpoxMNPl8YSJXn0kLPzizW/1OrsedibGxQ08/0Xd+Ia9JlFqkBL+RB3OzK9F
+sYQJGyq+4zep4yqF9aktfE99xOoPjrD/gtcblNwogoOoSY3dHqf6Pey+WKbZe/cJ
+1YOSLkr77dHUKDLIb1r5bLnMAySejpcMiCstoQ2xoCApBru0aTlgSZnuV0kWRe4L
+D+5IKGAeqZTY8Umm7lOrcfKcHK/1itIhhjmafSIDCslfgaVeG+ZMpew3iDBpcD93
+C74ZPvESfxC5LSYZV9YKmISAbnLVc8N7frd8ec6JJAww00uHQVh8W5v0SQTqS8EX
+1leEuqoOTKU8dqYbAybwhZk06v794Z9KqLylZgnsmx3d4b2R/+j0UDLCmGnvVGCJ
+UzFGwUXr
+=FoNV
+-----END PGP SIGNATURE-----
