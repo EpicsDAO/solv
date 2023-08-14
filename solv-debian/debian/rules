@@ -10,7 +10,7 @@ override_dh_auto_install:
 
 	# Install the solv script to the appropriate location
 	echo '#!/bin/sh' > solv
-	echo 'node /usr/share/solv/index.js' >> solv
+	echo 'node /usr/share/solv/index.js "$@"' >> solv
 	chmod +x solv
 	install -m 755 solv debian/solv/usr/bin/
 

@@ -154,6 +154,6 @@ sudo chmod +x $START_VALIDATOR_SCRIPT
 sudo chown $USERNAME:$USERNAME $START_VALIDATOR_SCRIPT
 
 echo "Success! You can now run solv!"
-bash -l
+. /home/$USERNAME/.bashrc
 
 exit 0
