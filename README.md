@@ -45,6 +45,12 @@ $ sudo apt update
 $ sudo apt install solv
 ```
 
+## Install Solana
+
+```bash
+$ solv update solana 1.16.7
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

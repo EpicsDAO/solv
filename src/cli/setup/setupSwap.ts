@@ -5,6 +5,7 @@ import { spawnSync } from 'child_process'
 export const setupSwap = () => {
   try {
     const cmd = [
+      'sudo mount -t tmpfs -o rw,size=300G tmpfs /mt/solana-accounts',
       'sudo dd if=/dev/zero of=/swapfile bs=1G count=300',
       'sudo mkswap /mt/swapfile',
       'sudo chmod 600 /mt/swapfile',

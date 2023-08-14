@@ -24,5 +24,21 @@ export const releaseDebian = async (version: string) => {
   const dput = ['dput', 'ppa:epics-dao/solv', `solv_${version}_source.changes`]
   spawnSync(dput.join(' '), { shell: true, stdio: 'inherit' })
   mvDeb(version)
+  const yarnCmd = ['yarn', 'build']
+  spawnSync(yarnCmd.join(' '), { shell: true, stdio: 'inherit' })
+  const commitCmds = [
+    'git add .',
+    `git commit -m "Release ${version}"`,
+    `git tag -a ${version} -m "Release ${version}"`,
+    'git push',
+    `git push origin ${version}`,
+  ]
+  for (const cmd of commitCmds) {
+    spawnSync(cmd, { shell: true, stdio: 'inherit' })
+  }
+  const releaseCmds = [`npm publish`]
+  for (const cmd of releaseCmds) {
+    spawnSync(cmd, { shell: true, stdio: 'inherit' })
+  }
   Logger.normal(`Release ${version} complete!`)
 }

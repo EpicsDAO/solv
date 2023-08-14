@@ -51,7 +51,7 @@ if [ ! -d "$NODENV_DIR" ]; then
     chown $USERNAME:$USERNAME $NODENV_DIR/bin/nodenv;
     sudo -u $USERNAME nodenv install $NODE_VERSION || handle_error "Failed to install node version $NODE_VERSION";
     sudo -u $USERNAME nodenv global $NODE_VERSION || handle_error "Failed to set global node version to 18.17.1";
-    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.bashrc || handle_error "Failed to add nodenv init to bashrc";
+    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.profile || handle_error "Failed to add nodenv init to profile";
 fi
 
 if [ ! -d "$SOLANA_DIR" ]; then
@@ -111,7 +111,7 @@ $LOG_DIR/solana-validator.log {
   rotate 3
   missingok
   postrotate
-  systemctl kill -s USR1 sol.service
+    systemctl kill -s USR1 sol.service
   endscript
 }
 EOL
@@ -149,13 +149,33 @@ exec solana-validator \\
 --no-incremental-snapshots
 EOL
 
+# Create solana-validator.conf sysctl configuration file
+echo "Creating solana-validator.conf sysctl configuration file"
+sudo bash -c "cat >/etc/sysctl.d/21-solana-validator.conf <<EOF
+# Increase UDP buffer sizes
+net.core.rmem_default = 134217728
+net.core.rmem_max = 134217728
+net.core.wmem_default = 134217728
+net.core.wmem_max = 134217728
+
+# Increase memory mapped files limit
+vm.max_map_count = 1000000
+
+# Increase number of allowed open file descriptors
+fs.nr_open = 1000000
+EOF"
+
+sudo sysctl -p /etc/sysctl.d/21-solana-validator.conf
+echo "DefaultLimitNOFILE=1000000" >> /etc/systemd/system.conf
+
+
 # Make the script executable
 sudo chmod +x $START_VALIDATOR_SCRIPT
 sudo chown $USERNAME:$USERNAME $START_VALIDATOR_SCRIPT
 
-echo "Success! You can now run solv!"
-echo "source ~/.bashrc"
-echo "Run solv --help for more information"
-. /home/$USERNAME/.bashrc
+echo "Success! You can now user Solv CLI 🎉"
+echo "$ source ~/.profile"
+echo "$ solv --help"
+bash -l
 
 exit 0

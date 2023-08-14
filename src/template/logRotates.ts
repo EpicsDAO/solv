@@ -5,7 +5,7 @@ export const logRotates = async (username: string) => {
   rotate 3
   missingok
   postrotate
-  systemctl kill -s USR1 sol.service
+    systemctl kill -s USR1 sol.service
   endscript
 }
 `
