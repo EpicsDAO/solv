@@ -18,6 +18,7 @@ export const LEDGER_PATH = `/mt/ledger/validator-ledger`
 export const VALIDATOR_STARTUP_SCRIPT = `${WD}/start-validator.sh`
 
 // Solana Wallet Keyfile Paths
+export const MAINNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/mainnet-validator-keypair.json`
 export const DEFAULT_VALIDATOR_KEYFILE = `${SOLV_ROOT}/testnet-validator-keypair.json`
 export const VALIDATOR_VOTE_KEYFILE = `${SOLV_ROOT}/vote-account-keypair.json`
 export const VALITATOR_AUTHORITY_KEYFILE = `${SOLV_ROOT}/authority-keypair.json`

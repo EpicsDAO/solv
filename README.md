@@ -51,6 +51,16 @@ $ sudo apt install solv
 $ solv update solana 1.16.7
 ```
 
+## Setup Solana Validator
+
+```bash
+$ solv setup
+```
+
+## Solana Delegation Program
+
+https://solana.org/delegation-program
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

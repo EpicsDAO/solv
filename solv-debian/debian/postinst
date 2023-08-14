@@ -166,8 +166,12 @@ fs.nr_open = 1000000
 EOF"
 
 sudo sysctl -p /etc/sysctl.d/21-solana-validator.conf
-echo "DefaultLimitNOFILE=1000000" >> /etc/systemd/system.conf
+echo "DefaultLimitNOFILE=1000000" | sudo tee -a /etc/systemd/system.conf
 
+sudo bash -c "cat >/etc/security/limits.d/90-solana-nofiles.conf <<EOF
+# Increase process file descriptor count limit
+* - nofile 1000000
+EOF"
 
 # Make the script executable
 sudo chmod +x $START_VALIDATOR_SCRIPT
@@ -176,6 +180,6 @@ sudo chown $USERNAME:$USERNAME $START_VALIDATOR_SCRIPT
 echo "Success! You can now user Solv CLI 🎉"
 echo "$ source ~/.profile"
 echo "$ solv --help"
-bash -l
+. /home/$USERNAME/.profile
 
 exit 0

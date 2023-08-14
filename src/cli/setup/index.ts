@@ -8,6 +8,7 @@ export const setupCommands = async () => {
     .command('setup')
     .description('Solana Setup Command')
     .option('--sh', 'Update Validator StartUp Bash Script', false)
+    .option('--swap', 'Setup Swap', false)
     .action((options) => {
       console.log('setup')
       console.log({ options })
@@ -16,7 +17,7 @@ export const setupCommands = async () => {
         startValidator()
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        setup()
+        setup(options)
       }
     })
 }

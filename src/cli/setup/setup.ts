@@ -4,12 +4,12 @@ import { setupPermissions } from './userPermissions'
 import { setupKeys } from './setupKeys'
 import { setupSwap } from './setupSwap'
 
-export const setup = () => {
+export const setup = (options = { swap: false }) => {
   try {
     setupDirs()
     setupPermissions()
     setupKeys()
-    setupSwap()
+    if (options.swap) setupSwap()
     const cmd = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solana',
