@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.4.3
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.4.3) focal; urgency=medium
+ .
+   * bash default
+Checksums-Sha1:
+ 0b58d9d24470b5befda0d6a4c51cdd9247991620 1216 solv_0.4.3.dsc
+ cfd234c4e82123410ba281f067fbed5cf433ca97 30248 solv_0.4.3.tar.xz
+ 0a3379904f5748848a862e8e964323074ee77140 6871 solv_0.4.3_amd64.buildinfo
+ ce46fdaf66225b7d80d4c825a63345845f86ff5f 32036 solv_0.4.3_amd64.deb
+Checksums-Sha256:
+ 6943789f018ac78d203dc2bae8be7c0ff240e48687a274e7ef1ea5b283036ae5 1216 solv_0.4.3.dsc
+ 5d712d66a4154b4981281a58c18899d717d0451f69fdbce1d030eff1e5ec5b0c 30248 solv_0.4.3.tar.xz
+ 0814d1ef44d9c0ad5c27743d629cab78917f61486e119398b77365c7af2c58da 6871 solv_0.4.3_amd64.buildinfo
+ 2df4bbb42d68d6e3d1bdac32e5a20705126c5119c9bfd2faa3420d6ef5bbb5f4 32036 solv_0.4.3_amd64.deb
+Files:
+ ed30648f93d740ebd0eead02c05acaf1 1216 utils optional solv_0.4.3.dsc
+ ecea09585ffded33f4ce7ab902f8fd51 30248 utils optional solv_0.4.3.tar.xz
+ a99defeb1cb348c7141ba9145f6843b3 6871 utils optional solv_0.4.3_amd64.buildinfo
+ 34593790b1689afa81dcc954f753f1ff 32036 utils optional solv_0.4.3_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTakhQACgkQ2kHJnU2w
+0wTxdwwArjBrnY+0gHsYa9bskc4/pUgNSvvEOk+Tmib33XrUzDnjfp/kThi/YYBS
+d4DTrfRITWArsY8j3k7L92Za6NV4NuWvE5ifR+haSftp/bdwfiQODyC9daC5lehU
+2FK+yNjlQ683xVeUKYZ1wvbZWQYXqLyyky2L0eTeAEvyhKRa7+eANRu8zydvlVEN
+YPgUTzcdtvpXmhubi4sJlcCH13aDI6ogNddkPp67dJJLJiS9srXc+wWbe57ghbIp
+bhSaEhf+KxZFtBy1HAunS9hFhiccPUUeDzUtryrB+sd4z03ksBZNZkDQKTA7NlJK
+AHSSprROBA/z+mijy05LBUIa7f5lAXFjgZFCW+lG+GZV2mh3NYnvPss3v0I6ovij
+soFZ7hz5K+s4nDXvigxu2eR+EaX9FrPjZFp1VrG6dCIl5zqRijmri0F8Ssz+w0r1
+qc2ZcQlIX6zA9QjQ6xzT89Uxk0PkaJfvd2MGYI1u/VVJY0iOGEEggq9WCZTAFexf
+/OMoD0/O
+=ns5o
+-----END PGP SIGNATURE-----
