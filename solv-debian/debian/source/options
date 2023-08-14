@@ -1,1 +1,1 @@
-extend-diff-ignore = ^usr/share/solv/index\.js$
+extend-diff-ignore = ^usr/share/solv/index\.js

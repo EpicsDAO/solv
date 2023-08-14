@@ -1,2 +1,2 @@
 #!/bin/sh
-node /usr/share/solv/index.js
+node /usr/share/solv/index.js "$@"
