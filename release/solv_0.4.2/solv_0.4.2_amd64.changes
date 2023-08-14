@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Mon, 14 Aug 2023 20:45:25 +0200
+Source: solv
+Binary: solv
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 0.4.2
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Description:
+ solv       - CLI Tool for Managing Solana Validators - Solv
+Changes:
+ solv (0.4.2) focal; urgency=medium
+ .
+   * bash default
+Checksums-Sha1:
+ 7bbb1a957009a4744449a100c994447ef398b30f 1216 solv_0.4.2.dsc
+ 3709e9639c62c7245751b7d3868a62cb9e294f5e 30208 solv_0.4.2.tar.xz
+ 1b75ede5abed165624c6c5a811742172f8c9ab3b 6871 solv_0.4.2_amd64.buildinfo
+ 5d418a280c35d6d53b955d8a7b57e1e2a330e742 31894 solv_0.4.2_amd64.deb
+Checksums-Sha256:
+ ea8edffb2ffb199484c0cf08e90fa855e1735c99c4bf84d1b410154005eb4241 1216 solv_0.4.2.dsc
+ 4bbfa9587cf0a985719109f3c3b62f5c1ba7e6f7b57f8dea624e237d2fc4489c 30208 solv_0.4.2.tar.xz
+ 895bd4f7c3b27271bf31ae2ef892cfb1c46d2f678ce8570bfa54e440be4f15c3 6871 solv_0.4.2_amd64.buildinfo
+ e583690045aec2f914c401fb7b22793e54fac58f1d2e78f90e5177809fca6be5 31894 solv_0.4.2_amd64.deb
+Files:
+ 153fd6217be4a8d77da716932ebb88fd 1216 utils optional solv_0.4.2.dsc
+ a54ac9d844659a30fdb8d9077593d7ea 30208 utils optional solv_0.4.2.tar.xz
+ 81d1169df20f985e61e99f36d4462b1a 6871 utils optional solv_0.4.2_amd64.buildinfo
+ 83061d6fca2ec263413cc60eaba96faf 31894 utils optional solv_0.4.2_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTadksACgkQ2kHJnU2w
+0wS0xAwAkJLMfIcN4l6vSXRH71yOCT04DHYmXq7KU7sM7NxbpJtggD7lddy9s2AS
+7CcjArghiw3sbWEyBsEwQfxgSBvXhfvI1EA0kslmtB9T0YpWYZToPXpZhIUQLti4
+nMw0KF2Ij0kzjuOeCQ23iA70zRlXFk1F449hbn+/NzzAG+c1BMrL0/5eVB39Rpe2
+7cKu4f1JCdjwlioTzoP+rBZBZF5f15aJydyiJ0dx4lkNcG98Q3iQhSoJ5HKUmpHx
+CdbmNlIYwYhKEjIq1YeNiOJZDDxPqY2sjPSSgMSrV8/qPPJgadv/CRo6o8pvtly6
+4WPjdD3QTsr4nxUzCjfRFR1LPDbEypJePG9M2z3R7+HDLoClr9iWiQ4/1j965i4P
+2R4cIDePAFFsApOA3wA7NWVNFVzQgO5XD5+9s3V2vk2Xw8FWKDbGU9c8paS9rNpV
+mG5rpdKbpNM4mzxJMFDzuHFeCysyy/qFsPoWn3hpZcKDp2s306HcEK5uJATXWPiZ
+bWdfeBYF
+=D0tt
+-----END PGP SIGNATURE-----
