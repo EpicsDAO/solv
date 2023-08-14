@@ -2,7 +2,7 @@
 Hash: SHA512
 
 Format: 1.8
-Date: Mon, 14 Aug 2023 20:45:25 +0200
+Date: Thu, 10 Aug 2023 10:50:16 +0200
 Source: solv
 Binary: solv
 Built-For-Profiles: noudeb
@@ -11,6 +11,7 @@ Version: 0.4.2
 Distribution: focal
 Urgency: medium
 Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
 Description:
  solv       - CLI Tool for Managing Solana Validators - Solv
 Changes:
@@ -18,32 +19,32 @@ Changes:
  .
    * bash default
 Checksums-Sha1:
- 7bbb1a957009a4744449a100c994447ef398b30f 1216 solv_0.4.2.dsc
- 3709e9639c62c7245751b7d3868a62cb9e294f5e 30208 solv_0.4.2.tar.xz
- 1b75ede5abed165624c6c5a811742172f8c9ab3b 6871 solv_0.4.2_amd64.buildinfo
- 5d418a280c35d6d53b955d8a7b57e1e2a330e742 31894 solv_0.4.2_amd64.deb
+ c9e8f7b5774ca56cd6f580c7544e29c82cb1ab72 1216 solv_0.4.2.dsc
+ 0c54f56826bbb406339523ea21b4a5d46232da37 30156 solv_0.4.2.tar.xz
+ ee7cffc636f9dcbbe97e43dc75e4b886519d68c6 6871 solv_0.4.2_amd64.buildinfo
+ f8a29327cd3868b32c0412c17f05e3a0a3965d2f 31904 solv_0.4.2_amd64.deb
 Checksums-Sha256:
- ea8edffb2ffb199484c0cf08e90fa855e1735c99c4bf84d1b410154005eb4241 1216 solv_0.4.2.dsc
- 4bbfa9587cf0a985719109f3c3b62f5c1ba7e6f7b57f8dea624e237d2fc4489c 30208 solv_0.4.2.tar.xz
- 895bd4f7c3b27271bf31ae2ef892cfb1c46d2f678ce8570bfa54e440be4f15c3 6871 solv_0.4.2_amd64.buildinfo
- e583690045aec2f914c401fb7b22793e54fac58f1d2e78f90e5177809fca6be5 31894 solv_0.4.2_amd64.deb
+ 3754f86dc20b18734d4c6bc768eae2f6676a56bb41b5a77fb25264fe9987846f 1216 solv_0.4.2.dsc
+ 228555c5805bef56ead1ea6917e0742bb408bb5d2872dd4d5f4b226916ee7fcb 30156 solv_0.4.2.tar.xz
+ 12ad589e97920e0a23108fa6d3627d984ee193c9fa9caf6c672652158d099074 6871 solv_0.4.2_amd64.buildinfo
+ e2f53be2b601623c23b7480197f1fd9687ecb325ed1a3088cc5b2ee749e9653e 31904 solv_0.4.2_amd64.deb
 Files:
- 153fd6217be4a8d77da716932ebb88fd 1216 utils optional solv_0.4.2.dsc
- a54ac9d844659a30fdb8d9077593d7ea 30208 utils optional solv_0.4.2.tar.xz
- 81d1169df20f985e61e99f36d4462b1a 6871 utils optional solv_0.4.2_amd64.buildinfo
- 83061d6fca2ec263413cc60eaba96faf 31894 utils optional solv_0.4.2_amd64.deb
+ c8a7cca4921155a019fc5748bfb50774 1216 utils optional solv_0.4.2.dsc
+ 4e91dbd3ce182f8c115c92473aaddd49 30156 utils optional solv_0.4.2.tar.xz
+ 46f03911c23ae02554beb038063980d1 6871 utils optional solv_0.4.2_amd64.buildinfo
+ aea4505e1aba69a4de002256bfbcb92b 31904 utils optional solv_0.4.2_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTadksACgkQ2kHJnU2w
-0wS0xAwAkJLMfIcN4l6vSXRH71yOCT04DHYmXq7KU7sM7NxbpJtggD7lddy9s2AS
-7CcjArghiw3sbWEyBsEwQfxgSBvXhfvI1EA0kslmtB9T0YpWYZToPXpZhIUQLti4
-nMw0KF2Ij0kzjuOeCQ23iA70zRlXFk1F449hbn+/NzzAG+c1BMrL0/5eVB39Rpe2
-7cKu4f1JCdjwlioTzoP+rBZBZF5f15aJydyiJ0dx4lkNcG98Q3iQhSoJ5HKUmpHx
-CdbmNlIYwYhKEjIq1YeNiOJZDDxPqY2sjPSSgMSrV8/qPPJgadv/CRo6o8pvtly6
-4WPjdD3QTsr4nxUzCjfRFR1LPDbEypJePG9M2z3R7+HDLoClr9iWiQ4/1j965i4P
-2R4cIDePAFFsApOA3wA7NWVNFVzQgO5XD5+9s3V2vk2Xw8FWKDbGU9c8paS9rNpV
-mG5rpdKbpNM4mzxJMFDzuHFeCysyy/qFsPoWn3hpZcKDp2s306HcEK5uJATXWPiZ
-bWdfeBYF
-=D0tt
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTaeO8ACgkQ2kHJnU2w
+0wQdmwwA10IJfIzm/TvQXUMgBwck/7xyS8wsCkhYola5ocUU8558qWP4G0l58TTm
+4Mbux7kWlgoAWyGvwdftYic4TRh1UarFaIsmweRXaQJe7a/OVVq25rmAXXAGZK1Q
+cWAZMCrQyuzPWba+/intvCVqrTmT0IchAbEpSArR5QKrwA0iDCkyCe3vg2omtL+L
+lFQaOTaBU5tK79Kqv0PR46Kq2qMCGZah+cqXjbaSh5CrpHloSrIvzZLi70pjIZIJ
+22GIsNSRoDrvIB+6Rfwl8qkfv11kd/628KRX/dW7MvxWAbUrTaAhKtVKtOfk/q9u
+N54t3SesPLGov1eAhBrwyI5VDpusvLm22c/0PVVLigjh+ck33Ht2UjulyZApXRFO
+I7KrZaHKQWMmNUScK6xsxlpHEhx9a64LCGWbbSN9Uk6OSRowXgIhTF6Qp6xYdE4B
+6QC82ifn3SpzR+SYpLL3Q6onu+6RaJC9ENx+crJJOw8HYam/0QBVT8ZhtlYSMl1I
+y8h7hfBr
+=B5Hp
 -----END PGP SIGNATURE-----

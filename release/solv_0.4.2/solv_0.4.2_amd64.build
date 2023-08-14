@@ -1,24 +1,15 @@
  dpkg-buildpackage -us -uc -ui
-dpkg-buildpackage: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-buildpackage: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-buildpackage: info: source package solv
 dpkg-buildpackage: info: source version 0.4.2
 dpkg-buildpackage: info: source distribution focal
-dpkg-buildpackage: info: source changed by 
+dpkg-buildpackage: info: source changed by EpicsDAO <info@epics.dev>
  dpkg-source --before-build .
 dpkg-buildpackage: info: host architecture amd64
-dpkg-source: warning: solv-debian/debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-source: warning: solv-debian/debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js
  debian/rules clean
 dh clean
    dh_clean
  dpkg-source -b .
-dpkg-source: warning: solv-debian/debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-source: warning: solv-debian/debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js
 dpkg-source: info: using source format '3.0 (native)'
 dpkg-source: info: building solv in solv_0.4.2.tar.xz
@@ -44,9 +35,6 @@ install -m 644 usr/share/solv/index.js debian/solv/usr/share/solv/
 make[1]: Leaving directory '/home/kaien/dev/ts/solv/solv-debian'
    dh_installdocs
    dh_installchangelogs
-dh_installchangelogs: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dh_installchangelogs: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
    dh_perl
    dh_link
    dh_strip_nondeterminism
@@ -55,39 +43,18 @@ dh_installchangelogs: warning:     debian/changelog(l5): found end of file where
    dh_missing
    dh_dwz
    dh_strip
-dh_strip: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dh_strip: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
    dh_makeshlibs
    dh_shlibdeps
    dh_installdeb
    dh_gencontrol
-dpkg-gencontrol: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-gencontrol: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-gencontrol: warning: Depends field of package solv: substitution variable ${shlibs:Depends} used, but is not defined
    dh_md5sums
    dh_builddeb
 dpkg-deb: building package 'solv' in '../solv_0.4.2_amd64.deb'.
  dpkg-genbuildinfo -O../solv_0.4.2_amd64.buildinfo
-dpkg-genbuildinfo: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-genbuildinfo: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
-dpkg-genbuildinfo: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-genbuildinfo: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
  dpkg-genchanges -O../solv_0.4.2_amd64.changes
-dpkg-genchanges: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-genchanges: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
-dpkg-genchanges: warning:     debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-genchanges: warning:     debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-genchanges: info: including full source code in upload
  dpkg-source --after-build .
-dpkg-source: warning: solv-debian/debian/changelog(l5): badly formatted trailer line
-LINE:  -- EpicsDAO <info@epics.dev>  Mon, 14 Aug 2023 18:44:47 GMT
-dpkg-source: warning: solv-debian/debian/changelog(l5): found end of file where expected more change data or trailer
 dpkg-source: info: using options from solv-debian/debian/source/options: --extend-diff-ignore=^usr/share/solv/index\.js
 dpkg-buildpackage: info: full upload; Debian-native package (full source is included)
 Now running lintian solv_0.4.2_amd64.changes ...
@@ -96,6 +63,4 @@ W: solv: maintainer-script-calls-systemctl [postinst:114]
 W: solv source: maintainer-script-lacks-debhelper-token [debian/postinst]
 W: solv: no-manual-page usr/bin/solv
 W: solv source: no-newline-at-end debian/changelog
-W: solv: syntax-error-in-debian-changelog line 5 "badly formatted trailer line"
-W: solv: syntax-error-in-debian-changelog line 5 "found eof where expected more change data or trailer"
 Finished running lintian.

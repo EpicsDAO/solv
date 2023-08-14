@@ -2,7 +2,7 @@
 Hash: SHA512
 
 Format: 1.8
-Date: Mon, 14 Aug 2023 20:45:27 +0200
+Date: Thu, 10 Aug 2023 10:50:16 +0200
 Source: solv
 Built-For-Profiles: noudeb
 Architecture: source
@@ -10,34 +10,35 @@ Version: 0.4.2
 Distribution: focal
 Urgency: medium
 Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
 Changes:
  solv (0.4.2) focal; urgency=medium
  .
    * bash default
 Checksums-Sha1:
- 7bbb1a957009a4744449a100c994447ef398b30f 1216 solv_0.4.2.dsc
- 7a59f269f851bc76c0707d3ef30d6f85ea0b5f89 30204 solv_0.4.2.tar.xz
- 58c8b5a3ed10734c25af35f7ac96ac0449012818 6629 solv_0.4.2_source.buildinfo
+ c9e8f7b5774ca56cd6f580c7544e29c82cb1ab72 1216 solv_0.4.2.dsc
+ 0c54f56826bbb406339523ea21b4a5d46232da37 30156 solv_0.4.2.tar.xz
+ 75b389c36ddcb4567d44704d40796cec35beee3f 6629 solv_0.4.2_source.buildinfo
 Checksums-Sha256:
- ea8edffb2ffb199484c0cf08e90fa855e1735c99c4bf84d1b410154005eb4241 1216 solv_0.4.2.dsc
- e8e7f9ff9a0599b4bda672ccc3e238f4118908aaba7fa7948646e6c4cd780181 30204 solv_0.4.2.tar.xz
- 6c60aab7cc6578a3b2ff146491397c8f6828dbcb71ec2e36f61a39be3b002e5d 6629 solv_0.4.2_source.buildinfo
+ 3754f86dc20b18734d4c6bc768eae2f6676a56bb41b5a77fb25264fe9987846f 1216 solv_0.4.2.dsc
+ 228555c5805bef56ead1ea6917e0742bb408bb5d2872dd4d5f4b226916ee7fcb 30156 solv_0.4.2.tar.xz
+ 8808ce46442a0eb523ec0132bc6c618556baf3a62e4f84748c5b6ef9675fe58d 6629 solv_0.4.2_source.buildinfo
 Files:
- 153fd6217be4a8d77da716932ebb88fd 1216 utils optional solv_0.4.2.dsc
- 8805ddc5b5e62934504b2145b26d9586 30204 utils optional solv_0.4.2.tar.xz
- 8afa67a0a090973b30e642ef7cc63ff6 6629 utils optional solv_0.4.2_source.buildinfo
+ c8a7cca4921155a019fc5748bfb50774 1216 utils optional solv_0.4.2.dsc
+ 4e91dbd3ce182f8c115c92473aaddd49 30156 utils optional solv_0.4.2.tar.xz
+ 8552aa7696d1845f65278ccfb8e59587 6629 utils optional solv_0.4.2_source.buildinfo
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTadk4ACgkQ2kHJnU2w
-0wRSHQv/Wub/N12KV62BclTtJBEdPkm9/8Wi/02vSNSoUWi6fHYi0lS3LfBAMrXv
-IZmEJy92AF7MDw4R11L/WNrnM5ckqm1inlS/5QDm2gu4zM6GXmGuEflPmxrHqU3e
-EyTx6Hb/N/tQKb7/k6mi3npNBUwjwPzoXLjsD0O0j2H+0rrdv/BxIOL2kxdJ7uYC
-ha9mnUlyxB6mN0ACfLMaF+o1OzmggRb7bwUEZ0pKrO7y969BUIHXIaLV/Nz5sRfb
-lslQD4CR13Hl60AqABIxNYfJUB3/X5kiQPraisxA9/XupouCUOlEYQhUps28hAKp
-curXYLQgwFtn28l+2DIaAyYPImq9tK7Dwcsvkd3eiN5g5H98Vy0qFp1+SAitKxYk
-E//bZuqB16/PDPIJqym5jTl08Y8l7HjrsGyo0T4WrgK64PfK0ttltEURlz2kWVbu
-S2njk8cqlBbvqzEVsC5zYbLF4OSW2OH9t7Ptzq2x/DQyO/De68sPBDEHPTGp+6rg
-M00qjkAq
-=KFJC
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTaePQACgkQ2kHJnU2w
+0wRqIAwAyksahk9DJPucHZF0XynKtm6PC7QlqELVAw5XBe6j7zk3pH+fKzsbfDff
+VDYzrehR8CWjk5m/VtcOssM8xkcYr+sjWX9xWUvacfpCb+teMkiPoXVUV6yzjQnd
+CHsm6c2efEvk+PCxYmamz/Ohntm++D073qzJXqmqT4l7daow2nLTGmZAypFpKQxs
+gm2P/9wY+m8ZhdA6IUaNkdqFMotzl6cBSGTZ/nginULg1GFueXGnd9276tToFwvt
+uGJODf1jdoPskTrFxtKCcGpWW3gLQv7lnbcxtxq6Sq3dAFhcgNfLbQ4wL4udcHg/
+0vZXXsS4jB1OQbdM92Yo2QSnaUUxaygPC/uH9ISke7nlcHhDUlYo6D7aGVYKVqRQ
+KtLQac3RL7U5QCbtcgH1MqsBRV2rWYICi5iUxRHwEzF/z6eYJDF0mLjGJ7NU4iEd
+5iEjHXnoDyP6e7SNj91yNG5pfXyIx27iVPWFZ764mUaZBBzf9aQwymKeIU8MKW82
+yXD7wpyW
+=4EtW
 -----END PGP SIGNATURE-----
