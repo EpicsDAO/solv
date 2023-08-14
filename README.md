@@ -41,6 +41,7 @@ $ sudo adduser solv
 $ sudo usermod -aG sudo solv
 $ su solv
 $ sudo add-apt-repository ppa:epics-dao/solv
+$ sudo apt update
 $ sudo apt install solv
 ```
 
