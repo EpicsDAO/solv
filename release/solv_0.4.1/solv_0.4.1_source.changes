@@ -1,0 +1,44 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 10 Aug 2023 10:50:16 +0200
+Source: solv
+Built-For-Profiles: noudeb
+Architecture: source
+Version: 0.4.1
+Distribution: focal
+Urgency: medium
+Maintainer: EpicsDAO <info@epics.dev>
+Changed-By: EpicsDAO <info@epics.dev>
+Changes:
+ solv (0.4.1) focal; urgency=medium
+ .
+   * bash default
+Checksums-Sha1:
+ f2c0c67e040f0f4a875a15470b01d60db92b57fa 1216 solv_0.4.1.dsc
+ 6d8123ef1df40e8ca7684d2297592879141d3b85 29748 solv_0.4.1.tar.xz
+ 2239eca5b42e686f63aa4330cf2b9bc06630273a 6629 solv_0.4.1_source.buildinfo
+Checksums-Sha256:
+ 694a14ff6f08b0f7f041a7fbdd80c371f70dcce95b6b5527ffa7187ca937226f 1216 solv_0.4.1.dsc
+ 4c7ab1a92d5023b0b35d427864287230db9ffa52c786445dd23c648f336e1408 29748 solv_0.4.1.tar.xz
+ b76b1ef9620a55de8f58dc5fffb6f91a8153af9682671714207f8e19c53ea1b2 6629 solv_0.4.1_source.buildinfo
+Files:
+ 779781d7ef74412163fc102a1087fc22 1216 utils optional solv_0.4.1.dsc
+ ef562f31a55e27cfe2d138b319fe1594 29748 utils optional solv_0.4.1.tar.xz
+ b390801e0874ff93a2bfea9884f50735 6629 utils optional solv_0.4.1_source.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEmc72up9jOUK9hDj92kHJnU2w0wQFAmTaZG8ACgkQ2kHJnU2w
+0wTM9Qv9EQsRRv0wlaKRatMHh2vf0jcRBpB9cVMR6IrHS0O75lFr9O6ZVGZy3AKS
+u9geT5cdDYivWZ8jTJxpW9sOEyFwvkGM27BJ07aDutPEoVjyI4lsUDFVUMdbTxx5
+HnI2UAQYwwxk9FX7gK7kFGlKKQUTBWXtHzGrZhAanOWOmtfjEiF/e3U9sMDMCQYY
+fWIK0NC3HcbTzrYuG5GIwGa0MVHQmSQ4t4zMxCebbIsEIZBKwPcJgm+J7WZodFyA
+7he6DAyLR3PiJrPuH1Asq9tcdYPGk89Io13cy3VUjWGFoqEwdRruYvG/KLSFe9fC
+xGBNNKw0bZ8YAs2q5mregv02agKteVJ0oi8/xgXeGZOhJjj1Js5HXpL13jRSZQHS
+GgN4BJ+JYqX96RxY2Xi8M/BfRJyUetky6ShpXnNM7ZJfhsKnmYD8aGN4BwsaYPFc
+2Cfg4fTmtsjg8NUdgW+Wu5QCo+5QhXTKFES+8vESY/fMm8UDt+XwmmERbqqvxaFO
+wuxlZ8lx
+=EAIu
+-----END PGP SIGNATURE-----
