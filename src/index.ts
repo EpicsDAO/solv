@@ -5,6 +5,7 @@ import { logCommands, releaseCommands, updateCommands } from './cli'
 import { stakeCommands } from './cli/stake'
 import { dfCommands } from './cli/df'
 import { setupCommands } from './cli/setup'
+import { checkCommpands } from './cli/check'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
@@ -14,6 +15,7 @@ export const LOG_PATH = `${WD}/log`
 export const VOTE_ACCOUNT_PATH = `${SOLV_ROOT}/vote-account.json`
 export const ACCOUNT_PATH = `/mt/solana-accounts`
 export const LEDGER_PATH = `/mt/ledger/validator-ledger`
+export const VALIDATOR_STARTUP_SCRIPT = `${WD}/start-validator.sh`
 
 // Solana Wallet Keyfile Paths
 export const DEFAULT_VALIDATOR_KEYFILE = `${SOLV_ROOT}/testnet-validator-keypair.json`
@@ -38,6 +40,7 @@ async function main() {
         console.log('solv')
       })
 
+    checkCommpands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()

@@ -4,7 +4,7 @@ import { setupPermissions } from './userPermissions'
 import { setupKeys } from './setupKeys'
 import { setupSwap } from './setupSwap'
 
-export const setup = async () => {
+export const setup = () => {
   try {
     setupDirs()
     setupPermissions()

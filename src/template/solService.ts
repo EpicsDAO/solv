@@ -1,5 +1,7 @@
-export const solService = async (username: string) => {
-  const workingDirectory = '/mt/solana/solana-validator'
+import { WD } from '..'
+
+export const solService = (username: string) => {
+  const workingDirectory = WD
   const body = `[Unit]
 Description=Solana Validator
 After=network.target
