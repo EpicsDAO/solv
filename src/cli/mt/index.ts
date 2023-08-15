@@ -20,7 +20,7 @@ export const mountCommands = () => {
     })
 
   program
-    .command('reload')
+    .command('mtr')
     .description('Mount Reload Command')
     .action(() => {
       const cmd = `sudo mount --all --verbose`

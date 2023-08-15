@@ -56,4 +56,15 @@ $ solv start
     console.log(msg)
     console.log(greyHex(msg2))
   }
+
+  export const mtCommandsLog = () => {
+    const msg = warningHex(`🔨 Mount Commands 🔨`)
+    const msg2 = `mount\n$ solv mt -p <fileSystem>\n`
+    const msg3 = `unmount\n$ solv umt -p <fileSystem>\n`
+    const msg4 = `mount reload\n$ solv mtr\n`
+    console.log(msg)
+    console.log(greyHex(msg2))
+    console.log(greyHex(msg3))
+    console.log(greyHex(msg4))
+  }
 }
