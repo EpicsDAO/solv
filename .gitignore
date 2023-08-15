@@ -48,3 +48,5 @@ keyfile.json
 /functions/
 graphql/
 /release/
+
+solv-debian/debian/files

@@ -17,9 +17,9 @@ export const lsblk = () => {
     .map((line) => {
       const segments = line.split(/\s+/)
       return {
-        Name: segments[0],
-        Size: segments[3],
-        Type: segments[5],
+        Name: segments[0] || '',
+        Size: segments[3] || '',
+        Type: segments[5] || '',
         Mountpoint: segments[6] || null,
       }
     })
