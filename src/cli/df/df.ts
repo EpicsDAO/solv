@@ -19,6 +19,7 @@ export const df = () => {
       } as UbuntuDhParams
     })
     .sort((a, b) => convertToBytes(b.Avail) - convertToBytes(a.Avail))
+    .slice(0, 10)
 
   const isMountedOnCorrect = parsedData.some(
     (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) >= 1e12

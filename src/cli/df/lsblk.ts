@@ -11,7 +11,7 @@ type BlockDeviceInfo = {
 
 export const lsblk = () => {
   const output = execSync('lsblk -l').toString()
-  const lines = output.split('\n').slice(1) // ヘッダー行を除外
+  const lines = output.split('\n').slice(1)
 
   const parsedData: BlockDeviceInfo[] = lines
     .filter((line) => line.trim() !== '')
@@ -24,46 +24,34 @@ export const lsblk = () => {
         Mountpoint: segments[6] || null,
       }
     })
-    .sort((a, b) => {
-      if (a.Mountpoint && b.Mountpoint) {
-        return convertToBytes(b.Size) - convertToBytes(a.Size)
-      }
-      if (a.Mountpoint) return 1
-      if (b.Mountpoint) return -1
-      return convertToBytes(b.Size) - convertToBytes(a.Size)
-    })
+    .sort((a, b) => convertToBytes(b.Size) - convertToBytes(a.Size))
+    .slice(0, 10)
 
   const redDevices: string[] = []
   let isMountPointCorrect = false
 
   console.log(chalk.bold('Name\tSize\tType\tMountpoint'))
   parsedData.forEach((data) => {
+    const isSizeLarge = convertToBytes(data.Size) >= 900e9
     const color =
       data.Mountpoint === '/mt'
         ? chalk.green
-        : data.Mountpoint
-        ? chalk.white
-        : chalk.red
+        : isSizeLarge
+        ? chalk.red
+        : chalk.white
     console.log(
       color(
         `${data.Name}\t${data.Size}\t${data.Type}\t${data.Mountpoint || ''}`
       )
     )
-    if (!data.Mountpoint) {
-      redDevices.push(data.Name)
-    }
-    // 緑色であり、容量が1TB以上の場合のチェック
-    if (data.Mountpoint === '/mt' && convertToBytes(data.Size) >= 1e12) {
-      isMountPointCorrect = true
-    }
+    if (isSizeLarge && data.Name !== '/dev/') redDevices.push(data.Name)
+    if (data.Mountpoint === '/mt' && isSizeLarge) isMountPointCorrect = true
   })
 
   if (isMountPointCorrect) {
     Logger.normal('Your mount point looks correct 🎉')
-  } else {
-    redDevices.forEach((name) => {
-      Logger.normal(`fileSystemPath might be /dev/${name} ...?`)
-    })
+  } else if (redDevices.length) {
+    Logger.normal(`fileSystem might be ${redDevices.join(', ')} ...?`)
   }
 }
 
