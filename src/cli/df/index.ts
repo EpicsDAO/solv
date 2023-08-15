@@ -17,6 +17,7 @@ export const dfCommands = async () => {
 
   program
     .command('lsblk')
+    .alias('ls')
     .description('Solana Disk Usage Command')
     .action(async () => {
       lsblk()

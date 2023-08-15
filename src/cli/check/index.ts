@@ -13,8 +13,8 @@ export const checkCommpands = () => {
       console.log({ mountedDirs })
       if (!mountedDirs) {
         Logger.normal(
-          `❌ /mt dir is not enough volumes\nCheck your mount point and Run ${Logger.successHex(
-            `$ solv mount <yourFileSystemPath>`
+          `❌ /mt dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
+            `$ solv df\n\$ solv ls`
           )}`
         )
         return
@@ -31,7 +31,9 @@ export const checkCommpands = () => {
 
       ensureSolvOwnership()
       Logger.normal(
-        `You are all set 🎉\nRun ${Logger.successHex(`$ solv start`)}`
+        `You are all set 🎉\nRun ${Logger.successHex(
+          `$ solv start\n and check your log\n$ solv log tail`
+        )}`
       )
     })
 }
