@@ -29,14 +29,19 @@ export const logDiskUsage = (path = '/mt/*') => {
 
   const dfDetails = dfOutput[1].split(/\s+/)
   const total = parseInt(dfDetails[1], 10) * 1024 // Convert from 1K-blocks to bytes
+  const percentageFree = ((total - used) / total) * 100
 
   // Create table using cli-table3
   const table = new Table({
-    head: ['Parameter', 'Size (in bytes)'],
-    colWidths: [20, 20],
+    head: ['Parameter', 'Size (in bytes)', 'Percentage'],
+    colWidths: [20, 20, 15],
   })
 
-  table.push(['Total', total], ['Used', used], ['Available', total - used])
+  table.push(
+    ['Total', total, '100%'],
+    ['Used', used, `${((used / total) * 100).toFixed(2)}%`],
+    ['Available', total - used, `${percentageFree.toFixed(2)}%`]
+  )
 
   console.log(table.toString())
 }

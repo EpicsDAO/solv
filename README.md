@@ -51,11 +51,40 @@ $ sudo apt install solv
 $ solv update solana 1.16.7
 ```
 
-## Setup Solana Validator
+## Generate Solana Validator Keys and Config
 
 ```bash
 $ solv setup
 ```
+
+## Start Solana Validator
+
+```bash
+$ solv run
+```
+
+## Stop Solana Validator
+
+```bash
+$ solv stop
+```
+
+## Restart Solana Validator
+
+```bash
+$ solv restart
+```
+
+Default `solana-validator.sh` command is `--no-incremental-snapshots`.
+
+If you want to download snapshot, you can use the following command.
+
+```bash
+$ solv restart --snapshot
+```
+
+This command will automatically add `--no-incremental-snapshots` to your
+`solana-validator.sh` command.
 
 ## Solana Delegation Program
 
