@@ -4,12 +4,12 @@ import { setupPermissions } from './userPermissions'
 import { setupKeys } from './setupKeys'
 import { setupSwap } from './setupSwap'
 
-export const setup = (options = { swap: false }) => {
+export const setup = (options = { swap: false, fileSystem: '/dev/vdb' }) => {
   try {
     setupDirs()
     setupPermissions()
     setupKeys()
-    if (options.swap) setupSwap()
+    if (options.swap) setupSwap(options.fileSystem)
     const cmd = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable sol',

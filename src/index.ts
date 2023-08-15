@@ -14,6 +14,7 @@ import { setupCommands } from './cli/setup'
 import { checkCommpands } from './cli/check'
 import { restartCommand } from './cli/restart'
 import { installCommands } from './cli/install'
+import { mountCommands } from './cli/mt'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
@@ -57,6 +58,7 @@ async function main() {
     stopCommand()
     checkCommpands()
     installCommands()
+    mountCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()

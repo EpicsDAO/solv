@@ -13,7 +13,7 @@ export const checkCommpands = () => {
       if (!memorySwap) {
         Logger.normal(
           `❌ Memory and Swap not enough\nRun ${Logger.successHex(
-            `$ solv setup --swap`
+            `$ solv setup --swap --path <yourFileSystemPath>`
           )}`
         )
         return

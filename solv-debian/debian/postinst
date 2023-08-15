@@ -4,9 +4,9 @@
 set -e
 
 # Variables
-USERNAME="${SOLV_USER:-solv}"
+USERNAME="solv"
 
-echo $USERNAME
+echo "Username: ${USERNAME}"
 
 # Directories and Paths
 MOUNT_ROOT="/mt"
@@ -215,6 +215,6 @@ esac
 
 
 echo "Success! You can now user Solv CLI 🎉"
-sudo -u $USERNAME bash -c 'source ~/.profile && solv --help'
+sudo -u $USERNAME bash -c 'source ~/.profile && solv log solv'
 
 exit 0

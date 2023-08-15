@@ -9,6 +9,7 @@ export const setupCommands = async () => {
     .description('Solana Setup Command')
     .option('--sh', 'Update Validator StartUp Bash Script', false)
     .option('--swap', 'Setup Swap', false)
+    .option('-p, --path <path>', 'Path to Solana Directory', '/dev/vdb')
     .action((options) => {
       console.log('setup')
       console.log({ options })
