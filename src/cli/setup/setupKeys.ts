@@ -7,6 +7,7 @@ import {
 import { spawnSync } from 'child_process'
 import * as dotenv from 'dotenv'
 import { existsSync } from 'fs'
+import { airdrop } from './airdrop'
 dotenv.config()
 
 const SOL_NETWORK = process.env.SOL_NETWORK || 'testnet'
@@ -21,6 +22,7 @@ export const setupKeys = async () => {
       `solana-keygen new --no-bip39-passphrase --outfile ${MAINNET_VALIDATOR_KEYFILE}`,
       `solana config set --keypair ${TESTNET_VALIDATOR_KEYFILE}`,
       `solana config set --url ${SOL_NETWORK}`,
+      `solana airdrop 1`,
       `solana create-vote-account ${VALIDATOR_VOTE_KEYFILE} ${TESTNET_VALIDATOR_KEYFILE} ${VALITATOR_AUTHORITY_KEYFILE} --commission 10`,
     ]
     cmds.forEach((cmd) => {

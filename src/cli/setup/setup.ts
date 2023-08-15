@@ -6,8 +6,8 @@ import { setupSwap } from './setupSwap'
 
 export const setup = (options = { swap: false, fileSystem: '/dev/vdb' }) => {
   try {
-    setupDirs()
     setupPermissions()
+    setupDirs()
     setupKeys()
     if (options.swap) setupSwap(options.fileSystem)
     const cmd = [
