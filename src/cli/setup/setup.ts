@@ -12,8 +12,8 @@ export const setup = (options = { swap: false }) => {
     if (options.swap) setupSwap()
     const cmd = [
       'sudo systemctl daemon-reload',
-      'sudo systemctl enable solana',
-      'sudo systemctl start solana',
+      'sudo systemctl enable sol',
+      'sudo systemctl start sol',
       'sudo systemctl restart logrotate',
     ]
     spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })

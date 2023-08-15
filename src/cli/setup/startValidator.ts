@@ -1,10 +1,10 @@
 import { USER, VALIDATOR_STARTUP_SCRIPT } from '@/index'
-import { solService } from '@/template/solService'
+import { startValidatorSh } from '@/template/startValitatorSh'
 import { writeFileSync } from 'fs'
 
-export const startValidator = () => {
+export const startValidator = (fetchSnapshot = false) => {
   try {
-    const body = solService(USER)
+    const body = startValidatorSh(fetchSnapshot)
     writeFileSync(`${VALIDATOR_STARTUP_SCRIPT}`, body, 'utf-8')
   } catch (error) {
     throw new Error(`startValidator Error: ${error}`)
