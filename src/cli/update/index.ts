@@ -14,7 +14,7 @@ export const updateCommands = async () => {
     .command('solana')
     .alias('s')
     .description('Update Solana Version')
-    .argument('<version>', 'Solana Version e.g. 1.16.7', '1.16.7')
+    .argument('<version>', 'Solana Version e.g. 1.16.7')
     .action(async (version: string) => {
       const spinner = Logger.syncSpinner(
         `✔️ Updating Solana to ${chalk.green(version)}`
