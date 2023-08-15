@@ -51,7 +51,11 @@ export const lsblk = () => {
   if (isMountPointCorrect) {
     Logger.normal('Your mount point looks correct 🎉')
   } else if (redDevices.length) {
-    Logger.normal(`fileSystem might be ${redDevices.join(', ')} ...?`)
+    console.log(
+      Logger.warningHex(
+        `\nfileSystem might be one of ${redDevices.join('/dev/, ')} ...?`
+      )
+    )
   }
 }
 

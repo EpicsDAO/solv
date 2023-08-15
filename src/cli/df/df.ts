@@ -22,18 +22,18 @@ export const df = () => {
     .slice(0, 10)
 
   const isMountedOnCorrect = parsedData.some(
-    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) >= 1e12
+    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) >= 900e9
   )
 
   parsedData.forEach((data) => {
-    if (data.MountedOn === '/mt' && convertToBytes(data.Size) >= 1e12) {
+    if (data.MountedOn === '/mt' && convertToBytes(data.Size) >= 900e9) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
         'color: green'
       )
     } else if (
       data.Filesystem.startsWith('/dev/') &&
-      convertToBytes(data.Size) >= 1e12
+      convertToBytes(data.Size) >= 900e9
     ) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
@@ -49,12 +49,16 @@ export const df = () => {
       .filter(
         (data) =>
           data.Filesystem.startsWith('/dev/') &&
-          convertToBytes(data.Size) >= 1e12
+          convertToBytes(data.Size) >= 900e9
       )
       .map((data) => data.Filesystem)
-    fsNames.forEach((name) => {
-      console.log(`Consider mounting ${name} as it has more than 1TB of space.`)
-    })
+    if (fsNames.length > 0) {
+      console.log(
+        `Consider mounting the following devices as they have more than 900GB of space: ${fsNames.join(
+          ', '
+        )}`
+      )
+    }
   }
 
   return parsedData
