@@ -1,3 +1,7 @@
 export * from './update'
 export * from './log'
 export * from './release'
+export * from './setup'
+export * from './df'
+export * from './run'
+export * from './stop'

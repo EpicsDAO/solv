@@ -179,7 +179,6 @@ sudo chown $USERNAME:$USERNAME $START_VALIDATOR_SCRIPT
 
 echo "Success! You can now user Solv CLI 🎉"
 echo "$ source ~/.profile"
-echo "$ solv --help"
-. /home/$USERNAME/.profile
+sudo -u $USERNAME bash -c 'source ~/.profile && solv --help'
 
 exit 0
