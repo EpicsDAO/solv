@@ -33,15 +33,16 @@ export const logDiskUsage = (path = '/mt/*') => {
 
   // Create table using cli-table3
   const table = new Table({
-    head: ['Parameter', 'Size (in bytes)', 'Percentage'],
-    colWidths: [20, 20, 15],
+    head: [
+      'Path',
+      'Current Usage (bytes)',
+      'Total Capacity (bytes)',
+      'Available %',
+    ],
+    colWidths: [30, 25, 25, 15],
   })
 
-  table.push(
-    ['Total', total, '100%'],
-    ['Used', used, `${((used / total) * 100).toFixed(2)}%`],
-    ['Available', total - used, `${percentageFree.toFixed(2)}%`]
-  )
+  table.push([sanitizedPath, used, total, `${percentageFree.toFixed(2)}%`])
 
   console.log(table.toString())
 }
