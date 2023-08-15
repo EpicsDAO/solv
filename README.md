@@ -43,12 +43,28 @@ $ su solv
 $ sudo add-apt-repository ppa:epics-dao/solv
 $ sudo apt update
 $ sudo apt install solv
+           _
+          | |
+ ___  ___ | |_    __
+/ __|/ _ \| |\ \ / /
+\__ \ (_) | | \ V /
+|___/\___/|_|  \_/
+
+🔥 Welcome to Solana Validator Tool Solv 🔥
+
+Solv is born and ready for running Solana Validator 🚀
+
+$ source ~/.profile
+$ solv i
+$ solv setup
+$ solv check
+$ solv start
 ```
 
-## Install Solana
+## Install/Update Solana Version
 
 ```bash
-$ solv update solana 1.16.7
+$ solv i -v 1.16.7
 ```
 
 ## Generate Solana Validator Keys and Config
@@ -57,10 +73,22 @@ $ solv update solana 1.16.7
 $ solv setup
 ```
 
+## Check Solana Validator Preparation Status
+
+```bash
+$ solv check
+```
+
+If it is not ready, you can check;
+
+- Mounted disk
+- Swap size
+- Memory size
+
 ## Start Solana Validator
 
 ```bash
-$ solv run
+$ solv start
 ```
 
 ## Stop Solana Validator

@@ -1,5 +1,6 @@
 import { program } from '@/index'
 import { tail } from './tail'
+import { Logger } from '@/lib/logger'
 
 export const logCommands = async () => {
   const log = program.command('log').description('log commands')
@@ -14,5 +15,13 @@ export const logCommands = async () => {
     .option('-a, --all', 'Follow WARN and ERR output', false)
     .action((options) => {
       tail(options)
+    })
+
+  log
+    .command('solv')
+    .description('Solv AA log')
+    .action(() => {
+      Logger.solvAA()
+      Logger.installMessage()
     })
 }

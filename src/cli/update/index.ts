@@ -1,4 +1,4 @@
-import { program } from '@/index'
+import { DEFAULT_SOLANA_VERSION, program } from '@/index'
 import { monitorUpdate, updateVersion } from './update'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
@@ -6,54 +6,23 @@ import chalk from 'chalk'
 export * from './update'
 
 export const updateCommands = async () => {
-  const update = program
+  program
     .command('update')
-    .description('Update Solana Validator Node')
-
-  update
-    .command('solana')
-    .alias('s')
-    .description('Update Solana Version')
-    .argument('<version>', 'Solana Version e.g. 1.16.7')
-    .action(async (version: string) => {
-      const spinner = Logger.syncSpinner(
-        `✔️ Updating Solana to ${chalk.green(version)}`
-      )
-      await updateVersion(version)
-      spinner.stop(true)
-    })
-
-  update
-    .command('monitor')
-    .alias('m')
+    .alias('u')
     .description('Monitor Update')
-    .argument('<maxDelinquentStake>', 'Max Delinquent Stake e.g. 10')
-    .action(async (maxDelinquentStake: number) => {
-      const spinner = Logger.syncSpinner(
+    .option('-m, --maxDelinquentStake', 'Max Delinquent Stake e.g 5', '5')
+    .option(
+      '-v, --version <version>',
+      `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
+      DEFAULT_SOLANA_VERSION
+    )
+    .action((options: any) => {
+      updateVersion(options.version)
+      Logger.normal(
         `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
-          maxDelinquentStake
+          options.maxDelinquentStake
         )}`
       )
-      await monitorUpdate(maxDelinquentStake)
-      spinner.stop(true)
-    })
-
-  update
-    .command('all')
-    .alias('a')
-    .description('Update Solana Version and Monitor Update')
-    .argument('<version>', 'Solana Version e.g. 1.16.7')
-    .argument('<maxDelinquentStake>', 'Max Delinquent Stake e.g. 10')
-    .action(async (version: string, maxDelinquentStake: number) => {
-      const spinner = Logger.syncSpinner(
-        `✔️ Updating Solana to ${chalk.green(
-          version
-        )} and Monitoring Update with Max Delinquent Stake ${chalk.green(
-          maxDelinquentStake
-        )}`
-      )
-      await updateVersion(version)
-      await monitorUpdate(maxDelinquentStake)
-      spinner.stop(true)
+      monitorUpdate(options.maxDelinquentStake)
     })
 }
