@@ -61,30 +61,6 @@ install_nodenv() {
     echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.profile || handle_error "Failed to add nodenv init to profile";
 }
 
-setup_solana_dirs(){
-    echo "Making solana directory"
-    mkdir -p $LOG_DIR
-    mkdir -p $ACCOUNT_DIR
-    mkdir -p $LEDGER_DIR
-    mkdir -p $RAMDRIVE_PATH
-    chown $USERNAME:$USERNAME $MOUNT_ROOT
-    chown $USERNAME:$USERNAME $SOLV_ROOT
-    chown $USERNAME:$USERNAME $ACCOUNT_DIR
-    chown $USERNAME:$USERNAME $SOLANA_LEDGER_DIR
-    chown $USERNAME:$USERNAME $RAMDRIVE_PATH
-    chown $USERNAME:$USERNAME $LOG_DIR
-    chown $USERNAME:$USERNAME $LEDGER_DIR
-    chown $USERNAME:$USERNAME $WD
-    chmod 755 $MOUNT_ROOT
-    chmod 755 $SOLV_ROOT
-    chmod 755 $ACCOUNT_DIR
-    chmod 755 $SOLANA_LEDGER_DIR
-    chmod 755 $RAMDRIVE_PATH
-    chmod 777 $LOG_DIR
-    chmod 755 $LEDGER_DIR
-    chmod 755 $WD
-}
-
 setup_sol_service() {
     echo "Creating sol.service systemd service file"
     cat <<EOL | sudo tee /etc/systemd/system/sol.service
@@ -195,9 +171,6 @@ case "$1" in
             install_nodenv
         fi
 
-        if [ ! -d "$SOLV_ROOT" ]; then
-            setup_solana_dirs
-        fi
         setup_sol_service
         setup_logrotate
         create_startup_script

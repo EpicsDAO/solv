@@ -61,6 +61,28 @@ $ solv check
 $ solv start
 ```
 
+Please mount fileSystem that has more than 1TB to `/mt` directory.
+
+Edgevana's Ubuntu AMD Server's default mountpoint is `/dev/vdb`.
+
+unmount if it is mounted to other directory.
+
+```bash
+$ solv umt <mountedPoint>
+```
+
+and mount to `/mt` directory.
+
+```bash
+$ solv mt <fileSystem>
+```
+
+if you haven't setup swap, you can use the following command.
+
+```bash
+$ solv setup --swap --path <yourFileSystemPath>
+```
+
 ## Install/Update Solana Version
 
 ```bash
@@ -109,6 +131,14 @@ If you want to download snapshot, you can use the following command.
 
 ```bash
 $ solv restart --snapshot
+```
+
+## Discord Notification
+
+set `DISCORD_WEBHOOK_URL` in `~/.profile`
+
+```bash
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/...your-webhook-url"
 ```
 
 This command will automatically add `--no-incremental-snapshots` to your

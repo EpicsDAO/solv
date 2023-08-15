@@ -12,11 +12,13 @@ export const tail = (options: TailOptions) => {
   try {
     let cmd = `tail -f ${LOG_PATH}`
     if (options.error) {
-      cmd += ` | grep '\\(WARN\\|ERR\\)'`
+      cmd += ` | grep ERR`
     } else if (options.info) {
       cmd += ` | grep INFO`
     } else if (options.warning) {
       cmd += ` | grep WARN`
+    } else {
+      cmd += ` | grep '\\(WARN\\|ERR\\)'`
     }
 
     console.log(cmd)

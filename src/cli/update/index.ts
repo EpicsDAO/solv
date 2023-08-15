@@ -10,7 +10,11 @@ export const updateCommands = async () => {
     .command('update')
     .alias('u')
     .description('Monitor Update')
-    .option('-m, --maxDelinquentStake', 'Max Delinquent Stake e.g 5', '5')
+    .option(
+      '-m, --maxDelinquentStake <maxDelinquentStake>',
+      'Max Delinquent Stake e.g 5',
+      '5'
+    )
     .option(
       '-v, --version <version>',
       `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,

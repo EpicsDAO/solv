@@ -15,6 +15,9 @@ import { checkCommpands } from './cli/check'
 import { restartCommand } from './cli/restart'
 import { installCommands } from './cli/install'
 import { mountCommands } from './cli/mt'
+import { discordCommands } from './cli/discord'
+import { getEpoch } from './cli/discord/getEpoch'
+import { getSlot } from './cli/discord/getSlot'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
@@ -52,13 +55,28 @@ async function main() {
       .action(() => {
         console.log('solv')
       })
+    program
+      .command('getEpoch')
+      .description('Solana Epoch Command')
+      .action(() => {
+        const epoch = getEpoch()
+        console.log({ epoch })
+      })
 
+    program
+      .command('getSlot')
+      .description('Solana Slot Command')
+      .action(() => {
+        const slot = getSlot()
+        console.log({ slot })
+      })
     startCommand()
     restartCommand()
     stopCommand()
     checkCommpands()
     installCommands()
     mountCommands()
+    await discordCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()
