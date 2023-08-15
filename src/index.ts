@@ -18,6 +18,7 @@ import { mountCommands } from './cli/mt'
 import { discordCommands } from './cli/discord'
 import { getEpoch } from './cli/discord/getEpoch'
 import { getSlot } from './cli/discord/getSlot'
+import { statusCommands } from './cli/status'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
@@ -26,6 +27,7 @@ export const RAMDRIVE_PATH = `/mnt/ramdrive`
 export const SWAP_PATH = `/mt/swapfile`
 export const SOLV_ROOT = `${MOUNT_ROOT}/solana`
 export const WD = `${SOLV_ROOT}/solana-validator`
+export const LOG_DIR = `${WD}/log`
 export const LOG_PATH = `${WD}/log/solana-validator.log`
 export const ACCOUNT_PATH = `${MOUNT_ROOT}/solana-accounts`
 export const LEDGER_PATH = `${MOUNT_ROOT}/ledger/validator-ledger`
@@ -70,6 +72,7 @@ async function main() {
         const slot = getSlot()
         console.log({ slot })
       })
+    statusCommands()
     startCommand()
     restartCommand()
     stopCommand()

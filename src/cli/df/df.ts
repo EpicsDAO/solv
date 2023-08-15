@@ -3,7 +3,7 @@ import { execSync } from 'child_process'
 
 export const df = () => {
   const output = execSync('df -h').toString()
-  const lines = output.split('\n').slice(1) // 最初の行 (ヘッダー) を除外
+  const lines = output.split('\n').slice(1)
 
   const parsedData = lines
     .filter((line) => line.split(/\s+/)[0] !== '')
@@ -20,9 +20,43 @@ export const df = () => {
     })
     .sort((a, b) => convertToBytes(b.Avail) - convertToBytes(a.Avail))
 
-  return parsedData.sort(
-    (a, b) => convertToBytes(b.Avail) - convertToBytes(a.Avail)
+  const isMountedOnCorrect = parsedData.some(
+    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) >= 1e12
   )
+
+  parsedData.forEach((data) => {
+    if (data.MountedOn === '/mt' && convertToBytes(data.Size) >= 1e12) {
+      console.log(
+        `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
+        'color: green'
+      )
+    } else if (
+      data.Filesystem.startsWith('/dev/') &&
+      convertToBytes(data.Size) >= 1e12
+    ) {
+      console.log(
+        `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
+        'color: red'
+      )
+    }
+  })
+
+  if (isMountedOnCorrect) {
+    console.log('your mount point is correct')
+  } else {
+    const fsNames = parsedData
+      .filter(
+        (data) =>
+          data.Filesystem.startsWith('/dev/') &&
+          convertToBytes(data.Size) >= 1e12
+      )
+      .map((data) => data.Filesystem)
+    fsNames.forEach((name) => {
+      console.log(`Consider mounting ${name} as it has more than 1TB of space.`)
+    })
+  }
+
+  return parsedData
 }
 
 const convertToBytes = (size: string): number => {

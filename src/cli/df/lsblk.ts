@@ -1,5 +1,6 @@
 import { execSync } from 'child_process'
 import chalk from 'chalk'
+import { Logger } from '@/lib/logger'
 
 type BlockDeviceInfo = {
   Name: string
@@ -32,6 +33,9 @@ export const lsblk = () => {
       return convertToBytes(b.Size) - convertToBytes(a.Size)
     })
 
+  const redDevices: string[] = []
+  let isMountPointCorrect = false
+
   console.log(chalk.bold('Name\tSize\tType\tMountpoint'))
   parsedData.forEach((data) => {
     const color =
@@ -45,7 +49,22 @@ export const lsblk = () => {
         `${data.Name}\t${data.Size}\t${data.Type}\t${data.Mountpoint || ''}`
       )
     )
+    if (!data.Mountpoint) {
+      redDevices.push(data.Name)
+    }
+    // 緑色であり、容量が1TB以上の場合のチェック
+    if (data.Mountpoint === '/mt' && convertToBytes(data.Size) >= 1e12) {
+      isMountPointCorrect = true
+    }
   })
+
+  if (isMountPointCorrect) {
+    Logger.normal('Your mount point looks correct 🎉')
+  } else {
+    redDevices.forEach((name) => {
+      Logger.normal(`fileSystemPath might be /dev/${name} ...?`)
+    })
+  }
 }
 
 const convertToBytes = (size: string): number => {
