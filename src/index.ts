@@ -56,7 +56,7 @@ async function main() {
         console.log('solv')
       })
     program
-      .command('getEpoch')
+      .command('epoch')
       .description('Solana Epoch Command')
       .action(() => {
         const epoch = getEpoch()
@@ -64,7 +64,7 @@ async function main() {
       })
 
     program
-      .command('getSlot')
+      .command('slot')
       .description('Solana Slot Command')
       .action(() => {
         const slot = getSlot()

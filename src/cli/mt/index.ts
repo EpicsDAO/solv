@@ -6,7 +6,7 @@ export const mountCommands = () => {
   program
     .command('mt')
     .description('Solana Mount Command')
-    .option('-p,--path <path>', 'File System Path e.g /sda/vda', '/sda/vda')
+    .option('-p,--path <path>', 'File System Path e.g /dev/vda', '/dev/vda')
     .action((options: any) => {
       mount(options.path)
     })
@@ -14,7 +14,7 @@ export const mountCommands = () => {
   program
     .command('umt')
     .description('Solana Umount Command')
-    .option('-p,--path <path>', 'File System Path e.g /sda/vda', '/sda/vda')
+    .option('-p,--path <path>', 'File System Path e.g /dev/vda', '/dev/vda')
     .action((options: any) => {
       mount(options.path)
     })

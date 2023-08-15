@@ -103,6 +103,7 @@ EOL
 
 create_startup_script(){
     echo "Creating start-validator.sh script"
+    mkdir -p $WD
     cat <<EOL | sudo tee $START_VALIDATOR_SCRIPT
 #!/bin/bash
 exec solana-validator \\
