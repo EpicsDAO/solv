@@ -23,11 +23,23 @@ export const lsblk = () => {
         Mountpoint: segments[6] || null,
       }
     })
-    .sort((a, b) => convertToBytes(b.Size) - convertToBytes(a.Size))
+    .sort((a, b) => {
+      if (a.Mountpoint && b.Mountpoint) {
+        return convertToBytes(b.Size) - convertToBytes(a.Size)
+      }
+      if (a.Mountpoint) return 1
+      if (b.Mountpoint) return -1
+      return convertToBytes(b.Size) - convertToBytes(a.Size)
+    })
 
   console.log(chalk.bold('Name\tSize\tType\tMountpoint'))
-  parsedData.forEach((data, index) => {
-    const color = index === 0 ? chalk.red : chalk.white
+  parsedData.forEach((data) => {
+    const color =
+      data.Mountpoint === '/mt'
+        ? chalk.green
+        : data.Mountpoint
+        ? chalk.white
+        : chalk.red
     console.log(
       color(
         `${data.Name}\t${data.Size}\t${data.Type}\t${data.Mountpoint || ''}`
