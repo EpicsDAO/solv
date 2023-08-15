@@ -1,8 +1,8 @@
 import { program } from '@/index'
-import { checkFstab } from './fstab'
 import { checkMemoryAndSwap } from './checkMemoryAndSwap'
 import { checkMountedDirs } from './checkMountedDirs'
 import { ensureSolvOwnership } from './ensureSolvOwnerShip'
+import { Logger } from '@/lib/logger'
 
 export const checkCommpands = () => {
   program
@@ -10,7 +10,14 @@ export const checkCommpands = () => {
     .description('Solana Check Command')
     .action(() => {
       const memorySwap = checkMemoryAndSwap()
-      console.log({ memorySwap })
+      if (!memorySwap) {
+        Logger.normal(
+          `❌ Memory and Swap not enough\nRun ${Logger.successHex(
+            `$ solv setup --swap`
+          )}`
+        )
+        return
+      }
       const mountedDirs = checkMountedDirs()
       console.log({ mountedDirs })
       const solvPermission = ensureSolvOwnership()

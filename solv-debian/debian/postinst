@@ -6,6 +6,8 @@ set -e
 # Variables
 USERNAME="${SOLV_USER:-solv}"
 
+echo $USERNAME
+
 # Directories and Paths
 MOUNT_ROOT="/mt"
 RAMDRIVE_PATH="/mnt/ramdrive"
@@ -15,6 +17,10 @@ LOG_DIR="${WD}/log"
 LEDGER_DIR="${MOUNT_ROOT}/ledger/validator-ledger"
 ACCOUNT_DIR="${MOUNT_ROOT}/solana-accounts"
 START_VALIDATOR_SCRIPT="${WD}/start-validator.sh"
+
+if [ -z "$SOLV_ROOT" ]; then
+    handle_error "SOLV_ROOT is not defined"
+fi
 
 # Solana Wallet Keyfile Paths
 MAINNET_VALIDATOR_KEYFILE="${SOLV_ROOT}/mainnet-validator-keypair.json"
@@ -209,7 +215,6 @@ esac
 
 
 echo "Success! You can now user Solv CLI 🎉"
-sudo -u $USERNAME . /home/$USERNAME/.profile
-sudo -u $USERNAME solv log solv
+sudo -u $USERNAME bash -c 'source ~/.profile && solv --help'
 
 exit 0

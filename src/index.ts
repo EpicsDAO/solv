@@ -13,11 +13,13 @@ import { dfCommands } from './cli/df'
 import { setupCommands } from './cli/setup'
 import { checkCommpands } from './cli/check'
 import { restartCommand } from './cli/restart'
+import { installCommands } from './cli/install'
 dotenv.config()
 
 export const USER = process.env.SOLV_USER || 'solv'
 export const MOUNT_ROOT = '/mt'
 export const RAMDRIVE_PATH = `/mnt/ramdrive`
+export const SWAP_PATH = `/mt/swapfile`
 export const SOLV_ROOT = `${MOUNT_ROOT}/solana`
 export const WD = `${SOLV_ROOT}/solana-validator`
 export const LOG_PATH = `${WD}/log/solana-validator.log`
@@ -54,6 +56,7 @@ async function main() {
     restartCommand()
     stopCommand()
     checkCommpands()
+    installCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()

@@ -6,12 +6,14 @@ import {
 } from '@/index'
 import { spawnSync } from 'child_process'
 import * as dotenv from 'dotenv'
+import { existsSync } from 'fs'
 dotenv.config()
 
 const SOL_NETWORK = process.env.SOL_NETWORK || 'testnet'
 
 export const setupKeys = async () => {
   try {
+    if (existsSync(TESTNET_VALIDATOR_KEYFILE)) return
     const cmds = [
       `solana-keygen new --no-bip39-passphrase --outfile ${VALITATOR_AUTHORITY_KEYFILE}`,
       `solana-keygen new --no-bip39-passphrase --outfile ${VALIDATOR_VOTE_KEYFILE}`,
