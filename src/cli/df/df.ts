@@ -1,5 +1,7 @@
 import { UbuntuDhParams } from '@/types/solvTypes'
 import { execSync } from 'child_process'
+import { convertToBytes } from '.'
+import { Logger } from '@/lib/logger'
 
 export const df = () => {
   const output = execSync('df -h').toString()
@@ -22,18 +24,18 @@ export const df = () => {
     .slice(0, 10)
 
   const isMountedOnCorrect = parsedData.some(
-    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) >= 900e9
+    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) > 900e9 - 1
   )
 
   parsedData.forEach((data) => {
-    if (data.MountedOn === '/mt' && convertToBytes(data.Size) >= 900e9) {
+    if (data.MountedOn === '/mt' && convertToBytes(data.Size) > 900e9 - 1) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
         'color: green'
       )
     } else if (
       data.Filesystem.startsWith('/dev/') &&
-      convertToBytes(data.Size) >= 900e9
+      convertToBytes(data.Size) > 900e9 - 1
     ) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
@@ -49,30 +51,17 @@ export const df = () => {
       .filter(
         (data) =>
           data.Filesystem.startsWith('/dev/') &&
-          convertToBytes(data.Size) >= 900e9
+          convertToBytes(data.Size) > 900e9 - 1
       )
       .map((data) => data.Filesystem)
     if (fsNames.length > 0) {
       console.log(
-        `Consider mounting the following devices as they have more than 900GB of space: ${fsNames.join(
-          ', '
-        )}`
+        Logger.warningHex(
+          `\nfileSystem might be one of ${fsNames.join(', ')} ...?`
+        )
       )
     }
   }
 
   return parsedData
-}
-
-const convertToBytes = (size: string): number => {
-  const units: { [key: string]: number } = {
-    K: 1e3,
-    M: 1e6,
-    G: 1e9,
-    T: 1e12,
-  }
-  const unit = size.slice(-1)
-  const number = parseFloat(size.slice(0, -1))
-
-  return units[unit] ? number * units[unit] : number
 }

@@ -1,6 +1,7 @@
 import { execSync } from 'child_process'
 import chalk from 'chalk'
 import { Logger } from '@/lib/logger'
+import { convertToBytes } from '.'
 
 type BlockDeviceInfo = {
   Name: string
@@ -44,7 +45,8 @@ export const lsblk = () => {
         `${data.Name}\t${data.Size}\t${data.Type}\t${data.Mountpoint || ''}`
       )
     )
-    if (isSizeLarge && data.Name !== '/dev/') redDevices.push(data.Name)
+    if (isSizeLarge && data.Name !== '/dev/')
+      redDevices.push(`/dev/${data.Name}`)
     if (data.Mountpoint === '/mt' && isSizeLarge) isMountPointCorrect = true
   })
 
@@ -53,21 +55,8 @@ export const lsblk = () => {
   } else if (redDevices.length) {
     console.log(
       Logger.warningHex(
-        `\nfileSystem might be one of ${redDevices.join('/dev/, ')} ...?`
+        `\nfileSystem might be one of ${redDevices.join(', ')} ...?`
       )
     )
   }
-}
-
-const convertToBytes = (size: string): number => {
-  const units: { [key: string]: number } = {
-    K: 1e3,
-    M: 1e6,
-    G: 1e9,
-    T: 1e12,
-  }
-  const unit = size.slice(-1)
-  const number = parseFloat(size.slice(0, -1))
-
-  return units[unit] ? number * units[unit] : number
 }
