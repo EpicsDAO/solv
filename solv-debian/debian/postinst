@@ -4,9 +4,7 @@
 set -e
 
 # Variables
-USERNAME="solv"
-
-echo "Username: ${USERNAME}"
+USERNAME="${SOLV_USER:-solv}"
 
 # Directories and Paths
 MOUNT_ROOT="/mt"
@@ -14,7 +12,8 @@ RAMDRIVE_PATH="/mnt/ramdrive"
 SOLV_ROOT="${MOUNT_ROOT}/solana"
 WD="${SOLV_ROOT}/solana-validator"
 LOG_DIR="${WD}/log"
-LEDGER_DIR="${MOUNT_ROOT}/ledger/validator-ledger"
+LOG_PATH="${LOG_DIR}/solana-validator.log"
+LEDGER_PATH="${MOUNT_ROOT}/ledger/validator-ledger"
 ACCOUNT_DIR="${MOUNT_ROOT}/solana-accounts"
 START_VALIDATOR_SCRIPT="${WD}/start-validator.sh"
 
@@ -25,8 +24,8 @@ fi
 # Solana Wallet Keyfile Paths
 MAINNET_VALIDATOR_KEYFILE="${SOLV_ROOT}/mainnet-validator-keypair.json"
 TESTNET_VALIDATOR_KEYFILE="${SOLV_ROOT}/testnet-validator-keypair.json"
-VOTE_ACCOUNT_KEYFILE="${SOLV_ROOT}/vote-account-keypair.json"
-AUTHORITY_KEYFILE="${SOLV_ROOT}/authority-keypair.json"
+VALIDATOR_VOTE_KEYFILE="${SOLV_ROOT}/vote-account-keypair.json"
+VALITATOR_AUTHORITY_KEYFILE="${SOLV_ROOT}/authority-keypair.json"
 
 # Nodenv configurations
 NODENV_DIR="/home/$USERNAME/.nodenv"
@@ -136,6 +135,14 @@ exec solana-validator \\
 EOL
     sudo chmod +x $START_VALIDATOR_SCRIPT
     sudo chown $USERNAME:$USERNAME $START_VALIDATOR_SCRIPT
+    sudo mkdir -p $LOG_DIR
+    sudo mkdir $RAMDRIVE_PATH
+    sudo mkdir -p $LEDGER_PATH
+    sudo mkdir -p $ACCOUNT_DIR
+    sudo chown $USERNAME:$USERNAME -R $LEDGER_PATH
+    sudo chown $USERNAME:$USERNAME -R $ACCOUNT_DIR
+    sudo chown $USERNAME:$USERNAME -R $RAMDRIVE_PATH
+    sudo chown $USERNAME:$USERNAME -R $MOUNT_ROOT
 }
 
 

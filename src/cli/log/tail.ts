@@ -1,4 +1,4 @@
-import { LOG_PATH } from '@/index'
+import { SolvConfig } from '@/types/solvTypes'
 import { spawn } from 'child_process'
 
 export type TailOptions = {
@@ -10,7 +10,7 @@ export type TailOptions = {
 
 export const tail = (options: TailOptions) => {
   try {
-    let cmd = `tail -f ${LOG_PATH}`
+    let cmd = `tail -f ${SolvConfig.LOG_PATH}`
     if (options.error) {
       cmd += ` | grep ERR`
     } else if (options.info) {

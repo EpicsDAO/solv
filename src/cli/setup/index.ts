@@ -1,7 +1,8 @@
-import { VALIDATOR_STARTUP_SCRIPT, program } from '@/index'
+import { program } from '@/index'
 import { setup } from './setup'
 import { startValidator } from './startValidator'
 import chalk from 'chalk'
+import { SolvConfig } from '@/types/solvTypes'
 
 export const setupCommands = async () => {
   program
@@ -14,7 +15,9 @@ export const setupCommands = async () => {
       console.log('setup')
       console.log({ options })
       if (options.sh) {
-        console.log(chalk.white(`Generating ${VALIDATOR_STARTUP_SCRIPT} ...`))
+        console.log(
+          chalk.white(`Generating ${SolvConfig.VALIDATOR_STARTUP_SCRIPT} ...`)
+        )
         startValidator()
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))

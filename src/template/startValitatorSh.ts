@@ -1,19 +1,12 @@
-import {
-  ACCOUNT_PATH,
-  LEDGER_PATH,
-  LOG_PATH,
-  TESTNET_VALIDATOR_KEYFILE,
-  VALIDATOR_VOTE_KEYFILE,
-} from '..'
-
+import { SolvConfig } from '@/types/solvTypes'
 const commonValidatorCommands = `
 #!/bin/bash
 exec solana-validator \\
---identity ${TESTNET_VALIDATOR_KEYFILE} \\
---vote-account ${VALIDATOR_VOTE_KEYFILE} \\
---log ${LOG_PATH} \\
---accounts ${ACCOUNT_PATH} \\
---ledger ${LEDGER_PATH} \\
+--identity ${SolvConfig.TESTNET_VALIDATOR_KEYFILE} \\
+--vote-account ${SolvConfig.VALIDATOR_VOTE_KEYFILE} \\
+--log ${SolvConfig.LOG_PATH} \\
+--accounts ${SolvConfig.ACCOUNT_PATH} \\
+--ledger ${SolvConfig.LEDGER_PATH} \\
 --no-genesis-fetch \\
 --entrypoint entrypoint.testnet.solana.com:8001 \\
 --entrypoint entrypoint2.testnet.solana.com:8001 \\
@@ -42,3 +35,5 @@ export const startValidatorSh = (fetchSnapshot = false) => {
   }
   return commonValidatorCommands + '--no-incremental-snapshots'
 }
+
+startValidatorSh()

@@ -6,7 +6,7 @@ export const statusCommands = () => {
     .command('status')
     .description('solv Status Command')
     .action(() => {
-      const cmd = `sudo systemctl status solv`
+      const cmd = `sudo systemctl status sol`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 }
