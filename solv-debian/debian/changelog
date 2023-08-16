@@ -1,9 +1,9 @@
 solv (0.4.17+jammy1) jammy; urgency=medium
    * Initial release for Ubuntu 22.04 Jammy Jellyfish.
 
- -- EpicsDAO <info@epics.dev>  Thu, 16 Aug 2023 04:20:16 +0200
+ -- EpicsDAO <info@epics.dev>  Thu, 16 Aug 2023 10:50:16 +0200
 
 solv (0.4.17) focal; urgency=medium
    * Add CLI commands
 
- -- EpicsDAO <info@epics.dev>  Thu, 16 Aug 2023 16:20:00 +0200
+ -- EpicsDAO <info@epics.dev>  Thu, 16 Aug 2023 10:40:16 +0200
