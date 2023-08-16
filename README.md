@@ -43,23 +43,9 @@ $ su solv
 $ sudo add-apt-repository ppa:epics-dao/solv
 $ sudo apt update
 $ sudo apt install solv
-           _
-          | |
- ___  ___ | |_    __
-/ __|/ _ \| |\ \ / /
-\__ \ (_) | | \ V /
-|___/\___/|_|  \_/
-
-🔥 Welcome to Solana Validator Tool Solv 🔥
-
-Solv is born and ready for running Solana Validator 🚀
-
-$ source ~/.profile
-$ solv i
-$ solv setup
-$ solv check
-$ solv start
 ```
+
+![Solv](https://storage.googleapis.com/epics-bucket/Validator/apt-install-solv.gif)
 
 Please mount fileSystem that has more than 1TB to `/mt` directory.
 
