@@ -7,15 +7,15 @@ dotenv.config()
 const GPG_SECRET = process.env.GPG_SECRET || ''
 
 export const releaseDebian = async (version: string) => {
-  const genReleaseCmds = [
-    `apt-ftparchive release . > Release`,
-    `gpg --default-key info@epics.dev -abs -o Release.gpg Release`,
-    `gpg --default-key info@epics.dev --clearsign -o InRelease Release`,
-  ]
-  spawnSync(genReleaseCmds.join(' && '), {
-    shell: true,
-    stdio: 'inherit',
-  })
+  // const genReleaseCmds = [
+  //   `apt-ftparchive release . > Release`,
+  //   `gpg --default-key info@epics.dev -abs -o Release.gpg Release`,
+  //   `gpg --default-key info@epics.dev --clearsign -o InRelease Release`,
+  // ]
+  // spawnSync(genReleaseCmds.join(' && '), {
+  //   shell: true,
+  //   stdio: 'inherit',
+  // })
   const debuild1 = ['debuild', '-us', '-uc']
   spawnSync(debuild1.join(' '), {
     shell: true,
