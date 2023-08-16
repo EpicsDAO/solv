@@ -21,6 +21,7 @@ import { getSlot } from './cli/cron/getSlot'
 import { statusCommands } from './cli/status'
 import { startValidatorSh } from './template/startValitatorSh'
 import { configCommands } from './cli/config'
+import { Logger } from './lib/logger'
 dotenv.config()
 
 export const program = new Command()
@@ -30,13 +31,14 @@ async function main() {
   try {
     program
       .command('solv')
-      .description('CLI for Solana Validators')
+      .description('Show Solv AA')
       .action(() => {
-        console.log(startValidatorSh())
+        Logger.solvAA()
+        Logger.installMessage()
       })
     program
       .command('epoch')
-      .description('Solana Epoch Command')
+      .description('Get Current Epoch')
       .action(() => {
         const epoch = getEpoch()
         console.log({ epoch })
@@ -44,7 +46,7 @@ async function main() {
 
     program
       .command('slot')
-      .description('Solana Slot Command')
+      .description('Get Current Slot')
       .action(() => {
         const slot = getSlot()
         console.log({ slot })

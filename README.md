@@ -80,7 +80,7 @@ $ solv mt <fileSystem>
 if you haven't setup swap, you can use the following command.
 
 ```bash
-$ solv setup --swap --path <yourFileSystemPath>
+$ solv setup --swap --path <fileSystem>
 ```
 
 ## Install/Update Solana Version
@@ -133,6 +133,24 @@ If you want to download snapshot, you can use the following command.
 $ solv restart --snapshot
 ```
 
+## Solana Validator Status
+
+```bash
+$ solv status
+```
+
+## Solana Validator Logs
+
+```bash
+$ solv log
+```
+
+## Show Solana Validator Config
+
+```bash
+$ solv config
+```
+
 ## Discord Notification
 
 set `DISCORD_WEBHOOK_URL` in `~/.profile`
@@ -147,6 +165,43 @@ This command will automatically add `--no-incremental-snapshots` to your
 ## Solana Delegation Program
 
 https://solana.org/delegation-program
+
+## Solv CLI
+
+```bash
+$ solv --help
+Usage: solv [options] [command]
+
+CLI for Solana Validators
+
+Options:
+  -V, --version                         output the version number
+  -h, --help                            display help for command
+
+Commands:
+  solv                                  Show Solv AA
+  epoch                                 Get Current Epoch
+  slot                                  Get Current Slot
+  config|c                              Show Solv Validator Config
+  status                                Show Solana Validator Status
+  start                                 Start Solana Validator
+  restart [options]                     Restart Solana Validator
+  stop                                  Stop Solana Validator
+  check                                 Check Solana Validator Environment
+  install|i [options]                   Solana Install/Update Command
+  mt [options]                          Linux Mount Command
+  umt [options]                         Solana Umount Command
+  mtr                                   Mount Reload Command
+  cron                                  Cron Task Command
+  setup [options]                       Setup Solana Validator All-in-One
+  df                                    Disk Free Command
+  lsblk|ls                              Solana Disk Usage Command
+  stake [options] <stakeAccountPubkey>  Solana Delegate Stake Command
+  update|u [options]                    Solana Version Update, Restart and Monitoring Delinquent Stake
+  log|l [options]                       tail logs
+  release|r [options] <version>         publish release
+  help [command]                        display help for command
+```
 
 ## Contributing
 

@@ -6,9 +6,7 @@ import { Logger } from '@/lib/logger'
 import { getSlot } from './getSlot'
 
 export const cronCommands = async () => {
-  const crond = program
-    .command('cron')
-    .description('Solv Discord Notification Command')
+  const crond = program.command('cron').description('Cron Task Command')
 
   crond
     .command('epoch')

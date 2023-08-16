@@ -5,7 +5,7 @@ import { spawnSync } from 'child_process'
 export const mountCommands = () => {
   program
     .command('mt')
-    .description('Solana Mount Command')
+    .description('Linux Mount Command')
     .option('-p,--path <path>', 'File System Path e.g /dev/vda', '/dev/vda')
     .action((options: any) => {
       mount(options.path)

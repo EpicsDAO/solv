@@ -52,6 +52,8 @@ $ solv i
 $ solv setup
 $ solv check
 $ solv start
+
+$ solv --help for more information
 `
     console.log(msg)
     console.log(greyHex(msg2))

@@ -8,7 +8,7 @@ import { Logger } from '@/lib/logger'
 export const dfCommands = async () => {
   program
     .command('df')
-    .description('Solana Disk Free Command')
+    .description('Disk Free Command')
     .action(async () => {
       const dirs = df()
       displayTable(dirs)

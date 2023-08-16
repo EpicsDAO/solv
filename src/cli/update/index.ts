@@ -10,7 +10,9 @@ export const updateCommands = async () => {
   program
     .command('update')
     .alias('u')
-    .description('Monitor Update')
+    .description(
+      'Solana Version Update, Restart and Monitoring Delinquent Stake'
+    )
     .option(
       '-m, --maxDelinquentStake <maxDelinquentStake>',
       'Max Delinquent Stake e.g 5',

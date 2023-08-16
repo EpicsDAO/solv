@@ -7,7 +7,7 @@ import { Logger } from '@/lib/logger'
 export const checkCommpands = () => {
   program
     .command('check')
-    .description('Solana Check Command')
+    .description('Check Solana Validator Environment')
     .action(() => {
       const mountedDirs = checkMountedDirs()
       console.log({ mountedDirs })

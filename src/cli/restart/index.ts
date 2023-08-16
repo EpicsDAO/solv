@@ -7,7 +7,7 @@ import { chmodSync, writeFileSync } from 'fs'
 export const restartCommand = () => {
   program
     .command('restart')
-    .description('Restart Solana')
+    .description('Restart Solana Validator')
     .option('--snapshot', 'Restart Solana Validator with fetch snapshot', false)
     .action(async (options) => {
       if (options.snapshot) {

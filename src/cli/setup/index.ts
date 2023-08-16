@@ -7,7 +7,7 @@ import { SolvConfig } from '@/types/solvTypes'
 export const setupCommands = async () => {
   program
     .command('setup')
-    .description('Solana Setup Command')
+    .description('Setup Solana Validator All-in-One')
     .option('--sh', 'Update Validator StartUp Bash Script', false)
     .option('--swap', 'Setup Swap', false)
     .option('-p, --path <path>', 'Path to Solana Directory', '/dev/vdb')

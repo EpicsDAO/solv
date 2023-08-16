@@ -4,7 +4,7 @@ import { showConfig } from './showConfig'
 export const configCommands = () => {
   program
     .command('config')
-    .description('Show Validator Config')
+    .description('Show Solv Validator Config')
     .alias('c')
     .action(async () => {
       showConfig()
