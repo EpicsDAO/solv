@@ -1,6 +1,5 @@
 import { SolvConfig } from '@/types/solvTypes'
-const commonValidatorCommands = `
-#!/bin/bash
+const commonValidatorCommands = `#!/bin/bash
 exec solana-validator \\
 --identity ${SolvConfig.TESTNET_VALIDATOR_KEYFILE} \\
 --vote-account ${SolvConfig.VALIDATOR_VOTE_KEYFILE} \\
@@ -30,7 +29,7 @@ exec solana-validator \\
 `
 
 export const startValidatorSh = (fetchSnapshot = false) => {
-  if (fetchSnapshot) {
+  if (!fetchSnapshot) {
     return `${commonValidatorCommands}--no-snapshot-fetch`
   }
   return commonValidatorCommands + '--no-incremental-snapshots'

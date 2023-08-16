@@ -15,11 +15,12 @@ import { checkCommpands } from './cli/check'
 import { restartCommand } from './cli/restart'
 import { installCommands } from './cli/install'
 import { mountCommands } from './cli/mt'
-import { discordCommands } from './cli/discord'
-import { getEpoch } from './cli/discord/getEpoch'
-import { getSlot } from './cli/discord/getSlot'
+import { cronCommands } from './cli/cron'
+import { getEpoch } from './cli/cron/getEpoch'
+import { getSlot } from './cli/cron/getSlot'
 import { statusCommands } from './cli/status'
 import { startValidatorSh } from './template/startValitatorSh'
+import { configCommands } from './cli/config'
 dotenv.config()
 
 export const program = new Command()
@@ -48,6 +49,8 @@ async function main() {
         const slot = getSlot()
         console.log({ slot })
       })
+
+    configCommands()
     statusCommands()
     startCommand()
     restartCommand()
@@ -55,7 +58,7 @@ async function main() {
     checkCommpands()
     installCommands()
     mountCommands()
-    await discordCommands()
+    await cronCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()

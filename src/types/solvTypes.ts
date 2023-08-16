@@ -30,4 +30,12 @@ export module SolvConfig {
   export const DEFAULT_AUTHORITY_ACCOUNT_KEYFILE = './authority-keypair.json'
   export const DEFAULT_SOLANA_VERSION = '1.16.7'
   export const DEFAULT_SOLANA_NETWORK = 'testnet'
+
+  export const SOL_SERVICE_PATH = '/etc/systemd/system/sol.service'
+  export const SOL_LOGROTATE_PATH = '/etc/logrotate.d/solana'
+  export const SOL_SYSTEM_CONFIG21_PATH =
+    '/etc/sysctl.d/21-solana-validator.conf'
+  export const SOL_NOFILES_CONF_PATH =
+    '/etc/security/limits.d/90-solana-nofiles.conf'
+  export const SOL_SYSTEM_CONF = '/etc/systemd/system.conf'
 }

@@ -5,12 +5,12 @@ import { getEpoch } from './getEpoch'
 import { Logger } from '@/lib/logger'
 import { getSlot } from './getSlot'
 
-export const discordCommands = async () => {
-  const discord = program
-    .command('discord')
+export const cronCommands = async () => {
+  const crond = program
+    .command('cron')
     .description('Solv Discord Notification Command')
 
-  discord
+  crond
     .command('epoch')
     .description('Solv Discord Epoch Notification Command')
     .option('-c, --cron <value>', 'Cron Job', '0 0 * * *')
@@ -23,7 +23,7 @@ export const discordCommands = async () => {
       })
     })
 
-  discord
+  crond
     .command('slot')
     .description('Solv Discord Slot Notification Command')
     .option('-c, --cron <value>', 'Cron Job', '0 0 * * *')

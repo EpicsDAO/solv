@@ -1,4 +1,5 @@
 import { program } from '@/index'
+import { showConfig } from './showConfig'
 
 export const configCommands = () => {
   program
@@ -6,6 +7,6 @@ export const configCommands = () => {
     .description('Show Validator Config')
     .alias('c')
     .action(async () => {
-      console.log('config')
+      showConfig()
     })
 }

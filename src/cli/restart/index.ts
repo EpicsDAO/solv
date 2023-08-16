@@ -13,11 +13,11 @@ export const restartCommand = () => {
       if (options.snapshot) {
         const startValidator = startValidatorSh(true)
         writeFileSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, startValidator)
-        chmodSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, 'x')
+        chmodSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, '755')
       } else {
         const startValidator = startValidatorSh()
         writeFileSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, startValidator)
-        chmodSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, 'x')
+        chmodSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, '755')
       }
       const cmd = `sudo systemctl restart solana`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })

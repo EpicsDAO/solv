@@ -17,6 +17,12 @@ LEDGER_PATH="${MOUNT_ROOT}/ledger/validator-ledger"
 ACCOUNT_DIR="${MOUNT_ROOT}/solana-accounts"
 START_VALIDATOR_SCRIPT="${WD}/start-validator.sh"
 
+SOL_SERVICE_PATH="/etc/systemd/system/sol.service"
+SOL_LOGROTATE_PATH="/etc/logrotate.d/solana"
+SOL_SYSTEM_CONFIG21_PATH="/etc/sysctl.d/21-solana-validator.conf"
+SOL_NOFILES_CONF_PATH="/etc/security/limits.d/90-solana-nofiles.conf"
+SOL_SYSTEM_CONF=""
+
 if [ -z "$SOLV_ROOT" ]; then
     handle_error "SOLV_ROOT is not defined"
 fi
@@ -62,7 +68,7 @@ install_nodenv() {
 
 setup_sol_service() {
     echo "Creating sol.service systemd service file"
-    cat <<EOL | sudo tee /etc/systemd/system/sol.service
+    cat <<EOL | sudo tee $SOL_SERVICE_PATH
 [Unit]
 Description=Solana Validator
 After=network.target
@@ -87,7 +93,7 @@ EOL
 
 setup_logrotate() {
     echo "Creating logrotate configuration for solana"
-    cat <<EOL | sudo tee /etc/logrotate.d/solana
+    cat <<EOL | sudo tee $SOL_LOGROTATE_PATH
 $LOG_DIR/solana-validator.log {
   su $USERNAME $USERNAME
   daily
@@ -148,7 +154,7 @@ EOL
 
 setup_systemd(){
     echo "Creating solana-validator.conf sysctl configuration file"
-    sudo bash -c "cat >/etc/sysctl.d/21-solana-validator.conf <<EOF
+    sudo bash -c "cat >$SOL_SYSTEM_CONFIG21_PATH <<EOF
 # Increase UDP buffer sizes
 net.core.rmem_default = 134217728
 net.core.rmem_max = 134217728
@@ -162,10 +168,10 @@ vm.max_map_count = 1000000
 fs.nr_open = 1000000
 EOF"
 
-    sudo sysctl -p /etc/sysctl.d/21-solana-validator.conf
-    echo "DefaultLimitNOFILE=1000000" | sudo tee -a /etc/systemd/system.conf
+    sudo sysctl -p $SOL_SYSTEM_CONFIG21_PATH
+    echo "DefaultLimitNOFILE=1000000" | sudo tee -a $SOL_SYSTEM_CONF
 
-    sudo bash -c "cat >/etc/security/limits.d/90-solana-nofiles.conf <<EOF
+    sudo bash -c "cat >$SOL_NOFILES_CONF_PATH <<EOF
 # Increase process file descriptor count limit
 * - nofile 1000000
 EOF"
