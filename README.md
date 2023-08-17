@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://skeet.dev/en/">
-    <img src="https://storage.googleapis.com/epics-bucket/Validator/solvOverview.png" alt="Solv" />
+    <img src="https://storage.googleapis.com/epics-bucket/Validator/solvOverview.png" alt="solv" />
   </a>
 
   <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
@@ -21,13 +21,13 @@
   </a>
 </p>
 
-## CLI Tool for Managing Solana Validators - Solv
+## CLI Tool for Managing Solana Validators - "solv"
 
-Solv is a comprehensive command-line utility designed for Solana network
+solv is a comprehensive command-line utility designed for Solana network
 validators. It simplifies the process of setting up, monitoring, and
 managing Solana validators, offering streamlined operations and enhanced
 performance insights. Whether you're a seasoned Solana validator or just
-getting started, Solv provides the tools you need to ensure optimal validator
+getting started, solv provides the tools you need to ensure optimal validator
 operations on the Solana blockchain.
 
 # Solana Validator Setup
@@ -45,7 +45,7 @@ $ sudo apt update
 $ sudo apt install solv
 ```
 
-![Solv](https://storage.googleapis.com/epics-bucket/Validator/apt-install-solv.gif)
+![solv](https://storage.googleapis.com/epics-bucket/Validator/apt-install-solv.gif)
 
 Please mount fileSystem that has more than 1TB to `/mt` directory.
 
@@ -152,7 +152,7 @@ This command will automatically add `--no-incremental-snapshots` to your
 
 https://solana.org/delegation-program
 
-## Solv CLI
+## solv CLI
 
 ```bash
 $ solv --help
