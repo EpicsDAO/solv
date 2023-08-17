@@ -1,6 +1,7 @@
 import { program } from '@/index'
 import { delegateStake } from './delegateStake'
-import { SolvConfig } from '@/types/solvTypes'
+import inquirer from 'inquirer'
+import { Questions } from '@/types/questions'
 
 export * from './delegateStake'
 
@@ -8,24 +9,28 @@ export const stakeCommands = async () => {
   program
     .command('stake')
     .description('Solana Delegate Stake Command')
-    .argument('<stakeAccountPubkey>', 'Stake Account Pubkey')
-    .option(
-      '-v, --validator <validatorVoteAccountPubkey>',
-      `Validator Vote Account Pubkey e.g. ${SolvConfig.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY}`
-    )
-    .option(
-      '-a, --authority <authorityAccountKeyfile>',
-      `Authority Account Keyfile e.g. ${SolvConfig.DEFAULT_AUTHORITY_ACCOUNT_KEYFILE}`
-    )
-    .action(async (stakeAccountPubkey: string, options) => {
-      const validatorVoteAccountPubkey =
-        options.validator || SolvConfig.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY
-      const authorityAccountKeyfile =
-        options.authority || SolvConfig.DEFAULT_AUTHORITY_ACCOUNT_KEYFILE
-      await delegateStake(
-        stakeAccountPubkey,
-        validatorVoteAccountPubkey,
-        authorityAccountKeyfile
-      )
+    .action(async () => {
+      const { validatorVoteAccount, stakeAccount, authorityAccount } =
+        await askDelegationStake()
+      await delegateStake(stakeAccount, validatorVoteAccount, authorityAccount)
     })
+}
+
+export const askDelegationStake = async () => {
+  const asking = inquirer.prompt(Questions.delegateStake)
+  let validatorVoteAccount = ''
+  let stakeAccount = ''
+  let authorityAccount = ''
+  await asking.then(
+    async (answer: {
+      validatorVoteAccount: string
+      stakeAccount: string
+      authorityAccount: string
+    }) => {
+      validatorVoteAccount = answer.validatorVoteAccount
+      stakeAccount = answer.stakeAccount
+      authorityAccount = answer.authorityAccount
+    }
+  )
+  return { validatorVoteAccount, stakeAccount, authorityAccount }
 }

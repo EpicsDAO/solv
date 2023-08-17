@@ -11,8 +11,7 @@ export const changeLogWrite = (
     let newEntry = ''
 
     const date = new Date()
-    const formattedDate =
-      format(date, "EEE, dd MMM yyyy HH:mm:ss 'CET'") + ' +0200'
+    const formattedDate = format(date, 'EEE, dd MMM yyyy HH:mm:ss') + ' +0200'
 
     if (releaseType === 'jammy') {
       newEntry = `solv (${version}+jammy1) jammy; urgency=medium\n   * ${updateInfo}\n\n -- EpicsDAO <info@epics.dev>  ${formattedDate}\n\n`
