@@ -1,6 +1,8 @@
 import { program } from '@/index'
 import { mvDeb } from './mvDeb'
 import { releaseDebian } from './releaseDebian'
+import { ReleaseType } from '@/types/solvTypes'
+import { changeLogWrite } from './genChangeLog'
 
 export const releaseCommands = async () => {
   program
@@ -14,7 +16,11 @@ export const releaseCommands = async () => {
       if (options.mv) {
         mvDeb(version)
       } else {
-        await releaseDebian(version)
+        const releaseTypes: ReleaseType[] = ['jammy', 'focal']
+        for await (const releaseType of releaseTypes) {
+          changeLogWrite(version, releaseType, 'Release')
+          await releaseDebian(version)
+        }
       }
     })
 }

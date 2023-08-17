@@ -19,7 +19,6 @@ import { cronCommands } from './cli/cron'
 import { getEpoch } from './cli/cron/getEpoch'
 import { getSlot } from './cli/cron/getSlot'
 import { statusCommands } from './cli/status'
-import { startValidatorSh } from './template/startValitatorSh'
 import { configCommands } from './cli/config'
 import { Logger } from './lib/logger'
 dotenv.config()
@@ -60,7 +59,7 @@ async function main() {
     checkCommpands()
     installCommands()
     mountCommands()
-    await cronCommands()
+    // await cronCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()
