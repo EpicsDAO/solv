@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://skeet.dev/en/">
-    <img src="https://storage.googleapis.com/epics-bucket/Validator/solanaLogo.png" alt="Solv" />
+    <img src="https://storage.googleapis.com/epics-bucket/Validator/solvOverview.png" alt="Solv" />
   </a>
 
   <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
