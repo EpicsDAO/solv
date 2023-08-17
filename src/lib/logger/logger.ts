@@ -48,9 +48,7 @@ export module Logger {
 Solv is born and ready for running Solana Validator 🚀
 
 $ source ~/.profile
-$ solv i
 $ solv setup
-$ solv check
 $ solv start
 
 $ solv --help for more information

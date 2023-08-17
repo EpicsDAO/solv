@@ -1,11 +1,21 @@
-import { spawnSync } from 'child_process'
+import { execSync, spawnSync } from 'child_process'
 import { setupDirs } from './mkdirs'
 import { setupKeys } from './setupKeys'
 import { setupSwap } from './setupSwap'
 import { startValidator } from './startValidator'
+import { Logger } from '@/lib/logger'
+import chalk from 'chalk'
 
 export const setup = (options = { swap: false, fileSystem: '/dev/vdb' }) => {
   try {
+    if (!isSolanaInstalled()) {
+      Logger.normal(
+        `Did you forget to restart your terminal?\n\n${chalk.green(
+          `$ source ~/.profile`
+        )}`
+      )
+      return
+    }
     startValidator()
     setupDirs()
     setupKeys()
@@ -19,5 +29,14 @@ export const setup = (options = { swap: false, fileSystem: '/dev/vdb' }) => {
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)
+  }
+}
+
+function isSolanaInstalled() {
+  try {
+    execSync('solana --version')
+    return true
+  } catch (error) {
+    return false
   }
 }
