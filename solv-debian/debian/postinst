@@ -61,9 +61,6 @@ handle_error() {
 
 setup_firewall() {
     echo "Configuring firewall"
-    if ! dpkg -l | grep -q "ufw"; then
-        apt-get install ufw
-    fi
     yes | ufw enable
     ufw allow ssh
     ufw allow 53 
