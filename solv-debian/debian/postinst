@@ -65,7 +65,7 @@ install_nodenv() {
     chown $USERNAME:$USERNAME $NODENV_DIR/bin/nodenv;
     sudo -u $USERNAME nodenv install $NODE_VERSION;
     sudo -u $USERNAME nodenv global $NODE_VERSION;
-    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.profile || handle_error "Failed to add nodenv init to profile";
+    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.bashrc || handle_error "Failed to add nodenv init to bashrc";
 }
 
 setup_sol_service() {
@@ -217,9 +217,11 @@ case "$1" in
     ;;
 esac
 
-sh -c "$(curl -sSfL https://release.solana.com/v$SOLANA_VERSION/install)"
+echo "Installing Solana CLI"
+sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v$SOLANA_VERSION/install)"
+
 echo "Success! You can now user Solv CLI 🎉"
 cd /home/$USERNAME
-sudo -u $USERNAME bash -c 'source ~/.profile && solv solv'
+sudo -u $USERNAME bash -c "source /home/$USERNAME/.bashrc && solv solv"
 
 exit 0

@@ -1,3 +1,4 @@
+import { VERSION } from '@/lib/version'
 import { SolvConfig } from './solvTypes'
 
 export module Questions {
@@ -5,9 +6,10 @@ export module Questions {
     {
       type: 'input',
       name: 'version',
-      message: "What's the new version? (e.g. 0.0.1)",
+      message: `What's the new version? (e.g. 0.1.0)`,
       default() {
-        return '0.0.1'
+        const newVersion = incrementVersion(VERSION)
+        return newVersion
       },
     },
   ]
@@ -38,4 +40,11 @@ export module Questions {
       },
     },
   ]
+}
+
+export function incrementVersion(version: string) {
+  const parts = version.split('.')
+  const last = parseInt(parts[parts.length - 1], 10)
+  parts[parts.length - 1] = (last + 1).toString()
+  return parts.join('.')
 }

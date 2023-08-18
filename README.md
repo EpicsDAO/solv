@@ -119,6 +119,9 @@ If you want to download snapshot, you can use the following command.
 $ solv restart --snapshot
 ```
 
+This command will automatically add `--no-incremental-snapshots` to your
+`solana-validator.sh` command.
+
 ## Solana Validator Status
 
 ```bash
@@ -133,6 +136,8 @@ $ solv log
 
 ## Show Solana Validator Config
 
+This command will show your all config paths which are used by solana validator.
+
 ```bash
 $ solv config
 ```
@@ -144,9 +149,6 @@ set `DISCORD_WEBHOOK_URL` in `~/.profile`
 ```bash
 DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/...your-webhook-url"
 ```
-
-This command will automatically add `--no-incremental-snapshots` to your
-`solana-validator.sh` command.
 
 ## Solana Delegation Program
 
@@ -178,7 +180,6 @@ Commands:
   mt [options]                          Linux Mount Command
   umt [options]                         Solana Umount Command
   mtr                                   Mount Reload Command
-  cron                                  Cron Task Command
   setup [options]                       Setup Solana Validator All-in-One
   df                                    Disk Free Command
   lsblk|ls                              Solana Disk Usage Command
