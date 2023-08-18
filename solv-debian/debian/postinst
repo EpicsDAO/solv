@@ -217,9 +217,6 @@ case "$1" in
     ;;
 esac
 
-echo "Installing Solana CLI"
-sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v$SOLANA_VERSION/install)"
-
 echo "Success! You can now user Solv CLI 🎉"
 cd /home/$USERNAME
 sudo -u $USERNAME bash -c "source /home/$USERNAME/.bashrc && solv solv"

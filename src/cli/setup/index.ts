@@ -12,8 +12,6 @@ export const setupCommands = async () => {
     .option('--swap', 'Setup Swap', false)
     .option('-p, --path <path>', 'Path to Solana Directory', '/dev/vdb')
     .action((options) => {
-      console.log('setup')
-      console.log({ options })
       if (options.sh) {
         console.log(
           chalk.white(`Generating ${SolvConfig.VALIDATOR_STARTUP_SCRIPT} ...`)

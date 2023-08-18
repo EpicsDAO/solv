@@ -47,7 +47,8 @@ export module Logger {
     const msg2 = `
 Solv is born and ready for running Solana Validator 🚀
 
-$ source ~/.profile
+$ cd ~ && source ~/.profile
+$ solv i
 $ solv setup
 $ solv start
 
