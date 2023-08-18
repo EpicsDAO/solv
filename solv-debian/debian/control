@@ -11,7 +11,7 @@ Rules-Requires-Root: no
 
 Package: solv
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ufw
 Description: CLI Tool for Managing Solana Validators - Solv
  Solv is a comprehensive command-line utility designed for Solana network
  validators. It simplifies the process of setting up, monitoring, and
