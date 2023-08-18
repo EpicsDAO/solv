@@ -219,6 +219,6 @@ esac
 
 echo "Success! You can now user Solv CLI 🎉"
 cd /home/$USERNAME
-sudo -u $USERNAME bash -c "source /home/$USERNAME/.bashrc && solv solv"
+sudo -u $USERNAME bash -c 'source ~/.profile && solv solv'
 
 exit 0
