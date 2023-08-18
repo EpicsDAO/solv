@@ -195,7 +195,7 @@ EOF"
 case "$1" in
     configure)
         setup_firewall
-
+        setup_directories
         if [ ! -d "$NODENV_DIR" ]; then
             install_nodenv
         fi
@@ -218,7 +218,6 @@ case "$1" in
 esac
 
 echo "Success! You can now user Solv CLI 🎉"
-cd /home/$USERNAME
 sudo -u $USERNAME bash -c 'source ~/.profile && solv solv'
 
 exit 0

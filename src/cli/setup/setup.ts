@@ -16,7 +16,7 @@ export const setup = (options = { swap: false, fileSystem: '/dev/vdb' }) => {
       )
       return
     }
-    const chown = `sudo chown -R solv:solv /mt && sudo chown -R solv:solv /mnt && sudo chmod -R 755 /mnt && sudo chmod -R 755 /mt`
+    const chown = `sudo chown -R solv:solv /mt && sudo chmod -R 755 /mt`
     spawnSync(chown, { shell: true, stdio: 'inherit' })
     startValidator()
     setupDirs()
