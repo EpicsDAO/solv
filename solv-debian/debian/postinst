@@ -7,12 +7,6 @@ set -e
 USERNAME="${SOLV_USER:-solv}"
 SOLANA_VERSION="${SOLANA_VERSION:-1.14.24}"
 
-check_user_exists $USERNAME
-if [ $? -ne 0 ]; then
-    handle_error "User $USERNAME does not exist."
-fi
-
-
 # Directories and Paths
 MOUNT_ROOT="/mt"
 RAMDRIVE_PATH="/mnt/ramdrive"
@@ -44,14 +38,6 @@ VALITATOR_AUTHORITY_KEYFILE="${SOLV_ROOT}/authority-keypair.json"
 NODENV_DIR="/home/$USERNAME/.nodenv"
 NODENV_REPO="https://github.com/nodenv/nodenv.git"
 NODE_VERSION="18.17.1"
-
-check_user_exists() {
-    if id "$1" &>/dev/null; then
-        return 0 # User exists
-    else
-        return 1 # User does not exist
-    fi
-}
 
 
 handle_error() {
