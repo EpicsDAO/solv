@@ -218,6 +218,6 @@ case "$1" in
 esac
 
 echo "Success! You can now user Solv CLI 🎉"
-sudo -u $USERNAME bash -c 'source ~/.profile && solv solv'
+source /home/$USERNAME/.profile && solv solv
 
 exit 0

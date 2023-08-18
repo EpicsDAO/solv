@@ -6,7 +6,7 @@ export module Questions {
     {
       type: 'input',
       name: 'version',
-      message: `What's the new version? (e.g. 0.1.0)`,
+      message: `What's the new version?`,
       default() {
         const newVersion = incrementVersion(VERSION)
         return newVersion
