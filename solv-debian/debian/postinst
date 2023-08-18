@@ -65,7 +65,7 @@ install_nodenv() {
     chown $USERNAME:$USERNAME $NODENV_DIR/bin/nodenv;
     sudo -u $USERNAME nodenv install $NODE_VERSION;
     sudo -u $USERNAME nodenv global $NODE_VERSION;
-    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.bashrc || handle_error "Failed to add nodenv init to bashrc";
+    echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.profile || handle_error "Failed to add nodenv init to profile";
 }
 
 setup_sol_service() {
