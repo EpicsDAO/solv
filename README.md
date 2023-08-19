@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://skeet.dev/en/">
+  <a href="https://solv.epics.dev/">
     <img src="https://storage.googleapis.com/epics-bucket/Validator/solvOverview.png" alt="solv" />
   </a>
 
