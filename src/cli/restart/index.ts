@@ -19,7 +19,7 @@ export const restartCommand = () => {
         writeFileSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, startValidator)
         chmodSync(SolvConfig.VALIDATOR_STARTUP_SCRIPT, '755')
       }
-      const cmd = `sudo systemctl restart solana`
+      const cmd = `sudo systemctl restart sol`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 }
