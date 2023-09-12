@@ -30,6 +30,7 @@ export const updateCommands = async () => {
           options.maxDelinquentStake
         )}`
       )
-      monitorUpdate(options.maxDelinquentStake)
+      const maxDelinquentStake = parseInt(options.maxDelinquentStake) || 5
+      monitorUpdate(maxDelinquentStake)
     })
 }
