@@ -31,8 +31,8 @@ export const checkCommpands = () => {
 
       ensureSolvOwnership()
       Logger.normal(
-        `You are all set 🎉\nRun ${Logger.successHex(
-          `$ solv start\n and check your log\n$ solv log tail`
+        `You are all set 🎉\n\nRun ${Logger.successHex(
+          `$ solv start\n\n and check your log\n\n$ solv log`
         )}`
       )
     })
