@@ -16,7 +16,7 @@ export const updateCommands = async () => {
     )
     .option(
       '-m, --maxDelinquentStake <maxDelinquentStake>',
-      'Max Delinquent Stake e.g 5',
+      `Max Delinquent Stake e.g ${SolvConfig.DEFAULT_DELINQUENT_STAKE}`,
       `${SolvConfig.DEFAULT_DELINQUENT_STAKE}`
     )
     .option(
