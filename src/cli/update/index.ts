@@ -3,6 +3,7 @@ import { monitorUpdate, updateVersion } from './update'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { SolvConfig } from '@/types/solvTypes'
+import { updateSolv } from './updateSolv'
 
 export * from './update'
 
@@ -24,6 +25,7 @@ export const updateCommands = async () => {
       SolvConfig.DEFAULT_SOLANA_VERSION
     )
     .action((options: any) => {
+      updateSolv()
       updateVersion(options.version)
       Logger.normal(
         `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
