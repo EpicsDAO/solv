@@ -14,7 +14,7 @@ export const checkCommpands = () => {
       if (!mountedDirs) {
         Logger.normal(
           `❌ /mt dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
-            `\$ solv df\n\$ solv ls`
+            `\n\$ solv df\n\$ solv ls`
           )}`
         )
         return

@@ -10,7 +10,7 @@ export const setupCommands = async () => {
     .description('Setup Solana Validator All-in-One')
     .option('--sh', 'Update Validator StartUp Bash Script', false)
     .option('--swap', 'Setup Swap', false)
-    .option('-p, --path <path>', 'Path to Solana Directory', '/dev/vdb')
+    .option('-p, --path <path>', 'Path to Solana Directory', '/dev/nvme2n1')
     .action((options) => {
       if (options.sh) {
         console.log(

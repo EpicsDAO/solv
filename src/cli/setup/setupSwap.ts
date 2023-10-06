@@ -4,9 +4,11 @@ import { spawnSync } from 'child_process'
 import { checkMemoryAndSwap } from '../check/checkMemoryAndSwap'
 import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { SolvConfig } from '@/types/solvTypes'
+import { formatDisk } from './formatDisk'
 
-export const setupSwap = (fileSystem = '/dev/vdb') => {
+export const setupSwap = (fileSystem = '/dev/nvme2n1') => {
   try {
+    formatDisk(fileSystem)
     const cmd = [
       `sudo mount -t tmpfs -o rw,size=300G tmpfs ${SolvConfig.ACCOUNT_PATH}`,
       `sudo dd if=/dev/zero of=${SolvConfig.SWAP_PATH} bs=1G count=300`,
