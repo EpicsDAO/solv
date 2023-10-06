@@ -4,6 +4,8 @@ import { sendDiscord } from '@/lib/sendDiscord'
 import { getEpoch } from './getEpoch'
 import { Logger } from '@/lib/logger'
 import { getSlot } from './getSlot'
+import { airdrop } from '../setup/airdrop'
+import { spawnSync } from 'child_process'
 
 export const cronCommands = async () => {
   const crond = program.command('cron').description('Cron Task Command')
@@ -32,5 +34,40 @@ export const cronCommands = async () => {
         console.log({ slot })
         await sendDiscord(`Current Slot: ${slot}`)
       })
+    })
+
+  crond
+    .command('pm2')
+    .description('Solana Airdrop Command')
+    .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
+    .action(async (options: any) => {
+      Logger.normal(`🕰️ Running Airdrop Cron Job: ${options.cron}`)
+      cron.schedule(options.cron, async () => {
+        airdrop()
+      })
+    })
+
+  crond
+    .command('airdrop')
+    .description('Solana Airdrop Command by pm2')
+    .action(async () => {
+      const cmd = `npx pm2 start yarn --name solvAirdrop -- start cron pm2`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
+    })
+
+  crond
+    .command('stopAirdrop')
+    .description('Solana Airdrop Command by pm2')
+    .action(async () => {
+      const cmd = `npx pm2 stop solvAirdrop`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
+    })
+
+  crond
+    .command('monit')
+    .description('Monitor Solana Validator by pm2')
+    .action(async () => {
+      const cmd = `npx pm2 monit`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 }

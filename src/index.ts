@@ -59,7 +59,7 @@ async function main() {
     checkCommpands()
     installCommands()
     mountCommands()
-    // await cronCommands()
+    await cronCommands()
     await setupCommands()
     await dfCommands()
     await stakeCommands()
