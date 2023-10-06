@@ -51,7 +51,7 @@ export const cronCommands = async () => {
     .command('airdrop')
     .description('Solana Airdrop Command by pm2')
     .action(async () => {
-      const cmd = `npx pm2 start yarn --name solvAirdrop -- start cron pm2`
+      const cmd = `npx pm2 start solv --name solvAirdrop -- cron pm2`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 
