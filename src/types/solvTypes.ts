@@ -34,7 +34,7 @@ export module SolvConfig {
   export const DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY =
     '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1'
   export const DEFAULT_AUTHORITY_ACCOUNT_KEYFILE = './authority-keypair.json'
-  export const DEFAULT_SOLANA_VERSION = '1.17.0'
+  export const DEFAULT_SOLANA_VERSION = '1.17.1'
   export const DEFAULT_DELINQUENT_STAKE = 5
   export const DEFAULT_SOLANA_NETWORK = 'testnet'
 
