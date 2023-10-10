@@ -24,7 +24,6 @@ export const setup = (
     startValidator()
     setupDirs()
     setupKeys()
-    const chown2 = `sudo chown -R solv:solv /mt && sudo chmod -R 755 /mt`
     spawnSync(chown, { shell: true, stdio: 'inherit' })
     if (options.swap) setupSwap(options.fileSystem)
     const cmd = [

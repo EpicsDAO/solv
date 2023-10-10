@@ -238,10 +238,9 @@ esac
 
 SOLV_HOME=$(eval echo ~solv)
 export SOLANA_INSTALL_DIR="$SOLV_HOME/.local/share/solana/install"
-sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v${version}/install)"
+sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
 echo "Success! You can now user Solv CLI 🎉"
 cd /home/$USERNAME || true
 sudo -u $USERNAME bash -c 'source ~/.profile && solv solv' || echo "$ source ~/.profile"
-
 
 exit 0
