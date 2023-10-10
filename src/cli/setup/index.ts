@@ -2,7 +2,7 @@ import { program } from '@/index'
 import { setup } from './setup'
 import { startValidator } from './startValidator'
 import chalk from 'chalk'
-import { SolvConfig } from '@/types/solvTypes'
+import { SolvConfig, SolvPaths } from '@/types/solvTypes'
 
 export const setupCommands = async () => {
   program
@@ -10,7 +10,11 @@ export const setupCommands = async () => {
     .description('Setup Solana Validator All-in-One')
     .option('--sh', 'Update Validator StartUp Bash Script', false)
     .option('--swap', 'Setup Swap', false)
-    .option('-p, --path <path>', 'Path to Solana Directory', '/dev/nvme2n1')
+    .option(
+      '-p, --path <path>',
+      'Path to Solana Directory',
+      SolvPaths.DEFAULT_FILE_SYSTEM
+    )
     .action((options) => {
       if (options.sh) {
         console.log(

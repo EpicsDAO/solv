@@ -63,10 +63,25 @@ install_nodenv() {
     sudo -u $USERNAME git clone https://github.com/nodenv/node-build.git $NODENV_DIR/plugins/node-build
     sudo -u $USERNAME git clone https://github.com/nodenv/nodenv-aliases.git $NODENV_DIR/plugins/nodenv-aliases;
     chown $USERNAME:$USERNAME $NODENV_DIR/bin/nodenv;
-    sudo -u $USERNAME nodenv install $NODE_VERSION;
+
+    # Retry logic for nodenv install
+    MAX_RETRIES=3
+    RETRY_DELAY=10
+    for i in $(seq 1 $MAX_RETRIES); do
+        sudo -u $USERNAME nodenv install $NODE_VERSION && break
+        if [ $i -lt $MAX_RETRIES ]; then
+            echo "Failed to install Node version $NODE_VERSION. Retrying in $RETRY_DELAY seconds..."
+            sleep $RETRY_DELAY
+        else
+            echo "Failed to install Node version $NODE_VERSION after $MAX_RETRIES attempts. Exiting."
+            return 1
+        fi
+    done
+
     sudo -u $USERNAME nodenv global $NODE_VERSION;
     echo "eval \"\$(nodenv init - bash)\"" >> /home/$USERNAME/.profile || handle_error "Failed to add nodenv init to profile";
 }
+
 
 setup_sol_service() {
     echo "Creating sol.service systemd service file"

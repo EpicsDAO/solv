@@ -1,12 +1,18 @@
 import { program } from '@/index'
 import { mount } from './mount'
 import { spawnSync } from 'child_process'
+import { SolvPaths } from '@/types/solvTypes'
+import { umount } from './umount'
 
 export const mountCommands = () => {
   program
     .command('mt')
     .description('Linux Mount Command')
-    .option('-p,--path <path>', 'File System Path e.g /dev/vda', '/dev/vda')
+    .option(
+      '-p,--path <path>',
+      'File System Path e.g /dev/vda',
+      SolvPaths.DEFAULT_FILE_SYSTEM
+    )
     .action((options: any) => {
       mount(options.path)
     })
@@ -14,9 +20,13 @@ export const mountCommands = () => {
   program
     .command('umt')
     .description('Solana Umount Command')
-    .option('-p,--path <path>', 'File System Path e.g /dev/vda', '/dev/vda')
+    .option(
+      '-p,--path <path>',
+      'File System Path e.g /dev/vda',
+      SolvPaths.DEFAULT_FILE_SYSTEM
+    )
     .action((options: any) => {
-      mount(options.path)
+      umount(options.path)
     })
 
   program
