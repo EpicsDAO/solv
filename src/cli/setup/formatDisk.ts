@@ -1,6 +1,7 @@
+import { SolvPaths } from '@/types/solvTypes'
 import { spawnSync } from 'child_process'
 
-export const formatDisk = (fileSystem = '/dev/nvme2n1') => {
+export const formatDisk = (fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM) => {
   // Check if the disk is already formatted
   const checkDisk = spawnSync(`sudo blkid ${fileSystem}`, {
     shell: true,

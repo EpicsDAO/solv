@@ -3,10 +3,10 @@ import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { checkMemoryAndSwap } from '../check/checkMemoryAndSwap'
 import { ensureFstabEntries } from '../check/ensureMountAndFiles'
-import { SolvConfig } from '@/types/solvTypes'
+import { SolvConfig, SolvPaths } from '@/types/solvTypes'
 import { formatDisk } from './formatDisk'
 
-export const setupSwap = (fileSystem = '/dev/nvme2n1') => {
+export const setupSwap = (fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM) => {
   try {
     formatDisk(fileSystem)
     const cmd = [
