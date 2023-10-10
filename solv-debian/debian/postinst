@@ -5,7 +5,7 @@ set -e
 
 # Variables
 USERNAME="${SOLV_USER:-solv}"
-SOLANA_VERSION="${SOLANA_VERSION:-1.14.24}"
+SOLANA_VERSION="1.17.1"
 
 # Directories and Paths
 MOUNT_ROOT="/mt"
@@ -37,7 +37,7 @@ VALITATOR_AUTHORITY_KEYFILE="${SOLV_ROOT}/authority-keypair.json"
 # Nodenv configurations
 NODENV_DIR="/home/$USERNAME/.nodenv"
 NODENV_REPO="https://github.com/nodenv/nodenv.git"
-NODE_VERSION="18.17.1"
+NODE_VERSION="18.18.0"
 
 
 handle_error() {
@@ -95,8 +95,8 @@ EOL
 
 setup_logrotate() {
     echo "Creating logrotate configuration for solana"
-    if [ -z "$SOL_LOGROTATE_PATH" ]; then
-        echo "SOL_LOGROTATE_PATH is not set. Skipping logrotate configuration."
+    if [ -f "$SOL_LOGROTATE_PATH" ]; then
+        echo "SOL_LOGROTATE_PATH is already exists.Skipping logrotate configuration."
     else
         cat <<EOL | sudo tee $SOL_LOGROTATE_PATH
 $LOG_PATH {
@@ -163,13 +163,16 @@ setup_directories() {
     if [ ! -d "$ACCOUNT_DIR" ]; then
         sudo mkdir -p $ACCOUNT_DIR
     fi
-    sudo chown $USERNAME:$USERNAME -R $LOG_DIR $RAMDRIVE_PATH $LEDGER_PATH $ACCOUNT_DIR
+    if [ ! -d "$SOLV_ROOT" ]; then
+        sudo chown $USERNAME:$USERNAME -R $LOG_DIR $RAMDRIVE_PATH $LEDGER_PATH $ACCOUNT_DIR
+    fi
+    
 }
 
 
 setup_systemd(){
-    echo "Creating solana-validator.conf sysctl configuration file"
         if [ ! -f "$SOL_SYSTEM_CONFIG21_PATH" ]; then
+    echo "Creating solana-validator.conf sysctl configuration file"
     sudo bash -c "cat >$SOL_SYSTEM_CONFIG21_PATH <<EOF
 # Increase UDP buffer sizes
 net.core.rmem_default = 134217728
@@ -199,8 +202,9 @@ case "$1" in
         if [ ! -d "$NODENV_DIR" ]; then
             install_nodenv
         fi
-
-        setup_sol_service
+        if [ ! -f "$SOL_SERVICE_PATH" ]; then
+            setup_sol_service
+        fi
         setup_logrotate
         if [ ! -f "$START_VALIDATOR_SCRIPT" ]; then
             create_startup_script
@@ -217,6 +221,9 @@ case "$1" in
     ;;
 esac
 
+SOLV_HOME=$(eval echo ~solv)
+export SOLANA_INSTALL_DIR="$SOLV_HOME/.local/share/solana/install"
+sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v${version}/install)"
 echo "Success! You can now user Solv CLI 🎉"
 cd /home/$USERNAME || true
 sudo -u $USERNAME bash -c 'source ~/.profile && solv solv' || echo "$ source ~/.profile"
