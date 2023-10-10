@@ -54,25 +54,19 @@ Edgevana's Ubuntu AMD Server's default mountpoint is `/dev/vdb`.
 unmount if it is mounted to other directory.
 
 ```bash
-$ solv umt <mountedPoint>
+$ solv umt -p <mountedPoint>
 ```
 
 and mount to `/mt` directory.
 
 ```bash
-$ solv mt <fileSystem>
+$ solv mt -p <fileSystem>
 ```
 
 if you haven't setup swap, you can use the following command.
 
 ```bash
 $ solv setup --swap --path <fileSystem>
-```
-
-## Install/Update Solana Version
-
-```bash
-$ solv i -v 1.16.7
 ```
 
 ## Generate Solana Validator Keys and Config

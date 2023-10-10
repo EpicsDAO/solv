@@ -10,7 +10,6 @@ export const checkCommpands = () => {
     .description('Check Solana Validator Environment')
     .action(() => {
       const mountedDirs = checkMountedDirs()
-      console.log({ mountedDirs })
       if (!mountedDirs) {
         Logger.normal(
           `❌ /mt dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
