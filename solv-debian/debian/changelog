@@ -1,3 +1,8 @@
+solv (1.1.2+jammy1) jammy; urgency=medium
+   * Release
+
+ -- EpicsDAO <info@epics.dev>  Wed, 11 Oct 2023 13:29:14 +0200
+
 solv (1.1.1) focal; urgency=medium
    * Release
 
