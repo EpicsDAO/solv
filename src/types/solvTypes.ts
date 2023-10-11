@@ -39,7 +39,7 @@ export module SolvConfig {
   export const DEFAULT_DELINQUENT_STAKE = 5
   export const DEFAULT_SOLANA_NETWORK = 'testnet'
 
-  export const SOL_SERVICE_PATH = '/etc/systemd/system/sol.service'
+  export const SOL_SERVICE_PATH = '/etc/systemd/system/solv.service'
   export const SOL_LOGROTATE_PATH = '/etc/logrotate.d/solana'
   export const SOL_SYSTEM_CONFIG21_PATH =
     '/etc/sysctl.d/21-solana-validator.conf'

@@ -18,7 +18,7 @@ LEDGER_PATH="${MOUNT_ROOT}/ledger/validator-ledger"
 ACCOUNT_DIR="${MOUNT_ROOT}/solana-accounts"
 START_VALIDATOR_SCRIPT="${WD}/start-validator.sh"
 
-SOL_SERVICE_PATH="/etc/systemd/system/sol.service"
+SOL_SERVICE_PATH="/etc/systemd/system/solv.service"
 SOL_LOGROTATE_PATH="/etc/logrotate.d/solana"
 SOL_SYSTEM_CONFIG21_PATH="/etc/sysctl.d/21-solana-validator.conf"
 SOL_NOFILES_CONF_PATH="/etc/security/limits.d/90-solana-nofiles.conf"
@@ -84,7 +84,7 @@ install_nodenv() {
 
 
 setup_sol_service() {
-    echo "Creating sol.service systemd service file"
+    echo "Creating solv.service systemd service file"
     cat <<EOL | sudo tee $SOL_SERVICE_PATH
 [Unit]
 Description=Solana Validator
@@ -120,7 +120,7 @@ $LOG_PATH {
   rotate 3
   missingok
   postrotate
-    systemctl kill -s USR1 sol.service
+    systemctl kill -s USR1 solv.service
   endscript
 }
 EOL
