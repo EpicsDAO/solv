@@ -15,9 +15,9 @@ export const setupKeys = async () => {
       `solana airdrop 1`,
       `solana create-vote-account ${SolvConfig.VALIDATOR_VOTE_KEYFILE} ${SolvConfig.TESTNET_VALIDATOR_KEYFILE} ${SolvConfig.VALITATOR_AUTHORITY_KEYFILE} --commission 10`,
     ]
-    cmds.forEach((cmd) => {
+    for (const cmd of cmds) {
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
-    })
+    }
     return true
   } catch (error) {
     throw new Error(`setupKeys Error: ${error}`)

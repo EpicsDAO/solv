@@ -9,7 +9,7 @@ import { formatDisk } from './formatDisk'
 export const setupSwap = (fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM) => {
   try {
     formatDisk(fileSystem)
-    const cmd = [
+    const cmds = [
       `sudo mount -t tmpfs -o rw,size=300G tmpfs ${SolvConfig.ACCOUNT_PATH}`,
       `sudo dd if=/dev/zero of=${SolvConfig.SWAP_PATH} bs=1G count=300`,
       `sudo mkswap ${SolvConfig.SWAP_PATH}`,
@@ -22,7 +22,9 @@ export const setupSwap = (fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM) => {
     }
     console.log(chalk.white('Setting up swap...\n'))
     const spinner = Logger.syncSpinner('This may take a while...')
-    spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
+    for (const line of cmds) {
+      spawnSync(line, { shell: true, stdio: 'inherit' })
+    }
     spinner.stop()
     console.log(chalk.green('Swap setup complete!\n'))
   } catch (error) {

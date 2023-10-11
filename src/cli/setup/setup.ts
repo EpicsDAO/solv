@@ -26,12 +26,14 @@ export const setup = (
     setupKeys()
     spawnSync(chown, { shell: true, stdio: 'inherit' })
     if (options.swap) setupSwap(options.fileSystem)
-    const cmd = [
+    const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable sol',
       'sudo systemctl restart logrotate',
     ]
-    spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
+    for (const line of cmds) {
+      spawnSync(line, { shell: true, stdio: 'inherit' })
+    }
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)

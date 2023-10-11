@@ -13,7 +13,7 @@ export const setupDirs = () => {
       SolvConfig.ACCOUNT_PATH,
     ]
 
-    dirs.forEach((dir) => {
+    for (const dir of dirs) {
       if (existsSync(dir)) return
       mkdirSync(dir, { recursive: true })
       exec(`sudo chown -R ${user}:${user} ${dir}`, (error, stdout, stderr) => {
@@ -24,7 +24,7 @@ export const setupDirs = () => {
         console.log(`stdout: ${stdout}`)
         console.error(`stderr: ${stderr}`)
       })
-    })
+    }
   } catch (error) {
     throw new Error(`setupDirs Error: ${error}`)
   }
