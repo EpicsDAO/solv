@@ -2,7 +2,7 @@ import { SolvConfig } from '@/types/solvTypes'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
 
-export const setupKeys = async () => {
+export const setupKeys = () => {
   try {
     if (existsSync(SolvConfig.TESTNET_VALIDATOR_KEYFILE)) return
     const cmds = [
