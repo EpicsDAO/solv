@@ -2,7 +2,7 @@ import { SolvPaths } from '@/types/solvTypes'
 import { spawnSync } from 'child_process'
 
 const swapLine = `/mt/swapfile swap swap defaults 0 0`
-const ramLine = `tmpfs /mnt/ramdrive tmpfs rw,size=80G 0 0`
+const ramLine = `tmpfs /mt/solana-accounts tmpfs rw,size=300G,user=solv 0 0`
 
 export const ensureFstabEntries = (
   fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM

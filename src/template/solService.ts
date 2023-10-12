@@ -1,7 +1,7 @@
-import { WD } from '..'
+import { SolvConfig } from '@/types/solvTypes'
 
 export const solService = (username: string) => {
-  const workingDirectory = WD
+  const workingDirectory = SolvConfig.WD
   const body = `[Unit]
 Description=Solana Validator
 After=network.target

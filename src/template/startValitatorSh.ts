@@ -34,5 +34,3 @@ export const startValidatorSh = (fetchSnapshot = false) => {
   }
   return commonValidatorCommands + '--no-incremental-snapshots'
 }
-
-startValidatorSh()

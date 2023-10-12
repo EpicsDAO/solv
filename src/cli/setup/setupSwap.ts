@@ -1,14 +1,20 @@
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
-import { spawnSync } from 'child_process'
+import { execSync, spawnSync } from 'child_process'
 import { checkMemoryAndSwap } from '../check/checkMemoryAndSwap'
 import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { SolvConfig, SolvPaths } from '@/types/solvTypes'
 import { formatDisk } from './formatDisk'
+import { execPath } from 'process'
+import { mkdirSync } from 'fs'
 
 export const setupSwap = (fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM) => {
   try {
     formatDisk(fileSystem)
+    if (!execSync(SolvConfig.ACCOUNT_PATH)) {
+      mkdirSync(SolvConfig.ACCOUNT_PATH, { recursive: true })
+    }
+
     const cmds = [
       `sudo mount -t tmpfs -o rw,size=300G tmpfs ${SolvConfig.ACCOUNT_PATH}`,
       `sudo dd if=/dev/zero of=${SolvConfig.SWAP_PATH} bs=1G count=300`,

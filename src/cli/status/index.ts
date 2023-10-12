@@ -6,7 +6,7 @@ export const statusCommands = () => {
     .command('status')
     .description('Show Solana Validator Status')
     .action(() => {
-      const cmd = `sudo systemctl status sol`
+      const cmd = `sudo systemctl status solv`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 }

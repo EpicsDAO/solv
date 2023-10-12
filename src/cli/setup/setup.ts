@@ -28,7 +28,7 @@ export const setup = (
     if (options.swap) setupSwap(options.fileSystem)
     const cmds = [
       'sudo systemctl daemon-reload',
-      'sudo systemctl enable sol',
+      'sudo systemctl enable solv',
       'sudo systemctl restart logrotate',
     ]
     for (const line of cmds) {
