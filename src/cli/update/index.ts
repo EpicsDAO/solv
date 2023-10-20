@@ -2,8 +2,8 @@ import { program } from '@/index'
 import { monitorUpdate, updateVersion } from './update'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
-import { SolvConfig } from '@/types/solvTypes'
 import { updateSolv } from './updateSolv'
+import { DEFAULT_DELINQUENT_STAKE, DEFAULT_SOLANA_VERSION } from '@/config'
 
 export * from './update'
 
@@ -16,13 +16,13 @@ export const updateCommands = async () => {
     )
     .option(
       '-m, --maxDelinquentStake <maxDelinquentStake>',
-      `Max Delinquent Stake e.g ${SolvConfig.DEFAULT_DELINQUENT_STAKE}`,
-      `${SolvConfig.DEFAULT_DELINQUENT_STAKE}`
+      `Max Delinquent Stake e.g ${DEFAULT_DELINQUENT_STAKE}`,
+      `${DEFAULT_DELINQUENT_STAKE}`
     )
     .option(
       '-v, --version <version>',
-      `Solana Version e.g ${SolvConfig.DEFAULT_SOLANA_VERSION}`,
-      SolvConfig.DEFAULT_SOLANA_VERSION
+      `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
+      DEFAULT_SOLANA_VERSION
     )
     .action((options: any) => {
       updateSolv()

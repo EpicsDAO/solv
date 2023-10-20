@@ -1,13 +1,7 @@
 import dotenv from 'dotenv'
 import { Command } from 'commander'
 import { VERSION } from '@/lib/version'
-import {
-  logCommands,
-  releaseCommands,
-  startCommand,
-  stopCommand,
-  updateCommands,
-} from './cli'
+import { logCommands, startCommand, stopCommand, updateCommands } from './cli'
 import { stakeCommands } from './cli/stake'
 import { dfCommands } from './cli/df'
 import { setupCommands } from './cli/setup'
@@ -65,7 +59,6 @@ async function main() {
     await stakeCommands()
     await updateCommands()
     await logCommands()
-    await releaseCommands()
     await program.parseAsync(process.argv)
   } catch (error) {
     console.log(error)

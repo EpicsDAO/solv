@@ -1,5 +1,8 @@
+import {
+  DEFAULT_AUTHORITY_ACCOUNT_KEYFILE,
+  DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY,
+} from '@/config'
 import { VERSION } from '@/lib/version'
-import { SolvConfig } from './solvTypes'
 
 export module Questions {
   export const release = [
@@ -26,17 +29,17 @@ export module Questions {
     {
       type: 'input',
       name: 'validatorVoteAccount',
-      message: `What is the Validator Vote Account Address?(e.g. ${SolvConfig.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY})`,
+      message: `What is the Validator Vote Account Address?(e.g. ${DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY})`,
       default() {
-        return SolvConfig.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY
+        return DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY
       },
     },
     {
       type: 'input',
       name: 'authorityAccount',
-      message: `What is your Authority Account Address?(e.g. ${SolvConfig.DEFAULT_AUTHORITY_ACCOUNT_KEYFILE})`,
+      message: `What is your Authority Account Address?(e.g. ${DEFAULT_AUTHORITY_ACCOUNT_KEYFILE})`,
       default() {
-        return SolvConfig.DEFAULT_AUTHORITY_ACCOUNT_KEYFILE
+        return DEFAULT_AUTHORITY_ACCOUNT_KEYFILE
       },
     },
   ]

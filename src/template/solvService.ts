@@ -1,7 +1,6 @@
-import { SolvConfig } from '@/types/solvTypes'
+import { SOLV_ROOT, USERNAME, VALIDATOR_STARTUP_SCRIPT } from '@/config'
 
-export const solService = (username: string) => {
-  const workingDirectory = SolvConfig.WD
+export const solvService = (username = USERNAME) => {
   const body = `[Unit]
 Description=Solana Validator
 After=network.target
@@ -15,9 +14,9 @@ LimitNOFILE=1000000
 LogRateLimitIntervalSec=0
 User=${username}
 Environment=PATH=/home/${username}/.local/share/solana/install/active_release/bin
-WorkingDirectory=${workingDirectory}
+WorkingDirectory=${SOLV_ROOT}
 Environment="SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea"
-ExecStart=${workingDirectory}/start-validator.sh
+ExecStart=${VALIDATOR_STARTUP_SCRIPT}
 
 [Install]
 WantedBy=multi-user.target`
