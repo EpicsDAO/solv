@@ -28,8 +28,8 @@ export const setup = () => {
     }
     setupSwap(fileSystem)
     setupDirs()
-    startValidator()
     setupPermissions()
+    startValidator()
     makeServices()
     setupKeys()
     const cmds = [
