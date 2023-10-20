@@ -1,5 +1,6 @@
 import {
   MAINNET_VALIDATOR_KEYFILE,
+  SSH_PUBKEY_PATH,
   TESTNET_VALIDATOR_KEYFILE,
   VALIDATOR_VOTE_KEYFILE,
   VALITATOR_AUTHORITY_KEYFILE,
@@ -47,5 +48,25 @@ export const scpCommands = () => {
         spawnSync(cmd, { shell: true, stdio: 'inherit' })
         console.log(`Successfully Exported - ${fileName} 🎉`)
       }
+    })
+
+  scp
+    .command('create')
+    .alias('c')
+    .description('Create SSH Login Setting')
+    .action(async () => {
+      const answer = await inquirer.prompt<{ pubkey: string }>([
+        {
+          type: 'input',
+          pubkey: 'pubkey',
+          message: 'Enter your SSH Public Key',
+          default() {
+            return 'xxxxxxxpubkeyxxxxxxxx'
+          },
+        },
+      ])
+      const cmd = `echo "${answer.pubkey}" >> ${SSH_PUBKEY_PATH}`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
+      console.log(`Successfully Created SSH Login Setting 🎉`)
     })
 }

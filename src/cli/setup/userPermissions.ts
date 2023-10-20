@@ -1,4 +1,4 @@
-import { MOUNT_ROOT } from '@/config'
+import { MOUNT_ROOT, VALIDATOR_STARTUP_SCRIPT } from '@/config'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
 
@@ -7,6 +7,7 @@ export const setupPermissions = () => {
     `sudo mkdir -p ${MOUNT_ROOT}`,
     `sudo chown -R solv:solv ${MOUNT_ROOT}`,
     `sudo chmod -R 755 ${MOUNT_ROOT}`,
+    `sudo chmod +x ${VALIDATOR_STARTUP_SCRIPT}`,
   ]
   for (const line of cmds) {
     if (line.includes('mkdir') && existsSync(MOUNT_ROOT)) continue

@@ -15,6 +15,7 @@ import { getSlot } from './cli/cron/getSlot'
 import { statusCommands } from './cli/status'
 import { configCommands } from './cli/config'
 import { Logger } from './lib/logger'
+import { scpCommands } from './cli/scp'
 dotenv.config()
 
 export const program = new Command()
@@ -53,6 +54,7 @@ async function main() {
     checkCommpands()
     installCommands()
     mountCommands()
+    scpCommands()
     await cronCommands()
     await setupCommands()
     await dfCommands()
