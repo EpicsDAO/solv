@@ -1,15 +1,15 @@
-import { SolvConfig } from '@/types/solvTypes'
+import { MOUNT_ROOT } from '@/config'
 import { spawnSync } from 'child_process'
+import { existsSync } from 'fs'
 
 export const setupPermissions = () => {
   const cmds = [
-    `sudo mkdir -p /mt/solana/solana-validator`,
-    `sudo mkdir -p `,
-    `sudo mkdir /mnt`,
-    `sudo chown -R solv:solv ${SolvConfig.MOUNT_ROOT}`,
-    `sudo chown -R solv:solv /mnt`,
-    `sudo chmod -R 755 /mnt`,
-    `sudo chmod -R 755 ${SolvConfig.MOUNT_ROOT}`,
+    `sudo mkdir -p ${MOUNT_ROOT}`,
+    `sudo chown -R solv:solv ${MOUNT_ROOT}`,
+    `sudo chmod -R 755 ${MOUNT_ROOT}`,
   ]
-  spawnSync(cmds.join(' && '), { shell: true, stdio: 'inherit' })
+  for (const line of cmds) {
+    if (line.includes('mkdir') && existsSync(MOUNT_ROOT)) continue
+    spawnSync(line, { shell: true, stdio: 'inherit' })
+  }
 }

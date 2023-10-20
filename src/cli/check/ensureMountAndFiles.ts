@@ -1,12 +1,10 @@
-import { SolvPaths } from '@/types/solvTypes'
+import { DEFAULT_FILE_SYSTEM } from '@/config'
 import { spawnSync } from 'child_process'
 
 const swapLine = `/mt/swapfile swap swap defaults 0 0`
 const ramLine = `tmpfs /mt/solana-accounts tmpfs rw,size=300G,user=solv 0 0`
 
-export const ensureFstabEntries = (
-  fileSystem = SolvPaths.DEFAULT_FILE_SYSTEM
-) => {
+export const ensureFstabEntries = (fileSystem = DEFAULT_FILE_SYSTEM) => {
   const mtLine = `${fileSystem}        /mt     ext4 auto 0 0`
   const lines = [swapLine, ramLine, mtLine]
   const output = spawnSync(`cat /etc/fstab`, {

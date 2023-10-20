@@ -1,6 +1,8 @@
-export const logRotates = async (username: string) => {
-  const body = `/mt/solana/solana-validator/log/solana-validator.log {
-  su solv solv
+import { LOG_PATH, USERNAME } from '@/config'
+
+export const logRotates = (username = USERNAME) => {
+  const body = `${LOG_PATH} {
+  su ${username} ${username} 
   daily
   rotate 3
   missingok

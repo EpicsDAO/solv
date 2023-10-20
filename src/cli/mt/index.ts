@@ -1,8 +1,8 @@
 import { program } from '@/index'
 import { mount } from './mount'
 import { spawnSync } from 'child_process'
-import { SolvPaths } from '@/types/solvTypes'
 import { umount } from './umount'
+import { DEFAULT_FILE_SYSTEM } from '@/config'
 
 export const mountCommands = () => {
   program
@@ -11,7 +11,7 @@ export const mountCommands = () => {
     .option(
       '-p,--path <path>',
       'File System Path e.g /dev/vda',
-      SolvPaths.DEFAULT_FILE_SYSTEM
+      DEFAULT_FILE_SYSTEM
     )
     .action((options: any) => {
       mount(options.path)
@@ -23,7 +23,7 @@ export const mountCommands = () => {
     .option(
       '-p,--path <path>',
       'File System Path e.g /dev/vda',
-      SolvPaths.DEFAULT_FILE_SYSTEM
+      DEFAULT_FILE_SYSTEM
     )
     .action((options: any) => {
       umount(options.path)

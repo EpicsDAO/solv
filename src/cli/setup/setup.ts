@@ -5,11 +5,12 @@ import { setupSwap } from './setupSwap'
 import { startValidator } from './startValidator'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
-import { SolvPaths } from '@/types/solvTypes'
+import { makeServices } from './makeServices'
+import { setupPermissions } from './userPermissions'
+import { getLargestDisk } from '../mt/getLargestDisk'
+import { umount } from '../mt/umount'
 
-export const setup = (
-  options = { swap: false, fileSystem: SolvPaths.DEFAULT_FILE_SYSTEM }
-) => {
+export const setup = () => {
   try {
     if (!isSolanaInstalled()) {
       Logger.normal(
@@ -19,13 +20,15 @@ export const setup = (
       )
       return
     }
-    const chown = `sudo chown -R solv:solv /mt && sudo chmod -R 755 /mt`
-    spawnSync(chown, { shell: true, stdio: 'inherit' })
-    startValidator()
+    const disks = getLargestDisk()
+    const fileSystem = `/dev/${disks?.name}`
+    umount(fileSystem)
+    setupSwap(fileSystem)
     setupDirs()
+    setupPermissions()
+    makeServices()
+    startValidator()
     setupKeys()
-    spawnSync(chown, { shell: true, stdio: 'inherit' })
-    if (options.swap) setupSwap(options.fileSystem)
     const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solv',

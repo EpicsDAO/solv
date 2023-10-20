@@ -1,12 +1,19 @@
-import { SolvConfig } from '@/types/solvTypes'
-const commonValidatorCommands = `#!/bin/bash
+import {
+  LEDGER_PATH,
+  LOG_PATH,
+  MAINNET_VALIDATOR_KEYFILE,
+  SOLANA_ACCOUNT_ROOT,
+  TESTNET_VALIDATOR_KEYFILE,
+  VALIDATOR_VOTE_KEYFILE,
+} from '@/config'
+
+const commonValidatorCommands = (identityKey: string) => `#!/bin/bash
 exec solana-validator \\
---identity ${SolvConfig.TESTNET_VALIDATOR_KEYFILE} \\
---vote-account ${SolvConfig.VALIDATOR_VOTE_KEYFILE} \\
---log ${SolvConfig.LOG_PATH} \\
---accounts ${SolvConfig.ACCOUNT_PATH} \\
---ledger ${SolvConfig.LEDGER_PATH} \\
---no-genesis-fetch \\
+--identity ${identityKey} \\
+--vote-account ${VALIDATOR_VOTE_KEYFILE} \\
+--log ${LOG_PATH} \\
+--accounts ${SOLANA_ACCOUNT_ROOT} \\
+--ledger ${LEDGER_PATH} \\
 --entrypoint entrypoint.testnet.solana.com:8001 \\
 --entrypoint entrypoint2.testnet.solana.com:8001 \\
 --entrypoint entrypoint3.testnet.solana.com:8001 \\
@@ -28,9 +35,18 @@ exec solana-validator \\
 --limit-ledger-size \\
 `
 
-export const startValidatorSh = (fetchSnapshot = false) => {
+export const startValidatorSh = (
+  fetchSnapshot = false,
+  network = 'testnet'
+) => {
+  const identityKey =
+    network === 'mainnet-beta'
+      ? MAINNET_VALIDATOR_KEYFILE
+      : TESTNET_VALIDATOR_KEYFILE
   if (!fetchSnapshot) {
-    return `${commonValidatorCommands}--no-snapshot-fetch`
+    return `${commonValidatorCommands(
+      identityKey
+    )}--no-snapshot-fetch \\\n--no-genesis-fetch`
   }
-  return commonValidatorCommands + '--no-incremental-snapshots'
+  return commonValidatorCommands(identityKey) + '--no-incremental-snapshots'
 }

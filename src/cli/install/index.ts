@@ -1,6 +1,6 @@
 import { program } from '@/index'
 import { updateVersion } from '../update'
-import { SolvConfig } from '@/types/solvTypes'
+import { DEFAULT_SOLANA_VERSION } from '@/config'
 
 export const installCommands = () => {
   program
@@ -9,8 +9,8 @@ export const installCommands = () => {
     .description('Solana Install/Update Command')
     .option(
       '-v, --version <version>',
-      `Solana Version e.g. ${SolvConfig.DEFAULT_SOLANA_VERSION}`,
-      SolvConfig.DEFAULT_SOLANA_VERSION
+      `Solana Version e.g. ${DEFAULT_SOLANA_VERSION}`,
+      DEFAULT_SOLANA_VERSION
     )
     .action((cmdObj: any) => {
       updateVersion(cmdObj.version)
