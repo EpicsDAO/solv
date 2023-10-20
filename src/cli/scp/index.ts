@@ -55,17 +55,16 @@ export const scpCommands = () => {
     .alias('c')
     .description('Create SSH Login Setting')
     .action(async () => {
-      const answer = await inquirer.prompt<{ pubkey: string }>([
-        {
-          type: 'input',
-          pubkey: 'pubkey',
-          message: 'Enter your SSH Public Key',
-          default() {
-            return 'xxxxxxxpubkeyxxxxxxxx'
-          },
+      const answer = await inquirer.prompt<{ pubkey: string }>({
+        type: 'input',
+        name: 'pubkey',
+        message: 'Enter your SSH Public Key',
+        default() {
+          return 'xxxxxxxpubkeyxxxxxxxx'
         },
-      ])
-      const cmd = `echo "${answer.pubkey}" >> ${SSH_PUBKEY_PATH}`
+      })
+
+      const cmd = `mkdir -p /home/solv/.ssh && echo "${answer.pubkey}" >> ${SSH_PUBKEY_PATH}`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
       console.log(`Successfully Created SSH Login Setting 🎉`)
     })
