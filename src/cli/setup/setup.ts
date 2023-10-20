@@ -28,9 +28,9 @@ export const setup = () => {
     }
     setupSwap(fileSystem)
     setupDirs()
+    startValidator()
     setupPermissions()
     makeServices()
-    startValidator()
     setupKeys()
     const cmds = [
       'sudo systemctl daemon-reload',
