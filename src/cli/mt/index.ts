@@ -3,6 +3,7 @@ import { mount } from './mount'
 import { spawnSync } from 'child_process'
 import { umount } from './umount'
 import { DEFAULT_FILE_SYSTEM } from '@/config'
+import { getPreferredDisk } from './getLargestDisk'
 
 export const mountCommands = () => {
   program
@@ -35,5 +36,13 @@ export const mountCommands = () => {
     .action(() => {
       const cmd = `sudo mount --all --verbose`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
+    })
+
+  program
+    .command('disks')
+    .description('Show unmounted disks')
+    .action(() => {
+      const disks = getPreferredDisk()
+      console.log(disks)
     })
 }

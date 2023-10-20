@@ -7,8 +7,8 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { makeServices } from './makeServices'
 import { setupPermissions } from './userPermissions'
-import { getLargestDisk } from '../mt/getLargestDisk'
 import { umount } from '../mt/umount'
+import { getPreferredDisk } from '../mt/getLargestDisk'
 
 export const setup = () => {
   try {
@@ -20,9 +20,12 @@ export const setup = () => {
       )
       return
     }
-    const disks = getLargestDisk()
+    const disks = getPreferredDisk()
     const fileSystem = `/dev/${disks?.name}`
-    umount(fileSystem)
+    const mountPoint = disks?.mountpoint || ''
+    if (mountPoint !== '') {
+      umount(mountPoint)
+    }
     setupSwap(fileSystem)
     setupDirs()
     setupPermissions()
