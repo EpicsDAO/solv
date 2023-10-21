@@ -9,6 +9,7 @@ import { makeServices } from './makeServices'
 import { setupPermissions } from './userPermissions'
 import { umount } from '../mt/umount'
 import { getPreferredDisk } from '../mt/getLargestDisk'
+import { startSolana } from '../start/startSolana'
 
 export const setup = () => {
   try {
@@ -29,7 +30,7 @@ export const setup = () => {
     setupSwap(fileSystem)
     setupDirs()
     setupPermissions()
-    startValidator()
+    startValidator(true)
     makeServices()
     setupKeys()
     const cmds = [
@@ -40,6 +41,7 @@ export const setup = () => {
     for (const line of cmds) {
       spawnSync(line, { shell: true, stdio: 'inherit' })
     }
+    startSolana()
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)
