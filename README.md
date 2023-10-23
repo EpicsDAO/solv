@@ -37,55 +37,12 @@ Linux Ubuntu 20.04 TS
 User: solv
 
 ```bash
-$ sudo adduser solv
-$ sudo usermod -aG sudo solv
-$ su solv
-$ sudo add-apt-repository ppa:epics-dao/solv
-$ sudo apt update
-$ sudo apt install solv
-```
-
-![solv](https://storage.googleapis.com/epics-bucket/Validator/apt-install-solv.gif)
-
-Please mount fileSystem that has more than 1TB to `/mt` directory.
-
-Edgevana's Ubuntu AMD Server's default mountpoint is `/dev/vdb`.
-
-unmount if it is mounted to other directory.
-
-```bash
-$ solv umt -p <mountedPoint>
-```
-
-and mount to `/mt` directory.
-
-```bash
-$ solv mt -p <fileSystem>
-```
-
-if you haven't setup swap, you can use the following command.
-
-```bash
-$ solv setup --swap --path <fileSystem>
-```
-
-## Generate Solana Validator Keys and Config
-
-```bash
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.5.7/install")"
+$ cd ~ && source ~/.profile
 $ solv setup
 ```
 
-## Check Solana Validator Preparation Status
-
-```bash
-$ solv check
-```
-
-If it is not ready, you can check;
-
-- Mounted disk
-- Swap size
-- Memory size
+![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)
 
 ## Start Solana Validator
 
@@ -113,8 +70,7 @@ If you want to download snapshot, you can use the following command.
 $ solv restart --snapshot
 ```
 
-This command will automatically add `--no-incremental-snapshots` to your
-`solana-validator.sh` command.
+This command will automatically remove `--no-incremental-snapshots` and add `--no-genesis-fetch`, `--no-snapshot-fetch` to yoursolana-validator.sh command.
 
 ## Solana Validator Status
 
@@ -134,14 +90,6 @@ This command will show your all config paths which are used by solana validator.
 
 ```bash
 $ solv config
-```
-
-## Discord Notification
-
-set `DISCORD_WEBHOOK_URL` in `~/.profile`
-
-```bash
-DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/...your-webhook-url"
 ```
 
 ## Solana Delegation Program
@@ -180,7 +128,6 @@ Commands:
   stake [options] <stakeAccountPubkey>  Solana Delegate Stake Command
   update|u [options]                    Solana Version Update, Restart and Monitoring Delinquent Stake
   log|l [options]                       tail logs
-  release|r [options] <version>         publish release
   help [command]                        display help for command
 ```
 
