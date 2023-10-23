@@ -49,7 +49,6 @@ Solv is born and ready for running Solana Validator 🚀
 
 $ cd ~ && source ~/.profile
 $ solv setup
-$ solv start
 
 $ solv --help for more information
 `
