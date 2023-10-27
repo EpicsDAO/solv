@@ -23,19 +23,19 @@
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-Discover the ease of setting up a Solana Validator Node on a Latitude server using solv, a powerful tool designed to simplify blockchain interactions.
+Discover the ease of setting up a Solana Validator Node on a Edgevana server using solv, a powerful tool designed to simplify blockchain interactions.
 
 With just a single command, solv eliminates the usual complexities, enabling you to launch a Solana Validator swiftly.
 
 This tool not only streamlines the setup process but also opens doors for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
 
-Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv on Latitude server is your go-to solution for an uncomplicated, fast setup.
+Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv on Edgevana server is your go-to solution for an uncomplicated, fast setup.
 
 Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
 
 ## 🔴 YouTube Video
 
-[![solv](https://youtu.be/rY4bajhRJgw)](https://youtu.be/rY4bajhRJgw)
+https://youtu.be/rY4bajhRJgw
 
 ## 📖 Server Spec
 
@@ -50,7 +50,7 @@ $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
-![solv](https://youtu.be/rY4bajhRJgw)(https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)
+[![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](<(https://youtu.be/rY4bajhRJgw)>)
 
 ## Start Solana Validator
 
