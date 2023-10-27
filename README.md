@@ -50,7 +50,7 @@ $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
-[![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](<(https://youtu.be/rY4bajhRJgw)>)
+[![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
 
 ## Start Solana Validator
 
