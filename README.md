@@ -23,26 +23,34 @@
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-solv is a comprehensive command-line utility designed for Solana network
-validators. It simplifies the process of setting up, monitoring, and
-managing Solana validators, offering streamlined operations and enhanced
-performance insights. Whether you're a seasoned Solana validator or just
-getting started, solv provides the tools you need to ensure optimal validator
-operations on the Solana blockchain.
+Discover the ease of setting up a Solana Validator Node on a Latitude server using solv, a powerful tool designed to simplify blockchain interactions.
 
-# Solana Validator Setup
+With just a single command, solv eliminates the usual complexities, enabling you to launch a Solana Validator swiftly.
 
-Linux Ubuntu 20.04 TS
+This tool not only streamlines the setup process but also opens doors for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
 
-User: solv
+Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv on Latitude server is your go-to solution for an uncomplicated, fast setup.
+
+Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
+
+## 🔴 YouTube Video
+
+[![solv](https://youtu.be/rY4bajhRJgw)](https://youtu.be/rY4bajhRJgw)
+
+## 📖 Server Spec
+
+- Linux Ubuntu 20.04 TS
+- Linux Ubuntu 22.04 TS
+
+## Solana Validator Setup
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.5.7/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.5.9/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
-![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)
+![solv](https://youtu.be/rY4bajhRJgw)(https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)
 
 ## Start Solana Validator
 
