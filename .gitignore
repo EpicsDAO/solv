@@ -50,3 +50,4 @@ graphql/
 /release/
 
 solv-debian/debian/files
+*keypair.json
