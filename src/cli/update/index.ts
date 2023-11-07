@@ -24,15 +24,19 @@ export const updateCommands = async () => {
       `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
       DEFAULT_SOLANA_VERSION
     )
+    .option('-monitor, --monitor', 'Monitor Delinquent Stake Update')
     .action((options: any) => {
-      updateSolv()
-      updateVersion(options.version)
-      Logger.normal(
-        `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
-          options.maxDelinquentStake
-        )}`
-      )
-      const maxDelinquentStake = parseInt(options.maxDelinquentStake) || 5
-      monitorUpdate(maxDelinquentStake)
+      if (options.monitor) {
+        updateVersion(options.version)
+        Logger.normal(
+          `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
+            options.maxDelinquentStake
+          )}`
+        )
+        const maxDelinquentStake = parseInt(options.maxDelinquentStake) || 5
+        monitorUpdate(maxDelinquentStake)
+      } else {
+        updateSolv()
+      }
     })
 }
