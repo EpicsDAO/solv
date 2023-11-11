@@ -45,7 +45,7 @@ https://youtu.be/rY4bajhRJgw
 ## Solana Validator Setup
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.6.2/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.6.3/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
