@@ -3,9 +3,9 @@ import { solanaCatchup } from './solanaCatchup'
 
 export const catchupCommand = () => {
   program
-    .command('monitor')
-    .alias('m')
-    .description('Monitor Solana Validator')
+    .command('catchup')
+    .alias('ca')
+    .description('Solana Validator Catchup Command')
     .action(async () => {
       solanaCatchup()
     })
