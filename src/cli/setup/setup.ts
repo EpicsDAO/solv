@@ -10,8 +10,9 @@ import { setupPermissions } from './userPermissions'
 import { umount } from '../mt/umount'
 import { getPreferredDisk } from '../mt/getLargestDisk'
 import { startSolana } from '../start/startSolana'
+import { DEFAULT_COMMISSION } from '@/config'
 
-export const setup = () => {
+export const setup = (commission = DEFAULT_COMMISSION) => {
   try {
     if (!isSolanaInstalled()) {
       Logger.normal(
@@ -32,7 +33,7 @@ export const setup = () => {
     setupPermissions()
     startValidator(true)
     makeServices()
-    setupKeys()
+    setupKeys(commission)
     const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solv',
@@ -48,7 +49,7 @@ export const setup = () => {
   }
 }
 
-function isSolanaInstalled() {
+export function isSolanaInstalled() {
   try {
     execSync('solana --version')
     return true
