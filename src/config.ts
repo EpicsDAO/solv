@@ -3,6 +3,7 @@ export const DEFAULT_SOLANA_VERSION = '1.17.5'
 export const DEFAULT_NODE_VERSION = '18.18.1'
 export const DEFAULT_DELINQUENT_STAKE = 5
 export const DEFAULT_SOLANA_NETWORK = 'testnet'
+export const DEFAULT_SSH_PUBKEY_PATH = '~/.ssh/id_rsa.pub'
 export const USERNAME = 'solv'
 
 export const MOUNT_ROOT = '/mt'
@@ -22,6 +23,10 @@ export const MAINNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/mainnet-validator-keypair
 export const TESTNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/testnet-validator-keypair.json`
 export const VALIDATOR_VOTE_KEYFILE = `${SOLV_ROOT}/vote-account-keypair.json`
 export const VALITATOR_AUTHORITY_KEYFILE = `${SOLV_ROOT}/authority-keypair.json`
+
+export const SOLV_KEYPAIR_DOWNLOAD_PATH = `~/solvKeys/download`
+export const SOLV_KEYPAIR_UPLOAD_PATH = `~/solvKeys/upload`
+export const SOLV_KEYPAIR_TRASH_PATH = `~/solvKeys/trash`
 
 export const SOL_SERVICE_PATH = '/etc/systemd/system/solv.service'
 export const SOL_LOGROTATE_PATH = '/etc/logrotate.d/solana'

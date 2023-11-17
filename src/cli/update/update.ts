@@ -8,9 +8,13 @@ export const updateVersion = (version: string) => {
   spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
 }
 
-export const monitorUpdate = (maxDelinquentStake: number) => {
-  const cmd = [
-    `solana-validator --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`,
-  ]
-  spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
+export const monitorUpdate = (
+  maxDelinquentStake: number,
+  noMonitor = false
+) => {
+  let cmd = `solana-validator --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
+  if (noMonitor) {
+    cmd = `solana-validator --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake}`
+  }
+  spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

@@ -15,16 +15,12 @@ export const updateCommands = async () => {
       'Solana Version Update, Restart and Monitoring Delinquent Stake'
     )
     .option(
-      '-m, --maxDelinquentStake <maxDelinquentStake>',
-      `Max Delinquent Stake e.g ${DEFAULT_DELINQUENT_STAKE}`,
-      `${DEFAULT_DELINQUENT_STAKE}`
-    )
-    .option(
       '-v, --version <version>',
       `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
       DEFAULT_SOLANA_VERSION
     )
-    .option('-monitor, --monitor', 'Monitor Delinquent Stake Update')
+    .option('-m, --monitor', 'Monitor Delinquent Stake Update')
+    .option('-n, --no-monitor', 'No Monitor Delinquent Stake Update')
     .action((options: any) => {
       if (options.monitor) {
         updateVersion(options.version)
@@ -33,8 +29,13 @@ export const updateCommands = async () => {
             options.maxDelinquentStake
           )}`
         )
-        const maxDelinquentStake = parseInt(options.maxDelinquentStake) || 5
-        monitorUpdate(maxDelinquentStake)
+        monitorUpdate(DEFAULT_DELINQUENT_STAKE)
+      } else if (options.noMonitor) {
+        updateVersion(options.version)
+        Logger.normal(
+          `✔️ Update to Solana Version ${chalk.green(options.version)}`
+        )
+        monitorUpdate(DEFAULT_DELINQUENT_STAKE, true)
       } else {
         updateSolv()
       }
