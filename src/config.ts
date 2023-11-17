@@ -23,6 +23,10 @@ export const TESTNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/testnet-validator-keypair
 export const VALIDATOR_VOTE_KEYFILE = `${SOLV_ROOT}/vote-account-keypair.json`
 export const VALITATOR_AUTHORITY_KEYFILE = `${SOLV_ROOT}/authority-keypair.json`
 
+export const SOLV_KEYPAIR_DOWNLOAD_PATH = `~/solvKeys/download`
+export const SOLV_KEYPAIR_UPLOAD_PATH = `~/solvKeys/upload`
+export const SOLV_KEYPAIR_TRASH_PATH = `~/solvKeys/trash`
+
 export const SOL_SERVICE_PATH = '/etc/systemd/system/solv.service'
 export const SOL_LOGROTATE_PATH = '/etc/logrotate.d/solana'
 export const SOL_SYSTEM_CONFIG21_PATH = '/etc/sysctl.d/21-solana-validator.conf'
