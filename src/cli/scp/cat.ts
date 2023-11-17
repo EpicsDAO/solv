@@ -1,14 +1,16 @@
-import { DEFAULT_SSH_PUBKEY_PATH } from '@/config'
 import chalk from 'chalk'
-import { spawnSync } from 'child_process'
-import { existsSync } from 'fs'
+import { readFileSync } from 'fs'
+import os from 'os'
 
 export const cat = () => {
-  if (!existsSync(DEFAULT_SSH_PUBKEY_PATH)) {
-    console.log(chalk.white('SSH Public Key Not Found\n'))
-    console.log(chalk.white('Please run `solv scp init` first'))
-    return
+  try {
+    const homeDirectory = os.userInfo().homedir
+    const publicKeyPath = `${homeDirectory}/.ssh/id_rsa.pub`
+    const publicKey = readFileSync(publicKeyPath, 'utf8')
+    console.log(chalk.white('Your SSH Public Key is:\n'))
+    console.log(chalk.white(publicKey))
+  } catch (error) {
+    console.error(chalk.white('Error reading SSH Public Key\n'))
+    console.error(chalk.white(error))
   }
-  const cmd = `cat ${DEFAULT_SSH_PUBKEY_PATH}`
-  spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

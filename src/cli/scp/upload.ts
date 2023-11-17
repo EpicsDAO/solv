@@ -1,15 +1,13 @@
 import {
   MAINNET_VALIDATOR_KEYFILE,
-  SOLV_KEYPAIR_DOWNLOAD_PATH,
   SOLV_KEYPAIR_UPLOAD_PATH,
-  SOLV_ROOT,
   TESTNET_VALIDATOR_KEYFILE,
   VALIDATOR_VOTE_KEYFILE,
   VALITATOR_AUTHORITY_KEYFILE,
 } from '@/config'
 import chalk from 'chalk'
 import { spawnSync } from 'child_process'
-import { existsSync, mkdirSync } from 'fs'
+import { existsSync } from 'fs'
 import inquirer from 'inquirer'
 
 export const upload = async () => {

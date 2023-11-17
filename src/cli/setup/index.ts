@@ -5,8 +5,6 @@ import chalk from 'chalk'
 import { DEFAULT_COMMISSION, VALIDATOR_STARTUP_SCRIPT } from '@/config'
 import { setupVoteAccount } from './setupVoteAccount'
 import { airdrop } from './airdrop'
-import { setupKeys } from './setupKeys'
-import inquirer from 'inquirer'
 import { onlyGenKeys } from './onlyGenKeys'
 
 export const setupCommands = async () => {
