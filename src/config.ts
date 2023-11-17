@@ -3,6 +3,7 @@ export const DEFAULT_SOLANA_VERSION = '1.17.5'
 export const DEFAULT_NODE_VERSION = '18.18.1'
 export const DEFAULT_DELINQUENT_STAKE = 5
 export const DEFAULT_SOLANA_NETWORK = 'testnet'
+export const DEFAULT_SSH_PUBKEY_PATH = '~/.ssh/id_rsa.pub'
 export const USERNAME = 'solv'
 
 export const MOUNT_ROOT = '/mt'

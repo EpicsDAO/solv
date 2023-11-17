@@ -37,7 +37,6 @@
     "cli-spinner": "0.2.10",
     "cli-table3": "0.6.3",
     "commander": "10.0.1",
-    "date-fns": "^2.30.0",
     "dotenv": "16.0.3",
     "dotenv-cli": "7.2.1",
     "inquirer": "^9.2.10",

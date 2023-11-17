@@ -2,6 +2,8 @@ import { program } from '@/index'
 import { download } from './download'
 import { upload } from './upload'
 import { create } from './create'
+import { cat } from './cat'
+import { init } from './init'
 
 export const scpCommands = () => {
   const scp = program.command('scp').description('Export Solana Validator Data')
@@ -28,5 +30,19 @@ export const scpCommands = () => {
     .description('Create SSH Login Setting')
     .action(async () => {
       await create()
+    })
+
+  scp
+    .command('cat')
+    .description('Show SSH Public Key')
+    .action(() => {
+      cat()
+    })
+
+  scp
+    .command('init')
+    .description('Init SSH Key Pair')
+    .action(() => {
+      init()
     })
 }
