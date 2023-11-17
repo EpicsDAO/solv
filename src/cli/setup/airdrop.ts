@@ -26,7 +26,7 @@ export const airdrop = () => {
       console.log(
         chalk.white(`To get Testnet SOL,\nVisit EpicsDAO's Discord Channel:`)
       )
-      console.log(chalk.green(`${SOLV_DISCORD_INVITE}\n`))
+      console.log(chalk.blue(`\n${SOLV_DISCORD_INVITE}\n`))
     }
     return true
   } catch (error) {
