@@ -2,6 +2,10 @@ import { program } from '@/index'
 import { delegateStake } from './delegateStake'
 import inquirer from 'inquirer'
 import { Questions } from '@/types/questions'
+import {
+  SOLV_KEYPAIR_UPLOAD_PATH,
+  VALITATOR_AUTHORITY_KEY_NAME,
+} from '@/config'
 
 export * from './delegateStake'
 
@@ -10,27 +14,12 @@ export const stakeCommands = async () => {
     .command('stake')
     .description('Solana Delegate Stake Command')
     .action(async () => {
-      const { validatorVoteAccount, stakeAccount, authorityAccount } =
-        await askDelegationStake()
+      const { validatorVoteAccount, stakeAccount } = await inquirer.prompt<{
+        stakeAccount: string
+        validatorVoteAccount: string
+      }>(Questions.delegateStake)
+
+      const authorityAccount = `${SOLV_KEYPAIR_UPLOAD_PATH}/${VALITATOR_AUTHORITY_KEY_NAME}`
       await delegateStake(stakeAccount, validatorVoteAccount, authorityAccount)
     })
-}
-
-export const askDelegationStake = async () => {
-  const asking = inquirer.prompt(Questions.delegateStake)
-  let validatorVoteAccount = ''
-  let stakeAccount = ''
-  let authorityAccount = ''
-  await asking.then(
-    async (answer: {
-      validatorVoteAccount: string
-      stakeAccount: string
-      authorityAccount: string
-    }) => {
-      validatorVoteAccount = answer.validatorVoteAccount
-      stakeAccount = answer.stakeAccount
-      authorityAccount = answer.authorityAccount
-    }
-  )
-  return { validatorVoteAccount, stakeAccount, authorityAccount }
 }
