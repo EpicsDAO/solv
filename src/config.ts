@@ -25,6 +25,13 @@ export const TESTNET_VALIDATOR_KEY_NAME = 'testnet-validator-keypair.json'
 export const VALIDATOR_VOTE_KEY_NAME = 'vote-account-keypair.json'
 export const VALITATOR_AUTHORITY_KEY_NAME = 'authority-keypair.json'
 
+export const validatorKeyNames = [
+  MAINNET_VALIDATOR_KEY_NAME,
+  TESTNET_VALIDATOR_KEY_NAME,
+  VALIDATOR_VOTE_KEY_NAME,
+  VALITATOR_AUTHORITY_KEY_NAME,
+]
+
 export const MAINNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/${MAINNET_VALIDATOR_KEY_NAME}`
 export const TESTNET_VALIDATOR_KEYFILE = `${SOLV_ROOT}/${TESTNET_VALIDATOR_KEY_NAME}`
 export const VALIDATOR_VOTE_KEYFILE = `${SOLV_ROOT}/${VALIDATOR_VOTE_KEY_NAME}`

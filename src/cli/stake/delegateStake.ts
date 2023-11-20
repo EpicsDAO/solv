@@ -7,7 +7,7 @@ export const delegateStake = async (
 ) => {
   try {
     const cmd = [
-      `solana delegate-stake ${stakeAccountPubkey} ${validatorVoteAccountPubkey} --stake-authority ${authorityAccountKeyfile}`,
+      `solana delegate-stake ${stakeAccountPubkey} ${validatorVoteAccountPubkey} --stake-authority ${authorityAccountKeyfile} --url mainnet-beta`,
     ]
     spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
     return true

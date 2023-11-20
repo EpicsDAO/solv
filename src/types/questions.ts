@@ -1,7 +1,4 @@
-import {
-  DEFAULT_AUTHORITY_ACCOUNT_KEYFILE,
-  DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY,
-} from '@/config'
+import { DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY } from '@/config'
 import { VERSION } from '@/lib/version'
 
 export module Questions {
@@ -32,14 +29,6 @@ export module Questions {
       message: `What is the Validator Vote Account Address?(e.g. ${DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY})`,
       default() {
         return DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY
-      },
-    },
-    {
-      type: 'input',
-      name: 'authorityAccount',
-      message: `What is your Authority Account Address?(e.g. ${DEFAULT_AUTHORITY_ACCOUNT_KEYFILE})`,
-      default() {
-        return DEFAULT_AUTHORITY_ACCOUNT_KEYFILE
       },
     },
   ]
