@@ -46,7 +46,7 @@ install_nodenv_and_node() {
 
         echo "Sourcing ~/.profile..."
         source ~/.profile
-        solv solv
+        solv solv --local
 EOF_USER
 }
 
