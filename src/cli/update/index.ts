@@ -19,9 +19,10 @@ export const updateCommands = async () => {
       `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
       DEFAULT_SOLANA_VERSION
     )
-    .option('-m, --monitor', 'Monitor Delinquent Stake Update')
-    .option('-n, --no-monitor', 'No Monitor Delinquent Stake Update')
+    .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
+    .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .action((options: any) => {
+      console.log('Update Options: ', options)
       if (options.monitor) {
         updateVersion(options.version)
         Logger.normal(
@@ -30,7 +31,7 @@ export const updateCommands = async () => {
           )}`
         )
         monitorUpdate(DEFAULT_DELINQUENT_STAKE)
-      } else if (options.noMonitor) {
+      } else if (options.background) {
         updateVersion(options.version)
         Logger.normal(
           `✔️ Update to Solana Version ${chalk.green(options.version)}`
