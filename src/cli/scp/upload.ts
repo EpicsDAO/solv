@@ -1,6 +1,5 @@
 import {
   MAINNET_VALIDATOR_KEYFILE,
-  SOLV_KEYPAIR_UPLOAD_PATH,
   TESTNET_VALIDATOR_KEYFILE,
   VALIDATOR_VOTE_KEYFILE,
   VALITATOR_AUTHORITY_KEYFILE,
@@ -9,8 +8,10 @@ import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
 import inquirer from 'inquirer'
+import os from 'os'
 
 export const upload = async () => {
+  const homeDirectory = os.userInfo().homedir
   const answer = await inquirer.prompt<{ ip: string }>([
     {
       type: 'input',
@@ -28,10 +29,11 @@ export const upload = async () => {
     VALITATOR_AUTHORITY_KEYFILE,
   ]
 
+  const uploadPath = `${homeDirectory}/solvKeys/upload`
   for (const key of solanaKeys) {
     const splits = key.split('/')
     const fileName = splits[splits.length - 1]
-    const filePath = `${SOLV_KEYPAIR_UPLOAD_PATH}/${fileName}.json`
+    const filePath = `${uploadPath}/${fileName}`
     if (!existsSync(filePath)) {
       console.log(chalk.red(`File Not Found - ${filePath} 🚨`))
       continue
