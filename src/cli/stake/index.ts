@@ -2,11 +2,8 @@ import { program } from '@/index'
 import { delegateStake } from './delegateStake'
 import inquirer from 'inquirer'
 import { Questions } from '@/types/questions'
-import {
-  SOLV_KEYPAIR_UPLOAD_PATH,
-  VALITATOR_AUTHORITY_KEY_NAME,
-} from '@/config'
-
+import { VALITATOR_AUTHORITY_KEY_NAME } from '@/config'
+import os from 'os'
 export * from './delegateStake'
 
 export const stakeCommands = async () => {
@@ -18,8 +15,9 @@ export const stakeCommands = async () => {
         stakeAccount: string
         validatorVoteAccount: string
       }>(Questions.delegateStake)
-
-      const authorityAccount = `${SOLV_KEYPAIR_UPLOAD_PATH}/${VALITATOR_AUTHORITY_KEY_NAME}`
+      const homeDirectory = os.userInfo().homedir
+      const uploadPath = `${homeDirectory}/solvKeys/upload`
+      const authorityAccount = `${uploadPath}/${VALITATOR_AUTHORITY_KEY_NAME}`
       await delegateStake(stakeAccount, validatorVoteAccount, authorityAccount)
     })
 }

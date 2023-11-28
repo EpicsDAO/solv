@@ -2,7 +2,6 @@ import {
   DEFAULT_SOLANA_NETWORK,
   MAINNET_VALIDATOR_KEYFILE,
   MAINNET_VALIDATOR_KEY_NAME,
-  SOLV_KEYPAIR_UPLOAD_PATH,
   TESTNET_VALIDATOR_KEYFILE,
   TESTNET_VALIDATOR_KEY_NAME,
   VALIDATOR_VOTE_KEYFILE,
@@ -11,9 +10,10 @@ import {
   VALITATOR_AUTHORITY_KEY_NAME,
 } from '@/config'
 import { spawnSync } from 'child_process'
-import { existsSync } from 'fs'
+import { existsSync, mkdirSync } from 'fs'
 import { airdrop } from './airdrop'
 import chalk from 'chalk'
+import os from 'os'
 
 export const setupKeys = (commission = 10, isLocal = false) => {
   try {
@@ -21,11 +21,16 @@ export const setupKeys = (commission = 10, isLocal = false) => {
     let voteKey = VALIDATOR_VOTE_KEYFILE
     let validatorTestnetKey = TESTNET_VALIDATOR_KEYFILE
     let validatorMainnetKey = MAINNET_VALIDATOR_KEYFILE
+    const homeDirectory = os.userInfo().homedir
+    const uploadDir = `${homeDirectory}/solvKeys/upload`
     if (isLocal) {
-      authorityKey = `${SOLV_KEYPAIR_UPLOAD_PATH}/${VALITATOR_AUTHORITY_KEY_NAME}`
-      voteKey = `${SOLV_KEYPAIR_UPLOAD_PATH}/${VALIDATOR_VOTE_KEY_NAME}`
-      validatorTestnetKey = `${SOLV_KEYPAIR_UPLOAD_PATH}/${TESTNET_VALIDATOR_KEY_NAME}`
-      validatorMainnetKey = `${SOLV_KEYPAIR_UPLOAD_PATH}/${MAINNET_VALIDATOR_KEY_NAME}`
+      if (!existsSync(uploadDir)) {
+        mkdirSync(uploadDir, { recursive: true })
+      }
+      authorityKey = `${uploadDir}/${VALITATOR_AUTHORITY_KEY_NAME}`
+      voteKey = `${uploadDir}/${VALIDATOR_VOTE_KEY_NAME}`
+      validatorTestnetKey = `${uploadDir}/${TESTNET_VALIDATOR_KEY_NAME}`
+      validatorMainnetKey = `${uploadDir}/${MAINNET_VALIDATOR_KEY_NAME}`
     }
     if (existsSync(authorityKey)) {
       console.log(
