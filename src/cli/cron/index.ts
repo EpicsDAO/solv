@@ -21,6 +21,7 @@ export const cronCommands = async () => {
         if (Number(epoch) === 563) {
           const cmd = `solv stop`
           spawnSync(cmd, { shell: true, stdio: 'inherit' })
+          await sendDiscord(`Current Epoch: ${epoch} - Stop Solana Validator`)
           process.exit(0)
         }
       })
