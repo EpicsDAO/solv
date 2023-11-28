@@ -11,7 +11,6 @@ import os from 'os'
 
 export const download = async () => {
   const homeDirectory = os.userInfo().homedir
-  console.log(homeDirectory)
   const answer = await inquirer.prompt<{ ip: string }>([
     {
       type: 'input',
