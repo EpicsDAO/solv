@@ -13,13 +13,16 @@ export const cronCommands = async () => {
   crond
     .command('epoch')
     .description('Solv Discord Epoch Notification Command')
-    .option('-c, --cron <value>', 'Cron Job', '0 0 * * *')
+    .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
     .action(async (options: any) => {
       Logger.normal(`🕰️ Running Cron Job: ${options.cron}`)
       cron.schedule(options.cron, async () => {
         const epoch = getEpoch()
-        console.log({ epoch })
-        await sendDiscord(`Current Epoch: ${epoch}`)
+        if (Number(epoch) === 563) {
+          const cmd = `solv stop`
+          spawnSync(cmd, { shell: true, stdio: 'inherit' })
+          process.exit(0)
+        }
       })
     })
 
