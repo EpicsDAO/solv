@@ -1,29 +1,39 @@
 import { program } from '@/index'
 import cron from 'node-cron'
-import { sendDiscord } from '@/lib/sendDiscord'
 import { getEpoch } from './getEpoch'
 import { Logger } from '@/lib/logger'
 import { getSlot } from './getSlot'
 import { airdrop } from '../setup/airdrop'
 import { spawnSync } from 'child_process'
+import { stopSolana } from '../stop/stopSolana'
+import { dotenv, sendDiscord } from '@skeet-framework/utils'
+dotenv.config()
 
 export const cronCommands = async () => {
   const crond = program.command('cron').description('Cron Task Command')
 
   crond
     .command('epoch')
-    .description('Solv Discord Epoch Notification Command')
+    .description(
+      'Solv Discord Epoch Notification Command. e.g. DISCORD_WEBHOOK_URL=wehbookurl solv cron epoch'
+    )
     .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
     .action(async (options: any) => {
+      // export DISCORD_WEBHOOK_URL=wehbookurl
       Logger.normal(`🕰️ Running Cron Job: ${options.cron}`)
       cron.schedule(options.cron, async () => {
         const epoch = getEpoch()
         if (Number(epoch) === 563) {
-          const cmd = `solv stop`
-          spawnSync(cmd, { shell: true, stdio: 'inherit' })
-          await sendDiscord(`Current Epoch: ${epoch} - Stop Solana Validator`)
+          await sendDiscord(
+            `Current Epoch: ${epoch} - Stopping Solana Validator!`
+          )
+          stopSolana()
+          await sendDiscord(
+            `Current Epoch: ${epoch} - Stopped Solana Validator!`
+          )
           process.exit(0)
         }
+        console.log({ epoch })
       })
     })
 
