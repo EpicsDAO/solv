@@ -1,7 +1,7 @@
 export const DEFAULT_LANG = 'en'
-export const DEFAULT_SOLANA_VERSION = '1.16.20'
+export const DEFAULT_SOLANA_VERSION = '1.17.7'
 export const DEFAULT_NODE_VERSION = '18.18.1'
-export const DEFAULT_DELINQUENT_STAKE = 5
+export const DEFAULT_DELINQUENT_STAKE = 10
 export const DEFAULT_COMMISSION = 10
 export const DEFAULT_SOLANA_NETWORK = 'testnet'
 export const DEFAULT_SSH_PUBKEY_PATH = '~/.ssh/id_rsa.pub'
