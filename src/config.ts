@@ -1,5 +1,5 @@
 export const DEFAULT_LANG = 'en'
-export const DEFAULT_SOLANA_VERSION = '1.17.9'
+export const DEFAULT_SOLANA_VERSION = '1.17.12'
 export const DEFAULT_NODE_VERSION = '18.18.1'
 export const DEFAULT_DELINQUENT_STAKE = 5
 export const DEFAULT_COMMISSION = 10
