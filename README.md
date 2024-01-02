@@ -33,10 +33,12 @@ Whether you're a seasoned developer or a blockchain enthusiast stepping into the
 
 Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
 
-## Update Instructions v1.7x to v1.8x
+## Update Solv Instructions v1.8.x to v1.9.0
 
-Node version update is required for v1.8x
+Node version update is required for solv v1.9.x
 Node 18.18.x to 20.10.1
+
+Update node
 
 ```bash
 $ solv update --node
@@ -60,7 +62,7 @@ https://youtu.be/rY4bajhRJgw
 ## Solana Validator Setup
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.7.2/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.9.0/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
