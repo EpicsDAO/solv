@@ -21,7 +21,7 @@ export const cronCommands = async () => {
     .description(
       'Solv Discord Notification Command. Please set `.env` file with  `DISCORD_WEBHOOK_URL=<wehbookurl>`'
     )
-    .option('-c, --cron <value>', 'Cron Job', '* * * * *')
+    .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
     .option('-e, --epoch <epoch>', 'Epoch', '579')
     .action(async (options: CronOptions) => {
       const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
