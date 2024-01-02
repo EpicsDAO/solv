@@ -1,6 +1,6 @@
 import { program } from '@/index'
 import cron from 'node-cron'
-import { getEpochRemote } from './getEpoch'
+import { getEpoch } from './getEpoch'
 import { Logger } from '@/lib/logger'
 import { spawnSync } from 'child_process'
 import { stopSolana } from '../stop/stopSolana'
@@ -36,7 +36,7 @@ export const cronCommands = async () => {
       const triggerEpoch = Number(options.epoch)
       Logger.normal(`🕰️ Running Cron Job: ${options.cron}`)
       cron.schedule(options.cron, async () => {
-        const epoch = getEpochRemote()
+        const epoch = getEpoch()
         if (Number(epoch) === triggerEpoch) {
           await sendDiscord(
             `Current Epoch: ${epoch} - Stopping Solana Validator!`,
