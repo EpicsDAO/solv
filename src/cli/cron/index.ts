@@ -61,7 +61,7 @@ export const cronCommands = async () => {
     .command('halt')
     .description('Solv Node Halt Discord Notification Command')
     .action(async (options: any) => {
-      const cmd = `npx pm2 start yarn --name solvHalt -- start cron watchHalt`
+      const cmd = `npx pm2 start solv --name solvHalt -- cron watchHalt`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 
