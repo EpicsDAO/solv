@@ -33,6 +33,21 @@ Whether you're a seasoned developer or a blockchain enthusiast stepping into the
 
 Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
 
+## Update Instructions v1.7x to v1.8x
+
+Node version update is required for v1.8x
+Node 18.18.x to 20.10.1
+
+```bash
+$ solv update --node
+```
+
+then Install solv again
+
+```bash
+$ npm install -g @epics-dao/solv
+```
+
 ## 🔴 YouTube Video
 
 https://youtu.be/rY4bajhRJgw
