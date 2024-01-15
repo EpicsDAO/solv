@@ -1,6 +1,6 @@
 {
   "name": "@epics-dao/solv",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "description": "Solana Validator CLI SOLV",
   "main": "dist/index.js",
   "repository": "https://github.com/EpicsDAO/solv",
