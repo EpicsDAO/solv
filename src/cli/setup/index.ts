@@ -1,11 +1,11 @@
 import { program } from '@/index'
 import { setup } from './setup'
-import { startValidator } from './startValidator'
+import { genStartupValidatorScript } from './genStartupValidatorScript'
 import chalk from 'chalk'
-import { DEFAULT_COMMISSION, VALIDATOR_STARTUP_SCRIPT } from '@/config'
 import { setupVoteAccount } from './setupVoteAccount'
 import { airdrop } from './airdrop'
 import { onlyGenKeys } from './onlyGenKeys'
+import { CONFIG, startupScriptPaths } from '@/config/config'
 
 export const setupCommands = async () => {
   program
@@ -17,13 +17,14 @@ export const setupCommands = async () => {
     .option(
       '--commission <number>',
       'Set Validator Commission',
-      DEFAULT_COMMISSION.toString()
+      CONFIG.COMMISSION.toString()
     )
     .action(async (options) => {
       const commission = Number(options.commission)
+      const { scriptPath } = startupScriptPaths()
       if (options.sh) {
-        console.log(chalk.white(`Generating ${VALIDATOR_STARTUP_SCRIPT} ...`))
-        startValidator()
+        console.log(chalk.white(`Generating ${scriptPath} ...`))
+        genStartupValidatorScript()
       } else if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
         setupVoteAccount(commission)
@@ -34,13 +35,5 @@ export const setupCommands = async () => {
         console.log(chalk.white('Setting up Solana Validator ...'))
         setup(commission)
       }
-    })
-
-  program
-    .command('airdrop')
-    .alias('ad')
-    .description('Airdrop to Solana Account')
-    .action(() => {
-      airdrop()
     })
 }

@@ -7,10 +7,8 @@ export const checkMemoryAndSwap = (): boolean => {
   if (lines.length < 3) return false
 
   const memDetails = lines[1].split(/\s+/)
-  const swapDetails = lines[2].split(/\s+/)
 
   const memTotal = parseInt(memDetails[1], 10)
-  const swapTotal = parseInt(swapDetails[1], 10)
 
-  return memTotal >= 200 && swapTotal >= 200
+  return memTotal >= 200
 }

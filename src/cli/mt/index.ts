@@ -2,8 +2,8 @@ import { program } from '@/index'
 import { mount } from './mount'
 import { spawnSync } from 'child_process'
 import { umount } from './umount'
-import { DEFAULT_FILE_SYSTEM } from '@/config'
 import { getPreferredDisk } from './getLargestDisk'
+import { FILE_SYSTEM_PATHS } from '@/config/config'
 
 export const mountCommands = () => {
   program
@@ -12,7 +12,7 @@ export const mountCommands = () => {
     .option(
       '-p,--path <path>',
       'File System Path e.g /dev/vda',
-      DEFAULT_FILE_SYSTEM
+      FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM
     )
     .action((options: any) => {
       mount(options.path)
@@ -24,7 +24,7 @@ export const mountCommands = () => {
     .option(
       '-p,--path <path>',
       'File System Path e.g /dev/vda',
-      DEFAULT_FILE_SYSTEM
+      FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM
     )
     .action((options: any) => {
       umount(options.path)

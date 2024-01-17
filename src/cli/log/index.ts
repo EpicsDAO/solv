@@ -1,6 +1,5 @@
 import { program } from '@/index'
 import { tail } from './tail'
-import { Logger } from '@/lib/logger'
 
 export const logCommands = async () => {
   program

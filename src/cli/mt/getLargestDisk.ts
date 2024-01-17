@@ -19,8 +19,8 @@ export function getPreferredDisk(): DiskInfo | null {
     const [name, sizeStr, mountpoint] = line.trim().split(/\s+/)
     const size = parseInt(sizeStr, 10)
 
-    if (size >= 1e12) {
-      // check if disk size is 1TB or more
+    if (size >= 490 * 1024 * 1024 * 1024) {
+      // check if disk size is 490GB or more
       const diskInfo: DiskInfo = { name, size, mountpoint: mountpoint || '' }
 
       if (!mountpoint && !unmountedDisk) {

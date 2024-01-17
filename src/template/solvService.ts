@@ -1,6 +1,13 @@
-import { SOLV_ROOT, USERNAME, VALIDATOR_STARTUP_SCRIPT } from '@/config'
+import { CONFIG, HOME_PATHS, startupScriptPaths } from '@/config/config'
 
-export const solvService = (username = USERNAME) => {
+const envMainnet =
+  'SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=mainnet-beta,u=mainnet-beta_write,p=password'
+const envTestnet =
+  'SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea'
+
+export const solvService = (username = CONFIG.USERNAME, isTest = true) => {
+  const { scriptPath } = startupScriptPaths(isTest)
+  const environment = isTest ? envTestnet : envMainnet
   const body = `[Unit]
 Description=Solana Validator
 After=network.target
@@ -14,9 +21,9 @@ LimitNOFILE=1000000
 LogRateLimitIntervalSec=0
 User=${username}
 Environment=PATH=/home/${username}/.local/share/solana/install/active_release/bin
-WorkingDirectory=${SOLV_ROOT}
-Environment="SOLANA_METRICS_CONFIG=host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea"
-ExecStart=${VALIDATOR_STARTUP_SCRIPT}
+WorkingDirectory=${HOME_PATHS.ROOT}
+Environment="${environment}"
+ExecStart=${scriptPath}
 
 [Install]
 WantedBy=multi-user.target`

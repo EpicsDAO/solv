@@ -1,6 +1,5 @@
 import { program } from '@/index'
 import { df } from './df'
-import { logDiskUsage } from './du'
 import { displayTable } from '@/lib/logger/table'
 import { lsblk } from './lsblk'
 import { Logger } from '@/lib/logger'

@@ -5,7 +5,7 @@ export const startCommand = () => {
   program
     .command('start')
     .description('Start Solana Validator')
-    .action(async () => {
+    .action(() => {
       startSolana()
     })
 }

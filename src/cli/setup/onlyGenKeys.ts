@@ -1,4 +1,3 @@
-import { validatorLocalKeys } from '@/config'
 import chalk from 'chalk'
 import { setupKeys } from './setupKeys'
 import { isSolanaInstalled } from './setup'
@@ -11,7 +10,4 @@ export const onlyGenKeys = async (commission = 10) => {
   }
   console.log(chalk.white('Setting up Validator Keypairs ...'))
   setupKeys(commission, true)
-  for await (const createdPath of validatorLocalKeys) {
-    console.log(chalk.green(`✅ Successfully Generated - ${createdPath}`))
-  }
 }

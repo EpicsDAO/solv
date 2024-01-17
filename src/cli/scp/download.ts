@@ -1,9 +1,6 @@
-import {
-  MAINNET_VALIDATOR_KEYFILE,
-  TESTNET_VALIDATOR_KEYFILE,
-  VALIDATOR_VOTE_KEYFILE,
-  VALITATOR_AUTHORITY_KEYFILE,
-} from '@/config'
+import { getAllKeyPaths } from '@/config/config'
+import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
+import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import inquirer from 'inquirer'
@@ -21,14 +18,9 @@ export const download = async () => {
       },
     },
   ])
-  const solanaKeys = [
-    TESTNET_VALIDATOR_KEYFILE,
-    MAINNET_VALIDATOR_KEYFILE,
-    VALIDATOR_VOTE_KEYFILE,
-    VALITATOR_AUTHORITY_KEYFILE,
-  ]
+  const solanaKeys = Object.values(getAllKeyPaths())
 
-  const dlPath = `${homeDirectory}/solvKeys/download`
+  const dlPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_DOWNLOAD_PATH}`
   if (!existsSync(dlPath)) {
     mkdirSync(dlPath, { recursive: true })
   }
@@ -36,6 +28,10 @@ export const download = async () => {
     const splits = key.split('/')
     const fileName = splits[splits.length - 1]
     const filePath = `${dlPath}/${fileName}`
+    if (!existsSync(filePath)) {
+      console.log(chalk.red(`File Not Found - ${filePath} 🚨`))
+      continue
+    }
     const cmd = `scp solv@${answer.ip}:${key} ${filePath}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     console.log(`Successfully Exported - ${filePath} 🎉`)

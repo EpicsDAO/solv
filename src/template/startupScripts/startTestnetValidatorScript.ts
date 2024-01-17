@@ -1,19 +1,14 @@
-import {
-  LEDGER_PATH,
-  LOG_PATH,
-  MAINNET_VALIDATOR_KEYFILE,
-  SOLANA_ACCOUNT_ROOT,
-  TESTNET_VALIDATOR_KEYFILE,
-  VALIDATOR_VOTE_KEYFILE,
-} from '@/config'
+import { startupScriptPaths } from '@/config/config'
 
-const commonValidatorCommands = (identityKey: string) => `#!/bin/bash
+export const startTestnetValidatorScript = () => {
+  const { identity, voteAccount, log, accounts, ledger } = startupScriptPaths()
+  const script = `#!/bin/bash
 exec solana-validator \\
---identity ${identityKey} \\
---vote-account ${VALIDATOR_VOTE_KEYFILE} \\
---log ${LOG_PATH} \\
---accounts ${SOLANA_ACCOUNT_ROOT} \\
---ledger ${LEDGER_PATH} \\
+--identity ${identity} \\
+--vote-account ${voteAccount} \\
+--log ${log} \\
+--accounts ${accounts} \\
+--ledger ${ledger} \\
 --entrypoint entrypoint.testnet.solana.com:8001 \\
 --entrypoint entrypoint2.testnet.solana.com:8001 \\
 --entrypoint entrypoint3.testnet.solana.com:8001 \\
@@ -33,19 +28,5 @@ exec solana-validator \\
 --expected-bank-hash 2ZHZpzSpBhkbfqsENGybfLbXSZ2hZiTq79qHCM4TWBpi \\
 --limit-ledger-size \\
 `
-
-export const startValidatorSh = (
-  fetchSnapshot = false,
-  network = 'testnet'
-) => {
-  const identityKey =
-    network === 'mainnet-beta'
-      ? MAINNET_VALIDATOR_KEYFILE
-      : TESTNET_VALIDATOR_KEYFILE
-  if (!fetchSnapshot) {
-    return `${commonValidatorCommands(
-      identityKey
-    )}--no-snapshot-fetch \\\n--no-genesis-fetch`
-  }
-  return commonValidatorCommands(identityKey) + '--no-incremental-snapshots'
+  return script
 }

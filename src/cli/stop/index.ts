@@ -5,7 +5,7 @@ export const stopCommand = () => {
   program
     .command('stop')
     .description('Stop Solana Validator')
-    .action(async () => {
+    .action(() => {
       stopSolana()
     })
 }

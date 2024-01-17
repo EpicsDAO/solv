@@ -1,4 +1,4 @@
-import { SSH_PUBKEY_PATH } from '@/config'
+import { HOME_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
 import inquirer from 'inquirer'
 
@@ -12,7 +12,7 @@ export const create = async () => {
     },
   })
 
-  const cmd = `mkdir -p /home/solv/.ssh && echo "${answer.pubkey}" >> ${SSH_PUBKEY_PATH}`
+  const cmd = `mkdir -p ${HOME_PATHS.ROOT}/.ssh && echo "${answer.pubkey}" >> ${HOME_PATHS.AUTHORIZED_KEYS}`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
   console.log(`Successfully Created SSH Login Setting 🎉`)
 }

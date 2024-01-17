@@ -1,9 +1,11 @@
-import { DEFAULT_FILE_SYSTEM } from '@/config'
+import { FILE_SYSTEM_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
 
 const swapLine = `/mt/swapfile swap swap defaults 0 0`
 
-export const ensureFstabEntries = (fileSystem = DEFAULT_FILE_SYSTEM) => {
+export const ensureFstabEntries = (
+  fileSystem = FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM
+) => {
   const mtLine = `${fileSystem}        /mt     ext4 auto 0 0`
   const lines = [swapLine, mtLine]
   const output = spawnSync(`cat /etc/fstab`, {

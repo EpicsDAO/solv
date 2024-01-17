@@ -1,64 +1,55 @@
-import {
-  DEFAULT_SOLANA_NETWORK,
-  MAINNET_VALIDATOR_KEYFILE,
-  MAINNET_VALIDATOR_KEY_NAME,
-  TESTNET_VALIDATOR_KEYFILE,
-  TESTNET_VALIDATOR_KEY_NAME,
-  VALIDATOR_VOTE_KEYFILE,
-  VALIDATOR_VOTE_KEY_NAME,
-  VALITATOR_AUTHORITY_KEYFILE,
-  VALITATOR_AUTHORITY_KEY_NAME,
-} from '@/config'
 import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import { airdrop } from './airdrop'
-import chalk from 'chalk'
 import os from 'os'
+import { NETWORK_TYPES, getAllKeyPaths } from '@/config/config'
+import { createVoteAccount } from './createVoteAccount'
 
-export const setupKeys = (commission = 10, isLocal = false) => {
+export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
   try {
-    let authorityKey = VALITATOR_AUTHORITY_KEYFILE
-    let voteKey = VALIDATOR_VOTE_KEYFILE
-    let validatorTestnetKey = TESTNET_VALIDATOR_KEYFILE
-    let validatorMainnetKey = MAINNET_VALIDATOR_KEYFILE
-    const homeDirectory = os.userInfo().homedir
-    const uploadDir = `${homeDirectory}/solvKeys/upload`
+    let keypairs = getAllKeyPaths()
     if (isLocal) {
+      const homeDirectory = os.userInfo().homedir
+      const uploadDir = `${homeDirectory}/solvKeys/upload`
       if (!existsSync(uploadDir)) {
         mkdirSync(uploadDir, { recursive: true })
       }
-      authorityKey = `${uploadDir}/${VALITATOR_AUTHORITY_KEY_NAME}`
-      voteKey = `${uploadDir}/${VALIDATOR_VOTE_KEY_NAME}`
-      validatorTestnetKey = `${uploadDir}/${TESTNET_VALIDATOR_KEY_NAME}`
-      validatorMainnetKey = `${uploadDir}/${MAINNET_VALIDATOR_KEY_NAME}`
+      keypairs = getAllKeyPaths(uploadDir)
+      const keyArray = Object.values(keypairs)
+      createKeypairs(keyArray)
+    } else {
+      const keyArray = Object.values(keypairs)
+      createKeypairs(keyArray)
     }
-    if (existsSync(authorityKey)) {
-      console.log(
-        chalk.yellow(
-          '⚠️ Authority Key Already Exists\n\nPlease check `~/solvKeys/upload/` folder'
-        )
-      )
-      return false
-    }
+    const validatorKey = isTest
+      ? keypairs.testnetValidatorKey
+      : keypairs.mainnetValidatorKey
+    const network = isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET
     const cmds = [
-      `solana-keygen new --no-bip39-passphrase --outfile ${authorityKey}`,
-      `solana-keygen new --no-bip39-passphrase --outfile ${voteKey}`,
-      `solana-keygen new --no-bip39-passphrase --outfile ${validatorTestnetKey}`,
-      `solana-keygen new --no-bip39-passphrase --outfile ${validatorMainnetKey}`,
-      `solana config set --keypair ${validatorTestnetKey}`,
-      `solana config set --url ${DEFAULT_SOLANA_NETWORK}`,
+      `solana config set --keypair ${validatorKey}`,
+      `solana config set --url ${network}`,
       `solana airdrop 1`,
-      `solana create-vote-account ${voteKey} ${validatorTestnetKey} ${authorityKey} --commission ${commission}`,
     ]
     for (const cmd of cmds) {
-      if (cmd.includes('airdrop')) {
+      if (cmd.includes('airdrop') && isTest) {
         airdrop()
         continue
       }
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     }
+    createVoteAccount(commission, isTest)
     return true
   } catch (error) {
     throw new Error(`setupKeys Error: ${error}`)
   }
+}
+
+const createKeypairs = (keyPaths: string[]) => {
+  for (const path of keyPaths) {
+    spawnSync(`solana-keygen new --no-bip39-passphrase --outfile ${path}`, {
+      shell: true,
+      stdio: 'inherit',
+    })
+  }
+  return true
 }

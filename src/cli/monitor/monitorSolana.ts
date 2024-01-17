@@ -1,7 +1,8 @@
-import { LEDGER_PATH } from '@/config'
+import { startupScriptPaths } from '@/config/config'
 import { spawnSync } from 'child_process'
 
 export const monitorSolana = () => {
-  const cmd = `solana-validator --ledger ${LEDGER_PATH} monitor`
+  const { ledger } = startupScriptPaths()
+  const cmd = `solana-validator --ledger ${ledger} monitor`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

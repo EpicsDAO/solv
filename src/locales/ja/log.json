@@ -1,0 +1,11 @@
+{
+  "success": {
+    "message": "成功"
+  },
+  "warning": {
+    "message": "警告"
+  },
+  "error": {
+    "message": "エラー"
+  }
+}

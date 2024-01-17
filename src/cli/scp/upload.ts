@@ -1,9 +1,5 @@
-import {
-  MAINNET_VALIDATOR_KEYFILE,
-  TESTNET_VALIDATOR_KEYFILE,
-  VALIDATOR_VOTE_KEYFILE,
-  VALITATOR_AUTHORITY_KEYFILE,
-} from '@/config'
+import { getAllKeyPaths } from '@/config/config'
+import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
@@ -22,14 +18,9 @@ export const upload = async () => {
       },
     },
   ])
-  const solanaKeys = [
-    TESTNET_VALIDATOR_KEYFILE,
-    MAINNET_VALIDATOR_KEYFILE,
-    VALIDATOR_VOTE_KEYFILE,
-    VALITATOR_AUTHORITY_KEYFILE,
-  ]
+  const solanaKeys = Object.values(getAllKeyPaths())
 
-  const uploadPath = `${homeDirectory}/solvKeys/upload`
+  const uploadPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
   for (const key of solanaKeys) {
     const splits = key.split('/')
     const fileName = splits[splits.length - 1]

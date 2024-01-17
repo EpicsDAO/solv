@@ -3,12 +3,8 @@ import { monitorUpdate, updateVersion } from './update'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
-import {
-  DEFAULT_DELINQUENT_STAKE,
-  DEFAULT_NODE_VERSION,
-  DEFAULT_SOLANA_VERSION,
-} from '@/config'
 import { spawnSync } from 'child_process'
+import { CONFIG } from '@/config/config'
 
 export * from './update'
 
@@ -21,8 +17,8 @@ export const updateCommands = async () => {
     )
     .option(
       '-v, --version <version>',
-      `Solana Version e.g ${DEFAULT_SOLANA_VERSION}`,
-      DEFAULT_SOLANA_VERSION
+      `Solana Version e.g ${CONFIG.SOLANA_VERSION}`,
+      CONFIG.SOLANA_VERSION
     )
     .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
@@ -36,19 +32,19 @@ export const updateCommands = async () => {
             options.maxDelinquentStake
           )}`
         )
-        monitorUpdate(DEFAULT_DELINQUENT_STAKE)
+        monitorUpdate(CONFIG.DELINQUENT_STAKE)
       } else if (options.background) {
         updateVersion(options.version)
         Logger.normal(
           `✔️ Update to Solana Version ${chalk.green(options.version)}`
         )
-        monitorUpdate(DEFAULT_DELINQUENT_STAKE, true)
+        monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       } else if (options.node) {
         const cmd = `git -C /home/solv/.nodenv/plugins/node-build pull`
         spawnSync(cmd, { shell: true, stdio: 'inherit' })
-        const cmd2 = `nodenv install ${DEFAULT_NODE_VERSION}`
+        const cmd2 = `nodenv install ${CONFIG.NODE_VERSION}`
         spawnSync(cmd2, { shell: true, stdio: 'inherit' })
-        const cmd3 = `nodenv local ${DEFAULT_NODE_VERSION}`
+        const cmd3 = `nodenv local ${CONFIG.NODE_VERSION}`
         spawnSync(cmd3, { shell: true, stdio: 'inherit' })
         const cmd4 = `nodenv rehash`
         spawnSync(cmd4, { shell: true, stdio: 'inherit' })
