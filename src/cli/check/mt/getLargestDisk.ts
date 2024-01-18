@@ -29,19 +29,27 @@ function getPreferredDisks(): DiskInfo[] {
 
   // Custom sort function
   const sortDisks = (a: DiskInfo, b: DiskInfo) => {
+    // Check for mountpoint
     if (a.mountpoint === '' && b.mountpoint !== '') return -1;
     if (a.mountpoint !== '' && b.mountpoint === '') return 1;
+
+    // Check if one is a prefix of the other
     if (a.name.startsWith(b.name)) return 1;
     if (b.name.startsWith(a.name)) return -1;
-    if (/\d$/.test(a.name) && !/\d$/.test(b.name)) return 1;
-    if (!/\d$/.test(a.name) && /\d$/.test(b.name)) return -1;
+
+    // Check if name ends with a number
+    const aEndsWithNumber = /\d$/.test(a.name);
+    const bEndsWithNumber = /\d$/.test(b.name);
+    if (aEndsWithNumber && !bEndsWithNumber) return 1;
+    if (!aEndsWithNumber && bEndsWithNumber) return -1;
+
+    // Finally, sort by size
     return b.size - a.size;
   };
 
   // Sort disks
   return disks.sort(sortDisks);
 }
-
 
 
 export default getPreferredDisks
