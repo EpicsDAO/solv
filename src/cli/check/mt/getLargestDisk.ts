@@ -10,7 +10,7 @@ export type GetPreferredDisksResult = {
   disks: DiskInfo[]
   has850GB: boolean
   has400GB: boolean
-  hasUsed1400GB: boolean
+  hasUsed1250GB: boolean
 }
 
 function getPreferredDisks(): GetPreferredDisksResult {
@@ -27,7 +27,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   // Initialize the boolean flags
   let has850GB = false
   let has400GB = false
-  let hasUsed1400GB = false
+  let hasUsed1250GB = false
 
   for (const line of lines) {
     const [name, sizeStr, mountpoint] = line.trim().split(/\s+/)
@@ -44,9 +44,9 @@ function getPreferredDisks(): GetPreferredDisksResult {
       const hasPartition = allDiskNames.some(
         (diskName) => diskName !== name && diskName.startsWith(name),
       )
-      if (size >= 900 * 1024 * 1024 * 1024 && !hasPartition) has850GB = true
+      if (size >= 850 * 1024 * 1024 * 1024 && !hasPartition) has850GB = true
       if (size >= 400 * 1024 * 1024 * 1024 && !hasPartition) has400GB = true
-      if (size >= 1400 * 1024 * 1024 * 1024 && mountpoint) hasUsed1400GB = true
+      if (size >= 1250 * 1024 * 1024 * 1024 && mountpoint) hasUsed1250GB = true
     }
   }
 
@@ -75,7 +75,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   // Sort disks
   const sortedDisks = disks.sort(sortDisks)
 
-  return { disks: sortedDisks, has850GB, has400GB, hasUsed1400GB }
+  return { disks: sortedDisks, has850GB, has400GB, hasUsed1250GB }
 }
 
 export default getPreferredDisks

@@ -3589,7 +3589,7 @@ jest-util@^29.7.0:
 
 jest-validate@^29.7.0:
   version "29.7.0"
-  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-29.7.0.tgz#7bf705511c64da591d46b15fce41400d52147d9c"
+  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-29.7.0.tgz#7bf705511c64da591d46b15fce41250d52147d9c"
   integrity sha512-ZB7wHqaRGVw/9hST/OuFUReG7M8vKeq0/J2egIGLdvjHCmYqGARhzXmtgi+gVeZ5uXFF219aOc3Ls2yLg27tkw==
   dependencies:
     "@jest/types" "^29.6.3"
