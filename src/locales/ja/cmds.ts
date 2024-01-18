@@ -25,6 +25,8 @@ const cmdsJA: DescriptionParams = {
   epoch: '現在のエポックを表示',
   slot: '現在のスロットを表示',
   solv: 'Solvエンドロール AA を表示',
+  installer:
+    'solv インストーラーへようこそ 🚀\n以下からオプションを選択してください:',
 }
 
 export default cmdsJA

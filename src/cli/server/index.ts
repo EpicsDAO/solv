@@ -8,6 +8,6 @@ export const serverCommands = (solvConfig: ConfigParams) => {
     .alias('s')
     .description('solv Server Dashboard')
     .action(async () => {
-      await server()
+      await server(solvConfig)
     })
 }

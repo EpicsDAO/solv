@@ -23,6 +23,7 @@ const logsJA = {
   epoch: 'Show Current Epoch',
   slot: 'Show Current Slot',
   solv: 'Endroll Solv AA',
+  installer: 'Welcome to the solv installer 🚀\nPlease select an option:',
 }
 
 export default logsJA

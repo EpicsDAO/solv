@@ -1,21 +1,27 @@
+import { ConfigParams } from '@/lib/createDefaultConfig'
 import inquirer from 'inquirer'
 
 enum CHOICES {
-  INSTALL = '1) Install - Initial Setup',
-  UPGRADE = '2) Upgrade - Solana Version Update/Downgrade',
-  CHECK = '3) Check Validator Status or Start/Stop',
-  CONFIG = '4) Get Validator Config',
-  UNINSTALL = '5) Uninstall',
-  EXIT = '6) Exit',
+  INSTALL,
+  UPGRADE,
+  CHECK,
+  CONFIG,
+  UNINSTALL,
+  EXIT,
 }
 
-export const server = async () => {
+export const server = async (solvClient: ConfigParams) => {
+  const { installer, cmds } = solvClient.locale
+  // Put increment number in front of each item
+  const choices = installer.map((item, index) => {
+    return `${index + 1}${item}`
+  })
   const answer = await inquirer.prompt<{ server: CHOICES }>([
     {
       name: 'server',
       type: 'list',
-      message: '⚡️ Welcome to the solv Installer - Please select an option:',
-      choices: Object.values(CHOICES),
+      message: cmds.installer,
+      choices,
     },
   ])
 

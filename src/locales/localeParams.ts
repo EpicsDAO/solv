@@ -1,6 +1,7 @@
 export interface LocaleParams {
   cmds: DescriptionParams
   subCmds: subCommandParams
+  installer: string[]
   logs: DescriptionParams
 }
 
@@ -29,6 +30,7 @@ export interface DescriptionParams {
   epoch: string
   slot: string
   solv: string
+  installer: string
 }
 
 export interface subCommandParams {
@@ -52,6 +54,18 @@ export interface subCommandParams {
   epoch: Description
   slot: Description
   solv: Description
+}
+
+export interface LogParams {
+  success: {
+    created: string
+  }
+  error: {
+    failed: string
+  }
+  installer: {
+    welcomeMsg: string
+  }
 }
 
 export interface Description {
