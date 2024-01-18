@@ -8,9 +8,9 @@ export type DiskInfo = {
 
 export type GetPreferredDisksResult = {
   disks: DiskInfo[]
-  has980GB: boolean
-  has480GB: boolean
-  hasUsed1480GB: boolean
+  has900GB: boolean
+  has400GB: boolean
+  hasUsed1400GB: boolean
 }
 
 function getPreferredDisks(): GetPreferredDisksResult {
@@ -25,9 +25,9 @@ function getPreferredDisks(): GetPreferredDisksResult {
   const allDiskNames = lines.map((line) => line.trim().split(/\s+/)[0])
 
   // Initialize the boolean flags
-  let has980GB = false
-  let has480GB = false
-  let hasUsed1480GB = false
+  let has900GB = false
+  let has400GB = false
+  let hasUsed1400GB = false
 
   for (const line of lines) {
     const [name, sizeStr, mountpoint] = line.trim().split(/\s+/)
@@ -36,7 +36,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
     const size = parseInt(sizeStr, 10)
     if (isNaN(size)) continue // Skip lines where size is not a number
 
-    if (size >= 490 * 1024 * 1024 * 1024) {
+    if (size >= 400 * 1024 * 1024 * 1024) {
       const diskInfo: DiskInfo = { name, size, mountpoint: mountpoint || '' }
       disks.push(diskInfo)
 
@@ -44,9 +44,9 @@ function getPreferredDisks(): GetPreferredDisksResult {
       const hasPartition = allDiskNames.some(
         (diskName) => diskName !== name && diskName.startsWith(name),
       )
-      if (size >= 980 * 1024 * 1024 * 1024 && !hasPartition) has980GB = true
-      if (size >= 480 * 1024 * 1024 * 1024 && !hasPartition) has480GB = true
-      if (size >= 1480 * 1024 * 1024 * 1024 && mountpoint) hasUsed1480GB = true
+      if (size >= 900 * 1024 * 1024 * 1024 && !hasPartition) has900GB = true
+      if (size >= 400 * 1024 * 1024 * 1024 && !hasPartition) has400GB = true
+      if (size >= 1400 * 1024 * 1024 * 1024 && mountpoint) hasUsed1400GB = true
     }
   }
 
@@ -75,7 +75,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   // Sort disks
   const sortedDisks = disks.sort(sortDisks)
 
-  return { disks: sortedDisks, has980GB, has480GB, hasUsed1480GB }
+  return { disks: sortedDisks, has900GB, has400GB, hasUsed1400GB }
 }
 
 export default getPreferredDisks
