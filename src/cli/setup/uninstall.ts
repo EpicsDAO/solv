@@ -3,6 +3,7 @@ import { execSync } from 'child_process'
 import inquirer from 'inquirer'
 import { umount } from '../check/mt/umount'
 import { sleep } from '@skeet-framework/utils'
+import { existsSync } from 'fs'
 
 export const uninstall = async () => {
   const confirm = await inquirer.prompt([
@@ -31,7 +32,7 @@ export const uninstall = async () => {
   }
 
   const solvTrashPath = 'home/solv/solvKeys/trash'
-  if (!execSync(solvTrashPath)) {
+  if (!existsSync(solvTrashPath)) {
     execSync(`mkdir -p ${solvTrashPath}`)
   }
 
