@@ -9,9 +9,10 @@ export * from './delegateStake'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const stakeCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('stake')
-    .description('Solana Delegate Stake Command')
+    .description(cmds.stake)
     .action(async () => {
       const { validatorVoteAccount, stakeAccount } = await inquirer.prompt<{
         stakeAccount: string

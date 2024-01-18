@@ -33,20 +33,20 @@ program
 async function main() {
   try {
     serverCommands(solvConfig)
-    startCommand()
-    restartCommand()
-    stopCommand()
+    startCommand(solvConfig)
+    restartCommand(solvConfig)
+    stopCommand(solvConfig)
     statusCommands(solvConfig)
     updateCommands(solvConfig)
-    getCommands(solvConfig)
     logCommands(solvConfig)
     installCommands(solvConfig)
     stakeCommands(solvConfig)
     checkCommands(solvConfig)
+    getCommands(solvConfig)
     scpCommands(solvConfig)
     cronCommands(solvConfig)
     setupCommands(solvConfig)
-    mountCommands(solvConfig)
+    // mountCommands(solvConfig)
 
     await program
       .addHelpCommand('help [cmd]', solvConfig.locale.cmds.help)

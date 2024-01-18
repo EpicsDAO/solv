@@ -16,8 +16,10 @@ import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { formatDisk } from './formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
+import { ConfigParams } from '@/lib/createDefaultConfig'
+import { LANGS } from '@/config/langs'
 
-export const setup = async () => {
+export const setup = async (solvConfig: ConfigParams) => {
   try {
     if (!isSolanaInstalled()) {
       Logger.normal(
@@ -26,6 +28,21 @@ export const setup = async () => {
         )}`,
       )
       return
+    }
+
+    const { config } = solvConfig
+    if (!config.IS_SETUP) {
+      const choices = Object.values(LANGS)
+      const askLang = await inquirer.prompt<{ lang: string }>([
+        {
+          name: 'lang',
+          type: 'list',
+          message: 'Select Language',
+          choices,
+        },
+      ])
+      updateSolvConfig({ LANG: askLang.lang as LANGS })
+      console.log(`Language set to ${askLang.lang}`)
     }
 
     // Check which SOLV_TYPES to setup
@@ -120,6 +137,7 @@ export const setup = async () => {
       spawnSync(line, { shell: true, stdio: 'inherit' })
     }
     startSolana()
+    updateSolvConfig({ IS_SETUP: true })
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)

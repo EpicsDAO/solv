@@ -3,10 +3,11 @@ import { server } from './server'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const serverCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('server')
     .alias('s')
-    .description('solv Server Dashboard')
+    .description(cmds.server)
     .action(async () => {
       await server(solvConfig)
     })

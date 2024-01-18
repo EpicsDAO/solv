@@ -10,16 +10,15 @@ import { ConfigParams } from '@/lib/createDefaultConfig'
 export * from './update'
 
 export const updateCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('update')
     .alias('u')
-    .description(
-      'Solana Version Update, Restart and Monitoring Delinquent Stake'
-    )
+    .description(cmds.update)
     .option(
       '-v, --version <version>',
       `Solana Version e.g ${CONFIG.SOLANA_VERSION}`,
-      CONFIG.SOLANA_VERSION
+      CONFIG.SOLANA_VERSION,
     )
     .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
@@ -30,14 +29,14 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         updateVersion(options.version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
-            options.maxDelinquentStake
-          )}`
+            options.maxDelinquentStake,
+          )}`,
         )
         monitorUpdate(CONFIG.DELINQUENT_STAKE)
       } else if (options.background) {
         updateVersion(options.version)
         Logger.normal(
-          `✔️ Update to Solana Version ${chalk.green(options.version)}`
+          `✔️ Update to Solana Version ${chalk.green(options.version)}`,
         )
         monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       } else if (options.node) {

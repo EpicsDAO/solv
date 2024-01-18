@@ -5,10 +5,12 @@ import {
   PartialConfigType,
 } from '@/config/config'
 import { readFileSync, writeFileSync } from 'fs'
+import os from 'os'
 
 export const updateSolvConfig = (config: PartialConfigType) => {
   // update ~/solv.config.json with new values
-  const solvConfigFile = `${HOME_PATHS.ROOT}/${FILES.CONFIG}`
+  const homeDir = os.homedir()
+  const solvConfigFile = `${homeDir}/${FILES.CONFIG}`
   const solvConfig = JSON.parse(
     readFileSync(solvConfigFile, 'utf8'),
   ) as CONFIG_TYPE

@@ -3,9 +3,10 @@ import { tail } from './tail'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const logCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('log')
-    .description('Tail Solana Validator Logs')
+    .description(cmds.log)
     .alias('l')
     .description('tail logs')
     .option('-i, --info', 'Follow INFO output', false)

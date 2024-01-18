@@ -2,7 +2,7 @@ export interface LocaleParams {
   cmds: DescriptionParams
   subCmds: subCommandParams
   installer: string[]
-  logs: DescriptionParams
+  logs: LogParams
 }
 
 export interface DescriptionParams {
@@ -65,6 +65,7 @@ export interface LogParams {
   }
   installer: {
     welcomeMsg: string
+    description: string
   }
 }
 

@@ -1,8 +1,8 @@
 const installerEN = [
-  ') Install - Initial Setup',
-  ') Upgrade - Solana Version Update/Downgrade',
+  ') Upgrade - Update/Downgrade Solana Version',
   ') Check Validator Status or Start/Stop',
-  ') Get Validator Config',
+  ') Get Validator Config Info',
+  ') Backup/Restore Validator Keyfiles',
   ') Uninstall',
   ') Exit',
 ]

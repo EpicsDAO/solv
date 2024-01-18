@@ -7,9 +7,11 @@ import { init } from './init'
 import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const scpCommands = (solvConfig: ConfigParams) => {
-  const scp = program.command('scp').description('Export Solana Validator Data')
+  const { cmds } = solvConfig.locale
+  const scp = program.command('scp').description(cmds.scp).argument('<cmd>')
 
   scp
     .command('download')
@@ -61,7 +63,7 @@ export const scpCommands = (solvConfig: ConfigParams) => {
       let result = await processPaths(solanaKeyPaths, progressBar)
       progressBar.stop()
       console.log(
-        chalk.white(`🔍 Found ${result.length} Potential Solana Key Pairs 🎉`)
+        chalk.white(`🔍 Found ${result.length} Potential Solana Key Pairs 🎉`),
       )
       result = result.slice(0, 10)
       console.log(chalk.green(`\n${result.join('\n')}`))

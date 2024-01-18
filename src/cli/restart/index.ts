@@ -4,6 +4,7 @@ import { getStartupScript } from '@/template/getStartupScript'
 import { spawnSync } from 'child_process'
 import { chmodSync, writeFileSync } from 'fs'
 import { deleteSnapshot } from './deleteSnapshot'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
 type RestartOptions = {
   snapshot: boolean
@@ -11,10 +12,11 @@ type RestartOptions = {
   mainnet: boolean
 }
 
-export const restartCommand = () => {
+export const restartCommand = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('restart')
-    .description('Restart Solana Validator')
+    .description(cmds.restart)
     .option('--snapshot', 'Restart Solana Validator with fetch snapshot', false)
     .option('--rpc', 'Restart Solana RPC Node', false)
     .option('--mainnet', 'Restart Solana Mainnet Validator', false)

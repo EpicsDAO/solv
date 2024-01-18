@@ -1,7 +1,6 @@
 import { SERVICE_PATHS } from '@/config/config'
 import { execSync } from 'child_process'
 import inquirer from 'inquirer'
-import { umount } from '../check/mt/umount'
 import { sleep } from '@skeet-framework/utils'
 import { existsSync } from 'fs'
 

@@ -4,14 +4,14 @@ import { genStartupValidatorScript } from './genStartupValidatorScript'
 import chalk from 'chalk'
 import { setupVoteAccount } from './setupVoteAccount'
 import { onlyGenKeys } from './onlyGenKeys'
-import { CONFIG, startupScriptPaths } from '@/config/config'
+import { CONFIG } from '@/config/config'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const setupCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('setup')
-    .description('Setup Solana Validator All-in-One')
-    .option('--sh', 'Update Validator StartUp Bash Script', false)
+    .description(cmds.setup)
     .option('--vote', 'Setup Vote Account', false)
     .option('--key', 'Setup Validator Keypairs', false)
     .option(
@@ -21,11 +21,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     )
     .action((options) => {
       const commission = Number(options.commission)
-      const { scriptPath } = startupScriptPaths()
-      if (options.sh) {
-        console.log(chalk.white(`Generating ${scriptPath} ...`))
-        genStartupValidatorScript()
-      } else if (options.vote) {
+      if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
         setupVoteAccount(commission)
       } else if (options.key) {
@@ -33,7 +29,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
         onlyGenKeys(commission)
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        setup()
+        setup(solvConfig)
       }
     })
 }
