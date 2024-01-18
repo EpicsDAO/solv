@@ -33,13 +33,13 @@ export const uninstall = async () => {
   const homePaths = execSync(`ls ~/ | grep .json`).toString().split('\n')
   for (const path of homePaths) {
     // move *.json files to ~/solvKeys/trash
-    const solvTrashPath = '~/solvKeys/trash'
+    const solvTrashPath = 'home/solv/solvKeys/trash'
     if (!execSync(solvTrashPath)) {
       execSync(`mkdir -p ${solvTrashPath}`)
     }
     if (path) {
-      // console.log(`Moving ${path} to ~/solvKeys/trash`)
-      execSync(`sudo mv ~/${path} ~/solvKeys/trash`)
+      console.log(`Moving ${path} to ~/solvKeys/trash`)
+      execSync(`sudo mv ~/${path} ~/solvKeys/trash/${path}`)
     }
   }
   // remove all files in ~/
