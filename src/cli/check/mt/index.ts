@@ -4,8 +4,9 @@ import { spawnSync } from 'child_process'
 import { umount } from './umount'
 import { getPreferredDisk } from './getLargestDisk'
 import { FILE_SYSTEM_PATHS } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const mountCommands = () => {
+export const mountCommands = (solvConfig: ConfigParams) => {
   program
     .command('mt')
     .description('Linux Mount Command')

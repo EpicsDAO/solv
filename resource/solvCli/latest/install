@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Constants and configurable variables
-SOLANA_VERSION=1.17.5
-NODE_VERSION=18.18.1
+SOLANA_VERSION=1.17.16
+NODE_VERSION=20.10.0
 
 # This ensures the entire script is downloaded
 {
@@ -46,7 +46,7 @@ install_nodenv_and_node() {
 
         echo "Sourcing ~/.profile..."
         source ~/.profile
-        solv solv --local
+        solv get aa
 EOF_USER
 }
 

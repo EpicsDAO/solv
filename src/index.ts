@@ -1,74 +1,56 @@
 import dotenv from 'dotenv'
 import { Command } from 'commander'
 import { VERSION } from '@/lib/version'
+import { createDefaultConfig } from '@/lib/createDefaultConfig'
 import {
-  catchupCommand,
   logCommands,
-  monitorCommand,
   startCommand,
   stopCommand,
   updateCommands,
   stakeCommands,
   setupCommands,
-  checkCommpands,
+  checkCommands,
   restartCommand,
   installCommands,
   cronCommands,
   statusCommands,
-  configCommands,
   scpCommands,
+  serverCommands,
+  getCommands,
+  mountCommands,
 } from '@/cli'
 
-import { getEpoch } from './cli/cron/getEpoch'
-import { getSlot } from './cli/cron/getSlot'
-import { Logger } from './lib/logger'
-
 dotenv.config()
+const solvConfig = createDefaultConfig()
 
 export const program = new Command()
-program.name('solv').description('CLI for Solana Validators').version(VERSION)
+program
+  .name('solv')
+  .description(solvConfig.locale.cmds.description)
+  .helpOption('-h, --help', solvConfig.locale.cmds.help)
+  .version(VERSION, '-v, --version', solvConfig.locale.cmds.version)
 
 async function main() {
   try {
-    program
-      .command('solv')
-      .description('Show Solv AA')
-      .action(() => {
-        Logger.solvAA()
-        Logger.installMessage()
-      })
-    program
-      .command('epoch')
-      .description('Get Current Epoch')
-      .action(() => {
-        const epoch = getEpoch()
-        console.log({ epoch })
-      })
-
-    program
-      .command('slot')
-      .description('Get Current Slot')
-      .action(() => {
-        const slot = getSlot()
-        console.log({ slot })
-      })
-
-    catchupCommand()
-    monitorCommand()
-    configCommands()
-    statusCommands()
+    serverCommands(solvConfig)
     startCommand()
     restartCommand()
     stopCommand()
-    checkCommpands()
-    installCommands()
-    scpCommands()
-    await cronCommands()
-    await setupCommands()
-    await stakeCommands()
-    await updateCommands()
-    await logCommands()
-    await program.parseAsync(process.argv)
+    statusCommands(solvConfig)
+    updateCommands(solvConfig)
+    getCommands(solvConfig)
+    logCommands(solvConfig)
+    installCommands(solvConfig)
+    stakeCommands(solvConfig)
+    checkCommands(solvConfig)
+    scpCommands(solvConfig)
+    cronCommands(solvConfig)
+    setupCommands(solvConfig)
+    mountCommands(solvConfig)
+
+    await program
+      .addHelpCommand('help [cmd]', solvConfig.locale.cmds.help)
+      .parseAsync(process.argv)
   } catch (error) {
     console.log(error)
   }

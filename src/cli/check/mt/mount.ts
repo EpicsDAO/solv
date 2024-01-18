@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process'
-import { formatDisk } from '../setup/formatDisk'
+import { formatDisk } from '../../setup/formatDisk'
 
 export const mount = (fileSystem: string, mountPath = '/mt') => {
   try {

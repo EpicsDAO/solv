@@ -5,10 +5,11 @@ import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
 import { CONFIG } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export * from './update'
 
-export const updateCommands = async () => {
+export const updateCommands = (solvConfig: ConfigParams) => {
   program
     .command('update')
     .alias('u')

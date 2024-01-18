@@ -6,6 +6,8 @@ import { spawnSync } from 'child_process'
 import { stopSolana } from '../stop/stopSolana'
 import { dotenv, sendDiscord } from '@skeet-framework/utils'
 import chalk from 'chalk'
+import { ConfigParams } from '@/lib/createDefaultConfig'
+
 dotenv.config()
 
 type CronOptions = {
@@ -13,8 +15,12 @@ type CronOptions = {
   epoch: string
 }
 
-export const cronCommands = async () => {
-  const crond = program.command('cron').description('Cron Task Command')
+export const cronCommands = (solvConfig: ConfigParams) => {
+  const { locale } = solvConfig
+  const crond = program
+    .command('cron')
+    .description(locale.cmds.cron)
+    .argument('<cmd>', locale.cmds.cron)
 
   crond
     .command('watchHalt')

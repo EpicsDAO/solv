@@ -3,11 +3,11 @@ import { setup } from './setup'
 import { genStartupValidatorScript } from './genStartupValidatorScript'
 import chalk from 'chalk'
 import { setupVoteAccount } from './setupVoteAccount'
-import { airdrop } from './airdrop'
 import { onlyGenKeys } from './onlyGenKeys'
 import { CONFIG, startupScriptPaths } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const setupCommands = async () => {
+export const setupCommands = (solvConfig: ConfigParams) => {
   program
     .command('setup')
     .description('Setup Solana Validator All-in-One')
@@ -19,7 +19,7 @@ export const setupCommands = async () => {
       'Set Validator Commission',
       CONFIG.COMMISSION.toString()
     )
-    .action(async (options) => {
+    .action((options) => {
       const commission = Number(options.commission)
       const { scriptPath } = startupScriptPaths()
       if (options.sh) {

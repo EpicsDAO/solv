@@ -1,11 +1,8 @@
-export enum DISK_TYPES {
-  SINGLE,
-  DOUBLE,
-}
+import { LANGS } from './langs'
 
-export enum NODE_TYPES {
-  VALIDATOR,
-  RPC,
+export enum DISK_TYPES {
+  DOUBLE,
+  SINGLE,
 }
 
 export enum NETWORK_TYPES {
@@ -19,15 +16,31 @@ export enum SOLV_TYPES {
   RPC_NODE,
 }
 
-export const CONFIG = {
+export type CONFIG_TYPE = {
+  LANG: LANGS
+  USERNAME: string
+  SOLANA_VERSION: string
+  NODE_VERSION: string
+  DELINQUENT_STAKE: number
+  COMMISSION: number
+  SOLANA_NETWORK: NETWORK_TYPES
+  SOLV_TYPE: SOLV_TYPES
+  DISK_TYPES: DISK_TYPES
+  DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: string
+}
+
+export const CONFIG: CONFIG_TYPE = {
+  LANG: LANGS.EN,
   USERNAME: 'solv',
   SOLANA_VERSION: '1.17.16',
   NODE_VERSION: '20.10.0',
   DELINQUENT_STAKE: 5,
   COMMISSION: 10,
   SOLANA_NETWORK: NETWORK_TYPES.TESTNET,
-  NODE_TYPES: NODE_TYPES.VALIDATOR,
+  SOLV_TYPE: SOLV_TYPES.TESTNET_VALIDATOR,
   DISK_TYPES: DISK_TYPES.SINGLE,
+  DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY:
+    '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1',
 }
 
 export const HOME_PATHS = {
@@ -44,7 +57,7 @@ export const MT_PATHS = {
 export const FILES = {
   LOG: 'solana-validator.log',
   STARTUP_SCRIPT: 'start-validator.sh',
-  CONFIG: 'config.json',
+  CONFIG: 'solv.config.json',
 }
 
 export const SERVICE_PATHS = {

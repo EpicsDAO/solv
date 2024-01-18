@@ -1,8 +1,9 @@
 import { program } from '@/index'
 import { updateVersion } from '../update'
 import { CONFIG } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const installCommands = () => {
+export const installCommands = (solvConfig: ConfigParams) => {
   program
     .command('install')
     .alias('i')

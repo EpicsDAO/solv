@@ -3,11 +3,13 @@ import { checkMemoryAndSwap } from './checkMemoryAndSwap'
 import { checkMountedDirs } from './checkMountedDirs'
 import { ensureSolvOwnership } from './ensureSolvOwnerShip'
 import { Logger } from '@/lib/logger'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const checkCommpands = () => {
+export const checkCommands = (solvConfig: ConfigParams) => {
+  const { locale } = solvConfig
   program
     .command('check')
-    .description('Check Solana Validator Environment')
+    .description(locale.cmds.check)
     .action(() => {
       const mountedDirs = checkMountedDirs()
       if (!mountedDirs) {

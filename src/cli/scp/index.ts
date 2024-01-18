@@ -8,7 +8,7 @@ import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
 
-export const scpCommands = () => {
+export const scpCommands = (solvConfig: ConfigParams) => {
   const scp = program.command('scp').description('Export Solana Validator Data')
 
   scp

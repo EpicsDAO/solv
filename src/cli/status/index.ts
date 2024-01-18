@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { spawnSync } from 'child_process'
 
-export const statusCommands = () => {
+export const statusCommands = (solvConfig: ConfigParams) => {
   program
     .command('status')
     .description('Show Solana Validator Status')

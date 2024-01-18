@@ -1,7 +1,8 @@
 import { program } from '@/index'
 import { tail } from './tail'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const logCommands = async () => {
+export const logCommands = (solvConfig: ConfigParams) => {
   program
     .command('log')
     .description('Tail Solana Validator Logs')
