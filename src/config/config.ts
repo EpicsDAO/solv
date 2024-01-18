@@ -29,6 +29,8 @@ export type CONFIG_TYPE = {
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: string
 }
 
+export type PartialConfigType = Partial<CONFIG_TYPE>
+
 export const CONFIG: CONFIG_TYPE = {
   LANG: LANGS.EN,
   USERNAME: 'solv',

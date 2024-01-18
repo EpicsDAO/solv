@@ -5,7 +5,7 @@ export const logRotates = (username = CONFIG.USERNAME) => {
   const body = `${log} {
   su ${username} ${username} 
   daily
-  rotate 3
+  rotate 7
   missingok
   postrotate
     systemctl kill -s USR1 solv.service

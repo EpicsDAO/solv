@@ -1,7 +1,6 @@
 import { program } from '@/index'
 import { df } from './df'
 import { displayTable } from '@/lib/logger/table'
-import { lsblk } from './lsblk'
 import { Logger } from '@/lib/logger'
 
 export const dfCommands = async () => {
@@ -11,15 +10,6 @@ export const dfCommands = async () => {
     .action(async () => {
       const dirs = df()
       displayTable(dirs)
-      Logger.mtCommandsLog()
-    })
-
-  program
-    .command('lsblk')
-    .alias('ls')
-    .description('Solana Disk Usage Command')
-    .action(async () => {
-      lsblk()
       Logger.mtCommandsLog()
     })
 }

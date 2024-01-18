@@ -1,12 +1,12 @@
 import { execSync } from 'child_process'
 
-type DiskInfo = {
+export type DiskInfo = {
   name: string
   size: number
   mountpoint: string
 }
 
-type GetPreferredDisksResult = {
+export type GetPreferredDisksResult = {
   disks: DiskInfo[]
   has980GB: boolean
   has480GB: boolean
