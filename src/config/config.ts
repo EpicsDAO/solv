@@ -108,15 +108,15 @@ export const getAllKeyPaths = (path = HOME_PATHS.ROOT) => {
 
 export const startupScriptPaths = (isTest = true) => {
   const identity = isTest
-    ? `${MT_PATHS.ROOT}/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`
-    : `${MT_PATHS.ROOT}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
+    ? `${HOME_PATHS.ROOT}/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`
+    : `${HOME_PATHS.ROOT}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
   const voteAccount = isTest
-    ? `${MT_PATHS.ROOT}/${KEYPAIRS.TESTNET_VALIDATOR_VOTE_KEY}`
-    : `${MT_PATHS.ROOT}/${KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY}`
-  const log = `${MT_PATHS.ROOT}/${FILES.LOG}`
+    ? `${HOME_PATHS.ROOT}/${KEYPAIRS.TESTNET_VALIDATOR_VOTE_KEY}`
+    : `${HOME_PATHS.ROOT}/${KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY}`
+  const log = `${HOME_PATHS.ROOT}/${FILES.LOG}`
   const accounts = MT_PATHS.ACCOUNTS
   const ledger = MT_PATHS.LEDGER
-  const scriptPath = `${MT_PATHS.ROOT}/${FILES.STARTUP_SCRIPT}`
+  const scriptPath = `${HOME_PATHS.ROOT}/${FILES.STARTUP_SCRIPT}`
   return {
     identity,
     voteAccount,

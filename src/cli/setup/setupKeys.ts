@@ -4,13 +4,14 @@ import { airdrop } from './airdrop'
 import os from 'os'
 import { NETWORK_TYPES, getAllKeyPaths } from '@/config/config'
 import { createVoteAccount } from './createVoteAccount'
+import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 
 export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
   try {
     let keypairs = getAllKeyPaths()
     if (isLocal) {
       const homeDirectory = os.userInfo().homedir
-      const uploadDir = `${homeDirectory}/solvKeys/upload`
+      const uploadDir = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
       if (!existsSync(uploadDir)) {
         mkdirSync(uploadDir, { recursive: true })
       }
