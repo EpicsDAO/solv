@@ -27,15 +27,21 @@ function getPreferredDisks(): DiskInfo[] {
     }
   }
 
-  // Sort disks first by mountpoint (unmounted first), then by whether the name ends with a number, and then by size (larger first)
-  return disks.sort((a, b) => {
+  // Custom sort function
+  const sortDisks = (a: DiskInfo, b: DiskInfo) => {
     if (a.mountpoint === '' && b.mountpoint !== '') return -1;
     if (a.mountpoint !== '' && b.mountpoint === '') return 1;
+    if (a.name.startsWith(b.name)) return 1;
+    if (b.name.startsWith(a.name)) return -1;
     if (/\d$/.test(a.name) && !/\d$/.test(b.name)) return 1;
     if (!/\d$/.test(a.name) && /\d$/.test(b.name)) return -1;
     return b.size - a.size;
-  })
+  };
+
+  // Sort disks
+  return disks.sort(sortDisks);
 }
+
 
 
 export default getPreferredDisks
