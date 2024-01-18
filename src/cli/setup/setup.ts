@@ -100,10 +100,12 @@ export const setup = async () => {
         SOLV_TYPE: sType,
         COMMISSION: commission,
       })
-      umount(mountPoint)
-      const fileSystem = '/dev/' + disks.disks[0].name
-      formatDisk(fileSystem)
-      ensureFstabEntries(fileSystem)
+      const isUmounted = umount(mountPoint)
+      if (isUmounted) {
+        const fileSystem = '/dev/' + disks.disks[0].name
+        formatDisk(fileSystem)
+        ensureFstabEntries(fileSystem)
+      }
     }
     setupPermissions()
     genStartupValidatorScript(true)
