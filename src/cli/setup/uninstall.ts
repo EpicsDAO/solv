@@ -1,6 +1,7 @@
 import { SERVICE_PATHS } from '@/config/config'
 import { execSync } from 'child_process'
 import inquirer from 'inquirer'
+import { umount } from '../check/mt/umount'
 
 export const uninstall = async () => {
   const confirm = await inquirer.prompt([
