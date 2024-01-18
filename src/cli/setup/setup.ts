@@ -78,7 +78,7 @@ export const setup = async () => {
     const mountPoint = disks.disks[0].mountpoint
     setupDirs()
     // Detect if DISK_TYPE is DOUBLE or SINGLE
-    if (disks.has900GB && disks.has400GB) {
+    if (disks.has850GB && disks.has400GB) {
       // DOUBLE
       console.log('Setting up DOUBLE DISK...')
 
