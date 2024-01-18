@@ -47,7 +47,7 @@ export const uninstall = async () => {
     }
   }
   // remove all files in ~/
-  execSync(`sudo rm -rf ~/*`)
+  execSync(`sudo rm -rf ~/validator*`)
   execSync(`sudo systemctl daemon-reload`)
   console.log('Completely uninstalled Solv ⭐️')
 }
