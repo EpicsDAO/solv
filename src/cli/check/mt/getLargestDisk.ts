@@ -32,17 +32,17 @@ function getPreferredDisks(): DiskInfo[] {
 
   // Custom sort function
   const sortDisks = (a: DiskInfo, b: DiskInfo) => {
-    // Check if disk is a partition or has partitions
-    const isPartitionOrHasPartitionA = allDiskNames.some(diskName => diskName === a.name || diskName.startsWith(a.name + "1"));
-    const isPartitionOrHasPartitionB = allDiskNames.some(diskName => diskName === b.name || diskName.startsWith(b.name + "1"));
-
     // Check for mountpoint
     if (a.mountpoint === '' && b.mountpoint !== '') return -1;
     if (a.mountpoint !== '' && b.mountpoint === '') return 1;
 
-    // Sort by whether the disk is a partition or has partitions
-    if (isPartitionOrHasPartitionA && !isPartitionOrHasPartitionB) return 1;
-    if (!isPartitionOrHasPartitionA && isPartitionOrHasPartitionB) return -1;
+    // Check if disk has partitions
+    const hasPartitionA = allDiskNames.some(diskName => diskName !== a.name && diskName.startsWith(a.name));
+    const hasPartitionB = allDiskNames.some(diskName => diskName !== b.name && diskName.startsWith(b.name));
+
+    // Sort by whether the disk has partitions
+    if (hasPartitionA && !hasPartitionB) return 1;
+    if (!hasPartitionA && hasPartitionB) return -1;
 
     // Finally, sort by size
     return b.size - a.size;
@@ -51,6 +51,7 @@ function getPreferredDisks(): DiskInfo[] {
   // Sort disks
   return disks.sort(sortDisks);
 }
+
 
 
 export default getPreferredDisks
