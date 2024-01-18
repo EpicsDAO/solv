@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import { makeServices } from './makeServices'
 import { setupPermissions } from './userPermissions'
 import { umount } from '../check/mt/umount'
-import { getPreferredDisk } from '../check/mt/getLargestDisk'
+import getPreferredDisk from '../check/mt/getLargestDisk'
 import { startSolana } from '../start/startSolana'
 import { CONFIG } from '@/config/config'
 
@@ -21,11 +21,11 @@ export const setup = (commission = CONFIG.COMMISSION) => {
       )
       return
     }
-    const disks = getPreferredDisk()
-    const mountPoint = disks?.mountpoint || ''
-    if (mountPoint !== '') {
-      umount(mountPoint)
-    }
+    // const disks = getPreferredDisk()
+    // const mountPoint = disks?.mountpoint || ''
+    // if (mountPoint !== '') {
+    //   umount(mountPoint)
+    // }
     setupDirs()
     setupPermissions()
     genStartupValidatorScript(true)
