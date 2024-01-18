@@ -30,6 +30,7 @@ export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
       `solana config set --url ${network}`,
       `solana airdrop 1`,
     ]
+    console.log({ isTest })
     for (const cmd of cmds) {
       if (cmd.includes('airdrop') && isTest) {
         airdrop()
