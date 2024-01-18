@@ -32,6 +32,7 @@ export const setup = async () => {
     const choices = Object.values(SOLV_TYPES).filter(
       (value) => typeof value !== 'number',
     )
+    let isTest = true
     const { solvType } = await inquirer.prompt<{ solvType: string }>([
       {
         name: 'solvType',
@@ -41,7 +42,10 @@ export const setup = async () => {
       },
     ])
     let commission = CONFIG.COMMISSION
+
+    // Check if solvType is RPC_NODE
     if (solvType !== 'RPC_NODE') {
+      // Ask for commission rate if not RPC_NODE
       const question = await inquirer.prompt<{ commission: number }>([
         {
           name: 'commission',
@@ -53,6 +57,21 @@ export const setup = async () => {
       ])
       commission = Number(question.commission)
     }
+
+    // Check if solvType is TESTNET_VALIDATOR
+    if (solvType !== 'TESTNET_VALIDATOR') {
+      isTest = true
+    }
+
+    // Check if solvType is MAINNET_VALIDATOR
+    let sType = isTest
+      ? SOLV_TYPES.TESTNET_VALIDATOR
+      : SOLV_TYPES.MAINNET_VALIDATOR
+
+    // Check if solvType is RPC_NODE
+    if (solvType === 'RPC_NODE') {
+      sType = SOLV_TYPES.RPC_NODE
+    }
     console.log(`Setting up ${solvType}...`)
 
     const disks: GetPreferredDisksResult = getPreferredDisk()
@@ -62,7 +81,12 @@ export const setup = async () => {
     if (disks.has980GB && disks.has480GB) {
       // DOUBLE
       console.log('Setting up DOUBLE DISK...')
-      updateSolvConfig({ DISK_TYPES: DISK_TYPES.DOUBLE })
+
+      updateSolvConfig({
+        DISK_TYPES: DISK_TYPES.DOUBLE,
+        SOLV_TYPE: sType,
+        COMMISSION: commission,
+      })
       const fileSystem = '/dev/' + disks.disks[0].name
       formatDisk(fileSystem)
       const fileSystem2 = '/dev/' + disks.disks[1].name
@@ -71,7 +95,11 @@ export const setup = async () => {
     } else {
       // SINGLE
       console.log('Setting up SINGLE DISK...')
-      updateSolvConfig({ DISK_TYPES: DISK_TYPES.SINGLE })
+      updateSolvConfig({
+        DISK_TYPES: DISK_TYPES.SINGLE,
+        SOLV_TYPE: sType,
+        COMMISSION: commission,
+      })
       umount(mountPoint)
       const fileSystem = '/dev/' + disks.disks[0].name
       formatDisk(fileSystem)
