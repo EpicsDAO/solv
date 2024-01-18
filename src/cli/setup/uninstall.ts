@@ -2,6 +2,7 @@ import { SERVICE_PATHS } from '@/config/config'
 import { execSync } from 'child_process'
 import inquirer from 'inquirer'
 import { umount } from '../check/mt/umount'
+import { sleep } from '@skeet-framework/utils'
 
 export const uninstall = async () => {
   const confirm = await inquirer.prompt([
@@ -19,9 +20,9 @@ export const uninstall = async () => {
   }
   console.log('Uninstalling Solv...')
   execSync(`sudo systemctl stop solv`)
-
+  await sleep(2000)
   const servicePaths = Object.values(SERVICE_PATHS)
-  servicePaths.push('/mnt/*')
+  //servicePaths.push('/mnt/*')
 
   // Remove all solv.service files
   for (const path of servicePaths) {
