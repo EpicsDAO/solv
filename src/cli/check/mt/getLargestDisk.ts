@@ -12,7 +12,10 @@ function getPreferredDisks(): DiskInfo[] {
   })
   const lines = commandOutput.split('\n').slice(1) // skip the header line
 
-  const disks = []
+  const disks: DiskInfo[] = []
+
+  // Collecting all disk names to identify which ones have partitions
+  const allDiskNames = lines.map(line => line.trim().split(/\s+/)[0]);
 
   for (const line of lines) {
     const [name, sizeStr, mountpoint] = line.trim().split(/\s+/)
@@ -29,19 +32,17 @@ function getPreferredDisks(): DiskInfo[] {
 
   // Custom sort function
   const sortDisks = (a: DiskInfo, b: DiskInfo) => {
+    // Check if disk is a partition or has partitions
+    const isPartitionOrHasPartitionA = allDiskNames.some(diskName => diskName === a.name || diskName.startsWith(a.name + "1"));
+    const isPartitionOrHasPartitionB = allDiskNames.some(diskName => diskName === b.name || diskName.startsWith(b.name + "1"));
+
     // Check for mountpoint
     if (a.mountpoint === '' && b.mountpoint !== '') return -1;
     if (a.mountpoint !== '' && b.mountpoint === '') return 1;
 
-    // Check if one is a prefix of the other
-    if (a.name.startsWith(b.name)) return 1;
-    if (b.name.startsWith(a.name)) return -1;
-
-    // Check if name ends with a number
-    const aEndsWithNumber = /\d$/.test(a.name);
-    const bEndsWithNumber = /\d$/.test(b.name);
-    if (aEndsWithNumber && !bEndsWithNumber) return 1;
-    if (!aEndsWithNumber && bEndsWithNumber) return -1;
+    // Sort by whether the disk is a partition or has partitions
+    if (isPartitionOrHasPartitionA && !isPartitionOrHasPartitionB) return 1;
+    if (!isPartitionOrHasPartitionA && isPartitionOrHasPartitionB) return -1;
 
     // Finally, sort by size
     return b.size - a.size;
