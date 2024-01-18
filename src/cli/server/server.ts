@@ -1,5 +1,6 @@
 import { ConfigParams } from '@/lib/createDefaultConfig'
 import inquirer from 'inquirer'
+import { uninstall } from '../setup/uninstall'
 
 enum CHOICES {
   INSTALL,
@@ -16,7 +17,7 @@ export const server = async (solvClient: ConfigParams) => {
   const choices = installer.map((item, index) => {
     return `${index + 1}${item}`
   })
-  const answer = await inquirer.prompt<{ server: CHOICES }>([
+  const answer = await inquirer.prompt<{ server: string }>([
     {
       name: 'server',
       type: 'list',
@@ -25,7 +26,9 @@ export const server = async (solvClient: ConfigParams) => {
     },
   ])
 
-  switch (answer.server) {
+  const selectedOption = (Number(answer.server.split(')')[0]) - 1) as CHOICES
+  console.log(selectedOption)
+  switch (selectedOption) {
     case CHOICES.INSTALL:
       console.log('Installing solv...')
       break
@@ -39,7 +42,7 @@ export const server = async (solvClient: ConfigParams) => {
       console.log('Getting Validator Config...')
       break
     case CHOICES.UNINSTALL:
-      console.log('Uninstalling solv...')
+      await uninstall()
       break
     case CHOICES.EXIT:
       console.log('Exiting solv...')
