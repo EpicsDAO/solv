@@ -7,6 +7,7 @@ export const rmMtDir = () => {
     const cmds = [
       `sudo umount /mt`,
       `sudo rm -rf /mt`,
+      `sudo umount /mnt`,
       `sudo umount /mnt/ramdrive`,
       `sudo umount /mnt/solana-accounts`,
       `sudo rm -rf /mnt`,
@@ -15,10 +16,10 @@ export const rmMtDir = () => {
       try {
         spawnSync(cmd, { shell: true, stdio: 'inherit' })
       } catch (error) {
-        console.log(`rmMtDir: ${error} - ${cmd}`)
+        //console.log(`rmMtDir: ${error} - ${cmd}`)
       }
     }
   } catch (error) {
-    console.log(`rmMtDir: ${error}`)
+    //console.log(`rmMtDir: ${error}`)
   }
 }

@@ -11,7 +11,7 @@ const cmdsEN: DescriptionParams = {
   status: 'Show Solana Validator Status',
   restart: 'Restart Solana Validator',
   update: 'Update Solana Validator Version',
-  get: 'Get Solana Validator Info',
+  get: 'Get Solana Validator Info Commands',
   log: 'Tail Solana Validator Log',
   catchup: 'Catchup Solana Validator',
   monitor: 'Monitor Solana Validator',

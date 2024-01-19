@@ -17,7 +17,6 @@ import {
   scpCommands,
   serverCommands,
   getCommands,
-  mountCommands,
 } from '@/cli'
 
 dotenv.config()
@@ -46,7 +45,6 @@ async function main() {
     scpCommands(solvConfig)
     cronCommands(solvConfig)
     setupCommands(solvConfig)
-    mountCommands(solvConfig)
 
     await program
       .addHelpCommand('help [cmd]', solvConfig.locale.cmds.help)
