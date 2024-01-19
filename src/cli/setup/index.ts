@@ -1,30 +1,27 @@
 import { program } from '@/index'
 import { setup } from './setup'
-import { startValidator } from './startValidator'
+import { genStartupValidatorScript } from './genStartupValidatorScript'
 import chalk from 'chalk'
-import { DEFAULT_COMMISSION, VALIDATOR_STARTUP_SCRIPT } from '@/config'
 import { setupVoteAccount } from './setupVoteAccount'
-import { airdrop } from './airdrop'
 import { onlyGenKeys } from './onlyGenKeys'
+import { CONFIG } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const setupCommands = async () => {
+export const setupCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('setup')
-    .description('Setup Solana Validator All-in-One')
-    .option('--sh', 'Update Validator StartUp Bash Script', false)
+    .description(cmds.setup)
     .option('--vote', 'Setup Vote Account', false)
     .option('--key', 'Setup Validator Keypairs', false)
     .option(
       '--commission <number>',
       'Set Validator Commission',
-      DEFAULT_COMMISSION.toString()
+      CONFIG.COMMISSION.toString(),
     )
-    .action(async (options) => {
+    .action((options) => {
       const commission = Number(options.commission)
-      if (options.sh) {
-        console.log(chalk.white(`Generating ${VALIDATOR_STARTUP_SCRIPT} ...`))
-        startValidator()
-      } else if (options.vote) {
+      if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
         setupVoteAccount(commission)
       } else if (options.key) {
@@ -32,15 +29,7 @@ export const setupCommands = async () => {
         onlyGenKeys(commission)
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        setup(commission)
+        setup(solvConfig)
       }
-    })
-
-  program
-    .command('airdrop')
-    .alias('ad')
-    .description('Airdrop to Solana Account')
-    .action(() => {
-      airdrop()
     })
 }

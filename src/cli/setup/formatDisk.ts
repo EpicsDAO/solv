@@ -1,7 +1,9 @@
-import { DEFAULT_FILE_SYSTEM } from '@/config'
+import { FILE_SYSTEM_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
 
-export const formatDisk = (fileSystem = DEFAULT_FILE_SYSTEM) => {
+export const formatDisk = (
+  fileSystem = FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM as string,
+) => {
   // Check if the disk is already formatted
   const checkDisk = spawnSync(`sudo blkid ${fileSystem}`, {
     shell: true,

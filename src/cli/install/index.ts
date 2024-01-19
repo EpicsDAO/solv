@@ -1,16 +1,18 @@
 import { program } from '@/index'
 import { updateVersion } from '../update'
-import { DEFAULT_SOLANA_VERSION } from '@/config'
+import { CONFIG } from '@/config/config'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const installCommands = () => {
+export const installCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('install')
     .alias('i')
-    .description('Solana Install/Update Command')
+    .description(cmds.install)
     .option(
       '-v, --version <version>',
-      `Solana Version e.g. ${DEFAULT_SOLANA_VERSION}`,
-      DEFAULT_SOLANA_VERSION
+      `Solana Version e.g. ${CONFIG.SOLANA_VERSION}`,
+      CONFIG.SOLANA_VERSION,
     )
     .action((cmdObj: any) => {
       updateVersion(cmdObj.version)

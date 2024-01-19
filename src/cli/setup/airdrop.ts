@@ -1,4 +1,4 @@
-import { SOLV_DISCORD_INVITE } from '@/config'
+import { SOLV_DISCORD_INVITE } from '@/config/config'
 import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 

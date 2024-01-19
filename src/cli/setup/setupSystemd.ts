@@ -1,13 +1,9 @@
-import {
-  SOL_NOFILES_CONF_PATH,
-  SOL_SYSTEM_CONF,
-  SOL_SYSTEM_CONFIG21_PATH,
-} from '@/config'
+import { SERVICE_PATHS } from '@/config/config'
 import { execSync } from 'child_process'
 import { existsSync } from 'fs'
 
 export function setupSystemd(): void {
-  if (!existsSync(SOL_SYSTEM_CONFIG21_PATH)) {
+  if (!existsSync(SERVICE_PATHS.SOL_SYSTEM_CONFIG21)) {
     console.log('Creating solana-validator.conf sysctl configuration file')
 
     const sysctlConfig = `
@@ -31,20 +27,20 @@ fs.nr_open = 1000000
 
     // Write sysctl configuration
     execSync(
-      `echo "${sysctlConfig}" | sudo tee ${SOL_SYSTEM_CONFIG21_PATH} > /dev/null`
+      `echo "${sysctlConfig}" | sudo tee ${SERVICE_PATHS.SOL_SYSTEM_CONFIG21} > /dev/null`
     )
 
     // Apply sysctl configuration
-    execSync(`sudo sysctl -p ${SOL_SYSTEM_CONFIG21_PATH}`)
+    execSync(`sudo sysctl -p ${SERVICE_PATHS.SOL_SYSTEM_CONFIG21}`)
 
     // Update systemd configuration
     execSync(
-      `echo "DefaultLimitNOFILE=1000000" | sudo tee -a ${SOL_SYSTEM_CONF}`
+      `echo "DefaultLimitNOFILE=1000000" | sudo tee -a ${SERVICE_PATHS.SOL_SYSTEM_CONF}`
     )
 
     // Write nofiles configuration
     execSync(
-      `echo "${nofilesConfig}" | sudo tee ${SOL_NOFILES_CONF_PATH} > /dev/null`
+      `echo "${nofilesConfig}" | sudo tee ${SERVICE_PATHS.SOL_NOFILES_CONF} > /dev/null`
     )
   }
 }

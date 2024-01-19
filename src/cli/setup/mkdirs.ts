@@ -1,10 +1,9 @@
-import { LEDGER_PATH, LOG_DIR, SOLANA_ACCOUNT_ROOT, WD } from '@/config'
+import { MT_PATHS } from '@/config/config'
 import { createDirectoryIfNotExists } from '@/lib/createDirectoryIfNotExists'
 
 export const setupDirs = () => {
   try {
-    const dirs = [LOG_DIR, LEDGER_PATH, SOLANA_ACCOUNT_ROOT, WD]
-
+    const dirs = [MT_PATHS.ACCOUNTS, MT_PATHS.LEDGER]
     for (const dir of dirs) {
       createDirectoryIfNotExists(dir)
     }

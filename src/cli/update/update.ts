@@ -1,4 +1,4 @@
-import { LEDGER_PATH } from '@/config'
+import { startupScriptPaths } from '@/config/config'
 import { spawnSync } from 'child_process'
 
 export const updateVersion = (version: string) => {
@@ -12,9 +12,10 @@ export const monitorUpdate = (
   maxDelinquentStake: number,
   noMonitor = false
 ) => {
-  let cmd = `solana-validator --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
+  const { ledger } = startupScriptPaths()
+  let cmd = `solana-validator --ledger ${ledger} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
   if (noMonitor) {
-    cmd = `solana-validator --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake}`
+    cmd = `solana-validator --ledger ${ledger} exit --max-delinquent-stake ${maxDelinquentStake}`
   }
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

@@ -1,15 +1,17 @@
 import { program } from '@/index'
 import { download } from './download'
 import { upload } from './upload'
-import { create } from './create'
+import { scpCreate } from './create'
 import { cat } from './cat'
 import { init } from './init'
 import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const scpCommands = () => {
-  const scp = program.command('scp').description('Export Solana Validator Data')
+export const scpCommands = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
+  const scp = program.command('scp').description(cmds.scp).argument('<cmd>')
 
   scp
     .command('download')
@@ -32,7 +34,7 @@ export const scpCommands = () => {
     .alias('c')
     .description('Create SSH Login Setting')
     .action(async () => {
-      await create()
+      await scpCreate()
     })
 
   scp
@@ -61,7 +63,7 @@ export const scpCommands = () => {
       let result = await processPaths(solanaKeyPaths, progressBar)
       progressBar.stop()
       console.log(
-        chalk.white(`🔍 Found ${result.length} Potential Solana Key Pairs 🎉`)
+        chalk.white(`🔍 Found ${result.length} Potential Solana Key Pairs 🎉`),
       )
       result = result.slice(0, 10)
       console.log(chalk.green(`\n${result.join('\n')}`))

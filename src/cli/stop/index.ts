@@ -1,11 +1,13 @@
 import { program } from '@/index'
 import { stopSolana } from './stopSolana'
+import { ConfigParams } from '@/lib/createDefaultConfig'
 
-export const stopCommand = () => {
+export const stopCommand = (solvConfig: ConfigParams) => {
+  const { cmds } = solvConfig.locale
   program
     .command('stop')
-    .description('Stop Solana Validator')
-    .action(async () => {
+    .description(cmds.stop)
+    .action(() => {
       stopSolana()
     })
 }

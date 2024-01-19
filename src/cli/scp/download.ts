@@ -1,16 +1,12 @@
-import {
-  MAINNET_VALIDATOR_KEYFILE,
-  TESTNET_VALIDATOR_KEYFILE,
-  VALIDATOR_VOTE_KEYFILE,
-  VALITATOR_AUTHORITY_KEYFILE,
-} from '@/config'
+import { HOME_PATHS, getAllKeyPaths } from '@/config/config'
+import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
+import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import inquirer from 'inquirer'
 import os from 'os'
 
 export const download = async () => {
-  const homeDirectory = os.userInfo().homedir
   const answer = await inquirer.prompt<{ ip: string }>([
     {
       type: 'input',
@@ -21,23 +17,20 @@ export const download = async () => {
       },
     },
   ])
-  const solanaKeys = [
-    TESTNET_VALIDATOR_KEYFILE,
-    MAINNET_VALIDATOR_KEYFILE,
-    VALIDATOR_VOTE_KEYFILE,
-    VALITATOR_AUTHORITY_KEYFILE,
-  ]
-
-  const dlPath = `${homeDirectory}/solvKeys/download`
-  if (!existsSync(dlPath)) {
-    mkdirSync(dlPath, { recursive: true })
+  const solanaKeys = Object.values(getAllKeyPaths())
+  const homeDirectory = os.userInfo().homedir
+  const keyDir = homeDirectory + SOLV_CLIENT_PATHS.SOLV_KEYPAIR_DOWNLOAD_PATH
+  if (!existsSync(keyDir)) {
+    mkdirSync(keyDir, { recursive: true })
   }
   for (const key of solanaKeys) {
     const splits = key.split('/')
     const fileName = splits[splits.length - 1]
-    const filePath = `${dlPath}/${fileName}`
+    const filePath = `${keyDir}/${fileName}`
     const cmd = `scp solv@${answer.ip}:${key} ${filePath}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
-    console.log(`Successfully Exported - ${filePath} 🎉`)
+    if (existsSync(filePath)) {
+      console.log(`Successfully Exported - ${filePath} 🎉`)
+    }
   }
 }

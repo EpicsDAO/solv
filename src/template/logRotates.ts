@@ -1,10 +1,11 @@
-import { LOG_PATH, USERNAME } from '@/config'
+import { CONFIG, startupScriptPaths } from '@/config/config'
 
-export const logRotates = (username = USERNAME) => {
-  const body = `${LOG_PATH} {
+export const logRotates = (username = CONFIG.USERNAME) => {
+  const { log } = startupScriptPaths()
+  const body = `${log} {
   su ${username} ${username} 
   daily
-  rotate 3
+  rotate 7
   missingok
   postrotate
     systemctl kill -s USR1 solv.service
