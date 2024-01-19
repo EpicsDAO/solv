@@ -2,14 +2,20 @@ import { spawnSync } from 'child_process'
 
 export const rmMtDir = () => {
   try {
-    const cmd = `sudo rm -rf /mt`
-    spawnSync(cmd, { shell: true, stdio: 'inherit' })
-    const cmd2 = `sudo umount /mt`
-    spawnSync(cmd2, { shell: true, stdio: 'inherit' })
-    const cmd3 = `sudo rm -rf /mnt`
-    spawnSync(cmd3, { shell: true, stdio: 'inherit' })
-    const cmd4 = `sudo umount /mnt/ramdrive`
-    spawnSync(cmd4, { shell: true, stdio: 'inherit' })
+    const cmds = [
+      `sudo umount /mt`,
+      `sudo rm -rf /mt`,
+      `sudo umount /mnt/ramdrive`,
+      `sudo umount /mnt/solana-accounts`,
+      `sudo rm -rf /mnt`,
+    ]
+    for (const cmd of cmds) {
+      try {
+        spawnSync(cmd, { shell: true, stdio: 'inherit' })
+      } catch (error) {
+        console.log(`rmMtDir: ${error} - ${cmd}`)
+      }
+    }
   } catch (error) {
     console.log(`rmMtDir: ${error}`)
   }

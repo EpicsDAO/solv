@@ -17,7 +17,9 @@ export const removeFstabEntries = () => {
     return !(
       line.includes('/mt/swapfile') ||
       (line.includes('/dev/') && line.includes('/mt')) ||
-      line.includes('/mnt/ramdrive')
+      (line.includes('/dev/') && line.includes('/mnt')) ||
+      line.includes('/mnt/ramdrive') ||
+      line.includes('/mnt/solana')
     )
   })
 
