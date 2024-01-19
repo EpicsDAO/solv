@@ -2,6 +2,8 @@ import { spawnSync } from 'child_process'
 
 export const rmMtDir = () => {
   try {
+    const killCmd = `sudo lsof /mt | awk '{print $2}' | tail -n +2 | xargs -r sudo kill -9`
+    spawnSync(killCmd, { shell: true, stdio: 'inherit' })
     const cmds = [
       `sudo umount /mt`,
       `sudo rm -rf /mt`,

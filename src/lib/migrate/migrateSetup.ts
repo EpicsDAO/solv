@@ -22,34 +22,15 @@ export const migrateSetup = async () => {
     const disks: GetPreferredDisksResult = getPreferredDisk()
     const mountPoint = disks.disks[0].mountpoint
     setupDirs()
-    // Detect if DISK_TYPE is DOUBLE or SINGLE
-    if (disks.has850GB && disks.has400GB) {
-      // DOUBLE
-      console.log('Setting up DOUBLE DISK...')
-
-      updateSolvConfig({
-        DISK_TYPES: DISK_TYPES.DOUBLE,
-        SOLV_TYPE: sType,
-      })
-      const fileSystem = '/dev/' + disks.disks[0].name
-      formatDisk(fileSystem)
-      const fileSystem2 = '/dev/' + disks.disks[1].name
-      formatDisk(fileSystem2)
-      ensureFstabEntries(fileSystem, fileSystem2)
-    } else {
-      // SINGLE
-      console.log('Setting up SINGLE DISK...')
-      updateSolvConfig({
-        DISK_TYPES: DISK_TYPES.SINGLE,
-        SOLV_TYPE: sType,
-      })
-      const isUmounted = umount(mountPoint)
-      if (isUmounted) {
-        const fileSystem = '/dev/' + disks.disks[0].name
-        formatDisk(fileSystem)
-        ensureFstabEntries(fileSystem)
-      }
-    }
+    console.log('Setting up SINGLE DISK...')
+    updateSolvConfig({
+      DISK_TYPES: DISK_TYPES.SINGLE,
+      SOLV_TYPE: sType,
+    })
+    const isUmounted = umount(mountPoint)
+    const fileSystem = '/dev/' + disks.disks[0].name
+    formatDisk(fileSystem)
+    ensureFstabEntries(fileSystem)
     setupPermissions()
     genStartupValidatorScript(true)
     makeServices()
