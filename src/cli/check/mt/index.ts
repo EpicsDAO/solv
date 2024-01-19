@@ -1,9 +1,6 @@
 import { program } from '@/index'
-import { mount } from './mount'
 import { spawnSync } from 'child_process'
-import { umount } from './umount'
 import getPreferredDisk from './getLargestDisk'
-import { FILE_SYSTEM_PATHS } from '@/config/config'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const mountCommands = (solvConfig: ConfigParams) => {
