@@ -45,8 +45,10 @@ function getPreferredDisks(): GetPreferredDisksResult {
       const hasPartition = allDiskNames.some(
         (diskName) => diskName !== name && diskName.startsWith(name),
       )
-      if (size >= 850 * 1024 * 1024 * 1024 && !hasPartition) has850GB = true
-      if (size >= 400 * 1024 * 1024 * 1024 && !hasPartition) has400GB = true
+      if (size >= 850 * 1024 * 1024 * 1024 && !hasPartition && !isMounted)
+        has850GB = true
+      if (size >= 400 * 1024 * 1024 * 1024 && !hasPartition && !isMounted)
+        has400GB = true
       if (size >= 1250 * 1024 * 1024 * 1024 && mountpoint) hasUsed1250GB = true
     }
   }
