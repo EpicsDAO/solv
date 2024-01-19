@@ -40,6 +40,7 @@ export module Logger {
     console.log(`${row4}`)
     console.log(`${row5}`)
     console.log(`${row6}\n`)
+    console.log(`Solv Version: v${process.env.npm_package_version}\n`)
   }
 
   export const installMessage = () => {
