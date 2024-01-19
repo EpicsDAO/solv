@@ -8,30 +8,6 @@ import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const mountCommands = (solvConfig: ConfigParams) => {
   program
-    .command('mt')
-    .description('Linux Mount Command')
-    .option(
-      '-p,--path <path>',
-      'File System Path e.g /dev/vda',
-      FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM
-    )
-    .action((options: any) => {
-      mount(options.path)
-    })
-
-  program
-    .command('umt')
-    .description('Solana Umount Command')
-    .option(
-      '-p,--path <path>',
-      'File System Path e.g /dev/vda',
-      FILE_SYSTEM_PATHS.DEFAULT_FILE_SYSTEM
-    )
-    .action((options: any) => {
-      umount(options.path)
-    })
-
-  program
     .command('mtr')
     .description('Mount Reload Command')
     .action(() => {

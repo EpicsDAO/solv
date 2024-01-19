@@ -22,7 +22,16 @@ export const removeFstabEntries = () => {
   })
 
   if (lines.length !== filteredLines.length) {
-    writeFileSync(fstabPath, filteredLines.join('\n') + '\n', 'utf8')
+    const addCmd = `echo "${filteredLines.join('\n')}" | sudo tee ${fstabPath}`
+    spawnSync(addCmd, {
+      shell: true,
+      encoding: 'utf8',
+    })
+    const reloadCmd = `sudo mount --all --verbose`
+    spawnSync(reloadCmd, {
+      shell: true,
+      encoding: 'utf8',
+    })
     console.log(`Removed specified lines from ${fstabPath}`)
   } else {
     console.log('No specified lines found to remove in /etc/fstab')

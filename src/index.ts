@@ -46,7 +46,7 @@ async function main() {
     scpCommands(solvConfig)
     cronCommands(solvConfig)
     setupCommands(solvConfig)
-    // mountCommands(solvConfig)
+    mountCommands(solvConfig)
 
     await program
       .addHelpCommand('help [cmd]', solvConfig.locale.cmds.help)

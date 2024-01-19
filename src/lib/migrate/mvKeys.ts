@@ -1,3 +1,4 @@
+import { KEYPAIRS } from '@/config/config'
 import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync, readdirSync } from 'fs'
 
@@ -18,17 +19,38 @@ export const mvKeys = () => {
     const backupPath = `${backupDir}/${key}`
     console.log(`Moving ${oldKeyPath} to ${backupPath}`)
     // mv oldKeyPath backupPath
-    if (
-      key === 'testnet-validator-keypair.json' ||
-      key === 'authority-keypair.json'
-    ) {
-      spawnSync(`sudo mv ${oldKeyPath} /home/solv/${key}`, {
-        shell: true,
-        stdio: 'inherit',
-      })
+    if (key === KEYPAIRS.TESTNET_VALIDATOR_KEY) {
+      spawnSync(
+        `sudo mv ${oldKeyPath} /home/solv/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
       continue
     }
-    spawnSync(`sudo mv ${oldKeyPath} ${backupPath}`, {
+    if (key.includes('vote-account')) {
+      spawnSync(
+        `sudo mv ${oldKeyPath} /home/solv/${KEYPAIRS.TESTNET_VALIDATOR_VOTE_KEY}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
+      continue
+    }
+    if (key.includes('authority')) {
+      spawnSync(
+        `sudo mv ${oldKeyPath} /home/solv/${KEYPAIRS.TESTNET_VALITATOR_AUTHORITY_KEY}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
+      continue
+    }
+
+    spawnSync(`sudo mv ${oldKeyPath} ${backupPath}/${key}`, {
       shell: true,
       stdio: 'inherit',
     })
