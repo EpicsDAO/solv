@@ -29,11 +29,6 @@ export const removeFstabEntries = () => {
       shell: true,
       encoding: 'utf8',
     })
-    const reloadCmd = `sudo mount --all --verbose`
-    spawnSync(reloadCmd, {
-      shell: true,
-      encoding: 'utf8',
-    })
 
     const cmd = "sudo sed -i '/\\/mt\\/swapfile/d' /etc/fstab"
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
