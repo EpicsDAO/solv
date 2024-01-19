@@ -4,6 +4,8 @@ export type DiskInfo = {
   name: string
   size: number
   mountpoint: string
+  isMounted: boolean
+  hasPartition: boolean
 }
 
 export type GetPreferredDisksResult = {
@@ -35,47 +37,48 @@ function getPreferredDisks(): GetPreferredDisksResult {
 
     const size = parseInt(sizeStr, 10)
     if (isNaN(size)) continue // Skip lines where size is not a number
-    const isMounted = mountpoint !== undefined
-    if (size >= 400 * 1024 * 1024 * 1024) {
-      const diskInfo: DiskInfo = { name, size, mountpoint: mountpoint || '' }
-      disks.push(diskInfo)
+    const isMounted = mountpoint !== undefined && mountpoint !== ''
+    const hasPartition = allDiskNames.some(
+      (diskName) => diskName !== name && diskName.startsWith(name),
+    )
 
-      // Check conditions
-      const hasPartition = allDiskNames.some(
-        (diskName) => diskName !== name && diskName.startsWith(name),
-      )
-      if (size >= 850 * 1024 * 1024 * 1024 && !hasPartition && !isMounted)
-        has850GB = true
-      if (size >= 400 * 1024 * 1024 * 1024 && !hasPartition && !isMounted)
-        has400GB = true
-      if (size >= 1250 * 1024 * 1024 * 1024 && mountpoint) hasUsed1250GB = true
+    if (size >= 400 * 1024 * 1024 * 1024) {
+      disks.push({
+        name,
+        size,
+        mountpoint: mountpoint || '',
+        isMounted,
+        hasPartition,
+      })
     }
   }
 
-  // Custom sort function
-  const sortDisks = (a: DiskInfo, b: DiskInfo) => {
-    // Check for mountpoint
-    if (a.mountpoint === '' && b.mountpoint !== '') return -1
-    if (a.mountpoint !== '' && b.mountpoint === '') return 1
+  // Sort disks by size
+  const sortedDisks = disks.sort((a, b) => b.size - a.size)
 
-    // Check if disk has partitions
-    const hasPartitionA = allDiskNames.some(
-      (diskName) => diskName !== a.name && diskName.startsWith(a.name),
+  // Check conditions based on sorted disks
+  if (sortedDisks.length > 0) {
+    const largestDisk = sortedDisks[0]
+    if (
+      largestDisk.size >= 850 * 1024 * 1024 * 1024 &&
+      !largestDisk.hasPartition &&
+      !largestDisk.isMounted
     )
-    const hasPartitionB = allDiskNames.some(
-      (diskName) => diskName !== b.name && diskName.startsWith(b.name),
-    )
+      has850GB = true
+    if (largestDisk.size >= 1250 * 1024 * 1024 * 1024 && largestDisk.isMounted)
+      hasUsed1250GB = true
 
-    // Sort by whether the disk has partitions
-    if (hasPartitionA && !hasPartitionB) return 1
-    if (!hasPartitionA && hasPartitionB) return -1
-
-    // Finally, sort by size
-    return b.size - a.size
+    // Check second largest disk for has400GB
+    if (sortedDisks.length > 1) {
+      const secondLargestDisk = sortedDisks[1]
+      if (
+        secondLargestDisk.size >= 400 * 1024 * 1024 * 1024 &&
+        !secondLargestDisk.hasPartition &&
+        !secondLargestDisk.isMounted
+      )
+        has400GB = true
+    }
   }
-
-  // Sort disks
-  const sortedDisks = disks.sort(sortDisks)
 
   return { disks: sortedDisks, has850GB, has400GB, hasUsed1250GB }
 }
