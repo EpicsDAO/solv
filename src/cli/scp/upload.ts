@@ -26,7 +26,6 @@ export const upload = async () => {
     const fileName = splits[splits.length - 1]
     const filePath = `${uploadPath}/${fileName}`
     if (!existsSync(filePath)) {
-      console.log(chalk.red(`File Not Found - ${filePath} 🚨`))
       continue
     }
     const cmd = `scp ${filePath} solv@${answer.ip}:${key}`

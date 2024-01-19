@@ -34,6 +34,10 @@ export const removeFstabEntries = () => {
       shell: true,
       encoding: 'utf8',
     })
+
+    const cmd = "sudo sed -i '/\\/mt\\/swapfile/d' /etc/fstab"
+    spawnSync(cmd, { shell: true, stdio: 'inherit' })
+
     console.log(`Removed specified lines from ${fstabPath}`)
   } else {
     console.log('No specified lines found to remove in /etc/fstab')
