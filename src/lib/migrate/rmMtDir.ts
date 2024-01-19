@@ -6,7 +6,7 @@ export const rmMtDir = () => {
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     const cmd2 = `sudo umount /mt`
     spawnSync(cmd2, { shell: true, stdio: 'inherit' })
-    const cmd3 = `sudo rm -rf /mnt/ramdrive`
+    const cmd3 = `sudo rm -rf /mnt`
     spawnSync(cmd3, { shell: true, stdio: 'inherit' })
     const cmd4 = `sudo umount /mnt/ramdrive`
     spawnSync(cmd4, { shell: true, stdio: 'inherit' })

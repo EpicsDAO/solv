@@ -52,7 +52,6 @@ export const server = async (solvConfig: ConfigParams) => {
   ])
 
   const selectedOption = (Number(answer.server.split(')')[0]) - 1) as CHOICES
-  console.log(selectedOption)
   switch (selectedOption) {
     case CHOICES.UPGRADE:
       console.log('Upgrading solv...')
