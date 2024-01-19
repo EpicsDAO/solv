@@ -20,7 +20,7 @@ export const mvKeys = () => {
   for (const key of oldKeys) {
     const oldKeyPath = `${oldKeyDir}/${key}`
     const backupPath = `${backupDir}/${key}`
-    console.log(`Moving ${oldKeyPath} to ${backupPath}`)
+    console.log(`Moving ${oldKeyPath}`)
 
     // Check for specific key files and move them accordingly
     if (key === KEYPAIRS.TESTNET_VALIDATOR_KEY) {

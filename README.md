@@ -33,26 +33,53 @@ Whether you're a seasoned developer or a blockchain enthusiast stepping into the
 
 Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
 
-## Update Solv Instructions v1.8.x to v1.9.0
+## Migrate Solv3 Instructions
 
-Node version update is required for solv v1.9.x
-Node 18.18.x to 20.10.1
+We updated the solv version to v3.0.0 to support the latest requirements of Solana Official Docs.
 
-Update node
+⭐️ Improved
+
+- Changed Mountpoint/Directory as the solana official docs
+- Removed unnecessary swapfile and ramdisk
+- Added solv s for solv Dashboard (no coding maintenance)
+
+Below is the migration guide for existing solv users.(Mainly TDS attendees)
 
 ```bash
-$ solv update --node
+$ solv update
 ```
 
-then Install solv again
+Open solv Dashboard
 
 ```bash
-$ npm install -g @epics-dao/solv
+$ solv s
 ```
 
-## 🔴 YouTube Video
+Set your default Language for initial setup
 
-https://youtu.be/rY4bajhRJgw
+```bash
+Solv Version: v3.0.0
+
+? Select Language (Use arrow keys)
+❯ en
+  ja
+```
+
+Open solv Dashboard again to reflect the language change
+
+```bash
+$ solv s
+```
+
+[![solv-s](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)
+
+Select 5 to migrate to solv v3.x.x
+
+This will automatically update your node to the latest requirements of Solana Official Docs.
+
+If you have any questions, please contact us on Discord.
+
+https://discord.gg/yxm5hJqRhg
 
 ## 📖 Server Spec
 
@@ -62,7 +89,7 @@ https://youtu.be/rY4bajhRJgw
 ## Solana Validator Setup
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v1.9.0/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.0.0/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -114,7 +141,7 @@ $ solv log
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-$ solv config
+$ solv get config
 ```
 
 ## Solana Delegation Program
@@ -127,33 +154,28 @@ https://solana.org/delegation-program
 $ solv --help
 Usage: solv [options] [command]
 
-CLI for Solana Validators
+💎 Solana Validator All-in-One CLI 💎
 
 Options:
-  -V, --version                         output the version number
-  -h, --help                            display help for command
+  -v, --version        Output the current version
+  -h, --help           Display help for solv commands
 
 Commands:
-  solv                                  Show Solv AA
-  epoch                                 Get Current Epoch
-  slot                                  Get Current Slot
-  config|c                              Show Solv Validator Config
-  status                                Show Solana Validator Status
-  start                                 Start Solana Validator
-  restart [options]                     Restart Solana Validator
-  stop                                  Stop Solana Validator
-  check                                 Check Solana Validator Environment
-  install|i [options]                   Solana Install/Update Command
-  mt [options]                          Linux Mount Command
-  umt [options]                         Solana Umount Command
-  mtr                                   Mount Reload Command
-  setup [options]                       Setup Solana Validator All-in-One
-  df                                    Disk Free Command
-  lsblk|ls                              Solana Disk Usage Command
-  stake [options] <stakeAccountPubkey>  Solana Delegate Stake Command
-  update|u [options]                    Solana Version Update, Restart and Monitoring Delinquent Stake
-  log|l [options]                       tail logs
-  help [command]                        display help for command
+  server|s             Open solv Dashboard
+  start                Start Solana Validator
+  restart [options]    Restart Solana Validator
+  stop                 Stop Solana Validator
+  status               Show Solana Validator Status
+  update|u [options]   Update Solana Validator Version
+  log|l [options]      tail logs
+  install|i [options]  Install/Update Solana Version
+  stake                Solana Delegate Stake
+  check                Check Solana Validator
+  get <cmd>            Get Solana Validator Info
+  scp <cmd>            Download/Upload Solana Validator Keypairs
+  cron <cmd>           Run Schedule Tasks
+  setup [options]      Setup Solana Validator
+  help [cmd]           Display help for solv commands
 ```
 
 ## Contributing

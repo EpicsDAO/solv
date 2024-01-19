@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { download } from './download'
 import { upload } from './upload'
-import { scpCreate } from './scpCreate'
+import { scpCreate } from './create'
 import { cat } from './cat'
 import { init } from './init'
 import { processPaths, search } from './search'

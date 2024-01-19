@@ -4,12 +4,12 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { migrate } from '@/lib/migrate/migrate'
 import { showConfig } from '@/cli/get/showConfig'
-import { scpCreate } from '@/cli/scp/scpCreate'
+import { scpCreate } from '@/cli/scp/create'
 import { spawnSync } from 'child_process'
 import { monitorUpdate, updateVersion } from '@/cli/update'
 import { CONFIG } from '@/config/config'
+import { migrate } from '@/lib/migrate/migrate'
 
 enum CHOICES {
   UPGRADE,
@@ -62,15 +62,14 @@ export const server = async (solvConfig: ConfigParams) => {
       monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       break
     case CHOICES.CHECK:
-      const cmd = `sudo systemctl status solv`
-      spawnSync(cmd, { shell: true, stdio: 'inherit' })
+      console.log('Coming soon...')
       break
     case CHOICES.CONFIG:
       showConfig()
       break
     case CHOICES.BACKUP:
-      console.log('Backing up Validator Config...')
-      await scpCreate()
+      console.log('Coming soon...')
+      //await scpCreate()
       break
     case CHOICES.MIGRATE:
       console.log('Migrating Validator Config...')

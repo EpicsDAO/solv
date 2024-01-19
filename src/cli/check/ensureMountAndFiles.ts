@@ -1,7 +1,5 @@
-import { FILE_SYSTEM_PATHS, MT_PATHS } from '@/config/config'
+import { MT_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
-
-const swapLine = `/mt/swapfile swap swap defaults 0 0`
 
 export const ensureFstabEntries = (fileSystem: string, fileSystem2 = '') => {
   const mtLineSingle = `${fileSystem}        ${MT_PATHS.ROOT}     ext4 auto 0 0`
@@ -9,7 +7,7 @@ export const ensureFstabEntries = (fileSystem: string, fileSystem2 = '') => {
 ${fileSystem2}        ${MT_PATHS.ACCOUNTS}     ext4 auto 0 0
 `
   const mtLine = fileSystem2 !== '' ? mtLineForDouble : mtLineSingle
-  const lines = [swapLine, mtLine]
+  const lines = [mtLine]
   const output = spawnSync(`cat /etc/fstab`, {
     shell: true,
     encoding: 'utf8',

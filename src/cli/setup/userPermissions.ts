@@ -1,6 +1,5 @@
 import { MT_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
-import { existsSync } from 'fs'
 
 export const setupPermissions = () => {
   const cmds = [
@@ -16,8 +15,6 @@ export const setupPermissions = () => {
   ]
 
   for (const line of cmds) {
-    if (line.includes('mkdir') && existsSync(MT_PATHS.LEDGER)) continue
-    if (line.includes('mkdir') && existsSync(MT_PATHS.ACCOUNTS)) continue
-    spawnSync(line, { shell: true, stdio: 'inherit' })
+    spawnSync(line, { shell: true, stdio: 'ignore' })
   }
 }
