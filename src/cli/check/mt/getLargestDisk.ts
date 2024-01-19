@@ -59,11 +59,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   // Check conditions based on sorted disks
   if (sortedDisks.length > 0) {
     const largestDisk = sortedDisks[0]
-    if (
-      largestDisk.size >= 850 * 1024 * 1024 * 1024 &&
-      !largestDisk.hasPartition &&
-      !largestDisk.isMounted
-    )
+    if (largestDisk.size >= 850 * 1024 * 1024 * 1024 && !largestDisk.isMounted)
       has850GB = true
     if (largestDisk.size >= 1250 * 1024 * 1024 * 1024 && largestDisk.isMounted)
       hasUsed1250GB = true
@@ -73,7 +69,6 @@ function getPreferredDisks(): GetPreferredDisksResult {
       const secondLargestDisk = sortedDisks[1]
       if (
         secondLargestDisk.size >= 400 * 1024 * 1024 * 1024 &&
-        !secondLargestDisk.hasPartition &&
         !secondLargestDisk.isMounted
       )
         has400GB = true
