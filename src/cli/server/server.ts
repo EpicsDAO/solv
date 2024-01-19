@@ -1,13 +1,22 @@
 import { ConfigParams } from '@/lib/createDefaultConfig'
 import inquirer from 'inquirer'
-import { uninstall } from '../setup/uninstall'
+import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
+import { langSet } from '@/lib/langSet'
+import chalk from 'chalk'
+import { migrate } from '@/lib/migrate/migrate'
+import { showConfig } from '@/cli/get/showConfig'
+import { scpCreate } from '@/cli/scp/scpCreate'
+import { spawnSync } from 'child_process'
+import { monitorUpdate, updateVersion } from '@/cli/update'
+import { CONFIG } from '@/config/config'
 
 enum CHOICES {
   UPGRADE,
   CHECK,
   CONFIG,
   BACKUP,
+  MIGRATE,
   UNINSTALL,
   EXIT,
 }
@@ -16,6 +25,11 @@ export const server = async (solvConfig: ConfigParams) => {
   Logger.solvAA()
   const { logs, installer, cmds } = solvConfig.locale
   const { config } = solvConfig
+  if (!config.LANG_SETUP) {
+    await langSet()
+    console.log(`Please run command again:\n\n${chalk.green('$ solv s')}`)
+    return
+  }
   const msg = Logger.warningHex(logs.installer.welcomeMsg)
   console.log(msg + '\n')
 
@@ -42,15 +56,26 @@ export const server = async (solvConfig: ConfigParams) => {
   switch (selectedOption) {
     case CHOICES.UPGRADE:
       console.log('Upgrading solv...')
+      updateVersion(CONFIG.SOLANA_VERSION)
+      Logger.normal(
+        `✔️ Update to Solana Version ${chalk.green(CONFIG.SOLANA_VERSION)}`,
+      )
+      monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       break
     case CHOICES.CHECK:
-      console.log('Checking Validator Status...')
+      const cmd = `sudo systemctl status solv`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
       break
     case CHOICES.CONFIG:
-      console.log('Getting Validator Config...')
+      showConfig()
       break
     case CHOICES.BACKUP:
       console.log('Backing up Validator Config...')
+      await scpCreate()
+      break
+    case CHOICES.MIGRATE:
+      console.log('Migrating Validator Config...')
+      await migrate()
       break
     case CHOICES.UNINSTALL:
       await uninstall()

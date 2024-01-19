@@ -11,13 +11,20 @@ import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
 import { startSolana } from '../start/startSolana'
-import { CONFIG, DISK_TYPES, SOLV_TYPES } from '@/config/config'
+import {
+  CONFIG,
+  DISK_TYPES,
+  KEYPAIRS,
+  SOLV_TYPES,
+  getAllKeyPaths,
+} from '@/config/config'
 import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { formatDisk } from './formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
 import { ConfigParams } from '@/lib/createDefaultConfig'
-import { LANGS } from '@/config/langs'
+import { langSet } from '@/lib/langSet'
+import { existsSync } from 'fs'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -32,25 +39,21 @@ export const setup = async (solvConfig: ConfigParams) => {
 
     const { config } = solvConfig
     if (!config.IS_SETUP) {
-      const choices = Object.values(LANGS)
-      const askLang = await inquirer.prompt<{ lang: string }>([
-        {
-          name: 'lang',
-          type: 'list',
-          message: 'Select Language',
-          choices,
-        },
-      ])
-      updateSolvConfig({ LANG: askLang.lang as LANGS })
-      console.log(`Language set to ${askLang.lang}`)
+      await langSet()
+      console.log(`Please run command again:\n\n${chalk.green('$ solv setup')}`)
+      return
     }
-
+    let isTest = true
+    let solvType = 'TESTNET_VALIDATOR'
+    const { testnetValidatorKey, mainnetValidatorKey } = getAllKeyPaths()
+    if (!existsSync(testnetValidatorKey) && !existsSync(mainnetValidatorKey)) {
+    }
     // Check which SOLV_TYPES to setup
     const choices = Object.values(SOLV_TYPES).filter(
       (value) => typeof value !== 'number',
     )
-    let isTest = true
-    const { solvType } = await inquirer.prompt<{ solvType: string }>([
+
+    const answer = await inquirer.prompt<{ solvType: string }>([
       {
         name: 'solvType',
         type: 'list',
@@ -58,6 +61,7 @@ export const setup = async (solvConfig: ConfigParams) => {
         choices,
       },
     ])
+    solvType = answer.solvType
     let commission = CONFIG.COMMISSION
 
     // Check if solvType is RPC_NODE
@@ -77,7 +81,7 @@ export const setup = async (solvConfig: ConfigParams) => {
 
     // Check if solvType is TESTNET_VALIDATOR
     if (solvType !== 'TESTNET_VALIDATOR') {
-      isTest = true
+      isTest = false
     }
 
     // Check if solvType is MAINNET_VALIDATOR

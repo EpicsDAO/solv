@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { download } from './download'
 import { upload } from './upload'
-import { create } from './create'
+import { scpCreate } from './scpCreate'
 import { cat } from './cat'
 import { init } from './init'
 import { processPaths, search } from './search'
@@ -34,7 +34,7 @@ export const scpCommands = (solvConfig: ConfigParams) => {
     .alias('c')
     .description('Create SSH Login Setting')
     .action(async () => {
-      await create()
+      await scpCreate()
     })
 
   scp

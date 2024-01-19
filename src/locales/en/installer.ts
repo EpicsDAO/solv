@@ -3,6 +3,7 @@ const installerEN = [
   ') Check Validator Status or Start/Stop',
   ') Get Validator Config Info',
   ') Backup/Restore Validator Keyfiles',
+  ') Migrate to solv3',
   ') Uninstall',
   ') Exit',
 ]

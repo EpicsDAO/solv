@@ -9,6 +9,10 @@ import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
   try {
     let keypairs = getAllKeyPaths()
+    if (existsSync(keypairs.testnetValidatorKey)) {
+      console.log('Skipping keypair creation. Already exists.')
+      return true
+    }
     if (isLocal) {
       const homeDirectory = os.userInfo().homedir
       const uploadDir = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`

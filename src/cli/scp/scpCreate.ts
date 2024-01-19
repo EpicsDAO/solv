@@ -2,7 +2,7 @@ import { HOME_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
 import inquirer from 'inquirer'
 
-export const create = async () => {
+export const scpCreate = async () => {
   const answer = await inquirer.prompt<{ pubkey: string }>({
     type: 'input',
     name: 'pubkey',
