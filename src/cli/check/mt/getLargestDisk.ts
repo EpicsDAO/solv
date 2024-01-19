@@ -36,7 +36,6 @@ function getPreferredDisks(): GetPreferredDisksResult {
     const size = parseInt(sizeStr, 10)
     if (isNaN(size)) continue // Skip lines where size is not a number
     const isMounted = mountpoint !== undefined
-    console.log({ isMounted, name, size, mountpoint })
     if (size >= 400 * 1024 * 1024 * 1024) {
       const diskInfo: DiskInfo = { name, size, mountpoint: mountpoint || '' }
       disks.push(diskInfo)

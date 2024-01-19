@@ -24,7 +24,7 @@ export const migrate = async () => {
   }
   console.log('Stopping solv service...')
   spawnSync('sudo systemctl stop solv', { shell: true, stdio: 'inherit' })
-  await sleep(3000)
+  await sleep(7000)
   mvKeys()
   rmSwap()
   removeFstabEntries()
