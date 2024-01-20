@@ -1,6 +1,6 @@
 import { spawnSync } from 'child_process'
 
-export const ensureSolvOwnership = (dir: string = '/mt'): void => {
+export const ensureSolvOwnership = (dir: string): void => {
   const output = spawnSync(`find ${dir} -not -user solv`, {
     shell: true,
     encoding: 'utf8',

@@ -1,6 +1,6 @@
 import { spawnSync } from 'child_process'
 
-export const checkMountedDirs = (dir: string = '/mt'): boolean => {
+export const checkMountedDirs = (dir: string): boolean => {
   const output = spawnSync(`df -h ${dir}`, { shell: true, encoding: 'utf8' })
   const lines = output.stdout.split('\n')
 

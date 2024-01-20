@@ -4,6 +4,7 @@ import { checkMountedDirs } from './checkMountedDirs'
 import { ensureSolvOwnership } from './ensureSolvOwnerShip'
 import { Logger } from '@/lib/logger'
 import { ConfigParams } from '@/lib/createDefaultConfig'
+import { MT_PATHS } from '@/config/config'
 
 export const checkCommands = (solvConfig: ConfigParams) => {
   const { locale } = solvConfig
@@ -11,11 +12,13 @@ export const checkCommands = (solvConfig: ConfigParams) => {
     .command('check')
     .description(locale.cmds.check)
     .action(() => {
-      const mountedDirs = checkMountedDirs()
+      const dir = MT_PATHS.ROOT
+
+      const mountedDirs = checkMountedDirs(dir)
       if (!mountedDirs) {
         Logger.normal(
-          `❌ /mt dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
-            `\n\$ solv df\n\$ solv ls`
+          `❌ ${dir} dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
+            `\n\$ solv df`
           )}`
         )
         return
@@ -30,7 +33,7 @@ export const checkCommands = (solvConfig: ConfigParams) => {
         return
       }
 
-      ensureSolvOwnership()
+      ensureSolvOwnership(dir)
       Logger.normal(
         `You are all set 🎉\n\nRun ${Logger.successHex(
           `$ solv start\n\n and check your log\n\n$ solv log`
