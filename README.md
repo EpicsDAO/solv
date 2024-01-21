@@ -104,7 +104,7 @@ We updated the solv version to v3.0.0 to support the latest requirements of Sola
 
 - Changed Mountpoint/Directory as the solana official docs
 - Removed unnecessary swapfile and ramdisk
-- Added solv s for solv Dashboard (no coding maintenance)
+- Added solv s for solv Dashboard (no command maintenance)
 
 Below is the migration guide for existing solv users.(Mainly TDS attendees)
 
