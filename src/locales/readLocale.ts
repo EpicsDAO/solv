@@ -8,6 +8,8 @@ import { installerJA, installerSubJA } from '@/locales/ja/installer'
 import { LocaleParams } from '@/locales/localeParams'
 import subCmdsEN from '@/locales/en/subCmds'
 import subCmdsJA from '@/locales/ja/subCmds'
+import { clientEN } from './en/client'
+import { clientJA } from './ja/client'
 
 const readLocale = (lang: LANGS) => {
   let locales: LocaleParams = {
@@ -16,6 +18,7 @@ const readLocale = (lang: LANGS) => {
     logs: logsEN,
     installer: installerEN,
     installerSub: installerSubEN,
+    clientCmds: clientEN,
   }
   switch (lang) {
     case LANGS.EN:
@@ -25,6 +28,7 @@ const readLocale = (lang: LANGS) => {
         logs: logsEN,
         installer: installerEN,
         installerSub: installerSubEN,
+        clientCmds: clientEN,
       }
       break
     case LANGS.JA:
@@ -34,6 +38,7 @@ const readLocale = (lang: LANGS) => {
         logs: logsJA,
         installer: installerJA,
         installerSub: installerSubJA,
+        clientCmds: clientJA,
       }
       break
     default:
@@ -43,6 +48,7 @@ const readLocale = (lang: LANGS) => {
         logs: logsEN,
         installer: installerEN,
         installerSub: installerSubEN,
+        clientCmds: clientEN,
       }
   }
   return locales

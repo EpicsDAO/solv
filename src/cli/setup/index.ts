@@ -19,7 +19,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
       'Set Validator Commission',
       CONFIG.COMMISSION.toString(),
     )
-    .action((options) => {
+    .action(async (options) => {
       const commission = Number(options.commission)
       if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
@@ -29,7 +29,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
         onlyGenKeys(commission)
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        setup(solvConfig)
+        await setup(solvConfig)
       }
     })
 }

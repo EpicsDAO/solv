@@ -11,13 +11,7 @@ import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
 import { startSolana } from '../start/startSolana'
-import {
-  CONFIG,
-  DISK_TYPES,
-  KEYPAIRS,
-  SOLV_TYPES,
-  getAllKeyPaths,
-} from '@/config/config'
+import { CONFIG, DISK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
 import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { formatDisk } from './formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
@@ -129,9 +123,9 @@ export const setup = async (solvConfig: ConfigParams) => {
       }
     }
     setupPermissions()
-    genStartupValidatorScript(true)
-    makeServices()
-    setupKeys(commission)
+    genStartupValidatorScript(true, sType)
+    makeServices(isTest)
+    setupKeys(commission, false, isTest)
     const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solv',

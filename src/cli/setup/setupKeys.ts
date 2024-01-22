@@ -5,6 +5,7 @@ import os from 'os'
 import { NETWORK_TYPES, getAllKeyPaths } from '@/config/config'
 import { createVoteAccount } from './createVoteAccount'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
 export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
   try {
@@ -43,7 +44,10 @@ export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
       }
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     }
-    createVoteAccount(commission, isTest)
+    if (isTest) {
+      createVoteAccount(commission, isTest)
+    }
+    updateSolvConfig({ SOLANA_NETWORK: network })
     return true
   } catch (error) {
     throw new Error(`setupKeys Error: ${error}`)
