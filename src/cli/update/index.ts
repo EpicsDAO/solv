@@ -24,7 +24,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-n, --node', 'Update Node Version', false)
     .action((options: any) => {
-      console.log('Update Options: ', options)
       if (options.monitor) {
         updateVersion(options.version)
         Logger.normal(

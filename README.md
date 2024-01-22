@@ -170,7 +170,6 @@ Commands:
   log|l [options]      tail logs
   install|i [options]  Install/Update Solana Version
   stake                Solana Delegate Stake
-  check                Check Solana Validator
   get <cmd>            Get Solana Validator Info
   scp <cmd>            Download/Upload Solana Validator Keypairs
   cron <cmd>           Run Schedule Tasks
