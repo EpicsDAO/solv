@@ -2,7 +2,7 @@ import { installerParams, installerSubParams } from '@/locales/localeParams'
 
 export const installerJA: installerParams = [
   ') アップグレード - Solanaバージョンのアップデート/ダウングレード',
-  ') バリデータ-の状態を確認・または開始/停止',
+  ') バリデータ-の状態/ログを確認・または開始/停止',
   ') バリデータ-の設定情報',
   ') 鍵のバックアップ・リストア',
   ') solv3 への移行',
@@ -14,6 +14,7 @@ export const installerSubJA: installerSubParams = [
   [],
   [
     ') バリデータ-の状態を確認',
+    ') バリデーターのログを表示',
     ') バリデータ-を開始',
     ') バリデータ-を停止',
     ') バリデータ-を再起動 (fetch snapshot なし)',
@@ -31,7 +32,6 @@ export const installerSubJA: installerSubParams = [
   [
     ') バリデーターの鍵をバックアップ',
     ') バリデーターの鍵をリストア',
-    ') バリデーターの鍵を作成',
     ') メインメニューに戻る',
   ],
   [],

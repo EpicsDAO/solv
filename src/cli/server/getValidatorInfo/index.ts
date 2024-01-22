@@ -50,10 +50,7 @@ export const getValidatorInfoCommands = async (solvConfig: ConfigParams) => {
       monitorSolana()
       break
     case GET_CHOICES.RETURN_TO_INSTALLER:
-      server(solvConfig)
-      break
-    default:
-      server(solvConfig)
+      await server(solvConfig)
       break
   }
 }

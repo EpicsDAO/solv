@@ -2,7 +2,7 @@ import { installerParams, installerSubParams } from '../localeParams'
 
 export const installerEN: installerParams = [
   ') Upgrade - Update/Downgrade Solana Version',
-  ') Check Validator Status or Start/Stop',
+  ') Check Validator Logs/Status or Start/Stop',
   ') Get Validator Config Info',
   ') Backup/Restore/Create Validator Keyfiles',
   ') Migrate to solv3',
@@ -14,6 +14,7 @@ export const installerSubEN: installerSubParams = [
   [],
   [
     ') Check Validator Status',
+    ') Show Validator Logs',
     ') Start Validator',
     ') Stop Validator',
     ') Restart Validator (no fetch snapshot)',
@@ -31,7 +32,6 @@ export const installerSubEN: installerSubParams = [
   [
     ') Backup Validator Keyfiles',
     ') Restore Validator Keyfiles',
-    ') Create Validator Keyfiles',
     ') Return to Main Menu',
   ],
   [],

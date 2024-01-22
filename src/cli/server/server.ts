@@ -9,6 +9,8 @@ import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
 import { checkValidatorCommands } from './checkValidator'
 import { getValidatorInfoCommands } from './getValidatorInfo'
+import { getBackupCommands } from './backup'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -54,8 +56,13 @@ export const server = async (solvConfig: ConfigParams) => {
     1) as INSTALLER_CHOICES
   switch (selectedOption) {
     case INSTALLER_CHOICES.UPGRADE:
+      if ((config.SOLANA_VERSION = CONFIG.SOLANA_VERSION)) {
+        console.log('Solana is already up to date!')
+        return
+      }
       console.log('Upgrading solv...')
       updateVersion(CONFIG.SOLANA_VERSION)
+      updateSolvConfig({ SOLANA_VERSION: CONFIG.SOLANA_VERSION })
       Logger.normal(
         `✔️ Update to Solana Version ${chalk.green(CONFIG.SOLANA_VERSION)}`,
       )
@@ -68,8 +75,7 @@ export const server = async (solvConfig: ConfigParams) => {
       getValidatorInfoCommands(solvConfig)
       break
     case INSTALLER_CHOICES.BACKUP:
-      console.log('Coming soon...')
-      //await scpCreate()
+      getBackupCommands(solvConfig)
       break
     case INSTALLER_CHOICES.MIGRATE:
       console.log('Migrating Validator Config...')
