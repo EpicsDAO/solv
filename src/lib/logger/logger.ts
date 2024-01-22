@@ -1,5 +1,6 @@
 import chalk from 'chalk'
 import { Spinner } from 'cli-spinner'
+import { VERSION } from '@/lib/version'
 
 export module Logger {
   export const successHex = chalk.hex('#39A845')
@@ -40,7 +41,7 @@ export module Logger {
     console.log(`${row4}`)
     console.log(`${row5}`)
     console.log(`${row6}\n`)
-    console.log(`Solv Version: v${process.env.npm_package_version}\n`)
+    console.log(`Solv Version: v${VERSION}\n`)
   }
 
   export const installMessage = () => {
