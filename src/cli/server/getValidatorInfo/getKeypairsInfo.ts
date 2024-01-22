@@ -6,12 +6,10 @@ export const getKeypairsInfo = (solvType: SOLV_TYPES) => {
   const keypairs = getAllKeyPaths()
   switch (solvType) {
     case SOLV_TYPES.TESTNET_VALIDATOR:
-      const tetnetKeybalance = getSolBalance(keypairs.testnetValidatorKey)
-      console.log({ tetnetKeybalance })
       return {
         validatorKey: keypairs.testnetValidatorKey,
         validatorKeyAddress: getSolanaAddress(keypairs.testnetValidatorKey),
-        tetnetKeybalance,
+        validatorKeyBalance: getSolBalance(keypairs.testnetValidatorKey),
         voteKey: keypairs.testnetValidatorVoteKey,
         voteKeyAddress: getSolanaAddress(keypairs.testnetValidatorVoteKey),
         voteKeyBalance: getSolBalance(keypairs.testnetValidatorVoteKey),
@@ -44,8 +42,6 @@ export const getKeypairsInfo = (solvType: SOLV_TYPES) => {
         validatorKey: keypairs.mainnetValidatorKey,
         validatorKeyAddress: getSolanaAddress(keypairs.mainnetValidatorKey),
         validatorKeyBalance: getSolBalance(keypairs.mainnetValidatorKey),
-        voteKey: '',
-        authorityKey: '',
       }
   }
 }
