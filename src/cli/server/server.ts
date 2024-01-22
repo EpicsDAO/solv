@@ -25,7 +25,7 @@ export enum INSTALLER_CHOICES {
 
 export const server = async (solvConfig: ConfigParams) => {
   const homeDir = os.homedir()
-  if (!homeDir.includes('/home/solv')) {
+  if (solvConfig.config.IS_CLIENT) {
     console.log(
       chalk.yellow(
         `⚠️ Please run solv server from the server, not from the your local machine

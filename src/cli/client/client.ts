@@ -3,9 +3,10 @@ import inquirer from 'inquirer'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import os from 'os'
-import { CONFIG } from '@/config/config'
 import { spawnSync } from 'child_process'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import { setupKeys } from '@/cli/setup/setupKeys'
+import { upload } from '@/cli/scp/upload'
 
 export enum CLIENT_CHOICES {
   STATUS,
@@ -22,7 +23,16 @@ export const client = async (solvConfig: ConfigParams) => {
   const { config } = solvConfig
   if (!config.LANG_SETUP) {
     await langSet()
+    updateSolvConfig({ IS_CLIENT: true })
     console.log(`Please run command again:\n\n${chalk.green('$ solv c')}`)
+    return
+  }
+  if (!config.IS_CLIENT) {
+    console.log(
+      chalk.yellow(
+        `⚠️ Please run solv client from the your local machine, not from the validator server`,
+      ),
+    )
     return
   }
   const msg = Logger.warningHex(logs.installer.welcomeMsg)
@@ -45,12 +55,16 @@ export const client = async (solvConfig: ConfigParams) => {
     1) as CLIENT_CHOICES
   switch (selectedOption) {
     case CLIENT_CHOICES.STATUS:
+      console.log('Coming soon...')
       break
     case CLIENT_CHOICES.KEY_GENERATE:
+      setupKeys(solvConfig)
       break
     case CLIENT_CHOICES.KEY_RESTORE:
+      upload()
       break
     case CLIENT_CHOICES.MULTIPLE_NODE_SETUP:
+      console.log('Coming soon...')
       break
     case CLIENT_CHOICES.UNINSTALL:
       spawnSync('npm -g uninstall @epics-dao/solv', {

@@ -29,6 +29,8 @@ export type CONFIG_TYPE = {
   IS_SETUP: boolean
   LANG_SETUP: boolean
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: string
+  IS_CLIENT: boolean
+  VALIDATOR_IPS: string[]
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -47,6 +49,8 @@ export const CONFIG: CONFIG_TYPE = {
   LANG_SETUP: false,
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY:
     '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1',
+  IS_CLIENT: false,
+  VALIDATOR_IPS: [],
 }
 
 export const HOME_PATHS = {
@@ -72,15 +76,6 @@ export const SERVICE_PATHS = {
   SOL_SYSTEM_CONFIG21: '/etc/sysctl.d/21-solana-validator.conf',
   SOL_NOFILES_CONF: '/etc/security/limits.d/90-solana-nofiles.conf',
   SOL_SYSTEM_CONF: '/etc/systemd/system.conf',
-}
-
-export const FILE_SYSTEM_PATHS = {
-  DEFAULT_FILE_SYSTEM: '/dev/vda',
-  SDA: '/dev/sda',
-  SDB: '/dev/sdb',
-  SDC: '/dev/sdc',
-  NVME0: '/dev/nvme0n1',
-  NVME1: '/dev/nvme1n1',
 }
 
 export const KEYPAIRS = {

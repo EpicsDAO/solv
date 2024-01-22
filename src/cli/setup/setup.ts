@@ -1,19 +1,19 @@
 import { execSync, spawnSync } from 'child_process'
-import { setupDirs } from './mkdirs'
-import { setupKeys } from './setupKeys'
-import { genStartupValidatorScript } from './genStartupValidatorScript'
+import { setupDirs } from '@/cli/setup/mkdirs'
+import { setupKeys } from '@/cli/setup/setupKeys'
+import { genStartupValidatorScript } from '@/cli/setup/genStartupValidatorScript'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
-import { makeServices } from './makeServices'
-import { setupPermissions } from './userPermissions'
-import { umount } from '../check/mt/umount'
+import { makeServices } from '@/cli/setup/makeServices'
+import { setupPermissions } from '@/cli/setup/userPermissions'
+import { umount } from '@/cli/check/mt/umount'
 import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
-import { startSolana } from '../start/startSolana'
+import { startSolana } from '@/cli/start/startSolana'
 import { CONFIG, DISK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
-import { ensureFstabEntries } from '../check/ensureMountAndFiles'
-import { formatDisk } from './formatDisk'
+import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
+import { formatDisk } from '@/cli/setup/formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
 import { ConfigParams } from '@/lib/createDefaultConfig'
@@ -125,7 +125,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     setupPermissions()
     genStartupValidatorScript(true, sType)
     makeServices(isTest)
-    setupKeys(commission, false, isTest)
+    setupKeys(solvConfig)
     const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solv',

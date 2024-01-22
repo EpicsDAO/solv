@@ -58,6 +58,20 @@ $ solv --help for more information
     console.log(greyHex(msg2))
   }
 
+  export const installClientMessage = () => {
+    const msg = warningHex(`🔥 Welcome to Solana Validator Tool Solv 🔥`)
+    const msg2 = `
+This is solv CLI mode for Solana Validator Management ⭐️
+
+$ cd ~ && source ~/.profile
+$ solv c
+
+$ solv --help for more information
+`
+    console.log(msg)
+    console.log(greyHex(msg2))
+  }
+
   export const mtCommandsLog = () => {
     const msg = warningHex(`🔨 Mount Commands 🔨`)
     const msg2 = `mount\n$ solv mt -p <fileSystem>\n`
