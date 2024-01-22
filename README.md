@@ -35,8 +35,8 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 
 ## 📖 Server Spec
 
-- Linux Ubuntu 20.04 TS
-- Linux Ubuntu 22.04 TS
+- Linux Ubuntu 20.04 LTS
+- Linux Ubuntu 22.04 LTS
 
 ## Solana Validator Setup
 
