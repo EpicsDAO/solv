@@ -10,8 +10,9 @@ import { spawnSync } from 'child_process'
 import { monitorUpdate, updateVersion } from '@/cli/update'
 import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
+import { checkValidatorCommands } from './checkValidator'
 
-enum CHOICES {
+export enum INSTALLER_CHOICES {
   UPGRADE,
   CHECK,
   CONFIG,
@@ -51,9 +52,10 @@ export const server = async (solvConfig: ConfigParams) => {
     },
   ])
 
-  const selectedOption = (Number(answer.server.split(')')[0]) - 1) as CHOICES
+  const selectedOption = (Number(answer.server.split(')')[0]) -
+    1) as INSTALLER_CHOICES
   switch (selectedOption) {
-    case CHOICES.UPGRADE:
+    case INSTALLER_CHOICES.UPGRADE:
       console.log('Upgrading solv...')
       updateVersion(CONFIG.SOLANA_VERSION)
       Logger.normal(
@@ -61,24 +63,24 @@ export const server = async (solvConfig: ConfigParams) => {
       )
       monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       break
-    case CHOICES.CHECK:
-      console.log('Coming soon...')
+    case INSTALLER_CHOICES.CHECK:
+      checkValidatorCommands(solvConfig)
       break
-    case CHOICES.CONFIG:
+    case INSTALLER_CHOICES.CONFIG:
       showConfig()
       break
-    case CHOICES.BACKUP:
+    case INSTALLER_CHOICES.BACKUP:
       console.log('Coming soon...')
       //await scpCreate()
       break
-    case CHOICES.MIGRATE:
+    case INSTALLER_CHOICES.MIGRATE:
       console.log('Migrating Validator Config...')
       await migrate()
       break
-    case CHOICES.UNINSTALL:
+    case INSTALLER_CHOICES.UNINSTALL:
       await uninstall()
       break
-    case CHOICES.EXIT:
+    case INSTALLER_CHOICES.EXIT:
       console.log('Exiting solv...')
       break
     default:

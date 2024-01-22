@@ -8,7 +8,11 @@ export const statusCommands = (solvConfig: ConfigParams) => {
     .command('status')
     .description(cmds.status)
     .action(() => {
-      const cmd = `sudo systemctl status solv`
-      spawnSync(cmd, { shell: true, stdio: 'inherit' })
+      systemctlStatusSolv()
     })
+}
+
+export const systemctlStatusSolv = () => {
+  const cmd = `sudo systemctl status solv`
+  spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

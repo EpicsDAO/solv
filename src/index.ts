@@ -9,7 +9,6 @@ import {
   updateCommands,
   stakeCommands,
   setupCommands,
-  checkCommands,
   restartCommand,
   installCommands,
   cronCommands,
@@ -40,7 +39,6 @@ async function main() {
     logCommands(solvConfig)
     installCommands(solvConfig)
     stakeCommands(solvConfig)
-    checkCommands(solvConfig)
     getCommands(solvConfig)
     scpCommands(solvConfig)
     cronCommands(solvConfig)
