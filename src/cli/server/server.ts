@@ -4,13 +4,13 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { showConfig } from '@/cli/get/showConfig'
-import { scpCreate } from '@/cli/scp/create'
-import { spawnSync } from 'child_process'
 import { monitorUpdate, updateVersion } from '@/cli/update'
 import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
 import { checkValidatorCommands } from './checkValidator'
+import { getValidatorInfoCommands } from './getValidatorInfo'
+import { getBackupCommands } from './backup'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -56,8 +56,13 @@ export const server = async (solvConfig: ConfigParams) => {
     1) as INSTALLER_CHOICES
   switch (selectedOption) {
     case INSTALLER_CHOICES.UPGRADE:
+      if ((config.SOLANA_VERSION = CONFIG.SOLANA_VERSION)) {
+        console.log('Solana is already up to date!')
+        return
+      }
       console.log('Upgrading solv...')
       updateVersion(CONFIG.SOLANA_VERSION)
+      updateSolvConfig({ SOLANA_VERSION: CONFIG.SOLANA_VERSION })
       Logger.normal(
         `✔️ Update to Solana Version ${chalk.green(CONFIG.SOLANA_VERSION)}`,
       )
@@ -67,11 +72,10 @@ export const server = async (solvConfig: ConfigParams) => {
       checkValidatorCommands(solvConfig)
       break
     case INSTALLER_CHOICES.CONFIG:
-      showConfig()
+      getValidatorInfoCommands(solvConfig)
       break
     case INSTALLER_CHOICES.BACKUP:
-      console.log('Coming soon...')
-      //await scpCreate()
+      getBackupCommands(solvConfig)
       break
     case INSTALLER_CHOICES.MIGRATE:
       console.log('Migrating Validator Config...')

@@ -6,9 +6,11 @@ import { startSolana } from '@/cli/start/startSolana'
 import { stopSolana } from '@/cli/stop/stopSolana'
 import { restartFetch } from '@/cli/restart/restartFetch'
 import { restartNoFetch } from '@/cli/restart/restartNoFetch'
+import { showLog } from './showLog'
 
 export enum CHECK_CHOICES {
   STATUS,
+  LOG,
   START,
   STOP,
   RESTART_FETCH,
@@ -37,6 +39,9 @@ export const checkValidatorCommands = async (solvConfig: ConfigParams) => {
     case CHECK_CHOICES.STATUS:
       systemctlStatusSolv()
       break
+    case CHECK_CHOICES.LOG:
+      showLog()
+      break
     case CHECK_CHOICES.START:
       startSolana()
       console.log('Started Solana Validator')
@@ -54,7 +59,7 @@ export const checkValidatorCommands = async (solvConfig: ConfigParams) => {
       console.log('Restarted Solana Validator without fetch snapshot')
       break
     case CHECK_CHOICES.RETURN_TO_INSTALLER:
-      server(solvConfig)
+      await server(solvConfig)
       break
     default:
       console.log('Invalid choice')
