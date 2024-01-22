@@ -38,7 +38,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
 
     const { config } = solvConfig
-    if (!config.IS_SETUP) {
+    if (!config.LANG_SETUP) {
       await langSet()
       console.log(`Please run command again:\n\n${chalk.green('$ solv setup')}`)
       return
