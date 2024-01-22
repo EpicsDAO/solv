@@ -22,7 +22,7 @@ export const installerSubEN: installerSubParams = [
   ],
   [
     ') Show Validator Config',
-    ') Show Validator Keys',
+    ') Show Validator Keys Path/Address/Balance',
     ') Get Current Epoch/Slot',
     ') Get Solana Validator Catchup Info',
     ') Get Solana Validator Monitor Info',

@@ -4,13 +4,11 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { showConfig } from '@/cli/get/showConfig'
-import { scpCreate } from '@/cli/scp/create'
-import { spawnSync } from 'child_process'
 import { monitorUpdate, updateVersion } from '@/cli/update'
 import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
 import { checkValidatorCommands } from './checkValidator'
+import { getValidatorInfoCommands } from './getValidatorInfo'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -67,7 +65,7 @@ export const server = async (solvConfig: ConfigParams) => {
       checkValidatorCommands(solvConfig)
       break
     case INSTALLER_CHOICES.CONFIG:
-      showConfig()
+      getValidatorInfoCommands(solvConfig)
       break
     case INSTALLER_CHOICES.BACKUP:
       console.log('Coming soon...')
