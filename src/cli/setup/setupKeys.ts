@@ -1,4 +1,4 @@
-import { spawnSync } from 'child_process'
+import { execFileSync, spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import { airdrop } from './airdrop'
 import os from 'os'
@@ -62,4 +62,10 @@ const createKeypairs = (keyPaths: string[]) => {
     })
   }
   return true
+}
+
+const createSolvKeyPairs = (keyPaths: string[]) => {
+  const cmd = `solana-keygen grind --starts-and-ends-with E:SV:3`
+  spawnSync(cmd, { shell: true, stdio: 'inherit' })
+  const files = execFileSync('./*.json')
 }
