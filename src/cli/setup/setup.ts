@@ -115,8 +115,12 @@ export const setup = async (solvConfig: ConfigParams) => {
         SOLV_TYPE: sType,
         COMMISSION: commission,
       })
-      const isUmounted = umount(mountPoint)
-      if (isUmounted) {
+      if (!mountPoint.includes('/mnt')) {
+        const fileSystem = '/dev/' + disks.disks[0].name
+        formatDisk(fileSystem)
+        ensureFstabEntries(fileSystem)
+      } else {
+        umount(mountPoint)
         const fileSystem = '/dev/' + disks.disks[0].name
         formatDisk(fileSystem)
         ensureFstabEntries(fileSystem)
