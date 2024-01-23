@@ -1,5 +1,5 @@
 import { program } from '@/index'
-import { server } from './server'
+import { server } from '@/cli/server/server'
 import { ConfigParams } from '@/lib/createDefaultConfig'
 
 export const serverCommands = (solvConfig: ConfigParams) => {

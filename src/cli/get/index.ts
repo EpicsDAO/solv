@@ -57,9 +57,14 @@ export const getCommands = (solvConfig: ConfigParams) => {
   get
     .command('aa')
     .description(locale.cmds.solv)
-    .action(() => {
+    .option('-c, --client', 'Show Solv Client Mode AA', false)
+    .action((options: { client: boolean }) => {
       Logger.solvAA()
-      Logger.installMessage()
+      if (options.client) {
+        Logger.installClientMessage()
+      } else {
+        Logger.installMessage()
+      }
     })
   get.addHelpCommand('help [cmd]', locale.cmds.subcmdHelp)
 }

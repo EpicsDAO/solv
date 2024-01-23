@@ -1,12 +1,23 @@
 export interface LocaleParams {
   cmds: DescriptionParams
-  subCmds: subCommandParams
+  subCmds: SubCommandParams
   installer: installerParams
   installerSub: installerSubParams
   logs: LogParams
+  clientCmds: ClientParams
 }
 
 export type installerParams = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+]
+
+export type ClientParams = [
   string,
   string,
   string,
@@ -54,7 +65,7 @@ export interface DescriptionParams {
   installer: string
 }
 
-export interface subCommandParams {
+export interface SubCommandParams {
   server: Description
   start: Description
   stop: Description

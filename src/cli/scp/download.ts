@@ -1,6 +1,5 @@
-import { HOME_PATHS, getAllKeyPaths } from '@/config/config'
+import { getAllKeyPaths } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import inquirer from 'inquirer'
@@ -25,7 +24,8 @@ export const download = async () => {
   }
   for (const key of solanaKeys) {
     const splits = key.split('/')
-    const fileName = splits[splits.length - 1]
+    let fileName = splits[splits.length - 1]
+    fileName = fileName.replace('.json', `-${answer.ip}.json`)
     const filePath = `${keyDir}/${fileName}`
     const cmd = `scp solv@${answer.ip}:${key} ${filePath}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
