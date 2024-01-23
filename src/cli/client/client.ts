@@ -7,9 +7,11 @@ import { spawnSync } from 'child_process'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { upload } from '@/cli/scp/upload'
+import { download } from '../scp/download'
 
 export enum CLIENT_CHOICES {
   STATUS,
+  KEY_DOWNLOAD,
   KEY_GENERATE,
   KEY_RESTORE,
   MULTIPLE_NODE_SETUP,
@@ -56,6 +58,9 @@ export const client = async (solvConfig: ConfigParams) => {
   switch (selectedOption) {
     case CLIENT_CHOICES.STATUS:
       console.log('Coming soon...')
+      break
+    case CLIENT_CHOICES.KEY_DOWNLOAD:
+      download()
       break
     case CLIENT_CHOICES.KEY_GENERATE:
       setupKeys(solvConfig)

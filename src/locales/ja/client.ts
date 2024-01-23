@@ -2,8 +2,9 @@ import { ClientParams } from '../localeParams'
 
 export const clientJA: ClientParams = [
   ') バリデータ-の状態を確認',
+  ') バリデーターの鍵をダウンロード',
   ') バリデーターの鍵を作成',
-  ') バリデーターの鍵をリストア',
+  ') バリデーターの鍵をアップロード',
   ') 複数のバリデーターを管理する',
   ') アンインストール',
   ') 終了',

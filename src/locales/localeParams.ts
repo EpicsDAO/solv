@@ -17,7 +17,15 @@ export type installerParams = [
   string,
 ]
 
-export type ClientParams = [string, string, string, string, string, string]
+export type ClientParams = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+]
 
 export type installerSubParams = [
   [],
