@@ -6,6 +6,8 @@ import { ConfigParams, createDefaultConfig } from '@/lib/createDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { testnetSetup } from './testnetSetup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import { updateLogrotate } from '@/cli/setup/updateLogrotate'
+import { rmLogs } from './rmLogs'
 
 type SetupOptions = {
   vote: boolean
@@ -18,6 +20,21 @@ type SetupOptions = {
 
 export const setupCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
+
+  program
+    .command('updateLog')
+    .description('Update Logrotate')
+    .action(() => {
+      updateLogrotate()
+    })
+
+  program
+    .command('rmLogs')
+    .description('Remove Logs')
+    .action(() => {
+      rmLogs()
+    })
+
   program
     .command('setup')
     .description(cmds.setup)
