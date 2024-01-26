@@ -1,61 +1,41 @@
 import { spawnSync } from 'child_process'
-import { existsSync, mkdirSync } from 'fs'
-import { airdrop } from './airdrop'
+import { KEYPAIRS, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import { ConfigParams } from '@/lib/createDefaultConfig'
+import { createSolvKeyPairs } from '@/lib/createSolvKeys'
+import { setupVoteAccount } from '@/cli/setup/setupVoteAccount'
 import os from 'os'
-import { NETWORK_TYPES, getAllKeyPaths } from '@/config/config'
-import { createVoteAccount } from './createVoteAccount'
-import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 
-export const setupKeys = (commission = 10, isLocal = false, isTest = true) => {
+export const setupKeys = (solvConfig: ConfigParams) => {
   try {
-    let keypairs = getAllKeyPaths()
-    if (existsSync(keypairs.testnetValidatorKey)) {
-      console.log('Skipping keypair creation. Already exists.')
-      return true
+    createSolvKeyPairs(solvConfig)
+    const homeDir = os.homedir()
+    const keyDir = solvConfig.config.IS_CLIENT
+      ? `${homeDir}/solvKeys/upload`
+      : homeDir
+    let validatorKey = `${keyDir}/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`
+    let network = NETWORK_TYPES.TESTNET
+    let cmds = [`solana config set --keypair ${validatorKey} --url ${network}`]
+    const solvType = solvConfig.config.SOLV_TYPE
+    switch (solvType) {
+      case SOLV_TYPES.MAINNET_VALIDATOR || SOLV_TYPES.RPC_NODE:
+        validatorKey = `${keyDir}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
+        network = NETWORK_TYPES.MAINNET
+        for (const cmd of cmds) {
+          spawnSync(cmd, { shell: true, stdio: 'inherit' })
+        }
+        break
+      default:
+        cmds.push(`solana airdrop 1`)
+        for (const cmd of cmds) {
+          spawnSync(cmd, { shell: true, stdio: 'inherit' })
+        }
+        setupVoteAccount(solvConfig)
+        break
     }
-    if (isLocal) {
-      const homeDirectory = os.userInfo().homedir
-      const uploadDir = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
-      if (!existsSync(uploadDir)) {
-        mkdirSync(uploadDir, { recursive: true })
-      }
-      keypairs = getAllKeyPaths(uploadDir)
-      const keyArray = Object.values(keypairs)
-      createKeypairs(keyArray)
-    } else {
-      const keyArray = Object.values(keypairs)
-      createKeypairs(keyArray)
-    }
-    const validatorKey = isTest
-      ? keypairs.testnetValidatorKey
-      : keypairs.mainnetValidatorKey
-    const network = isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET
-    const cmds = [
-      `solana config set --keypair ${validatorKey}`,
-      `solana config set --url ${network}`,
-      `solana airdrop 1`,
-    ]
-    console.log({ isTest })
-    for (const cmd of cmds) {
-      if (cmd.includes('airdrop') && isTest) {
-        airdrop()
-        continue
-      }
-      spawnSync(cmd, { shell: true, stdio: 'inherit' })
-    }
-    createVoteAccount(commission, isTest)
+    updateSolvConfig({ SOLANA_NETWORK: network, SOLV_TYPE: solvType })
     return true
   } catch (error) {
     throw new Error(`setupKeys Error: ${error}`)
   }
-}
-
-const createKeypairs = (keyPaths: string[]) => {
-  for (const path of keyPaths) {
-    spawnSync(`solana-keygen new --no-bip39-passphrase --outfile ${path}`, {
-      shell: true,
-      stdio: 'inherit',
-    })
-  }
-  return true
 }

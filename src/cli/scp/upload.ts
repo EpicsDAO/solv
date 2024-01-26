@@ -1,6 +1,5 @@
 import { getAllKeyPaths } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
 import inquirer from 'inquirer'

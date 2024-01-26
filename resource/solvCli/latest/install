@@ -3,51 +3,73 @@
 # Constants and configurable variables
 SOLANA_VERSION=1.17.16
 NODE_VERSION=20.10.0
+# Set current user and home directory
+CURRENT_USER=$(whoami)
+USER_HOME=$(eval echo ~"$CURRENT_USER")
 
-# This ensures the entire script is downloaded
-{
+# Determine if the user is using bash or zsh
+if [[ "$SHELL" == */bash ]]; then
+    PROFILE_PATH="$USER_HOME/.profile"
+    echo "Using bash, setting up in .profile"
+elif [[ "$SHELL" == */zsh ]]; then
+    PROFILE_PATH="$USER_HOME/.zshrc"
+    echo "Using zsh, setting up in .zshrc"
+else
+    echo "Unsupported shell: $SHELL. Defaulting to .profile"
+    PROFILE_PATH="$USER_HOME/.profile"
+fi
+
+echo "Current user: $CURRENT_USER"
+echo "User home directory: $USER_HOME"
+echo "Profile path: $PROFILE_PATH"
 set -e  # exit immediately if a command exits with a non-zero status
 
-usage() {
-    cat 1>&2 <<EOF
-Custom Install Script
-Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
-installs nodenv, node $NODE_VERSION, and sets it as the global version.
-Additionally, installs the @epics-dao/solv package globally.
-
-USAGE:
-    custom-install-script.sh [FLAGS]
-
-FLAGS:
-    -h, --help              Prints help information
-EOF
+check_command() {
+    command -v "$1" >/dev/null 2>&1 || { 
+        echo >&2 "I require $1 but it's not installed. Aborting."; 
+        exit 1; 
+    }
 }
 
 install_nodenv_and_node() {
-    local user_name=$(whoami)
+    check_command "git"
+    check_command "npm"
 
-    sudo su - "$user_name" <<EOF_USER
+
+
+    if [ ! -d "$USER_HOME/.nodenv" ]; then
         echo "Installing nodenv..."
-        git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-        echo 'export PATH="\$HOME/.nodenv/bin:\$PATH"' >> ~/.profile
-        echo 'eval "\$(nodenv init -)"' >> ~/.profile
-        source ~/.profile
+        git clone https://github.com/nodenv/nodenv.git "$USER_HOME/.nodenv"
+        echo 'export PATH="'$USER_HOME'/.nodenv/bin:$PATH"' >> "$PROFILE_PATH"
+        echo 'eval "$('$USER_HOME'/.nodenv/bin/nodenv init -)"' >> "$PROFILE_PATH"
+        . "$PROFILE_PATH"
+    else
+        echo "nodenv already installed."
+    fi
 
+    NODE_BUILD_PATH="$("$USER_HOME/.nodenv/bin/nodenv" root)/plugins/node-build"
+    if [ ! -d "$NODE_BUILD_PATH" ]; then
         echo "Installing node-build..."
-        git clone https://github.com/nodenv/node-build.git "\$(nodenv root)"/plugins/node-build
+        git clone https://github.com/nodenv/node-build.git "$NODE_BUILD_PATH"
+    else
+        echo "node-build already installed."
+    fi
 
+    if ! "$USER_HOME/.nodenv/bin/nodenv" versions | grep -q "$NODE_VERSION"; then
         echo "Installing node $NODE_VERSION..."
-        nodenv install $NODE_VERSION
-        nodenv global $NODE_VERSION
+        "$USER_HOME/.nodenv/bin/nodenv" install "$NODE_VERSION"
+        "$USER_HOME/.nodenv/bin/nodenv" global "$NODE_VERSION"
         echo "Node installation completed!"
+    else
+        echo "Node $NODE_VERSION already installed."
+    fi
 
-        echo "Installing @epics-dao/solv..."
-        npm i -g @epics-dao/solv
+    echo "Installing @epics-dao/solv..."
+    npm i -g @epics-dao/solv
 
-        echo "Sourcing ~/.profile..."
-        source ~/.profile
-        solv get aa
-EOF_USER
+    echo "Sourcing $PROFILE_PATH..."
+    . "$PROFILE_PATH"
+    solv get aa --client
 }
 
 

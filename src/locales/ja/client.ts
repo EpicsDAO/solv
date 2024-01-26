@@ -1,16 +1,16 @@
-import { installerParams, installerSubParams } from '@/locales/localeParams'
+import { ClientParams } from '../localeParams'
 
-export const installerJA: installerParams = [
-  ') アップグレード - Solanaバージョンのアップデート/ダウングレード',
-  ') バリデータ-の状態/ログを確認・または開始/停止',
-  ') バリデータ-の設定情報',
-  ') 鍵のバックアップ・リストア',
-  ') solv3 への移行',
+export const clientJA: ClientParams = [
+  ') バリデータ-の状態を確認',
+  ') バリデーターの鍵をダウンロード',
+  ') バリデーターの鍵を作成',
+  ') バリデーターの鍵をアップロード',
+  ') 複数のバリデーターを管理する',
   ') アンインストール',
   ') 終了',
 ]
 
-export const installerSubJA: installerSubParams = [
+export const clientSubJA = [
   [],
   [
     ') バリデータ-の状態を確認',

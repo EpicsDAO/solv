@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://solv.epics.dev/">
-    <img src="https://storage.googleapis.com/epics-bucket/EpicsPlatform/assets/img/present/solvEN.jpg" alt="solv" />
+    <img src="https://storage.googleapis.com/epics-bucket/solv/assets/solven.jpg" alt="solv" />
   </a>
 
   <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
@@ -23,68 +23,20 @@
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-Discover the ease of setting up a Solana Validator Node on a Edgevana server using solv, a powerful tool designed to simplify blockchain interactions.
+Discover the ease of setting up a Solana Validator Node server using solv, a powerful tool designed to simplify blockchain interactions.
 
 With just a single command, solv eliminates the usual complexities, enabling you to launch a Solana Validator swiftly.
 
 This tool not only streamlines the setup process but also opens doors for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
 
-Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv on Edgevana server is your go-to solution for an uncomplicated, fast setup.
+Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv is your go-to solution for an uncomplicated, fast setup.
 
 Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
 
-## Migrate Solv3 Instructions
-
-We updated the solv version to v3.0.0 to support the latest requirements of Solana Official Docs.
-
-⭐️ Improved
-
-- Changed Mountpoint/Directory as the solana official docs
-- Removed unnecessary swapfile and ramdisk
-- Added solv s for solv Dashboard (no coding maintenance)
-
-Below is the migration guide for existing solv users.(Mainly TDS attendees)
-
-```bash
-$ solv update
-```
-
-Open solv Dashboard
-
-```bash
-$ solv s
-```
-
-Set your default Language for initial setup
-
-```bash
-Solv Version: v3.0.0
-
-? Select Language (Use arrow keys)
-❯ en
-  ja
-```
-
-Open solv Dashboard again to reflect the language change
-
-```bash
-$ solv s
-```
-
-[![solv-s](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)
-
-Select 5 to migrate to solv v3.x.x
-
-This will automatically update your node to the latest requirements of Solana Official Docs.
-
-If you have any questions, please contact us on Discord.
-
-https://discord.gg/yxm5hJqRhg
-
 ## 📖 Server Spec
 
-- Linux Ubuntu 20.04 TS
-- Linux Ubuntu 22.04 TS
+- Linux Ubuntu 20.04 LTS
+- Linux Ubuntu 22.04 LTS
 
 ## Solana Validator Setup
 
@@ -144,6 +96,54 @@ This command will show your all config paths which are used by solana validator.
 $ solv get config
 ```
 
+## Migrate Solv3 Instructions
+
+We updated the solv version to v3.0.0 to support the latest requirements of Solana Official Docs.
+
+⭐️ Improved
+
+- Changed Mountpoint/Directory as the solana official docs
+- Removed unnecessary swapfile and ramdisk
+- Added solv s for solv Dashboard (no command maintenance)
+
+Below is the migration guide for existing solv users.(Mainly TDS attendees)
+
+```bash
+$ solv update
+```
+
+Open solv Dashboard
+
+```bash
+$ solv s
+```
+
+Set your default Language for initial setup
+
+```bash
+Solv Version: v3.0.0
+
+? Select Language (Use arrow keys)
+❯ en
+  ja
+```
+
+Open solv Dashboard again to reflect the language change
+
+```bash
+$ solv s
+```
+
+[![solv-s](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)
+
+Select 5 to migrate to solv v3.x.x
+
+This will automatically update your node to the latest requirements of Solana Official Docs.
+
+If you have any questions, please contact us on Discord.
+
+https://discord.gg/yxm5hJqRhg
+
 ## Solana Delegation Program
 
 https://solana.org/delegation-program
@@ -170,7 +170,6 @@ Commands:
   log|l [options]      tail logs
   install|i [options]  Install/Update Solana Version
   stake                Solana Delegate Stake
-  check                Check Solana Validator
   get <cmd>            Get Solana Validator Info
   scp <cmd>            Download/Upload Solana Validator Keypairs
   cron <cmd>           Run Schedule Tasks

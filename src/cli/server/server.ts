@@ -4,14 +4,16 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { showConfig } from '@/cli/get/showConfig'
-import { scpCreate } from '@/cli/scp/create'
-import { spawnSync } from 'child_process'
 import { monitorUpdate, updateVersion } from '@/cli/update'
 import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
+import { checkValidatorCommands } from './checkValidator'
+import { getValidatorInfoCommands } from './getValidatorInfo'
+import { getBackupCommands } from './backup'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import os from 'os'
 
-enum CHOICES {
+export enum INSTALLER_CHOICES {
   UPGRADE,
   CHECK,
   CONFIG,
@@ -22,6 +24,20 @@ enum CHOICES {
 }
 
 export const server = async (solvConfig: ConfigParams) => {
+  const homeDir = os.homedir()
+  if (solvConfig.config.IS_CLIENT) {
+    console.log(
+      chalk.yellow(
+        `⚠️ Please run solv server from the server, not from the your local machine
+Or You might need to
+
+${chalk.white('$ su solv')}
+
+to login as solv user...?`,
+      ),
+    )
+    return
+  }
   Logger.solvAA()
   const { logs, installer, cmds } = solvConfig.locale
   const { config } = solvConfig
@@ -51,34 +67,39 @@ export const server = async (solvConfig: ConfigParams) => {
     },
   ])
 
-  const selectedOption = (Number(answer.server.split(')')[0]) - 1) as CHOICES
+  const selectedOption = (Number(answer.server.split(')')[0]) -
+    1) as INSTALLER_CHOICES
   switch (selectedOption) {
-    case CHOICES.UPGRADE:
+    case INSTALLER_CHOICES.UPGRADE:
+      if ((config.SOLANA_VERSION = CONFIG.SOLANA_VERSION)) {
+        console.log('Solana is already up to date!')
+        return
+      }
       console.log('Upgrading solv...')
       updateVersion(CONFIG.SOLANA_VERSION)
+      updateSolvConfig({ SOLANA_VERSION: CONFIG.SOLANA_VERSION })
       Logger.normal(
         `✔️ Update to Solana Version ${chalk.green(CONFIG.SOLANA_VERSION)}`,
       )
       monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       break
-    case CHOICES.CHECK:
-      console.log('Coming soon...')
+    case INSTALLER_CHOICES.CHECK:
+      checkValidatorCommands(solvConfig)
       break
-    case CHOICES.CONFIG:
-      showConfig()
+    case INSTALLER_CHOICES.CONFIG:
+      getValidatorInfoCommands(solvConfig)
       break
-    case CHOICES.BACKUP:
-      console.log('Coming soon...')
-      //await scpCreate()
+    case INSTALLER_CHOICES.BACKUP:
+      getBackupCommands(solvConfig)
       break
-    case CHOICES.MIGRATE:
+    case INSTALLER_CHOICES.MIGRATE:
       console.log('Migrating Validator Config...')
       await migrate()
       break
-    case CHOICES.UNINSTALL:
+    case INSTALLER_CHOICES.UNINSTALL:
       await uninstall()
       break
-    case CHOICES.EXIT:
+    case INSTALLER_CHOICES.EXIT:
       console.log('Exiting solv...')
       break
     default:

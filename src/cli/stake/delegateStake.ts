@@ -6,13 +6,13 @@ import os from 'os'
 export const delegateStake = async (
   stakeAccountPubkey: string,
   validatorVoteAccountPubkey: string,
-  authorityAccountKeyfile = ''
+  authorityAccountKeyfile = '',
 ) => {
   try {
     let authorityKeyPath = authorityAccountKeyfile
     if (authorityKeyPath === '') {
       const homeDirectory = os.userInfo().homedir
-      const uploadPath = `${homeDirectory}/${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
+      const uploadPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
       authorityKeyPath = `${uploadPath}/${KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY}`
     }
     const cmd = [

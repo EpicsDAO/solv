@@ -9,7 +9,6 @@ import {
   updateCommands,
   stakeCommands,
   setupCommands,
-  checkCommands,
   restartCommand,
   installCommands,
   cronCommands,
@@ -18,6 +17,7 @@ import {
   serverCommands,
   getCommands,
   dfCommands,
+  clientCommands,
 } from '@/cli'
 
 dotenv.config()
@@ -41,11 +41,11 @@ async function main() {
     logCommands(solvConfig)
     installCommands(solvConfig)
     stakeCommands(solvConfig)
-    checkCommands(solvConfig)
     getCommands(solvConfig)
     scpCommands(solvConfig)
     cronCommands(solvConfig)
     setupCommands(solvConfig)
+    clientCommands(solvConfig)
 
     await dfCommands()
 
