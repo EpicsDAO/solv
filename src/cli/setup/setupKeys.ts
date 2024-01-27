@@ -32,6 +32,7 @@ export const setupKeys = (solvConfig: ConfigParams) => {
           `solana config set --keypair ${validatorKey} --url ${network}`,
           { shell: true, stdio: 'inherit' },
         )
+        break
       case SOLV_TYPES.TESTNET_VALIDATOR:
         const cmds = [
           `solana config set --keypair ${validatorKey} --url ${network}`,
