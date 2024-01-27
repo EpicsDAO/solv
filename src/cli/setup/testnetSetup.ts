@@ -14,7 +14,7 @@ import { CONFIG, DISK_TYPES, SOLV_TYPES } from '@/config/config'
 import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
 import { formatDisk } from '@/cli/setup/formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { langSet } from '@/lib/langSet'
 
 export const testnetSetup = async (solvConfig: ConfigParams) => {

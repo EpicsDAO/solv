@@ -1,6 +1,6 @@
 import { program } from '@/index'
 import { tail } from './tail'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const logCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale

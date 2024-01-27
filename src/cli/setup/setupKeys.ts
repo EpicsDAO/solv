@@ -1,7 +1,7 @@
 import { spawnSync } from 'child_process'
 import { KEYPAIRS, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { setupVoteAccount } from '@/cli/setup/setupVoteAccount'
 import os from 'os'

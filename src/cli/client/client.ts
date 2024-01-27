@@ -1,4 +1,4 @@
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'

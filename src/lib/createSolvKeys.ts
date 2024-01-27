@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readdirSync } from 'fs'
 import os from 'os'
 import { KEYPAIRS, SOLV_TYPES } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const createSolvKeyPairs = (solvConfig: ConfigParams) => {
   const solvType = solvConfig.config.SOLV_TYPE

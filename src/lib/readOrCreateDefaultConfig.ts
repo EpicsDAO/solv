@@ -9,7 +9,7 @@ export type ConfigParams = {
   locale: LocaleParams
 }
 
-export const createDefaultConfig = () => {
+export const readOrCreateDefaultConfig = () => {
   const homeDir = os.homedir()
   const configPath = `${homeDir}/${FILES.CONFIG}`
   if (existsSync(configPath)) {

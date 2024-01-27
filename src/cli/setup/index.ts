@@ -2,7 +2,10 @@ import { program } from '@/index'
 import { setup } from '@/cli/setup/setup'
 import chalk from 'chalk'
 import { setupVoteAccount } from '@/cli/setup/setupVoteAccount'
-import { ConfigParams, createDefaultConfig } from '@/lib/createDefaultConfig'
+import {
+  ConfigParams,
+  readOrCreateDefaultConfig,
+} from '@/lib/readOrCreateDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { testnetSetup } from './testnetSetup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
@@ -46,7 +49,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     .option('--commission <commission>', 'Set commission rate', '10')
     .action(async (options: SetupOptions) => {
       updateSolvConfig({ COMMISSION: Number(options.commission) })
-      const solvConfigReflectComission = createDefaultConfig()
+      const solvConfigReflectComission = readOrCreateDefaultConfig()
       if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
         setupVoteAccount(solvConfigReflectComission)

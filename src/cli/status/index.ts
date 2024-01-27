@@ -1,5 +1,5 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
 
 export const statusCommands = (solvConfig: ConfigParams) => {

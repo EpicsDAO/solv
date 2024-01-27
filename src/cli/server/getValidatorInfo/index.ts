@@ -1,4 +1,4 @@
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 import { INSTALLER_CHOICES, server } from '../server'
 import { showConfig } from '@/cli/get/showConfig'

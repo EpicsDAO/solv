@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
 import { CONFIG } from '@/config/config'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export * from './update'
 

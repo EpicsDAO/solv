@@ -6,7 +6,7 @@ import { spawnSync } from 'child_process'
 import { stopSolana } from '../stop/stopSolana'
 import { dotenv, sendDiscord } from '@skeet-framework/utils'
 import chalk from 'chalk'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 dotenv.config()
 
@@ -25,7 +25,7 @@ export const cronCommands = (solvConfig: ConfigParams) => {
   crond
     .command('watchHalt')
     .description(
-      'Solv Discord Notification Command. Please set `.env` file with  `DISCORD_WEBHOOK_URL=<wehbookurl>`'
+      'Solv Discord Notification Command. Please set `.env` file with  `DISCORD_WEBHOOK_URL=<wehbookurl>`',
     )
     .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
     .option('-e, --epoch <epoch>', 'Epoch', '579')
@@ -34,8 +34,8 @@ export const cronCommands = (solvConfig: ConfigParams) => {
       if (!DISCORD_WEBHOOK_URL) {
         console.log(
           chalk.yellow(
-            '⚠️ DISCORD_WEBHOOK_URL is not set\nPlease set .env file'
-          )
+            '⚠️ DISCORD_WEBHOOK_URL is not set\nPlease set .env file',
+          ),
         )
         process.exit(1)
       }
@@ -48,14 +48,14 @@ export const cronCommands = (solvConfig: ConfigParams) => {
             `Current Epoch: ${epoch} - Stopping Solana Validator!`,
             {
               webhookUrl: DISCORD_WEBHOOK_URL,
-            }
+            },
           )
           stopSolana()
           await sendDiscord(
             `Current Epoch: ${epoch} - Stopped Solana Validator!`,
             {
               webhookUrl: DISCORD_WEBHOOK_URL,
-            }
+            },
           )
           process.exit(0)
         }

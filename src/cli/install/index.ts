@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { updateVersion } from '../update'
 import { CONFIG } from '@/config/config'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const installCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
