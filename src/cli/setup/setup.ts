@@ -16,7 +16,10 @@ import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
 import { formatDisk } from '@/cli/setup/formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import {
+  ConfigParams,
+  readOrCreateDefaultConfig,
+} from '@/lib/readOrCreateDefaultConfig'
 import { langSet } from '@/lib/langSet'
 import { existsSync } from 'fs'
 
@@ -126,10 +129,11 @@ export const setup = async (solvConfig: ConfigParams) => {
         ensureFstabEntries(fileSystem)
       }
     }
+    const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
     genStartupValidatorScript(true, sType)
     makeServices(isTest)
-    setupKeys(solvConfig)
+    setupKeys(newSolvConfig)
     const cmds = [
       'sudo systemctl daemon-reload',
       'sudo systemctl enable solv',

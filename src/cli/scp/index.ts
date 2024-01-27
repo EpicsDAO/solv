@@ -7,7 +7,7 @@ import { init } from './init'
 import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const scpCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale

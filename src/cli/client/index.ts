@@ -1,5 +1,5 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { client } from '@/cli/client/client'
 
 export const clientCommands = (solvConfig: ConfigParams) => {

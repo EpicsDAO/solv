@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import { Command } from 'commander'
 import { VERSION } from '@/lib/version'
-import { createDefaultConfig } from '@/lib/createDefaultConfig'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import {
   logCommands,
   startCommand,
@@ -20,7 +20,7 @@ import {
 } from '@/cli'
 
 dotenv.config()
-const solvConfig = createDefaultConfig()
+const solvConfig = readOrCreateDefaultConfig()
 
 export const program = new Command()
 program

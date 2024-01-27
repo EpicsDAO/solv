@@ -5,7 +5,7 @@ import { Logger } from '@/lib/logger'
 import { solanaCatchup } from './solanaCatchup'
 import { monitorSolana } from './monitorSolana'
 import { showConfig } from './showConfig'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const getCommands = (solvConfig: ConfigParams) => {
   const { locale } = solvConfig

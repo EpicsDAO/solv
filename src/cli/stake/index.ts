@@ -6,7 +6,7 @@ import os from 'os'
 import { KEYPAIRS } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 export * from './delegateStake'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const stakeCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale

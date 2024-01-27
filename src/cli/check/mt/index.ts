@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { spawnSync } from 'child_process'
 import getPreferredDisk from './getLargestDisk'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const mountCommands = (solvConfig: ConfigParams) => {
   program

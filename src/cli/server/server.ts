@@ -1,4 +1,4 @@
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'

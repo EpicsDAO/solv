@@ -1,6 +1,6 @@
 import { NETWORK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import { ConfigParams } from '@/lib/createDefaultConfig'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
 import os from 'os'
 
