@@ -17,12 +17,21 @@ export const setupKeys = (solvConfig: ConfigParams) => {
     let network = NETWORK_TYPES.TESTNET
     const solvType = solvConfig.config.SOLV_TYPE
     switch (solvType) {
-      case SOLV_TYPES.MAINNET_VALIDATOR || SOLV_TYPES.RPC_NODE:
+      case SOLV_TYPES.MAINNET_VALIDATOR:
         network = NETWORK_TYPES.MAINNET
         validatorKey = `${keyDir}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
-        const cmd = `solana config set --keypair ${validatorKey} --url ${network}`
-        spawnSync(cmd, { shell: true, stdio: 'inherit' })
+        spawnSync(
+          `solana config set --keypair ${validatorKey} --url ${network}`,
+          { shell: true, stdio: 'inherit' },
+        )
         break
+      case SOLV_TYPES.RPC_NODE:
+        network = NETWORK_TYPES.MAINNET
+        validatorKey = `${keyDir}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
+        spawnSync(
+          `solana config set --keypair ${validatorKey} --url ${network}`,
+          { shell: true, stdio: 'inherit' },
+        )
       case SOLV_TYPES.TESTNET_VALIDATOR:
         const cmds = [
           `solana config set --keypair ${validatorKey} --url ${network}`,

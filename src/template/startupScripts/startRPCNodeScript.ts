@@ -7,7 +7,6 @@ export const startRPCNodeScript = () => {
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity ${identity} \\
---vote-account ${voteAccount} \\
 --log ${log} \\
 --accounts ${accounts} \\
 --ledger ${ledger} \\
