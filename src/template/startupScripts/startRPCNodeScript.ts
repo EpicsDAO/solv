@@ -2,8 +2,7 @@ import { startupScriptPaths } from '@/config/config'
 
 export const startRPCNodeScript = () => {
   const isTest = false
-  const { identity, voteAccount, log, accounts, ledger } =
-    startupScriptPaths(isTest)
+  const { identity, log, accounts, ledger } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity ${identity} \\
@@ -41,6 +40,9 @@ exec solana-validator \\
 --rpc-bind-address 0.0.0.0 \\
 --gossip-port 8001 \\
 --rpc-port 8899 \\
+--account-index program-id \\
+--account-index spl-token-mint \\
+--account-index spl-token-owner \\
 --wal-recovery-mode skip_any_corrupted_record \\
 --use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size 50000000 \\
