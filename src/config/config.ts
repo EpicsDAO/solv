@@ -38,7 +38,7 @@ export type PartialConfigType = Partial<CONFIG_TYPE>
 export const CONFIG: CONFIG_TYPE = {
   LANG: LANGS.EN,
   USERNAME: 'solv',
-  SOLANA_VERSION: '1.17.16',
+  SOLANA_VERSION: '1.18.0',
   NODE_VERSION: '20.10.0',
   DELINQUENT_STAKE: 5,
   COMMISSION: 10,
