@@ -43,9 +43,9 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     .description(cmds.setup)
     .option('--vote', 'Setup Vote Account', false)
     .option('--key', 'Setup Validator Keypairs', false)
-    .option('--testnet', 'Setup Testnet Validator', false)
-    .option('--mainnet', 'Setup Mainnet Validator', false)
-    .option('--rpc', 'Setup RPC Node', false)
+    // .option('--testnet', 'Setup Testnet Validator', false)
+    // .option('--mainnet', 'Setup Mainnet Validator', false)
+    // .option('--rpc', 'Setup RPC Node', false)
     .option('--commission <commission>', 'Set commission rate', '10')
     .action(async (options: SetupOptions) => {
       updateSolvConfig({ COMMISSION: Number(options.commission) })

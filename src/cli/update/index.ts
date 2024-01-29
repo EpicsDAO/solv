@@ -6,6 +6,7 @@ import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
 import { CONFIG } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
 export * from './update'
 
@@ -26,6 +27,7 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .action((options: any) => {
       if (options.monitor) {
         updateVersion(options.version)
+        updateVersion(options.version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
             options.maxDelinquentStake,
@@ -34,6 +36,7 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         monitorUpdate(CONFIG.DELINQUENT_STAKE)
       } else if (options.background) {
         updateVersion(options.version)
+        updateSolvConfig({ SOLANA_VERSION: options.version })
         Logger.normal(
           `✔️ Update to Solana Version ${chalk.green(options.version)}`,
         )
