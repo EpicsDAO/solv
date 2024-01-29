@@ -41,8 +41,6 @@ exec solana-validator \\
 --gossip-port 8001 \\
 --rpc-port 8899 \\
 --account-index program-id \\
---account-index spl-token-mint \\
---account-index spl-token-owner \\
 --wal-recovery-mode skip_any_corrupted_record \\
 --use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size 50000000 \\
