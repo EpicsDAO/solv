@@ -50,9 +50,11 @@ $ solv setup
 
 ![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
 
-This time select
+Then, select the type of node you want to target.
 
-`TESTNET_VALIDATOR`, `MAINNET_VALIDATOR`, or `RPC_NODE`.
+- `TESTNET_VALIDATOR`
+- `MAINNET_VALIDATOR`
+- `RPC_NODE`
 
 Then
 
@@ -69,7 +71,7 @@ solv CLI is a tool for managing Solana Validators from your local machine.
 $ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv-cli/v3.0.0/install")"
 ```
 
-Start solv CLI Dashboard
+Start solv CLI Dashboard - from your local machine
 
 ```bash
 $ solv c
@@ -77,7 +79,7 @@ $ solv c
 
 ![Generate Keys](https://storage.googleapis.com/epics-bucket/solv/assets/generate-keys.png)
 
-## Start Solana Validator
+## Run solv Server CLI - from your validator server
 
 ```bash
 $ solv s
