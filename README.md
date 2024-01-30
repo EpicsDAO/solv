@@ -40,25 +40,50 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 
 ## Solana Validator Setup
 
+Login in to your Validator server by ssh and run the following command.
+
 ```bash
 $ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.0.0/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
+![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
+
+This time select
+
+`TESTNET_VALIDATOR`, `MAINNET_VALIDATOR`, or `RPC_NODE`.
+
+Then
+
+After startup, the snapshot download will start automatically.
+The Solana validator will start 🎊
+
 [![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
+
+## Install solv CLI on your local machine
+
+solv CLI is a tool for managing Solana Validators from your local machine.
+
+```bash
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv-cli/v3.0.0/install")"
+```
+
+Start solv CLI Dashboard
+
+```bash
+$ solv c
+```
+
+![Generate Keys](https://storage.googleapis.com/epics-bucket/solv/assets/generate-keys.png)
 
 ## Start Solana Validator
 
 ```bash
-$ solv start
+$ solv s
 ```
 
-## Stop Solana Validator
-
-```bash
-$ solv stop
-```
+![solv s](https://storage.googleapis.com/epics-bucket/solv/assets/solv-s.png)
 
 ## Restart Solana Validator
 
@@ -76,16 +101,18 @@ $ solv restart --snapshot
 
 This command will automatically remove `--no-incremental-snapshots` and add `--no-genesis-fetch`, `--no-snapshot-fetch` to yoursolana-validator.sh command.
 
-## Solana Validator Status
-
-```bash
-$ solv status
-```
-
 ## Solana Validator Logs
 
 ```bash
 $ solv log
+```
+
+or
+
+Show only error logs
+
+```bash
+$ solv log -e
 ```
 
 ## Show Solana Validator Config
