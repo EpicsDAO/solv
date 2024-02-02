@@ -16,6 +16,12 @@ export enum SOLV_TYPES {
   RPC_NODE,
 }
 
+export enum MAINNET_TYPES {
+  SOLANA_CLIENT = 'SolanaClient',
+  JITO_MEV = 'JitoMev',
+  FIREDANCER = 'Firedancer',
+}
+
 export type CONFIG_TYPE = {
   LANG: LANGS
   USERNAME: string

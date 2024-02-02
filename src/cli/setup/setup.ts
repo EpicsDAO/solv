@@ -11,7 +11,13 @@ import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
 import { startSolana } from '@/cli/start/startSolana'
-import { CONFIG, DISK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
+import {
+  CONFIG,
+  DISK_TYPES,
+  MAINNET_TYPES,
+  SOLV_TYPES,
+  getAllKeyPaths,
+} from '@/config/config'
 import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
 import { formatDisk } from '@/cli/setup/formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
@@ -22,6 +28,7 @@ import {
 } from '@/lib/readOrCreateDefaultConfig'
 import { langSet } from '@/lib/langSet'
 import { existsSync } from 'fs'
+import { mainnetSetup } from './mainnetSetup'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -59,6 +66,18 @@ export const setup = async (solvConfig: ConfigParams) => {
       },
     ])
     solvType = answer.solvType
+
+    if (solvType === 'MAINNET_VALIDATOR') {
+      const mainnetType = await mainnetSetup()
+      if (mainnetType === MAINNET_TYPES.JITO_MEV) {
+        console.log('Finished JITO MEV Setup!')
+        return
+      } else if (mainnetType === MAINNET_TYPES.FIREDANCER) {
+        console.log('Coming soon...')
+        return
+      }
+    }
+
     let commission = CONFIG.COMMISSION
 
     // Check if solvType is RPC_NODE

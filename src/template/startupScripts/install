@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# Constants and configurable variables
+SOLANA_VERSION=1.17.18
+NODE_VERSION=20.10.0
+
+# This ensures the entire script is downloaded
+{
+set -e  # exit immediately if a command exits with a non-zero status
+
+usage() {
+    cat 1>&2 <<EOF
+Custom Install Script
+Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
+installs nodenv, node $NODE_VERSION, and sets it as the global version.
+Additionally, installs the @epics-dao/solv package globally.
+
+USAGE:
+    custom-install-script.sh [FLAGS]
+
+FLAGS:
+    -h, --help              Prints help information
+EOF
+}
+
+
+install_jito_mev() {
+    sudo su - solv <<EOF_SOLV
+        echo "Installing rustup..."
+        curl https://sh.rustup.rs -sSf | sh
+        echo 'export PATH="\$HOME/.cargo/env:\$PATH"' >> ~/.profile
+        source $HOME/.cargo/env
+        rustup component add rustfmt
+        rustup update
+        export TAG=v1.17.18-jito
+        echo 'export TAG=v1.17.18-jito' >> ~/.profile
+        source ~/.profile
+        sudo apt-get update -y
+        sudo apt-get install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler
+
+        echo "Installing jito v$TAG..."
+        git clone https://github.com/jito-foundation/jito-solana.git --recurse-submodules
+        cd jito-solana
+        git checkout tags/$TAG
+        git submodule update --init --recursive
+        CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/"$TAG"
+        echo 'export CI_COMMIT=$(git rev-parse HEAD)' >> ~/.profile
+
+        echo "Started Jito MEV Mainnet!"
+        nohup ./start > faucet.log &
+EOF_SOLV
+}
+
+main() {
+    for arg in "$@"; do
+      case "$arg" in
+        -h|--help)
+          usage
+          exit 0
+          ;;
+        *)
+          ;;
+      esac
+    done
+
+    install_jito_mev
+    echo "Enter solv user password 👇"
+    su solv
+}
+
+main "$@"
+
+} # this ensures the entire script is downloaded
