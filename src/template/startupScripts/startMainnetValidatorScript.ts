@@ -24,10 +24,9 @@ exec solana-validator \\
 --known-validator 6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN \\
 --known-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \\
 --dynamic-port-range 8000-8020 \\
---rpc-bind-address 127.0.0.1 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
---limit-ledger-size \\
+--limit-ledger-size 50000000 \\
 `
   return script
 }
