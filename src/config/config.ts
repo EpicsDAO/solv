@@ -39,6 +39,7 @@ export type CONFIG_TYPE = {
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: string
   IS_CLIENT: boolean
   VALIDATOR_IPS: string[]
+  MAINNET_TYPE: MAINNET_TYPES
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -61,6 +62,7 @@ export const CONFIG: CONFIG_TYPE = {
     '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1',
   IS_CLIENT: false,
   VALIDATOR_IPS: [],
+  MAINNET_TYPE: MAINNET_TYPES.SOLANA_CLIENT,
 }
 
 export const HOME_PATHS = {

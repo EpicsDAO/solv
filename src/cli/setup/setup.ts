@@ -176,6 +176,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     if (isJitoMev) {
       setupJitoMev()
       daemonReload()
+      updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
     }
 
     startSolana()
