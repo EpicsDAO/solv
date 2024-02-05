@@ -12,6 +12,7 @@ import { getValidatorInfoCommands } from './getValidatorInfo'
 import { getBackupCommands } from './backup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import os from 'os'
+import { spawnSync } from 'child_process'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -71,17 +72,10 @@ to login as solv user...?`,
     1) as INSTALLER_CHOICES
   switch (selectedOption) {
     case INSTALLER_CHOICES.UPGRADE:
-      if ((config.SOLANA_VERSION = CONFIG.SOLANA_VERSION)) {
-        console.log('Solana is already up to date!')
-        return
-      }
-      console.log('Upgrading solv...')
-      updateVersion(CONFIG.SOLANA_VERSION)
-      updateSolvConfig({ SOLANA_VERSION: CONFIG.SOLANA_VERSION })
-      Logger.normal(
-        `✔️ Update to Solana Version ${chalk.green(CONFIG.SOLANA_VERSION)}`,
-      )
-      monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+      spawnSync('solv update && solv update -b', {
+        shell: true,
+        stdio: 'inherit',
+      })
       break
     case INSTALLER_CHOICES.CHECK:
       checkValidatorCommands(solvConfig)

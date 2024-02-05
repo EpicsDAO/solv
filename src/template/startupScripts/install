@@ -27,7 +27,7 @@ EOF
 install_jito_mev() {
     sudo su - solv <<EOF_SOLV
         echo "Installing rustup..."
-        curl https://sh.rustup.rs -sSf | sh
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
         echo 'export PATH="\$HOME/.cargo/env:\$PATH"' >> ~/.profile
         source $HOME/.cargo/env
         rustup component add rustfmt
@@ -45,9 +45,6 @@ install_jito_mev() {
         git submodule update --init --recursive
         CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/"$TAG"
         echo 'export CI_COMMIT=$(git rev-parse HEAD)' >> ~/.profile
-
-        echo "Started Jito MEV Mainnet!"
-        nohup ./start > faucet.log &
 EOF_SOLV
 }
 

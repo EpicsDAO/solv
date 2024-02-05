@@ -29,6 +29,10 @@ import {
 import { langSet } from '@/lib/langSet'
 import { existsSync } from 'fs'
 import { mainnetSetup } from './mainnetSetup'
+import { setupJitoMev } from '@/template/startupScripts/setupJitoMev'
+import { daemonReload } from '@/lib/daemonReload'
+import { enableSolv } from '@/lib/enableSolv'
+import { restartLogrotate } from '@/lib/restartLogrotate'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -66,12 +70,13 @@ export const setup = async (solvConfig: ConfigParams) => {
       },
     ])
     solvType = answer.solvType
+    let isJitoMev = false
 
     if (solvType === 'MAINNET_VALIDATOR') {
       const mainnetType = await mainnetSetup()
       if (mainnetType === MAINNET_TYPES.JITO_MEV) {
-        console.log('Finished JITO MEV Setup!')
-        return
+        console.log('JITO MEV Setup Mode on!')
+        isJitoMev = true
       } else if (mainnetType === MAINNET_TYPES.FIREDANCER) {
         console.log('Coming soon...')
         return
@@ -150,17 +155,22 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
-    genStartupValidatorScript(true, sType)
-    makeServices(isTest)
-    setupKeys(newSolvConfig)
-    const cmds = [
-      'sudo systemctl daemon-reload',
-      'sudo systemctl enable solv',
-      'sudo systemctl restart logrotate',
-    ]
-    for (const line of cmds) {
-      spawnSync(line, { shell: true, stdio: 'inherit' })
+    await genStartupValidatorScript(true, sType, isJitoMev)
+    makeServices(isTest, isJitoMev)
+    daemonReload()
+
+    if (isTest) {
+      setupKeys(newSolvConfig)
     }
+
+    enableSolv()
+    restartLogrotate()
+
+    if (isJitoMev) {
+      setupJitoMev()
+      daemonReload()
+    }
+
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
     return true

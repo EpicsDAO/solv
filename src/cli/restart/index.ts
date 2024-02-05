@@ -1,7 +1,7 @@
 import { program } from '@/index'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
-import { restartNoFetch } from './restartNoFetch'
 import { restartFetch } from './restartFetch'
+import { restartSolv } from './restartSolv'
 
 type RestartOptions = {
   snapshot: boolean
@@ -14,8 +14,10 @@ export const restartCommand = (solvConfig: ConfigParams) => {
     .description(cmds.restart)
     .option('--snapshot', 'Restart Solana Validator with fetch snapshot', false)
     .action(async (options: RestartOptions) => {
-      const { config } = solvConfig
-      const solvTypes = config.SOLV_TYPE
-      options.snapshot ? restartFetch(solvTypes) : restartNoFetch(solvTypes)
+      if (options.snapshot) {
+        restartFetch()
+      } else {
+        restartSolv()
+      }
     })
 }

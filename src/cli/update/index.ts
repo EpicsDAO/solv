@@ -4,7 +4,7 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
-import { CONFIG } from '@/config/config'
+import { CONFIG, SOLV_TYPES } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
@@ -27,7 +27,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .action((options: any) => {
       if (options.monitor) {
         updateVersion(options.version)
-        updateVersion(options.version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
             options.maxDelinquentStake,
@@ -35,11 +34,16 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         )
         monitorUpdate(CONFIG.DELINQUENT_STAKE)
       } else if (options.background) {
-        updateVersion(options.version)
-        updateSolvConfig({ SOLANA_VERSION: options.version })
-        Logger.normal(
-          `✔️ Update to Solana Version ${chalk.green(options.version)}`,
-        )
+        let version = options.version
+        if (solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR) {
+          version = CONFIG.MAINNET_SOLANA_VERSION
+          updateSolvConfig({
+            MAINNET_SOLANA_VERSION: version,
+          })
+        }
+        updateVersion(version)
+        updateSolvConfig({ SOLANA_VERSION: version })
+        Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
         monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
       } else if (options.node) {
         const cmd = `git -C /home/solv/.nodenv/plugins/node-build pull`

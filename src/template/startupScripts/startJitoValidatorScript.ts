@@ -1,6 +1,11 @@
 import { startupScriptPaths } from '@/config/config'
 
-export const startMainnetValidatorScript = () => {
+export const startJitoValidatorScript = (
+  commissionBps = 1000,
+  relayerUrl: string,
+  blockEngineUrl: string,
+  shredReceiverAddr: string,
+) => {
   const isTest = false
   const { identity, voteAccount, log, accounts, ledger } =
     startupScriptPaths(isTest)
@@ -23,8 +28,15 @@ exec solana-validator \\
 --known-validator GwHH8ciFhR8vejWCqmg8FWZUCNtubPY2esALvy5tBvji \\
 --known-validator 6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN \\
 --known-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \\
---dynamic-port-range 8000-8020 \\
+--tip-payment-program-pubkey T1pyyaTNZsKv2WcRAB8oVnk93mLJw2XzjtVYqCsaHqt \\
+--tip-distribution-program-pubkey 4R3gSG8BpU4t19KYj8CfnbtRpnT8gtk4dvTHxVRwc2r7 \\
+--merkle-root-upload-authority GZctHpWXmsZC1YHACTGGcHhYxjdRqQvTpYkb9LMvxDib \\
+--commission-bps ${commissionBps} \\
+--relayer-url ${relayerUrl} \\
 --rpc-bind-address 0.0.0.0 \\
+--block-engine-url ${blockEngineUrl} \\
+--shred-receiver-address ${shredReceiverAddr} \\
+--dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
 --limit-ledger-size \\

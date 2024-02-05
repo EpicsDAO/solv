@@ -1,0 +1,38 @@
+export interface JitoConfig {
+  version: string
+  commissionBps: number
+  relayerUrl: string
+  blockEngineUrl: string
+  shredReceiverAddr: string
+}
+
+export const JITO_CONFIG: JitoConfig = {
+  version: 'v1.17.18-jito',
+  commissionBps: 1000,
+  relayerUrl: 'http://amsterdam.mainnet.relayer.jito.wtf:8100',
+  blockEngineUrl: 'https://amsterdam.mainnet.block-engine.jito.wtf',
+  shredReceiverAddr: '74.118.140.240:1002',
+}
+
+export const JITO_REGIONS = {
+  Amsterdam: {
+    BLOCK_ENGINE_URL: 'https://amsterdam.mainnet.block-engine.jito.wtf',
+    RELAYER_URL: 'http://amsterdam.mainnet.relayer.jito.wtf:8100',
+    SHRED_RECEIVER_ADDR: '74.118.140.240:1002',
+  },
+  Frankfurt: {
+    BLOCK_ENGINE_URL: 'https://frankfurt.mainnet.block-engine.jito.wtf',
+    RELAYER_URL: 'http://frankfurt.mainnet.relayer.jito.wtf:8100',
+    SHRED_RECEIVER_ADDR: '145.40.93.84:1002',
+  },
+  NewYork: {
+    BLOCK_ENGINE_URL: 'https://ny.mainnet.block-engine.jito.wtf',
+    RELAYER_URL: 'http://ny.mainnet.relayer.jito.wtf:8100',
+    SHRED_RECEIVER_ADDR: '141.98.216.96:1002',
+  },
+  Tokyo: {
+    BLOCK_ENGINE_URL: 'https://tokyo.mainnet.block-engine.jito.wtf',
+    RELAYER_URL: 'http://tokyo.mainnet.relayer.jito.wtf:8100',
+    SHRED_RECEIVER_ADDR: '202.8.9.160:1002',
+  },
+}

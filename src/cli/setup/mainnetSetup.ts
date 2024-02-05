@@ -1,5 +1,4 @@
 import { MAINNET_TYPES } from '@/config/config'
-import { setupJitoMev } from '@/template/startupScripts/setupJitoMev'
 import inquirer from 'inquirer'
 
 export const mainnetSetup = async () => {
@@ -15,7 +14,6 @@ export const mainnetSetup = async () => {
   if (answer.mainnetMode === MAINNET_TYPES.SOLANA_CLIENT) {
     return MAINNET_TYPES.SOLANA_CLIENT
   } else if (answer.mainnetMode === MAINNET_TYPES.JITO_MEV) {
-    setupJitoMev()
     return MAINNET_TYPES.JITO_MEV
   } else if (answer.mainnetMode === MAINNET_TYPES.FIREDANCER) {
     return MAINNET_TYPES.FIREDANCER

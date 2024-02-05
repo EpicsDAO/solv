@@ -3,13 +3,14 @@ import { getStartupScript } from '@/template/getStartupScript'
 import { spawnSync } from 'child_process'
 import { writeFileSync } from 'fs'
 
-export const genStartupValidatorScript = (
+export const genStartupValidatorScript = async (
   fetchSnapshot = false,
   solvType = SOLV_TYPES.TESTNET_VALIDATOR,
+  isJitoMev = false,
 ) => {
   try {
     const isTest = solvType === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
-    const body = getStartupScript(fetchSnapshot, solvType)
+    const body = await getStartupScript(fetchSnapshot, solvType, isJitoMev)
     const { scriptPath } = startupScriptPaths(isTest)
     writeFileSync(scriptPath, body, 'utf-8')
     const cmd = `sudo chmod +x ${scriptPath}`

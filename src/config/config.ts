@@ -26,6 +26,8 @@ export type CONFIG_TYPE = {
   LANG: LANGS
   USERNAME: string
   SOLANA_VERSION: string
+  TESTNET_SOLANA_VERSION: string
+  MAINNET_SOLANA_VERSION: string
   NODE_VERSION: string
   DELINQUENT_STAKE: number
   COMMISSION: number
@@ -45,6 +47,8 @@ export const CONFIG: CONFIG_TYPE = {
   LANG: LANGS.EN,
   USERNAME: 'solv',
   SOLANA_VERSION: '1.18.1',
+  TESTNET_SOLANA_VERSION: '1.18.1',
+  MAINNET_SOLANA_VERSION: '1.17.18',
   NODE_VERSION: '20.10.0',
   DELINQUENT_STAKE: 10,
   COMMISSION: 10,
@@ -74,6 +78,7 @@ export const FILES = {
   LOG: 'solana-validator.log',
   STARTUP_SCRIPT: 'start-validator.sh',
   CONFIG: 'solv.config.json',
+  JITO_CONFIG: 'jito.config.json',
 }
 
 export const SERVICE_PATHS = {
