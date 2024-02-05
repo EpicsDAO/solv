@@ -16,10 +16,18 @@ export enum SOLV_TYPES {
   RPC_NODE,
 }
 
+export enum MAINNET_TYPES {
+  SOLANA_CLIENT = 'SolanaClient',
+  JITO_MEV = 'JitoMev',
+  FIREDANCER = 'Firedancer',
+}
+
 export type CONFIG_TYPE = {
   LANG: LANGS
   USERNAME: string
   SOLANA_VERSION: string
+  TESTNET_SOLANA_VERSION: string
+  MAINNET_SOLANA_VERSION: string
   NODE_VERSION: string
   DELINQUENT_STAKE: number
   COMMISSION: number
@@ -31,6 +39,7 @@ export type CONFIG_TYPE = {
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: string
   IS_CLIENT: boolean
   VALIDATOR_IPS: string[]
+  MAINNET_TYPE: MAINNET_TYPES
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -39,6 +48,8 @@ export const CONFIG: CONFIG_TYPE = {
   LANG: LANGS.EN,
   USERNAME: 'solv',
   SOLANA_VERSION: '1.18.1',
+  TESTNET_SOLANA_VERSION: '1.18.1',
+  MAINNET_SOLANA_VERSION: '1.17.18',
   NODE_VERSION: '20.10.0',
   DELINQUENT_STAKE: 10,
   COMMISSION: 10,
@@ -51,6 +62,7 @@ export const CONFIG: CONFIG_TYPE = {
     '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1',
   IS_CLIENT: false,
   VALIDATOR_IPS: [],
+  MAINNET_TYPE: MAINNET_TYPES.SOLANA_CLIENT,
 }
 
 export const HOME_PATHS = {
@@ -68,6 +80,7 @@ export const FILES = {
   LOG: 'solana-validator.log',
   STARTUP_SCRIPT: 'start-validator.sh',
   CONFIG: 'solv.config.json',
+  JITO_CONFIG: 'jito.config.json',
 }
 
 export const SERVICE_PATHS = {

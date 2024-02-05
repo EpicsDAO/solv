@@ -10,7 +10,7 @@ export const installCommands = (solvConfig: ConfigParams) => {
     .alias('i')
     .description(cmds.install)
     .option(
-      '-v, --version <version>',
+      '--version <version>',
       `Solana Version e.g. ${CONFIG.SOLANA_VERSION}`,
       CONFIG.SOLANA_VERSION,
     )

@@ -4,9 +4,12 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
-import { CONFIG } from '@/config/config'
+import { CONFIG, MAINNET_TYPES, SOLV_TYPES } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import { nodeUpdate } from './nodeUpdate'
+import { mainnetUpdate } from './mainnetUpdate'
+import { jitoUpdate } from './jitoUpdate'
 
 export * from './update'
 
@@ -27,7 +30,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .action((options: any) => {
       if (options.monitor) {
         updateVersion(options.version)
-        updateVersion(options.version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
             options.maxDelinquentStake,
@@ -35,21 +37,26 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         )
         monitorUpdate(CONFIG.DELINQUENT_STAKE)
       } else if (options.background) {
-        updateVersion(options.version)
-        updateSolvConfig({ SOLANA_VERSION: options.version })
-        Logger.normal(
-          `✔️ Update to Solana Version ${chalk.green(options.version)}`,
-        )
-        monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+        let version = options.version
+        if (
+          solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR ||
+          solvConfig.config.SOLV_TYPE === SOLV_TYPES.RPC_NODE
+        ) {
+          if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
+            jitoUpdate()
+            return
+          }
+          mainnetUpdate()
+          return
+        } else {
+          updateVersion(version)
+          updateSolvConfig({ SOLANA_VERSION: version })
+          Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
+          monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+          return
+        }
       } else if (options.node) {
-        const cmd = `git -C /home/solv/.nodenv/plugins/node-build pull`
-        spawnSync(cmd, { shell: true, stdio: 'inherit' })
-        const cmd2 = `nodenv install ${CONFIG.NODE_VERSION}`
-        spawnSync(cmd2, { shell: true, stdio: 'inherit' })
-        const cmd3 = `nodenv local ${CONFIG.NODE_VERSION}`
-        spawnSync(cmd3, { shell: true, stdio: 'inherit' })
-        const cmd4 = `nodenv rehash`
-        spawnSync(cmd4, { shell: true, stdio: 'inherit' })
+        nodeUpdate()
       } else {
         updateSolv()
       }

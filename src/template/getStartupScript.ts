@@ -2,12 +2,24 @@ import { SOLV_TYPES } from '@/config/config'
 import { startTestnetValidatorScript } from '@/template/startupScripts/startTestnetValidatorScript'
 import { startMainnetValidatorScript } from './startupScripts/startMainnetValidatorScript'
 import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
+import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
+import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 
-export const getStartupScript = (
+export const getStartupScript = async (
   fetchSnapshot = false,
-  solvTypes = SOLV_TYPES.TESTNET_VALIDATOR
+  solvTypes = SOLV_TYPES.TESTNET_VALIDATOR,
+  isJitoMev = false,
 ) => {
   let script = ''
+  if (isJitoMev) {
+    const jitoConfig = readOrCreateJitoConfig()
+    return startJitoValidatorScript(
+      jitoConfig.commissionBps,
+      jitoConfig.blockEngineUrl,
+      jitoConfig.relayerUrl,
+      jitoConfig.shredReceiverAddr,
+    )
+  }
   switch (solvTypes) {
     case SOLV_TYPES.TESTNET_VALIDATOR:
       script = startTestnetValidatorScript()

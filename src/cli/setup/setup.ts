@@ -1,4 +1,4 @@
-import { execSync, spawnSync } from 'child_process'
+import { execSync } from 'child_process'
 import { setupDirs } from '@/cli/setup/mkdirs'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { genStartupValidatorScript } from '@/cli/setup/genStartupValidatorScript'
@@ -11,7 +11,13 @@ import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
 import { startSolana } from '@/cli/start/startSolana'
-import { CONFIG, DISK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
+import {
+  CONFIG,
+  DISK_TYPES,
+  MAINNET_TYPES,
+  SOLV_TYPES,
+  getAllKeyPaths,
+} from '@/config/config'
 import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
 import { formatDisk } from '@/cli/setup/formatDisk'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
@@ -22,6 +28,13 @@ import {
 } from '@/lib/readOrCreateDefaultConfig'
 import { langSet } from '@/lib/langSet'
 import { existsSync } from 'fs'
+import { mainnetSetup } from './mainnetSetup'
+import { setupJitoMev } from '@/template/startupScripts/setupJitoMev'
+import { daemonReload } from '@/lib/daemonReload'
+import { enableSolv } from '@/lib/enableSolv'
+import { restartLogrotate } from '@/lib/restartLogrotate'
+import { askJitoSetting } from './askJitoSetting'
+import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -59,6 +72,24 @@ export const setup = async (solvConfig: ConfigParams) => {
       },
     ])
     solvType = answer.solvType
+    let isJitoMev = false
+
+    if (solvType === 'MAINNET_VALIDATOR') {
+      const mainnetType = await mainnetSetup()
+      if (mainnetType === MAINNET_TYPES.JITO_MEV) {
+        console.log('JITO MEV Setup Mode on!')
+        isJitoMev = true
+      } else if (mainnetType === MAINNET_TYPES.FIREDANCER) {
+        console.log('Coming soon...')
+        return
+      }
+    }
+
+    if (isJitoMev) {
+      const jitoConfig = await askJitoSetting()
+      readOrCreateJitoConfig(jitoConfig)
+    }
+
     let commission = CONFIG.COMMISSION
 
     // Check if solvType is RPC_NODE
@@ -131,17 +162,26 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
-    genStartupValidatorScript(true, sType)
-    makeServices(isTest)
-    setupKeys(newSolvConfig)
-    const cmds = [
-      'sudo systemctl daemon-reload',
-      'sudo systemctl enable solv',
-      'sudo systemctl restart logrotate',
-    ]
-    for (const line of cmds) {
-      spawnSync(line, { shell: true, stdio: 'inherit' })
+    await genStartupValidatorScript(true, sType, isJitoMev)
+    makeServices(isTest, isJitoMev)
+    daemonReload()
+
+    if (isTest) {
+      setupKeys(newSolvConfig)
     }
+
+    enableSolv()
+    restartLogrotate()
+
+    if (isJitoMev) {
+      setupJitoMev()
+      daemonReload()
+      updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
+      const content = `👷‍♀️ Please exchange your keys \`solv s\` -> 4)\n\nThen run \`solv start\` to run your JITO MEV!`
+      Logger.normal(content)
+      return
+    }
+
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
     return true
