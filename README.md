@@ -43,7 +43,7 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.0.0/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.2.0/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -62,6 +62,12 @@ After startup, the snapshot download will start automatically.
 The Solana validator will start 🎊
 
 [![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
+
+## New Jito MEV Setup
+
+Now you can select the mainnet for Jito MEV 🎉
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
 
 ## Install solv CLI on your local machine
 
