@@ -11,6 +11,8 @@ import { testnetSetup } from './testnetSetup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { updateLogrotate } from '@/cli/setup/updateLogrotate'
 import { rmLogs } from './rmLogs'
+import { spawnSync } from 'child_process'
+import { JITO_CONFIG } from '@/config/jitConfig'
 
 type SetupOptions = {
   vote: boolean
@@ -61,7 +63,12 @@ export const setupCommands = (solvConfig: ConfigParams) => {
         await testnetSetup(solvConfigReflectComission)
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        await setup(solvConfigReflectComission)
+        const TAG = `${JITO_CONFIG.tag}`
+        spawnSync(
+          `CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/${TAG}`,
+          { cwd: 'jito-solana', shell: true, stdio: 'inherit' },
+        )
+        //await setup(solvConfigReflectComission)
       }
     })
 }

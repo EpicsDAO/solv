@@ -25,7 +25,7 @@ export const setupJitoMev = () => {
       stdio: 'inherit',
     })
     spawnSync(
-      `CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/"$TAG"`,
+      `CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/${TAG}`,
       { cwd: 'jito-solana', shell: true, stdio: 'inherit' },
     )
   } catch (error) {
