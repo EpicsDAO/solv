@@ -25,7 +25,7 @@ export const restartFetch = () => {
   }
 
   // Make the script
-  script = `#!/bin/bash\nexec solana-validator \\\n${options.join(' \\n')}`
+  script = `#!/bin/bash\nexec solana-validator \\\n${options.join(' \\\n')}`
   deleteSnapshot()
   writeFileSync(scriptPath, script)
   chmodSync(scriptPath, '755')
