@@ -11,8 +11,6 @@ import { testnetSetup } from './testnetSetup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { updateLogrotate } from '@/cli/setup/updateLogrotate'
 import { rmLogs } from './rmLogs'
-import { spawnSync } from 'child_process'
-import { JITO_CONFIG } from '@/config/jitConfig'
 
 type SetupOptions = {
   vote: boolean
