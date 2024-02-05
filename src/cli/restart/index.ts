@@ -15,7 +15,8 @@ export const restartCommand = (solvConfig: ConfigParams) => {
     .option('--snapshot', 'Restart Solana Validator with fetch snapshot', false)
     .action(async (options: RestartOptions) => {
       if (options.snapshot) {
-        restartFetch()
+        console.log('Under development')
+        // restartFetch()
       } else {
         restartSolv()
       }
