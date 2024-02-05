@@ -1,4 +1,4 @@
-import { execSync, spawnSync } from 'child_process'
+import { execSync } from 'child_process'
 import { setupDirs } from '@/cli/setup/mkdirs'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { genStartupValidatorScript } from '@/cli/setup/genStartupValidatorScript'
@@ -33,6 +33,8 @@ import { setupJitoMev } from '@/template/startupScripts/setupJitoMev'
 import { daemonReload } from '@/lib/daemonReload'
 import { enableSolv } from '@/lib/enableSolv'
 import { restartLogrotate } from '@/lib/restartLogrotate'
+import { askJitoSetting } from './askJitoSetting'
+import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -81,6 +83,11 @@ export const setup = async (solvConfig: ConfigParams) => {
         console.log('Coming soon...')
         return
       }
+    }
+
+    if (isJitoMev) {
+      const jitoConfig = await askJitoSetting()
+      readOrCreateJitoConfig(jitoConfig)
     }
 
     let commission = CONFIG.COMMISSION

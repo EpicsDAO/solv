@@ -1,13 +1,5 @@
-import { JITO_CONFIG, JITO_REGIONS } from '@/config/jitConfig'
+import { JITO_CONFIG, JITO_REGIONS, JitoConfig } from '@/config/jitConfig'
 import inquirer from 'inquirer'
-
-export type JitoSetting = {
-  version: string
-  commissionBps: number
-  blockEngineUrl: string
-  relayerUrl: string
-  shredReceiverAddr: string
-}
 
 export const askJitoSetting = async () => {
   const commissionBps = 1000
@@ -33,10 +25,12 @@ export const askJitoSetting = async () => {
   const regionArgs = JITO_REGIONS[regionKey]
   const result = {
     version: JITO_CONFIG.version,
+    tag: JITO_CONFIG.tag,
     commissionBps: answer.commissionBps,
     blockEngineUrl: regionArgs.BLOCK_ENGINE_URL,
     relayerUrl: regionArgs.RELAYER_URL,
     shredReceiverAddr: regionArgs.SHRED_RECEIVER_ADDR,
-  } as JitoSetting
+  } as JitoConfig
+
   return result
 }

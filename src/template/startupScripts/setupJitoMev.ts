@@ -3,8 +3,8 @@ import { spawnSync } from 'child_process'
 
 export const setupJitoMev = () => {
   try {
-    const TAG = JITO_CONFIG.version
-    appendProfile(`export TAG=v${TAG}-jito`)
+    const TAG = `${JITO_CONFIG.tag}`
+    appendProfile(`export TAG=${TAG}`)
     spawnSync(`sudo apt-get update -y`, { shell: true, stdio: 'inherit' })
     spawnSync(
       `sudo apt-get install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler`,
@@ -31,7 +31,7 @@ export const setupJitoMev = () => {
     appendProfile(
       'export PATH="$HOME/.local/share/solana/install/releases/' +
         TAG +
-        '/bin:$PATH"',
+        '/bin:\\$PATH"',
     )
     const CI_COMMIT = spawnSync('git rev-parse HEAD', {
       cwd: 'jito-solana',

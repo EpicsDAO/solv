@@ -4,7 +4,6 @@ import { startMainnetValidatorScript } from './startupScripts/startMainnetValida
 import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
 import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
-import { askJitoSetting } from '@/cli/setup/askJitoSetting'
 
 export const getStartupScript = async (
   fetchSnapshot = false,
@@ -13,8 +12,7 @@ export const getStartupScript = async (
 ) => {
   let script = ''
   if (isJitoMev) {
-    const jitoConfig = await askJitoSetting()
-    readOrCreateJitoConfig(jitoConfig)
+    const jitoConfig = readOrCreateJitoConfig()
     return startJitoValidatorScript(
       jitoConfig.commissionBps,
       jitoConfig.blockEngineUrl,
