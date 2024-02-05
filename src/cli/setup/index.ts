@@ -63,12 +63,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
         await testnetSetup(solvConfigReflectComission)
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        const TAG = `${JITO_CONFIG.tag}`
-        spawnSync(
-          `CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/${TAG}`,
-          { cwd: 'jito-solana', shell: true, stdio: 'inherit' },
-        )
-        //await setup(solvConfigReflectComission)
+        await setup(solvConfigReflectComission)
       }
     })
 }
