@@ -177,6 +177,9 @@ export const setup = async (solvConfig: ConfigParams) => {
       setupJitoMev()
       daemonReload()
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
+      const content = `👷‍♀️ Please exchange your keys \`solv s\` -> 4)\n\nThen run \`solv start\` to run your JITO MEV!`
+      Logger.normal(content)
+      return
     }
 
     startSolana()
