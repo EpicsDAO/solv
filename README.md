@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://solv.epics.dev/">
-    <img src="https://storage.googleapis.com/epics-bucket/solv/assets/solven.jpg" alt="solv" />
+    <img src="https://storage.googleapis.com/epics-bucket/solv/assets/v3/solvEN.png" alt="solv" />
   </a>
 
   <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
