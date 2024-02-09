@@ -4,13 +4,12 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { migrate } from '@/lib/migrate/migrate'
 import { checkValidatorCommands } from './checkValidator'
 import { getValidatorInfoCommands } from './getValidatorInfo'
 import { getBackupCommands } from './backup'
 import os from 'os'
 import { updateCmd } from './updateCmd'
-import { stakeCommands } from '../stake'
+import { stakeCmds } from './stake'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -82,7 +81,7 @@ to login as solv user...?`,
       getBackupCommands(solvConfig)
       break
     case INSTALLER_CHOICES.STAKE:
-      stakeCommands(solvConfig)
+      stakeCmds(solvConfig)
       break
     case INSTALLER_CHOICES.UNINSTALL:
       await uninstall()
@@ -91,6 +90,7 @@ to login as solv user...?`,
       console.log('Exiting solv...')
       break
     default:
+      console.log('node!')
       break
   }
 }

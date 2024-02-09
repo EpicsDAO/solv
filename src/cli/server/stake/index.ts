@@ -13,8 +13,8 @@ export enum STAKE_CHOICES {
   RETURN_TO_INSTALLER,
 }
 
-export const stakeCommands = async (solvConfig: ConfigParams) => {
-  const { config, locale } = solvConfig
+export const stakeCmds = async (solvConfig: ConfigParams) => {
+  const { locale } = solvConfig
   const { cmds, installerSub } = locale
   const choices = installerSub[INSTALLER_CHOICES.STAKE].map((item, index) => {
     return `${index + 1}${item}`
