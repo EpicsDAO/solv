@@ -21,10 +21,10 @@ export module Questions {
     },
     {
       type: 'input',
-      name: 'authorityAccount',
+      name: 'authorityKeyPath',
       message: `What is the Authority Account Account Address?(Enter to default)`,
       default() {
-        return ''
+        return '~/mainnet-validator-keypair.json'
       },
     },
   ]
