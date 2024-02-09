@@ -1,7 +1,7 @@
 // updateSolanaSymlink.ts
 import { SERVICE_PATHS } from '@/config/config'
 import { execSync } from 'child_process'
-import * as fs from 'fs'
+import { existsSync, symlinkSync, unlinkSync } from 'fs'
 import * as path from 'path'
 
 export const updateJitoSolanaPath = () => {
@@ -16,16 +16,26 @@ export const updateJitoSolanaPath = () => {
     'bin',
     'solana',
   )
+  const SYMLINK_PATH2 = path.join(
+    SERVICE_PATHS.SOLANA_PATH,
+    'active_release',
+    'bin',
+    'solana-validator',
+  )
 
   try {
     // Delete the old symlink
-    if (fs.existsSync(SYMLINK_PATH)) {
-      fs.unlinkSync(SYMLINK_PATH)
+    if (existsSync(SYMLINK_PATH)) {
+      unlinkSync(SYMLINK_PATH)
+    }
+    // Create a new symlink
+    symlinkSync(LATEST_SOLANA_BIN, SYMLINK_PATH)
+
+    if (existsSync(SYMLINK_PATH2)) {
+      unlinkSync(SYMLINK_PATH2)
     }
 
-    // Create a new symlink
-    fs.symlinkSync(LATEST_SOLANA_BIN, SYMLINK_PATH)
-
+    symlinkSync(LATEST_SOLANA_BIN, SYMLINK_PATH2)
     console.log(
       `Updated symlink to the latest Solana release: ${LATEST_SOLANA_BIN}`,
     )
