@@ -10,6 +10,7 @@ import { getValidatorInfoCommands } from './getValidatorInfo'
 import { getBackupCommands } from './backup'
 import os from 'os'
 import { updateCmd } from './updateCmd'
+import { stakeCommands } from '../stake'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
@@ -81,6 +82,7 @@ to login as solv user...?`,
       getBackupCommands(solvConfig)
       break
     case INSTALLER_CHOICES.STAKE:
+      stakeCommands(solvConfig)
       break
     case INSTALLER_CHOICES.UNINSTALL:
       await uninstall()
