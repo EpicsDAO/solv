@@ -38,7 +38,7 @@ const subCmdsJA = {
   stake: {
     description: 'Solana Delegate Stake',
   },
-  unStake: {
+  unstake: {
     description: 'UnStake',
   },
   check: {
