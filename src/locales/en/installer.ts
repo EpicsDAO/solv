@@ -5,7 +5,7 @@ export const installerEN: installerParams = [
   ') Check Validator Logs/Status or Start/Stop',
   ') Get Validator Config Info',
   ') Backup/Restore/Create Validator Keyfiles',
-  ') Migrate to solv3',
+  ') Staking',
   ') Uninstall',
   ') Exit',
 ]
@@ -23,6 +23,7 @@ export const installerSubEN: installerSubParams = [
   ],
   [
     ') Show Validator Config',
+    ') Register Validator Info',
     ') Show Validator Keys Path/Address/Balance',
     ') Get Current Epoch/Slot',
     ') Get Solana Validator Catchup Info',
@@ -34,7 +35,7 @@ export const installerSubEN: installerSubParams = [
     ') Restore Validator Keyfiles',
     ') Return to Main Menu',
   ],
-  [],
+  [') Stake', ') Unstake', ') Return to Main Menu'],
   [],
   [],
 ]

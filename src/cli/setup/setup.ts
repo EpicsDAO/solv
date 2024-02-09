@@ -163,12 +163,10 @@ export const setup = async (solvConfig: ConfigParams) => {
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
     await genStartupValidatorScript(true, sType, isJitoMev)
-    makeServices(isTest, isJitoMev)
+    makeServices(isTest)
     daemonReload()
 
-    if (isTest) {
-      setupKeys(newSolvConfig)
-    }
+    setupKeys(newSolvConfig)
 
     enableSolv()
     restartLogrotate()

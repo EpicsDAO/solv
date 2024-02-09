@@ -89,6 +89,7 @@ export const SERVICE_PATHS = {
   SOL_SYSTEM_CONFIG21: '/etc/sysctl.d/21-solana-validator.conf',
   SOL_NOFILES_CONF: '/etc/security/limits.d/90-solana-nofiles.conf',
   SOL_SYSTEM_CONF: '/etc/systemd/system.conf',
+  SOLANA_PATH: '/home/solv/.local/share/solana/install',
 }
 
 export const KEYPAIRS = {

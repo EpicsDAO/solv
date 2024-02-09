@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import { execSync } from 'child_process'
 import { SERVICE_PATHS } from '@/config/config'
 
-export function setupSolvService(isTest = true, isJitoMev = false): void {
+export function setupSolvService(isTest = true): void {
   console.log('Creating solvService configuration for solana')
 
   if (existsSync(SERVICE_PATHS.SOL_SERVICE)) {
@@ -11,7 +11,7 @@ export function setupSolvService(isTest = true, isJitoMev = false): void {
       'SOL_SERVICE_PATH already exists. Skipping solvService configuration.',
     )
   } else {
-    const body = solvService(isTest, isJitoMev)
+    const body = solvService(isTest)
     // Use sudo tee to write the file with superuser privileges
     execSync(
       `echo "${body}" | sudo tee ${SERVICE_PATHS.SOL_SERVICE} > /dev/null`,

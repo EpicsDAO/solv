@@ -1,3 +1,4 @@
+import { updateJitoSolanaPath } from '@/cli/setup/updateJitoSolanaPath'
 import { JITO_CONFIG } from '@/config/jitConfig'
 import { spawnSync } from 'child_process'
 
@@ -28,6 +29,7 @@ export const setupJitoMev = () => {
       `CI_COMMIT=$(git rev-parse HEAD) scripts/cargo-install-all.sh --validator-only ~/.local/share/solana/install/releases/${TAG}`,
       { cwd: 'jito-solana', shell: true, stdio: 'inherit' },
     )
+    updateJitoSolanaPath()
   } catch (error) {
     throw new Error(`Error in setupJitoMev: ${error}`)
   }

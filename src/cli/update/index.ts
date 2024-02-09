@@ -10,6 +10,7 @@ import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { nodeUpdate } from './nodeUpdate'
 import { mainnetUpdate } from './mainnetUpdate'
 import { jitoUpdate } from './jitoUpdate'
+import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 
 export * from './update'
 
@@ -44,9 +45,11 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         ) {
           if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
             jitoUpdate()
+            updateJitoSolvConfig({ version, tag: `v${version}-jito` })
+            monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
             return
           }
-          mainnetUpdate()
+          monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
           return
         } else {
           updateVersion(version)

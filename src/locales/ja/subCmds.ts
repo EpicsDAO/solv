@@ -38,6 +38,9 @@ const subCmdsJA = {
   stake: {
     description: 'Solana Delegate Stake',
   },
+  unstake: {
+    description: 'UnStake',
+  },
   check: {
     description: 'Check Solana Validator',
   },
