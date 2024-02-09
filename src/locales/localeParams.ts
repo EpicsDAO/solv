@@ -30,9 +30,9 @@ export type ClientParams = [
 export type installerSubParams = [
   [],
   [string, string, string, string, string, string, string],
-  [string, string, string, string, string, string],
+  [string, string, string, string, string, string, string],
   [string, string, string],
-  [],
+  [string, string, string],
   [],
   [],
 ]
@@ -55,6 +55,7 @@ export interface DescriptionParams {
   config: string
   install: string
   stake: string
+  unstake: string
   check: string
   scp: string
   cron: string
@@ -86,6 +87,7 @@ export interface SubCommandParams {
   epoch: Description
   slot: Description
   solv: Description
+  unstake: Description
 }
 
 export interface LogParams {

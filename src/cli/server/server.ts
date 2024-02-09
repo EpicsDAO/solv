@@ -4,22 +4,19 @@ import { uninstall } from '@/cli/setup/uninstall'
 import { Logger } from '@/lib/logger'
 import { langSet } from '@/lib/langSet'
 import chalk from 'chalk'
-import { monitorUpdate, updateVersion } from '@/cli/update'
-import { CONFIG } from '@/config/config'
 import { migrate } from '@/lib/migrate/migrate'
 import { checkValidatorCommands } from './checkValidator'
 import { getValidatorInfoCommands } from './getValidatorInfo'
 import { getBackupCommands } from './backup'
-import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import os from 'os'
-import { spawnSync } from 'child_process'
+import { updateCmd } from './updateCmd'
 
 export enum INSTALLER_CHOICES {
   UPGRADE,
   CHECK,
   CONFIG,
   BACKUP,
-  MIGRATE,
+  STAKE,
   UNINSTALL,
   EXIT,
 }
@@ -72,10 +69,7 @@ to login as solv user...?`,
     1) as INSTALLER_CHOICES
   switch (selectedOption) {
     case INSTALLER_CHOICES.UPGRADE:
-      spawnSync('solv update && solv update -b', {
-        shell: true,
-        stdio: 'inherit',
-      })
+      await updateCmd(solvConfig)
       break
     case INSTALLER_CHOICES.CHECK:
       checkValidatorCommands(solvConfig)
@@ -86,9 +80,7 @@ to login as solv user...?`,
     case INSTALLER_CHOICES.BACKUP:
       getBackupCommands(solvConfig)
       break
-    case INSTALLER_CHOICES.MIGRATE:
-      console.log('Migrating Validator Config...')
-      await migrate()
+    case INSTALLER_CHOICES.STAKE:
       break
     case INSTALLER_CHOICES.UNINSTALL:
       await uninstall()

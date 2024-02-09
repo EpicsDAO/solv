@@ -163,10 +163,10 @@ export const setup = async (solvConfig: ConfigParams) => {
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
     await genStartupValidatorScript(true, sType, isJitoMev)
-    makeServices(isTest, isJitoMev)
+    makeServices(isTest)
     daemonReload()
 
-    if (isTest) {
+    if (isTest || solvType === 'RPC_NODE') {
       setupKeys(newSolvConfig)
     }
 

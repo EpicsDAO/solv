@@ -38,6 +38,9 @@ const subCmdsEN = {
   stake: {
     description: 'Solana Delegate Stake',
   },
+  unStake: {
+    description: 'UnStake',
+  },
   check: {
     description: 'Check Solana Validator',
   },

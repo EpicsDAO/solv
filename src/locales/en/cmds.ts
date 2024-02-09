@@ -26,6 +26,7 @@ const cmdsEN: DescriptionParams = {
   slot: 'Show Current Slot',
   solv: 'Endroll Solv AA',
   installer: 'Please select an option:',
+  unstake: 'UnStake',
 }
 
 export default cmdsEN
