@@ -6,9 +6,11 @@ import { getEpochAndSlot } from './getEpochAndSlot'
 import { showKeypairsInfo } from './showKeypairsInfo'
 import { solanaCatchup } from '@/cli/get/solanaCatchup'
 import { monitorSolana } from '@/cli/get/monitorSolana'
+import { validatorInfo } from '@/lib/validatorInfo'
 
 export enum GET_CHOICES {
   CONFIG,
+  REGISTER,
   KEYPAIRS,
   EPOCH_SLOT,
   CATCHUP,
@@ -36,6 +38,9 @@ export const getValidatorInfoCommands = async (solvConfig: ConfigParams) => {
   switch (selectedOption) {
     case GET_CHOICES.CONFIG:
       showConfig()
+      break
+    case GET_CHOICES.REGISTER:
+      await validatorInfo()
       break
     case GET_CHOICES.KEYPAIRS:
       showKeypairsInfo(solvType)
