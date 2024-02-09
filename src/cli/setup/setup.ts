@@ -166,9 +166,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     makeServices(isTest)
     daemonReload()
 
-    if (isTest || solvType === 'RPC_NODE') {
-      setupKeys(newSolvConfig)
-    }
+    setupKeys(newSolvConfig)
 
     enableSolv()
     restartLogrotate()
