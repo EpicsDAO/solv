@@ -55,9 +55,6 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     let isTest = true
     let solvType = 'TESTNET_VALIDATOR'
-    const { testnetValidatorKey, mainnetValidatorKey } = getAllKeyPaths()
-    if (!existsSync(testnetValidatorKey) && !existsSync(mainnetValidatorKey)) {
-    }
     // Check which SOLV_TYPES to setup
     const choices = Object.values(SOLV_TYPES).filter(
       (value) => typeof value !== 'number',

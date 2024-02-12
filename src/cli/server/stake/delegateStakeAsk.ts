@@ -1,3 +1,4 @@
+import { getKeypairPaths } from '@/lib/getKeypairPaths'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 
@@ -8,6 +9,7 @@ export type delegateStakeOption = {
 }
 
 export const delegateStakeAsk = async (config: ConfigParams) => {
+  const { keypairs, defaultKey } = getKeypairPaths(config)
   const answer = await inquirer.prompt<delegateStakeOption>([
     {
       type: 'input',
@@ -26,11 +28,12 @@ export const delegateStakeAsk = async (config: ConfigParams) => {
       },
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'authorityKeyPath',
-      message: `What is the Authority Account Account Address?(Enter to default)`,
+      choices: keypairs,
+      message: `What is the Authority Account Account Path?`,
       default() {
-        return '~/mainnet-validator-keypair.json'
+        return defaultKey
       },
     },
   ])

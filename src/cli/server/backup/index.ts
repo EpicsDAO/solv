@@ -4,9 +4,11 @@ import { INSTALLER_CHOICES, server } from '../server'
 import { backupCmd } from './backupCmd'
 import chalk from 'chalk'
 import { restoreCmd } from './restoreCmd'
+import { solanaKeySet } from '@/lib/solana/solanaKeySet'
 
 export enum BACKUP_CHOICES {
   BACKUP,
+  SET_KEY_CONFIG,
   RETURN_TO_INSTALLER,
 }
 
@@ -29,6 +31,9 @@ export const getBackupCommands = async (solvConfig: ConfigParams) => {
   switch (selectedOption) {
     case BACKUP_CHOICES.BACKUP:
       await backupCmd()
+      break
+    case BACKUP_CHOICES.SET_KEY_CONFIG:
+      await solanaKeySet(solvConfig)
       break
     case BACKUP_CHOICES.RETURN_TO_INSTALLER:
       await server(solvConfig)

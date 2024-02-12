@@ -31,7 +31,7 @@ export type installerSubParams = [
   [],
   [string, string, string, string, string, string, string],
   [string, string, string, string, string, string, string],
-  [string, string],
+  [string, string, string],
   [string, string, string],
   [],
   [],

@@ -5,7 +5,7 @@ export const clientEN: ClientParams = [
   ') Download Validator Keyfiles',
   ') Generate Validator Keyfiles',
   ') Upload Validator Keyfiles',
-  ') Manage Multiple Validators',
+  ') Set Validator Keyfile/Network',
   ') Uninstall',
   ') Exit',
 ]

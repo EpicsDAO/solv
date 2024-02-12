@@ -16,7 +16,7 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .command('stake')
     .description(cmds.stake)
     .action(async () => {
-      await stakeAccountQuestion()
+      await stakeAccountQuestion(solvConfig)
       const { validatorVoteAccount, stakeAccount, authorityKeyPath } =
         await delegateStakeAsk(solvConfig)
       await delegateStake(stakeAccount, validatorVoteAccount, authorityKeyPath)

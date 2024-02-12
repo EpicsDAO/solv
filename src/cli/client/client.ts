@@ -9,13 +9,14 @@ import { setupKeys } from '@/cli/setup/setupKeys'
 import { upload } from '@/cli/scp/upload'
 import { download } from '../scp/download'
 import { solanaValidatorsGrep } from './solanaValidatorsGrep'
+import { solanaKeySet } from '@/lib/solana/solanaKeySet'
 
 export enum CLIENT_CHOICES {
   STATUS,
   KEY_DOWNLOAD,
   KEY_GENERATE,
   KEY_RESTORE,
-  MULTIPLE_NODE_SETUP,
+  SET_KEY_CONFIG,
   UNINSTALL,
   EXIT,
 }
@@ -69,8 +70,8 @@ export const client = async (solvConfig: ConfigParams) => {
     case CLIENT_CHOICES.KEY_RESTORE:
       upload()
       break
-    case CLIENT_CHOICES.MULTIPLE_NODE_SETUP:
-      console.log('Coming soon...')
+    case CLIENT_CHOICES.SET_KEY_CONFIG:
+      await solanaKeySet(solvConfig)
       break
     case CLIENT_CHOICES.UNINSTALL:
       spawnSync('npm -g uninstall @epics-dao/solv', {
