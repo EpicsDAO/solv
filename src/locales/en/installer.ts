@@ -4,7 +4,7 @@ export const installerEN: installerParams = [
   ') Upgrade - Update/Downgrade Solana Version',
   ') Check Validator Logs/Status or Start/Stop',
   ') Get Validator Config Info',
-  ') Backup/Restore/Create Validator Keyfiles',
+  ') Backup Validator Keyfiles',
   ') Staking',
   ') Uninstall',
   ') Exit',
