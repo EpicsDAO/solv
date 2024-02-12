@@ -1,20 +1,23 @@
 import { FILES } from '@/config/config'
-import { JitoConfig } from '@/config/jitConfig'
+import { JITO_CONFIG, JitoConfig } from '@/config/jitConfig'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import os from 'os'
+import path from 'path'
 
 export const readOrCreateJitoConfig = (params?: JitoConfig) => {
   const homeDir = os.homedir()
-  const configPath = `${homeDir}/${FILES.JITO_CONFIG}`
-  if (existsSync(configPath)) {
-    const config = JSON.parse(readFileSync(configPath, 'utf-8')) as JitoConfig
-    return config
+  const configPath = path.join(homeDir, FILES.JITO_CONFIG)
+  if (!existsSync(configPath)) {
+    writeFileSync(configPath, JSON.stringify(JITO_CONFIG, null, 2))
+    console.log(`Created jito config file at ${configPath}`)
   }
-  if (!params) {
-    throw new Error('Jito config not found')
+  let config: JitoConfig
+  try {
+    config = JSON.parse(readFileSync(configPath, 'utf-8')) as JitoConfig
+  } catch (error) {
+    console.log(`readOrCreateJitoConfig - ${error}`)
+    writeFileSync(configPath, JSON.stringify(JITO_CONFIG, null, 2))
+    config = JITO_CONFIG
   }
-  writeFileSync(configPath, JSON.stringify(params, null, 2))
-  const config = JSON.parse(readFileSync(configPath, 'utf-8')) as JitoConfig
-  console.log(`Created jito config file at ${configPath}`)
   return config
 }
