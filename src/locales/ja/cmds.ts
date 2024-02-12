@@ -18,6 +18,7 @@ const cmdsJA: DescriptionParams = {
   config: 'ノードの設定を表示',
   install: 'ソラナのバージョンを更新/インストール',
   stake: 'ソラナのステーキングを行う',
+  unstake: 'ソラナのアンステーキングを行う',
   check: 'ノードの状態をチェック',
   scp: 'scp サブコマンド',
   cron: 'スケジュールタスク サブコマンド',
