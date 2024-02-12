@@ -1,12 +1,14 @@
 import { program } from '@/index'
 import { delegateStake } from './delegateStake'
-import inquirer from 'inquirer'
-import { Questions } from '@/types/questions'
 export * from './delegateStake'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { stakeAccountQuestion } from './stakeAccountQuestion'
 import { deactivateStake } from './deactivateStake'
 import { withdrawStake } from './withdrawStake'
+import { delegateStakeAsk } from '../server/stake/delegateStakeAsk'
+import { deactivateStakeAsk } from '../server/stake/deactivateStakeAsk'
+import { unstakeAsk } from '../server/stake/unstakeAsk'
+import { withdrawStakeAsk } from '../server/stake/withdrawStakeAsk'
 
 export const stakeCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
@@ -16,11 +18,7 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .action(async () => {
       await stakeAccountQuestion()
       const { validatorVoteAccount, stakeAccount, authorityKeyPath } =
-        await inquirer.prompt<{
-          stakeAccount: string
-          validatorVoteAccount: string
-          authorityKeyPath: string
-        }>(Questions.delegateStake)
+        await delegateStakeAsk(solvConfig)
       await delegateStake(stakeAccount, validatorVoteAccount, authorityKeyPath)
     })
 
@@ -28,21 +26,12 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .command('unstake')
     .description(cmds.stake)
     .action(async () => {
-      const { unstakeOption } = await inquirer.prompt<{
-        unstakeOption: string
-      }>(Questions.unstake)
+      const { unstakeOption } = await unstakeAsk()
       if (unstakeOption === 'Deactivate Stake') {
-        const { stakeAccount, authorityKeyPath } = await inquirer.prompt<{
-          stakeAccount: string
-          authorityKeyPath: string
-        }>(Questions.deactivateStake)
+        const { stakeAccount, authorityKeyPath } = await deactivateStakeAsk()
         await deactivateStake(stakeAccount, authorityKeyPath)
       } else {
-        const answer = await inquirer.prompt<{
-          stakeAccount: string
-          destinationAddress: string
-          solAmount: string
-        }>(Questions.withdrawStake)
+        const answer = await withdrawStakeAsk()
         await withdrawStake(
           answer.stakeAccount,
           answer.destinationAddress,

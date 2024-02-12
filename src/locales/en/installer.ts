@@ -30,11 +30,7 @@ export const installerSubEN: installerSubParams = [
     ') Get Solana Validator Monitor Info',
     ') Return to Main Menu',
   ],
-  [
-    ') Backup Validator Keyfiles',
-    ') Restore Validator Keyfiles',
-    ') Return to Main Menu',
-  ],
+  [') Backup Validator Keyfiles', ') Return to Main Menu'],
   [') Stake', ') Unstake', ') Return to Main Menu'],
   [],
   [],

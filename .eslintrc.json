@@ -20,7 +20,6 @@
       {
         "ts-ignore": "allow-with-description"
       }
-    ],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    ]
   }
 }

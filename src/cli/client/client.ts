@@ -8,6 +8,7 @@ import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { upload } from '@/cli/scp/upload'
 import { download } from '../scp/download'
+import { solanaValidatorsGrep } from './solanaValidatorsGrep'
 
 export enum CLIENT_CHOICES {
   STATUS,
@@ -57,7 +58,7 @@ export const client = async (solvConfig: ConfigParams) => {
     1) as CLIENT_CHOICES
   switch (selectedOption) {
     case CLIENT_CHOICES.STATUS:
-      console.log('Coming soon...')
+      await solanaValidatorsGrep(solvConfig)
       break
     case CLIENT_CHOICES.KEY_DOWNLOAD:
       download()
