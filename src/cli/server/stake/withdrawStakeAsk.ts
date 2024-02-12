@@ -1,3 +1,5 @@
+import { getKeypairPaths } from '@/lib/getKeypairPaths'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 
 export type withdrawStakeAskOption = {

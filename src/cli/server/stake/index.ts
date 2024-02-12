@@ -34,7 +34,7 @@ export const stakeCmds = async (solvConfig: ConfigParams) => {
   const selectedOption = (Number(answer.server.split(')')[0]) -
     1) as STAKE_CHOICES
   if (selectedOption === STAKE_CHOICES.STAKE) {
-    await stakeAccountQuestion()
+    await stakeAccountQuestion(solvConfig)
     const { validatorVoteAccount, stakeAccount, authorityKeyPath } =
       await delegateStakeAsk(solvConfig)
     updateSolvConfig({

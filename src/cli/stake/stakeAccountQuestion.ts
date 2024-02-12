@@ -1,12 +1,14 @@
 import inquirer from 'inquirer'
 import { createStakeAccount } from './createStakeAccount'
+import { getKeypairPaths } from '@/lib/getKeypairPaths'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export type StakeAccountQuestion = {
   stakeAuthorityKeyPath: string
   solAmount: number
 }
 
-export const stakeAccountQuestion = async () => {
+export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
   const confirmCreateStakeAccount = await inquirer.prompt<{
     confirmCreateStakeAccount: boolean
   }>([
@@ -20,13 +22,14 @@ export const stakeAccountQuestion = async () => {
   if (!confirmCreateStakeAccount.confirmCreateStakeAccount) {
     return false
   }
-
+  const { keypairs, defaultKey } = getKeypairPaths(solvConfig)
   const answer = await inquirer.prompt<StakeAccountQuestion>([
     {
-      type: 'input',
+      type: 'list',
       name: 'stakeAuthorityKeyPath',
       message: 'What is the stake authority key path?',
-      default: '~/mainnet-authority-keypair.json',
+      choices: keypairs,
+      default: defaultKey,
     },
     {
       type: 'input',
