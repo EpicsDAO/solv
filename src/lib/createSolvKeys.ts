@@ -1,9 +1,10 @@
 import { spawnSync } from 'child_process'
-import { existsSync, mkdirSync, readdirSync } from 'fs'
+import { existsSync, mkdirSync, readdirSync, rmSync } from 'fs'
 import os from 'os'
 import { KEYPAIRS, SOLV_TYPES } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import path from 'path'
 
 export const createSolvKeyPairs = (solvConfig: ConfigParams) => {
   const solvType = solvConfig.config.SOLV_TYPE
@@ -14,8 +15,9 @@ export const createSolvKeyPairs = (solvConfig: ConfigParams) => {
       genKeys = [
         KEYPAIRS.MAINNET_VALIDATOR_KEY,
         KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY,
+        KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY,
       ]
-      keyNum = 2
+      keyNum = 3
       console.log('Mainnet Validator')
       break
     case SOLV_TYPES.TESTNET_VALIDATOR:
@@ -49,9 +51,15 @@ export const createSolvKeyPairs = (solvConfig: ConfigParams) => {
   }
   let i = 0
   for (const file of files) {
-    const cmd = `mv ${file} ${keyDir}/${genKeys[i]}`
-    spawnSync(cmd, { shell: true, stdio: 'inherit' })
+    const keyPath = path.join(keyDir, genKeys[i])
     i++
+    if (existsSync(keyPath)) {
+      console.log(`${keyPath} is already exist!`)
+      rmSync(file, { recursive: true })
+      continue
+    }
+    const cmd = `mv ${file} ${keyPath}`
+    spawnSync(cmd, { shell: true, stdio: 'inherit' })
   }
   console.log(`Generated keypairs - ${keyDir}`)
 }

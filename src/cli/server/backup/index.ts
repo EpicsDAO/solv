@@ -7,7 +7,6 @@ import { restoreCmd } from './restoreCmd'
 
 export enum BACKUP_CHOICES {
   BACKUP,
-  RESTORE,
   RETURN_TO_INSTALLER,
 }
 
@@ -30,9 +29,6 @@ export const getBackupCommands = async (solvConfig: ConfigParams) => {
   switch (selectedOption) {
     case BACKUP_CHOICES.BACKUP:
       await backupCmd()
-      break
-    case BACKUP_CHOICES.RESTORE:
-      restoreCmd()
       break
     case BACKUP_CHOICES.RETURN_TO_INSTALLER:
       await server(solvConfig)
