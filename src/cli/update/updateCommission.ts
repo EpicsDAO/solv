@@ -9,7 +9,7 @@ export const updateCommission = (commission: number, isTest = true) => {
     ? '/home/solv/testnet-vote-account-keypair.json'
     : '/home/solv/mainnet-vote-account-keypair.json'
   const network = isTest ? 'testnet' : 'mainnet-beta'
-  const cmd = `solana vote-update-commission ${voteAccountKeypair} ${commission} ${validatorKeypair} --url https://api.${network}.solana.com --keypair ${validatorKeypair}`
+  const cmd = `solana vote-update-commission ${voteAccountKeypair} ${commission} ${validatorKeypair} --url https://api.${network}.solana.com`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }
 
