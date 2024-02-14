@@ -23,9 +23,6 @@
     "update:packages": "ncu -u && yarn",
     "build": "npx ts-node build.ts && npx ts-node add-line.ts",
     "publish": "npm publish",
-    "solv:build": "cd solv-debian/debian && debuild -us -uc",
-    "solv:pro": "cd solv-debian/debian && debuild -S -sa",
-    "solv:sign": "debsign solv_*.changes",
     "dev": "nodemon",
     "start": "node dist/index.js",
     "discord:epics": "npx ts-node -r tsconfig-paths/register --transpile-only ./.github/workflows/runDiscordChangeLog.ts epics"

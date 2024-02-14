@@ -10,10 +10,10 @@ export const updateCommission = (commission: number, isTest = true) => {
     : '/home/solv/mainnet-vote-account-keypair.json'
   const network = isTest ? 'testnet' : 'mainnet-beta'
   spawnSync(
-    `solana config set --url https://api.${network}.solana.com --keypair ${validatorKeypair}`,
+    `solana config set --url ${network} --keypair ${validatorKeypair}`,
     { shell: true, stdio: 'inherit' },
   )
-  const cmd = `solana vote-update-commission ${voteAccountKeypair} ${commission} ${validatorKeypair}`
+  const cmd = `solana vote-update-commission ${voteAccountKeypair} ${commission} ${validatorKeypair} --keypair ${validatorKeypair}`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }
 
