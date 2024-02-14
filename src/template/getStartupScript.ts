@@ -15,8 +15,8 @@ export const getStartupScript = async (
     const jitoConfig = readOrCreateJitoConfig()
     return startJitoValidatorScript(
       jitoConfig.commissionBps,
-      jitoConfig.blockEngineUrl,
       jitoConfig.relayerUrl,
+      jitoConfig.blockEngineUrl,
       jitoConfig.shredReceiverAddr,
     )
   }
