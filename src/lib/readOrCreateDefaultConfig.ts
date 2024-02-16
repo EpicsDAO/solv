@@ -24,6 +24,6 @@ export const readOrCreateDefaultConfig = () => {
     writeFileSync(configPath, JSON.stringify(CONFIG, null, 2))
     config = CONFIG
   }
-  let locale = readLocale(config.LANG)
+  const locale = readLocale(config.LANG)
   return { config, locale } as ConfigParams
 }

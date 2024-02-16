@@ -27,7 +27,7 @@ program
   .name('solv')
   .description(solvConfig.locale.cmds.description)
   .helpOption('-h, --help', solvConfig.locale.cmds.help)
-  .version(VERSION, '-v, --version', solvConfig.locale.cmds.version)
+  .version(VERSION, '-V', solvConfig.locale.cmds.version)
 
 async function main() {
   try {

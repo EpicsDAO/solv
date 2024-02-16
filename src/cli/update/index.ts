@@ -41,7 +41,11 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-c, --commission', 'Update Commission', false)
     .action(async (options: UpdateOptions) => {
       if (options.monitor) {
-        updateVersion(options.version)
+        const version =
+          solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR
+            ? CONFIG.MAINNET_SOLANA_VERSION
+            : CONFIG.TESTNET_SOLANA_VERSION
+        updateVersion(version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
             CONFIG.DELINQUENT_STAKE,
