@@ -14,9 +14,7 @@ export const installCommands = (solvConfig: ConfigParams) => {
       `Solana Version e.g. ${CONFIG.SOLANA_VERSION}`,
       CONFIG.SOLANA_VERSION,
     )
-    .action((cmdObj: string) => {
-      console.log('hey')
-      console.log('install', cmdObj)
-      //updateVersion(cmdObj.version)
+    .action((options: { version: string }) => {
+      updateVersion(options.version)
     })
 }
