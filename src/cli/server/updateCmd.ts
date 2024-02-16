@@ -1,4 +1,9 @@
-import { CONFIG, MAINNET_TYPES, SOLV_TYPES } from '@/config/config'
+import {
+  CONFIG,
+  MAINNET_TYPES,
+  NETWORK_TYPES,
+  SOLV_TYPES,
+} from '@/config/config'
 import { jitoUpdate } from '../update/jitoUpdate'
 import { monitorUpdate, updateVersion } from '../update'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
@@ -6,10 +11,10 @@ import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 export const updateCmd = async (solvConfig: ConfigParams) => {
-  let version =
-    solvConfig.config.SOLANA_NETWORK === 'mainnet-beta'
+  const version =
+    solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.MAINNET
       ? CONFIG.MAINNET_SOLANA_VERSION
-      : CONFIG.SOLANA_VERSION
+      : CONFIG.TESTNET_SOLANA_VERSION
   if (solvConfig.config.SOLANA_VERSION === version) {
     console.log('Already up to date ⭐️')
     return
