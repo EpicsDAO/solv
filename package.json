@@ -22,7 +22,6 @@
     "test": "jest --coverage=false --detectOpenHandles --maxWorkers=1",
     "update:packages": "ncu -u && yarn",
     "build": "npx ts-node build.ts && npx ts-node add-line.ts",
-    "publish": "npm publish",
     "dev": "nodemon",
     "start": "node dist/index.js",
     "discord:epics": "npx ts-node -r tsconfig-paths/register --transpile-only ./.github/workflows/runDiscordChangeLog.ts epics"

@@ -5,7 +5,7 @@ import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
 import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 
-export const getStartupScript = async (
+export const getStartupScript = (
   fetchSnapshot = false,
   solvTypes = SOLV_TYPES.TESTNET_VALIDATOR,
   isJitoMev = false,
@@ -37,5 +37,5 @@ export const getStartupScript = async (
   if (!fetchSnapshot) {
     return `${script}--no-snapshot-fetch \\\n--no-genesis-fetch`
   }
-  return script + '--no-incremental-snapshots'
+  return script
 }
