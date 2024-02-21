@@ -53,3 +53,4 @@ solv-debian/debian/files
 *keypair.json
 /resource/solv/
 skeet-cloud.config.json
+dist/

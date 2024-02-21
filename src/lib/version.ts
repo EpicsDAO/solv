@@ -1,1 +1,3 @@
-export const VERSION = '3.2.14'
+import packageJson from '../../package.json'
+
+export const VERSION = packageJson.version
