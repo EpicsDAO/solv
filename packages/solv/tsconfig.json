@@ -21,7 +21,7 @@
     }
   },
   "files": ["package.json"],
-  "include": ["src/**/*", "../../lib/runDiscordChangeLog.ts"],
+  "include": ["src/**/*"],
   "exclude": ["dist", "node_modules", "release/**/*"],
   "compileOnSave": false
 }

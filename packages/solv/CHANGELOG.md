@@ -1,5 +1,28 @@
 # @epics-dao/solv
 
+## 3.3.1
+
+### Patch Changes
+
+- [#79](https://github.com/EpicsDAO/solv/pull/79) [`ce54a8f`](https://github.com/EpicsDAO/solv/commit/ce54a8fa3c06bf7e53b760b94665194de3fa4bef) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## added LEDGER_PATH in solv.config.json
+
+  Update solv version
+
+  ```bash
+  pnpm add -g @epics-dao/solv
+  ```
+
+  To set custom ledger path, add LEDGER_PATH in solv.config.json
+
+  ```~/solv.config.json
+  {
+    "LEDGER_PATH": "path/to/ledger",
+    ..
+  }
+  ```
+
+  Default ledger path is `/mnt/ledger`
+
 ## 3.3.0
 
 ### Minor Changes
