@@ -4,4 +4,3 @@ dist
 build
 src/__generated__
 src/schema.graphql
-nexus-typegen.ts

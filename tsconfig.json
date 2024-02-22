@@ -1,27 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": ".",
-    "strict": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    "lib": ["esnext"],
-    "sourceMap": true,
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  },
-  "files": ["package.json"],
-  "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", "release/**/*"],
-  "compileOnSave": false
+  "extends": "./tsconfig.utils.typecheck.json",
+  "include": ["./**/*", ".eslintrc.js"],
+  "exclude": ["**/dist", "**/build", "**/fixtures", "**/node_modules"]
 }
