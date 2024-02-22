@@ -4,9 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
+.pnp*
+.yarn
 
 # testing
 /coverage
+/coverage_dir
 
 # next.js
 /.next/
@@ -46,10 +49,8 @@ firebase-debug.log
 /apps/
 keyfile.json
 /functions/
-graphql/
-/release/
-
-solv-debian/debian/files
-*keypair.json
-/resource/solv/
-skeet-cloud.config.json
+.firebase*
+tmp
+firebase.json
+/sql/
+dist/
