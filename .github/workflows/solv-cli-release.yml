@@ -7,6 +7,18 @@ on:
       - 'packages/solv/**'
       - '.github/workflows/solv-cli-release.yml'
 
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
