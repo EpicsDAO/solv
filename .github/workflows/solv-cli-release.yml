@@ -42,18 +42,14 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Get version
-        id: get_version
-        run: echo "CLI_VERSION=$(pnpm solv ci:version)" >> $GITHUB_ENV
-
       - name: create and publish versions
         id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
           publish: pnpm ci:publish
-          title: 'solv release - v${{ env.CLI_VERSION }}'
-          commit: 'solv release - v${{ env.CLI_VERSION }}'
+          title: 'solv new release'
+          commit: 'solv new release'
           createGithubReleases: true
 
         env:
