@@ -1,8 +1,9 @@
-import { CONFIG, CONFIG_TYPE, FILES } from '@/config/config'
+import { CONFIG, CONFIG_TYPE, FILES, MT_PATHS } from '@/config/config'
 import { LocaleParams } from '@/locales/localeParams'
 import readLocale from '@/locales/readLocale'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import os from 'os'
+import { updateSolvConfig } from './updateSolvConfig'
 
 export type ConfigParams = {
   config: CONFIG_TYPE
@@ -25,5 +26,12 @@ export const readOrCreateDefaultConfig = () => {
     config = CONFIG
   }
   const locale = readLocale(config.LANG)
+  if (!config.LEDGER_PATH) {
+    config.LEDGER_PATH = MT_PATHS.LEDGER
+    console.log(
+      'Default LEDGER_PATH is set to ~/solv.config.json\nPlease change it if necessary.',
+    )
+    updateSolvConfig({ LEDGER_PATH: MT_PATHS.LEDGER })
+  }
   return { config, locale } as ConfigParams
 }

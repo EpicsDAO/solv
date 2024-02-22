@@ -1,4 +1,5 @@
 import { startupScriptPaths } from '@/config/config'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export const startJitoValidatorScript = (
   commissionBps = 1000,
@@ -7,8 +8,8 @@ export const startJitoValidatorScript = (
   shredReceiverAddr: string,
 ) => {
   const isTest = false
-  const { identity, voteAccount, log, accounts, ledger } =
-    startupScriptPaths(isTest)
+  const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
+  const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity ${identity} \\

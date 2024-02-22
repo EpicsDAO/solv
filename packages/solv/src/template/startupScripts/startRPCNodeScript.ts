@@ -1,8 +1,10 @@
 import { startupScriptPaths } from '@/config/config'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export const startRPCNodeScript = () => {
   const isTest = false
-  const { identity, log, accounts, ledger } = startupScriptPaths(isTest)
+  const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
+  const { identity, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity ${identity} \\

@@ -40,6 +40,7 @@ export type CONFIG_TYPE = {
   IS_CLIENT: boolean
   VALIDATOR_IPS: string[]
   MAINNET_TYPE: MAINNET_TYPES
+  LEDGER_PATH: string
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -47,7 +48,7 @@ export type PartialConfigType = Partial<CONFIG_TYPE>
 export const CONFIG: CONFIG_TYPE = {
   LANG: LANGS.EN,
   USERNAME: 'solv',
-  SOLANA_VERSION: '1.18.1',
+  SOLANA_VERSION: '1.18.2',
   TESTNET_SOLANA_VERSION: '1.18.2',
   MAINNET_SOLANA_VERSION: '1.17.22',
   NODE_VERSION: '20.10.0',
@@ -63,6 +64,7 @@ export const CONFIG: CONFIG_TYPE = {
   IS_CLIENT: false,
   VALIDATOR_IPS: [],
   MAINNET_TYPE: MAINNET_TYPES.SOLANA_CLIENT,
+  LEDGER_PATH: '/mnt/ledger',
 }
 
 export const HOME_PATHS = {
