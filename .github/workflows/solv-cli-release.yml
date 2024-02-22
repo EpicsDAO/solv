@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'packages/solv/**'
+      - '.github/workflows/solv-cli-release.yml'
 
 jobs:
   build:
@@ -26,7 +27,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm solv install --frozen-lockfile
 
       - name: Build and Add Line
         run: pnpm build
