@@ -29,7 +29,7 @@ export const restartCommand = (solvConfig: ConfigParams) => {
         if (!answer.confirm) {
           return
         }
-        createSnapshot()
+        createSnapshot(solvConfig)
         if (options.snapshot) {
           restartFetch(solvConfig)
         } else {

@@ -1,7 +1,9 @@
 import { startupScriptPaths } from '@/config/config'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export const startTestnetValidatorScript = () => {
-  const { identity, voteAccount, log, accounts, ledger } = startupScriptPaths()
+  const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
+  const { identity, voteAccount, log, accounts } = startupScriptPaths()
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity ${identity} \\
