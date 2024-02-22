@@ -127,10 +127,10 @@ importers:
         specifier: 20.11.19
         version: 20.11.19
       '@types/node-cron':
-        specifier: ^3.0.11
+        specifier: 3.0.11
         version: 3.0.11
       '@types/node-fetch':
-        specifier: ^2.6.11
+        specifier: 2.6.11
         version: 2.6.11
       '@types/prompt':
         specifier: 1.1.8
