@@ -44,7 +44,7 @@ jobs:
 
       - name: Get version
         id: get_version
-        run: echo "CLI_VERSION=$(pnpm cli:version)" >> $GITHUB_ENV
+        run: echo "CLI_VERSION=$(pnpm solv ci:version)" >> $GITHUB_ENV
 
       - name: create and publish versions
         id: changesets
