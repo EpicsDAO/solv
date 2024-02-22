@@ -1,4 +1,3 @@
-import { MT_PATHS } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
 

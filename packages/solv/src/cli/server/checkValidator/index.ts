@@ -19,9 +19,8 @@ export enum CHECK_CHOICES {
 }
 
 export const checkValidatorCommands = async (solvConfig: ConfigParams) => {
-  const { config, locale } = solvConfig
+  const { locale } = solvConfig
   const { cmds, installerSub } = locale
-  const solvTypes = config.SOLV_TYPE
   const choices = installerSub[INSTALLER_CHOICES.CHECK].map((item, index) => {
     return `${index + 1}${item}`
   })
@@ -51,11 +50,11 @@ export const checkValidatorCommands = async (solvConfig: ConfigParams) => {
       console.log('Stopped Solana Validator')
       break
     case CHECK_CHOICES.RESTART_FETCH:
-      restartFetch()
+      await restartFetch(solvConfig)
       console.log('Restarted Solana Validator with fetch snapshot')
       break
     case CHECK_CHOICES.RESTART_NO_FETCH:
-      restartSolv()
+      await restartSolv(solvConfig)
       console.log('Restarted Solana Validator without fetch snapshot')
       break
     case CHECK_CHOICES.RETURN_TO_INSTALLER:
