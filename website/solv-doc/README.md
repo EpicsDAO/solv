@@ -56,7 +56,7 @@ operations on the Solana blockchain.
 ## Quick start
 
 ```bash
-# Node version (using nodenv)
+# Node version (using pnpm)
 $ node -v
 v20.11.0
 
