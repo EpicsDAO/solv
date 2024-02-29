@@ -26,6 +26,7 @@
     "clsx": "1.2.1",
     "date-fns": "2.29.3",
     "firebase": "9.20.0",
+    "globby": "14.0.1",
     "highlight.js": "11.7.0",
     "i18next": "22.4.15",
     "lodash.throttle": "4.1.1",
