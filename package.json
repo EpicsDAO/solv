@@ -1,7 +1,7 @@
 {
-  "name": "EpicsDAO/OSS",
+  "name": "solv-monorepo",
   "version": "1.0.0",
-  "description": "Open Source Software powered by EpicsDAO",
+  "description": "The utility tool for Solana Validators",
   "repository": {
     "type": "git",
     "url": "https://github.com/EpicsDAO/solv.git"
@@ -18,8 +18,9 @@
   "author": "EpicsDAO",
   "license": "Apache-2.0",
   "engines": {
-    "pnpm": "8.15.3",
-    "npm": "please_use_pnpm_instead"
+    "pnpm": ">=8",
+    "npm": "please_use_pnpm_instead",
+    "node": ">=20"
   },
   "packageManager": "pnpm@8.15.3",
   "scripts": {
