@@ -10,7 +10,7 @@
     "dev": "next dev -p 4200",
     "build": "next build && next export",
     "postbuild": "npx ts-node ./scripts/generateSitemap.ts",
-    "deploy:doc": "pnpm build && pnpm dlx firebase-tools deploy --only hosting",
+    "deploy:doc": "pnpm build && cd ../.. && pnpm dlx firebase-tools deploy --only hosting",
     "start": "next start",
     "lint": "next lint",
     "update:packages": "ncu -u -x 'node-fetch,glob' && pnpm i -F solv-doc",
