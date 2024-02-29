@@ -1,5 +1,5 @@
 import fs from 'fs'
-import globby from 'globby'
+import { globby } from 'globby'
 import siteConfig from '../src/config/site'
 
 const { domain } = siteConfig
@@ -38,4 +38,4 @@ async function generateSiteMap() {
   fs.writeFileSync('out/sitemap.xml', sitemap)
 }
 
-generateSiteMap()
+void generateSiteMap()
