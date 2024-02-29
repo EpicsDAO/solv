@@ -1,0 +1,15 @@
+{
+  "EnterpriseSupportFormRow": {
+    "title": "Start with Solana Validator",
+    "description": "Initiate a Solana blockchain validator with an unprecedented operational efficiency using solv. It's also ideal for operating multiple validators. Feel free to consult with the solv team.",
+    "meritTitle1": "Technical Support Chat",
+    "meritDescription1": "Encountered an error? If an error occurs during operation, you can consult with the solv team. The solv team will assist you extensively while ensuring you grasp the key points concerning Solana validator operation.",
+    "meritTitle2": "Operate Multiple Validators",
+    "meritDescription2": "Utilize solv to launch and maintain multiple validators with utmost operational efficiency. Build a routine that enables maintenance at nearly zero cost.",
+    "meritTitle3": "Considering Implementing solv?",
+    "meritDescription3": "The solv development team provides full support for implementation. Even if you are already operating a Solana validator, transitioning to solv can reduce validator operational costs and enhance operational efficiency.",
+    "cardTitle": "Enterprise Support",
+    "cardButton": "Contact",
+    "detail": "Details on Discord"
+  }
+}
