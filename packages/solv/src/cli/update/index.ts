@@ -40,6 +40,13 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-n, --node', 'Update Node Version', false)
     .option('-c, --commission', 'Update Commission', false)
     .action(async (options: UpdateOptions) => {
+      const isTest =
+        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
+          ? true
+          : false
+      const deliquentStake = isTest
+        ? CONFIG.TESTNET_DELINQUENT_STAKE
+        : CONFIG.MAINNET_DELINQUENT_STAKE
       if (options.monitor) {
         const version =
           solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR
@@ -48,10 +55,10 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         updateVersion(version)
         Logger.normal(
           `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
-            CONFIG.DELINQUENT_STAKE,
+            deliquentStake,
           )}`,
         )
-        monitorUpdate(CONFIG.DELINQUENT_STAKE)
+        monitorUpdate(deliquentStake)
       } else if (options.background) {
         let version = options.version
         if (
@@ -62,29 +69,25 @@ export const updateCommands = (solvConfig: ConfigParams) => {
             version = JITO_CONFIG.version
             jitoUpdate()
             updateJitoSolvConfig({ version, tag: `v${version}-jito` })
-            monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+            monitorUpdate(deliquentStake, true)
             return
           }
           version = CONFIG.MAINNET_SOLANA_VERSION
           updateVersion(version)
-          monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+          monitorUpdate(deliquentStake, true)
           return
         } else {
           version = CONFIG.TESTNET_SOLANA_VERSION
           updateVersion(version)
           updateSolvConfig({ SOLANA_VERSION: version })
           Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
-          monitorUpdate(CONFIG.DELINQUENT_STAKE, true)
+          monitorUpdate(deliquentStake, true)
           return
         }
       } else if (options.node) {
         nodeUpdate()
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
-        const isTest =
-          solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
-            ? true
-            : false
         updateCommission(ansewr.commission, isTest)
       } else {
         updateSolv()
