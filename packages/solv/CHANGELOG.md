@@ -1,5 +1,36 @@
 # @epics-dao/solv
 
+## 3.3.2
+
+### Patch Changes
+
+- [#88](https://github.com/EpicsDAO/solv/pull/88) [`a4c3d1f`](https://github.com/EpicsDAO/solv/commit/a4c3d1fc2f976a005bb724c028c4360cbe123e0c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Solana Validator Standard Update for 1.18.4(testnet), 1.17.4(mainnet)
+
+  Update solv
+
+  ```
+  solv update
+  ```
+
+  Check if solv version is updated
+
+  ```
+  solv -V
+  3.3.2
+  ```
+
+  Update solana and restart the node
+
+  ```
+  solv update -b
+  ```
+
+  You can monitor the progress of the update by running the following command
+
+  ```
+  solv get monitor
+  ```
+
 ## 3.3.1
 
 ### Patch Changes
