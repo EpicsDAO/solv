@@ -1,0 +1,126 @@
+{
+  "contactToTeam": "Talk with Team",
+  "privacy": "Privacy",
+  "404title": "Page not found",
+  "404body": "Sorry, we couldn't find the page you're looking for.",
+  "backToTop": "Back to top page",
+  "toc": "Table of Contents",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "media": "Media",
+  "news": "News",
+  "books": "Books",
+  "copy": "Copy",
+  "copied": "Copied!",
+  "solvInstall": "Install solv",
+  "updateSettings": "Update settings",
+  "setupSolv": "Setup",
+  "thatsAll": "That's all!",
+  "navs": {
+    "defaultMainNav": {
+      "quickstart": "Quickstart",
+      "news": "News",
+      "doc": "Docs",
+      "dao": "DAO",
+      "enterprise": "Enterprise",
+      "contact": "Contact"
+    },
+    "commonFooterNav": {
+      "quickstart": "Quickstart",
+      "news": "News",
+      "doc": "Docs",
+      "enterprise": "Enterprise",
+      "dao": "DAO",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "press-kits": "Press Kits"
+    }
+  },
+  "AgreeToPolicy": {
+    "title": "Your Choices Regarding Cookies",
+    "body": "We and our third party partners use cookies and similar technologies to process certain information, such as your IP address and digital identifiers, to analyze site usage and provide you better experiences. Please read our privacy policy for the detail.",
+    "yes": "Yes, I Accept",
+    "no": "No, I Do Not Accept"
+  },
+  "ContactRow": {
+    "discord": {
+      "title": "Community Discord",
+      "body": "If you have any inquiries, please create a support ticket in the community Discord.",
+      "button": "JOIN"
+    },
+    "form": {
+      "title": "Talk with Team",
+      "body": "If you have any inquiries about development and support, please get in touch with us from here.",
+      "button": "Go"
+    }
+  },
+  "CTASectionRow": {
+    "title": "The utility tool for Solana Validators",
+    "body": "solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.",
+    "button": "Get Started",
+    "demo": "Try Demo"
+  },
+  "WhyOpenSourceDevelopmentRow": {
+    "subtitle": "Why Open-Source Software?",
+    "title": "Sustainable technology development and benefits for society as a whole",
+    "description": "Open-source software (OSS) development drives technological progress in modern society and enables new value creation.",
+    "feature1": {
+      "title": "Value as a public good",
+      "description": "Open-source software is free for anyone to use, improve, and redistribute. This makes OSS a public good for all mankind. People all over the world can enjoy its value without feeling financially constrained. As a result, innovation across society will be driven, and the equality and inclusiveness of the digital society will increase."
+    },
+    "feature2": {
+      "title": "Global cooperation",
+      "description": "In the world of OSS, developers all over the world work together to improve software beyond the boundaries of regions and organizations. Each person's perspective and expertise can be incorporated into the project, enhancing its quality. OSS is truly a global gathering place of knowledge and experience that consistently produces high-quality software."
+    },
+    "feature3": {
+      "title": "Preventing reinvention of the wheel",
+      "description": "OSS allows us to reuse code and prevents us from reinventing the wheel. As a result, developers can focus less on creating everything from scratch and more on solving specific problems and developing new features. This increases efficiency and enables faster higher-quality results."
+    }
+  },
+  "RoadmapRow": {
+    "2022.6": "Epics Lite Paper, TGE (Token Generate Event)",
+    "2022.7": "Epics GENESIS presale",
+    "2022.8": "Epics White Paper v1",
+    "2022.9": "Epics Alpha launch, Solana Summer Camp Hackathon 5th prize",
+    "2022.10": "Presale for IDO, WBSO (Advanced R&D) certified by the Dutch government",
+    "2022.11": "Solana Breakpoint, GitHub issue Data Oracle Collaborative Development (DIA)",
+    "2023.1": "IDO $EPCT on Orca (Solana DEX)",
+    "2023.4": "Epics DAO became a Solana Testnet Validator",
+    "2023.9": "Series A Fundraising (for Beta & major release)",
+    "2023.12": "Epics Public Beta launch, DEX for $EPCD launch",
+    "2024.9": "Epics major release, Epics DAO becomes a Solana Mainnet Validator",
+    "2025.1": "Series B Fundraising (for IEO)",
+    "2026.4": "IEO $EPCT"
+  },
+  "OurWorksRow": {
+    "WBSO": {
+      "title": "WBSO accreditation from the Dutch government",
+      "description": "Epics DAO has received WBSO (Advanced Science and Technology Research) accreditation from the Dutch government. Epics is a social contribution blockchain game (BCG) that aims to realize a sustainable open-source development environment."
+    },
+    "SolanaValidator": {
+      "title": "Epics DAO operates a validator for the Solana blockchain",
+      "description": "As a validator on the Solana chain, Epics DAO is committed to ensuring the reliability and stability of the network. We will also contribute to the technical aspects of achieving Solana's fast and stable network."
+    },
+    "SolanaSummerCamp": {
+      "title": "Placed 5th at Solana Summer Camp Hackathon 2022",
+      "description": "Epics DAO won 5th place out of over 18,000 entries at the Solana Summer Camp Hackathon held July 11-August 16, 2022."
+    }
+  },
+  "SolvTutorialYouTubeRow": {
+    "title": "Easily Launch a Solana Validator in 3 Simple Steps 🚀",
+    "subtitle": "YouTube Tutorial",
+    "description": "This tutorial video introduces the process of easily setting up a Solana validator using solv. Utilizing the Latitude Cloud Bare Metal Server, the validator setup is completed in just 3 steps. Additionally, through our partnership with Latitude, we explain how you can try solv firsthand using the provided $100 credit coupon."
+  },
+  "SolanaBreakpointSideEventRow": {
+    "title": "Solana Validator Hands-On Workshop",
+    "description": "Join us to explore the realm of Solana Validators! This beginner-friendly workshop allows you to launch a Solana Validator using Latitude's cloud servers. Validators process transactions and secure the network, earning rewards. You'll get hands-on experience, unraveling the operational essence of validators while enjoying event-exclusive free credits. It's a chance to learn, interact, and dive into the incentivized world of Solana Validators. Looking forward to engaging in discussions. See you there!",
+    "link": "Event Detail"
+  },
+  "LatitudeCouponRow": {
+    "subtitle": "Try it now on Bare Metal Cloud",
+    "title": "Latitude Trial Credit Coupon",
+    "description": "Through our partnership with Latitude, we are now able to offer a $100 credit coupon. By utilizing this coupon, you can actually try out launching a Solana validator with solv at hand right now.",
+    "register": "Register Coupon",
+    "couponCode": "Coupon Code"
+  }
+}

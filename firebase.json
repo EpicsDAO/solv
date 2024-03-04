@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "target": "solv-doc",
+    "public": "website/solv-doc/out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {
+        "source": "/resource/**/**/install",
+        "headers": [
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=install"
+          }
+        ]
+      }
+    ]
+  }
+}

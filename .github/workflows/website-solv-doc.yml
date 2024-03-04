@@ -1,0 +1,48 @@
+name: solv-doc
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'website/solv-doc/**'
+      - '.github/workflows/website-solv-doc.yml'
+      - 'package.json'
+      - 'firebase.json'
+      - '.firebaserc'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20.11.0]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.SKEET_GCP_SA_KEY }}
+      - name: Install firebase tools
+        run: pnpm i -g firebase-tools
+      - name: GitHub repository setting
+        run: git config --global url."https://github.com".insteadOf ssh://git@github.com
+      - name: Install dependencies
+        run: pnpm -F solv-doc i
+      - name: Build App
+        run: pnpm -F solv-doc build
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting:solv-doc
+      - name: Send sitemap
+        run: pnpm -F solv-doc send:sitemap
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
