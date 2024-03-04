@@ -39,7 +39,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm solv install --frozen-lockfile
+        run: pnpm install
 
       - name: Build and Add Line
         run: pnpm build

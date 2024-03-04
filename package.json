@@ -22,7 +22,7 @@
     "npm": "please_use_pnpm_instead",
     "node": ">=20"
   },
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "ci:version": "changeset version",
     "ci:publish": "changeset publish",
