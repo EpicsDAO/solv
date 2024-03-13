@@ -1,5 +1,23 @@
 # @epics-dao/solv
 
+## 3.3.3
+
+### Patch Changes
+
+- [#94](https://github.com/EpicsDAO/solv/pull/94) [`ac02cef`](https://github.com/EpicsDAO/solv/commit/ac02cefa6d9621998898fcc2c19ef01e2295fc7f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version to testnet/mainnet
+
+  ```bash
+  $ solv update
+  $ solv -V
+  3.3.3
+  ```
+
+  and update the solana version to testnet/mainnet
+
+  ```bash
+  $ solv update -b
+  ```
+
 ## 3.3.2
 
 ### Patch Changes
