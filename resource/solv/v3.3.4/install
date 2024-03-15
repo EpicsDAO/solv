@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # Constants and configurable variables
-SOLANA_VERSION=1.17.4
-NODE_VERSION=18.18.1
+NODE_VERSION=20.11.1
 
 # This ensures the entire script is downloaded
 {
@@ -12,8 +11,8 @@ usage() {
     cat 1>&2 <<EOF
 Custom Install Script
 Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
-installs nodenv, node $NODE_VERSION, and sets it as the global version.
-Additionally, installs the @epics-dao/solv2 package globally.
+installs pnpm, node $NODE_VERSION, and sets it as the global version.
+Additionally, installs the @epics-dao/solv package globally.
 
 USAGE:
     custom-install-script.sh [FLAGS]
@@ -39,44 +38,44 @@ setup_firewall() {
     echo "yes" | sudo ufw enable
     sudo ufw allow ssh
     sudo ufw allow 53 
-    sudo ufw allow 8000:10000/udp
-    sudo ufw allow 8000:10000/tcp
+    sudo ufw allow 8899
+    sudo ufw allow 8899/udp
+    sudo ufw allow 8000:8898/udp
+    sudo ufw allow 8900:10000/tcp
     sudo ufw reload
 }
 
-
-install_nodenv_and_node() {
+install_rustup() {
     sudo su - solv <<EOF_SOLV
-        echo "Installing nodenv..."
-        git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-        echo 'export PATH="\$HOME/.nodenv/bin:\$PATH"' >> ~/.profile
-        echo 'eval "\$(nodenv init -)"' >> ~/.profile
-        source ~/.profile
-
-        echo "Installing node-build..."
-        git clone https://github.com/nodenv/node-build.git "\$(nodenv root)"/plugins/node-build
-
-        echo "Installing node $NODE_VERSION..."
-        nodenv install $NODE_VERSION
-        nodenv global $NODE_VERSION
-        echo "Node installation completed!"
-
-        echo "Installing @epics-dao/solv..."
-        npm i -g @epics-dao/solv
-
-        echo "Sourcing ~/.profile..."
-        source ~/.profile
-        solv solv
+        echo "Installing rustup..."
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        echo 'export PATH="\$HOME/.cargo/env:\$PATH"' >> ~/.profile
+        source ~/.cargo/env
+        rustup component add rustfmt
+        rustup update
 EOF_SOLV
 }
 
-install_solana() {
-    echo "Installing solana..."
-    SOLV_HOME=$(eval echo ~solv)
-    export SOLANA_INSTALL_DIR="$SOLV_HOME/.local/share/solana/install"
-    sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
-    echo "Solana installation completed!"
+install_pnpm_and_packages() {
+    sudo su - solv <<EOF_SOLV
+        curl -fsSL https://get.pnpm.io/install.sh | sh -
+        source ~/.profile
+        pnpm env use $NODE_VERSION --global
+
+        echo "Installing @epics-dao/solv..."
+        pnpm add -g @epics-dao/solv
+
+        echo "Installing pm2..."
+        pnpm add -g pm2
+
+        echo "Sourcing ~/.profile..."
+        source ~/.profile
+        solv i
+        solv get aa
+EOF_SOLV
 }
+
+
 
 main() {
     for arg in "$@"; do
@@ -92,8 +91,8 @@ main() {
 
     create_user
     setup_firewall
-    install_solana
-    install_nodenv_and_node
+    install_rustup
+    install_pnpm_and_packages
     echo "Enter solv user password 👇"
     su solv
 }
