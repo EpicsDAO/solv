@@ -4,8 +4,9 @@ import { getEpoch } from './getEpoch'
 import { Logger } from '@/lib/logger'
 import { spawnSync } from 'child_process'
 import { stopSolana } from '../stop/stopSolana'
-import { dotenv, sendDiscord } from '@skeet-framework/utils'
+import { sendDiscord } from '@skeet-framework/utils'
 import chalk from 'chalk'
+import dotenv from 'dotenv'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 dotenv.config()

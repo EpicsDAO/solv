@@ -4,7 +4,12 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
 import { spawnSync } from 'child_process'
-import { CONFIG, MAINNET_TYPES, SOLV_TYPES } from '@/config/config'
+import {
+  CONFIG,
+  MAINNET_TYPES,
+  SERVICE_PATHS,
+  SOLV_TYPES,
+} from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { nodeUpdate } from './nodeUpdate'
@@ -13,6 +18,8 @@ import { jitoUpdate } from './jitoUpdate'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
+import { setupLogrotate } from '../setup/setupLogrotate'
+import { updateFirewall } from '../setup/updateFirewall'
 
 export * from './update'
 
@@ -22,6 +29,8 @@ export type UpdateOptions = {
   background: boolean
   node: boolean
   commission: number
+  logrotate: boolean
+  firewall: boolean
 }
 
 export const updateCommands = (solvConfig: ConfigParams) => {
@@ -39,7 +48,18 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-n, --node', 'Update Node Version', false)
     .option('-c, --commission', 'Update Commission', false)
+    .option('-l, --logrotate', 'Setup Logrotate', false)
+    .option('-f, --firewall', 'Update Firewall', false)
     .action(async (options: UpdateOptions) => {
+      if (options.logrotate) {
+        spawnSync(`rm -rf ${SERVICE_PATHS.SOL_LOGROTATE}`, { shell: true })
+        setupLogrotate()
+        return
+      }
+      if (options.firewall) {
+        await updateFirewall()
+        return
+      }
       const isTest =
         solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
           ? true

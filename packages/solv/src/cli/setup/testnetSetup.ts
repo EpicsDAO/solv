@@ -61,7 +61,7 @@ export const testnetSetup = async (solvConfig: ConfigParams) => {
       }
     }
     setupPermissions()
-    await genStartupValidatorScript(true, sType)
+    genStartupValidatorScript(true, sType)
     makeServices(isTest)
     setupKeys(solvConfig)
     const cmds = [
