@@ -17,7 +17,7 @@ const siteConfig = {
   instagramAccount: 'epics.dao',
   githubAccount: 'EpicsDAO',
   githubRepo: 'https://github.com/EpicsDAO/solv',
-  solvInstallerVersion: 'v3.2.0',
+  solvInstallerVersion: 'v3-',
   discordInvitationLink: 'https://discord.gg/GmHYfyRamx',
   downloadPressKitsJA:
     'https://storage.googleapis.com/elsoul-holdings/elsoul-labo/PressKits/2024-03-11/ELSOUL%20LABO%20B.V.%20%E3%83%95%E3%82%9A%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%83%E3%83%88.zip',
