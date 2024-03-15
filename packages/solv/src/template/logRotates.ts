@@ -5,7 +5,7 @@ export const logRotates = (username = CONFIG.USERNAME) => {
   const body = `${log} {
   su ${username} ${username} 
   daily
-  rotate 2
+  rotate 1
   size 4G
   missingok
   compress

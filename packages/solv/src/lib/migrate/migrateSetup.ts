@@ -32,7 +32,7 @@ export const migrateSetup = async () => {
     formatDisk(fileSystem)
     ensureFstabEntries(fileSystem)
     setupPermissions()
-    await genStartupValidatorScript(true)
+    genStartupValidatorScript(true)
     makeServices()
     const cmds = [
       'sudo systemctl daemon-reload',

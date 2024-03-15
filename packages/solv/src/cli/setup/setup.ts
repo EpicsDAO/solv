@@ -35,6 +35,7 @@ import { enableSolv } from '@/lib/enableSolv'
 import { restartLogrotate } from '@/lib/restartLogrotate'
 import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
+import { updateFirewall } from './updateFirewall'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -102,6 +103,8 @@ export const setup = async (solvConfig: ConfigParams) => {
         },
       ])
       commission = Number(question.commission)
+    } else {
+      await updateFirewall()
     }
 
     // Check if solvType is TESTNET_VALIDATOR
@@ -159,7 +162,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
-    await genStartupValidatorScript(true, sType, isJitoMev)
+    genStartupValidatorScript(true, sType, isJitoMev)
     makeServices(isTest)
     daemonReload()
 
