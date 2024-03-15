@@ -22,7 +22,7 @@ Solana の世界に飛び込み、solv の機能を探求し、努力を最小�
 ## Solana バリデーターのセットアップ
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.2.0/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3-/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -49,7 +49,7 @@ Jito MEV のメインネットを選択できるようになりました 🎉
 solv CLI は、ローカルコンピューターから Solana バリデーターを管理するためのツールです。
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv-cli/v3.2.0/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv-cli/v3-/install")"
 ```
 
 solv CLI ダッシュボードを開く - ローカルコンピューター

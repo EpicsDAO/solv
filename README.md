@@ -43,7 +43,7 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.2.0/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3-/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
