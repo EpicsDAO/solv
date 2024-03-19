@@ -1,5 +1,29 @@
 # @epics-dao/solv
 
+## 3.3.6
+
+### Patch Changes
+
+- [`b1997c1`](https://github.com/EpicsDAO/solv/commit/b1997c135ab28460934b1c3f66e67e2206d73f4a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for testnet/mainnet/jito-mainnet
+
+  - Solana Testnet: 1.18.7
+  - Solana Mainnet: 1.17.27
+  - Solana Jito Mainnet: 1.17.27-jito
+
+  ## Update solv
+
+  ```bash
+  $ solv update
+  $ solv -V
+  3.3.6
+  ```
+
+  ## Update Solana Validator
+
+  ```bash
+  $ solv update -b
+  ```
+
 ## 3.3.5
 
 ### Patch Changes
