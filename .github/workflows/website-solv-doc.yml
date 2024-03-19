@@ -42,7 +42,3 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
       - name: Deploy to Firebase
         run: firebase deploy --only hosting:solv-doc
-      - name: Send sitemap
-        run: pnpm -F solv-doc send:sitemap
-        env:
-          BING_API_KEY: ${{ secrets.BING_API_KEY }}
