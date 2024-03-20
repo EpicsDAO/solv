@@ -1,4 +1,4 @@
-name: SolvCliRelease
+name: SolvCliRelease2
 
 on:
   push:
