@@ -8,7 +8,7 @@ export const updateFirewall = async () => {
       name: 'ip',
       type: 'input',
       message: 'Enter your IP address to allow access to RPC NODE:',
-      default: '0.0.0.0',
+      default: '1.2.3.4',
     },
   ])
   await execAsync(`sudo ufw delete allow 8899/udp`)
