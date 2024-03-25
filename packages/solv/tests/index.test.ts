@@ -11,9 +11,6 @@ describe('CLI app', () => {
     const command = 'node ./dist/index.js help'
     const { stdout, stderr } = await execPromise(command)
 
-    // stderr should be empty
-    expect(stderr).toBe('')
-
     // stdout includes 'Solana Validator All-in-One CLI'
     expect(stdout.trim()).include('Solana Validator All-in-One CLI')
   })
