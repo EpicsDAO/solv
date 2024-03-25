@@ -1,6 +1,6 @@
 import { spawnSync } from 'child_process'
 
-export const checkMemoryAndSwap = (): boolean => {
+export const checkMemory = (): boolean => {
   const output = spawnSync(`free -g`, { shell: true, encoding: 'utf8' })
   const lines = output.stdout.split('\n')
 

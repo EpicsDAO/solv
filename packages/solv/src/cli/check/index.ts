@@ -1,5 +1,5 @@
 import { program } from '@/index'
-import { checkMemoryAndSwap } from './checkMemoryAndSwap'
+import { checkMemory } from './checkMemoryAndSwap'
 import { checkMountedDirs } from './checkMountedDirs'
 import { ensureSolvOwnership } from './ensureSolvOwnerShip'
 import { Logger } from '@/lib/logger'
@@ -20,7 +20,7 @@ export const checkCommands = (solvConfig: ConfigParams) => {
         )
         return
       }
-      const memorySwap = checkMemoryAndSwap()
+      const memorySwap = checkMemory()
       if (!memorySwap) {
         Logger.normal(
           `❌ Memory and Swap not enough\nRun ${Logger.successHex(

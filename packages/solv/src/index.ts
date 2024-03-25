@@ -18,6 +18,7 @@ import {
   getCommands,
   clientCommands,
 } from '@/cli'
+import { createSinglePool } from './lib/pool/createSinglePool'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -31,6 +32,15 @@ program
 
 async function main() {
   try {
+    program
+      .command('test')
+      .description('Test command')
+      .action(async () => {
+        const endpoint = 'https://api.mainnet-beta.solana.com'
+        const keyPath =
+          '/Users/fumi/solvKeys/upload/mainnet-validator-keypair.json'
+        await createSinglePool(endpoint, keyPath)
+      })
     serverCommands(solvConfig)
     startCommand(solvConfig)
     restartCommand(solvConfig)
