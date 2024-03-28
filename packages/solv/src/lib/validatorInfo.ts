@@ -5,6 +5,7 @@ export type ValidatorInfoResponse = {
   ValidatorName: string
   Description: string
   website: string
+  iconUrl: string
 }
 
 export const validatorInfo = async () => {
@@ -33,8 +34,16 @@ export const validatorInfo = async () => {
         return 'https://solv.epics.dev'
       },
     },
+    {
+      type: 'input',
+      name: 'iconUrl',
+      message: 'What is the icon url?',
+      default() {
+        return 'https://icon.epics.dev'
+      },
+    },
   ])
-  const cmd = `solana validator-info publish "${answer.ValidatorName}" -d "${answer.Description}" -w "${answer.website}" --force`
+  const cmd = `solana validator-info publish "${answer.ValidatorName}" -d "${answer.Description}" -w "${answer.website}" -i ${answer.iconUrl} --force`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
   return true
 }

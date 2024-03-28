@@ -25,13 +25,6 @@ export const setupCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
 
   program
-    .command('updateLog')
-    .description('Update Logrotate')
-    .action(() => {
-      updateLogrotate()
-    })
-
-  program
     .command('rmLogs')
     .description('Remove Logs')
     .action(() => {
@@ -46,7 +39,6 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     // .option('--testnet', 'Setup Testnet Validator', false)
     // .option('--mainnet', 'Setup Mainnet Validator', false)
     // .option('--rpc', 'Setup RPC Node', false)
-    .option('--commission <commission>', 'Set commission rate', '10')
     .action(async (options: SetupOptions) => {
       updateSolvConfig({ COMMISSION: Number(options.commission) })
       const solvConfigReflectComission = readOrCreateDefaultConfig()
