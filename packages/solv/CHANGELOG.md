@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.3.9
+
+### Patch Changes
+
+- [`70980e7`](https://github.com/EpicsDAO/solv/commit/70980e780500e491ec93351d89581feb23457b8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Remove unnecessary dependencies
+
 ## 3.3.8
 
 ### Patch Changes
