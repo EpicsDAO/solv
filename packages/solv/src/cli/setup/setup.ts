@@ -36,6 +36,7 @@ import { restartLogrotate } from '@/lib/restartLogrotate'
 import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
+import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -85,7 +86,9 @@ export const setup = async (solvConfig: ConfigParams) => {
 
     if (isJitoMev) {
       const jitoConfig = await askJitoSetting()
-      readOrCreateJitoConfig(jitoConfig)
+      await readOrCreateJitoConfig()
+      await updateJitoSolvConfig(jitoConfig)
+      console.log('Updated JITO MEV Config:', jitoConfig)
     }
 
     let commission = CONFIG.COMMISSION
@@ -162,7 +165,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
-    genStartupValidatorScript(true, sType, isJitoMev)
+    await genStartupValidatorScript(true, sType, isJitoMev)
     makeServices(isTest)
     daemonReload()
 

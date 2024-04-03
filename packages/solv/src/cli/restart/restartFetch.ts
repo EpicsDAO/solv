@@ -20,7 +20,7 @@ export const restartFetch = async (solvConfig: ConfigParams) => {
   }
   const isJitoMev =
     solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV ? true : false
-  genStartupValidatorScript(false, solvConfig.config.SOLV_TYPE, isJitoMev)
+  await genStartupValidatorScript(false, solvConfig.config.SOLV_TYPE, isJitoMev)
   stopSolana()
   startSolana()
 }
