@@ -131,57 +131,9 @@ This command will show your all config paths which are used by solana validator.
 $ solv get config
 ```
 
-## Migrate Solv3 Instructions
-
-We updated the solv version to v3.0.0 to support the latest requirements of Solana Official Docs.
-
-⭐️ Improved
-
-- Changed Mountpoint/Directory as the solana official docs
-- Removed unnecessary swapfile and ramdisk
-- Added solv s for solv Dashboard (no command maintenance)
-
-Below is the migration guide for existing solv users.(Mainly TDS attendees)
-
-```bash
-$ solv update
-```
-
-Open solv Dashboard
-
-```bash
-$ solv s
-```
-
-Set your default Language for initial setup
-
-```bash
-Solv Version: v3.0.0
-
-? Select Language (Use arrow keys)
-❯ en
-  ja
-```
-
-Open solv Dashboard again to reflect the language change
-
-```bash
-$ solv s
-```
-
-[![solv-s](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)](https://storage.googleapis.com/epics-bucket/Validator/solv-s.jpeg)
-
-Select 5 to migrate to solv v3.x.x
-
-This will automatically update your node to the latest requirements of Solana Official Docs.
-
 If you have any questions, please contact us on Discord.
 
 https://discord.gg/yxm5hJqRhg
-
-## Solana Delegation Program
-
-https://solana.org/delegation-program
 
 ## solv CLI
 
