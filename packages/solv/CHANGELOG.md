@@ -1,5 +1,15 @@
 # @epics-dao/solv
 
+## 3.3.11
+
+### Patch Changes
+
+- [#108](https://github.com/EpicsDAO/solv/pull/108) [`2bafc7e`](https://github.com/EpicsDAO/solv/commit/2bafc7e1f42c6fca34d43df2abac74732fb6542c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv setup for jitoMEV
+
+  ```bash
+  $ solv setup
+  ```
+
 ## 3.3.10
 
 ### Patch Changes
