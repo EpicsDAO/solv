@@ -1,5 +1,31 @@
 # @epics-dao/solv
 
+## 3.3.10
+
+### Patch Changes
+
+- [`18a7eeb`](https://github.com/EpicsDAO/solv/commit/18a7eebf683ec1bbab3a1964dd7a9fb4dfaa90e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet
+
+      ## Update solv
+
+      ```bash
+      $ solv update
+      $ solv -V
+      3.3.10
+      ```
+
+      ## Update Solana Validator Version
+
+      ```bash
+      $ solv update -b
+      ```
+
+      You can always check the validator status by running the following command:
+
+      ```bash
+      $ solv get monitor
+      ```
+
 ## 3.3.9
 
 ### Patch Changes
