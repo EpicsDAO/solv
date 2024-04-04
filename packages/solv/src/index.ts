@@ -18,6 +18,7 @@ import {
   getCommands,
   clientCommands,
 } from '@/cli'
+import { createStakeKeypair } from './cli/server/stake/createStakeKeypair'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()

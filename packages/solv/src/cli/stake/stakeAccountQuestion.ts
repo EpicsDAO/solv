@@ -1,7 +1,9 @@
 import inquirer from 'inquirer'
 import { createStakeAccount } from './createStakeAccount'
-import { getKeypairPaths } from '@/lib/getKeypairPaths'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { NETWORK_TYPES } from '@/config/config'
+import { createStakeKeypair } from '../server/stake/createStakeKeypair'
+import { updateSolvConfig } from '@/lib/updateSolvConfig'
 
 export type StakeAccountQuestion = {
   stakeAuthorityKeyPath: string
@@ -22,15 +24,11 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
   if (!confirmCreateStakeAccount.confirmCreateStakeAccount) {
     return false
   }
-  const { keypairs, defaultKey } = getKeypairPaths(solvConfig)
+  const authorityKeypair =
+    solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+      ? '~/testnet-authority-keypair.json'
+      : '~/mainnet-authority-keypair.json'
   const answer = await inquirer.prompt<StakeAccountQuestion>([
-    {
-      type: 'list',
-      name: 'stakeAuthorityKeyPath',
-      message: 'What is the stake authority key path?',
-      choices: keypairs,
-      default: defaultKey,
-    },
     {
       type: 'input',
       name: 'solAmount',
@@ -38,6 +36,14 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
       default: 1,
     },
   ])
-  createStakeAccount(answer.stakeAuthorityKeyPath, answer.solAmount)
+  const stakeKeypair = await createStakeKeypair()
+
+  const currentStakeAccount = solvConfig.config.STAKE_ACCOUNT
+  // Array of unique stake accounts
+  const uniqueStakeAccount = Array.from(
+    new Set([...currentStakeAccount, stakeKeypair]),
+  )
+  updateSolvConfig({ STAKE_ACCOUNT: uniqueStakeAccount })
+  createStakeAccount(authorityKeypair, stakeKeypair, answer.solAmount)
   return true
 }

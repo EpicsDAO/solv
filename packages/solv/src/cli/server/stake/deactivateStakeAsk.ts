@@ -1,27 +1,19 @@
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 
 export type deactivateStakeAskOption = {
-  stakeAccount: string
-  authorityKeyPath: string
+  stakeAccounts: string[]
 }
 
 export const deactivateStakeAsk = async () => {
+  const config = readOrCreateDefaultConfig()
+  const stakeAccount = config.config.STAKE_ACCOUNT
   const answer = await inquirer.prompt<deactivateStakeAskOption>([
     {
-      type: 'input',
-      name: 'stakeAccount',
-      message: `What is your Stake Account Address?(e.g. xxxxxxxxxxxxxx)`,
-      default() {
-        return 'xxxxxxxxxxxxxxxx'
-      },
-    },
-    {
-      type: 'input',
-      name: 'authorityKeyPath',
-      message: `What is the Authority Account Account Address?(Enter to default)`,
-      default() {
-        return '~/mainnet-validator-keypair.json'
-      },
+      type: 'checkbox',
+      name: 'stakeAccounts',
+      message: `Which Stake Account would you like to deactivate stake from?`,
+      choices: stakeAccount,
     },
   ])
   return answer

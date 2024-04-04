@@ -9,6 +9,7 @@ import { delegateStakeAsk } from '../server/stake/delegateStakeAsk'
 import { deactivateStakeAsk } from '../server/stake/deactivateStakeAsk'
 import { unstakeAsk } from '../server/stake/unstakeAsk'
 import { withdrawStakeAsk } from '../server/stake/withdrawStakeAsk'
+import chalk from 'chalk'
 
 export const stakeCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
@@ -17,9 +18,19 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .description(cmds.stake)
     .action(async () => {
       await stakeAccountQuestion(solvConfig)
-      const { validatorVoteAccount, stakeAccount, authorityKeyPath } =
+      const { validatorVoteAccount, stakeAccounts } =
         await delegateStakeAsk(solvConfig)
-      await delegateStake(stakeAccount, validatorVoteAccount, authorityKeyPath)
+      for await (const stakeAccount of stakeAccounts) {
+        try {
+          await delegateStake(stakeAccount, validatorVoteAccount)
+        } catch (error) {
+          console.log(
+            chalk.yellow(
+              `Network might be busy, please try again later\nYou can use a custom RPC endpoint to avoid this issue\n`,
+            ),
+          )
+        }
+      }
     })
 
   program
@@ -28,12 +39,22 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .action(async () => {
       const { unstakeOption } = await unstakeAsk()
       if (unstakeOption === 'Deactivate Stake') {
-        const { stakeAccount, authorityKeyPath } = await deactivateStakeAsk()
-        await deactivateStake(stakeAccount, authorityKeyPath)
+        const { stakeAccounts } = await deactivateStakeAsk()
+        for await (const stakeAccount of stakeAccounts) {
+          try {
+            await deactivateStake(stakeAccount)
+          } catch (error) {
+            console.log(
+              chalk.yellow(
+                `Network might be busy, please try again later\nYou can use a custom RPC endpoint to avoid this issue\n`,
+              ),
+            )
+          }
+        }
       } else {
         const answer = await withdrawStakeAsk()
         await withdrawStake(
-          answer.stakeAccount,
+          answer.stakeAccounts,
           answer.destinationAddress,
           answer.solAmount,
         )

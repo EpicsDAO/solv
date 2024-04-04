@@ -1,22 +1,21 @@
-import { getKeypairPaths } from '@/lib/getKeypairPaths'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 
 export type withdrawStakeAskOption = {
-  stakeAccount: string
+  stakeAccounts: string
   destinationAddress: string
   solAmount: string
 }
 
 export const withdrawStakeAsk = async () => {
+  const config = readOrCreateDefaultConfig()
+  const stakeAccount = config.config.STAKE_ACCOUNT
   const answer = await inquirer.prompt<withdrawStakeAskOption>([
     {
-      type: 'input',
-      name: 'stakeAccount',
-      message: `What is your Stake Account Address?(e.g. xxxxxxxxxxxxxx)`,
-      default() {
-        return 'xxxxxxxxxxxxxxxx'
-      },
+      type: 'checkbox',
+      name: 'stakeAccounts',
+      message: `Which Stake Account would you like to withdraw stake from?`,
+      choices: stakeAccount,
     },
     {
       type: 'input',

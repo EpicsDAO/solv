@@ -15,8 +15,8 @@ import {
   CONFIG,
   DISK_TYPES,
   MAINNET_TYPES,
+  NETWORK_TYPES,
   SOLV_TYPES,
-  getAllKeyPaths,
 } from '@/config/config'
 import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
 import { formatDisk } from '@/cli/setup/formatDisk'
@@ -27,7 +27,6 @@ import {
   readOrCreateDefaultConfig,
 } from '@/lib/readOrCreateDefaultConfig'
 import { langSet } from '@/lib/langSet'
-import { existsSync } from 'fs'
 import { mainnetSetup } from './mainnetSetup'
 import { setupJitoMev } from '@/template/startupScripts/setupJitoMev'
 import { daemonReload } from '@/lib/daemonReload'
@@ -138,6 +137,7 @@ export const setup = async (solvConfig: ConfigParams) => {
         DISK_TYPES: DISK_TYPES.DOUBLE,
         SOLV_TYPE: sType,
         COMMISSION: commission,
+        SOLANA_NETWORK: isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET,
       })
       const fileSystem = '/dev/' + disks.disks[0].name
       formatDisk(fileSystem)
