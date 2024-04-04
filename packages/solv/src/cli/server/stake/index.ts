@@ -1,4 +1,7 @@
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import {
+  ConfigParams,
+  readOrCreateDefaultConfig,
+} from '@/lib/readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
 import { INSTALLER_CHOICES, server } from '../server'
 import { delegateStake } from '@/cli/stake'
@@ -10,6 +13,7 @@ import { delegateStakeAsk } from './delegateStakeAsk'
 import { unstakeAsk } from './unstakeAsk'
 import { deactivateStakeAsk } from './deactivateStakeAsk'
 import { withdrawStakeAsk } from './withdrawStakeAsk'
+import chalk from 'chalk'
 
 export enum STAKE_CHOICES {
   STAKE,
@@ -35,22 +39,40 @@ export const stakeCmds = async (solvConfig: ConfigParams) => {
     1) as STAKE_CHOICES
   if (selectedOption === STAKE_CHOICES.STAKE) {
     await stakeAccountQuestion(solvConfig)
-    const { validatorVoteAccount, stakeAccount, authorityKeyPath } =
-      await delegateStakeAsk(solvConfig)
-    updateSolvConfig({
-      DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY: validatorVoteAccount,
-    })
-    await delegateStake(stakeAccount, validatorVoteAccount, authorityKeyPath)
+    const newSolvConfig = readOrCreateDefaultConfig()
+    const { validatorVoteAccount, stakeAccounts } =
+      await delegateStakeAsk(newSolvConfig)
+    for await (const stakeAccount of stakeAccounts) {
+      try {
+        await delegateStake(stakeAccount, validatorVoteAccount)
+      } catch (error) {
+        console.log(
+          chalk.yellow(
+            `Network might be busy, please try again later\nYou can use a custom RPC endpoint to avoid this issue\n`,
+          ),
+        )
+      }
+    }
     return
   } else if (selectedOption === STAKE_CHOICES.USTAKE) {
     const { unstakeOption } = await unstakeAsk()
     if (unstakeOption === 'Deactivate Stake') {
-      const { stakeAccount, authorityKeyPath } = await deactivateStakeAsk()
-      await deactivateStake(stakeAccount, authorityKeyPath)
+      const { stakeAccounts } = await deactivateStakeAsk()
+      for await (const stakeAccount of stakeAccounts) {
+        try {
+          await deactivateStake(stakeAccount)
+        } catch (error) {
+          console.log(
+            chalk.yellow(
+              `Network might be busy, please try again later\nYou can use a custom RPC endpoint to avoid this issue\n`,
+            ),
+          )
+        }
+      }
     } else {
       const answer = await withdrawStakeAsk()
       await withdrawStake(
-        answer.stakeAccount,
+        answer.stakeAccounts,
         answer.destinationAddress,
         answer.solAmount,
       )

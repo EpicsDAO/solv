@@ -1,7 +1,10 @@
 import { program } from '@/index'
 import { delegateStake } from './delegateStake'
 export * from './delegateStake'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import {
+  ConfigParams,
+  readOrCreateDefaultConfig,
+} from '@/lib/readOrCreateDefaultConfig'
 import { stakeAccountQuestion } from './stakeAccountQuestion'
 import { deactivateStake } from './deactivateStake'
 import { withdrawStake } from './withdrawStake'
@@ -18,8 +21,9 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .description(cmds.stake)
     .action(async () => {
       await stakeAccountQuestion(solvConfig)
+      const newSolvConfig = readOrCreateDefaultConfig()
       const { validatorVoteAccount, stakeAccounts } =
-        await delegateStakeAsk(solvConfig)
+        await delegateStakeAsk(newSolvConfig)
       for await (const stakeAccount of stakeAccounts) {
         try {
           await delegateStake(stakeAccount, validatorVoteAccount)

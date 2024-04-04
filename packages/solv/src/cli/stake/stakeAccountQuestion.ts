@@ -38,7 +38,7 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
   ])
   const stakeKeypair = await createStakeKeypair()
 
-  const currentStakeAccount = solvConfig.config.STAKE_ACCOUNT
+  const currentStakeAccount = solvConfig.config.STAKE_ACCOUNT || []
   // Array of unique stake accounts
   const uniqueStakeAccount = Array.from(
     new Set([...currentStakeAccount, stakeKeypair]),
