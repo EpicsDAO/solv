@@ -42,6 +42,7 @@ export type CONFIG_TYPE = {
   VALIDATOR_IPS: string[]
   MAINNET_TYPE: MAINNET_TYPES
   LEDGER_PATH: string
+  STAKE_ACCOUNT: string[]
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -67,6 +68,7 @@ export const CONFIG: CONFIG_TYPE = {
   VALIDATOR_IPS: [],
   MAINNET_TYPE: MAINNET_TYPES.SOLANA_CLIENT,
   LEDGER_PATH: '/mnt/ledger',
+  STAKE_ACCOUNT: [],
 }
 
 export const HOME_PATHS = {

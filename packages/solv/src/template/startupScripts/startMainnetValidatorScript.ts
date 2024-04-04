@@ -24,6 +24,7 @@ exec solana-validator \\
 --known-validator GwHH8ciFhR8vejWCqmg8FWZUCNtubPY2esALvy5tBvji \\
 --known-validator 6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN \\
 --known-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \\
+--known-validator RBFiUqjYuy4mupzZaU96ctXJBy23sRBRsL3KivDAsFM \\
 --dynamic-port-range 8000-8020 \\
 --rpc-bind-address 0.0.0.0 \\
 --rpc-port 8899 \\
