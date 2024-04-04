@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.3.13
+
+### Patch Changes
+
+- [`5b5d107`](https://github.com/EpicsDAO/solv/commit/5b5d10727d0aa724f8ac9a4270ac9b2eacefd774) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
+
 ## 3.3.12
 
 ### Patch Changes
