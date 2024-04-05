@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import WBSO2022Epics from '@/assets/img/work/WBSO2022Epics.jpg'
-import ValidatorListEpics from '@/assets/img/work/ValidatorListEpics.png'
+import ValidatorList from '@/assets/img/work/ELSOULLABOSolanaMainnetValidator.jpg'
 import SolanaSummerCampHackathon from '@/assets/img/work/SolanaSummerCampHackathon.jpg'
 import { useTranslation } from 'next-i18next'
 
@@ -12,7 +12,7 @@ const works = [
   },
   {
     title: 'OurWorksRow.SolanaValidator.title',
-    imageUrl: ValidatorListEpics,
+    imageUrl: ValidatorList,
     description: 'OurWorksRow.SolanaValidator.description',
   },
   {
