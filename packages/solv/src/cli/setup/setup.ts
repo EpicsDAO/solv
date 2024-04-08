@@ -36,6 +36,7 @@ import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
+import { setupSwap } from './setupSwap'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -143,6 +144,9 @@ export const setup = async (solvConfig: ConfigParams) => {
       formatDisk(fileSystem)
       const fileSystem2 = '/dev/' + disks.disks[1].name
       formatDisk(fileSystem2)
+      if (!isTest) {
+        await setupSwap()
+      }
       ensureFstabEntries(fileSystem, fileSystem2)
     } else {
       // SINGLE
