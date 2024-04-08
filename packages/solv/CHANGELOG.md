@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.3.15
+
+### Patch Changes
+
+- [`56a56a9`](https://github.com/EpicsDAO/solv/commit/56a56a9d4f3ade5b76f99df1d7b91b8716fde9ce) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv setup --swap
+
 ## 3.3.14
 
 ### Patch Changes
