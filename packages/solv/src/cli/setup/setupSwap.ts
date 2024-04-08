@@ -4,8 +4,8 @@ import { spawnSync, execSync } from 'node:child_process'
 import { statfs } from 'fs/promises'
 
 const SWAP_PATH = '/swapfile'
-const MIN_SWAP_SIZE_GB = 15 // Min swap size in GB
-const REQUIRED_FREE_SPACE_GB = 100 // Required free space in GB
+const MIN_SWAP_SIZE_GB = 96 // Min swap size in GB
+const REQUIRED_FREE_SPACE_GB = 200 // Required free space in GB
 
 export const setupSwap = async () => {
   try {
@@ -38,7 +38,7 @@ export const setupSwap = async () => {
     execSync(`sudo rm ${SWAP_PATH}`)
 
     const cmds = [
-      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=16384`,
+      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=102400`,
       `sudo mkswap ${SWAP_PATH}`,
       `sudo chmod 600 ${SWAP_PATH}`,
       `sudo swapon ${SWAP_PATH}`,
