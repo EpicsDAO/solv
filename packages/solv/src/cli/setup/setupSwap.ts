@@ -4,7 +4,7 @@ import { spawnSync, execSync } from 'node:child_process'
 import { statfs } from 'fs/promises'
 
 const SWAP_PATH = '/swapfile'
-const MIN_SWAP_SIZE_GB = 96 // Min swap size in GB
+const MIN_SWAP_SIZE_GB = 98 // Min swap size in GB
 const REQUIRED_FREE_SPACE_GB = 200 // Required free space in GB
 
 export const setupSwap = async () => {
