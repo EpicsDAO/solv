@@ -11,6 +11,7 @@ import { testnetSetup } from './testnetSetup'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { updateLogrotate } from '@/cli/setup/updateLogrotate'
 import { rmLogs } from './rmLogs'
+import { setupSwap } from './setupSwap'
 
 type SetupOptions = {
   vote: boolean
@@ -19,6 +20,7 @@ type SetupOptions = {
   mainnet: boolean
   rpc: boolean
   commission: string
+  swap: boolean
 }
 
 export const setupCommands = (solvConfig: ConfigParams) => {
@@ -36,9 +38,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     .description(cmds.setup)
     .option('--vote', 'Setup Vote Account', false)
     .option('--key', 'Setup Validator Keypairs', false)
-    // .option('--testnet', 'Setup Testnet Validator', false)
-    // .option('--mainnet', 'Setup Mainnet Validator', false)
-    // .option('--rpc', 'Setup RPC Node', false)
+    .option('--swap', 'Setup Swap', false)
     .action(async (options: SetupOptions) => {
       updateSolvConfig({ COMMISSION: Number(options.commission) })
       const solvConfigReflectComission = readOrCreateDefaultConfig()
@@ -51,6 +51,8 @@ export const setupCommands = (solvConfig: ConfigParams) => {
       } else if (options.testnet) {
         console.log(chalk.white('Setting up Testnet Validator ...'))
         await testnetSetup(solvConfigReflectComission)
+      } else if (options.swap) {
+        await setupSwap()
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
         await setup(solvConfigReflectComission)

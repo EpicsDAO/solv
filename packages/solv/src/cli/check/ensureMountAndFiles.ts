@@ -15,9 +15,9 @@ ${fileSystem2}        ${MT_PATHS.ACCOUNTS}     ext4 auto 0 0
 
   const fstabContent = output.stdout
 
-  let linesToAdd = []
+  const linesToAdd = []
 
-  for (let line of lines) {
+  for (const line of lines) {
     if (!fstabContent.includes(line)) {
       linesToAdd.push(line)
     }
