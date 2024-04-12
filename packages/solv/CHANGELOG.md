@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.3.16
+
+### Patch Changes
+
+- [#121](https://github.com/EpicsDAO/solv/pull/121) [`e2ef168`](https://github.com/EpicsDAO/solv/commit/e2ef168da49900e6cc1f593db562b27775749d69) Thanks [@256hax](https://github.com/256hax)! - update solana version(1.18.11 on Testnet)
+
 ## 3.3.15
 
 ### Patch Changes

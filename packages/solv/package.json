@@ -1,6 +1,6 @@
 {
   "name": "@epics-dao/solv",
-  "version": "3.3.15",
+  "version": "3.3.16",
   "description": "Solana Validator CLI SOLV",
   "main": "dist/index.js",
   "module": "dist/index.js",
