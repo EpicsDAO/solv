@@ -22,6 +22,11 @@ export enum MAINNET_TYPES {
   FIREDANCER = 'Firedancer',
 }
 
+export enum MAINNET_RPC_TYPES {
+  SOLANA_CLIENT = 'SolanaClient',
+  JITO_CLIENT = 'JitoClient',
+}
+
 export type CONFIG_TYPE = {
   LANG: LANGS
   USERNAME: string

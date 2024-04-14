@@ -14,6 +14,7 @@ import { startSolana } from '@/cli/start/startSolana'
 import {
   CONFIG,
   DISK_TYPES,
+  MAINNET_RPC_TYPES,
   MAINNET_TYPES,
   NETWORK_TYPES,
   SOLV_TYPES,
@@ -107,6 +108,19 @@ export const setup = async (solvConfig: ConfigParams) => {
       ])
       commission = Number(question.commission)
     } else {
+      const answer = await inquirer.prompt<{ rpc_type: string }>([
+        {
+          name: 'rpc_type',
+          type: 'list',
+          message:
+            'Which client do you want to use?',
+          default: Object.values(MAINNET_RPC_TYPES),
+        },
+      ])
+      if (answer.rpc_type === MAINNET_RPC_TYPES.JITO_CLIENT) {
+        await setupJitoMev();
+        daemonReload()
+      }
       await updateFirewall()
     }
 
