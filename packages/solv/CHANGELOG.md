@@ -1,5 +1,13 @@
 # @epics-dao/solv
 
+## 3.3.19
+
+### Patch Changes
+
+- [`4999c70`](https://github.com/EpicsDAO/solv/commit/4999c70c633778cf3d6136336bd68a5c7420b620) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - setup for latitude mainnet
+
+- [`79a5be3`](https://github.com/EpicsDAO/solv/commit/79a5be3e181153d6062c4b26c13c94134dda86be) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - setup for mainnet swapfile
+
 ## 3.3.18
 
 ### Patch Changes
