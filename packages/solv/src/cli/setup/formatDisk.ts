@@ -12,7 +12,9 @@ export const formatDisk = (fileSystem: string) => {
     const cmd = `sudo mkfs.ext4 ${fileSystem}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     console.log(`${fileSystem} has been formatted.`)
+    return true
   } else {
     console.log(`${fileSystem} is already formatted.`)
+    return false
   }
 }

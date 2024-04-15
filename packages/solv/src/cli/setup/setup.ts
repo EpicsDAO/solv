@@ -140,14 +140,19 @@ export const setup = async (solvConfig: ConfigParams) => {
         COMMISSION: commission,
         SOLANA_NETWORK: isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET,
       })
-      const fileSystem = '/dev/' + disks.disks[0].name
-      formatDisk(fileSystem)
-      const fileSystem2 = '/dev/' + disks.disks[1].name
-      formatDisk(fileSystem2)
+
+      const isDisk1Formatted = formatDisk(disks.disks[0].name)
+      const isDisk2Formatted = formatDisk(disks.disks[1].name)
       if (!isTest) {
         await setupSwap()
       }
-      ensureFstabEntries(fileSystem, fileSystem2)
+      let fileSystem1 = isDisk1Formatted ? '/dev/' + disks.disks[0].name : ''
+      let fileSystem2 = isDisk2Formatted ? '/dev/' + disks.disks[1].name : ''
+      if (fileSystem1 === '' && fileSystem2) {
+        fileSystem1 = fileSystem2
+        fileSystem2 = ''
+      }
+      ensureFstabEntries(fileSystem1, fileSystem2)
     } else {
       // SINGLE
       console.log('Setting up SINGLE DISK...')

@@ -64,7 +64,7 @@ const getSwapFileSizeGB = () => {
       .trim()
     return parseInt(sizeBytes, 10) / 1024 ** 3 // Convert size from bytes to GB
   } catch (error) {
-    throw new Error(`Error getting swap file size: ${error}`)
+    return 0
   }
 }
 

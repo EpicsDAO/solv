@@ -7,6 +7,7 @@ export const ensureFstabEntries = (fileSystem: string, fileSystem2 = '') => {
 ${fileSystem2}        ${MT_PATHS.ACCOUNTS}     ext4 auto 0 0
 `
   const mtLine = fileSystem2 !== '' ? mtLineForDouble : mtLineSingle
+
   const lines = [mtLine]
   const output = spawnSync(`cat /etc/fstab`, {
     shell: true,
