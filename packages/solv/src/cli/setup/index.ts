@@ -40,22 +40,21 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     .option('--key', 'Setup Validator Keypairs', false)
     .option('--swap', 'Setup Swap', false)
     .action(async (options: SetupOptions) => {
-      updateSolvConfig({ COMMISSION: Number(options.commission) })
-      const solvConfigReflectComission = readOrCreateDefaultConfig()
+      const config = readOrCreateDefaultConfig()
       if (options.vote) {
         console.log(chalk.white('Setting up Vote Account ...'))
-        setupVoteAccount(solvConfigReflectComission)
+        setupVoteAccount(config)
       } else if (options.key) {
         console.log(chalk.white('Setting up Validator Keypairs ...'))
-        createSolvKeyPairs(solvConfigReflectComission)
+        createSolvKeyPairs(config)
       } else if (options.testnet) {
         console.log(chalk.white('Setting up Testnet Validator ...'))
-        await testnetSetup(solvConfigReflectComission)
+        await testnetSetup(config)
       } else if (options.swap) {
         await setupSwap()
       } else {
         console.log(chalk.white('Setting up Solana Validator ...'))
-        await setup(solvConfigReflectComission)
+        await setup(config)
       }
     })
 }
