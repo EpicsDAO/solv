@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.3.18
+
+### Patch Changes
+
+- [`b9ad64c`](https://github.com/EpicsDAO/solv/commit/b9ad64c910b425ad547cca88621a794c1076b80f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv setup for latitude
+
 ## 3.3.17
 
 ### Patch Changes
