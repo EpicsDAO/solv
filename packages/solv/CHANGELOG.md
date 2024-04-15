@@ -1,5 +1,31 @@
 # @epics-dao/solv
 
+## 3.3.17
+
+### Patch Changes
+
+- [#124](https://github.com/EpicsDAO/solv/pull/124) [`7b41a2b`](https://github.com/EpicsDAO/solv/commit/7b41a2b3ce377a89d20d74f53fcc7759fa2dac51) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - Solana Validator Mainnet
+
+  ## Update solv
+
+  ```bash
+  $ solv update
+  $ solv -V
+  3.3.17
+  ```
+
+  ## Update Solana Validator Version
+
+  ```bash
+  $ solv update -b
+  ```
+
+  You can always check the validator status by running the following command:
+
+  ```bash
+  $ solv get monitor
+  ```
+
 ## 3.3.16
 
 ### Patch Changes
