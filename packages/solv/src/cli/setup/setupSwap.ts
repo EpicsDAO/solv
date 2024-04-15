@@ -34,8 +34,9 @@ export const setupSwap = async () => {
     }
 
     // Remove existing swap file if it exists
-    execSync(`sudo swapoff ${SWAP_PATH}`)
-    execSync(`sudo rm ${SWAP_PATH}`)
+    // execSync(`sudo mkdir -p $(dirname ${SWAP_PATH})`)
+    // execSync(`sudo swapoff ${SWAP_PATH}`)
+    // execSync(`sudo rm ${SWAP_PATH}`)
 
     const cmds = [
       `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=102400`,
