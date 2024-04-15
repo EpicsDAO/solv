@@ -1,7 +1,7 @@
 import { execSync } from 'child_process'
 import Table from 'cli-table3'
 
-export const du = (path = '/mt/*'): number => {
+export const du = (path = '/mnt/*'): number => {
   // Sanitize the path to prevent command injection
   const sanitizedPath = path.replace(/[^a-zA-Z0-9_\-\/. ]/g, '')
 
@@ -14,7 +14,7 @@ export const du = (path = '/mt/*'): number => {
   return size
 }
 
-export const logDiskUsage = (path = '/mt/*') => {
+export const logDiskUsage = (path = '/mnt/*') => {
   const sanitizedPath = path.replace(/[^a-zA-Z0-9_\-\/. ]/g, '')
 
   const used = du(sanitizedPath)

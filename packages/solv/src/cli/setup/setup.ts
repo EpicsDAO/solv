@@ -148,11 +148,13 @@ export const setup = async (solvConfig: ConfigParams) => {
       }
       let fileSystem1 = isDisk1Formatted ? '/dev/' + disks.disks[0].name : ''
       let fileSystem2 = isDisk2Formatted ? '/dev/' + disks.disks[1].name : ''
+      let isLatitude = false
       if (fileSystem1 === '' && fileSystem2) {
         fileSystem1 = fileSystem2
         fileSystem2 = ''
+        isLatitude = true
       }
-      ensureFstabEntries(fileSystem1, fileSystem2)
+      ensureFstabEntries(fileSystem1, fileSystem2, isLatitude)
     } else {
       // SINGLE
       console.log('Setting up SINGLE DISK...')

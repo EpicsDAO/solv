@@ -24,14 +24,15 @@ export const df = () => {
     .slice(0, 10)
 
   const isMountedOnCorrect = parsedData.some(
-    (data) => data.MountedOn === '/mt' && convertToBytes(data.Size) > 900e9 - 1
+    (data) =>
+      data.MountedOn === '/mnt' && convertToBytes(data.Size) > 900e9 - 1,
   )
 
   parsedData.forEach((data) => {
-    if (data.MountedOn === '/mt' && convertToBytes(data.Size) > 900e9 - 1) {
+    if (data.MountedOn === '/mnt' && convertToBytes(data.Size) > 900e9 - 1) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
-        'color: green'
+        'color: green',
       )
     } else if (
       data.Filesystem.startsWith('/dev/') &&
@@ -39,7 +40,7 @@ export const df = () => {
     ) {
       console.log(
         `%c${data.Filesystem}\t${data.Size}\t${data.MountedOn}`,
-        'color: red'
+        'color: red',
       )
     }
   })
@@ -51,14 +52,14 @@ export const df = () => {
       .filter(
         (data) =>
           data.Filesystem.startsWith('/dev/') &&
-          convertToBytes(data.Size) > 900e9 - 1
+          convertToBytes(data.Size) > 900e9 - 1,
       )
       .map((data) => data.Filesystem)
     if (fsNames.length > 0) {
       console.log(
         Logger.warningHex(
-          `\nfileSystem might be one of ${fsNames.join(', ')} ...?`
-        )
+          `\nfileSystem might be one of ${fsNames.join(', ')} ...?`,
+        ),
       )
     }
   }

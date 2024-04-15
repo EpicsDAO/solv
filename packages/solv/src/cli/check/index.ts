@@ -1,40 +1,26 @@
 import { program } from '@/index'
-import { checkMemory } from './checkMemoryAndSwap'
-import { checkMountedDirs } from './checkMountedDirs'
-import { ensureSolvOwnership } from './ensureSolvOwnerShip'
-import { Logger } from '@/lib/logger'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { df } from './df/df'
+import { displayTable } from '@/lib/logger/table'
+import getPreferredDisks, { GetPreferredDisksResult } from './mt/getLargestDisk'
 
 export const checkCommands = (solvConfig: ConfigParams) => {
   const { locale } = solvConfig
-  program
-    .command('check')
-    .description(locale.cmds.check)
-    .action(() => {
-      const mountedDirs = checkMountedDirs()
-      if (!mountedDirs) {
-        Logger.normal(
-          `❌ /mt dir is not enough volumes\nCheck your mount point with ${Logger.successHex(
-            `\n\$ solv df\n\$ solv ls`,
-          )}`,
-        )
-        return
-      }
-      const memorySwap = checkMemory()
-      if (!memorySwap) {
-        Logger.normal(
-          `❌ Memory and Swap not enough\nRun ${Logger.successHex(
-            `$ solv setup --swap --path <yourFileSystemPath>`,
-          )}`,
-        )
-        return
-      }
+  const check = program.command('check').description(locale.cmds.check)
 
-      ensureSolvOwnership()
-      Logger.normal(
-        `You are all set 🎉\n\nRun ${Logger.successHex(
-          `$ solv start\n\n and check your log\n\n$ solv log`,
-        )}`,
-      )
+  check
+    .command('df')
+    .description('Check Disk Free')
+    .action(() => {
+      const dirs = df()
+      displayTable(dirs)
+    })
+
+  check
+    .command('mnt')
+    .description('Check Mounted Directories')
+    .action(() => {
+      const disks: GetPreferredDisksResult = getPreferredDisks()
+      console.log(disks)
     })
 }

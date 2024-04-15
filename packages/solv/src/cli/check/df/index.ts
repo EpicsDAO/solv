@@ -10,7 +10,6 @@ export const dfCommands = async () => {
     .action(async () => {
       const dirs = df()
       displayTable(dirs)
-      Logger.mtCommandsLog()
     })
 }
 

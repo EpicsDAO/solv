@@ -1,8 +1,13 @@
 import { MT_PATHS } from '@/config/config'
 import { spawnSync } from 'child_process'
 
-export const ensureFstabEntries = (fileSystem: string, fileSystem2 = '') => {
-  const mtLineSingle = `${fileSystem}        ${MT_PATHS.ROOT}     ext4 auto 0 0`
+export const ensureFstabEntries = (
+  fileSystem: string,
+  fileSystem2 = '',
+  isLatitude = false,
+) => {
+  const mountPoint = isLatitude ? MT_PATHS.LEDGER : MT_PATHS.ROOT
+  const mtLineSingle = `${fileSystem}        ${mountPoint}     ext4 auto 0 0`
   const mtLineForDouble = `${fileSystem}        ${MT_PATHS.LEDGER}     ext4 auto 0 0
 ${fileSystem2}        ${MT_PATHS.ACCOUNTS}     ext4 auto 0 0
 `
