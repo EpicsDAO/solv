@@ -50,6 +50,8 @@ function getPreferredDisks(): GetPreferredDisksResult {
         isMounted,
         hasPartition,
       })
+    } else {
+      console.log(`Ignoring disk ${name} because it is too small`)
     }
   }
 
