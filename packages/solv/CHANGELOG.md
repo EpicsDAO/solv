@@ -1,5 +1,25 @@
 # @epics-dao/solv
 
+## 3.3.20
+
+### Patch Changes
+
+- [#129](https://github.com/EpicsDAO/solv/pull/129) [`d30d3d9`](https://github.com/EpicsDAO/solv/commit/d30d3d9488f701e254c1e9b7a51f64e3a655e43b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana testnet version to v1.18.12
+
+  ```
+  $ solv update && solv update -b
+  ```
+
+  Added new feature - solv CLI
+
+  - `solv rm:log` - Delete validator logs
+  - `solv rm:snapshot` - Delete Incremental snapshot and RocksDB
+  - `solv withdraw` - Withdraw SOL from Vote Account to Authority Keypair
+
+  Any feedback is welcome!
+
+  [https://discord.gg/vQHfswHmWf](https://discord.gg/vQHfswHmWf)
+
 ## 3.3.19
 
 ### Patch Changes
