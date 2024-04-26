@@ -23,6 +23,7 @@ import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
 import { withdraw } from './cli/withdraw'
+import { execSync } from 'node:child_process'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -69,8 +70,8 @@ async function main() {
     program
       .command('withdraw')
       .description('Withdraw SOL from Vote Account to Authority Account')
-      .action(() => {
-        withdraw(solvConfig)
+      .action(async () => {
+        await withdraw(solvConfig)
       })
 
     await program
