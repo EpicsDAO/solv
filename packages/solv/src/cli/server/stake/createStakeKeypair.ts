@@ -1,4 +1,4 @@
-import { addLeadingZero, existsAsync } from '@skeet-framework/utils'
+import { addLeadingZero, existsAsync, sleep } from '@skeet-framework/utils'
 import { spawnSync } from 'node:child_process'
 import os from 'node:os'
 
@@ -19,7 +19,7 @@ export const createStakeKeypair = async (): Promise<string> => {
   const outfile = `${STAKE_ACCOUNT_DIR}/stake${stakeAccountNum}.json`
   const cmd = `solana-keygen new --outfile ${outfile} --no-bip39-passphrase`
   const result = spawnSync(cmd, { shell: true, stdio: 'pipe' })
-
+  await sleep(1000)
   const output = result.stdout.toString()
   const match = output.match(/pubkey: (\S+)/)
   if (!match)
