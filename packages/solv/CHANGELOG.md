@@ -1,5 +1,18 @@
 # @epics-dao/solv
 
+## 3.3.21
+
+### Patch Changes
+
+- [`a8f9299`](https://github.com/EpicsDAO/solv/commit/a8f929917e4c16b066675244e5e70da447c622b2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv withdraw
+
+  ```bash
+  $ solv withdraw
+  💰 Current Vote Account Balance: 0.871961248 SOL
+  ⚠️ 0.01 SOL will be left in the account if you just press enter.
+  ? How many SOL? e.g. 0.861961248 (0.861961248)
+  ```
+
 ## 3.3.20
 
 ### Patch Changes
