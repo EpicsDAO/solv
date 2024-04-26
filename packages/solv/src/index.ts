@@ -19,6 +19,10 @@ import {
   clientCommands,
 } from '@/cli'
 import { createStakeKeypair } from './cli/server/stake/createStakeKeypair'
+import { balanceCommands } from './cli/balance'
+import { rmLogs } from './cli/setup/rmLogs'
+import { rmSnapshot } from './cli/setup/rmSnapshot'
+import { withdraw } from './cli/withdraw'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -46,6 +50,28 @@ async function main() {
     cronCommands(solvConfig)
     setupCommands(solvConfig)
     clientCommands(solvConfig)
+    balanceCommands(solvConfig)
+
+    program
+      .command('rm:log')
+      .description('Remove Logs')
+      .action(() => {
+        rmLogs()
+      })
+
+    program
+      .command('rm:snapshot')
+      .description('Remove Snapshot')
+      .action(() => {
+        rmSnapshot()
+      })
+
+    program
+      .command('withdraw')
+      .description('Withdraw SOL from Vote Account to Authority Account')
+      .action(() => {
+        withdraw(solvConfig)
+      })
 
     await program
       .addHelpCommand('help [cmd]', solvConfig.locale.cmds.help)

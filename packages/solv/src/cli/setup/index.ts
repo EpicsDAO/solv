@@ -12,6 +12,7 @@ import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { updateLogrotate } from '@/cli/setup/updateLogrotate'
 import { rmLogs } from './rmLogs'
 import { setupSwap } from './setupSwap'
+import { rmSnapshot } from './rmSnapshot'
 
 type SetupOptions = {
   vote: boolean
@@ -19,19 +20,11 @@ type SetupOptions = {
   testnet: boolean
   mainnet: boolean
   rpc: boolean
-  commission: string
   swap: boolean
 }
 
 export const setupCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
-
-  program
-    .command('rmLogs')
-    .description('Remove Logs')
-    .action(() => {
-      rmLogs()
-    })
 
   program
     .command('setup')
