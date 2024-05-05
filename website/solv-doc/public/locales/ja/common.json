@@ -91,8 +91,8 @@
     "2023.12": "Epics プラットフォーム Beta ローンチ",
     "2024.2": "$EPCT が Meteora (Solana DEX) に上場",
     "2024.4": "NFT カードデザイン発表、ニコニコ超会議 2024 出展, ENASE 2024 研究発表",
+    "2024.5": "Epics DAOがSolanaのメインネットバリデーターに",
     "2024.8": "NFTカードゲームβテスト開始、Web X 2024 出展",
-    "2024.9": "Epics DAOがSolanaのメインネットバリデーターに",
     "2024.10": "シリーズ A 資金調達、EPCD交換所ローンチ",
     "2025.4": "Epicsプラットフォームメジャーリリース、NFTカードゲーム一般公開開始",
     "2025.9": "シリーズ B 資金調達",
@@ -105,11 +105,23 @@
     },
     "SolanaValidator": {
       "title": "Solanaブロックチェーンのバリデーターを運営しています",
-      "description": "エルソウルラボ及びEpics DAOは、Solana チェーンにおけるバリデーターとして、ネットワークの信頼性と安定性を担保することに尽力します。Solana の高速かつ安定したネットワークを実現するための技術的な側面についても貢献します。"
+      "description": "Epics DAOは、Solana チェーンにおけるバリデーターとして、ネットワークの信頼性と安定性を担保することに尽力します。Solana の高速かつ安定したネットワークを実現するための技術的な側面についても貢献します。"
     },
     "SolanaSummerCamp": {
       "title": "Solana Summer Campハッカソン2022において5位入賞しました",
       "description": "Epics DAO は、2022 年 7 月 11 日 - 8 月 16 日に開催された Solana サマーキャンプハッカソンにおいて、18,000 を超える応募の中、 5 位に入賞いたしました。"
+    },
+    "GoogleWeb3": {
+      "title": "エルソウルラボはGoogle Web3 Startupsプログラムに認定されました",
+      "description": "エルソウルラボのWeb3分野における活動のEpics DAO、solvやSkeet等のオープンソース開発を応援する取り組みが認められ、Google Cloud Web3 Startupsプログラムに選出されました。"
+    },
+    "ENASE2024": {
+      "title": "AI・サーバーレス「Skeet」の研究論文が国際会議のENASE2024に採択されました",
+      "description": "研究論文「Skeet: Towards a Lightweight Serverless Framework Supporting Modern AI-Driven App Development」について、ソフトウェアエンジニアリングに関する国際会議 ENASE 2024 に採択されました。"
+    },
+    "CHOKAIGI2024": {
+      "title": "Epics DAOがニコニコ超会議2024に出展しました",
+      "description": "Epics DAO は、2024 年 4 月 27 日 - 28 日に開催されたニコニコ超会議2024に出展し、限定NFTの配布等を行いました。来場者数は 12 万 5362 人で大盛況の中、無事イベントの終幕を迎えました。"
     }
   },
   "SolvTutorialYouTubeRow": {
@@ -135,7 +147,7 @@
     "description": "※ これらは投資助言などを目的としたものではありません。また、記載された情報は、執筆時点のものです。最新の情報をご確認ください。常に NFA / DYOR でお願いいたします。",
     "feature1": {
       "title": "Solana メインネットバリデーター",
-      "description": "エルソウルラボが運用するSolanaメインネットバリデーターにSOLトークンをステークすることで、APR(年利、2024年4月5日現在) 7.04% のステーク報酬(手数料等差し引き後)を獲得できます。このために発生したすべての手数料はエルソウルラボの運営費として、オープンソース開発環境改善のために活用されます。",
+      "description": "Epics DAO が運用するSolanaメインネットバリデーターにSOLトークンをステークすることで、APR(年利、2024年5月5日現在) 7.05% のステーク報酬(手数料等差し引き後)を獲得できます。このために発生したすべての手数料は Epics DAO の運営費として、オープンソース開発環境改善のために活用されます。",
       "button": "バリデーター詳細へ"
     },
     "feature2": {
