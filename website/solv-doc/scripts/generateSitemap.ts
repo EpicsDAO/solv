@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { globby } from 'globby'
+import {globby} from 'globby'
 import siteConfig from '../src/config/site'
 
 const { domain } = siteConfig
@@ -17,8 +17,10 @@ async function generateSiteMap() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">   
       ${pages
-        .filter((page) => !page.includes('404') && !page.includes('500'))
-        .map((page) => {
+        .filter(
+          (page: string) => !page.includes('404') && !page.includes('500')
+        )
+        .map((page: string) => {
           const path = page
             .replace(distDir, '')
             .replace('/index', '')

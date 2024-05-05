@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@changesets/changelog-github':
         specifier: 0.5.0
-        version: 0.5.0
+        version: 0.5.0(encoding@0.1.13)
       '@changesets/cli':
         specifier: 2.27.1
         version: 2.27.1
@@ -19,7 +19,7 @@ importers:
         version: 0.2.14
       '@skeet-framework/utils':
         specifier: 1.2.4
-        version: 1.2.4
+        version: 1.2.4(encoding@0.1.13)
       '@types/node':
         specifier: 20.11.16
         version: 20.11.16
@@ -28,13 +28,13 @@ importers:
         version: 2.6.11
       '@typescript-eslint/eslint-plugin':
         specifier: 6.21.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser':
         specifier: 6.21.0
         version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       babel-loader:
         specifier: 9.1.3
-        version: 9.1.3(@babel/core@7.24.0)(webpack@5.90.3)
+        version: 9.1.3(@babel/core@7.24.0)(webpack@5.90.3(esbuild@0.20.0))
       copyfiles:
         specifier: 2.4.1
         version: 2.4.1
@@ -55,7 +55,7 @@ importers:
         version: 3.2.5
       ts-loader:
         specifier: 9.5.1
-        version: 9.5.1(typescript@5.3.3)(webpack@5.90.3)
+        version: 9.5.1(typescript@5.3.3)(webpack@5.90.3(esbuild@0.20.0))
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@20.11.16)(typescript@5.3.3)
@@ -107,7 +107,7 @@ importers:
     devDependencies:
       '@changesets/changelog-github':
         specifier: 0.5.0
-        version: 0.5.0
+        version: 0.5.0(encoding@0.1.13)
       '@changesets/cli':
         specifier: 2.27.1
         version: 2.27.1
@@ -137,7 +137,7 @@ importers:
         version: 1.1.8
       '@typescript-eslint/eslint-plugin':
         specifier: 7.2.0
-        version: 7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
+        version: 7.2.0(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser':
         specifier: 7.2.0
         version: 7.2.0(eslint@8.57.0)(typescript@5.4.2)
@@ -161,7 +161,7 @@ importers:
         version: 3.2.5
       ts-loader:
         specifier: 9.5.1
-        version: 9.5.1(typescript@5.4.2)(webpack@5.90.3)
+        version: 9.5.1(typescript@5.4.2)(webpack@5.90.3(esbuild@0.20.2))
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@20.11.28)(typescript@5.4.2)
@@ -176,13 +176,13 @@ importers:
         version: 5.4.2
       vite:
         specifier: 5.1.6
-        version: 5.1.6(@types/node@20.11.28)
+        version: 5.1.6(@types/node@20.11.28)(terser@5.29.2)
       vite-tsconfig-paths:
         specifier: 4.3.2
-        version: 4.3.2(typescript@5.4.2)(vite@5.1.6)
+        version: 4.3.2(typescript@5.4.2)(vite@5.1.6(@types/node@20.11.28)(terser@5.29.2))
       vitest:
         specifier: 1.3.1
-        version: 1.3.1(@types/node@20.11.28)
+        version: 1.3.1(@types/node@20.11.28)(terser@5.29.2)
 
   website/solv-doc:
     dependencies:
@@ -200,7 +200,7 @@ importers:
         version: 0.2.0(@fortawesome/fontawesome-svg-core@6.4.0)(react@18.2.0)
       '@headlessui/react':
         specifier: 1.7.14
-        version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
+        version: 1.7.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@heroicons/react':
         specifier: 2.0.17
         version: 2.0.17(react@18.2.0)
@@ -212,7 +212,7 @@ importers:
         version: 2.29.3
       firebase:
         specifier: 9.20.0
-        version: 9.20.0
+        version: 9.20.0(encoding@0.1.13)
       globby:
         specifier: 14.0.1
         version: 14.0.1
@@ -230,16 +230,16 @@ importers:
         version: 2.0.1
       next:
         specifier: 13.3.1
-        version: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-i18next:
         specifier: 13.2.2
-        version: 13.2.2(i18next@22.4.15)(next@13.3.1)(react-i18next@12.2.2)(react@18.2.0)
+        version: 13.2.2(i18next@22.4.15)(next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-i18next@12.2.2(i18next@22.4.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       next-language-detector:
         specifier: 1.0.2
         version: 1.0.2
       next-themes:
         specifier: 0.2.1
-        version: 0.2.1(next@13.3.1)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -248,13 +248,13 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-i18next:
         specifier: 12.2.2
-        version: 12.2.2(i18next@22.4.15)(react-dom@18.2.0)(react@18.2.0)
+        version: 12.2.2(i18next@22.4.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       recoil:
         specifier: 0.7.7
-        version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
+        version: 0.7.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       recoil-persist:
         specifier: 4.2.0
-        version: 4.2.0(recoil@0.7.7)
+        version: 4.2.0(recoil@0.7.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       unist-util-visit:
         specifier: 5.0.0
         version: 5.0.0
@@ -264,7 +264,7 @@ importers:
         version: 3.0.2
       '@tailwindcss/typography':
         specifier: 0.5.9
-        version: 0.5.9(tailwindcss@3.3.1)
+        version: 0.5.9(tailwindcss@3.3.1(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4)))
       '@types/github-slugger':
         specifier: 1.3.0
         version: 1.3.0
@@ -327,7 +327,7 @@ importers:
         version: 3.2.0
       node-fetch:
         specifier: 2.6.7
-        version: 2.6.7
+        version: 2.6.7(encoding@0.1.13)
       npm-check-updates:
         specifier: 16.10.9
         version: 16.10.9
@@ -345,7 +345,7 @@ importers:
         version: 0.2.7(prettier@2.8.8)
       raw-loader:
         specifier: 4.0.2
-        version: 4.0.2(webpack@5.90.3)
+        version: 4.0.2(webpack@5.90.3(esbuild@0.20.0))
       rehype-code-titles:
         specifier: 1.2.0
         version: 1.2.0
@@ -390,7 +390,10 @@ importers:
         version: 1.1.7
       tailwindcss:
         specifier: 3.3.1
-        version: 3.3.1(postcss@8.4.23)(ts-node@10.9.2)
+        version: 3.3.1(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4))
+      tsx:
+        specifier: 4.7.1
+        version: 4.7.1
       typescript:
         specifier: 5.0.4
         version: 5.0.4
@@ -6519,9 +6522,9 @@ snapshots:
     dependencies:
       '@changesets/types': 6.0.0
 
-  '@changesets/changelog-github@0.5.0':
+  '@changesets/changelog-github@0.5.0(encoding@0.1.13)':
     dependencies:
-      '@changesets/get-github-info': 0.6.0
+      '@changesets/get-github-info': 0.6.0(encoding@0.1.13)
       '@changesets/types': 6.0.0
       dotenv: 8.6.0
     transitivePeerDependencies:
@@ -6584,10 +6587,10 @@ snapshots:
       fs-extra: 7.0.1
       semver: 7.6.0
 
-  '@changesets/get-github-info@0.6.0':
+  '@changesets/get-github-info@0.6.0(encoding@0.1.13)':
     dependencies:
       dataloader: 1.4.0
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
@@ -7016,14 +7019,14 @@ snapshots:
       idb: 7.0.1
       tslib: 2.6.2
 
-  '@firebase/auth-compat@0.4.0(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)':
+  '@firebase/auth-compat@0.4.0(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app-compat': 0.2.8
-      '@firebase/auth': 0.23.0(@firebase/app@0.9.8)
+      '@firebase/auth': 0.23.0(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/auth-types': 0.12.0(@firebase/app-types@0.9.0)(@firebase/util@1.9.3)
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
       tslib: 2.6.2
     transitivePeerDependencies:
       - '@firebase/app'
@@ -7037,13 +7040,13 @@ snapshots:
       '@firebase/app-types': 0.9.0
       '@firebase/util': 1.9.3
 
-  '@firebase/auth@0.23.0(@firebase/app@0.9.8)':
+  '@firebase/auth@0.23.0(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app': 0.9.8
       '@firebase/component': 0.6.4
       '@firebase/logger': 0.4.0
       '@firebase/util': 1.9.3
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
       tslib: 2.6.2
     transitivePeerDependencies:
       - encoding
@@ -7076,11 +7079,11 @@ snapshots:
       faye-websocket: 0.11.4
       tslib: 2.6.2
 
-  '@firebase/firestore-compat@0.3.7(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)':
+  '@firebase/firestore-compat@0.3.7(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app-compat': 0.2.8
       '@firebase/component': 0.6.4
-      '@firebase/firestore': 3.10.1(@firebase/app@0.9.8)
+      '@firebase/firestore': 3.10.1(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/firestore-types': 2.5.1(@firebase/app-types@0.9.0)(@firebase/util@1.9.3)
       '@firebase/util': 1.9.3
       tslib: 2.6.2
@@ -7094,7 +7097,7 @@ snapshots:
       '@firebase/app-types': 0.9.0
       '@firebase/util': 1.9.3
 
-  '@firebase/firestore@3.10.1(@firebase/app@0.9.8)':
+  '@firebase/firestore@3.10.1(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app': 0.9.8
       '@firebase/component': 0.6.4
@@ -7103,16 +7106,16 @@ snapshots:
       '@firebase/webchannel-wrapper': 0.9.0
       '@grpc/grpc-js': 1.7.3
       '@grpc/proto-loader': 0.6.13
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
       tslib: 2.6.2
     transitivePeerDependencies:
       - encoding
 
-  '@firebase/functions-compat@0.3.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)':
+  '@firebase/functions-compat@0.3.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app-compat': 0.2.8
       '@firebase/component': 0.6.4
-      '@firebase/functions': 0.9.4(@firebase/app@0.9.8)
+      '@firebase/functions': 0.9.4(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/functions-types': 0.6.0
       '@firebase/util': 1.9.3
       tslib: 2.6.2
@@ -7122,7 +7125,7 @@ snapshots:
 
   '@firebase/functions-types@0.6.0': {}
 
-  '@firebase/functions@0.9.4(@firebase/app@0.9.8)':
+  '@firebase/functions@0.9.4(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app': 0.9.8
       '@firebase/app-check-interop-types': 0.2.0
@@ -7130,7 +7133,7 @@ snapshots:
       '@firebase/component': 0.6.4
       '@firebase/messaging-interop-types': 0.2.0
       '@firebase/util': 1.9.3
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
       tslib: 2.6.2
     transitivePeerDependencies:
       - encoding
@@ -7231,11 +7234,11 @@ snapshots:
       '@firebase/util': 1.9.3
       tslib: 2.6.2
 
-  '@firebase/storage-compat@0.3.2(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)':
+  '@firebase/storage-compat@0.3.2(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app-compat': 0.2.8
       '@firebase/component': 0.6.4
-      '@firebase/storage': 0.11.2(@firebase/app@0.9.8)
+      '@firebase/storage': 0.11.2(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/storage-types': 0.8.0(@firebase/app-types@0.9.0)(@firebase/util@1.9.3)
       '@firebase/util': 1.9.3
       tslib: 2.6.2
@@ -7249,12 +7252,12 @@ snapshots:
       '@firebase/app-types': 0.9.0
       '@firebase/util': 1.9.3
 
-  '@firebase/storage@0.11.2(@firebase/app@0.9.8)':
+  '@firebase/storage@0.11.2(@firebase/app@0.9.8)(encoding@0.1.13)':
     dependencies:
       '@firebase/app': 0.9.8
       '@firebase/component': 0.6.4
       '@firebase/util': 1.9.3
-      node-fetch: 2.6.7
+      node-fetch: 2.6.7(encoding@0.1.13)
       tslib: 2.6.2
     transitivePeerDependencies:
       - encoding
@@ -7307,7 +7310,7 @@ snapshots:
       protobufjs: 7.2.6
       yargs: 17.7.2
 
-  '@headlessui/react@1.7.14(react-dom@18.2.0)(react@18.2.0)':
+  '@headlessui/react@1.7.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       client-only: 0.0.1
       react: 18.2.0
@@ -7637,12 +7640,12 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@skeet-framework/utils@1.2.4':
+  '@skeet-framework/utils@1.2.4(encoding@0.1.13)':
     dependencies:
       date-fns: 2.30.0
       date-fns-tz: 2.0.0(date-fns@2.30.0)
       dotenv: 16.3.1
-      node-fetch: 2.6.9
+      node-fetch: 2.6.9(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
@@ -7660,13 +7663,13 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tailwindcss/typography@0.5.9(tailwindcss@3.3.1)':
+  '@tailwindcss/typography@0.5.9(tailwindcss@3.3.1(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4)))':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.3.1(postcss@8.4.23)(ts-node@10.9.2)
+      tailwindcss: 3.3.1(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4))
 
   '@tootallnate/once@2.0.0': {}
 
@@ -7821,7 +7824,7 @@ snapshots:
     dependencies:
       '@types/node': 20.11.28
 
-  '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)':
+  '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.56.0)(typescript@5.3.3)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
@@ -7836,11 +7839,12 @@ snapshots:
       natural-compare: 1.4.0
       semver: 7.6.0
       ts-api-utils: 1.2.1(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/eslint-plugin@7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)':
+  '@typescript-eslint/eslint-plugin@7.2.0(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.4.2)
@@ -7855,6 +7859,7 @@ snapshots:
       natural-compare: 1.4.0
       semver: 7.6.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -7866,6 +7871,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.0.4)
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.39.0
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -7878,6 +7884,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 6.21.0
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.56.0
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -7890,6 +7897,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 7.2.0
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.57.0
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -7916,6 +7924,7 @@ snapshots:
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.56.0
       ts-api-utils: 1.2.1(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -7927,6 +7936,7 @@ snapshots:
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.57.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -7946,6 +7956,7 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.6.0
       tsutils: 3.21.0(typescript@5.0.4)
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
@@ -7960,6 +7971,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.0
       ts-api-utils: 1.2.1(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -7974,6 +7986,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -8164,7 +8177,7 @@ snapshots:
       indent-string: 4.0.0
 
   ajv-formats@2.1.1(ajv@8.12.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.12.0
 
   ajv-keywords@3.5.2(ajv@6.12.6):
@@ -8346,7 +8359,7 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  babel-loader@9.1.3(@babel/core@7.24.0)(webpack@5.90.3):
+  babel-loader@9.1.3(@babel/core@7.24.0)(webpack@5.90.3(esbuild@0.20.0)):
     dependencies:
       '@babel/core': 7.24.0
       find-cache-dir: 4.0.0
@@ -8831,6 +8844,7 @@ snapshots:
   debug@4.3.4(supports-color@5.5.0):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
       supports-color: 5.5.0
 
   decamelize-keys@1.1.1:
@@ -9190,11 +9204,12 @@ snapshots:
       '@typescript-eslint/parser': 5.62.0(eslint@8.39.0)(typescript@5.0.4)
       eslint: 8.39.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.39.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.39.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.39.0)
       eslint-plugin-react: 7.33.2(eslint@8.39.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.39.0)
+    optionalDependencies:
       typescript: 5.0.4
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -9220,13 +9235,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0):
+  eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0):
     dependencies:
       debug: 4.3.4(supports-color@5.5.0)
       enhanced-resolve: 5.16.0
       eslint: 8.39.0
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.39.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.39.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0))(eslint@8.39.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.39.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.2
       is-core-module: 2.13.1
@@ -9237,28 +9252,29 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.39.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0))(eslint@8.39.0):
     dependencies:
+      debug: 3.2.7
+    optionalDependencies:
       '@typescript-eslint/parser': 5.62.0(eslint@8.39.0)(typescript@5.0.4)
-      debug: 3.2.7
       eslint: 8.39.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@5.62.0(eslint@8.39.0)(typescript@5.0.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.39.0)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint@8.39.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint@8.39.0):
     dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.39.0
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.39.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.39.0):
     dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.4
       array.prototype.flat: 1.3.2
@@ -9267,7 +9283,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.39.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint@8.39.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint@8.39.0)
       hasown: 2.0.1
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -9277,6 +9293,8 @@ snapshots:
       object.values: 1.1.7
       semver: 6.3.1
       tsconfig-paths: 3.15.0
+    optionalDependencies:
+      '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.3.3)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -9601,7 +9619,7 @@ snapshots:
       micromatch: 4.0.5
       pkg-dir: 4.2.0
 
-  firebase@9.20.0:
+  firebase@9.20.0(encoding@0.1.13):
     dependencies:
       '@firebase/analytics': 0.9.5(@firebase/app@0.9.8)
       '@firebase/analytics-compat': 0.2.5(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)
@@ -9610,14 +9628,14 @@ snapshots:
       '@firebase/app-check-compat': 0.3.5(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)
       '@firebase/app-compat': 0.2.8
       '@firebase/app-types': 0.9.0
-      '@firebase/auth': 0.23.0(@firebase/app@0.9.8)
-      '@firebase/auth-compat': 0.4.0(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)
+      '@firebase/auth': 0.23.0(@firebase/app@0.9.8)(encoding@0.1.13)
+      '@firebase/auth-compat': 0.4.0(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/database': 0.14.4
       '@firebase/database-compat': 0.3.4
-      '@firebase/firestore': 3.10.1(@firebase/app@0.9.8)
-      '@firebase/firestore-compat': 0.3.7(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)
-      '@firebase/functions': 0.9.4(@firebase/app@0.9.8)
-      '@firebase/functions-compat': 0.3.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)
+      '@firebase/firestore': 3.10.1(@firebase/app@0.9.8)(encoding@0.1.13)
+      '@firebase/firestore-compat': 0.3.7(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)
+      '@firebase/functions': 0.9.4(@firebase/app@0.9.8)(encoding@0.1.13)
+      '@firebase/functions-compat': 0.3.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/installations': 0.6.4(@firebase/app@0.9.8)
       '@firebase/installations-compat': 0.2.4(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)
       '@firebase/messaging': 0.12.4(@firebase/app@0.9.8)
@@ -9626,8 +9644,8 @@ snapshots:
       '@firebase/performance-compat': 0.2.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)
       '@firebase/remote-config': 0.4.4(@firebase/app@0.9.8)
       '@firebase/remote-config-compat': 0.2.4(@firebase/app-compat@0.2.8)(@firebase/app@0.9.8)
-      '@firebase/storage': 0.11.2(@firebase/app@0.9.8)
-      '@firebase/storage-compat': 0.3.2(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)
+      '@firebase/storage': 0.11.2(@firebase/app@0.9.8)(encoding@0.1.13)
+      '@firebase/storage-compat': 0.3.2(@firebase/app-compat@0.2.8)(@firebase/app-types@0.9.0)(@firebase/app@0.9.8)(encoding@0.1.13)
       '@firebase/util': 1.9.3
     transitivePeerDependencies:
       - encoding
@@ -11107,7 +11125,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-i18next@13.2.2(i18next@22.4.15)(next@13.3.1)(react-i18next@12.2.2)(react@18.2.0):
+  next-i18next@13.2.2(i18next@22.4.15)(next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-i18next@12.2.2(i18next@22.4.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.23.9
       '@types/hoist-non-react-statics': 3.3.5
@@ -11115,22 +11133,22 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       i18next: 22.4.15
       i18next-fs-backend: 2.3.1
-      next: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
-      react-i18next: 12.2.2(i18next@22.4.15)(react-dom@18.2.0)(react@18.2.0)
+      react-i18next: 12.2.2(i18next@22.4.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   next-language-detector@1.0.2:
     dependencies:
       '@babel/runtime': 7.16.7
       i18next-browser-languagedetector: 6.1.2
 
-  next-themes@0.2.1(next@13.3.1)(react-dom@18.2.0)(react@18.2.0):
+  next-themes@0.2.1(next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      next: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0):
+  next@13.3.1(@babel/core@7.24.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@next/env': 13.3.1
       '@swc/helpers': 0.5.0
@@ -11162,13 +11180,17 @@ snapshots:
 
   node-domexception@1.0.0: {}
 
-  node-fetch@2.6.7:
+  node-fetch@2.6.7(encoding@0.1.13):
     dependencies:
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
-  node-fetch@2.6.9:
+  node-fetch@2.6.9(encoding@0.1.13):
     dependencies:
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
   node-fetch@3.3.2:
     dependencies:
@@ -11657,12 +11679,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.23
 
-  postcss-load-config@3.1.4(postcss@8.4.23)(ts-node@10.9.2):
+  postcss-load-config@3.1.4(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4)):
     dependencies:
       lilconfig: 2.1.0
-      postcss: 8.4.23
-      ts-node: 10.9.2(@types/node@20.11.16)(typescript@5.3.3)
       yaml: 1.10.2
+    optionalDependencies:
+      postcss: 8.4.23
+      ts-node: 10.9.2(@types/node@18.17.1)(typescript@5.0.4)
 
   postcss-merge-longhand@6.0.3(postcss@8.4.23):
     dependencies:
@@ -11920,7 +11943,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  raw-loader@4.0.2(webpack@5.90.3):
+  raw-loader@4.0.2(webpack@5.90.3(esbuild@0.20.0)):
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
@@ -11948,12 +11971,13 @@ snapshots:
       react: 18.2.0
       scheduler: 0.23.0
 
-  react-i18next@12.2.2(i18next@22.4.15)(react-dom@18.2.0)(react@18.2.0):
+  react-i18next@12.2.2(i18next@22.4.15)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.23.9
       html-parse-stringify: 3.0.1
       i18next: 22.4.15
       react: 18.2.0
+    optionalDependencies:
       react-dom: 18.2.0(react@18.2.0)
 
   react-is@16.13.1: {}
@@ -12037,14 +12061,15 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  recoil-persist@4.2.0(recoil@0.7.7):
+  recoil-persist@4.2.0(recoil@0.7.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
-      recoil: 0.7.7(react-dom@18.2.0)(react@18.2.0)
+      recoil: 0.7.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
-  recoil@0.7.7(react-dom@18.2.0)(react@18.2.0):
+  recoil@0.7.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       hamt_plus: 1.0.2
       react: 18.2.0
+    optionalDependencies:
       react-dom: 18.2.0(react@18.2.0)
 
   redent@3.0.0:
@@ -12578,9 +12603,10 @@ snapshots:
 
   styled-jsx@5.1.1(@babel/core@7.24.0)(react@18.2.0):
     dependencies:
-      '@babel/core': 7.24.0
       client-only: 0.0.1
       react: 18.2.0
+    optionalDependencies:
+      '@babel/core': 7.24.0
 
   stylehacks@6.0.3(postcss@8.4.23):
     dependencies:
@@ -12624,7 +12650,7 @@ snapshots:
 
   tailwind-scrollbar-hide@1.1.7: {}
 
-  tailwindcss@3.3.1(postcss@8.4.23)(ts-node@10.9.2):
+  tailwindcss@3.3.1(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4)):
     dependencies:
       arg: 5.0.2
       chokidar: 3.6.0
@@ -12643,7 +12669,7 @@ snapshots:
       postcss: 8.4.23
       postcss-import: 14.1.0(postcss@8.4.23)
       postcss-js: 4.0.1(postcss@8.4.23)
-      postcss-load-config: 3.1.4(postcss@8.4.23)(ts-node@10.9.2)
+      postcss-load-config: 3.1.4(postcss@8.4.23)(ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4))
       postcss-nested: 6.0.0(postcss@8.4.23)
       postcss-selector-parser: 6.0.15
       postcss-value-parser: 4.2.0
@@ -12666,25 +12692,27 @@ snapshots:
 
   term-size@2.2.1: {}
 
-  terser-webpack-plugin@5.3.10(esbuild@0.20.0)(webpack@5.90.3):
+  terser-webpack-plugin@5.3.10(esbuild@0.20.0)(webpack@5.90.3(esbuild@0.20.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      esbuild: 0.20.0
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.29.2
       webpack: 5.90.3(esbuild@0.20.0)
+    optionalDependencies:
+      esbuild: 0.20.0
 
-  terser-webpack-plugin@5.3.10(esbuild@0.20.2)(webpack@5.90.3):
+  terser-webpack-plugin@5.3.10(esbuild@0.20.2)(webpack@5.90.3(esbuild@0.20.2)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
-      esbuild: 0.20.2
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.29.2
       webpack: 5.90.3(esbuild@0.20.2)
+    optionalDependencies:
+      esbuild: 0.20.2
 
   terser@5.29.2:
     dependencies:
@@ -12748,7 +12776,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-loader@9.5.1(typescript@5.3.3)(webpack@5.90.3):
+  ts-loader@9.5.1(typescript@5.3.3)(webpack@5.90.3(esbuild@0.20.0)):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.15.0
@@ -12758,7 +12786,7 @@ snapshots:
       typescript: 5.3.3
       webpack: 5.90.3(esbuild@0.20.0)
 
-  ts-loader@9.5.1(typescript@5.4.2)(webpack@5.90.3):
+  ts-loader@9.5.1(typescript@5.4.2)(webpack@5.90.3(esbuild@0.20.2)):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.16.0
@@ -12769,6 +12797,25 @@ snapshots:
       webpack: 5.90.3(esbuild@0.20.2)
 
   ts-mixer@6.0.4: {}
+
+  ts-node@10.9.2(@types/node@18.17.1)(typescript@5.0.4):
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 18.17.1
+      acorn: 8.11.3
+      acorn-walk: 8.3.2
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 5.0.4
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    optional: true
 
   ts-node@10.9.2(@types/node@20.11.16)(typescript@5.3.3):
     dependencies:
@@ -12807,7 +12854,7 @@ snapshots:
       yn: 3.1.1
 
   tsconfck@3.0.3(typescript@5.4.2):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.2
 
   tsconfig-paths@3.15.0:
@@ -13087,13 +13134,13 @@ snapshots:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  vite-node@1.3.1(@types/node@20.11.28):
+  vite-node@1.3.1(@types/node@20.11.28)(terser@5.29.2):
     dependencies:
       cac: 6.7.14
       debug: 4.3.4(supports-color@5.5.0)
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.1.6(@types/node@20.11.28)
+      vite: 5.1.6(@types/node@20.11.28)(terser@5.29.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -13104,28 +13151,29 @@ snapshots:
       - supports-color
       - terser
 
-  vite-tsconfig-paths@4.3.2(typescript@5.4.2)(vite@5.1.6):
+  vite-tsconfig-paths@4.3.2(typescript@5.4.2)(vite@5.1.6(@types/node@20.11.28)(terser@5.29.2)):
     dependencies:
       debug: 4.3.4(supports-color@5.5.0)
       globrex: 0.1.2
       tsconfck: 3.0.3(typescript@5.4.2)
-      vite: 5.1.6(@types/node@20.11.28)
+    optionalDependencies:
+      vite: 5.1.6(@types/node@20.11.28)(terser@5.29.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@5.1.6(@types/node@20.11.28):
+  vite@5.1.6(@types/node@20.11.28)(terser@5.29.2):
     dependencies:
-      '@types/node': 20.11.28
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.13.0
     optionalDependencies:
-      fsevents: 2.3.3
-
-  vitest@1.3.1(@types/node@20.11.28):
-    dependencies:
       '@types/node': 20.11.28
+      fsevents: 2.3.3
+      terser: 5.29.2
+
+  vitest@1.3.1(@types/node@20.11.28)(terser@5.29.2):
+    dependencies:
       '@vitest/expect': 1.3.1
       '@vitest/runner': 1.3.1
       '@vitest/snapshot': 1.3.1
@@ -13143,9 +13191,11 @@ snapshots:
       strip-literal: 2.0.0
       tinybench: 2.6.0
       tinypool: 0.8.2
-      vite: 5.1.6(@types/node@20.11.28)
-      vite-node: 1.3.1(@types/node@20.11.28)
+      vite: 5.1.6(@types/node@20.11.28)(terser@5.29.2)
+      vite-node: 1.3.1(@types/node@20.11.28)(terser@5.29.2)
       why-is-node-running: 2.2.2
+    optionalDependencies:
+      '@types/node': 20.11.28
     transitivePeerDependencies:
       - less
       - lightningcss
@@ -13197,7 +13247,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.20.0)(webpack@5.90.3)
+      terser-webpack-plugin: 5.3.10(esbuild@0.20.0)(webpack@5.90.3(esbuild@0.20.0))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
@@ -13228,7 +13278,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.20.2)(webpack@5.90.3)
+      terser-webpack-plugin: 5.3.10(esbuild@0.20.2)(webpack@5.90.3(esbuild@0.20.2))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:
