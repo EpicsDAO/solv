@@ -1,6 +1,6 @@
 const siteConfig = {
   domain: 'solv.epics.dev',
-  copyright: 'Epics DAO',
+  copyright: 'Epics DAO & ELSOUL LABO B.V.',
   sitenameJA:
     'solv - Solana バリデーター・RPCノードを簡単に立ち上げ、手間なく管理するオープンソースツール',
   sitenameEN:

@@ -71,22 +71,22 @@ const activity = [
     dateTime: '2024-02-02T10:00',
   },
   {
-    type: 'yet',
+    type: 'done',
     text: 'common:RoadmapRow.2024.4',
     date: '2024.4',
     dateTime: '2024-04-02T10:00',
+  },
+  {
+    type: 'done',
+    text: 'common:RoadmapRow.2024.5',
+    date: '2024.5',
+    dateTime: '2024-05-02T10:00',
   },
   {
     type: 'yet',
     text: 'common:RoadmapRow.2024.8',
     date: '2024.8',
     dateTime: '2024-08-02T10:00',
-  },
-  {
-    type: 'yet',
-    text: 'common:RoadmapRow.2024.9',
-    date: '2024.9',
-    dateTime: '2024-09-02T10:00',
   },
   {
     type: 'yet',
@@ -120,7 +120,7 @@ export default function RoadmapRow() {
     <>
       <div className="mx-auto max-w-2xl px-4 py-48 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <h2 className="pb-16 text-4xl font-extrabold tracking-tighter text-gray-900 dark:text-gray-50 sm:text-5xl">
+          <h2 className="pb-16 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-5xl">
             Roadmap
           </h2>
         </div>
