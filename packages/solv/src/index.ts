@@ -17,6 +17,7 @@ import {
   serverCommands,
   getCommands,
   clientCommands,
+  mountCommands,
 } from '@/cli'
 import { createStakeKeypair } from './cli/server/stake/createStakeKeypair'
 import { balanceCommands } from './cli/balance'
@@ -52,6 +53,7 @@ async function main() {
     setupCommands(solvConfig)
     clientCommands(solvConfig)
     balanceCommands(solvConfig)
+    mountCommands(solvConfig)
 
     program
       .command('rm:log')
