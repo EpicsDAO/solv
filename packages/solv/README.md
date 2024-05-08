@@ -144,7 +144,7 @@ Usage: solv [options] [command]
 💎 Solana Validator All-in-One CLI 💎
 
 Options:
-  -v, --version        Output the current version
+  -V                   Output the current version
   -h, --help           Display help for solv commands
 
 Commands:
@@ -157,10 +157,18 @@ Commands:
   log|l [options]      tail logs
   install|i [options]  Install/Update Solana Version
   stake                Solana Delegate Stake
-  get <cmd>            Get Solana Validator Info
+  unstake              Solana Delegate Stake
+  get <cmd>            Get Solana Validator Info Commands
   scp <cmd>            Download/Upload Solana Validator Keypairs
   cron <cmd>           Run Schedule Tasks
   setup [options]      Setup Solana Validator
+  client|c             Open solv Client Dashboard
+  balance|bal          Show Keypairs Balance
+  mtr                  Mount Reload Command
+  disks                Show unmounted disks
+  rm:log               Remove Logs
+  rm:snapshot          Remove Snapshot
+  withdraw             Withdraw SOL from Vote Account to Authority Account
   help [cmd]           Display help for solv commands
 ```
 
