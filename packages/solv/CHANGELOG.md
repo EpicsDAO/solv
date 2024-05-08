@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 3.4.0
+
+### Minor Changes
+
+- [`c2b1863`](https://github.com/EpicsDAO/solv/commit/c2b1863aa8cc845dc0c80c588e979e01ba6f0dbb) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Msg after setup
+
 ## 3.3.21
 
 ### Patch Changes
