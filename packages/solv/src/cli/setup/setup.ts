@@ -127,6 +127,15 @@ export const setup = async (solvConfig: ConfigParams) => {
     console.log(`Setting up ${solvType}...`)
 
     const disks: GetPreferredDisksResult = getPreferredDisk()
+    if (!disks.has400GB && !disks.has850GB && !disks.hasUsed1250GB) {
+      console.log(
+        chalk.yellow(
+          `⚠️ Not enough disk space to setup Solana Validator\nYou need at least 1TB disk space\nPlease add more disk space and try again!`,
+        ),
+      )
+      return
+    }
+
     const mountPoint = disks.disks[0].mountpoint
     setupDirs()
     // Detect if DISK_TYPE is DOUBLE or SINGLE
@@ -141,13 +150,16 @@ export const setup = async (solvConfig: ConfigParams) => {
         SOLANA_NETWORK: isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET,
       })
 
-      const isDisk1Formatted = formatDisk(disks.disks[0].name)
-      const isDisk2Formatted = formatDisk(disks.disks[1].name)
-      if (!isTest) {
-        await setupSwap()
-      }
-      let fileSystem1 = isDisk1Formatted ? '/dev/' + disks.disks[0].name : ''
-      let fileSystem2 = isDisk2Formatted ? '/dev/' + disks.disks[1].name : ''
+      const fileSystemName1 = '/dev/' + disks.disks[0].name
+      const fileSystemName2 = '/dev/' + disks.disks[1].name
+      const isDisk1Formatted = formatDisk(fileSystemName1)
+      const isDisk2Formatted = formatDisk(fileSystemName2)
+
+      // Swap setup
+      await setupSwap()
+
+      let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
+      let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''
       let isLatitude = false
       if (fileSystem1 === '' && fileSystem2) {
         fileSystem1 = fileSystem2
@@ -196,6 +208,28 @@ export const setup = async (solvConfig: ConfigParams) => {
 
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
+    const msg = `Setup completed 🎊\nYour node will be ready in a few hours⏳\n`
+    console.log(chalk.green(msg))
+    const warning = `===⚠️ Frequently Asked Questions ⚠️===
+Q: How long does it take to catch up with the latest slot?
+Q: Error: error sending request for url (http://localhost:8899/)
+Q: Can't connect to Solana RPC Node
+
+A:
+It will take an hour to a several hours to catch up with the latest slot.
+This time may vary depending on your network speed and hardware.
+Solana Validator requires at least 256GB RAM and 12 CPU cores.
+RPC Node requires at least 512GB RAM and 16 CPU cores.
+It may not finish catching up if your hardware does not meet the requirements.
+
+You can check current status by running:
+
+$ solv get monitor
+
+If you have any questions, please visit our Discord server:
+https://discord.gg/CU6CcXV9en
+`
+    console.log(chalk.yellow(warning))
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)
