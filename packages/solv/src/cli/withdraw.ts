@@ -30,10 +30,10 @@ export const withdraw = async (solvConfig: ConfigParams) => {
   )
   console.log(
     chalk.yellow(
-      '⚠️ 0.01 SOL will be left in the account if you just press enter.',
+      '⚠️ 0.03 SOL will be left in the account if you just press enter.',
     ),
   )
-  const defaultMax = Number(currentVoteAccountBalance) - 0.01
+  const defaultMax = Number(currentVoteAccountBalance) - 0.03
   const answer = await inquirer.prompt<{ sol: number }>([
     {
       type: 'input',
