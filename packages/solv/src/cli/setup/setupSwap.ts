@@ -2,12 +2,13 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { spawnSync, execSync } from 'node:child_process'
 import { statfs } from 'fs/promises'
+import inquirer from 'inquirer'
 
 const SWAP_PATH = '/swapfile'
 const MIN_SWAP_SIZE_GB = 98 // Min swap size in GB
 const REQUIRED_FREE_SPACE_GB = 200 // Required free space in GB
 
-export const setupSwap = async () => {
+export const setupSwap = async (swapsize = 256000) => {
   try {
     console.log(chalk.white('Checking swap and disk space...\n'))
 
@@ -37,8 +38,17 @@ export const setupSwap = async () => {
     // execSync(`sudo swapoff ${SWAP_PATH}`)
     // execSync(`sudo rm ${SWAP_PATH}`)
 
+    const answer = await inquirer.prompt<{ swapsize: number }>([
+      {
+        type: 'number',
+        name: 'swapsize',
+        message: 'Enter swap size to create in MB:',
+        default: swapsize,
+      },
+    ])
+
     const cmds = [
-      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=102400`,
+      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=${answer.swapsize}`,
       `sudo mkswap ${SWAP_PATH}`,
       `sudo chmod 600 ${SWAP_PATH}`,
       `sudo swapon ${SWAP_PATH}`,

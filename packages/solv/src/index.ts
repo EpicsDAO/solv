@@ -25,6 +25,7 @@ import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
 import { withdraw } from './cli/withdraw'
 import { execSync } from 'node:child_process'
+import { login } from './cli/login'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -74,6 +75,13 @@ async function main() {
       .description('Withdraw SOL from Vote Account to Authority Account')
       .action(async () => {
         await withdraw(solvConfig)
+      })
+
+    program
+      .command('login')
+      .description('Login to Validatoors Cloud')
+      .action(async () => {
+        await login()
       })
 
     await program

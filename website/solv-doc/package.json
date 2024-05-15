@@ -53,7 +53,7 @@
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
-    "cssnano": "6.0.0",
+    "cssnano": "7.0.1",
     "dotenv": "16.0.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
@@ -86,7 +86,7 @@
     "remark-slug": "7.0.1",
     "remark-stringify": "10.0.2",
     "tailwind-scrollbar-hide": "1.1.7",
-    "tailwindcss": "3.3.1",
+    "tailwindcss": "3.4.3",
     "tsx": "4.7.1",
     "typescript": "5.0.4",
     "unified": "10.1.2"
