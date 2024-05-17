@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { execSync, spawnSync } from 'child_process'
 import { setupDirs } from '@/cli/setup/mkdirs'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { genStartupValidatorScript } from '@/cli/setup/genStartupValidatorScript'
@@ -37,6 +37,7 @@ import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { setupSwap } from './setupSwap'
+import { jitoRelayerSetup } from './jitoRelayerSetup'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -84,11 +85,18 @@ export const setup = async (solvConfig: ConfigParams) => {
       }
     }
 
+    let blockEngineUrl = ''
+    let isRelayer = false
     if (isJitoMev) {
       const jitoConfig = await askJitoSetting()
       await readOrCreateJitoConfig()
       await updateJitoSolvConfig(jitoConfig)
       console.log('Updated JITO MEV Config:', jitoConfig)
+      blockEngineUrl = jitoConfig.blockEngineUrl
+
+      if (jitoConfig.hasRelayer) {
+        isRelayer = true
+      }
     }
 
     let commission = CONFIG.COMMISSION
@@ -199,6 +207,9 @@ export const setup = async (solvConfig: ConfigParams) => {
 
     if (isJitoMev) {
       setupJitoMev()
+      if (isRelayer) {
+        await jitoRelayerSetup(blockEngineUrl)
+      }
       daemonReload()
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
       const content = `\n👷‍♀️ Please exchange your keys \`solv s\` -> 4)\n\nThen run \`solv start\` to run your JITO MEV!`
