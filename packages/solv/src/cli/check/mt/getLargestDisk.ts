@@ -55,7 +55,15 @@ function getPreferredDisks(): GetPreferredDisksResult {
     }
   }
 
-  const checkedDisks = disks.filter((disk) => !disk.name.includes(rootDiskName))
+  // Collect partitions of the root disk
+  const rootDiskPartitions = allDiskNames.filter((diskName) =>
+    diskName.startsWith(rootDiskName),
+  )
+
+  // Remove partitions of the root disk from the list of disks
+  const checkedDisks = disks.filter(
+    (disk) => !rootDiskPartitions.includes(disk.name),
+  )
 
   // Sort disks by size
   const sortedDisks = checkedDisks.sort((a, b) => b.size - a.size)
