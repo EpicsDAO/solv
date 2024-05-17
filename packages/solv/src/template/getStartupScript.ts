@@ -4,15 +4,36 @@ import { startMainnetValidatorScript } from './startupScripts/startMainnetValida
 import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
 import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
+import { startJitoRelayerValidatorScript } from './startupScripts/startJitoRelayerValidatorScript'
+import { startJitoRPCScript } from './startupScripts/startJitoRPCScript'
 
 export const getStartupScript = async (
   fetchSnapshot = false,
   solvTypes = SOLV_TYPES.TESTNET_VALIDATOR,
   isJitoMev = false,
+  hasRelayer = false,
+  isJitoRPC = false,
 ) => {
   let script = ''
   if (isJitoMev) {
     const jitoConfig = await readOrCreateJitoConfig()
+    if (isJitoRPC) {
+      return startJitoRPCScript(
+        jitoConfig.commissionBps,
+        jitoConfig.relayerUrl,
+        jitoConfig.blockEngineUrl,
+        jitoConfig.shredReceiverAddr,
+      )
+    }
+
+    if (hasRelayer) {
+      return startJitoRelayerValidatorScript(
+        jitoConfig.commissionBps,
+        jitoConfig.blockEngineUrl,
+        jitoConfig.shredReceiverAddr,
+      )
+    }
+
     return startJitoValidatorScript(
       jitoConfig.commissionBps,
       jitoConfig.relayerUrl,
@@ -35,7 +56,7 @@ export const getStartupScript = async (
       break
   }
   if (!fetchSnapshot) {
-    return `${script}--no-snapshot-fetch \\\n--no-genesis-fetch`
+    return `${script}--use-snapshot-archives-at-startup when-newest \\\n--no-genesis-fetch`
   }
   return script
 }

@@ -32,21 +32,4 @@ export const upload = async () => {
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     console.log(`Successfully Uploaded - ${fileName} 🎉`)
   }
-
-  // Upload tower file
-  const towerPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
-  const files = await readdir(towerPath)
-  const towerFiles = files.filter((file) => file.startsWith('tower-'))
-  const towerFile = towerFiles.map((file) => `${towerPath}/${file}`)
-  for (const file of towerFile) {
-    const splits = file.split('/')
-    const fileName = splits[splits.length - 1]
-    const filePath = `${uploadPath}/${fileName}`
-    if (!existsSync(filePath)) {
-      continue
-    }
-    const cmd = `scp ${filePath} solv@${answer.ip}:${file}`
-    spawnSync(cmd, { shell: true, stdio: 'inherit' })
-    console.log(`Successfully Uploaded - ${fileName} 🎉`)
-  }
 }

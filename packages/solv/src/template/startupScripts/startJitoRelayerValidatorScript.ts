@@ -3,7 +3,6 @@ import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export const startJitoRelayerValidatorScript = (
   commissionBps = 1000,
-  relayerUrl: string,
   blockEngineUrl: string,
   shredReceiverAddr: string,
 ) => {
@@ -12,8 +11,9 @@ export const startJitoRelayerValidatorScript = (
   const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
---identity ${identity} \\
+--identity /home/solv/identity.json \\
 --vote-account ${voteAccount} \\
+--authorized-voter  ${identity} \\
 --log ${log} \\
 --accounts ${accounts} \\
 --ledger ${ledger} \\
@@ -33,14 +33,17 @@ exec solana-validator \\
 --tip-distribution-program-pubkey 4R3gSG8BpU4t19KYj8CfnbtRpnT8gtk4dvTHxVRwc2r7 \\
 --merkle-root-upload-authority GZctHpWXmsZC1YHACTGGcHhYxjdRqQvTpYkb9LMvxDib \\
 --commission-bps ${commissionBps} \\
---relayer-url ${relayerUrl} \\
+--relayer-url http://127.0.0.1:11226 \\
 --rpc-bind-address 0.0.0.0 \\
 --block-engine-url ${blockEngineUrl} \\
 --shred-receiver-address ${shredReceiverAddr} \\
 --dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
---wal-recovery-mode skip_any_corrupted_record \\
---limit-ledger-size
+--private-rpc \\
+--full-rpc-api \\
+--account-index program-id \\
+--account-index-include-key AddressLookupTab1e1111111111111111111111111 \\
+--limit-ledger-size \\
 `
   return script
 }

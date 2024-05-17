@@ -12,8 +12,9 @@ export const startJitoValidatorScript = (
   const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
---identity ${identity} \\
+--identity /home/solv/identity.json \\
 --vote-account ${voteAccount} \\
+--authorized-voter  ${identity} \\
 --log ${log} \\
 --accounts ${accounts} \\
 --ledger ${ledger} \\
@@ -40,7 +41,7 @@ exec solana-validator \\
 --dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
---limit-ledger-size
+--limit-ledger-size \\
 `
   return script
 }

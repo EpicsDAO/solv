@@ -7,10 +7,18 @@ export const genStartupValidatorScript = async (
   fetchSnapshot = false,
   solvType = SOLV_TYPES.TESTNET_VALIDATOR,
   isJitoMev = false,
+  hasRelayer = false,
+  isJitoRPC = false,
 ) => {
   try {
     const isTest = solvType === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
-    const body = await getStartupScript(fetchSnapshot, solvType, isJitoMev)
+    const body = await getStartupScript(
+      fetchSnapshot,
+      solvType,
+      isJitoMev,
+      hasRelayer,
+      isJitoRPC,
+    )
     const { scriptPath } = startupScriptPaths(isTest)
     writeFileSync(scriptPath, body, 'utf-8')
     const cmd = `sudo chmod +x ${scriptPath}`

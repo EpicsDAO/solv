@@ -19,13 +19,12 @@ import {
   clientCommands,
   mountCommands,
 } from '@/cli'
-import { createStakeKeypair } from './cli/server/stake/createStakeKeypair'
 import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
 import { withdraw } from './cli/withdraw'
-import { execSync } from 'node:child_process'
 import { login } from './cli/login'
+import { change } from './cli/change'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -82,6 +81,13 @@ async function main() {
       .description('Login to Validatoors Cloud')
       .action(async () => {
         await login()
+      })
+
+    program
+      .command('change')
+      .description('Change Identity of Validator to New Validator')
+      .action(async () => {
+        change()
       })
 
     await program

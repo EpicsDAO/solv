@@ -16,6 +16,7 @@ import {
   DISK_TYPES,
   MAINNET_TYPES,
   NETWORK_TYPES,
+  RPC_MODE,
   SOLV_TYPES,
 } from '@/config/config'
 import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
@@ -38,6 +39,7 @@ import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { setupSwap } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
+import { createSymLink } from './createSymLink'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -85,8 +87,16 @@ export const setup = async (solvConfig: ConfigParams) => {
       }
     }
 
+    const askIfDummy = await inquirer.prompt<{ isDummy: boolean }>([
+      {
+        name: 'isDummy',
+        type: 'confirm',
+        message: 'Do you want to setup as a dummy node?(※For Migration)',
+        default: false,
+      },
+    ])
     let blockEngineUrl = ''
-    let isRelayer = false
+    let hasRelayer = false
     if (isJitoMev) {
       const jitoConfig = await askJitoSetting()
       await readOrCreateJitoConfig()
@@ -95,11 +105,12 @@ export const setup = async (solvConfig: ConfigParams) => {
       blockEngineUrl = jitoConfig.blockEngineUrl
 
       if (jitoConfig.hasRelayer) {
-        isRelayer = true
+        hasRelayer = true
       }
     }
 
     let commission = CONFIG.COMMISSION
+    let isJitoRPC = false
 
     // Check if solvType is RPC_NODE
     if (solvType !== 'RPC_NODE') {
@@ -115,6 +126,18 @@ export const setup = async (solvConfig: ConfigParams) => {
       ])
       commission = Number(question.commission)
     } else {
+      // Ask if Jito RPC Node
+      const question = await inquirer.prompt<{ rpcMode: string }>([
+        {
+          name: 'rpcMode',
+          type: 'list',
+          message: 'Which RPC Mode do you want to setup?',
+          choices: RPC_MODE,
+        },
+      ])
+      if (question.rpcMode === 'JITO_RPC') {
+        isJitoRPC = true
+      }
       await updateFirewall()
     }
 
@@ -196,25 +219,29 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
-    await genStartupValidatorScript(true, sType, isJitoMev)
-    makeServices(isTest)
+    await genStartupValidatorScript(
+      true,
+      sType,
+      isJitoMev,
+      askIfDummy.isDummy,
+      isJitoRPC,
+    )
+    makeServices(isTest, hasRelayer, blockEngineUrl)
     daemonReload()
 
     setupKeys(newSolvConfig)
+    createSymLink(askIfDummy.isDummy)
 
-    enableSolv()
+    enableSolv(hasRelayer)
     restartLogrotate()
 
     if (isJitoMev) {
       setupJitoMev()
-      if (isRelayer) {
+      if (hasRelayer) {
         await jitoRelayerSetup(blockEngineUrl)
       }
       daemonReload()
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
-      const content = `\n👷‍♀️ Please exchange your keys \`solv s\` -> 4)\n\nThen run \`solv start\` to run your JITO MEV!`
-      Logger.normal(content)
-      return
     }
 
     startSolana()
@@ -237,10 +264,41 @@ You can check current status by running:
 
 $ solv get monitor
 
+(Above cmd only works when the snapshot is downloaded and the validator is running.)
+If above cmd doesn't work, please check if your node has finished downloading the snapshot by running:
+
+$ solv log
+
+You can only track error logs by running:
+
+$ solv log -e
+
 If you have any questions, please visit our Discord server:
 https://discord.gg/CU6CcXV9en
 `
     console.log(chalk.yellow(warning))
+    if (askIfDummy.isDummy) {
+      console.log(
+        chalk.white(`⚠️ You need to change the identity to the real one
+
+Please run the following command(Your Local Machine):
+
+$ solv scp init
+
+Copy your public key.
+
+Then, run the following command(Your Validator Node):
+
+$ solv scp create
+
+Back to your Local Machine, run the following command(Your Local Machine):
+
+$ solv upload
+
+※ You need to set your keys in \`~/solvKeys/upload\` directory first.
+`),
+      )
+    }
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)
