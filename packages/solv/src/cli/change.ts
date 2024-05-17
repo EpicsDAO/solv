@@ -6,8 +6,17 @@ export type ChangeType = 'Active to Inactive' | 'Inactive to Active'
 export const changeTypes = ['Active to Inactive', 'Inactive to Active']
 
 export const change = async () => {
-  console.log(
-    chalk.yellow(`          ⚠️ Warning! ⚠️
+  const ask = await inquirer.prompt<{ change: ChangeType }>([
+    {
+      type: 'list',
+      name: 'change',
+      message:
+        'Which side do you want to change?Always 1.Active -> Inactive then 2.Inactive -> Active',
+      choices: changeTypes,
+    },
+  ])
+
+  const alertMsg = `          ⚠️ Warning! ⚠️
 
 You need to have SSH access to the other side of the node to change the identity.
 Please make sure you have SSH access to the other side of the node before proceeding.
@@ -19,29 +28,22 @@ $ solv scp init
 To copy the public key to the active side, run the following command(Active side):
 
 $ solv scp create
-`),
-  )
-  const confirm = await inquirer.prompt<{ confirm: boolean }>([
-    {
-      type: 'confirm',
-      name: 'confirm',
-      message:
-        'Do you have SSH access to the other side of the node?(You will need IP Address to proceed)',
-      default: false,
-    },
-  ])
-  if (!confirm.confirm) {
-    return
+  `
+  if (ask.change === 'Active to Inactive') {
+    console.log(chalk.yellow(alertMsg))
+    const confirm = await inquirer.prompt<{ confirm: boolean }>([
+      {
+        type: 'confirm',
+        name: 'confirm',
+        message:
+          'Do you have SSH access to the other side of the node?(You will need IP Address to proceed)',
+        default: false,
+      },
+    ])
+    if (!confirm.confirm) {
+      return
+    }
   }
-  const ask = await inquirer.prompt<{ change: ChangeType }>([
-    {
-      type: 'list',
-      name: 'change',
-      message:
-        'Which side do you want to change?Always 1.Active -> Inactive then 2.Inactive -> Active',
-      choices: changeTypes,
-    },
-  ])
 
   let ip = ''
   if (ask.change === 'Active to Inactive') {
@@ -71,6 +73,12 @@ $ solv scp create
 
   if (ask.change === 'Active to Inactive') {
     await changeActiveSide(ip)
+    const msg = `Now, you need to run the following command on the other side of the node:
+
+$ solv change
+
+Then, select 'Inactive to Active' and follow the instructions.`
+    console.log(chalk.white(msg))
   } else {
     await changeInactiveSide()
   }

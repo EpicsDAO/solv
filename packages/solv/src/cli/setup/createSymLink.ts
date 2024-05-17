@@ -1,10 +1,10 @@
 import { spawnSync } from 'child_process'
 
-export const createSymLink = (isActive = false) => {
-  if (isActive) {
-    createActiveSymLink()
-  } else {
+export const createSymLink = (isDummy = false) => {
+  if (isDummy) {
     createInactiveSymLink()
+  } else {
+    createActiveSymLink()
   }
 }
 

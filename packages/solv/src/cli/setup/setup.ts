@@ -91,7 +91,8 @@ export const setup = async (solvConfig: ConfigParams) => {
       {
         name: 'isDummy',
         type: 'confirm',
-        message: 'Do you want to setup as a dummy node?(※For Migration)',
+        message:
+          'Do you want to setup as a dummy(Inactive) node?(※For Migration)',
         default: false,
       },
     ])
