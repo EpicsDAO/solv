@@ -22,9 +22,9 @@ Environment=SOLANA_METRICS_CONFIG="host=http://metrics.jito.wtf:8086,db=relayer,
 Environment=BLOCK_ENGINE_URL=${blockEngineUrl}
 Environment=GRPC_BIND_IP=127.0.0.1
 
-ExecStart=/home/solv/jito-relayer/target/release/jito-transaction-relayer \
-          --keypair-path=/home/solv/relayer-keypair.json \
-          --signing-key-pem-path=/home/solv/private.pem \
+ExecStart=/home/solv/jito-relayer/target/release/jito-transaction-relayer \\
+          --keypair-path=/home/solv/relayer-keypair.json \\
+          --signing-key-pem-path=/home/solv/private.pem \\
           --verifying-key-pem-path=/home/solv/public.pem
 
 [Install]

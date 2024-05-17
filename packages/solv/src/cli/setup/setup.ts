@@ -223,7 +223,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       true,
       sType,
       isJitoMev,
-      askIfDummy.isDummy,
+      hasRelayer,
       isJitoRPC,
     )
     makeServices(isTest, hasRelayer, blockEngineUrl)
