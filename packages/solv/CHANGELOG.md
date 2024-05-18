@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.0.1
+
+### Patch Changes
+
+- [#149](https://github.com/EpicsDAO/solv/pull/149) [`b98ad4d`](https://github.com/EpicsDAO/solv/commit/b98ad4d6b465b0f00ceedf598ef214091886b5a2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version for testnet
+
 ## 4.0.0
 
 ### Major Changes
