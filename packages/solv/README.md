@@ -65,7 +65,7 @@ The Solana validator will start 🎊
 
 ## New Jito MEV Setup
 
-Now you can select the mainnet for Jito MEV 🎉
+Now you can select the mainnet for Jito MEV / Jito RPC / Jito Relayer 🎉
 
 ![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
 
@@ -128,7 +128,7 @@ $ solv log -e
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-$ solv get config
+$ solv config
 ```
 
 If you have any questions, please contact us on Discord.
@@ -166,9 +166,15 @@ Commands:
   balance|bal          Show Keypairs Balance
   mtr                  Mount Reload Command
   disks                Show unmounted disks
+  relayer              Jiro Relayer Commands
   rm:log               Remove Logs
   rm:snapshot          Remove Snapshot
   withdraw             Withdraw SOL from Vote Account to Authority Account
+  login                Login to Validatoors Cloud
+  change               Change Identity of Validator to New Validator
+  monitor|m            Monitor Solana Node
+  catchup|ca           Check Solana Catchup Status
+  config               Show Solv Config
   help [cmd]           Display help for solv commands
 ```
 
