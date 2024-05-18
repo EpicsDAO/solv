@@ -30,6 +30,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   let has850GB = false
   let has400GB = false
   let hasUsed1250GB = false
+  let rootDiskName = ''
 
   for (const line of lines) {
     const [name, sizeStr, mountpoint] = line.trim().split(/\s+/)
@@ -38,6 +39,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
     const size = parseInt(sizeStr, 10)
     if (isNaN(size)) continue // Skip lines where size is not a number
     const isMounted = mountpoint !== undefined && mountpoint !== ''
+    if (mountpoint === '/') rootDiskName = name.replace(/[0-9]*$/, '') // Remove any trailing digits
     const hasPartition = allDiskNames.some(
       (diskName) => diskName !== name && diskName.startsWith(name),
     )
@@ -53,8 +55,18 @@ function getPreferredDisks(): GetPreferredDisksResult {
     }
   }
 
+  // Collect partitions of the root disk
+  const rootDiskPartitions = allDiskNames.filter((diskName) =>
+    diskName.startsWith(rootDiskName),
+  )
+
+  // Remove root disk and its partitions from the list of disks
+  const checkedDisks = disks.filter(
+    (disk) => !rootDiskPartitions.includes(disk.name),
+  )
+
   // Sort disks by size
-  const sortedDisks = disks.sort((a, b) => b.size - a.size)
+  const sortedDisks = checkedDisks.sort((a, b) => b.size - a.size)
 
   // Check conditions based on sorted disks
   if (sortedDisks.length > 0) {

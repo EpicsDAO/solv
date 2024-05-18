@@ -5,6 +5,7 @@ export interface JitoConfig {
   relayerUrl: string
   blockEngineUrl: string
   shredReceiverAddr: string
+  hasRelayer?: boolean
 }
 
 export const JITO_CONFIG: JitoConfig = {

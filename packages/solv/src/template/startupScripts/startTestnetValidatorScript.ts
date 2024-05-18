@@ -6,8 +6,9 @@ export const startTestnetValidatorScript = () => {
   const { identity, voteAccount, log, accounts } = startupScriptPaths()
   const script = `#!/bin/bash
 exec solana-validator \\
---identity ${identity} \\
+--identity /home/solv/identity.json \\
 --vote-account ${voteAccount} \\
+--authorized-voter  ${identity} \\
 --log ${log} \\
 --accounts ${accounts} \\
 --ledger ${ledger} \\

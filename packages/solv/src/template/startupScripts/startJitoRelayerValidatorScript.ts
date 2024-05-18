@@ -1,7 +1,11 @@
 import { startupScriptPaths } from '@/config/config'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
-export const startMainnetValidatorScript = () => {
+export const startJitoRelayerValidatorScript = (
+  commissionBps = 1000,
+  blockEngineUrl: string,
+  shredReceiverAddr: string,
+) => {
   const isTest = false
   const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
   const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
@@ -25,11 +29,20 @@ exec solana-validator \\
 --known-validator GwHH8ciFhR8vejWCqmg8FWZUCNtubPY2esALvy5tBvji \\
 --known-validator 6WgdYhhGE53WrZ7ywJA15hBVkw7CRbQ8yDBBTwmBtAHN \\
 --known-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \\
---known-validator RBFiUqjYuy4mupzZaU96ctXJBy23sRBRsL3KivDAsFM \\
---dynamic-port-range 8000-8020 \\
+--tip-payment-program-pubkey T1pyyaTNZsKv2WcRAB8oVnk93mLJw2XzjtVYqCsaHqt \\
+--tip-distribution-program-pubkey 4R3gSG8BpU4t19KYj8CfnbtRpnT8gtk4dvTHxVRwc2r7 \\
+--merkle-root-upload-authority GZctHpWXmsZC1YHACTGGcHhYxjdRqQvTpYkb9LMvxDib \\
+--commission-bps ${commissionBps} \\
+--relayer-url http://127.0.0.1:11226 \\
 --rpc-bind-address 0.0.0.0 \\
+--block-engine-url ${blockEngineUrl} \\
+--shred-receiver-address ${shredReceiverAddr} \\
+--dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
---wal-recovery-mode skip_any_corrupted_record \\
+--private-rpc \\
+--full-rpc-api \\
+--account-index program-id \\
+--account-index-include-key AddressLookupTab1e1111111111111111111111111 \\
 --limit-ledger-size \\
 `
   return script

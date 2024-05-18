@@ -18,14 +18,17 @@ import {
   getCommands,
   clientCommands,
   mountCommands,
+  relayerCommands,
 } from '@/cli'
-import { createStakeKeypair } from './cli/server/stake/createStakeKeypair'
 import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
 import { withdraw } from './cli/withdraw'
-import { execSync } from 'node:child_process'
 import { login } from './cli/login'
+import { change } from './cli/change'
+import { monitorSolana } from './cli/get/monitorSolana'
+import { solanaCatchup } from './cli/get/solanaCatchup'
+import { showConfig } from './cli/get/showConfig'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -55,6 +58,7 @@ async function main() {
     clientCommands(solvConfig)
     balanceCommands(solvConfig)
     mountCommands(solvConfig)
+    relayerCommands()
 
     program
       .command('rm:log')
@@ -82,6 +86,36 @@ async function main() {
       .description('Login to Validatoors Cloud')
       .action(async () => {
         await login()
+      })
+
+    program
+      .command('change')
+      .description('Change Identity of Validator to New Validator')
+      .action(() => {
+        change()
+      })
+
+    program
+      .command('monitor')
+      .alias('m')
+      .description('Monitor Solana Node')
+      .action(() => {
+        monitorSolana()
+      })
+
+    program
+      .command('catchup')
+      .description('Check Solana Catchup Status')
+      .alias('ca')
+      .action(() => {
+        solanaCatchup()
+      })
+
+    program
+      .command('config')
+      .description('Show Solv Config')
+      .action(() => {
+        showConfig()
       })
 
     await program

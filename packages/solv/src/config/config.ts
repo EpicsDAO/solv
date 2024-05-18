@@ -16,6 +16,8 @@ export enum SOLV_TYPES {
   RPC_NODE,
 }
 
+export const RPC_MODE = ['SOLANA_RPC', 'JITO_RPC']
+
 export enum MAINNET_TYPES {
   SOLANA_CLIENT = 'SolanaClient',
   JITO_MEV = 'JitoMev',
@@ -23,6 +25,7 @@ export enum MAINNET_TYPES {
 }
 
 export type CONFIG_TYPE = {
+  ID: string
   LANG: LANGS
   USERNAME: string
   SOLANA_VERSION: string
@@ -48,6 +51,7 @@ export type CONFIG_TYPE = {
 export type PartialConfigType = Partial<CONFIG_TYPE>
 
 export const CONFIG: CONFIG_TYPE = {
+  ID: 'solv',
   LANG: LANGS.EN,
   USERNAME: 'solv',
   SOLANA_VERSION: '1.18.13',
