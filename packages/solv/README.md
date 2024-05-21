@@ -69,20 +69,6 @@ Now you can select the mainnet for Jito MEV / Jito RPC / Jito Relayer 🎉
 
 ![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
 
-## Install solv CLI on your local machine
-
-solv CLI is a tool for managing Solana Validators from your local machine.
-
-```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv-cli/v3.0.0/install")"
-```
-
-Start solv CLI Dashboard - from your local machine
-
-```bash
-$ solv c
-```
-
 ![Generate Keys](https://storage.googleapis.com/epics-bucket/solv/assets/generate-keys.png)
 
 ## Run solv Server CLI - from your validator server
@@ -92,20 +78,6 @@ $ solv s
 ```
 
 ![solv s](https://storage.googleapis.com/epics-bucket/solv/assets/solv-s.png)
-
-## Restart Solana Validator
-
-```bash
-$ solv restart
-```
-
-Default `solana-validator.sh` command is `--no-incremental-snapshots`.
-
-If you want to download snapshot, you can use the following command.
-
-```bash
-$ solv restart --snapshot
-```
 
 This command will automatically remove `--no-incremental-snapshots` and add `--no-genesis-fetch`, `--no-snapshot-fetch` to yoursolana-validator.sh command.
 
