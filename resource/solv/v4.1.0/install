@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/bash
 
 # Constants and configurable variables
 NODE_VERSION=20.11.1
