@@ -31,7 +31,8 @@
     "quickstart": {
       "groupTitle": "Quickstart",
       "start-solv": "Start solv",
-      "update-to-v3": "Update to Ver.3"
+      "update-to-v3": "Update to Ver.3",
+      "no-downtime-update": "No Downtime Update"
     },
     "tutorial": {
       "groupTitle": "Tutorial",

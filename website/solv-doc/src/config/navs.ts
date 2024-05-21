@@ -92,6 +92,11 @@ export const docMenuNav = [
         href: '/doc/quickstart/update-to-v3/',
         icon: ArrowPathIcon,
       },
+      {
+        name: 'doc:menuNav.quickstart.no-downtime-update',
+        href: '/doc/quickstart/no-downtime-update/',
+        icon: ArrowPathIcon,
+      },
     ],
   },
   {
