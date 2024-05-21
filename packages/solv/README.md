@@ -71,6 +71,14 @@ Now you can select the mainnet for Jito MEV / Jito RPC / Jito Relayer 🎉
 
 ![Generate Keys](https://storage.googleapis.com/epics-bucket/solv/assets/generate-keys.png)
 
+## New No downtime migration
+
+Now you can migrate your validator to a new server without downtime.
+
+```bash
+$ solv change
+```
+
 ## Run solv Server CLI - from your validator server
 
 ```bash
