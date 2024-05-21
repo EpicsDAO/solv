@@ -23,15 +23,9 @@
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-Discover the ease of setting up a Solana Validator Node server using solv, a powerful tool designed to simplify blockchain interactions.
+The utility tool for Solana Validators
 
-With just a single command, solv eliminates the usual complexities, enabling you to launch a Solana Validator swiftly.
-
-This tool not only streamlines the setup process but also opens doors for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
-
-Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv is your go-to solution for an uncomplicated, fast setup.
-
-Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
+solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
 
 ## 📖 Server Spec
 
@@ -43,7 +37,7 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v3.3/install")"
+$ sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -63,9 +57,38 @@ The Solana validator will start 🎊
 
 [![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
 
-## New Jito MEV Setup
+## New Features - v4.0.0~v4.1.0
 
-Now you can select the mainnet for Jito MEV 🎉
+### Snapshot Download Speed Improved 100x~ Faster
+
+solv integrated with solana snapshot finders for Solana Mainnet and Testnet.
+This will improve the snapshot download speed 100x~ faster than before.
+Greatly reduce the time to start the Solana Validator.
+
+Thanks to c29r3 for the great work ⭐️
+
+- [Solana Snapshot Finder](https://github.com/c29r3/solana-snapshot-finder)
+
+### No Downtime Migration
+
+solv supports no downtime migration for Solana Validator.
+You can migrate your Solana Validator to other servers without restarting the Solana Validator.
+
+`solv change` command will help you to migrate your Solana Validator to other servers.
+
+```bash
+$ solv change
+```
+
+This function was created with reference to the following link.
+
+Thanks to pumpkins-pool for the great work ⭐️
+
+- [Pumpkin's Pool - Identity Transition](https://pumpkins-pool.gitbook.io/pumpkins-pool)
+
+## Jito MEV Setup
+
+You can select the mainnet for Jito MEV or RPC Jito Client🎉
 
 ![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
 
