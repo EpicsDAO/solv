@@ -6,15 +6,9 @@ description: Quickstart of solv, an open-source tool for Solana validator
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-Discover the ease of setting up a Solana Validator Node server using solv, a powerful tool designed to simplify blockchain interactions.
+The utility tool for Solana Validators
 
-With just a single command, solv eliminates the usual complexities, enabling you to launch a Solana Validator swiftly.
-
-This tool not only streamlines the setup process but also opens doors for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
-
-Whether you're a seasoned developer or a blockchain enthusiast stepping into the validator realm, solv is your go-to solution for an uncomplicated, fast setup.
-
-Dive into the world of Solana, explore the capabilities of solv, and be part of the blockchain revolution with minimal effort and maximum efficiency.
+solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
 
 ## 📖 Server Spec
 
@@ -23,8 +17,10 @@ Dive into the world of Solana, explore the capabilities of solv, and be part of 
 
 ## Solana Validator Setup
 
+Login in to your Validator server by ssh and run the following command.
+
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.1/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -44,27 +40,22 @@ Then
 After startup, the snapshot download will start automatically.
 The Solana validator will start 🎊
 
+If your node does not start, you can try the following command.
+
+```bash
+$ solv stop
+$ solv rm:snapshot
+$ solv get snapshot
+$ solv start
+```
+
 ## New Jito MEV Setup
 
-Now you can select the mainnet for Jito MEV 🎉
+You can select the mainnet for Jito MEV or RPC Jito Client🎉
 
 ![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
 
-## Install solv CLI on your local machine
-
-solv CLI is a tool for managing Solana Validators from your local machine.
-
-```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.1/install")"
-```
-
-Start solv CLI Dashboard - from your local machine
-
-```bash
-$ solv c
-```
-
-![Generate Keys](https://storage.googleapis.com/epics-bucket/solv/assets/generate-keys.png)
+Also you have option to select Jito Relayer.
 
 ## Run solv Server CLI - from your validator server
 
@@ -90,21 +81,11 @@ $ solv start
 $ solv stop
 ```
 
-## Restart Solana Validator
+## Monitor Solana Validator
 
 ```bash
-$ solv restart
+$ solv monitor
 ```
-
-Default `solana-validator.sh` command is `--no-incremental-snapshots`.
-
-If you want to download snapshot, you can use the following command.
-
-```bash
-$ solv restart --snapshot
-```
-
-This command will automatically remove `--no-incremental-snapshots` and add `--no-genesis-fetch`, `--no-snapshot-fetch` to yoursolana-validator.sh command.
 
 ## Solana Validator Status
 
@@ -118,12 +99,24 @@ $ solv status
 $ solv log
 ```
 
+## Show Solana Balance and Keypairs
+
+```bash
+$ solv balance
+```
+
+## Show Solana Validator Catchup Status
+
+```bash
+$ solv catchup
+```
+
 ## Show Solana Validator Config
 
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-$ solv get config
+$ solv config
 ```
 
 ## solv CLI
@@ -135,7 +128,7 @@ Usage: solv [options] [command]
 💎 Solana Validator All-in-One CLI 💎
 
 Options:
-  -v, --version        Output the current version
+  -V                   Output the current version
   -h, --help           Display help for solv commands
 
 Commands:
@@ -148,9 +141,23 @@ Commands:
   log|l [options]      tail logs
   install|i [options]  Install/Update Solana Version
   stake                Solana Delegate Stake
-  get <cmd>            Get Solana Validator Info
+  unstake              Solana Delegate Stake
+  get <cmd>            Get Solana Validator Info Commands
   scp <cmd>            Download/Upload Solana Validator Keypairs
   cron <cmd>           Run Schedule Tasks
   setup [options]      Setup Solana Validator
+  client|c             Open solv Client Dashboard
+  balance|bal          Show Keypairs Balance
+  mtr                  Mount Reload Command
+  disks                Show unmounted disks
+  relayer              Jiro Relayer Commands
+  rm:log               Remove Logs
+  rm:snapshot          Remove Snapshot
+  withdraw             Withdraw SOL from Vote Account to Authority Account
+  login                Login to Validatoors Cloud
+  change               Change Identity of Validator to New Validator
+  monitor|m            Monitor Solana Node
+  catchup|ca           Check Solana Catchup Status
+  config               Show Solv Config
   help [cmd]           Display help for solv commands
 ```

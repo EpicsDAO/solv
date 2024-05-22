@@ -103,7 +103,6 @@ export const setup = async (solvConfig: ConfigParams) => {
       const jitoConfig = await askJitoSetting()
       await readOrCreateJitoConfig()
       await updateJitoSolvConfig(jitoConfig)
-      console.log('Updated JITO MEV Config:', jitoConfig)
       blockEngineUrl = jitoConfig.blockEngineUrl
 
       if (jitoConfig.hasRelayer) {
@@ -265,7 +264,7 @@ It may not finish catching up if your hardware does not meet the requirements.
 
 You can check current status by running:
 
-$ solv get monitor
+$ solv monitor
 
 (Above cmd only works when the snapshot is downloaded and the validator is running.)
 If above cmd doesn't work, please check if your node has finished downloading the snapshot by running:
