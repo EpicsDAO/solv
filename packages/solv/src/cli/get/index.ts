@@ -6,6 +6,8 @@ import { solanaCatchup } from './solanaCatchup'
 import { monitorSolana } from './monitorSolana'
 import { showConfig } from './showConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { getSnapshot } from './snapshot'
+import { SOLV_TYPES } from '@/config/config'
 
 export const getCommands = (solvConfig: ConfigParams) => {
   const { locale } = solvConfig
@@ -36,6 +38,18 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .description(locale.cmds.catchup)
     .action(() => {
       solanaCatchup()
+    })
+
+  get
+    .command('snapshot')
+    .alias('sn')
+    .description(`Download the latest snapshot`)
+    .action((solvConfig: ConfigParams) => {
+      const isTest =
+        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
+          ? true
+          : false
+      getSnapshot(isTest)
     })
 
   get

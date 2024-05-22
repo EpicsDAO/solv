@@ -44,6 +44,7 @@ exec solana-validator \\
 --full-rpc-api \\
 --account-index program-id \\
 --account-index-include-key AddressLookupTab1e1111111111111111111111111 \\
+--use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
 `
   return script

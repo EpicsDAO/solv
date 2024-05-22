@@ -40,6 +40,7 @@ import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { setupSwap } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
+import { getSnapshot } from '../get/snapshot'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -245,6 +246,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
     }
 
+    getSnapshot(isTest)
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
     const msg = `Setup completed 🎊\nYour node will be ready in a few hours⏳\n`
