@@ -1,5 +1,19 @@
 # @epics-dao/solv
 
+## 4.1.1
+
+### Patch Changes
+
+- [#158](https://github.com/EpicsDAO/solv/pull/158) [`fb61089`](https://github.com/EpicsDAO/solv/commit/fb61089e000178b936349fa0d2ee402c3821d2f2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv get snapshot
+
+  Install script updated
+
+  ```bash
+  $ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+  $ cd ~ && source ~/.profile
+  $ solv setup
+  ```
+
 ## 4.1.0
 
 ### Minor Changes
