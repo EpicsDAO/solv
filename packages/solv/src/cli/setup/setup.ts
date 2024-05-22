@@ -103,7 +103,6 @@ export const setup = async (solvConfig: ConfigParams) => {
       const jitoConfig = await askJitoSetting()
       await readOrCreateJitoConfig()
       await updateJitoSolvConfig(jitoConfig)
-      console.log('Updated JITO MEV Config:', jitoConfig)
       blockEngineUrl = jitoConfig.blockEngineUrl
 
       if (jitoConfig.hasRelayer) {
