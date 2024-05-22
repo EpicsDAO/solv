@@ -2,7 +2,6 @@ import { getAllKeyPaths } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
 import { spawnSync } from 'child_process'
 import { existsSync } from 'fs'
-import { readdir } from 'fs/promises'
 import inquirer from 'inquirer'
 import os from 'os'
 

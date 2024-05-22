@@ -57,6 +57,17 @@ The Solana validator will start 🎊
 
 [![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
 
+If your node does not start, you can try the following command.
+
+```bash
+$ solv stop
+$ solv rm:snapshot
+$ solv get snapshot
+$ solv start
+```
+
+This will remove the snapshot and restart the Solana Validator from the new snapshot.
+
 ## New Features - v4.0.0~v4.1.0
 
 - Jito Relayer Setup
@@ -81,6 +92,21 @@ You can migrate your Solana Validator to other servers without restarting the So
 
 `solv change` command will help you to migrate your Solana Validator to other servers.
 
+Prepare your new server(Inactive) and current server(Active) with the latest slot.
+Then run the following command on new server(Inactive) and current server(Active).
+
+※ Please make sure to backup your keys before running the command.
+※ Please make sure to run the new server with solv4 as a dummy mode.
+
+Run the following command on the current server(Active).
+You will be asked to enter the new server IP address.
+
+```bash
+$ solv change
+```
+
+Then, you should quickly run the following command on the new server(Inactive).
+
 ```bash
 $ solv change
 ```
@@ -96,6 +122,8 @@ Special Thanks to pumpkins-pool for the great OSS ⭐️
 You can select the mainnet for Jito MEV or RPC Jito Client🎉
 
 ![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
+
+Also you have option to select Jito Relayer.
 
 ## Run solv Server CLI - from your validator server
 
