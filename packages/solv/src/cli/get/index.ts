@@ -10,7 +10,7 @@ import { getSnapshot } from './snapshot'
 import { SOLV_TYPES } from '@/config/config'
 
 export const getCommands = (solvConfig: ConfigParams) => {
-  const { locale } = solvConfig
+  const { locale, config } = solvConfig
   const get = program
     .command('get')
     .description(locale.cmds.get)
@@ -44,11 +44,9 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .command('snapshot')
     .alias('sn')
     .description(`Download the latest snapshot`)
-    .action((solvConfig: ConfigParams) => {
+    .action(() => {
       const isTest =
-        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
-          ? true
-          : false
+        config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
       getSnapshot(isTest)
     })
 

@@ -22,7 +22,7 @@ Solana の世界に飛び込み、solv の機能を探求し、努力を最小�
 ## Solana バリデーターのセットアップ
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.1/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -68,18 +68,10 @@ $ solv start
 $ solv stop
 ```
 
-## Solana バリデーターの再起動
+## Solana モニターの開始
 
 ```bash
-$ solv restart
-```
-
-デフォルトのコマンドは--no-incremental-snapshots です。
-
-スナップショットをダウンロードしたい場合は、以下のコマンドを使用できます。
-
-```bash
-$ solv restart --snapshot
+$ solv monitor
 ```
 
 ## Solana バリデータのステータス確認
@@ -94,39 +86,65 @@ $ solv status
 $ solv log
 ```
 
+## SOL の残高確認
+
+```bash
+$ solv balance
+```
+
+## Solana バリデーターのキャッチアップステータス確認
+
+```bash
+$ solv catchup
+```
+
 ## Solana バリデーターの設定確認
 
 このコマンドは、solana バリデーターに使用されるすべての設定パスを表示します。
 
 ```bash
-$ solv get config
+$ solv config
 ```
 
 ## solv CLI
 
 ```bash
 $ solv --help
-使用法: solv [オプション] [コマンド]
+Usage: solv [options] [command]
 
-💎 Solana バリデーター管理用 CLI 💎
+💎 Solana Validator All-in-One CLI 💎
 
-オプション:
-  -v, --version        現在のバージョンを表示
-  -h, --help           solvコマンドのヘルプを表示
+Options:
+  -V                   Output the current version
+  -h, --help           Display help for solv commands
 
-コマンド:
-  server|s             solvダッシュボードを開く
-  start                Solanaバリデーターを開始
-  restart [オプション]  Solanaバリデーターを再起動
-  stop                 Solanaバリデーターを停止
-  status               Solanaバリデーターのステータスを表示
-  update|u [オプション] Solanaバリデーターのバージョンを更新
-  log|l [オプション]    ログを表示
-  install|i [オプション] Solanaのバージョンをインストール/更新
-  stake                Solanaデリゲートステーク
-  get <cmd>            Solanaバリデーター情報を取得
-  scp <cmd>            Solanaバリデーターキーペアをダウンロード/アップロード
-  cron <cmd>           スケジュールされたタスクを実行
-  setup [オプション]     Solanaバリデーターを設定
-  help [cmd]           solvコマンドのヘルプを表示
+Commands:
+  server|s             Open solv Dashboard
+  start                Start Solana Validator
+  restart [options]    Restart Solana Validator
+  stop                 Stop Solana Validator
+  status               Show Solana Validator Status
+  update|u [options]   Update Solana Validator Version
+  log|l [options]      tail logs
+  install|i [options]  Install/Update Solana Version
+  stake                Solana Delegate Stake
+  unstake              Solana Delegate Stake
+  get <cmd>            Get Solana Validator Info Commands
+  scp <cmd>            Download/Upload Solana Validator Keypairs
+  cron <cmd>           Run Schedule Tasks
+  setup [options]      Setup Solana Validator
+  client|c             Open solv Client Dashboard
+  balance|bal          Show Keypairs Balance
+  mtr                  Mount Reload Command
+  disks                Show unmounted disks
+  relayer              Jiro Relayer Commands
+  rm:log               Remove Logs
+  rm:snapshot          Remove Snapshot
+  withdraw             Withdraw SOL from Vote Account to Authority Account
+  login                Login to Validatoors Cloud
+  change               Change Identity of Validator to New Validator
+  monitor|m            Monitor Solana Node
+  catchup|ca           Check Solana Catchup Status
+  config               Show Solv Config
+  help [cmd]           Display help for solv commands
 ```
