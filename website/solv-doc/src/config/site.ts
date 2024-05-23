@@ -20,9 +20,9 @@ const siteConfig = {
   solvInstallerVersion: 'v4.1.2',
   discordInvitationLink: 'https://discord.gg/GmHYfyRamx',
   downloadPressKitsJA:
-    'https://storage.googleapis.com/elsoul-holdings/elsoul-labo/PressKits/2024-05-07/ELSOUL%20LABO%20B.V.%20%E3%83%95%E3%82%9A%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%83%E3%83%88.zip',
+    'https://storage.googleapis.com/elsoul-holdings/elsoul-labo/PressKits/2024-05-23/ELSOUL%20LABO%20B.V.%20%E3%83%95%E3%82%9A%E3%83%AC%E3%82%B9%E3%82%AD%E3%83%83%E3%83%88.zip',
   downloadPressKitsEN:
-    'https://storage.googleapis.com/elsoul-holdings/elsoul-labo/PressKits/2024-05-07/ELSOUL%20LABO%20B.V.%20Press%20Kits.zip',
+    'https://storage.googleapis.com/elsoul-holdings/elsoul-labo/PressKits/2024-05-23/ELSOUL%20LABO%20B.V.%20Press%20Kits.zip',
 }
 
 export default siteConfig
