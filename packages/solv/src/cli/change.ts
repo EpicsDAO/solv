@@ -21,14 +21,23 @@ export const change = async () => {
 You need to have SSH access to the other side of the node to change the identity.
 Please make sure you have SSH access to the other side of the node before proceeding.
 
-To create SSH public key, run the following command(Inactive side):
+To create SSH public key, run the following command(Active Side):
 
 $ solv scp init
+$ solv scp cat
 
-To copy the public key to the active side, run the following command(Active side):
+To copy the public key to the Inactive Side, run the following command(Inactive side):
 
 $ solv scp create
-  `
+
+Then, paste the public key to this side.
+
+Please make sure you have done the above steps before proceeding.
+You can check your connection by running the following command:
+
+$ ssh solv@<IP_ADDRESS> ls
+`
+
   if (ask.change === 'Active to Inactive') {
     console.log(chalk.yellow(alertMsg))
     const confirm = await inquirer.prompt<{ confirm: boolean }>([
