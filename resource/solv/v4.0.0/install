@@ -28,8 +28,20 @@ create_user() {
     else
         echo "Creating user 'solv'..."
         sudo adduser solv
-        sudo usermod -aG sudo solv
     fi
+}
+
+install_docker() {
+    echo "Installing Docker..."
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce -y
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo usermod -aG docker solv
 }
 
 
@@ -58,19 +70,8 @@ EOF_SOLV
 
 install_pnpm_and_packages() {
     sudo su - solv <<EOF_SOLV
-        echo "Installing pnpm..."
         curl -fsSL https://get.pnpm.io/install.sh | sh -
-
-        echo "Setting pnpm environment variables..."
-        PNPM_HOME="/home/solv/.local/share/pnpm"
-        export PNPM_HOME
-        PATH="\$PNPM_HOME:\$PATH"
-        export PATH
-
-        echo "Sourcing ~/.bashrc in case it's needed..."
-        if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
-
-        echo "Installing node $NODE_VERSION..."
+        source ~/.profile
         pnpm env use $NODE_VERSION --global
 
         echo "Installing @epics-dao/solv..."
@@ -79,12 +80,10 @@ install_pnpm_and_packages() {
         echo "Installing pm2..."
         pnpm add -g pm2
 
-        echo "Sourcing ~/.profile in case it's needed..."
-        if [ -f ~/.profile ]; then source ~/.profile; fi
-
-        # Use the full path to solv if it's not found
-        /home/solv/.local/share/pnpm/solv i
-        /home/solv/.local/share/pnpm/solv get aa
+        echo "Sourcing ~/.profile..."
+        source ~/.profile
+        solv i
+        solv get aa
 EOF_SOLV
 }
 
@@ -104,6 +103,7 @@ main() {
 
     create_user
     setup_firewall
+    install_docker
     install_rustup
     install_pnpm_and_packages
     echo "Enter solv user password 👇"

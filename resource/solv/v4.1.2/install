@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/bash
 
 # Constants and configurable variables
 NODE_VERSION=20.11.1
@@ -32,6 +32,19 @@ create_user() {
     fi
 }
 
+install_docker() {
+    echo "Installing Docker..."
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce -y
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo usermod -aG docker solv
+}
+
 
 setup_firewall() {
     echo "Configuring firewall"
@@ -40,8 +53,11 @@ setup_firewall() {
     sudo ufw allow 53 
     sudo ufw allow 8899
     sudo ufw allow 8899/udp
+    sudo ufw allow 8899/tcp
     sudo ufw allow 8000:8898/udp
+    sudo ufw allow 8000:8898/tcp
     sudo ufw allow 8900:10000/tcp
+    sudo ufw allow 8900:10000/udp
     sudo ufw reload
 }
 
@@ -104,6 +120,7 @@ main() {
 
     create_user
     setup_firewall
+    install_docker
     install_rustup
     install_pnpm_and_packages
     echo "Enter solv user password 👇"

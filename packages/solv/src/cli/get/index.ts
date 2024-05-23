@@ -6,9 +6,11 @@ import { solanaCatchup } from './solanaCatchup'
 import { monitorSolana } from './monitorSolana'
 import { showConfig } from './showConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { getSnapshot } from './snapshot'
+import { SOLV_TYPES } from '@/config/config'
 
 export const getCommands = (solvConfig: ConfigParams) => {
-  const { locale } = solvConfig
+  const { locale, config } = solvConfig
   const get = program
     .command('get')
     .description(locale.cmds.get)
@@ -36,6 +38,22 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .description(locale.cmds.catchup)
     .action(() => {
       solanaCatchup()
+    })
+
+  get
+    .command('snapshot')
+    .alias('sn')
+    .option(
+      '-m, --minDownloadSpeed <minDownloadSpeed>',
+      'Minimum download speed',
+      '45',
+    )
+    .description(`Download the latest snapshot`)
+    .action((options) => {
+      const isTest =
+        config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
+      const minDonwloadSpeed = options.minDownloadSpeed
+      getSnapshot(isTest, minDonwloadSpeed)
     })
 
   get

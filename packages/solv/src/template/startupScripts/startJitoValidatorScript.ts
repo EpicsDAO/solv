@@ -41,6 +41,7 @@ exec solana-validator \\
 --dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
+--use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
 `
   return script

@@ -30,6 +30,7 @@ exec solana-validator \\
 --rpc-bind-address 0.0.0.0 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
+--use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
 `
   return script

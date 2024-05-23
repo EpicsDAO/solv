@@ -40,6 +40,7 @@ import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { setupSwap } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
+import { getSnapshot } from '../get/snapshot'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -102,7 +103,6 @@ export const setup = async (solvConfig: ConfigParams) => {
       const jitoConfig = await askJitoSetting()
       await readOrCreateJitoConfig()
       await updateJitoSolvConfig(jitoConfig)
-      console.log('Updated JITO MEV Config:', jitoConfig)
       blockEngineUrl = jitoConfig.blockEngineUrl
 
       if (jitoConfig.hasRelayer) {
@@ -245,6 +245,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
     }
 
+    getSnapshot(isTest)
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
     const msg = `Setup completed 🎊\nYour node will be ready in a few hours⏳\n`
@@ -263,7 +264,7 @@ It may not finish catching up if your hardware does not meet the requirements.
 
 You can check current status by running:
 
-$ solv get monitor
+$ solv monitor
 
 (Above cmd only works when the snapshot is downloaded and the validator is running.)
 If above cmd doesn't work, please check if your node has finished downloading the snapshot by running:
