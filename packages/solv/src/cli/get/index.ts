@@ -43,11 +43,17 @@ export const getCommands = (solvConfig: ConfigParams) => {
   get
     .command('snapshot')
     .alias('sn')
+    .option(
+      '-m, --minDownloadSpeed <minDownloadSpeed>',
+      'Minimum download speed',
+      '45',
+    )
     .description(`Download the latest snapshot`)
-    .action(() => {
+    .action((options) => {
       const isTest =
         config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
-      getSnapshot(isTest)
+      const minDonwloadSpeed = options.minDownloadSpeed
+      getSnapshot(isTest, minDonwloadSpeed)
     })
 
   get
