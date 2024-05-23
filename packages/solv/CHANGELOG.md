@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.1.2
+
+### Patch Changes
+
+- [#160](https://github.com/EpicsDAO/solv/pull/160) [`2618df8`](https://github.com/EpicsDAO/solv/commit/2618df89bbfd69a59f3e673792cf0d5c02728720) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv change alert
+
 ## 4.1.1
 
 ### Patch Changes
