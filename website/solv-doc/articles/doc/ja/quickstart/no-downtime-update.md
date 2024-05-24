@@ -31,13 +31,90 @@ solv change コマンドを使って移行するためには、以下の条件�
 
 ```bash
 $ solv setup
+Setting up Solana Validator ...
+? Which solv types do you want to setup? (Use arrow keys)
+  TESTNET_VALIDATOR
+❯ MAINNET_VALIDATOR
+  RPC_NODE
+```
+
+solv のタイプを選択します。
+そして、Solana のクライアントを選択します。
+
+```bash
+? Which mainnet mode do you want to setup?
+  SolanaClient
+❯ JitoMev
+  Firedancer
+JITO MEV Setup Mode on!
+? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
 ```
 
 ダミーノードかどうかを対話式で確認されますので、y を選択してください。
-起動開始直後、一度ノードを停止して、移行元の鍵に入れ替えます。
+
+```bash
+? Enter commission bps 1000
+? Select region (Use arrow keys)
+❯ Amsterdam
+  Frankfurt
+  NewYork
+  Tokyo
+```
+
+bps コミッションとリージョンを設定します。
+
+```bash
+? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
+```
+
+Jito Relayer を設定するかどうかを確認されます。必要に応じて y を選択してください。
+この設定は、最低でも 512GB 以上の RAM を必要とします。
+
+```bash
+? What is your commission rate? You can change it later (default: 10%)
+```
+
+そして、コミッションレートを設定します。
+
+```bash
+? Enter swap size to create in MB: (256000)
+```
+
+スワップサイズを設定します。
+
+そして起動開始直後、一度ノードを停止して、移行元の鍵に入れ替えます。
 
 ```bash
 $ solv stop
+```
+
+新規ノードに SSH Key Pair を生成します。
+
+```bash
+$ solv scp init
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/solv/.ssh/id_rsa):
+Created directory '/home/solv/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/solv/.ssh/id_rsa
+Your public key has been saved in /home/solv/.ssh/id_rsa.pub
+```
+
+作成した公開鍵を表示します。
+
+```bash
+$ solv scp cat
+Your SSH Public Key is:
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ3EBp0IWcg9VvyKanqL+FiL4IY6u8mtrmarZrU25IzVTFxCNEnOeMzvUOnnWpIVJeVfJZSi0obrM8+emifGmHP1/qo4RNyo9RJnUpfdAfjHan0/tQ4lg4OHaKLWXm2d+snrSvLhIRUqevvbSHkrw4d/ZnpX4xTWbJ6tG1BUEX2J2kDDzHrPXmY4/hpJe0Ummd73bqB13p0uyts6E+inbIiV4OctQxXG5CTGKrudjIHjQXfe60I00USMp8yWFHNEs0D10kJGs+B0866pGEENWXCfD8NLn1zaDTj0MBv9RUlyIrOWbp8N+bgItm4nR/jpvRmerpGOxwVpaiz+d2Fr0qEPT+tW6SHeyjdiUiqVq2unIkqlAYyj2gyhSFwDDKELd0gYLnJ8L4Je73m/CqnLliyDwONwNYwBFB8uNQD/3LVNUaTP+Vucu8UWR8uDYsb11Cclvc3Lcikfic09tMHMw2Nnt/JnPoVDOFJJIWmLb/qgPmeDTbUy+DkC2pYsiJQ4S7PEWxJpTLFrQcIXPeQ3NCekYAo6EU9KJ3rJo6tkMlRB7ZBBxG7ezQ5tFMb8TBIqE+TVKxSvV/bSE3F8DZz/6S166Scd3+jhgmlrCIJ3cUaiFstUYOfL5qBB4lhzGPpOj+rjTN2/GqJGelw431SIMfhLeo0fzRzIBWSSYwzuMpHw== solv@c3-large-x86-ash-1
+```
+
+この公開鍵をコピーしておきます。
+
+```bash
+solv scp download
+? Enter your Ubuntu Server IP 69.197.13.8
 ```
 
 ## 新規ノードに移行元の鍵をアップロード (Inactive ノード)
