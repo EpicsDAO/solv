@@ -1,5 +1,21 @@
 # @epics-dao/solv
 
+## 4.1.3
+
+### Patch Changes
+
+- [#166](https://github.com/EpicsDAO/solv/pull/166) [`a148b48`](https://github.com/EpicsDAO/solv/commit/a148b48f076036c4fb3515633c70381c90261035) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
+
+  fix small bug in scp download
+
+  Update - solv get snapshot
+
+  added minDownloadSpeed option
+
+  ```bash
+  solv get snapshot -m 45
+  ```
+
 ## 4.1.2
 
 ### Patch Changes
