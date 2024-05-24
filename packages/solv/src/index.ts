@@ -29,6 +29,7 @@ import { change } from './cli/change'
 import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
+import { checkSSHConnection } from './cli/scp/checkSSHConnection'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()

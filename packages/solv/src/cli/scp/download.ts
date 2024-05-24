@@ -4,6 +4,7 @@ import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import inquirer from 'inquirer'
 import os from 'os'
+import { executeSCP } from './executeSCP'
 
 export const download = async () => {
   const answer = await inquirer.prompt<{ ip: string }>([
@@ -24,6 +25,7 @@ export const download = async () => {
   if (!existsSync(keyDir)) {
     mkdirSync(keyDir, { recursive: true })
   }
+  const isDownload = true
   for (const key of solanaKeys) {
     const splits = key.split('/')
     let fileName = splits[splits.length - 1]
@@ -31,10 +33,8 @@ export const download = async () => {
       ? fileName
       : fileName.replace('.json', `-${answer.ip}.json`)
     const filePath = `${keyDir}/${fileName}`
-    const cmd = `scp solv@${answer.ip}:${key} ${filePath}`
-    spawnSync(cmd, { shell: true, stdio: 'inherit' })
-
-    if (existsSync(filePath)) {
+    const result = executeSCP(answer.ip, key, filePath, isDownload)
+    if (result) {
       console.log(`Successfully Exported - ${filePath} 🎉`)
     }
   }
