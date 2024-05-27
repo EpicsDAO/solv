@@ -8,6 +8,7 @@ import CHOKAIGI2024JA from '@/assets/img/work/ThankYouForNicoNicoChokaigi2024JA.
 import CHOKAIGI2024EN from '@/assets/img/work/ThankYouForNicoNicoChokaigi2024EN.jpg'
 import GoogleCloudWeb3Startups from '@/assets/img/work/GoogleCloudWeb3Startups.png'
 import ENASE2024 from '@/assets/img/work/ELSOULLABOpresentedOnENASE2024.jpg'
+import WebX2024key from '@/assets/img/work/webx2024key.jpg'
 
 const works = [
   {
@@ -47,6 +48,12 @@ const works = [
     imageUrl: (isJapanese: boolean) =>
       isJapanese ? CHOKAIGI2024JA : CHOKAIGI2024EN,
     description: 'OurWorksRow.CHOKAIGI2024.description',
+  },
+  {
+    title: 'OurWorksRow.WebX2024.title',
+    imageLink: 'https://webx-asia.com/',
+    imageUrl: (isJapanese: boolean) => WebX2024key,
+    description: 'OurWorksRow.WebX2024.description',
   },
 ]
 

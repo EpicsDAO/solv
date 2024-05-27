@@ -17,6 +17,7 @@ import SolvTutorialYouTubeRow from '@/components/pages/common/SolvTutorialYouTub
 import BooksRow from '@/components/pages/common/BooksRow'
 import StakeForOpenSourceRow from '@/components/pages/common/StakeForOpenSourceRow'
 import NicoNicoChoKaigi2024Row from '@/components/pages/common/NicoNicoChoKaigi2024Row'
+import WebX2024Row from '@/components/pages/common/WebX2024Row'
 
 const articleDirName = 'news'
 
@@ -47,6 +48,7 @@ export default function Home({
       <TopNewsRow articles={articles} urls={urls} />
       <BooksRow />
       <MediaLogoRow />
+      <WebX2024Row />
       <NicoNicoChoKaigi2024Row />
       <OurWorksRow />
       <ContactRow />

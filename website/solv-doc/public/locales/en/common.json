@@ -121,6 +121,10 @@
     "CHOKAIGI2024": {
       "title": "Epics DAO Exhibits at CHOKAIGI 2024",
       "description": "Epics DAO exhibited at CHOKAIGI 2024, held on April 27th - 28th, 2024, distributing limited edition NFTs and more. With a total attendance of 125,362 visitors, the event concluded successfully."
+    },
+    "WebX2024": {
+      "title": "Epics DAO is a WebX 2024 Sponsor",
+      "description": "WebX 2024 is the largest event in Asia focused on cutting-edge technologies in Web3, including cryptocurrencies and blockchain. It is the only conference where government bodies, established companies, IP firms, and Web3 businesses can interact."
     }
   },
   "SolvTutorialYouTubeRow": {
@@ -159,5 +163,10 @@
     "subtitle": "Cho Dice Roll in NICONICO CHOKAIGI 2024",
     "title": "Thank you for visiting!",
     "description": "Epics DAO participated in Nico Nico Chokaigi 2024, held at Makuhari Messe on April 27th and 28th, and distributed limited edition NFTs to visitors. The event attracted a total of 125,362 attendees, with about 3,000 people visiting the Epics DAO Cho Dice Roll booth, successfully concluding the event with great fanfare."
+  },
+  "WebX2024Row": {
+    "title": "WebX 2024 Sponsor Confirmed",
+    "description": "Epics DAO will participate as a sponsor at WebX 2024. WebX is the largest event in Asia focused on cutting-edge technologies in Web3, including cryptocurrencies and blockchain. It is the only conference where government bodies, established companies, IP firms, and Web3 businesses can interact.",
+    "discountLink": "Sponsor Discount Tickets"
   }
 }
