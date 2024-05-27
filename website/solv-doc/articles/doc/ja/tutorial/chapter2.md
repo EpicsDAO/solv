@@ -60,42 +60,45 @@ su solv
 cd ~ && source ~/.profile
 ```
 
-次に solv s でダッシュボードを起動します。
+次に SSH 公開鍵を登録します。
 
 ```bash
-solv s
+$ solv scp create
+? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
 ```
-
-![](https://storage.googleapis.com/zenn-user-upload/56fad7671425-20240131.png)
-
-`4) 鍵のバックアップ・リストア`
-
-を選択後、
-
-`1) バリデーターの鍵をバックアップ`
-
-を選択します。
 
 ここで上記でコピーした SSH 公開鍵を貼り付けます。
 これでローカルコンピューターとバリデーターノードの接続設定が完了しました。
 
 ## 🔀 鍵の交換（ローカルコンピュータ → バリデーターノード）
 
-続いて、ローカルコンピュータから solv クライアントを立ち上げます。
+続いて、ローカルコンピュータから solv コマンドを実行します。
 
+Mac や Linux であれば、ターミナルを開いて以下のコマンドを実行します。
+
+```bash
+$ pnpm add -g @epics-dao/solv
 ```
-solv c
+
+### PNPM がインストールされていない場合
+
+```bash
+$ curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
-![](https://storage.googleapis.com/zenn-user-upload/b144e59188aa-20240131.png)
+## 鍵のアップロード（ローカルコンピュータ → バリデーターノード）
 
-`4) バリデーターの鍵をアップロード`
+以下のコマンドで鍵のアップロードを行います。
 
-を選択し、上記で表示されたバリデーターノードの IP を入力すると
+```bash
+$ solv scp upload
+```
+
+バリデーターノードの IP を入力すると
 
 `~/solvKeys/upload`
 
-に全章で作成された鍵が
+にある鍵がバリデーターノードの
 
 `/home/solv/`
 
@@ -107,19 +110,10 @@ solv c
 このステップでは ローカルコンピューターを使用して、
 バリデーターの鍵を`バリデーターノード` から `ローカルコンピュータ` へ鍵のバックアップを取る方法を紹介します。
 
-solv クライアントを起動します。
+以下のコマンドを実行します。
 
 ```bash
-solv c
-```
-
-![](https://storage.googleapis.com/zenn-user-upload/9f53f38d22ef-20240131.png)
-
-`2) バリデーターの鍵をダウンロード`
-
-を選択し、同様に上記で表示されたバリデーターノードサーバーの IP を入力してください。
-
-```bash
+$ solv scp download
 ? Enter your Ubuntu Server IP (1.1.1.1)
 ✅ Successfully Generated - ~/solvKeys/download/testnet-validator-keypair.json
 ✅ Successfully Generated - ~/solvKeys/download/mainnet-validator-keypair.json
@@ -156,10 +150,9 @@ Only showing the first 10 results
 以下のコマンドを実行し、バリデーターノードを再起動します。
 
 ```bash
-solv restart --snapshot
+solv stop
+solv start
 ```
-
-`--snapshot` オプションをつけることで、新規スナップショットをダウンロードすることができます。
 
 これで鍵の交換作業は完了です 🎉
 
@@ -187,13 +180,13 @@ solv update && solv update -b
 あとからモニターする場合でも以下のコマンドで確認することができます。
 
 ```bash
-solv get monitor
+solv monitor
 ```
 
 現在のスロットまでの差を表示するには以下のコマンドを入力します。
 
 ```bash
-solv get catchup
+solv catchup
 ```
 
 次の章ではサーバーレス環境でバリデーターノードを監視する方法についてご紹介したいと思います。

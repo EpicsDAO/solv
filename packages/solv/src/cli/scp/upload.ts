@@ -17,13 +17,19 @@ export const upload = async () => {
       },
     },
   ])
-  const solanaKeys = Object.values(getAllKeyPaths())
+  let keyPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
+  if (homeDirectory.includes('/home/solv')) {
+    keyPath = SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH_LINUX
+  }
+  const solanaKeys = Object.values(getAllKeyPaths(keyPath))
 
-  const uploadPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
   for (const key of solanaKeys) {
     const splits = key.split('/')
     const fileName = splits[splits.length - 1]
-    const filePath = `${uploadPath}/${fileName}`
+    if (!fileName.endsWith('keypair.json')) {
+      continue
+    }
+    const filePath = `${keyPath}/${fileName}`
     if (!existsSync(filePath)) {
       continue
     }

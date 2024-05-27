@@ -77,7 +77,7 @@ If you cannot catch up, there may be a lack of specifications.
 You can check the current status with the command below.
 
 ```bash
-solv get monitor
+solv monitor
  00:30:58 | 28512 slots behind | Processed Slot: 244629395 | Confirmed Slot: 244629395 | Finalized
 ```
 

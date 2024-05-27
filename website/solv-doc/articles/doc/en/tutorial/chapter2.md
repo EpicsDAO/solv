@@ -60,36 +60,39 @@ su solv
 cd ~ && source ~/.profile
 ```
 
-Next, launch the dashboard with solv s.
+Next, register the SSH public key.
 
 ```bash
-solv s
+$ solv scp create
+? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
 ```
-
-![](https://storage.googleapis.com/epics-bucket/solv/assets/backup-keys.png)
-
-`4) Key backup/restore`
-
-After selecting
-
-`1) Back up the validator key`
-
-Choose.
 
 Now paste the SSH public key you copied above.
 The connection settings between the local computer and the validator node are now complete.
 
 ## 🔀 Key Exchange (Local Computer → Validator Node)
 
-Next, launch the solv client from your local computer.
+Next, execute the `solv` command from your local computer.
 
+Please install `solv` at your local computer if you haven't already.
+
+```bash
+$ pnpm add -g @epics-dao/solv
 ```
-solv c
+
+### PNPM Installation
+
+```bash
+$ curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
-![](https://storage.googleapis.com/epics-bucket/solv/assets/download-keys.png)
+## Key Upload (Local Computer → Validator Node)
 
-`4) Upload validator key`
+Execute the following command to upload the keys.
+
+```bash
+$ solv scp upload
+```
 
 and enter the IP of the validator node displayed above.
 
@@ -107,25 +110,18 @@ will be uploaded to the directory.
 In this step, we will introduce how to back up keys from the `validator node` to your `local computer`.
 The following four keys located in the `/home/solv` directory will be downloaded:
 
-Start the solv client.
+Run the following command:
 
 ```bash
-solv c
-```
-
-![](https://storage.googleapis.com/epics-bucket/solv/assets/upload-keys.png)
-
-`2) Download validator key`
-
-and enter the validator node server IP displayed above as well.
-
-```bash
+$ solv scp download
 ? Enter your Ubuntu Server IP (1.1.1.1)
 ✅ Successfully Generated - ~/solvKeys/download/testnet-validator-keypair.json
 ✅ Successfully Generated - ~/solvKeys/download/mainnet-validator-keypair.json
 ✅ Successfully Generated - ~/solvKeys/download/testnet-vote-account-keypair.json
 ✅ Successfully Generated - ~/solvKeys/download/testnet-authority-keypair.json
 ```
+
+and enter the validator node server IP displayed above as well.
 
 The keys have been saved in the `~/solvKeys/download` directory 🎉
 It is recommended to keep these keys safe and back them up on a USB disk or similar storage device.
@@ -153,12 +149,11 @@ Only showing the first 10 results
 Execute the following command inside the validator node to apply the exchanged keys and restart the node.
 
 ```bash
-solv restart --snapshot
+solv stop
+solv start
 ```
 
-By using the `--snapshot` option, you can download a new snapshot.
-
-This completes the key exchange process 🎉
+The validator node will restart with the new keys.
 
 ## ⚙️ Regular Updates for Solana Version
 
@@ -182,13 +177,13 @@ solv update && solv update -b
 If you decide to monitor later, you can check with the following command:
 
 ```bash
-solv get monitor
+solv monitor
 ```
 
 To display the difference up to the current slot, enter the following command:
 
 ```bash
-solv get catchup
+solv catchup
 ```
 
 In the next chapter, we will introduce how to monitor validator nodes in a serverless environment.

@@ -31,7 +31,8 @@
     "quickstart": {
       "groupTitle": "クイックスタート",
       "start-solv": "solv をはじめる",
-      "update-to-v3": "Ver.3 にアップデート"
+      "update-to-v3": "Ver.3 にアップデート",
+      "no-downtime-update": "ノーダウンタイムアップデート"
     },
     "tutorial": {
       "groupTitle": "チュートリアル",
