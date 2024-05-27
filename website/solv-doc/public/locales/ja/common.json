@@ -129,9 +129,9 @@
     }
   },
   "SolvTutorialYouTubeRow": {
-    "title": "簡単3ステップでSolanaバリデーターを立ち上げ 🚀",
+    "title": "Solana バリデーター完全ガイド",
     "subtitle": "YouTube チュートリアル",
-    "description": "このチュートリアル動画では、solvを利用して簡単にSolanaバリデーターを立ち上げるプロセスを紹介します。Latitudeクラウドベアメタルサーバーを使用し、わずか3ステップでバリデーターを設定が完了します。また、Latitudeとのパートナーシップを通じて提供される$100のクレジットクーポンを利用して、実際にお手元でsolvをお試しいただく方法についても説明します。"
+    "description": "solv を活用し簡単に Solana バリデーター運用を始めるための完全ガイドを公開いたしました。すでに Solana バリデーターを運用中の方も、ノーダウンタイム移行やスナップショットダウンロードの高速化のメリットのため、solv に簡単に移行していただくことが可能です。"
   },
   "SolanaBreakpointSideEventRow": {
     "title": "Solana バリデーターハンズオン",
