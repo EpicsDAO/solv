@@ -8,6 +8,7 @@ import OurWorksRow from '@/components/pages/common/OurWorksRow'
 import RoadmapRow from '@/components/pages/common/RoadmapRow'
 import EpicsDAOTitleRow from '@/components/pages/dao/EpicsDAOTitleRow'
 import StakeForOpenSourceRow from '@/components/pages/common/StakeForOpenSourceRow'
+import WebX2024Row from '@/components/pages/common/WebX2024Row'
 
 const seo = {
   pathname: '/dao',
@@ -32,6 +33,7 @@ export default function OpenSource() {
       <OurWorksRow />
       <RoadmapRow />
       <TeamRow />
+      <WebX2024Row />
       <StakeForOpenSourceRow />
       <ContactRow />
     </>
