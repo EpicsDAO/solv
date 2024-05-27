@@ -6,7 +6,7 @@ description: Motivation for the development of "solv", Open-Source CLI Tool for 
 
 The Solana ecosystem is rapidly growing every day, and validators are at its core. Our teams at Epics DAO, ELSOUL LABO, and the open-source "Skeet" development community have all actively worked as Solana validators. Through this experience, we deeply understand the challenges and needs faced by Solana validators, leading to the development of "solv".
 
-![solv](https://storage.googleapis.com/epics-bucket/solv/assets/v3/solv3Released.jpg)
+![solv](/doc/solv4.jpg)
 
 solv is an open-source CLI tool designed to simplify the setup and operation of Solana validators and RPC nodes. By using solv, you can easily manage validator and RPC node setup, operation, monitoring, alerts, upgrades, and other validator tasks.
 
