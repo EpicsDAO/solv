@@ -1,5 +1,11 @@
 # solv-doc
 
+## 0.2.0
+
+### Minor Changes
+
+- [#170](https://github.com/EpicsDAO/solv/pull/170) [`2e88696`](https://github.com/EpicsDAO/solv/commit/2e886961c66d6c4e93c482fbafeb3167917e46df) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - add - nodowntime and modify tutorial
+
 ## 0.1.2
 
 ### Patch Changes
