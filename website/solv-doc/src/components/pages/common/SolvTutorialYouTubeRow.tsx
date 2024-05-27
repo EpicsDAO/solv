@@ -24,7 +24,7 @@ export default function SolvTutorialYouTubeRow() {
           </div>
         </div>
         <div className="shadow-2xl">
-          <YouTubeEmbed embedId={isJapanese ? '7nloPjyrk_8' : 'rY4bajhRJgw'} />
+          <YouTubeEmbed embedId={isJapanese ? 'Hivsa0cgFqU' : 't4KHXqguTi8'} />
         </div>
       </Container>
     </>
