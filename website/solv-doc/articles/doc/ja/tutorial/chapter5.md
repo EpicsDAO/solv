@@ -80,7 +80,7 @@ Solana バリデーターが起動します 🎊
 以下のコマンドで現在の状態を確認することができます。
 
 ```bash
-solv get monitor
+solv monitor
  00:30:58 | 28512 slots behind | Processed Slot: 244629395 | Confirmed Slot: 244629395 | Finalized
 ```
 

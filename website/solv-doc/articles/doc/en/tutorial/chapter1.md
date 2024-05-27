@@ -8,9 +8,9 @@ In this chapter, we take the first steps towards success as a Solana validator. 
 
 First, we’ll learn about the recommended environment settings for Solana validators. Next, we introduce how to install solv CLI and explain how to create the necessary keys for a Solana validator. We also touch upon the rewards for validators in the Solana Testnet and preparing SOL for use in the testnet.
 
-(\* Added & updated on 2024/01/30 - Supports mainnet RPC nodes 🎊)
+(\*2024/05/26 addition & update - No downtime migration & snapshot DL x100 speedup 🎊)
 
-https://solv.epics.dev/en/doc/tutorial/chapter5
+https://solv.epics.dev/en/doc/quickstart/no-downtime-update/
 
 The content of this chapter includes concrete steps starting from how to connect to the server, install solv, update settings, and finally set up solv. We also provide guidance on how to check real logs, download snapshots, and guide you to solv hands-on videos on YouTube. Through this chapter, you will acquire the knowledge and tools needed to confidently embark on your journey as a Solana validator.
 
@@ -76,96 +76,22 @@ Minimum requirements
 
 https://docs.solana.com/running-validator/validator-reqs
 
-https://docs.solana.com/running-validator/validator-reqs
+## 🌐 Preparing SOL
 
-## 🔑 Creating Necessary Keys for Solana Validators
+To participate in voting as a Testnet/Mainnet validator, you will need approximately 315 SOL annually.
+Additionally, staking a few SOL to your validator from any account can speed up the progress.
+For staking on the testnet, you can change the network to testnet in the developer settings of the Phantom wallet.
+(Staking to the address in vote-account-keypair.json)
 
-Start the solv client and
-
-Choose: `3) Generate Validator Keyfiles`
-
-```bash
-Generated keypairs - /Users/fumi/solvKeys/upload
-Config File: /Users/fumi/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.solana.com
-WebSocket URL: wss://api.mainnet-beta.solana.com/ (computed)
-Keypair Path: /Users/fumi/solvKeys/upload/mainnet-validator-keypair.json
-Commitment: confirmed
-Updated /Users/fumi/solv.config.json with new values.
-```
-
-Six keys will be created in the `~/solvKeys` directory as shown below.
-Please use different keys as necessary.
-
-```bash
-ls ~/solvKeys/upload
-mainnet-authority-keypair.json    testnet-authority-keypair.json
-mainnet-validator-keypair.json    testnet-validator-keypair.json
-mainnet-vote-account-keypair.json testnet-vote-account-keypair.json
-```
-
-## 💰 Rewards for Solana Testnet Validators
-
-Details about the rewards for testnet validators can be found at the following link. Roughly speaking, you can earn rewards equivalent to twice the cost of the server in SOL.
-
-Tour de Sol (TDS) Program
-https://solana.org/tds22
-
-Server Program
-https://solana.org/server-program
-
-To earn rewards on the testnet, you need to contract server resources from the server companies recommended in the above programs.
-
-Solana Delegation Program
-https://solana.org/delegation-program
-
-By participating in this program, it seems you can receive delegated stakes from the foundation.
-
-Eligibility Criteria
-https://solana.org/delegation-criteria
-
-Solana Foundation Delegation Program Command-line Utility
-https://github.com/solana-foundation/stake-o-matic/tree/master/cli
-
-Furthermore, you need to sign your Pubkey with the following command (this step must be done on Ubuntu only):
-
-Installation
-
-```bash
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-$ source "$HOME/.cargo/env"
-$ sudo apt install build-essential libssl-dev pkg-config libudev-dev libhidapi-dev
-$ cargo install solana-foundation-delegation-program-cli
-$ solana-foundation-delegation-program --version
-```
-
-Since the signing is done on the mainnet, a small amount of SOL is required.
-
-```bash
-$ solana config set --url https://api.mainnet-beta.solana.com
-$ solana -um balance
-```
-
-Execution
-
-```bash
-$ solana-foundation-delegation-program apply --mainnet ~/solvKeys/upload/mainnet-validator-keypair.json --testnet ~/solvKeys/upload/testnet-validator-keypair.json
-```
-
-## 🌐 Preparing Testnet SOL
-
-To participate in voting with a testnet validator, you will need approximately 315 test SOL per year.
-Additionally, staking any amount of SOL from any account to your own testnet validator can accelerate progress. Staking on this testnet can be done by changing the network to testnet in the developer settings of the Phantom wallet.
-(Staking to the address in `testnet-vote-account-keypair.json`)
+Testnet SOL can also be obtained via Airdrop.
 
 ```bash
 $ solana airdrop 1
 ```
 
-You can use the above command to airdrop testnet SOL, but depending on the network conditions, it may be difficult to obtain.
+The command above allows you to airdrop Testnet SOL, but it may be difficult to obtain depending on the network status.
 
-If we have stock, we distribute it in the EpicsDAO Discord channel, so please feel free to drop by!
-https://discord.gg/bDKMfWRsnk
+Mainnet SOL can be purchased from exchanges.
 
 ## 🖥️ Connecting to the Server
 
@@ -188,7 +114,7 @@ There are versions for Edgevana and Latitude, so please select the type you want
 Here, we assume participation in TDS and select `Edgevana`.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
 ```
 
 This command will initially create a solv user, so you will need to set a password.
@@ -210,21 +136,61 @@ Finally, execute the code for Step 3 to complete the setup!
 
 ```bash
 $ solv setup
+Setting up Solana Validator ...
+? Which solv types do you want to setup? (Use arrow keys)
+  TESTNET_VALIDATOR
+❯ MAINNET_VALIDATOR
+  RPC_NODE
 ```
-
-This time, select `TESTNET_VALIDATOR`.
-
-Supported mainnet RPC_NODE from solv3.
-For this, please refer to Chapter 5 on how to build a Solana RPC node.
 
 https://solv.epics.dev/en/doc/tutorial/chapter5/
 
-After startup, the snapshot download will start automatically.
-The Solana validator will start 🎊
+Select the type of Solv setup.
+Then, select the Solana client.
+(In this example, MAINNET_VALIDATOR and JitoMev are selected)
 
-Do not actually use the key created in this flow, but replace it with the key created from the solv client.
+```bash
+? Which mainnet mode do you want to setup?
+  SolanaClient
+❯ JitoMev
+  Firedancer
+JITO MEV Setup Mode on!
+? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
+```
 
-Once you have stopped the server, please refer to the next chapter 2 for uploading the key.
+When prompted to set up as a dummy node, select N.
+
+```bash
+? Enter commission bps 1000
+? Select region (Use arrow keys)
+❯ Amsterdam
+  Frankfurt
+  NewYork
+  Tokyo
+```
+
+Set the commission bps and region.
+
+```bash
+? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
+```
+
+Confirm whether to set up Jito Relayer as needed. This setup requires at least 512GB of RAM.
+
+```bash
+? What is your commission rate? You can change it later (default: 10%)
+```
+
+Set the commission rate.
+
+```bash
+? Enter swap size to create in MB: (256000)
+```
+
+Set the swap size.
+Writing the swap may take some time.
+
+This completes the setup.
 
 ## 📜 Checking Logs
 
@@ -245,7 +211,7 @@ $ solv log -e
 You can check the current status of the validators with the following command.
 
 ```bash
-solv get monitor
+solv monitor
 ```
 
 ## ⏹️ Stopping the Validator
@@ -260,6 +226,6 @@ In the next chapter, we will discuss how to exchange and update the keys.
 
 ## 🔴 YouTube solv Hands-On Video
 
-YouTube: "Launch a Solana Validator in 3 Steps! Easily and Effortlessly Operate a Blockchain Validator on Edgevana using solv" - Now supports TDS 🎉
-https://www.youtube.com/watch?v=7nloPjyrk_8
-(The content of this video is the previous version of solv2 or lower.)
+YouTube: Easy Solana Validator Node Setup and Migration with Solv4 | Complete Guide to No-Downtime Migration 🎉
+
+https://youtu.be/t4KHXqguTi8?si=HI0YJ0pKB72s671t
