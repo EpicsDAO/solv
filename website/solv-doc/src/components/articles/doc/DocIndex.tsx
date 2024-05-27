@@ -38,7 +38,7 @@ const actions = [
   {
     title: 'doc:actions.update.title',
     body: 'doc:actions.update.body',
-    href: '/doc/quickstart/update-to-v3',
+    href: '/doc/quickstart/no-downtime-update',
     icon: ArrowPathIcon,
     iconForeground: 'text-orange-700',
     iconBackground: 'bg-orange-50',

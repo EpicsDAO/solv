@@ -17,8 +17,8 @@
       "body": "A guide to actually starting the operation of a Solana validator using solv."
     },
     "update": {
-      "title": "Update to Ver.3",
-      "body": "Instructions for updating solv to Ver.3."
+      "title": "No Downtime Update",
+      "body": "Explains how to migrate validator nodes without downtime. It's effective for daily updates as well as moving operations."
     }
   },
   "menuNav": {
@@ -31,7 +31,6 @@
     "quickstart": {
       "groupTitle": "Quickstart",
       "start-solv": "Start solv",
-      "update-to-v3": "Update to Ver.3",
       "no-downtime-update": "No Downtime Update"
     },
     "tutorial": {

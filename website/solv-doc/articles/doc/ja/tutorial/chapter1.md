@@ -108,7 +108,7 @@ $ ssh username@<your-server-ip-address>
 
 ## 🚀 ステップ１ - solv のインストール
 
-![](https://storage.googleapis.com/zenn-user-upload/100005a6fe39-20240130.png)
+![](/doc/solvJA.jpg)
 
 そして solv ドキュメントページにあるステップ１のコードをコピー&ペーストして実行します。
 

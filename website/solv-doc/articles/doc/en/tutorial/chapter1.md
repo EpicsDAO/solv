@@ -105,7 +105,7 @@ $ ssh username@<your-server-ip-address>
 
 ## 🚀 Step 1 - Installing solv
 
-![](https://storage.googleapis.com/epics-bucket/solv/assets/solv-top-en.png)
+![](/doc/solvEN.jpg)
 
 Next, copy and paste the code from Step 1 on the solv documentation page and execute it.
 
@@ -114,7 +114,7 @@ There are versions for Edgevana and Latitude, so please select the type you want
 Here, we assume participation in TDS and select `Edgevana`.
 
 ```bash
-sh -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
 ```
 
 This command will initially create a solv user, so you will need to set a password.

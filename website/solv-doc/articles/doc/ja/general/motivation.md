@@ -6,7 +6,7 @@ description: Solana バリデーター向けのオープンソースCLIツール
 
 Solana エコシステムは日々急成長を遂げており、バリデーターはその中核を成しています。私達は Epics DAO とエルソウルラボ、そしてオープンソース"Skeet" 開発コミュニティ、3 つの開発チームがそれぞれ Solana のバリデーターとして活動してきました。その結果、私達は Solana バリデーターとして遭遇する課題や必要性を深く理解しています。この経験から生まれたのが、"solv" です。
 
-![solv](https://storage.googleapis.com/epics-bucket/solv/assets/v3/solv3Released.jpg)
+![solv](/doc/solv4.jpg)
 
 solv は、Solana バリデーター・RPC ノードのセットアップと運用を簡略化するためのオープンソース CLI ツールです。solv を使うことで、バリデーター・RPC ノードのセットアップ、運用、モニタリング、アラート、アップグレード等、バリデーターとしての業務を簡単に行うことができます。
 
