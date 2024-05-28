@@ -66,16 +66,15 @@ $ ssh solv@<IP_ADDRESS> ls
       },
     ])
     ip = askIp.ip
-  }
-
-  const result = checkSSHConnection(ip)
-  if (!result) {
-    console.log(
-      chalk.yellow(
-        `⚠️ SSH Connection Failed. Please check your SSH connection.\n$ ssh solv@${ip}`,
-      ),
-    )
-    return
+    const result = checkSSHConnection(ip)
+    if (!result) {
+      console.log(
+        chalk.yellow(
+          `⚠️ SSH Connection Failed. Please check your SSH connection.\n$ ssh solv@${ip}`,
+        ),
+      )
+      return
+    }
   }
 
   const beforeConfirm = await inquirer.prompt<{ confirm: boolean }>([
