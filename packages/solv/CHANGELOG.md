@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.1.6
+
+### Patch Changes
+
+- [#179](https://github.com/EpicsDAO/solv/pull/179) [`afae6e3`](https://github.com/EpicsDAO/solv/commit/afae6e3d9e8c948ed3b120218fcd0d38734529ac) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv change inactive side
+
 ## 4.1.5
 
 ### Patch Changes
