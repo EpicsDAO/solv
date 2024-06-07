@@ -7,8 +7,8 @@ export function executeSCP(
   isDownload: boolean,
 ) {
   const cmd = isDownload
-    ? `scp solv@${ip}:${key} ${filePath}`
-    : `scp ${key} solv@${ip}:${filePath}`
+    ? `scp -o StrictHostKeyChecking=no solv@${ip}:${key} ${filePath}`
+    : `scp -o StrictHostKeyChecking=no ${key} solv@${ip}:${filePath}`
   const result = spawnSync(cmd, { shell: true, stdio: 'inherit' })
 
   return result.status === 0

@@ -8,6 +8,7 @@ import { showConfig } from './showConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { getSnapshot } from './snapshot'
 import { SOLV_TYPES } from '@/config/config'
+import { spawnSync } from 'node:child_process'
 
 export const getCommands = (solvConfig: ConfigParams) => {
   const { locale, config } = solvConfig
@@ -62,6 +63,14 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .description(locale.cmds.monitor)
     .action(async () => {
       monitorSolana()
+    })
+
+  get
+    .command('contact')
+    .description('Show Validator Contact Information')
+    .action(() => {
+      const cmd = `solana-validator --ledger /mnt/ledger/ contact-info`
+      spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 
   get

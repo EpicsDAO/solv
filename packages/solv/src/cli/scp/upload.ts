@@ -33,7 +33,7 @@ export const upload = async () => {
     if (!existsSync(filePath)) {
       continue
     }
-    const cmd = `scp ${filePath} solv@${answer.ip}:${key}`
+    const cmd = `scp -o StrictHostKeyChecking=no ${filePath} solv@${answer.ip}:${key}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     console.log(`Successfully Uploaded - ${fileName} 🎉`)
   }
