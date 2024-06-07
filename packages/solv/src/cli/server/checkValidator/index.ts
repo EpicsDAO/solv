@@ -4,7 +4,6 @@ import { INSTALLER_CHOICES, server } from '../server'
 import { systemctlStatusSolv } from '@/cli/status'
 import { startSolana } from '@/cli/start/startSolana'
 import { stopSolana } from '@/cli/stop/stopSolana'
-import { restartFetch } from '@/cli/restart/restartFetch'
 import { showLog } from './showLog'
 import { restartSolv } from '@/cli/restart/restartSolv'
 
@@ -50,8 +49,7 @@ export const checkValidatorCommands = async (solvConfig: ConfigParams) => {
       console.log('Stopped Solana Validator')
       break
     case CHECK_CHOICES.RESTART_FETCH:
-      await restartFetch(solvConfig)
-      console.log('Restarted Solana Validator with fetch snapshot')
+      console.log('Coming soon...')
       break
     case CHECK_CHOICES.RESTART_NO_FETCH:
       await restartSolv(solvConfig)
