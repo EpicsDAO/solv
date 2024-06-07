@@ -1,5 +1,32 @@
 # @epics-dao/solv
 
+## 4.1.8
+
+### Patch Changes
+
+- [#183](https://github.com/EpicsDAO/solv/pull/183) [`ca2fdec`](https://github.com/EpicsDAO/solv/commit/ca2fdecbf8168953ad7ef4e40b1f1398029932e3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv restart
+
+  ```bash
+  $ solv restart
+  ```
+
+  This command will do this command below;
+
+  ```bash
+  solana-validator --ledger /mnt/ledger exit --max-delinquent-stake 5
+  ```
+
+  You can change `--max-delinquent-stake` value as you edit the `solv` configuration file.
+
+  `/home/solv/solv.config.json`
+
+  ```json
+  {
+    ,...
+    "maxDelinquentStake": 5
+  }
+  ```
+
 ## 4.1.7
 
 ### Patch Changes
