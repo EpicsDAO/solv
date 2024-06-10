@@ -1,5 +1,15 @@
 # @epics-dao/solv
 
+## 4.1.9
+
+### Patch Changes
+
+- [#185](https://github.com/EpicsDAO/solv/pull/185) [`818aed9`](https://github.com/EpicsDAO/solv/commit/818aed976deb29aec95c1e72db8ff08b1b13a9c1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet
+
+  ```bash
+  $ solv update && solv update -b
+  ```
+
 ## 4.1.8
 
 ### Patch Changes
