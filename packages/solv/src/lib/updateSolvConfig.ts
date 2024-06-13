@@ -1,9 +1,4 @@
-import {
-  CONFIG_TYPE,
-  FILES,
-  HOME_PATHS,
-  PartialConfigType,
-} from '@/config/config'
+import { CONFIG_TYPE, FILES, PartialConfigType } from '@/config/config'
 import { readFileSync, writeFileSync } from 'fs'
 import os from 'os'
 
