@@ -1,0 +1,10 @@
+
+> @epics-dao/solv@4.1.10 build /Users/fumi/Dev/ts/solv/packages/solv
+> npx ts-node build.ts && npx ts-node add-line.ts
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mCannot find base config file "@repo/typescript-config/base.json"[0m [tsconfig.json]
+
+    ../../tsconfig.json:2:13:
+[37m      2 │   "extends": [32m"@repo/typescript-config/base.json"[37m,
+        ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+

@@ -26,9 +26,10 @@
     "ci:version": "changeset version",
     "ci:publish": "changeset publish",
     "solv": "pnpm -F \"@epics-dao/solv\"",
-    "test": "pnpm solv test",
-    "dev": "pnpm solv dev",
-    "build": "pnpm solv build",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
     "discord:epics": "npx ts-node -r tsconfig-paths/register --transpile-only ./lib/runDiscordChangeLog.ts epics"
   },
   "devDependencies": {
@@ -50,6 +51,8 @@
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.3.3"
-  }
+    "typescript": "5.3.3",
+    "turbo": "^2.0.3"
+  },
+  "packageManager": "pnpm@9.3.0"
 }

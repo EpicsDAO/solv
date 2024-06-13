@@ -1,0 +1,161 @@
+
+> solv-doc@0.2.0 build /Users/fumi/Dev/ts/solv/website/solv-doc
+> next build && next export
+
+[?25linfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..warn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config
+[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1G[?25hinfo  - Linting and checking validity of types  
+[?25linfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1G[?25hWarning: For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'yarn add sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+[?25linfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1Ginfo  - Creating an optimized production build ..[2K[1Ginfo  - Creating an optimized production build ...[2K[1Ginfo  - Creating an optimized production build .[2K[1G[?25hinfo  - Creating an optimized production build  
+info  - Compiled successfully
+[?25linfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1Ginfo  - Collecting page data .[2K[1Ginfo  - Collecting page data ..[2K[1Ginfo  - Collecting page data ...[2K[1G[?25hinfo  - Collecting page data  
+[?25l[    ] info  - Generating static pages (0/87)Warning: data for page "/[locale]/news" (path "/en/news/") is 133 kB which exceeds the threshold of 128 kB, this amount of data can reduce performance.
+See more info here: https://nextjs.org/docs/messages/large-page-data
+[2K[1G[=   ] info  - Generating static pages (65/87)[2K[1G[?25hinfo  - Generating static pages (87/87)
+[?25linfo  - Finalizing page optimization .[2K[1G[?25hinfo  - Finalizing page optimization  
+
+Route (pages)                                                                      Size     First Load JS
+┌ ○ /                                                                              3.15 kB         143 kB
+├   /_app                                                                          0 B             140 kB
+├ ● /[locale]                                                                      12.5 kB         195 kB
+├   ├ /en
+├   └ /ja
+├ ● /[locale]/404                                                                  5.73 kB         183 kB
+├   ├ /en/404
+├   └ /ja/404
+├ ● /[locale]/dao                                                                  6.88 kB         190 kB
+├   ├ /en/dao
+├   └ /ja/dao
+├ ● /[locale]/doc                                                                  1.4 kB          187 kB
+├   ├ /en/doc
+├   └ /ja/doc
+├ ● /[locale]/doc/[...slug] (428 ms)                                               2.29 kB         217 kB
+├   ├ /en/doc/general/motivation
+├   ├ /en/doc/quickstart/backup
+├   ├ /en/doc/quickstart/no-downtime-update
+├   └ [+15 more paths]
+├ ● /[locale]/enterprise                                                           6.79 kB         184 kB
+├   ├ /en/enterprise
+├   └ /ja/enterprise
+├ ● /[locale]/legal/[...slug]                                                      6.43 kB         213 kB
+├   ├ /en/legal/privacy-policy
+├   └ /ja/legal/privacy-policy
+├ ● /[locale]/news                                                                 6.35 kB         184 kB
+├   ├ /en/news
+├   └ /ja/news
+├ ● /[locale]/news/[...slug] (642 ms)                                              6.99 kB         214 kB
+├   ├ /en/news/2023/08/17/epics-released-solana-validator-tool-solv
+├   ├ /en/news/2023/09/14/solv-how-to-start-solana-validator
+├   ├ /en/news/2023/10/23/solana-breakpoint-2023-side-event-latitude-epics-wework
+├   └ [+39 more paths]
+├ ● /[locale]/press-kits                                                           5.53 kB         185 kB
+├   ├ /en/press-kits
+├   └ /ja/press-kits
+├ ○ /404                                                                           3.15 kB         143 kB
+├ ○ /dao                                                                           3.15 kB         143 kB
+├ ○ /doc                                                                           3.15 kB         143 kB
+├ ○ /doc/[...slug]                                                                 3.16 kB         143 kB
+├ ○ /enterprise                                                                    3.16 kB         143 kB
+├ ○ /legal/[...slug]                                                               3.16 kB         143 kB
+├ ○ /news                                                                          3.15 kB         143 kB
+├ ○ /news/[...slug]                                                                3.16 kB         143 kB
+└ ○ /press-kits                                                                    3.16 kB         143 kB
++ First Load JS shared by all                                                      152 kB
+  ├ chunks/framework-2647c7e378e02044.js                                           45.2 kB
+  ├ chunks/main-fef2f1ddf8e3a57a.js                                                27.8 kB
+  ├ chunks/pages/_app-e4316162a40ae0a2.js                                          66.2 kB
+  ├ chunks/webpack-87b3a303122f2f0d.js                                             1 kB
+  └ css/eafd365f16b35e04.css                                                       12.2 kB
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
+
+[?25hwarn  - "next export" is deprecated in favor of "output: export" in next.config.js https://nextjs.org/docs/advanced-features/static-html-export
+info  - using build directory: /Users/fumi/Dev/ts/solv/website/solv-doc/.next
+info  - Copying "static build" directory
+info  - Launching 11 workers
+[?25l[    ] info  - Exporting (0/11)[2K[1G[?25hinfo  - Copying "public" directory
+[?25l[    ] info  - Exporting (0/11)[2K[1G[?25hinfo  - Exporting (11/11)
+Export successful. Files written to /Users/fumi/Dev/ts/solv/website/solv-doc/out
+[?25h
+> solv-doc@0.2.0 postbuild /Users/fumi/Dev/ts/solv/website/solv-doc
+> tsx ./scripts/generateSitemap.ts
+
+[
+  'out/en/index.html',
+  'out/en/404/index.html',
+  'out/en/dao/index.html',
+  'out/en/enterprise/index.html',
+  'out/en/doc/index.html',
+  'out/en/news/index.html',
+  'out/en/press-kits/index.html',
+  'out/en/legal/privacy-policy/index.html',
+  'out/en/doc/general/motivation/index.html',
+  'out/en/doc/tutorial/chapter1/index.html',
+  'out/en/doc/tutorial/chapter2/index.html',
+  'out/en/doc/tutorial/chapter3/index.html',
+  'out/en/doc/tutorial/chapter4/index.html',
+  'out/en/doc/quickstart/backup/index.html',
+  'out/en/doc/tutorial/chapter5/index.html',
+  'out/en/doc/quickstart/start-solv/index.html',
+  'out/en/doc/quickstart/no-downtime-update/index.html',
+  'out/en/news/2024/02/21/solv-v-3-3-0-faster-update-easy-restart/index.html',
+  'out/en/news/2024/02/06/solv-can-build-jito-mev-mainnet-validator/index.html',
+  'out/en/news/2024/03/12/epics-has-raised-total-750k-in-seed-funding/index.html',
+  'out/en/news/2024/01/29/solv-can-build-solana-rpc-node/index.html',
+  'out/en/news/2024/04/05/elsoul-labo-ascends-to-solana-mainnet-validator/index.html',
+  'out/en/news/2024/01/23/solv-ver3-released/index.html',
+  'out/en/news/2023/09/14/solv-how-to-start-solana-validator/index.html',
+  'out/en/news/2024/05/16/skeet-launched-indias-only-solana-blockchain-data-center/index.html',
+  'out/en/news/2024/05/06/epics-dao-ascends-to-solana-mainnet-validator/index.html',
+  'out/en/news/2024/05/07/skeet-dev-ascends-to-solana-mainnet-validator/index.html',
+  'out/en/news/2024/05/23/solv-100x-faster-snapshot-download/index.html',
+  'out/en/news/2024/05/24/solv4-solana-validator-complete-guide/index.html',
+  'out/en/news/2024/05/27/epics-dao-sponsored-webx-2024/index.html',
+  'out/en/news/2023/11/02/hosted-a-side-event-at-solana-breakpoint-2023/index.html',
+  'out/en/news/2023/08/17/epics-released-solana-validator-tool-solv/index.html',
+  'out/en/news/2023/11/06/solana-breakpoint-2023-recap/index.html',
+  'out/en/news/2024/05/20/solv-v4-released/index.html',
+  'out/en/news/2023/10/23/solana-breakpoint-2023-side-event-latitude-epics-wework/index.html',
+  'out/en/news/2023/10/27/elsoul-latitude-business-collaboration-enhance-solana-validator/index.html',
+  'out/en/news/2023/10/29/elsoul-latitude-business-collaboration-enhance-solana-validator/index.html',
+  'out/en/news/2023/12/08/solana-validator-master-guide-released/index.html',
+  'out/ja/index.html',
+  'out/ja/dao/index.html',
+  'out/ja/404/index.html',
+  'out/ja/doc/index.html',
+  'out/ja/enterprise/index.html',
+  'out/ja/news/index.html',
+  'out/ja/press-kits/index.html',
+  'out/ja/legal/privacy-policy/index.html',
+  'out/ja/doc/general/motivation/index.html',
+  'out/ja/doc/quickstart/backup/index.html',
+  'out/ja/doc/tutorial/chapter1/index.html',
+  'out/ja/doc/quickstart/start-solv/index.html',
+  'out/ja/doc/quickstart/no-downtime-update/index.html',
+  'out/ja/doc/tutorial/chapter2/index.html',
+  'out/ja/doc/tutorial/chapter5/index.html',
+  'out/ja/doc/tutorial/chapter4/index.html',
+  'out/ja/doc/tutorial/chapter3/index.html',
+  'out/ja/news/2023/09/14/solv-how-to-start-solana-validator/index.html',
+  'out/ja/news/2023/08/17/epics-released-solana-validator-tool-solv/index.html',
+  'out/ja/news/2023/10/27/elsoul-latitude-business-collaboration-enhance-solana-validator/index.html',
+  'out/ja/news/2023/10/29/elsoul-latitude-business-collaboration-enhance-solana-validator/index.html',
+  'out/ja/news/2023/10/23/solana-breakpoint-2023-side-event-latitude-epics-wework/index.html',
+  'out/ja/news/2023/11/02/hosted-a-side-event-at-solana-breakpoint-2023/index.html',
+  'out/ja/news/2024/01/23/solv-ver3-released/index.html',
+  'out/ja/news/2023/11/06/solana-breakpoint-2023-recap/index.html',
+  'out/ja/news/2023/12/08/solana-validator-master-guide-released/index.html',
+  'out/ja/news/2024/01/29/solv-can-build-solana-rpc-node/index.html',
+  'out/ja/news/2024/02/06/solv-can-build-jito-mev-mainnet-validator/index.html',
+  'out/ja/news/2024/02/21/solv-v-3-3-0-faster-update-easy-restart/index.html',
+  'out/ja/news/2024/04/05/elsoul-labo-ascends-to-solana-mainnet-validator/index.html',
+  'out/ja/news/2024/05/06/epics-dao-ascends-to-solana-mainnet-validator/index.html',
+  'out/ja/news/2024/05/07/skeet-dev-ascends-to-solana-mainnet-validator/index.html',
+  'out/ja/news/2024/03/12/epics-has-raised-total-750k-in-seed-funding/index.html',
+  'out/ja/news/2024/05/20/solv-v4-released/index.html',
+  'out/ja/news/2024/05/16/skeet-launched-indias-only-solana-blockchain-data-center/index.html',
+  'out/ja/news/2024/05/23/solv-100x-faster-snapshot-download/index.html',
+  'out/ja/news/2024/05/27/epics-dao-sponsored-webx-2024/index.html',
+  'out/ja/news/2024/05/24/solv4-solana-validator-complete-guide/index.html'
+]

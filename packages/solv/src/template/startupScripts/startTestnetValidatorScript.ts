@@ -31,6 +31,7 @@ exec solana-validator \\
 --expected-bank-hash 4rWEDhTyQVgTw6sPoCthXmUNmjeiwsdKQ5ZNvpEi3uvk \\
 --use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
+--block-production-method central-scheduler \\
 `
   return script
 }

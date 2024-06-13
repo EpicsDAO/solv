@@ -1,16 +1,20 @@
 import { spawnSync } from 'child_process'
 
-export const createSymLink = (isDummy = false) => {
+export const createSymLink = (isDummy = false, isTest = false) => {
   if (isDummy) {
     createInactiveSymLink()
   } else {
-    createActiveSymLink()
+    createActiveSymLink(isTest)
   }
 }
 
-export const createActiveSymLink = () => {
+export const createActiveSymLink = (isTest = false) => {
+  let network = 'mainnet'
+  if (isTest) {
+    network = 'testnet'
+  }
   spawnSync(
-    `ln -sf /home/solv/mainnet-validator-keypair.json /home/solv/identity.json`,
+    `ln -sf /home/solv/${network}-validator-keypair.json /home/solv/identity.json`,
     { shell: true, stdio: 'inherit' },
   )
 }

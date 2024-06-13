@@ -43,6 +43,7 @@ exec solana-validator \\
 --wal-recovery-mode skip_any_corrupted_record \\
 --use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
+--block-production-method central-scheduler \\
 `
   return script
 }
