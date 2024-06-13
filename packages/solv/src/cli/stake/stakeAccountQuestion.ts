@@ -4,6 +4,7 @@ import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { NETWORK_TYPES } from '@/config/config'
 import { createStakeKeypair } from '../server/stake/createStakeKeypair'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
+import { spawnSync } from 'node:child_process'
 
 export type StakeAccountQuestion = {
   stakeAuthorityKeyPath: string
@@ -28,6 +29,10 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
     solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
       ? '~/testnet-authority-keypair.json'
       : '~/mainnet-authority-keypair.json'
+  spawnSync(`solana config set --keypair ${authorityKeypair}`, {
+    shell: true,
+    stdio: 'pipe',
+  })
   const answer = await inquirer.prompt<StakeAccountQuestion>([
     {
       type: 'input',
@@ -44,5 +49,5 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
     new Set([...currentStakeAccount, stakeKeypair]),
   )
   updateSolvConfig({ STAKE_ACCOUNT: uniqueStakeAccount })
-  return createStakeAccount(stakeKeypair, authorityKeypair, answer.solAmount)
+  return createStakeAccount(stakeKeypair, answer.solAmount)
 }
