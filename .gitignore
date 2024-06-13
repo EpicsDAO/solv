@@ -53,3 +53,6 @@ tmp
 /sql/
 dist/
 .turbo/
+packages/eslint-config/node_modules/
+packages/typescript-config/node_modules/
+packages/ui/node_modules/
