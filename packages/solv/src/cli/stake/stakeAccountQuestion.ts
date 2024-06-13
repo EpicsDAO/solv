@@ -44,5 +44,5 @@ export const stakeAccountQuestion = async (solvConfig: ConfigParams) => {
     new Set([...currentStakeAccount, stakeKeypair]),
   )
   updateSolvConfig({ STAKE_ACCOUNT: uniqueStakeAccount })
-  return createStakeAccount(authorityKeypair, stakeKeypair, answer.solAmount)
+  return createStakeAccount(stakeKeypair, authorityKeypair, answer.solAmount)
 }

@@ -10,5 +10,6 @@
     "paths": {
       "@common/*": ["./common/*"]
     }
-  }
+  },
+  "include": ["./lib/runDiscordChangeLog.ts"]
 }
