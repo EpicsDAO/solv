@@ -53,20 +53,11 @@ importers:
       prettier:
         specifier: 3.2.5
         version: 3.2.5
-      ts-loader:
-        specifier: 9.5.1
-        version: 9.5.1(typescript@5.3.3)(webpack@5.92.0(esbuild@0.20.0))
-      ts-node:
-        specifier: 10.9.2
-        version: 10.9.2(@types/node@20.11.16)(typescript@5.3.3)
-      tsconfig-paths:
-        specifier: 4.2.0
-        version: 4.2.0
       tsx:
         specifier: 4.7.1
         version: 4.7.1
       turbo:
-        specifier: ^2.0.3
+        specifier: 2.0.3
         version: 2.0.3
       typescript:
         specifier: 5.3.3
@@ -14755,16 +14746,6 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-loader@9.5.1(typescript@5.3.3)(webpack@5.92.0(esbuild@0.20.0)):
-    dependencies:
-      chalk: 4.1.2
-      enhanced-resolve: 5.17.0
-      micromatch: 4.0.7
-      semver: 7.6.2
-      source-map: 0.7.4
-      typescript: 5.3.3
-      webpack: 5.92.0(esbuild@0.20.0)
-
   ts-loader@9.5.1(typescript@5.4.2)(webpack@5.92.0(esbuild@0.20.2)):
     dependencies:
       chalk: 4.1.2
@@ -14795,24 +14776,6 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optional: true
-
-  ts-node@10.9.2(@types/node@20.11.16)(typescript@5.3.3):
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.16
-      acorn: 8.11.3
-      acorn-walk: 8.3.2
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.3.3
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
 
   ts-node@10.9.2(@types/node@20.11.28)(typescript@5.4.2):
     dependencies:
