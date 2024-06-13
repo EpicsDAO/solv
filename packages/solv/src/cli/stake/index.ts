@@ -20,7 +20,10 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .command('stake')
     .description(cmds.stake)
     .action(async () => {
-      await stakeAccountQuestion(solvConfig)
+      const result = await stakeAccountQuestion(solvConfig)
+      if (!result) {
+        return
+      }
       const newSolvConfig = readOrCreateDefaultConfig()
       const { validatorVoteAccount, stakeAccounts } =
         await delegateStakeAsk(newSolvConfig)

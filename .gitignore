@@ -52,3 +52,4 @@ keyfile.json
 tmp
 /sql/
 dist/
+.turbo/
