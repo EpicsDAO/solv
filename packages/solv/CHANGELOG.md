@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.1.12
+
+### Patch Changes
+
+- [#192](https://github.com/EpicsDAO/solv/pull/192) [`5621656`](https://github.com/EpicsDAO/solv/commit/562165657731993f88ada0aba1ce49df6df9cca7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
+
 ## 4.1.11
 
 ### Patch Changes
