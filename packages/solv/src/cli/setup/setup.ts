@@ -231,7 +231,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     daemonReload()
 
     setupKeys(newSolvConfig)
-    createSymLink(askIfDummy.isDummy)
+    createSymLink(askIfDummy.isDummy, isTest)
 
     enableSolv(hasRelayer)
     restartLogrotate()

@@ -1,0 +1,18 @@
+
+> solv-doc@0.2.0 build /Users/fumi/Dev/ts/solv/website/solv-doc
+> next build && next export
+
+[?25linfo  - Linting and checking validity of types .error - ESLint: Failed to load plugin 'turbo' declared in '../../.eslintrc.js » @repo/eslint-config/library.js » eslint-config-turbo': Cannot convert undefined or null to object Referenced from: /Users/fumi/Dev/ts/solv/node_modules/.pnpm/eslint-config-turbo@1.13.4_eslint@8.57.0/node_modules/eslint-config-turbo/index.js
+[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...Failed to compile.
+
+./src/components/common/atoms/Button.tsx:100:9
+Type error: Type 'ReactNode' is not assignable to type 'ReactI18NextChildren'.
+
+[0m [90m  98 | [39m    href[33m.[39mincludes([32m'https://'[39m) [33m?[39m ([0m
+[0m [90m  99 | [39m      [33m<[39m[33ma[39m href[33m=[39m{href} className[33m=[39m{className} {[33m...[39mprops}[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 100 | [39m        {children}[0m
+[0m [90m     | [39m        [31m[1m^[22m[39m[0m
+[0m [90m 101 | [39m      [33m<[39m[33m/[39m[33ma[39m[33m>[39m[0m
+[0m [90m 102 | [39m    ) [33m:[39m ([0m
+[0m [90m 103 | [39m      [33m<[39m[33mLink[39m href[33m=[39m{href} className[33m=[39m{className} {[33m...[39mprops}[33m>[39m[0m
+[?25h ELIFECYCLE  Command failed with exit code 1.

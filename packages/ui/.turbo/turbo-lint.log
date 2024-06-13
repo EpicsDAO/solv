@@ -1,0 +1,4 @@
+
+> @repo/ui@0.0.0 lint /Users/fumi/Dev/ts/v3/validators-solutions/packages/ui
+> eslint . --max-warnings 0
+

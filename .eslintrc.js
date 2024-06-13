@@ -1,5 +1,16 @@
+// This configuration only applies to the package manager root.
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
+  ignorePatterns: [
+    'apps/**',
+    'packages/**',
+    'node_modules/**',
+    'dist/**',
+    'build.ts',
+    'devBuild.ts',
+  ],
   extends: [
+    '@repo/eslint-config/library.js',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
@@ -25,15 +36,7 @@ module.exports = {
         'ts-ignore': 'allow-with-description',
       },
     ],
-    // temprary disable
-    // "@typescript-eslint/no-floating-promises": "error",
-    // "@typescript-eslint/no-misused-promises": [
-    //   "error",
-    //   {
-    //     "checksVoidReturn": false
-    //   }
-    // ]
-    // temporary enable
+    'import/no-unresolved': ['error', { ignore: ['cloudflare:workers'] }],
     'no-useless-escape': 'off',
     'no-useless-catch': 'off',
     '@typescript-eslint/no-namespace': 'off',
