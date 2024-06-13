@@ -2,14 +2,13 @@ import { spawnSync } from 'child_process'
 
 export const createStakeAccount = (
   stakeKeypair: string,
-  authorityKeypair: string,
   sol: number,
   retryLimit: number = 5, // リトライの最大回数を設定
 ): boolean => {
   let attempt = 0
   while (attempt < retryLimit) {
     const result = spawnSync(
-      `solana create-stake-account ${stakeKeypair} ${sol} --keypair ${authorityKeypair}`,
+      `solana create-stake-account ${stakeKeypair} ${sol}`,
       { shell: true, stdio: 'pipe' },
     )
     const output = result.stdout.toString() + result.stderr.toString()
