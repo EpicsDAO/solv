@@ -194,7 +194,6 @@ Commands:
   rm:log               Remove Logs
   rm:snapshot          Remove Snapshot
   withdraw             Withdraw SOL from Vote Account to Authority Account
-  login                Login to Validatoors Cloud
   change               Change Identity of Validator to New Validator
   monitor|m            Monitor Solana Node
   catchup|ca           Check Solana Catchup Status
