@@ -2,11 +2,14 @@ import chalk from 'chalk'
 import { spawnSync } from 'child_process'
 import inquirer from 'inquirer'
 import { checkSSHConnection } from './scp/checkSSHConnection'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export type ChangeType = 'Active to Inactive' | 'Inactive to Active'
 export const changeTypes = ['Active to Inactive', 'Inactive to Active']
 
 export const change = async () => {
+  const solvConfig = readOrCreateDefaultConfig()
+  const isTest = solvConfig.config.SOLANA_NETWORK === 'testnet' ? true : false
   const ask = await inquirer.prompt<{ change: ChangeType }>([
     {
       type: 'list',
@@ -91,7 +94,7 @@ $ ssh solv@<IP_ADDRESS> ls
   }
 
   if (ask.change === 'Active to Inactive') {
-    await changeActiveSide(ip)
+    await changeActiveSide(ip, isTest)
     const msg = `Now, you need to run the following command on the other side of the node:
 
 $ solv change
@@ -99,11 +102,12 @@ $ solv change
 Then, select 'Inactive to Active' and follow the instructions.`
     console.log(chalk.white(msg))
   } else {
-    await changeInactiveSide()
+    await changeInactiveSide(isTest)
   }
 }
 
-export const changeActiveSide = async (ip: string) => {
+export const changeActiveSide = async (ip: string, isTest = false) => {
+  const network = isTest ? 'testnet' : 'mainnet'
   const restartWindowCmd = `solana-validator -l /mnt/ledger wait-for-restart-window --min-idle-time 2 --skip-new-snapshot-check`
   spawnSync(restartWindowCmd, { shell: true, stdio: 'inherit' })
   const setIdentityCmd = `solana-validator -l /mnt/ledger set-identity /home/solv/unstaked-identity.json`
@@ -113,14 +117,15 @@ export const changeActiveSide = async (ip: string) => {
     { shell: true, stdio: 'inherit' },
   )
   spawnSync(
-    `scp /mnt/ledger/tower-1_9-$(solana-keygen pubkey /home/solv/mainnet-validator-keypair.json).bin solv@${ip}:/mnt/ledger`,
+    `scp /mnt/ledger/tower-1_9-$(solana-keygen pubkey /home/solv/${network}-validator-keypair.json).bin solv@${ip}:/mnt/ledger`,
     { shell: true, stdio: 'inherit' },
   )
 }
 
-export const changeInactiveSide = async () => {
-  const restartWindowCmd = `solana-validator -l /mnt/ledger set-identity --require-tower /home/solv/mainnet-validator-keypair.json`
+export const changeInactiveSide = async (isTest = false) => {
+  const network = isTest ? 'testnet' : 'mainnet'
+  const restartWindowCmd = `solana-validator -l /mnt/ledger set-identity --require-tower /home/solv/${network}-validator-keypair.json`
   spawnSync(restartWindowCmd, { shell: true, stdio: 'inherit' })
-  const setIdentityCmd = `ln -sf /home/solv/mainnet-validator-keypair.json /home/solv/identity.json`
+  const setIdentityCmd = `ln -sf /home/solv/${network}-validator-keypair.json /home/solv/identity.json`
   spawnSync(setIdentityCmd, { shell: true, stdio: 'inherit' })
 }
