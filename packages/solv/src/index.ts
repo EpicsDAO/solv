@@ -30,8 +30,14 @@ import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
 import { checkSSHConnection } from './cli/scp/checkSSHConnection'
+import epochTimer from './lib/fetchEpochData'
+import { getOrCreateDestinationAddress } from './lib/solana/getOrCreateDestinationAddress'
+import { readFile } from 'fs/promises'
 
 dotenv.config()
+export const SOLANA_RPC_URL =
+  process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
+export const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
 const solvConfig = readOrCreateDefaultConfig()
 
 export const program = new Command()
@@ -83,13 +89,6 @@ async function main() {
       })
 
     program
-      .command('login')
-      .description('Login to Validatoors Cloud')
-      .action(async () => {
-        await login()
-      })
-
-    program
       .command('change')
       .description('Change Identity of Validator to New Validator')
       .action(() => {
@@ -110,6 +109,13 @@ async function main() {
       .alias('ca')
       .action(() => {
         solanaCatchup()
+      })
+
+    program
+      .command('epochTimer')
+      .description('Check Solana Epoch Timer')
+      .action(async () => {
+        await epochTimer(SOLANA_RPC_URL, DISCORD_WEBHOOK_URL)
       })
 
     program
