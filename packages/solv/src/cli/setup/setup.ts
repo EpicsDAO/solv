@@ -37,7 +37,7 @@ import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
-import { setupSwap } from './setupSwap'
+import { getRootFreeSpaceGB, setupSwap } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
 import { getSnapshot } from '../get/snapshot'
@@ -95,6 +95,23 @@ export const setup = async (solvConfig: ConfigParams) => {
         message:
           'Do you want to setup as a dummy(Inactive) node?(※For Migration)',
         default: false,
+      },
+    ])
+    // Check if the root volume is larger than 256GB
+    // If not, set the default swap size to 30GB
+    // If the root volume is smaller than 30GB, set the default swap size to 4GB
+    const rootVolume = await getRootFreeSpaceGB()
+    let defaultSwapSize = rootVolume > 256 ? 256000 : 30000
+    const minOpenSpace = 30000
+    if (defaultSwapSize - 30000 < minOpenSpace) {
+      defaultSwapSize = 4000
+    }
+    const askSwapsize = await inquirer.prompt<{ swapsize: number }>([
+      {
+        name: 'swapsize',
+        type: 'number',
+        message: 'Enter swap size to create in MB:',
+        default: defaultSwapSize,
       },
     ])
     let blockEngineUrl = ''
@@ -188,7 +205,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       const isDisk2Formatted = formatDisk(fileSystemName2)
 
       // Swap setup
-      await setupSwap()
+      await setupSwap(askSwapsize.swapsize)
 
       let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
       let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''

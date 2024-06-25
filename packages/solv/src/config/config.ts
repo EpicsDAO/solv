@@ -153,3 +153,10 @@ export const startupScriptPaths = (isTest = true) => {
 export const SOLV_DISCORD_INVITE = 'https://discord.gg/y8tCMzPU9Y'
 export const DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY =
   '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1'
+export const SOLV_STAKE_POOL_ADDRESS =
+  'So1vW4Bm6ZURzJJHZy1JpsjoVY68z4cDgF4tTLwYMa5'
+export const ELSOL_MINT_ADDRESS = 'ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC'
+export const SOLV_ELSOL_ACCOUNT_ADDRESS =
+  '7tAfLKgRVd9eywSQPuMbVNd51KGkaveZQuTjapL74Fwv'
+export const SOLV_POOL_MANAGER_ADDRESS =
+  'EiwSTx1Z2uJATDut682U7xzzquFR4UpQJUij3wSxVoSV'

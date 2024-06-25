@@ -3,10 +3,12 @@ import chalk from 'chalk'
 import { spawnSync, execSync } from 'node:child_process'
 import { statfs } from 'fs/promises'
 import inquirer from 'inquirer'
+import { existsAsync } from '@skeet-framework/utils'
+import { isSwapAllocated } from '@/lib/isSwapAllocated'
 
 const SWAP_PATH = '/swapfile'
-const MIN_SWAP_SIZE_GB = 98 // Min swap size in GB
-const REQUIRED_FREE_SPACE_GB = 200 // Required free space in GB
+const MIN_SWAP_SIZE_GB = 5 // Min swap size in GB
+const REQUIRED_FREE_SPACE_GB = 20 // Required free space in GB
 
 export const setupSwap = async (swapsize = 256000) => {
   try {
@@ -35,20 +37,13 @@ export const setupSwap = async (swapsize = 256000) => {
     }
 
     // Remove existing swap file if it exists
-    // execSync(`sudo swapoff ${SWAP_PATH}`)
-    // execSync(`sudo rm ${SWAP_PATH}`)
-
-    const answer = await inquirer.prompt<{ swapsize: number }>([
-      {
-        type: 'number',
-        name: 'swapsize',
-        message: 'Enter swap size to create in MB:',
-        default: swapsize,
-      },
-    ])
+    if (await isSwapAllocated(SWAP_PATH)) {
+      execSync(`sudo swapoff ${SWAP_PATH}`)
+      execSync(`sudo rm ${SWAP_PATH}`)
+    }
 
     const cmds = [
-      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=${answer.swapsize}`,
+      `sudo dd if=/dev/zero of=${SWAP_PATH} bs=1M count=${swapsize}`,
       `sudo mkswap ${SWAP_PATH}`,
       `sudo chmod 600 ${SWAP_PATH}`,
       `sudo swapon ${SWAP_PATH}`,
@@ -78,7 +73,7 @@ const getSwapFileSizeGB = () => {
   }
 }
 
-const getRootFreeSpaceGB = async () => {
+export const getRootFreeSpaceGB = async () => {
   try {
     const stats = await statfs('/')
     const freeSpaceBytes = BigInt(stats.bavail) * BigInt(stats.bfree) // Available blocks * block size

@@ -8,11 +8,7 @@ import {
 } from '@/lib/readOrCreateDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { testnetSetup } from './testnetSetup'
-import { updateSolvConfig } from '@/lib/updateSolvConfig'
-import { updateLogrotate } from '@/cli/setup/updateLogrotate'
-import { rmLogs } from './rmLogs'
 import { setupSwap } from './setupSwap'
-import { rmSnapshot } from './rmSnapshot'
 
 type SetupOptions = {
   vote: boolean

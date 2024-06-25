@@ -114,7 +114,7 @@ There are versions for Edgevana and Latitude, so please select the type you want
 Here, we assume participation in TDS and select `Edgevana`.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.16/install")"
 ```
 
 This command will initially create a solv user, so you will need to set a password.

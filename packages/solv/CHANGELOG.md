@@ -201,7 +201,7 @@
   Install script updated
 
   ```bash
-  $ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+  $ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.16/install")"
   $ cd ~ && source ~/.profile
   $ solv setup
   ```
