@@ -42,7 +42,7 @@ $ ssh username@<your-server-ip-address>
 そして solv ドキュメントページにあるステップ１のコードをコピー&ペーストして実行します。
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.2/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.16/install")"
 ```
 
 このコマンドで最初に solv ユーザーを作成するので、

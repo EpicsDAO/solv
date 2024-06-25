@@ -27,13 +27,8 @@ export const depositSol = async (
   referrerTokenAccount?: PublicKey,
   depositAuthority?: PublicKey,
 ) => {
-  console.log(chalk.white(`⏳ Starting deposit of ${SOL} SOL`))
   try {
     const fromWallet = Keypair.fromSecretKey(new Uint8Array(fromWalletKey))
-
-    console.log(
-      chalk.white(`Staking Wallet: ${fromWallet.publicKey.toBase58()}\n`),
-    )
     const lamport = SOL * LAMPORTS_PER_SOL
     const { instructions, signers } = await depositSOLInstruction(
       connection,

@@ -7,9 +7,14 @@ export const getStakePoolInfo = async (
   rpcUrl: string,
   poolAddress = SOLV_STAKE_POOL_ADDRESS,
 ) => {
-  const connection = new Connection(rpcUrl)
+  try {
+    const connection = new Connection(rpcUrl)
 
-  const stakePoolAddress = new PublicKey(poolAddress)
-  const stakePool = await stakePoolInfo(connection, stakePoolAddress)
-  return stakePool as StakePoolInfoRes
+    const stakePoolAddress = new PublicKey(poolAddress)
+    const stakePool = await stakePoolInfo(connection, stakePoolAddress)
+    return stakePool as StakePoolInfoRes
+  } catch (error) {
+    console.log(`Stake Pool not found: ${poolAddress}`)
+    return null
+  }
 }

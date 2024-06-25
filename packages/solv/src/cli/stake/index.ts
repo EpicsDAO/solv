@@ -27,7 +27,7 @@ import inquirer from 'inquirer'
 import { homedir } from 'os'
 import { PriorityLevel } from '@/lib/solana/priorityFee'
 import { getOrCreateDestinationAddress } from '@/lib/solana/getOrCreateDestinationAddress'
-import { sleep } from '@skeet-framework/utils'
+import { existsAsync, sleep } from '@skeet-framework/utils'
 import { Spinner } from 'cli-spinner'
 import { elSOLdeposit } from './elSOLdeposit'
 import { depositeLST } from './depositLST'
@@ -59,6 +59,15 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
           ? `${keyRoot}/testnet-authority-keypair.json`
           : `${keyRoot}/mainnet-authority-keypair.json`
       execSync(`solana config set --keypair ${keypairPath}`)
+      if (!(await existsAsync(keypairPath))) {
+        console.log(
+          chalk.yellow(
+            '⚠️ No keypair found. Please place your keypair in the following path:\n',
+          ),
+        )
+        console.log(chalk.white(keypairPath))
+        return
+      }
       const fromWalletKey = JSON.parse(
         await readFile(keypairPath, 'utf-8'),
       ) as number[]
@@ -67,9 +76,13 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
         await elSOLdeposit(poolAddress, amount, fromWalletKey)
         return
       } else if (options.lst) {
-        poolAddress = await selectLST()
+        const lst = await selectLST()
+        if (!lst) {
+          return
+        }
+        poolAddress = lst.stakePoolAddress
         // Deposit SOL to LST
-        await depositeLST(poolAddress, amount, fromWalletKey)
+        await depositeLST(poolAddress, amount, fromWalletKey, lst.symbol)
         return
       } else {
         // Solana Native Stake
@@ -131,7 +144,7 @@ export const askAmount = async () => {
     .trim()
   console.log(
     chalk.white(
-      `📗 Address: ${currentAddress}\n💰 Account Balance:`,
+      `📗 Selected Wallet: ${currentAddress}\n💰 Account Balance:`,
       currentVoteAccountBalance + ' SOL',
     ),
   )

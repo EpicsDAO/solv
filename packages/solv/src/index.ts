@@ -33,6 +33,8 @@ import { checkSSHConnection } from './cli/scp/checkSSHConnection'
 import epochTimer from './lib/fetchEpochData'
 import { getOrCreateDestinationAddress } from './lib/solana/getOrCreateDestinationAddress'
 import { readFile } from 'fs/promises'
+import { getTokenInfo } from './lib/solana/getTokenAccount'
+import { ELSOL_MINT_ADDRESS } from './config/config'
 
 dotenv.config()
 export const SOLANA_RPC_URL =

@@ -2,8 +2,8 @@
 > solv-doc@0.2.0 build /Users/fumi/Dev/ts/solv/website/solv-doc
 > next build && next export
 
-[?25linfo  - Linting and checking validity of types .error - ESLint: Failed to load plugin 'turbo' declared in '../../.eslintrc.js » @repo/eslint-config/library.js » eslint-config-turbo': Cannot convert undefined or null to object Referenced from: /Users/fumi/Dev/ts/solv/node_modules/.pnpm/eslint-config-turbo@1.13.4_eslint@8.57.0/node_modules/eslint-config-turbo/index.js
-[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...Failed to compile.
+[?25linfo  - Linting and checking validity of types .error - ESLint: Cannot read config file: /Users/fumi/Dev/ts/solv/.eslintrc.js Error: require() of ES Module /Users/fumi/Dev/ts/solv/.eslintrc.js from /Users/fumi/Dev/ts/solv/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs not supported. .eslintrc.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains "type": "module" which declares all .js files in that package scope as ES modules. Instead either rename .eslintrc.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change "type": "module" to "type": "commonjs" in /Users/fumi/Dev/ts/solv/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead). 
+[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .[2K[1Ginfo  - Linting and checking validity of types ..[2K[1Ginfo  - Linting and checking validity of types ...[2K[1Ginfo  - Linting and checking validity of types .Failed to compile.
 
 ./src/components/common/atoms/Button.tsx:100:9
 Type error: Type 'ReactNode' is not assignable to type 'ReactI18NextChildren'.

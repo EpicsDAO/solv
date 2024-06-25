@@ -18,19 +18,27 @@ export const elSOLdeposit = async (
   if (amount === 0) {
     amount = await askAmount()
   }
+  const spinner = new Spinner('%s')
+  spinner.setSpinnerString(18)
+  spinner.start()
+  spinner.setSpinnerTitle(
+    chalk.green(`✔︎ Checking Stake Pool ${poolAddress}...`),
+  )
   const priorityFee = PriorityLevel.MEDIUM
   const stakePoolAddress = new PublicKey(poolAddress)
+  const depositAuthority = Keypair.fromSecretKey(new Uint8Array(fromWalletKey))
   const mintAddress = ELSOL_MINT_ADDRESS
+  spinner.setSpinnerTitle(
+    chalk.green(`🔍 Getting or Creating AssociatedTokenAccount`),
+  )
   const destinationTokenAccount = await getOrCreateDestinationAddress(
     SOLANA_RPC_URL,
     fromWalletKey,
     mintAddress,
+    depositAuthority.publicKey,
   )
-  const depositAuthority = Keypair.fromSecretKey(new Uint8Array(fromWalletKey))
-  const spinner = new Spinner('%s')
-  spinner.setSpinnerString(18)
-  spinner.start()
-  spinner.setSpinnerTitle(chalk.yellowBright('🔄 Converting SOL to'))
+  await sleep(1000)
+  spinner.setSpinnerTitle(chalk.green('🔄 Converting SOL to elSOL'))
 
   let sig = await depositSol(
     connection,
@@ -42,17 +50,34 @@ export const elSOLdeposit = async (
     new PublicKey(SOLV_ELSOL_ACCOUNT_ADDRESS),
     depositAuthority.publicKey,
   )
+  console.log(sig)
 
+  let retryCount = 0
   while (sig.status !== 'success') {
-    spinner.setSpinnerTitle(chalk.yellow('Retrying...'))
+    retryCount++
+    if (retryCount > 10) {
+      spinner.stop(true)
+      console.log(chalk.red('Failed to deposit.Please try again later 🙏'))
+      return false
+    }
+    console.log(chalk.yellow(`⏳ ${retryCount} Times Retrying...\n`))
     await sleep(1000)
-    sig = await depositSol(connection, fromWalletKey, amount, priorityFee)
+    sig = await depositSol(
+      connection,
+      fromWalletKey,
+      amount,
+      priorityFee,
+      stakePoolAddress,
+      new PublicKey(destinationTokenAccount),
+      new PublicKey(SOLV_ELSOL_ACCOUNT_ADDRESS),
+      depositAuthority.publicKey,
+    )
   }
   spinner.stop(true)
 
   console.log(
     chalk.white(
-      "💰Finished Deposit - You've got elSOL ✨\nSignature:",
+      "💰 Finished Deposit - You've got elSOL ✨\n\nSignature:",
       sig.signature,
     ),
   )
