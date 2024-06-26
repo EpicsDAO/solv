@@ -1,4 +1,0 @@
-
-> @epics-dao/solv@4.1.17 build /Users/fumi/Dev/ts/solv/packages/solv
-> npx ts-node build.ts && npx ts-node add-line.ts
-
