@@ -97,7 +97,7 @@ export function Button({
   return href ? (
     href.includes('https://') ? (
       <a href={href} className={className} {...props}>
-        {children as ReactI18NextChildren}
+        {children}
       </a>
     ) : (
       <Link href={href} className={className} {...props}>
