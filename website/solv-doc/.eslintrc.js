@@ -1,15 +1,8 @@
-// This configuration only applies to the package manager root.
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: [
-    'apps/**',
-    'packages/**',
-    'node_modules/**',
-    'dist/**',
-    'build.ts',
-    'devBuild.ts',
-  ],
+  root: true,
   extends: [
+    'next/core-web-vitals',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
@@ -20,26 +13,32 @@ module.exports = {
     sourceType: 'module',
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   env: {
-    es6: true,
+    browser: true,
+    es2021: true,
   },
   rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/no-empty-function': 0,
+    'react-native/no-inline-styles': 0,
+    'no-constant-condition': 0,
+    '@typescript-eslint/no-floating-promises': 'error',
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: false,
+      },
+    ],
     '@typescript-eslint/ban-ts-comment': [
       'off',
       {
         'ts-ignore': 'allow-with-description',
       },
     ],
-    'import/no-unresolved': ['error', { ignore: ['cloudflare:workers'] }],
-    'no-useless-escape': 'off',
-    'no-useless-catch': 'off',
-    '@typescript-eslint/no-namespace': 'off',
-    'no-empty': 'off',
-    'no-case-declarations': 'off',
   },
 }

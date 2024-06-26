@@ -58,6 +58,7 @@
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-react-hooks": "4.6.2",
     "fast-xml-parser": "4.2.2",
     "github-slugger": "2.0.0",
     "glob": "8.1.0",
