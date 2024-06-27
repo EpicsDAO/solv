@@ -1,0 +1,30 @@
+import { getAllKeyPaths } from '@/config/config'
+import { SOLANA_RPC_URL } from '@/index'
+import { execSync } from 'child_process'
+import { homedir } from 'os'
+
+export enum KeyType {
+  VALIDATOR = 'validator',
+  AUTH = 'auth',
+  VOTE = 'vote',
+}
+
+const getBalance = (key = KeyType.AUTH) => {
+  const homeDir = homedir()
+  const {
+    mainnetValidatorVoteKey,
+    mainnetValidatorKey,
+    mainnetValidatorAuthorityKey,
+  } = getAllKeyPaths(homeDir)
+  let account = mainnetValidatorAuthorityKey
+  if (key === KeyType.AUTH) account = mainnetValidatorAuthorityKey
+  if (key === KeyType.VALIDATOR) account = mainnetValidatorKey
+  const voteAccountBalance = Number(
+    execSync(`solana balance ${account} --url ${SOLANA_RPC_URL}`)
+      .toString()
+      .trim(),
+  )
+  return voteAccountBalance
+}
+
+export default getBalance

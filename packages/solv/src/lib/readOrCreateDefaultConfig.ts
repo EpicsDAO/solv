@@ -26,24 +26,5 @@ export const readOrCreateDefaultConfig = () => {
     config = CONFIG
   }
   const locale = readLocale(config.LANG)
-  if (!config.LEDGER_PATH) {
-    config.LEDGER_PATH = MT_PATHS.LEDGER
-    console.log(
-      'Default LEDGER_PATH is set to ~/solv.config.json\nPlease change it if necessary.',
-    )
-    updateSolvConfig({ LEDGER_PATH: MT_PATHS.LEDGER })
-  }
-  if (!config.MAINNET_DELINQUENT_STAKE) {
-    config.MAINNET_DELINQUENT_STAKE = CONFIG.MAINNET_DELINQUENT_STAKE
-    updateSolvConfig({
-      MAINNET_DELINQUENT_STAKE: CONFIG.MAINNET_DELINQUENT_STAKE,
-    })
-  }
-  if (!config.TESTNET_DELINQUENT_STAKE) {
-    config.TESTNET_DELINQUENT_STAKE = CONFIG.TESTNET_DELINQUENT_STAKE
-    updateSolvConfig({
-      TESTNET_DELINQUENT_STAKE: CONFIG.TESTNET_DELINQUENT_STAKE,
-    })
-  }
   return { config, locale } as ConfigParams
 }

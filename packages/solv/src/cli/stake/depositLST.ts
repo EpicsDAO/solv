@@ -2,10 +2,7 @@ import { SOLANA_RPC_URL } from '@/index'
 import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { askAmount } from '.'
 import { PriorityLevel } from '@/lib/solana/priorityFee'
-import {
-  SOLV_ELSOL_ACCOUNT_ADDRESS,
-  SOLV_POOL_MANAGER_ADDRESS,
-} from '@/config/config'
+import { SOLV_POOL_MANAGER_ADDRESS } from '@/config/config'
 import { getOrCreateDestinationAddress } from '@/lib/solana/getOrCreateDestinationAddress'
 import { Spinner } from 'cli-spinner'
 import chalk from 'chalk'

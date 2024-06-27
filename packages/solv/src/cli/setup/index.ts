@@ -13,9 +13,6 @@ import { setupSwap } from './setupSwap'
 type SetupOptions = {
   vote: boolean
   key: boolean
-  testnet: boolean
-  mainnet: boolean
-  rpc: boolean
   swap: boolean
 }
 
@@ -36,9 +33,6 @@ export const setupCommands = (solvConfig: ConfigParams) => {
       } else if (options.key) {
         console.log(chalk.white('Setting up Validator Keypairs ...'))
         createSolvKeyPairs(config)
-      } else if (options.testnet) {
-        console.log(chalk.white('Setting up Testnet Validator ...'))
-        await testnetSetup(config)
       } else if (options.swap) {
         await setupSwap()
       } else {

@@ -14,7 +14,7 @@ export const elSOLdeposit = async (
   amount: number,
   fromWalletKey: number[],
 ) => {
-  const connection = new Connection(SOLANA_RPC_URL)
+  let connection = new Connection(SOLANA_RPC_URL)
   if (amount === 0) {
     amount = await askAmount()
   }
@@ -50,7 +50,6 @@ export const elSOLdeposit = async (
     new PublicKey(SOLV_ELSOL_ACCOUNT_ADDRESS),
     depositAuthority.publicKey,
   )
-  console.log(sig)
 
   let retryCount = 0
   while (sig.status !== 'success') {
@@ -62,6 +61,7 @@ export const elSOLdeposit = async (
     }
     console.log(chalk.yellow(`⏳ ${retryCount} Times Retrying...\n`))
     await sleep(1000)
+    connection = new Connection(SOLANA_RPC_URL)
     sig = await depositSol(
       connection,
       fromWalletKey,
@@ -81,5 +81,5 @@ export const elSOLdeposit = async (
       sig.signature,
     ),
   )
-  return
+  return true
 }

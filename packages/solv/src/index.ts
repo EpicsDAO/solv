@@ -23,24 +23,29 @@ import {
 import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
-import { withdraw } from './cli/withdraw'
 import { change } from './cli/change'
 import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
 import epochTimer from './lib/fetchEpochData'
 import { transferCommands } from './cli/transfer'
+import { withdrawCommands } from './cli/withdraw'
+import { NETWORK_TYPES } from './config/config'
+import getElSOLBalance from './lib/solana/getElSOLBalance'
+import { harvestCommands } from './cli/harvest'
 
 dotenv.config()
+const solvConfig = readOrCreateDefaultConfig()
+
 export const SOLANA_RPC_URL =
-  process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
+  solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+    ? 'https://api.testnet.solana.com'
+    : process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
 export const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
 export const MAX_RETRIES = Number(process.env.MAX_RETRIES) || 3
 if (isNaN(MAX_RETRIES)) {
   throw new Error(`Invalid MAX_RETRIES\nPlease Check .env File`)
 }
-
-const solvConfig = readOrCreateDefaultConfig()
 
 export const program = new Command()
 program
@@ -69,6 +74,8 @@ async function main() {
     mountCommands(solvConfig)
     relayerCommands()
     transferCommands(solvConfig)
+    withdrawCommands(solvConfig)
+    harvestCommands(solvConfig)
 
     program
       .command('rm:log')
@@ -82,13 +89,6 @@ async function main() {
       .description('Remove Snapshot')
       .action(() => {
         rmSnapshot()
-      })
-
-    program
-      .command('withdraw')
-      .description('Withdraw SOL from Vote Account to Authority Account')
-      .action(async () => {
-        await withdraw(solvConfig)
       })
 
     program

@@ -102,7 +102,7 @@ export const transferCommands = (solvConfig: ConfigParams) => {
     })
 }
 
-const validateSolanaKey = (input: string): boolean | string => {
+export const validateSolanaKey = (input: string): boolean | string => {
   const regex = /^[1-9A-HJ-NP-Za-km-z]{43,44}$/
   if (regex.test(input)) {
     return true
