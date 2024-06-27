@@ -78,7 +78,7 @@ export const cronCommands = (solvConfig: ConfigParams) => {
     .option('-c, --cron <value>', 'Cron Job', '*/5 * * * *')
     .action(async (options: CronOptions) => {
       const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
-      if (!DISCORD_WEBHOOK_URL) {
+      if (DISCORD_WEBHOOK_URL === '') {
         console.log(
           chalk.yellow(
             '⚠️ DISCORD_WEBHOOK_URL is not set\nPlease set .env file',
@@ -87,7 +87,7 @@ export const cronCommands = (solvConfig: ConfigParams) => {
         process.exit(1)
       }
       Logger.normal(`🕰️ Running Cron Job: ${options.cron}`)
-      const cmd = `npx pm2 start solv --name solvEpochTimer -- cron epochTimer`
+      const cmd = `npx pm2 start solv --name epochTimer -- epochTimer`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 
