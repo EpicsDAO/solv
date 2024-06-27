@@ -15,6 +15,7 @@ import { validateSolanaKey } from '../transfer'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import getElSOLBalance from '@/lib/solana/getElSOLBalance'
 import { spawnSync } from 'child_process'
+import chalk from 'chalk'
 
 export const harvestCommands = (solvConfig: ConfigParams) => {
   program
@@ -23,6 +24,7 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
     .description('Harvest SOL from Validator Account to Authority Account')
     .action(async () => {
       const harvestAddress = await getHarvestAddress(solvConfig)
+      const { mainnetValidatorAuthorityKey } = getAllKeyPaths()
       console.log('Harvesting SOL...')
       collectSOL()
       let voteBalance = getBalance(KeyType.VOTE)
@@ -38,24 +40,21 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
       // Convert SOL to elSOL
       const authorityBalance = getBalance(KeyType.AUTH)
       if (authorityBalance < 1) {
-        console.log('Authority Account Balance is less than 1 SOL')
-        return
-      }
-      console.log('Authority Account Balance:', authorityBalance)
-      const convertibleBalance = authorityBalance - 0.03
-      console.log('Convertible Balance:', convertibleBalance)
-
-      const { mainnetValidatorAuthorityKey } = getAllKeyPaths()
-      const fromWalletKey = JSON.parse(
-        await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
-      ) as number[]
-      const result = await elSOLdeposit(
-        SOLV_STAKE_POOL_ADDRESS,
-        convertibleBalance,
-        fromWalletKey,
-      )
-      if (!result) {
-        throw new Error('Failed to convert SOL to elSOL')
+        console.log(chalk.white('Authority Account Balance is less than 1 SOL'))
+        console.log(chalk.white('Skip converting SOL to elSOL'))
+      } else {
+        const fromWalletKey = JSON.parse(
+          await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
+        ) as number[]
+        const convertibleBalance = authorityBalance - 0.03
+        const result = await elSOLdeposit(
+          SOLV_STAKE_POOL_ADDRESS,
+          convertibleBalance,
+          fromWalletKey,
+        )
+        if (!result) {
+          throw new Error('Failed to convert SOL to elSOL')
+        }
       }
 
       // Transfer elSOL to Harvest Address
@@ -64,8 +63,10 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         console.log('elSOL Balance is 0')
         return
       }
+      console.log(`Transferring ${elSOLBalance} elSOL to Harvest Address`)
+      spawnSync(`solana config set -k ${mainnetValidatorAuthorityKey}`)
       spawnSync(
-        `spl-token transfer ${ELSOL_MINT_ADDRESS} ${elSOLBalance} ${harvestAddress} --from ${mainnetValidatorAuthorityKey} --url ${SOLANA_RPC_URL}`,
+        `spl-token transfer ${ELSOL_MINT_ADDRESS} ${elSOLBalance} ${harvestAddress} --url ${SOLANA_RPC_URL} --owner ${mainnetValidatorAuthorityKey}`,
         {
           shell: true,
           stdio: 'inherit',
