@@ -33,19 +33,29 @@ export const collectSOL = () => {
   // Check Validator Key Balance
   const validatorTransferableBalance = getHarvestBalance()
 
-  // Transfer SOL from Validator Account to Authority Account
-  const toAddress = execSync(
-    `solana address --keypair ${mainnetValidatorAuthorityKey}`,
-  )
-    .toString()
-    .trim()
-  const result = spawnSync(
-    `solana transfer ${toAddress} ${validatorTransferableBalance} --url ${SOLANA_RPC_URL} --keypair ${mainnetValidatorKey}`,
-    { shell: true },
-  )
-  if (result.status !== 0) {
-    throw new Error(
-      'Failed to transfer SOL from Validator Account to Authority Account',
+  if (validatorTransferableBalance < 1) {
+    console.log(chalk.white('Validator Account Balance is less than 1 SOL'))
+    console.log(
+      chalk.white(
+        'Skip transferring SOL from Validator Account to Authority Account',
+      ),
     )
+  } else {
+    // Transfer SOL from Validator Account to Authority Account
+    const toAddress = execSync(
+      `solana address --keypair ${mainnetValidatorAuthorityKey}`,
+    )
+      .toString()
+      .trim()
+    const result = spawnSync(
+      `solana transfer ${toAddress} ${validatorTransferableBalance} --url ${SOLANA_RPC_URL} --keypair ${mainnetValidatorKey}`,
+      { shell: true },
+    )
+    if (result.status !== 0) {
+      throw new Error(
+        'Failed to transfer SOL from Validator Account to Authority Account',
+      )
+    }
   }
+  return true
 }

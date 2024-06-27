@@ -60,7 +60,7 @@ export const elSOLdeposit = async (
       return false
     }
     console.log(chalk.yellow(`⏳ ${retryCount} Times Retrying...\n`))
-    await sleep(1000)
+    await sleep(2000)
     connection = new Connection(SOLANA_RPC_URL)
     sig = await depositSol(
       connection,
