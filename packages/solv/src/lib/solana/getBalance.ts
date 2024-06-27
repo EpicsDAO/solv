@@ -23,6 +23,7 @@ const getBalance = (key = KeyType.AUTH) => {
     `solana balance ${account} --url ${SOLANA_RPC_URL}`,
   )
     .toString()
+    .replace('SOL', '')
     .trim()
   console.log('Vote Account B:', voteAccountB)
   const voteAccountBalance = Number(voteAccountB)
