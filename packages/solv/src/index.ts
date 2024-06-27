@@ -24,22 +24,22 @@ import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
 import { withdraw } from './cli/withdraw'
-import { login } from './cli/login'
 import { change } from './cli/change'
 import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
-import { checkSSHConnection } from './cli/scp/checkSSHConnection'
 import epochTimer from './lib/fetchEpochData'
-import { getOrCreateDestinationAddress } from './lib/solana/getOrCreateDestinationAddress'
-import { readFile } from 'fs/promises'
-import { getTokenInfo } from './lib/solana/getTokenAccount'
-import { ELSOL_MINT_ADDRESS } from './config/config'
+import { transferCommands } from './cli/transfer'
 
 dotenv.config()
 export const SOLANA_RPC_URL =
   process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
 export const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
+export const MAX_RETRIES = Number(process.env.MAX_RETRIES) || 3
+if (isNaN(MAX_RETRIES)) {
+  throw new Error(`Invalid MAX_RETRIES\nPlease Check .env File`)
+}
+
 const solvConfig = readOrCreateDefaultConfig()
 
 export const program = new Command()
@@ -68,6 +68,7 @@ async function main() {
     balanceCommands(solvConfig)
     mountCommands(solvConfig)
     relayerCommands()
+    transferCommands(solvConfig)
 
     program
       .command('rm:log')
