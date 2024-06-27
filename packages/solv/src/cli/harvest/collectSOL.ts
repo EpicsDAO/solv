@@ -15,6 +15,7 @@ export const collectSOL = () => {
   } = getAllKeyPaths(homeDir)
   // Check Vote Account Balance
   const voteAccountBalance = getBalance(KeyType.VOTE)
+  console.log('Vote Account Balance:', voteAccountBalance)
 
   if (voteAccountBalance < 1) {
     console.log(chalk.white('Vote Account Balance is less than 1 SOL'))
