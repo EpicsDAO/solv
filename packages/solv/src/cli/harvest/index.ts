@@ -64,7 +64,6 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         return
       }
       console.log(`Transferring ${elSOLBalance} elSOL to Harvest Address`)
-      spawnSync(`solana config set -k ${mainnetValidatorAuthorityKey}`)
       spawnSync(
         `spl-token transfer ${ELSOL_MINT_ADDRESS} ${elSOLBalance} ${harvestAddress} --url ${SOLANA_RPC_URL} --owner ${mainnetValidatorAuthorityKey}`,
         {

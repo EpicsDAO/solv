@@ -25,9 +25,9 @@ const getBalance = (key = KeyType.AUTH) => {
     .toString()
     .replace('SOL', '')
     .trim()
-  console.log('Vote Account B:', voteAccountB)
+
   const voteAccountBalance = Number(voteAccountB)
-  console.log('Vote Account Balance:', voteAccountBalance)
+
   if (isNaN(voteAccountBalance)) throw new Error('Failed to get balance')
   return voteAccountBalance
 }
