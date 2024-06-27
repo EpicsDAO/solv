@@ -17,13 +17,14 @@ const getBalance = (key = KeyType.AUTH) => {
     mainnetValidatorAuthorityKey,
   } = getAllKeyPaths(homeDir)
   let account = mainnetValidatorAuthorityKey
-  if (key === KeyType.AUTH) account = mainnetValidatorAuthorityKey
   if (key === KeyType.VALIDATOR) account = mainnetValidatorKey
+  if (key === KeyType.VOTE) account = mainnetValidatorVoteKey
   const voteAccountBalance = Number(
     execSync(`solana balance ${account} --url ${SOLANA_RPC_URL}`)
       .toString()
       .trim(),
   )
+  if (isNaN(voteAccountBalance)) throw new Error('Failed to get balance')
   return voteAccountBalance
 }
 
