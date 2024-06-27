@@ -24,7 +24,7 @@ const getBalance = (key = KeyType.AUTH) => {
       .toString()
       .trim(),
   )
-  if (isNaN(voteAccountBalance)) throw new Error('Failed to get balance')
+  if (!isNaN(voteAccountBalance)) throw new Error('Failed to get balance')
   return voteAccountBalance
 }
 
