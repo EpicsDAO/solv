@@ -41,7 +41,10 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         console.log('Authority Account Balance is less than 1 SOL')
         return
       }
+      console.log('Authority Account Balance:', authorityBalance)
       const convertibleBalance = authorityBalance - 0.03
+      console.log('Convertible Balance:', convertibleBalance)
+
       const { mainnetValidatorAuthorityKey } = getAllKeyPaths()
       const fromWalletKey = JSON.parse(
         await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
