@@ -17,11 +17,11 @@ import { NETWORK_TYPES, SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
 import { selectLST } from './selectLST'
 import { readFile } from 'fs/promises'
 import inquirer from 'inquirer'
-import { homedir } from 'os'
 import { existsAsync } from '@skeet-framework/utils'
 import { elSOLdeposit } from './elSOLdeposit'
 import { depositeLST } from './depositLST'
 import { execSync } from 'child_process'
+import getHomeDir from '@/lib/getHomeDir'
 
 export type StakeOptions = {
   lst: boolean
@@ -40,10 +40,7 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .action(async (options: StakeOptions) => {
       let amount = Number(options.amount)
       let poolAddress = SOLV_STAKE_POOL_ADDRESS
-      const homeDir = homedir()
-      const keyRoot = homeDir.includes('solv')
-        ? '/home/solv'
-        : `${homeDir}/solvKeys/upload`
+      const keyRoot = getHomeDir()
       const keypairPath =
         config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
           ? `${keyRoot}/testnet-authority-keypair.json`

@@ -2,11 +2,11 @@ import { FILES } from '@/config/config'
 import { JITO_CONFIG, JitoConfig } from '@/config/jitConfig'
 import { existsAsync } from '@skeet-framework/utils'
 import { readFile, writeFile } from 'fs/promises'
-import os from 'os'
 import path from 'path'
+import getHomeDir from './getHomeDir'
 
 export const readOrCreateJitoConfig = async () => {
-  const homeDir = os.homedir()
+  const homeDir = getHomeDir()
   const configPath = path.join(homeDir, FILES.JITO_CONFIG)
   if (!(await existsAsync(configPath))) {
     await writeFile(configPath, JSON.stringify(JITO_CONFIG, null, 2))

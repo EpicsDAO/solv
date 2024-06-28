@@ -1,10 +1,10 @@
 import { spawnSync } from 'child_process'
 import { ConfigParams } from '../readOrCreateDefaultConfig'
 import inquirer from 'inquirer'
-import { CONFIG, KEYPAIRS, NETWORK_TYPES } from '@/config/config'
-import os from 'os'
+import { KEYPAIRS, NETWORK_TYPES } from '@/config/config'
 import path from 'path'
 import { readdirSync } from 'fs'
+import getHomeDir from '../getHomeDir'
 
 export const solanaKeySet = async (solvConfig: ConfigParams) => {
   const { keypair, network } = await solanaKeySetAsk(solvConfig)
@@ -19,10 +19,7 @@ export type SolanaKeySetAskOption = {
 }
 
 export const solanaKeySetAsk = async (solvConfig: ConfigParams) => {
-  const homeDir = os.homedir()
-  const keyDir = solvConfig.config.IS_CLIENT
-    ? path.join(homeDir, 'solvKeys', 'upload')
-    : homeDir
+  const keyDir = getHomeDir()
   const defaultKey =
     solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.MAINNET
       ? path.join(keyDir, KEYPAIRS.MAINNET_VALIDATOR_KEY)
