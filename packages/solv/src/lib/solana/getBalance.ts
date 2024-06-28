@@ -1,9 +1,8 @@
 import { getAllKeyPaths } from '@/config/config'
 import { SOLANA_RPC_URL } from '@/index'
 import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js'
-import { execSync } from 'child_process'
-import { homedir } from 'os'
 import loadKeypairFromFile from './loadKeypairFromFile'
+import getHomeDir from '../getHomeDir'
 
 export enum KeyType {
   VALIDATOR = 'validator',
@@ -13,10 +12,7 @@ export enum KeyType {
 
 const getBalance = async (rpcUrl = SOLANA_RPC_URL, key = KeyType.AUTH) => {
   const connection = new Connection(rpcUrl)
-  const homeDir = homedir()
-  const home = homeDir.includes('solv')
-    ? '/home/solv'
-    : `${homeDir}/solvKeys/upload`
+  const home = getHomeDir()
   const {
     mainnetValidatorVoteKey,
     mainnetValidatorKey,

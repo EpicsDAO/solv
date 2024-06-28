@@ -1,9 +1,8 @@
-import { CONFIG, CONFIG_TYPE, FILES, MT_PATHS } from '@/config/config'
+import { CONFIG, CONFIG_TYPE, FILES } from '@/config/config'
 import { LocaleParams } from '@/locales/localeParams'
 import readLocale from '@/locales/readLocale'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
-import os from 'os'
-import { updateSolvConfig } from './updateSolvConfig'
+import getHomeDir from './getHomeDir'
 
 export type ConfigParams = {
   config: CONFIG_TYPE
@@ -11,7 +10,7 @@ export type ConfigParams = {
 }
 
 export const readOrCreateDefaultConfig = () => {
-  const homeDir = os.homedir()
+  const homeDir = getHomeDir()
   const configPath = `${homeDir}/${FILES.CONFIG}`
   if (!existsSync(configPath)) {
     writeFileSync(configPath, JSON.stringify(CONFIG, null, 2))

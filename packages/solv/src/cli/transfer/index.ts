@@ -4,6 +4,7 @@ import inquirer from 'inquirer'
 import { execSync, spawnSync } from 'child_process'
 import chalk from 'chalk'
 import sleep from '@/lib/sleep'
+import getHomeDir from '@/lib/getHomeDir'
 
 const RETRY_DELAY = 1000
 
@@ -111,12 +112,10 @@ export const validateSolanaKey = (input: string): boolean | string => {
 }
 
 const selectFromKeypairs = async () => {
-  const homeDir = require('os').homedir()
+  const homeDir = getHomeDir()
   const authorityKey = 'mainnet-authority-keypair.json'
   const validatorKey = 'mainnet-validator-keypair.json'
-  let toKeyPath = homeDir.includes('solv')
-    ? `${homeDir}/${authorityKey}`
-    : `${homeDir}/solvKeys/upload/${authorityKey}`
+  let toKeyPath = `${homeDir}/${authorityKey}`
 
   let toAddress = execSync(`solana address -k ${toKeyPath}`).toString().trim()
   const answer = await inquirer.prompt<{ from: string }>([
@@ -157,16 +156,12 @@ const selectFromKeypairs = async () => {
   } else {
     const toKey =
       answer.from === TransferFrom.VALIDATOR ? authorityKey : validatorKey
-    toKeyPath = homeDir.includes('solv')
-      ? `${homeDir}/${toKey}`
-      : `${homeDir}/solvKeys/upload/${toKey}`
+    toKeyPath = `${homeDir}/${toKey}`
     toAddress = execSync(`solana address -k ${toKeyPath}`).toString().trim()
   }
   const key =
     answer.from === TransferFrom.VALIDATOR ? validatorKey : authorityKey
-  const fromWalletPath = homeDir.includes('solv')
-    ? `${homeDir}/${key}`
-    : `${homeDir}/solvKeys/upload/${key}`
+  const fromWalletPath = `${homeDir}/${key}`
   const fromAddress = execSync(`solana address -k ${fromWalletPath}`)
     .toString()
     .trim()

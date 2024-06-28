@@ -4,16 +4,12 @@ import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { setupVoteAccount } from '@/cli/setup/setupVoteAccount'
-import os from 'os'
-import path from 'path'
+import getHomeDir from '@/lib/getHomeDir'
 
 export const setupKeys = (solvConfig: ConfigParams) => {
   try {
     createSolvKeyPairs(solvConfig)
-    const homeDir = os.homedir()
-    const keyDir = solvConfig.config.IS_CLIENT
-      ? path.join(homeDir, 'solvKeys', 'upload')
-      : homeDir
+    const keyDir = getHomeDir()
     let validatorKey = `${keyDir}/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`
     let network = NETWORK_TYPES.TESTNET
     const solvType = solvConfig.config.SOLV_TYPE

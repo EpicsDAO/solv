@@ -157,9 +157,34 @@ export const DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY =
   '76DafWkJ6pGK2hoD41HjrM4xTBhfKqrDYDazv13n5ir1'
 export const SOLV_STAKE_POOL_ADDRESS =
   'So1vW4Bm6ZURzJJHZy1JpsjoVY68z4cDgF4tTLwYMa5'
-export const ELSOL_MINT_ADDRESS = 'ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC'
 export const SOLV_ELSOL_ACCOUNT_ADDRESS =
   '7tAfLKgRVd9eywSQPuMbVNd51KGkaveZQuTjapL74Fwv'
 export const SOLV_POOL_MANAGER_ADDRESS =
   'EiwSTx1Z2uJATDut682U7xzzquFR4UpQJUij3wSxVoSV'
 export const ELSOL_DECIMALS = 9
+
+// Token Mint Addresses
+export const ELSOL_MINT_ADDRESS = 'ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC'
+export const SOL_MINT_ADDRESS = 'So11111111111111111111111111111111111111112'
+export const USDC_MINT_ADDRESS = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+export const EPCT_MINT_ADDRESS = 'CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP'
+
+export enum TOKEN_MINT_ADDRESS {
+  ELSOL = ELSOL_MINT_ADDRESS,
+  SOL = SOL_MINT_ADDRESS,
+  USDC = USDC_MINT_ADDRESS,
+  EPCT = EPCT_MINT_ADDRESS,
+}
+
+export enum JUP_URL {
+  V6_BASE_URL = 'https://quote-api.jup.ag/v6',
+  V6_QUOTE_URL = V6_BASE_URL + '/quote',
+  V6_SWAP_URL = V6_BASE_URL + '/swap',
+}
+
+export const DECIMALS = {
+  [SOL_MINT_ADDRESS]: 9,
+  [ELSOL_MINT_ADDRESS]: 9,
+  [USDC_MINT_ADDRESS]: 6,
+  [EPCT_MINT_ADDRESS]: 6,
+}

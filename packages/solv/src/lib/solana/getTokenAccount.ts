@@ -1,7 +1,4 @@
-import {
-  fetchDigitalAsset,
-  DigitalAsset,
-} from '@metaplex-foundation/mpl-token-metadata'
+import { fetchDigitalAsset } from '@metaplex-foundation/mpl-token-metadata'
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
 import { publicKey } from '@metaplex-foundation/umi'
 

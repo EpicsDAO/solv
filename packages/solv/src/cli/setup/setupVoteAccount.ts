@@ -1,14 +1,11 @@
 import { NETWORK_TYPES, SOLV_TYPES, getAllKeyPaths } from '@/config/config'
-import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
+import getHomeDir from '@/lib/getHomeDir'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
-import os from 'os'
 
 export const setupVoteAccount = (solvConfig: ConfigParams) => {
-  const homeDir = os.homedir() + SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH
-  const allKeyPaths = solvConfig.config.IS_CLIENT
-    ? getAllKeyPaths(homeDir)
-    : getAllKeyPaths()
+  const homeDir = getHomeDir()
+  const allKeyPaths = getAllKeyPaths(homeDir)
   let validatorVoteKey = allKeyPaths.testnetValidatorVoteKey
   let validatorKey = allKeyPaths.testnetValidatorKey
   let validatorAuthorityKey = allKeyPaths.testnetValidatorAuthorityKey

@@ -1,11 +1,11 @@
 import { FILES } from '@/config/config'
 import { JitoConfig } from '@/config/jitConfig'
 import { readFile, writeFile } from 'fs/promises'
-import os from 'os'
+import getHomeDir from './getHomeDir'
 
 export const updateJitoSolvConfig = async (config: Partial<JitoConfig>) => {
   // update ~/jito.config.json with new values
-  const homeDir = os.homedir()
+  const homeDir = getHomeDir()
   const solvConfigFile = `${homeDir}/${FILES.JITO_CONFIG}`
   const solvConfig = JSON.parse(
     await readFile(solvConfigFile, 'utf8'),

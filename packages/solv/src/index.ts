@@ -34,6 +34,7 @@ import { withdrawCommands } from './cli/withdraw'
 import { NETWORK_TYPES } from './config/config'
 import { harvestCommands } from './cli/harvest'
 import getBalance, { KeyType } from './lib/solana/getBalance'
+import { swapCommands } from './cli/swap'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -78,6 +79,7 @@ async function main() {
     withdrawCommands(solvConfig)
     harvestCommands(solvConfig)
     dfCommands()
+    swapCommands(solvConfig)
 
     program
       .command('rm:log')
