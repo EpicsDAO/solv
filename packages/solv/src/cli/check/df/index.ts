@@ -1,13 +1,12 @@
 import { program } from '@/index'
 import { df } from './df'
 import { displayTable } from '@/lib/logger/table'
-import { Logger } from '@/lib/logger'
 
 export const dfCommands = async () => {
   program
     .command('df')
     .description('Disk Free Command')
-    .action(async () => {
+    .action(() => {
       const dirs = df()
       displayTable(dirs)
     })

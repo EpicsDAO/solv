@@ -22,20 +22,6 @@ export enum INSTALLER_CHOICES {
 }
 
 export const server = async (solvConfig: ConfigParams) => {
-  const homeDir = os.homedir()
-  if (solvConfig.config.IS_CLIENT) {
-    console.log(
-      chalk.yellow(
-        `⚠️ Please run solv server from the server, not from the your local machine
-Or You might need to
-
-${chalk.white('$ su solv')}
-
-to login as solv user...?`,
-      ),
-    )
-    return
-  }
   Logger.solvAA()
   const { logs, installer, cmds } = solvConfig.locale
   const { config } = solvConfig

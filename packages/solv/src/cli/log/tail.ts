@@ -11,7 +11,7 @@ export type TailOptions = {
 export const tail = (options: TailOptions) => {
   try {
     const { log } = startupScriptPaths()
-    let cmd = `tail -f ${log}*`
+    let cmd = `tail -f ${log}`
     if (options.error) {
       cmd += ` | grep '\\(WARN\\|ERR\\)'`
     } else if (options.info) {

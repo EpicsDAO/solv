@@ -7,7 +7,6 @@ import {
   readOrCreateDefaultConfig,
 } from '@/lib/readOrCreateDefaultConfig'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
-import { testnetSetup } from './testnetSetup'
 import { setupSwap } from './setupSwap'
 
 type SetupOptions = {

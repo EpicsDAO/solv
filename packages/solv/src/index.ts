@@ -19,6 +19,7 @@ import {
   clientCommands,
   mountCommands,
   relayerCommands,
+  dfCommands,
 } from '@/cli'
 import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
@@ -76,6 +77,7 @@ async function main() {
     transferCommands(solvConfig)
     withdrawCommands(solvConfig)
     harvestCommands(solvConfig)
+    dfCommands()
 
     program
       .command('rm:log')
