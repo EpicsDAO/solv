@@ -32,6 +32,7 @@ import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
 import { NETWORK_TYPES } from './config/config'
 import { harvestCommands } from './cli/harvest'
+import getBalance, { KeyType } from './lib/solana/getBalance'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
