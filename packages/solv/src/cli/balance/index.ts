@@ -2,7 +2,7 @@ import { program } from '@/index'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { showKeypairsInfo } from '../server/getValidatorInfo/showKeypairsInfo'
 import { splBalance } from '@/lib/solana/splBalance'
-import { getHarvestBalance } from '../harvest/getHarvestBalance'
+import { homedir } from 'os'
 
 export type BalanceOptions = {
   spl: boolean
@@ -17,7 +17,7 @@ export const balanceCommands = (solvConfig: ConfigParams) => {
     .description('Show Keypairs Balance')
     .action(async (options: BalanceOptions) => {
       if (options.spl) {
-        const homeDir = require('os').homedir()
+        const homeDir = homedir()
         const defaultKey = 'mainnet-authority-keypair.json'
         const keyPath = homeDir.includes('solv')
           ? `${homeDir}/${defaultKey}`
