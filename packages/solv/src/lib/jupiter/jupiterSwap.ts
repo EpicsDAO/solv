@@ -3,7 +3,6 @@ import { Connection, PublicKey, VersionedTransaction } from '@solana/web3.js'
 import { Keypair } from '@solana/web3.js'
 import { SwapTransaction } from './jupiterResponse'
 import { JUP_URL, SOLV_POOL_MANAGER_ADDRESS } from '@/config/config'
-import { getOrCreateDestinationAddress } from '../solana/getOrCreateDestinationAddress'
 import { inspect } from 'util'
 
 export const jupiterSwap = async (
@@ -17,13 +16,7 @@ export const jupiterSwap = async (
     const fromWallet = Keypair.fromSecretKey(
       new Uint8Array(Array.from(fromWalletKey)),
     )
-    // const associatedTokenAddress = await getOrCreateDestinationAddress(
-    //   endpoint,
-    //   fromWalletKey,
-    //   quoteResponse.outputMint,
-    //   new PublicKey(SOLV_POOL_MANAGER_ADDRESS),
-    //   true,
-    // )
+
     const params = {
       quoteResponse,
       userPublicKey: fromWallet.publicKey.toBase58(),
