@@ -1,26 +1,15 @@
-import { execSync, spawnSync } from 'child_process'
-import { setupDirs } from '@/cli/setup/mkdirs'
+import { execSync } from 'child_process'
 import { setupKeys } from '@/cli/setup/setupKeys'
 import { genStartupValidatorScript } from '@/cli/setup/genStartupValidatorScript'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { makeServices } from '@/cli/setup/makeServices'
 import { setupPermissions } from '@/cli/setup/userPermissions'
-import { umount } from '@/cli/check/mt/umount'
 import getPreferredDisk, {
   GetPreferredDisksResult,
 } from '../check/mt/getLargestDisk'
 import { startSolana } from '@/cli/start/startSolana'
-import {
-  CONFIG,
-  DISK_TYPES,
-  MAINNET_TYPES,
-  NETWORK_TYPES,
-  RPC_MODE,
-  SOLV_TYPES,
-} from '@/config/config'
-import { ensureFstabEntries } from '@/cli/check/ensureMountAndFiles'
-import { formatDisk } from '@/cli/setup/formatDisk'
+import { CONFIG, MAINNET_TYPES, RPC_MODE, SOLV_TYPES } from '@/config/config'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
 import {
@@ -37,10 +26,11 @@ import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
-import { getRootFreeSpaceGB, setupSwap } from './setupSwap'
+import { getRootFreeSpaceGB } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
 import { getSnapshot } from '../get/snapshot'
+import setupMount from './setupMount'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -94,7 +84,7 @@ export const setup = async (solvConfig: ConfigParams) => {
         type: 'confirm',
         message:
           'Do you want to setup as a dummy(Inactive) node?(※For Migration)',
-        default: false,
+        default: true,
       },
     ])
     // Check if the root volume is larger than 256GB
@@ -175,68 +165,25 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
     console.log(`Setting up ${solvType}...`)
 
+    // Check if there is enough disk space
     const disks: GetPreferredDisksResult = getPreferredDisk()
+
+    // Skip mounting disk if there is not enough disk space
     if (!disks.has400GB && !disks.has850GB && !disks.hasUsed1250GB) {
       console.log(
         chalk.yellow(
-          `⚠️ Not enough disk space to setup Solana Validator\nYou need at least 1TB disk space\nPlease add more disk space and try again!`,
+          `⚠️ Not enough disk space to setup Solana Validator\nYou need at least 1TB disk space\nSkip mounting disk...`,
         ),
       )
-      return
-    }
-
-    const mountPoint = disks.disks[0].mountpoint
-    setupDirs()
-    // Detect if DISK_TYPE is DOUBLE or SINGLE
-    if (disks.has850GB && disks.has400GB) {
-      // DOUBLE
-      console.log('Setting up DOUBLE DISK...')
-
-      updateSolvConfig({
-        DISK_TYPES: DISK_TYPES.DOUBLE,
-        SOLV_TYPE: sType,
-        COMMISSION: commission,
-        SOLANA_NETWORK: isTest ? NETWORK_TYPES.TESTNET : NETWORK_TYPES.MAINNET,
-      })
-
-      const fileSystemName1 = '/dev/' + disks.disks[0].name
-      const fileSystemName2 = '/dev/' + disks.disks[1].name
-      const isDisk1Formatted = formatDisk(fileSystemName1)
-      const isDisk2Formatted = formatDisk(fileSystemName2)
-
-      // Swap setup
-      await setupSwap(askSwapsize.swapsize)
-
-      let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
-      let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''
-      let isLatitude = false
-      if (fileSystem1 === '' && fileSystem2) {
-        fileSystem1 = fileSystem2
-        fileSystem2 = ''
-        isLatitude = true
-      }
-      ensureFstabEntries(fileSystem1, fileSystem2, isLatitude)
     } else {
-      // SINGLE
-      console.log('Setting up SINGLE DISK...')
-      updateSolvConfig({
-        DISK_TYPES: DISK_TYPES.SINGLE,
-        SOLV_TYPE: sType,
-        COMMISSION: commission,
-      })
-      if (!mountPoint.includes('/mnt')) {
-        const fileSystem = '/dev/' + disks.disks[0].name
-        formatDisk(fileSystem)
-        ensureFstabEntries(fileSystem)
-      } else {
-        umount(mountPoint)
-        const fileSystem = '/dev/' + disks.disks[0].name
-        formatDisk(fileSystem)
-        ensureFstabEntries(fileSystem)
-      }
+      // Mount the disk
+      await setupMount(askSwapsize.swapsize, disks, sType, commission, isTest)
     }
+
     const newSolvConfig = readOrCreateDefaultConfig()
     setupPermissions()
+
+    // Generate startup script
     await genStartupValidatorScript(
       true,
       sType,
