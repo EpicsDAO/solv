@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'fs/promises'
 import { getEpochInfo } from './getEpochInfo'
 import getTotalMinutes from './getTotalMinutes'
-import { existsAsync, sendDiscord } from '@skeet-framework/utils'
+import { existsAsync, format, sendDiscord } from '@skeet-framework/utils'
 
 export type EpochData = {
   epoch: number
@@ -13,6 +13,8 @@ export type EpochData = {
 const FILE_PATH = 'currentEpoch.json'
 
 export const epochTimer = async (rpcUrl: string, webhookUrl: string) => {
+  const now = format(new Date(), 'yyyy-MM-dd HH:mm:ss')
+  console.log(`Checking Epoch at ${now}`)
   if (!(await existsAsync(FILE_PATH))) {
     const initialData: EpochData = {
       epoch: 0,

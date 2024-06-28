@@ -1,11 +1,11 @@
-import fs from 'fs/promises'
+import { appendFile, readFile, writeFile } from 'fs/promises'
 
 const writer = async (file: string) => {
   try {
-    const currentFile = await fs.readFile(file)
+    const currentFile = await readFile(file)
     const currentFileString = String(currentFile)
-    await fs.writeFile(file, '#!/usr/bin/env node\n', { flag: 'w' })
-    await fs.appendFile(file, currentFileString)
+    await writeFile(file, '#!/usr/bin/env node\n', { flag: 'w' })
+    await appendFile(file, currentFileString)
   } catch (e) {
     console.log(e)
   }

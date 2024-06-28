@@ -2,6 +2,7 @@ import { program } from '@/index'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { showKeypairsInfo } from '../server/getValidatorInfo/showKeypairsInfo'
 import { splBalance } from '@/lib/solana/splBalance'
+import { getHarvestBalance } from '../harvest/getHarvestBalance'
 
 export type BalanceOptions = {
   spl: boolean

@@ -1,28 +1,41 @@
 import { build } from 'esbuild'
-import path from 'path'
-import { aliasPath } from 'esbuild-plugin-alias-path'
-;(async () => {
+
+void (async () => {
   await build({
-    entryPoints: [path.resolve(__dirname, 'src/index.ts')],
+    entryPoints: ['./src/index.ts'],
     bundle: true,
     minify: true,
-    keepNames: true,
-    sourcemap: 'inline',
-    sourcesContent: true,
-    outfile: path.resolve(__dirname, 'dist/index.js'),
+    outfile: './dist/index.js',
     platform: 'node',
-    format: 'cjs',
     define: {
       'process.env.NODE_ENV': `"production"`,
     },
-    metafile: true,
-    external: ['path'],
-    plugins: [
-      aliasPath({
-        alias: {
-          '@/*': path.resolve(__dirname, './src'),
-        },
-      }),
+    format: 'esm',
+    tsconfig: './tsconfig.json',
+    external: [
+      'child_process',
+      'os',
+      'fs',
+      'inquirer',
+      'chalk',
+      'fs/promises',
+      '@solana/web3.js',
+      '@metaplex-foundation/mpl-token-metadata',
+      '@metaplex-foundation/umi',
+      '@metaplex-foundation/umi-bundle-defaults',
+      '@skeet-framework/utils',
+      '@solana/spl-stake-pool',
+      '@solana/spl-token',
+      'bn.js',
+      'bs58',
+      'commander',
+      'dotenv',
+      'node-cron',
+      'node-fetch',
+      'prompt',
+      'cli-progress',
+      'cli-spinner',
+      'cli-table3',
     ],
   })
 })()

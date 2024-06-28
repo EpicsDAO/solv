@@ -1,9 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Backend",
   "compilerOptions": {
+    "module": "ESNext",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "dist",
     "target": "ESNext",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": ".",
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": ".",
@@ -17,11 +20,11 @@
     "lib": ["esnext"],
     "sourceMap": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "@common/*": ["../../common/*"]
     }
   },
-  "files": ["package.json"],
-  "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", "release/**/*"],
-  "compileOnSave": false
+  "compileOnSave": true,
+  "include": ["src/*", "src/**/*", "build.ts", "vitest.config.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

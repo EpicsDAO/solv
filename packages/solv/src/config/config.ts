@@ -46,6 +46,7 @@ export type CONFIG_TYPE = {
   MAINNET_TYPE: MAINNET_TYPES
   LEDGER_PATH: string
   STAKE_ACCOUNT: string[]
+  HARVEST_ACCOUNT: string
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -73,6 +74,7 @@ export const CONFIG: CONFIG_TYPE = {
   MAINNET_TYPE: MAINNET_TYPES.SOLANA_CLIENT,
   LEDGER_PATH: '/mnt/ledger',
   STAKE_ACCOUNT: [],
+  HARVEST_ACCOUNT: '',
 }
 
 export const HOME_PATHS = {
@@ -160,3 +162,4 @@ export const SOLV_ELSOL_ACCOUNT_ADDRESS =
   '7tAfLKgRVd9eywSQPuMbVNd51KGkaveZQuTjapL74Fwv'
 export const SOLV_POOL_MANAGER_ADDRESS =
   'EiwSTx1Z2uJATDut682U7xzzquFR4UpQJUij3wSxVoSV'
+export const ELSOL_DECIMALS = 9
