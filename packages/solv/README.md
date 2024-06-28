@@ -68,6 +68,18 @@ $ solv start
 
 This will remove the snapshot and restart the Solana Validator from the new snapshot.
 
+## New Features - v4.2.0~v4.2.1
+
+- Added Solana Liquid Staking Command
+- Added Solana Transfer Command
+- Added Auto Reward Harvest Command
+- Added Epoch Timer
+- Improved setup command
+- Improved log command
+- Added solv df command
+- Migrated to ESM Module
+- Added Turbo Repo
+
 ## New Features - v4.0.0~v4.1.0
 
 - Jito Relayer Setup

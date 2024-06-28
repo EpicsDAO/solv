@@ -1,7 +1,6 @@
 import { program } from '@/index'
 import { df } from './df'
 import { displayTable } from '@/lib/logger/table'
-import { logDiskUsage } from './du'
 
 export const dfCommands = async () => {
   program
@@ -10,13 +9,6 @@ export const dfCommands = async () => {
     .action(() => {
       const dirs = df()
       displayTable(dirs)
-    })
-
-  program
-    .command('du')
-    .description('Disk Usage Command')
-    .action(() => {
-      logDiskUsage()
     })
 }
 

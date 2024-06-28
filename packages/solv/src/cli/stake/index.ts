@@ -1,4 +1,4 @@
-import { SOLANA_RPC_URL, program } from '@/index'
+import { program } from '@/index'
 import { delegateStake } from './delegateStake'
 export * from './delegateStake'
 import {
@@ -13,22 +13,12 @@ import { deactivateStakeAsk } from '../server/stake/deactivateStakeAsk'
 import { unstakeAsk } from '../server/stake/unstakeAsk'
 import { withdrawStakeAsk } from '../server/stake/withdrawStakeAsk'
 import chalk from 'chalk'
-import {
-  ELSOL_MINT_ADDRESS,
-  NETWORK_TYPES,
-  SOLV_ELSOL_ACCOUNT_ADDRESS,
-  SOLV_STAKE_POOL_ADDRESS,
-} from '@/config/config'
+import { NETWORK_TYPES, SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
 import { selectLST } from './selectLST'
-import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { readFile } from 'fs/promises'
-import { depositSol } from '@/lib/solana/depositSOL'
 import inquirer from 'inquirer'
 import { homedir } from 'os'
-import { PriorityLevel } from '@/lib/solana/priorityFee'
-import { getOrCreateDestinationAddress } from '@/lib/solana/getOrCreateDestinationAddress'
-import { existsAsync, sleep } from '@skeet-framework/utils'
-import { Spinner } from 'cli-spinner'
+import { existsAsync } from '@skeet-framework/utils'
 import { elSOLdeposit } from './elSOLdeposit'
 import { depositeLST } from './depositLST'
 import { execSync } from 'child_process'

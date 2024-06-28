@@ -1,7 +1,6 @@
 import { UbuntuDhParams } from '@/types/solvTypes'
 import { execSync } from 'child_process'
 import { convertToBytes } from '.'
-import { Logger } from '@/lib/logger'
 
 export const df = () => {
   const output = execSync('df -h').toString()
@@ -56,11 +55,11 @@ export const df = () => {
       )
       .map((data) => data.Filesystem)
     if (fsNames.length > 0) {
-      console.log(
-        Logger.warningHex(
-          `\nfileSystem might be one of ${fsNames.join(', ')} ...?`,
-        ),
-      )
+      // console.log(
+      //   Logger.warningHex(
+      //     `\nfileSystem might be one of ${fsNames.join(', ')} ...?`,
+      //   ),
+      // )
     }
   }
 
