@@ -5,6 +5,7 @@ import getBalance, { KeyType } from '@/lib/solana/getBalance'
 import sleep from '@/lib/sleep'
 import { elSOLdeposit } from '../stake/elSOLdeposit'
 import {
+  ELSOL_DECIMALS,
   ELSOL_MINT_ADDRESS,
   SOLV_STAKE_POOL_ADDRESS,
   getAllKeyPaths,
@@ -14,8 +15,10 @@ import inquirer from 'inquirer'
 import { validateSolanaKey } from '../transfer'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import getElSOLBalance from '@/lib/solana/getElSOLBalance'
-import { spawnSync } from 'child_process'
 import chalk from 'chalk'
+import { transferSPLToken } from '@/lib/solana/transferSPLToken'
+
+const MINIMUM_AUTHORITY_BALANCE = 0.03
 
 export const harvestCommands = (solvConfig: ConfigParams) => {
   program
@@ -26,27 +29,27 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
       const harvestAddress = await getHarvestAddress(solvConfig)
       const { mainnetValidatorAuthorityKey } = getAllKeyPaths()
       console.log('Harvesting SOL...')
-      collectSOL()
-      let voteBalance = getBalance(KeyType.VOTE)
+      await collectSOL()
+      let voteBalance = await getBalance(SOLANA_RPC_URL, KeyType.VOTE)
       let retryCount = 0
       while (voteBalance > 1 && retryCount < 3) {
         console.log('Retrying Harvesting SOL...')
         await sleep(1000)
-        collectSOL()
-        voteBalance = getBalance(KeyType.VOTE)
+        await collectSOL()
+        voteBalance = await getBalance(SOLANA_RPC_URL, KeyType.VOTE)
         retryCount++
       }
+      const fromWalletKey = JSON.parse(
+        await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
+      ) as number[]
 
       // Convert SOL to elSOL
-      const authorityBalance = getBalance(KeyType.AUTH)
+      const authorityBalance = await getBalance(SOLANA_RPC_URL, KeyType.AUTH)
       if (authorityBalance < 1) {
         console.log(chalk.white('Authority Account Balance is less than 1 SOL'))
         console.log(chalk.white('Skip converting SOL to elSOL'))
       } else {
-        const fromWalletKey = JSON.parse(
-          await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
-        ) as number[]
-        const convertibleBalance = authorityBalance - 0.03
+        const convertibleBalance = authorityBalance - MINIMUM_AUTHORITY_BALANCE
         const result = await elSOLdeposit(
           SOLV_STAKE_POOL_ADDRESS,
           convertibleBalance,
@@ -59,18 +62,20 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
 
       // Transfer elSOL to Harvest Address
       const elSOLBalance = await getElSOLBalance()
-      if (elSOLBalance === 0) {
-        console.log('elSOL Balance is 0')
+      if (elSOLBalance < 1) {
+        console.log('elSOL Balance is less than 1 elSOL')
         return
       }
       console.log(`Transferring ${elSOLBalance} elSOL to Harvest Address`)
-      spawnSync(
-        `spl-token transfer ${ELSOL_MINT_ADDRESS} ${elSOLBalance} ${harvestAddress} --url ${SOLANA_RPC_URL} --owner ${mainnetValidatorAuthorityKey}`,
-        {
-          shell: true,
-          stdio: 'inherit',
-        },
+      await transferSPLToken(
+        SOLANA_RPC_URL,
+        fromWalletKey,
+        harvestAddress,
+        elSOLBalance,
+        ELSOL_MINT_ADDRESS,
+        ELSOL_DECIMALS,
       )
+      console.log(chalk.green('✔︎ Successfully Harvested SOL'))
     })
 }
 

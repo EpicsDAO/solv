@@ -1,7 +1,9 @@
 import { getAllKeyPaths } from '@/config/config'
 import { SOLANA_RPC_URL } from '@/index'
+import { Connection } from '@solana/web3.js'
 import { execSync } from 'child_process'
 import { homedir } from 'os'
+import loadKeypairFromFile from './loadKeypairFromFile'
 
 export enum KeyType {
   VALIDATOR = 'validator',
@@ -9,24 +11,19 @@ export enum KeyType {
   VOTE = 'vote',
 }
 
-const getBalance = (key = KeyType.AUTH) => {
-  const homeDir = homedir()
+const getBalance = async (rpcUrl = SOLANA_RPC_URL, key = KeyType.AUTH) => {
+  const connection = new Connection(rpcUrl)
   const {
     mainnetValidatorVoteKey,
     mainnetValidatorKey,
     mainnetValidatorAuthorityKey,
-  } = getAllKeyPaths(homeDir)
+  } = getAllKeyPaths()
   let account = mainnetValidatorAuthorityKey
   if (key === KeyType.VALIDATOR) account = mainnetValidatorKey
   if (key === KeyType.VOTE) account = mainnetValidatorVoteKey
-  const voteAccountB = execSync(
-    `solana balance ${account} --url ${SOLANA_RPC_URL}`,
-  )
-    .toString()
-    .replace('SOL', '')
-    .trim()
-
-  const voteAccountBalance = Number(voteAccountB)
+  const publicKey = await loadKeypairFromFile(account)
+  const balance = await connection.getBalance(publicKey.publicKey)
+  const voteAccountBalance = Number(balance)
 
   if (isNaN(voteAccountBalance)) throw new Error('Failed to get balance')
   return voteAccountBalance

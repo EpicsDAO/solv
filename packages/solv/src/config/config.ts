@@ -162,3 +162,4 @@ export const SOLV_ELSOL_ACCOUNT_ADDRESS =
   '7tAfLKgRVd9eywSQPuMbVNd51KGkaveZQuTjapL74Fwv'
 export const SOLV_POOL_MANAGER_ADDRESS =
   'EiwSTx1Z2uJATDut682U7xzzquFR4UpQJUij3wSxVoSV'
+export const ELSOL_DECIMALS = 9

@@ -31,7 +31,6 @@ import epochTimer from './lib/fetchEpochData'
 import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
 import { NETWORK_TYPES } from './config/config'
-import getElSOLBalance from './lib/solana/getElSOLBalance'
 import { harvestCommands } from './cli/harvest'
 
 dotenv.config()
