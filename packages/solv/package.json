@@ -55,7 +55,7 @@
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.1",
     "@skeet-framework/discord-utils": "0.4.0",
-    "@types/bn.js": "^5.1.5",
+    "@types/bn.js": "5.1.5",
     "@types/cli-progress": "3.11.5",
     "@types/cli-spinner": "0.2.3",
     "@types/inquirer": "9.0.7",
