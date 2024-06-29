@@ -8,6 +8,8 @@ import {
   TransactionMessage,
 } from '@solana/web3.js'
 import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
+import sleep from '../sleep'
+import { MAX_RETRIES } from '@/index'
 
 export const solanaTransfer = async (
   endpoint: string,
@@ -15,6 +17,7 @@ export const solanaTransfer = async (
   toAddressPubkey: string,
   transferAmountLamport: number,
 ) => {
+  let retry = 0
   try {
     const connection = new Connection(endpoint, 'finalized')
 
@@ -109,7 +112,14 @@ export const solanaTransfer = async (
         console.log('finalized signature:', signature)
         return signature
       } catch (error) {
-        console.log(`solanaTransfer failed, retrying... Error: ${error}`)
+        retry++
+        if (retry > MAX_RETRIES) {
+          throw new Error(JSON.stringify(error))
+        }
+        console.log(
+          `solanaTransfer failed, ${retry} times retrying... Error: ${error}`,
+        )
+        await sleep(1000)
       }
     }
   } catch (error) {
