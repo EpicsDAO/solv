@@ -8,7 +8,7 @@ const getElSOLBalance = async () => {
   try {
     const home = getHomeDir()
     const { mainnetValidatorAuthorityKey } = getAllKeyPaths(home)
-    const cmd = `spl-token balance ${ELSOL_MINT_ADDRESS} --fee-payer ${mainnetValidatorAuthorityKey} --url ${SOLANA_RPC_URL}`
+    const cmd = `spl-token balance ${ELSOL_MINT_ADDRESS} --owner ${mainnetValidatorAuthorityKey} --url ${SOLANA_RPC_URL}`
     const balance = execSync(cmd).toString().trim()
     return Number(balance)
   } catch (error) {
