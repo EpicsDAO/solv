@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.2.4
+
+### Patch Changes
+
+- [`fcc24d7`](https://github.com/EpicsDAO/solv/commit/fcc24d7bf991fec6dd72a47fa45c8d31a710bb4b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv hv
+
 ## 4.2.3
 
 ### Patch Changes
