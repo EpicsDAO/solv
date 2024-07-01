@@ -16,7 +16,6 @@ import {
   scpCommands,
   serverCommands,
   getCommands,
-  clientCommands,
   mountCommands,
   relayerCommands,
   dfCommands,
@@ -28,13 +27,12 @@ import { change } from './cli/change'
 import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
-import epochTimer from './lib/fetchEpochData'
 import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
 import { NETWORK_TYPES } from './config/config'
 import { harvestCommands } from './cli/harvest'
-import getBalance, { KeyType } from './lib/solana/getBalance'
 import { swapCommands } from './cli/swap'
+import { epochTimerCommands } from './cli/epochTimer'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -42,12 +40,9 @@ const solvConfig = readOrCreateDefaultConfig()
 export const SOLANA_RPC_URL =
   solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
     ? 'https://api.testnet.solana.com'
-    : process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
-export const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
-export const MAX_RETRIES = Number(process.env.MAX_RETRIES) || 3
-if (isNaN(MAX_RETRIES)) {
-  throw new Error(`Invalid MAX_RETRIES\nPlease Check .env File`)
-}
+    : solvConfig.config.RPC_URL
+export const DISCORD_WEBHOOK_URL = solvConfig.config.DISCORD_WEBHOOK_URL
+export const MAX_RETRIES = 3
 
 export const program = new Command()
 program
@@ -71,7 +66,6 @@ async function main() {
     scpCommands(solvConfig)
     cronCommands(solvConfig)
     setupCommands(solvConfig)
-    clientCommands(solvConfig)
     balanceCommands(solvConfig)
     mountCommands(solvConfig)
     relayerCommands()
@@ -80,6 +74,7 @@ async function main() {
     harvestCommands(solvConfig)
     dfCommands()
     swapCommands(solvConfig)
+    epochTimerCommands(solvConfig)
 
     program
       .command('rm:log')
@@ -113,16 +108,10 @@ async function main() {
     program
       .command('catchup')
       .description('Check Solana Catchup Status')
+      .alias('c')
       .alias('ca')
       .action(() => {
         solanaCatchup()
-      })
-
-    program
-      .command('epochTimer')
-      .description('Check Solana Epoch Timer')
-      .action(async () => {
-        await epochTimer(SOLANA_RPC_URL, DISCORD_WEBHOOK_URL)
       })
 
     program

@@ -1,5 +1,10 @@
-import { Connection } from '@solana/web3.js'
+import { Connection, EpochInfo } from '@solana/web3.js'
 import getAverageSlotTime from './getAverageSlotTime'
+
+export interface EpochInfoType extends EpochInfo {
+  estimatedTimeUntilNextEpoch: string
+  displayRatio: string
+}
 
 export const getEpochInfo = async (rpcUrl: string) => {
   try {
@@ -8,6 +13,10 @@ export const getEpochInfo = async (rpcUrl: string) => {
     const timePerSlotSeconds = await getAverageSlotTime(rpcUrl)
     const remainingSlots = epochInfo.slotsInEpoch - epochInfo.slotIndex
     const estimatedSecondsUntilNextEpoch = remainingSlots * timePerSlotSeconds
+    const displayRatio = (
+      (epochInfo.slotIndex / epochInfo.slotsInEpoch) *
+      100
+    ).toFixed(2)
     // 時間の表示方法を調整
     const days = Math.floor(estimatedSecondsUntilNextEpoch / (3600 * 24))
     const hours = Math.floor(
@@ -22,7 +31,8 @@ export const getEpochInfo = async (rpcUrl: string) => {
     return {
       ...epochInfo,
       estimatedTimeUntilNextEpoch,
-    }
+      displayRatio,
+    } as EpochInfoType
   } catch (error) {
     throw new Error(`getEpochInfo failed: ${error}`)
   }

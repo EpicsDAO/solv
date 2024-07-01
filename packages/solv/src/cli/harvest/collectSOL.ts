@@ -6,6 +6,7 @@ import getBalance, { KeyType } from '@/lib/solana/getBalance'
 import chalk from 'chalk'
 import { solanaTransfer } from '@/lib/solana/solanaTransfer'
 import { readFile } from 'fs/promises'
+import { LAMPORTS_PER_SOL } from '@solana/web3.js'
 
 // Collect SOL from Vote Account to Authority Account and Validator Account to Authority Account
 // 1. Withdraw all SOL from Vote Account to Authority Account
@@ -33,6 +34,7 @@ export const collectSOL = async () => {
 
   // Check Validator Key Balance
   const validatorTransferableBalance = await getHarvestBalance()
+  const transferLamports = validatorTransferableBalance * LAMPORTS_PER_SOL
 
   // Skip this step if Validator Account Balance is less than 1 SOL
   if (validatorTransferableBalance < 1) {
@@ -58,7 +60,7 @@ export const collectSOL = async () => {
       SOLANA_RPC_URL,
       fromWalletKey,
       toAddress,
-      validatorTransferableBalance,
+      transferLamports,
     )
   }
   return true

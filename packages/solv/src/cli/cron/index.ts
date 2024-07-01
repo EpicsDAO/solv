@@ -8,6 +8,7 @@ import { sendDiscord } from '@skeet-framework/utils'
 import chalk from 'chalk'
 import dotenv from 'dotenv'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import hasEpochTimer from './hasEpochTimer'
 
 dotenv.config()
 
@@ -31,15 +32,7 @@ export const cronCommands = (solvConfig: ConfigParams) => {
     .option('-c, --cron <value>', 'Cron Job', '*/10 * * * *')
     .option('-e, --epoch <epoch>', 'Epoch', '579')
     .action(async (options: CronOptions) => {
-      const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || ''
-      if (!DISCORD_WEBHOOK_URL) {
-        console.log(
-          chalk.yellow(
-            '⚠️ DISCORD_WEBHOOK_URL is not set\nPlease set .env file',
-          ),
-        )
-        process.exit(1)
-      }
+      const DISCORD_WEBHOOK_URL = solvConfig.config.DISCORD_WEBHOOK_URL
       const triggerEpoch = Number(options.epoch)
       Logger.normal(`🕰️ Running Cron Job: ${options.cron}`)
       cron.schedule(options.cron, async () => {
@@ -77,6 +70,11 @@ export const cronCommands = (solvConfig: ConfigParams) => {
     .description('Solv Epoch Timer Discord Notification Command')
     .option('-c, --cron <value>', 'Cron Job', '*/5 * * * *')
     .action(async (options: CronOptions) => {
+      const hasCron = await hasEpochTimer()
+      if (hasCron) {
+        console.log(chalk.green('⚠️ Epoch Timer Cron Job already set'))
+        process.exit(1)
+      }
       const cronJob = `(crontab -l 2>/dev/null; echo "${options.cron} . /home/solv/.profile && solv epochTimer >> /home/solv/cron.log 2>&1") | crontab -`
       spawnSync(cronJob, { shell: true, stdio: 'inherit' })
       console.log(chalk.green('✅ Epoch Timer Cron Job Set'))

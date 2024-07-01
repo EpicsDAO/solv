@@ -16,5 +16,5 @@ export const getHarvestBalance = async () => {
   )
   const withdrawableBalance =
     Number(withdrawableBalanceLamport) / LAMPORTS_PER_SOL
-  return withdrawableBalance
+  return withdrawableBalance // SOL
 }
