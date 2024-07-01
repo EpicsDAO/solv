@@ -13,7 +13,7 @@ import { LAMPORTS_PER_SOL } from '@solana/web3.js'
 // 2. Transfer SOL from Validator Account to Authority Account
 
 export const collectSOL = async () => {
-  const { mainnetValidatorAuthorityKey } = getAllKeyPaths()
+  const { mainnetValidatorAuthorityKey, mainnetValidatorKey } = getAllKeyPaths()
 
   // Check Vote Account Balance
   const voteAccountBalance = await getBalance(SOLANA_RPC_URL, KeyType.VOTE)
@@ -34,6 +34,9 @@ export const collectSOL = async () => {
 
   // Check Validator Key Balance
   const validatorTransferableBalance = await getHarvestBalance()
+  console.log(
+    chalk.white(`Transferable Balance: ${validatorTransferableBalance} SOL`),
+  )
   const transferLamports = validatorTransferableBalance * LAMPORTS_PER_SOL
 
   // Skip this step if Validator Account Balance is less than 1 SOL
@@ -53,7 +56,7 @@ export const collectSOL = async () => {
       .trim()
 
     const fromWalletKey = JSON.parse(
-      await readFile(mainnetValidatorAuthorityKey, 'utf-8'),
+      await readFile(mainnetValidatorKey, 'utf-8'),
     ) as number[]
 
     await solanaTransfer(

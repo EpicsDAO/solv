@@ -53,6 +53,7 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         console.log(chalk.white('Skip converting SOL to elSOL'))
       } else {
         const convertibleBalance = authorityBalance - MINIMUM_AUTHORITY_BALANCE
+        console.log(`Converting ${convertibleBalance} SOL to elSOL`)
         const result = await elSOLdeposit(
           SOLV_STAKE_POOL_ADDRESS,
           convertibleBalance,
