@@ -3,6 +3,7 @@ import { LocaleParams } from '@/locales/localeParams'
 import readLocale from '@/locales/readLocale'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import getHomeDir from './getHomeDir'
+import { updateSolvConfig } from './updateSolvConfig'
 
 export type ConfigParams = {
   config: CONFIG_TYPE
@@ -25,5 +26,22 @@ export const readOrCreateDefaultConfig = () => {
     config = CONFIG
   }
   const locale = readLocale(config.LANG)
+  // Set default RPC_URL if not set
+  if (!config.RPC_URL) {
+    config.RPC_URL = CONFIG.RPC_URL
+    updateSolvConfig({ RPC_URL: CONFIG.RPC_URL })
+  }
+
+  // Set IS_MEV_MODE to false if not set
+  if (config.IS_MEV_MODE === undefined) {
+    config.IS_MEV_MODE = false
+    updateSolvConfig({ IS_MEV_MODE: false })
+  }
+
+  // Set DISCORD_WEBHOOK_URL to empty string if not set
+  if (!config.DISCORD_WEBHOOK_URL) {
+    config.DISCORD_WEBHOOK_URL = ''
+    updateSolvConfig({ DISCORD_WEBHOOK_URL: '' })
+  }
   return { config, locale } as ConfigParams
 }

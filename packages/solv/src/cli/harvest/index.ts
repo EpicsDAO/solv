@@ -17,6 +17,9 @@ import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import getElSOLBalance from '@/lib/solana/getElSOLBalance'
 import chalk from 'chalk'
 import { transferSPLToken } from '@/lib/solana/transferSPLToken'
+import { sendDiscord } from '@/lib/sendDiscord'
+import mevOn from './mevOn'
+import { spawnSync } from 'child_process'
 
 const MINIMUM_AUTHORITY_BALANCE = 0.03
 
@@ -75,7 +78,26 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         ELSOL_MINT_ADDRESS,
         ELSOL_DECIMALS,
       )
+      if (solvConfig.config.IS_MEV_MODE) {
+        const msg = `💰 Harvested ${elSOLBalance} elSOL to Harvest Address`
+        await sendDiscord(msg)
+      }
       console.log(chalk.green('✔︎ Successfully Harvested SOL'))
+    })
+
+  program
+    .command('mev')
+    .description('Enable MEV Mode')
+    .action(async () => {
+      const res = await mevOn()
+      console.log(res)
+      if (res) {
+        spawnSync(`solv cron epoch`, {
+          stdio: 'inherit',
+          shell: true,
+        })
+        console.log(chalk.green('✔︎ MEV Mode Enabled'))
+      }
     })
 }
 

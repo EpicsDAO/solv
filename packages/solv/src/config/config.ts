@@ -47,6 +47,9 @@ export type CONFIG_TYPE = {
   LEDGER_PATH: string
   STAKE_ACCOUNT: string[]
   HARVEST_ACCOUNT: string
+  IS_MEV_MODE: boolean
+  RPC_URL: string
+  DISCORD_WEBHOOK_URL: string
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -75,6 +78,9 @@ export const CONFIG: CONFIG_TYPE = {
   LEDGER_PATH: '/mnt/ledger',
   STAKE_ACCOUNT: [],
   HARVEST_ACCOUNT: '',
+  IS_MEV_MODE: false,
+  RPC_URL: 'https://mainnet-beta.solana.com',
+  DISCORD_WEBHOOK_URL: '',
 }
 
 export const HOME_PATHS = {
@@ -188,3 +194,6 @@ export const DECIMALS = {
   [USDC_MINT_ADDRESS]: 6,
   [EPCT_MINT_ADDRESS]: 6,
 }
+
+export const EPOCH_TIMER_FILE_PATH = '/home/solv/currentEpoch.json'
+export const MINIMUM_VALIDATOR_BALANCE = 0.5
