@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.2.6
+
+### Patch Changes
+
+- [`8edc764`](https://github.com/EpicsDAO/solv/commit/8edc7649914cb6fc0179dfa93123148278fef34e) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix decimal
+
 ## 4.2.5
 
 ### Patch Changes
