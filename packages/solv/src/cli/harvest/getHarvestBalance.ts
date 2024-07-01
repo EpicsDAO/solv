@@ -14,7 +14,9 @@ export const getHarvestBalance = async () => {
   const withdrawableBalanceLamport = validatorBalanceBN.sub(
     MINIMUM_EPOCH_START_BALANCE,
   )
-  const withdrawableBalance =
+  let withdrawableBalance =
     Number(withdrawableBalanceLamport) / LAMPORTS_PER_SOL
+  // round to 9 decimal places
+  withdrawableBalance = Math.round(withdrawableBalance * 1e9) / 1e9
   return withdrawableBalance // SOL
 }
