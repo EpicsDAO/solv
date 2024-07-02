@@ -13,13 +13,14 @@ import {
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { nodeUpdate } from './nodeUpdate'
-import { mainnetUpdate } from './mainnetUpdate'
 import { jitoUpdate } from './jitoUpdate'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
 import { setupLogrotate } from '../setup/setupLogrotate'
 import { updateFirewall } from '../setup/updateFirewall'
+import checkOpenSSHVersion from './checkSSH/checkOpenSSHVersion'
+import updateOpenSSH from './checkSSH/updateOpenSSH'
 
 export * from './update'
 
@@ -31,6 +32,7 @@ export type UpdateOptions = {
   commission: number
   logrotate: boolean
   firewall: boolean
+  ssh: boolean
 }
 
 export const updateCommands = (solvConfig: ConfigParams) => {
@@ -50,7 +52,18 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-c, --commission', 'Update Commission', false)
     .option('-l, --logrotate', 'Setup Logrotate', false)
     .option('-f, --firewall', 'Update Firewall', false)
+    .option('--ssh', 'Update OpenSSH', false)
     .action(async (options: UpdateOptions) => {
+      // Temporary fix for OpenSSH
+      if (options.ssh) {
+        const updateRequired = checkOpenSSHVersion()
+        if (updateRequired) {
+          console.log(chalk.white('⏳ Updating OpenSSH...'))
+          updateOpenSSH()
+          console.log(chalk.green('✔️ OpenSSH Updated!'))
+        }
+        return
+      }
       if (options.logrotate) {
         spawnSync(`rm -rf ${SERVICE_PATHS.SOL_LOGROTATE}`, { shell: true })
         setupLogrotate()
