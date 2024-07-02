@@ -19,8 +19,8 @@ import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
 import { setupLogrotate } from '../setup/setupLogrotate'
 import { updateFirewall } from '../setup/updateFirewall'
-import checkOpenSSHVersion from './checkSSH/checkOpenSSHVersion'
 import updateOpenSSH from './checkSSH/updateOpenSSH'
+import isRequiredUpdateOpenSSH from './checkSSH/isRequiredUpdateOpenSSH'
 
 export * from './update'
 
@@ -56,7 +56,7 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .action(async (options: UpdateOptions) => {
       // Temporary fix for OpenSSH
       if (options.ssh) {
-        const updateRequired = checkOpenSSHVersion()
+        const updateRequired = isRequiredUpdateOpenSSH()
         if (updateRequired) {
           console.log(chalk.white('⏳ Updating OpenSSH...'))
           updateOpenSSH()
