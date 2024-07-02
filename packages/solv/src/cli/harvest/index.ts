@@ -106,7 +106,7 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
 export const getHarvestAddress = async (solvConfig: ConfigParams) => {
   try {
     const harvestAddress = solvConfig.config.HARVEST_ACCOUNT
-    if (!harvestAddress) {
+    if (harvestAddress === '') {
       throw new Error('Harvest Address not found')
     }
     return harvestAddress
