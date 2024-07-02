@@ -1,5 +1,29 @@
 # @epics-dao/solv
 
+## 4.2.7
+
+### Patch Changes
+
+- [#219](https://github.com/EpicsDAO/solv/pull/219) [`b7eea28`](https://github.com/EpicsDAO/solv/commit/b7eea282e409a231660fed87653003b4ae559f73) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - # ⚠️ Security Patch
+
+  If you are using other than the 1:8.9p1-3ubuntu0.10 version of OpenSSH, you should update it to the latest version.
+  This version fixes a security vulnerability that allows an attacker to execute arbitrary code on the server.
+
+  ## Update solv version
+
+  ```bash
+  $ solv update
+  ```
+
+  ## Check/Update OpenSSH - solv update --ssh
+
+  This command will check the OpenSSH version and update it if necessary.
+  ※ Recommended to run this command on the server to check the OpenSSH version.
+
+  ```bash
+  $ solv update --ssh
+  ```
+
 ## 4.2.6
 
 ### Patch Changes
