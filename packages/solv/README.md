@@ -59,6 +59,14 @@ The Solana validator will start 🎊
 
 If your node does not start, you can try the following command.
 
+This will remove the snapshot and restart the Solana Validator from the new snapshot.
+
+```bash
+$ solv restart --rm
+```
+
+equivalent to
+
 ```bash
 $ solv stop
 $ solv rm:snapshot
@@ -66,9 +74,51 @@ $ solv get snapshot
 $ solv start
 ```
 
-This will remove the snapshot and restart the Solana Validator from the new snapshot.
+## solv MEV Mode
 
-## New Features - v4.2.0~v4.2.1
+This will enable solv MEV Mode on your validator instance.
+MEV Mode will allow you to harvest your rewards to your authority account every right before the epoch ends.
+Then convert SOL to elSOL (LST) and send it to your desired account.
+
+```bash
+$ solv mev
+? Do you want to enable solv MEV Mode? (y/N) y
+? Enter your RPC URL (https://api.mainnet-beta.solana.com)
+? Enter your Harvest Address (your solana address)
+? Enter your Discord Webhook URL (https://discord.com/api/webhooks/11111111/xxxxxxxx)
+```
+
+### Epoch Timer
+
+Epoch Timer will be set in cron job to check the epoch timer every 5 minutes.
+(※ You need solv mev to enable MEV mode)
+
+### Epoch Timer Sends Discord Notification(SOL Balance Alert)
+
+Epoch Timer will send a Discord notification when the epoch is less than 1 day, 8 hours, 1 hour and the new epoch starts.
+
+- New Epoch
+- Less than 1 day
+- Less than 8 hours
+- Less than 1 hours
+  solv harvest will be executed automatically if solv MEV Mode is enabled.
+
+Besides, the epoch timer checks the Validator Account Balance and sends a notification when the balance is less than 0.5 SOL.
+
+### solv Harvest
+
+solv harvest will be executed automatically if solv MEV Mode is enabled.
+This will harvest your rewards to your authority account every right before the epoch ends.
+Then convert SOL to elSOL (LST) and send it to your desired account.
+
+1. Withdraw rewards from the Vote Account to the Validator Authority Account.
+2. Calculate the amount of SOL to be transferred from the Validator Account to the Authority Account.
+3. Convert the amount of SOL to elSOL (LST).
+4. Transfer the elSOL (LST) to the desired account.
+
+This strategy keeps the balance of SOL in your validator node low, enhancing security by mitigating the risk of large-scale SOL withdrawals. By immediately converting earned rewards to LST, it ensures high yield maintenance.
+
+## New Features - v4.2.0~v4.2.x
 
 - Added Solana Liquid Staking Command
 - Added Solana Transfer Command
@@ -79,6 +129,7 @@ This will remove the snapshot and restart the Solana Validator from the new snap
 - Added solv df command
 - Migrated to ESM Module
 - Added Turbo Repo
+- Improved solv restart
 
 ## New Features - v4.0.0~v4.1.0
 
@@ -184,33 +235,38 @@ Options:
   -h, --help           Display help for solv commands
 
 Commands:
-  server|s             Open solv Dashboard
-  start                Start Solana Validator
-  restart [options]    Restart Solana Validator
-  stop                 Stop Solana Validator
-  status               Show Solana Validator Status
-  update|u [options]   Update Solana Validator Version
-  log|l [options]      tail logs
-  install|i [options]  Install/Update Solana Version
-  stake                Solana Delegate Stake
-  unstake              Solana Delegate Stake
-  get <cmd>            Get Solana Validator Info Commands
-  scp <cmd>            Download/Upload Solana Validator Keypairs
-  cron <cmd>           Run Schedule Tasks
-  setup [options]      Setup Solana Validator
-  client|c             Open solv Client Dashboard
-  balance|bal          Show Keypairs Balance
-  mtr                  Mount Reload Command
-  disks                Show unmounted disks
-  relayer              Jiro Relayer Commands
-  rm:log               Remove Logs
-  rm:snapshot          Remove Snapshot
-  withdraw             Withdraw SOL from Vote Account to Authority Account
-  change               Change Identity of Validator to New Validator
-  monitor|m            Monitor Solana Node
-  catchup|ca           Check Solana Catchup Status
-  config               Show Solv Config
-  help [cmd]           Display help for solv commands
+  server|s               Open solv Dashboard
+  start                  Start Solana Validator
+  restart                Restart Solana Validator
+  stop                   Stop Solana Validator
+  status                 Show Solana Validator Status
+  update|u [options]     Update Solana Validator Version
+  log|l [options]        tail logs
+  install|i [options]    Install/Update Solana Version
+  stake [options]        Solana Delegate Stake
+  unstake                Solana Delegate Stake
+  get <cmd>              Get Solana Validator Info Commands
+  scp <cmd>              Download/Upload Solana Validator Keypairs
+  cron <cmd>             Run Schedule Tasks
+  setup [options]        Setup Solana Validator
+  balance|bal [options]  Show Keypairs Balance
+  mtr                    Mount Reload Command
+  disks                  Show unmounted disks
+  relayer                Jiro Relayer Commands
+  transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
+  withdraw [options]     Withdraw SOL from Vote Account to Authority Account
+  harvest|hv             Harvest SOL from Validator Account to Authority Account
+  mev                    Enable MEV Mode
+  df                     Disk Free Command
+  swap [options]         Swap Solana Tokens
+  epochTimer             Check Solana Epoch Timer
+  rm:log                 Remove Logs
+  rm:snapshot            Remove Snapshot
+  change                 Change Identity of Validator to New Validator
+  monitor|m              Monitor Solana Node
+  catchup|c              Check Solana Catchup Status
+  config                 Show Solv Config
+  help [cmd]             Display help for solv commands
 ```
 
 If you have any questions, please contact us on Discord.

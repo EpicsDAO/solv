@@ -16,5 +16,4 @@ export const updateSolvConfig = (config: PartialConfigType) => {
   }
   const updatedConfigString = JSON.stringify(updatedConfig, null, 2)
   writeFileSync(solvConfigFile, updatedConfigString)
-  console.log(`Updated ${solvConfigFile} with new values.`)
 }

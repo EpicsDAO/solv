@@ -33,10 +33,14 @@ export const epochTimer = async (rpcUrl: string, isMEV = false) => {
   // Get the total minutes until the next epoch
   const totalMinutes = getTotalMinutes(currentEpoch.estimatedTimeUntilNextEpoch)
 
-  // Check if the epoch is less than 1 hour, 8 hours, and 1 day
-  await lessThan1Hour(totalMinutes, getD1Epoch, currentEpoch, isMEV)
-  await lessThan8Hour(totalMinutes, getD1Epoch, currentEpoch)
-  await isLessThan1Day(totalMinutes, getD1Epoch, currentEpoch)
+  // Check conditions in sequence and stop if any condition is met
+  const checks = [lessThan1Hour, lessThan8Hour, isLessThan1Day]
+  for (const check of checks) {
+    const result = await check(totalMinutes, getD1Epoch, currentEpoch, isMEV)
+    if (result) {
+      break
+    }
+  }
 
   return 'Epoch has not been changed!'
 }
