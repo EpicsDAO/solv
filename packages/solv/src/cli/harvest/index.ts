@@ -20,6 +20,7 @@ import { transferSPLToken } from '@/lib/solana/transferSPLToken'
 import { sendDiscord } from '@/lib/sendDiscord'
 import mevOn from './mevOn'
 import { spawnSync } from 'child_process'
+import { getEpochInfo } from '@/lib/getEpochInfo'
 
 const MINIMUM_AUTHORITY_BALANCE = 0.03
 
@@ -68,7 +69,11 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
       // Transfer elSOL to Harvest Address
       const elSOLBalance = await getElSOLBalance()
       if (elSOLBalance < 1) {
+        const epoch = await getEpochInfo(SOLANA_RPC_URL)
         console.log('elSOL Balance is less than 1 elSOL')
+        const msg = `elSOL Balance is less than 1 elSOL for ${epoch.epoch}`
+        await sendDiscord(msg)
+
         return
       }
       console.log(`Transferring ${elSOLBalance} elSOL to Harvest Address`)
@@ -81,7 +86,10 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
         ELSOL_DECIMALS,
       )
       if (solvConfig.config.IS_MEV_MODE) {
-        const msg = `💰 Harvested ${elSOLBalance} elSOL to Harvest Address`
+        const epoch = await getEpochInfo(SOLANA_RPC_URL)
+        const msg = `💰 Harvested Rewards for ${epoch.epoch} 💰
+Total Reward: ${elSOLBalance} elSOL
+Harvest Address: ${harvestAddress}`
         await sendDiscord(msg)
       }
       console.log(chalk.green('✔︎ Successfully Harvested SOL'))

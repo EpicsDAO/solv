@@ -1,5 +1,6 @@
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
+import { validateSolanaKey } from '../transfer'
 
 type MevOnParam1 = {
   mevOn: boolean
@@ -34,7 +35,8 @@ const mevOn = async () => {
       type: 'input',
       name: 'harvestAddress',
       message: 'Enter your Harvest Address',
-      default: 'solanawalletaddressxxxxxxxxxx',
+      default: 'Solana Wallet Address Here',
+      validate: validateSolanaKey,
     },
     {
       type: 'input',

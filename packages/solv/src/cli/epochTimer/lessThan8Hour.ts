@@ -1,12 +1,13 @@
 import { EpochData } from './epochTimer'
 import { EpochInfoType } from '@/lib/getEpochInfo'
-import { sendDiscord } from '@/lib/sendDiscord'
 import writeEpochDataToFile from './writeEpochDataToFile'
+import alertMessage from './alertMessage'
 
 const lessThan8Hour = async (
   totalMinutes: number,
   epochData: EpochData,
   currentEpoch: EpochInfoType,
+  isMEV: boolean = false,
 ) => {
   if (
     totalMinutes < 8 * 60 &&
@@ -15,12 +16,7 @@ const lessThan8Hour = async (
   ) {
     // Update the database and send a notification
     await writeEpochDataToFile({ ...epochData, isLessThan8Hours: true })
-    const content = `===⏳ ${currentEpoch.epoch} ⏳===
-CurrentEpoch: ${currentEpoch.epoch}
-Next epoch is coming in less than 8 hours!
-Epoch Completed: ${currentEpoch.displayRatio}%
-Until Next Epoch: ${currentEpoch.estimatedTimeUntilNextEpoch}`
-    await sendDiscord(content)
+    await alertMessage(currentEpoch, '8 Hours')
   }
 }
 

@@ -24,7 +24,7 @@ export const delegateStakeAsk = async (config: ConfigParams) => {
     {
       type: 'input',
       name: 'validatorVoteAccount',
-      message: `What is the Validator Vote Account Address?(e.g. ${config.config.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY})`,
+      message: `What is the Validator Vote Account Address?`,
       default() {
         return defaultAddress
       },

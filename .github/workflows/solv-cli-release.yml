@@ -58,9 +58,6 @@ jobs:
         if: steps.changesets.outputs.published == 'true'
         run: |
           pnpm discord:epics
-          curl --location ${{ secrets.TW_ENDPOINT }} \
-          --header 'Content-Type: application/json' \
-          --data '{"repo": "EpicsDAO/solv", "hey": "${{ secrets.TW_ENDPOINT_SECRET }}"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
