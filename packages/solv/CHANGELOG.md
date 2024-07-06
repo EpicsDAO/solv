@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.2.9
+
+### Patch Changes
+
+- [`efa7050`](https://github.com/EpicsDAO/solv/commit/efa70508071851e348c67d8657e7d4087f9977e1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - randomSleep
+
 ## 4.2.8
 
 ### Patch Changes
