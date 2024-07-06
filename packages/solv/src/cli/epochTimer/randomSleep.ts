@@ -3,3 +3,5 @@ const randomSleep = async (min: number, max: number) => {
   await new Promise((resolve) => setTimeout(resolve, sleepTime * 1000))
   return sleepTime
 }
+
+export default randomSleep

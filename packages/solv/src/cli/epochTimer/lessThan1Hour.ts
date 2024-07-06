@@ -4,6 +4,7 @@ import { spawnSync } from 'child_process'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
 import chalk from 'chalk'
+import randomSleep from './randomSleep'
 
 const lessThan1Hour = async (
   totalMinutes: number,
