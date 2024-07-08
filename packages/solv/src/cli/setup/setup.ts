@@ -31,6 +31,8 @@ import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
 import { getSnapshot } from '../get/snapshot'
 import setupMount from './setupMount'
+import setupCpuGovernor from './setupCpuGovernor'
+import updateSysctlConfig from '@/template/updateSysctlConfig'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -209,6 +211,12 @@ export const setup = async (solvConfig: ConfigParams) => {
       updateSolvConfig({ MAINNET_TYPE: MAINNET_TYPES.JITO_MEV })
     }
 
+    // Set CPU governor to performance
+    await setupCpuGovernor()
+
+    // Update Sysctl Config if needed
+    await updateSysctlConfig()
+
     getSnapshot(isTest)
     startSolana()
     updateSolvConfig({ IS_SETUP: true })
@@ -243,28 +251,6 @@ If you have any questions, please visit our Discord server:
 https://discord.gg/CU6CcXV9en
 `
     console.log(chalk.yellow(warning))
-    if (askIfDummy.isDummy) {
-      console.log(
-        chalk.white(`⚠️ You need to change the identity to the real one
-
-Please run the following command(Your Local Machine):
-
-$ solv scp init
-
-Copy your public key.
-
-Then, run the following command(Your Validator Node):
-
-$ solv scp create
-
-Back to your Local Machine, run the following command(Your Local Machine):
-
-$ solv upload
-
-※ You need to set your keys in \`~/solvKeys/upload\` directory first.
-`),
-      )
-    }
     return true
   } catch (error) {
     throw new Error(`setup Error: ${error}`)
