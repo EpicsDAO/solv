@@ -16,7 +16,6 @@ import {
 } from '@/config/config'
 import { sendDiscord } from '@/lib/sendDiscord'
 import isVersionSame from './isVersionSame'
-import autoUpdate from '../update/autoUpdate'
 import { spawnSync } from 'child_process'
 
 export type EpochData = {
