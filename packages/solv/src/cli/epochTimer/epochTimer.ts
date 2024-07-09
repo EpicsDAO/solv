@@ -17,6 +17,7 @@ import {
 import { sendDiscord } from '@/lib/sendDiscord'
 import isVersionSame from './isVersionSame'
 import { spawnSync } from 'child_process'
+import { getSolanaAddress } from '@/lib/getSolanaAddress'
 
 export type EpochData = {
   epoch: number
@@ -50,7 +51,10 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   let voteAccountKey = isTestnet
     ? testnetValidatorVoteKey
     : mainnetValidatorVoteKey
-  const isActive = await isValidatorActive(rpcUrl, voteAccountKey)
+  const isActive = await isValidatorActive(
+    rpcUrl,
+    getSolanaAddress(voteAccountKey),
+  )
   if (!isActive.isActive) {
     await sendDiscord(
       `⚠️ Validator is not active!\nAccount: ${isActive.pubkey}\nReason: ${isActive.reason}`,
