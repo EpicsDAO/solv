@@ -3,33 +3,31 @@ import {
   CONFIG,
   getAllKeyPaths,
   NETWORK_TYPES,
-  NODE_RESTART_REQUIRED,
+  NODE_RESTART_REQUIRED_MAINNET,
+  NODE_RESTART_REQUIRED_TESTNET,
 } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { sendDiscord } from '@/lib/sendDiscord'
 import { spawnSync } from 'child_process'
 import waitCatchup from './waitCatchup'
 
-// const NODE_RESTART_REQUIRED = false
+// NODE_RESTART_REQUIRED_MAINNET/TESTNET is a boolean
 // This is a global variable that is not defined in this file
 // It is defined in packages/solv/src/cli/config/config.ts
 // Please DO NOT forget to turn this to false if it's not needed
 
 const autoUpdate = async (solvConfig: ConfigParams) => {
-  if (!solvConfig.config.AUTO_UPDATE) {
-    return false
-  }
   const isMainnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.MAINNET
   const { mainnetValidatorKey, testnetValidatorKey } = getAllKeyPaths()
   const validatorKey = isMainnet ? mainnetValidatorKey : testnetValidatorKey
   const solanaVersion = isMainnet
     ? CONFIG.MAINNET_SOLANA_VERSION
     : CONFIG.TESTNET_SOLANA_VERSION
-  // Run the update command
-  spawnSync(`solv update`, { stdio: 'inherit', shell: true })
-  const isUpdateRequired = NODE_RESTART_REQUIRED
-    ? solvConfig.config.AUTO_RESTART
-    : false
+  // Notify the user about the update
+  let isUpdateRequired = isMainnet
+    ? NODE_RESTART_REQUIRED_MAINNET
+    : NODE_RESTART_REQUIRED_TESTNET
+  isUpdateRequired = isUpdateRequired && solvConfig.config.AUTO_RESTART
   const msg = `✨ solv updated to the latest version
 Validator Address: ${validatorKey}
 solv Version: ${getSolvVersion()}
@@ -39,7 +37,7 @@ isNodeRestartRequired: ${isUpdateRequired}
 `
   await sendDiscord(msg)
 
-  if (NODE_RESTART_REQUIRED && solvConfig.config.AUTO_RESTART) {
+  if (isUpdateRequired) {
     // Restart the node
     const msg = `🔄 Node Restart Required 🔄
 ⏳ Restarting...
@@ -47,7 +45,12 @@ This will take a few minutes to catch up...
 ※ sometimes it may take longer than expected    
 `
     await sendDiscord(msg)
-    spawnSync(`solv update -b`, { stdio: 'inherit', shell: true })
+    try {
+      spawnSync(`solv update -b`, { stdio: 'inherit', shell: true })
+    } catch (error) {
+      await sendDiscord(`❌ Error in restarting the node: ${error}`)
+      return false
+    }
     await sendDiscord(`✔️ Your Node has been restarted\nNow Catching up...`)
     // Wait for the node to catch up
     const catchup = await waitCatchup(solvConfig)

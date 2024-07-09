@@ -17,6 +17,7 @@ import {
 import { sendDiscord } from '@/lib/sendDiscord'
 import isVersionSame from './isVersionSame'
 import autoUpdate from '../update/autoUpdate'
+import { spawnSync } from 'child_process'
 
 export type EpochData = {
   epoch: number
@@ -38,8 +39,11 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
 
   // Check if solv/Solana version update is required
   const isSolvVersionSame = await isVersionSame()
-  if (!isSolvVersionSame) {
-    await autoUpdate(solvConfig)
+  if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
+    spawnSync(`solv update && solv update --auto`, {
+      stdio: 'inherit',
+      shell: true,
+    })
   }
 
   // Check if Validator is running
