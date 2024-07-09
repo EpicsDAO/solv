@@ -12,7 +12,6 @@ import {
 } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { updateSolvConfig } from '@/lib/updateSolvConfig'
-import { nodeUpdate } from './nodeUpdate'
 import { jitoUpdate } from './jitoUpdate'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { JITO_CONFIG } from '@/config/jitConfig'
@@ -21,6 +20,7 @@ import { setupLogrotate } from '../setup/setupLogrotate'
 import { updateFirewall } from '../setup/updateFirewall'
 import updateOpenSSH from './checkSSH/updateOpenSSH'
 import isRequiredUpdateOpenSSH from './checkSSH/isRequiredUpdateOpenSSH'
+import autoUpdate from './autoUpdate'
 
 export * from './update'
 
@@ -28,11 +28,11 @@ export type UpdateOptions = {
   version: string
   monitor: boolean
   background: boolean
-  node: boolean
   commission: number
   logrotate: boolean
   firewall: boolean
   ssh: boolean
+  auto: boolean
 }
 
 export const updateCommands = (solvConfig: ConfigParams) => {
@@ -48,12 +48,17 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     )
     .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
-    .option('-n, --node', 'Update Node Version', false)
     .option('-c, --commission', 'Update Commission', false)
     .option('-l, --logrotate', 'Setup Logrotate', false)
     .option('-f, --firewall', 'Update Firewall', false)
     .option('--ssh', 'Update OpenSSH', false)
+    .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
+      // Auto Update
+      if (options.auto) {
+        await autoUpdate(solvConfig)
+        return
+      }
       // Temporary fix for OpenSSH
       if (options.ssh) {
         const updateRequired = isRequiredUpdateOpenSSH()
@@ -117,8 +122,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           monitorUpdate(deliquentStake, true)
           return
         }
-      } else if (options.node) {
-        nodeUpdate()
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
         updateCommission(ansewr.commission, isTest)

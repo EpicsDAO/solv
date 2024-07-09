@@ -29,7 +29,7 @@ import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
 import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
-import { NETWORK_TYPES } from './config/config'
+import { NETWORK_TYPES, SOLANA_TESTNET_RPC_URL } from './config/config'
 import { harvestCommands } from './cli/harvest'
 import { swapCommands } from './cli/swap'
 import { epochTimerCommands } from './cli/epochTimer'
@@ -39,7 +39,7 @@ const solvConfig = readOrCreateDefaultConfig()
 
 export const SOLANA_RPC_URL =
   solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-    ? 'https://api.testnet.solana.com'
+    ? SOLANA_TESTNET_RPC_URL
     : solvConfig.config.RPC_URL
 export const DISCORD_WEBHOOK_URL = solvConfig.config.DISCORD_WEBHOOK_URL
 export const MAX_RETRIES = 3

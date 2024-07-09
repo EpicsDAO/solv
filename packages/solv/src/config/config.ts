@@ -24,6 +24,9 @@ export enum MAINNET_TYPES {
   FIREDANCER = 'Firedancer',
 }
 
+// ⚠️ Please DO NOT forget to turn this to false if restart is not needed
+export const NODE_RESTART_REQUIRED = false
+
 export type CONFIG_TYPE = {
   ID: string
   LANG: LANGS
@@ -50,6 +53,8 @@ export type CONFIG_TYPE = {
   IS_MEV_MODE: boolean
   RPC_URL: string
   DISCORD_WEBHOOK_URL: string
+  AUTO_UPDATE: boolean
+  AUTO_RESTART: boolean
 }
 
 export type PartialConfigType = Partial<CONFIG_TYPE>
@@ -61,7 +66,7 @@ export const CONFIG: CONFIG_TYPE = {
   SOLANA_VERSION: '1.18.15',
   TESTNET_SOLANA_VERSION: '1.18.17',
   MAINNET_SOLANA_VERSION: '1.18.15',
-  NODE_VERSION: '20.10.0',
+  NODE_VERSION: '20.15.1',
   TESTNET_DELINQUENT_STAKE: 5,
   MAINNET_DELINQUENT_STAKE: 5,
   COMMISSION: 7,
@@ -81,6 +86,8 @@ export const CONFIG: CONFIG_TYPE = {
   IS_MEV_MODE: false,
   RPC_URL: 'https://mainnet-beta.solana.com',
   DISCORD_WEBHOOK_URL: '',
+  AUTO_UPDATE: false,
+  AUTO_RESTART: false,
 }
 
 export const HOME_PATHS = {
@@ -197,3 +204,4 @@ export const DECIMALS = {
 
 export const EPOCH_TIMER_FILE_PATH = '/home/solv/currentEpoch.json'
 export const MINIMUM_VALIDATOR_BALANCE = 0.5
+export const SOLANA_TESTNET_RPC_URL = 'https://api.testnet.solana.com'

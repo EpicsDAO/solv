@@ -5,20 +5,24 @@ import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
 import chalk from 'chalk'
 import randomSleep from './randomSleep'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { NETWORK_TYPES } from '@/config/config'
 
 const lessThan1Hour = async (
   totalMinutes: number,
   epochData: EpochData,
   currentEpoch: EpochInfoType,
-  isMEV: boolean = false,
+  solvConfig: ConfigParams,
 ) => {
+  const isMEV = solvConfig.config.IS_MEV_MODE
+  const isMainnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.MAINNET
   if (totalMinutes < 60 && !epochData.isLessThan1Hour) {
     // Update the database and send a notification
     await writeEpochDataToFile({ ...epochData, isLessThan1Hour: true })
-    await alertMessage(currentEpoch, '1 Hour')
+    await alertMessage(currentEpoch, '1 Hour', solvConfig)
 
     // If MEV is enabled, run `solv harvest` command
-    if (isMEV) {
+    if (isMEV && isMainnet) {
       // Random Sleep to avoid network congestion
       const waitTime = await randomSleep(1, 100)
       console.log(

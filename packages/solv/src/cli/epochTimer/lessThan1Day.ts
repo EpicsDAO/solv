@@ -2,12 +2,13 @@ import { EpochData } from './epochTimer'
 import { EpochInfoType } from '@/lib/getEpochInfo'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 const isLessThan1Day = async (
   totalMinutes: number,
   epochData: EpochData,
   currentEpoch: EpochInfoType,
-  isMEV: boolean = false,
+  solvConfig: ConfigParams,
 ) => {
   if (
     totalMinutes < 24 * 60 &&
@@ -16,7 +17,7 @@ const isLessThan1Day = async (
   ) {
     // Update the database and send a notification
     await writeEpochDataToFile({ ...epochData, isLessThan1Day: true })
-    await alertMessage(currentEpoch, '1 Day')
+    await alertMessage(currentEpoch, '1 Day', solvConfig)
   }
 }
 
