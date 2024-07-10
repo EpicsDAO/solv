@@ -41,9 +41,7 @@ isNodeRestartRequired: ${isUpdateRequired}
 
   if (isUpdateRequired) {
     // Restart the node
-    const msg = `🔄 Node Restart Required 🔄
-
-⏳ Restarting the Node: ${address}
+    const msg = `== ⏳ Restarting the Node: ${address} ⏳ ==
 This will take a few minutes to catch up...
 ※ sometimes it may take longer than expected    
 `
@@ -54,7 +52,9 @@ This will take a few minutes to catch up...
       await sendDiscord(`❌ Error in restarting the node: ${error}`)
       return false
     }
-    await sendDiscord(`🙆 Your Node has been restarted\nNow Catching up...`)
+    await sendDiscord(
+      `🙆 Your Node has been restarted!\nNow Catching up... 🚛💨`,
+    )
     // Wait for the node to catch up
     const catchup = await waitCatchup(solvConfig)
     if (catchup) {
