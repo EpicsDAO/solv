@@ -40,6 +40,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   // Check if solv/Solana version update is required
   const isSolvVersionSame = await isVersionSame()
   if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
+    console.log(`Found new version of solv! Updating...`)
     spawnSync(`solv update && solv update --auto`, {
       stdio: 'inherit',
       shell: true,
@@ -60,6 +61,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
       `⚠️ Validator is not active!\nAccount: ${isActive.pubkey}\nReason: ${isActive.reason}`,
     )
   }
+  console.log(`Validator is active: ${isActive.isActive}`)
 
   // New epoch has been updated
   if (getD1Epoch.epoch < currentEpoch.epoch) {

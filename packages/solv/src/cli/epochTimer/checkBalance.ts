@@ -7,6 +7,7 @@ import {
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import { sendDiscord } from '@/lib/sendDiscord'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import chalk from 'chalk'
 
 const checkBalance = async (solvConfig: ConfigParams) => {
   let rpcUrl = solvConfig.config.RPC_URL
@@ -24,6 +25,7 @@ const checkBalance = async (solvConfig: ConfigParams) => {
     await sendDiscord(msg)
     return false
   }
+  console.log(chalk.green('✔️ Validator Account Balance is sufficient'))
   return true
 }
 export default checkBalance
