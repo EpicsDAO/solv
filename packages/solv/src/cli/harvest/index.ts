@@ -88,6 +88,7 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
       if (solvConfig.config.IS_MEV_MODE) {
         const epoch = await getEpochInfo(SOLANA_RPC_URL)
         const msg = `💰 Harvested Rewards for ${epoch.epoch} 💰
+Validator Address: ${mainnetValidatorAuthorityKey}
 Total Reward: ${elSOLBalance} elSOL
 Harvest Address: ${harvestAddress}`
         await sendDiscord(msg)
@@ -99,8 +100,7 @@ Harvest Address: ${harvestAddress}`
     .command('mev')
     .description('Enable MEV Mode')
     .action(async () => {
-      const res = await mevOn()
-      console.log(res)
+      const res = await mevOn(solvConfig)
       if (res) {
         spawnSync(`solv cron epoch`, {
           stdio: 'inherit',

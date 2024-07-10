@@ -2,12 +2,13 @@ import { EpochData } from './epochTimer'
 import { EpochInfoType } from '@/lib/getEpochInfo'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
+import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
 const lessThan8Hour = async (
   totalMinutes: number,
   epochData: EpochData,
   currentEpoch: EpochInfoType,
-  isMEV: boolean = false,
+  solvConfig: ConfigParams,
 ) => {
   if (
     totalMinutes < 8 * 60 &&
@@ -16,7 +17,7 @@ const lessThan8Hour = async (
   ) {
     // Update the database and send a notification
     await writeEpochDataToFile({ ...epochData, isLessThan8Hours: true })
-    await alertMessage(currentEpoch, '8 Hours')
+    await alertMessage(currentEpoch, '8 Hours', solvConfig)
   }
 }
 
