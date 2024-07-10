@@ -41,10 +41,15 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   const isSolvVersionSame = await isVersionSame()
   if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
     console.log(`Found new version of solv! Updating...`)
-    spawnSync(`solv update && solv update --auto`, {
+    // Testing
+    spawnSync(`solv update --auto`, {
       stdio: 'inherit',
       shell: true,
     })
+    // spawnSync(`solv update && solv update --auto`, {
+    //   stdio: 'inherit',
+    //   shell: true,
+    // })
   }
 
   // Check if Validator is running
