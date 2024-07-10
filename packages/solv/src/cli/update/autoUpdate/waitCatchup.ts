@@ -1,6 +1,7 @@
 import { isValidatorActive } from '@/cli/epochTimer/isValidatorActive'
 import { getAllKeyPaths, NETWORK_TYPES } from '@/config/config'
 import { SOLANA_RPC_URL } from '@/index'
+import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import sleep from '@/lib/sleep'
 import { sendDiscord } from '@skeet-framework/utils'
@@ -15,9 +16,10 @@ const waitCatchup = async (solvConfig: ConfigParams) => {
     const validatorKey = isTestnet
       ? testnetValidatorVoteKey
       : mainnetValidatorVoteKey
+    const validatorPubkey = getSolanaAddress(validatorKey)
     let result = await isValidatorActive(
       SOLANA_RPC_URL,
-      validatorKey,
+      validatorPubkey,
       isTestnet,
     )
     let retries = 0
@@ -36,7 +38,11 @@ Message: Max retries reached, exiting catchup check...
       console.log('Waiting for validator to catch up...')
       // Wait for 1 minute
       await sleep(60 * 1000)
-      result = await isValidatorActive(SOLANA_RPC_URL, validatorKey, isTestnet)
+      result = await isValidatorActive(
+        SOLANA_RPC_URL,
+        validatorPubkey,
+        isTestnet,
+      )
       retries++
     }
     return true
