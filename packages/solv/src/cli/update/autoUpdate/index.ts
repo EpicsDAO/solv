@@ -41,7 +41,8 @@ isNodeRestartRequired: ${isUpdateRequired}
 
   if (isUpdateRequired) {
     // Restart the node
-    const msg = `== ⏳ Restarting the Node: ${address} ⏳ ==
+    const msg = `== ⏳ Restarting the Node ⏳ ==
+Address: ${address}
 This will take a few minutes to catch up...
 ※ sometimes it may take longer than expected    
 `

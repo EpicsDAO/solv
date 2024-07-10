@@ -26,7 +26,7 @@ export enum MAINNET_TYPES {
 
 // ⚠️ Please DO NOT forget to turn this to false if restart is not needed
 export const NODE_RESTART_REQUIRED_MAINNET = false
-export const NODE_RESTART_REQUIRED_TESTNET = true
+export const NODE_RESTART_REQUIRED_TESTNET = false
 
 export type CONFIG_TYPE = {
   ID: string

@@ -41,15 +41,10 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   const isSolvVersionSame = await isVersionSame()
   if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
     console.log(`Found new version of solv! Updating...`)
-    // Testing
-    spawnSync(`solv update --auto`, {
+    spawnSync(`solv update && solv update --auto`, {
       stdio: 'inherit',
       shell: true,
     })
-    // spawnSync(`solv update && solv update --auto`, {
-    //   stdio: 'inherit',
-    //   shell: true,
-    // })
   }
 
   // Check if Validator is running
@@ -63,7 +58,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   )
   if (!isActive.isActive) {
     await sendDiscord(
-      `⚠️ Validator is not active!\nAccount: ${isActive.pubkey}\nReason: ${isActive.reason}`,
+      `⚠️ Validator is not active!\nVoteAccount: ${isActive.pubkey}\nReason: ${isActive.reason}\nNetwork: ${solvConfig.config.SOLANA_NETWORK}\nPlease check your validator node 👷‍♀️`,
     )
   }
   console.log(`Validator is active: ${isActive.isActive}`)
