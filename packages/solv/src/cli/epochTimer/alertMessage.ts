@@ -19,12 +19,12 @@ const alertMessage = async (
     ? getSolanaAddress(testnetValidatorKey)
     : getSolanaAddress(mainnetValidatorKey)
   const content = `===⏳ ${currentEpoch.epoch} ⏳===
-  From: ${address}
-  CurrentEpoch: ${currentEpoch.epoch}
-  Network: ${solvConfig.config.SOLANA_NETWORK}
-  Next epoch is coming in less than ${lessThan}!
-  Epoch Completed: ${displayRatio}%
-  Until Next Epoch: ${currentEpoch.estimatedTimeUntilNextEpoch}`
+Validator: ${address}
+Network: ${solvConfig.config.SOLANA_NETWORK}
+CurrentEpoch: ${currentEpoch.epoch}
+Next epoch is coming in less than ${lessThan}!
+Epoch Completed: ${displayRatio}%
+Until Next Epoch: ${currentEpoch.estimatedTimeUntilNextEpoch}`
   await sendDiscord(content)
 }
 

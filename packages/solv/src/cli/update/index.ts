@@ -21,6 +21,7 @@ import { updateFirewall } from '../setup/updateFirewall'
 import updateOpenSSH from './checkSSH/updateOpenSSH'
 import isRequiredUpdateOpenSSH from './checkSSH/isRequiredUpdateOpenSSH'
 import autoUpdate from './autoUpdate'
+import getSolvVersion from '../epochTimer/getSolvVersion'
 
 export * from './update'
 
@@ -54,6 +55,8 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('--ssh', 'Update OpenSSH', false)
     .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
+      const solvVersion = getSolvVersion()
+      console.log(chalk.white(`Current solv version: ${solvVersion}`))
       // Auto Update
       if (options.auto) {
         await autoUpdate(solvConfig)

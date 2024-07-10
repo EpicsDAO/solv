@@ -5,6 +5,7 @@ import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import hasEpochTimer from '../cron/hasEpochTimer'
 import removeCronJob from '../cron/removeCronJob'
 import chalk from 'chalk'
+import { NETWORK_TYPES } from '@/config/config'
 
 type MevOnParam1 = {
   mevOn: boolean
@@ -15,12 +16,16 @@ type MevOnAutoParam = {
 }
 
 type MevOnParam2 = {
-  rpcUrl: string
-  harvestAddress: string
   discordWebhookUrl: string
 }
 
+type MevOnParam3 = {
+  rpcUrl: string
+  harvestAddress: string
+}
+
 const mevOn = async (solvConfig: ConfigParams) => {
+  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
   const ask = await inquirer.prompt<MevOnParam1>([
     {
       type: 'confirm',
@@ -67,24 +72,12 @@ AUTO RESTART: If you enable this, solv will restart automatically when the solan
       default: false,
     },
   ])
-  const harvestAddress =
+  let rpcUrl = solvConfig.config.RPC_URL
+  let harvestAddress =
     solvConfig.config.HARVEST_ACCOUNT === ''
       ? 'Enter your Harvest Address'
       : solvConfig.config.HARVEST_ACCOUNT
   const ask2 = await inquirer.prompt<MevOnParam2>([
-    {
-      type: 'input',
-      name: 'rpcUrl',
-      message: 'Enter your RPC URL',
-      default: solvConfig.config.RPC_URL,
-    },
-    {
-      type: 'input',
-      name: 'harvestAddress',
-      message: 'Enter your Harvest Address',
-      default: harvestAddress,
-      validate: validateSolanaKey,
-    },
     {
       type: 'input',
       name: 'discordWebhookUrl',
@@ -92,10 +85,32 @@ AUTO RESTART: If you enable this, solv will restart automatically when the solan
       default: solvConfig.config.DISCORD_WEBHOOK_URL,
     },
   ])
+  if (isTestnet) {
+    harvestAddress = ''
+  } else {
+    const ask3 = await inquirer.prompt<MevOnParam3>([
+      {
+        type: 'input',
+        name: 'rpcUrl',
+        message: 'Enter your RPC URL',
+        default: solvConfig.config.RPC_URL,
+      },
+      {
+        type: 'input',
+        name: 'harvestAddress',
+        message: 'Enter your Harvest Address',
+        default: harvestAddress,
+        validate: validateSolanaKey,
+      },
+    ])
+    harvestAddress = ask3.harvestAddress
+    rpcUrl = ask3.rpcUrl
+  }
+
   updateSolvConfig({
-    HARVEST_ACCOUNT: ask2.harvestAddress,
+    HARVEST_ACCOUNT: harvestAddress,
     IS_MEV_MODE: ask.mevOn,
-    RPC_URL: ask2.rpcUrl,
+    RPC_URL: rpcUrl,
     DISCORD_WEBHOOK_URL: ask2.discordWebhookUrl,
     AUTO_UPDATE: askIfAuto.autoUpdate,
     AUTO_RESTART: askIfAuto.autoRestart,

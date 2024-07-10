@@ -63,7 +63,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
 
   // New epoch has been updated
   if (getD1Epoch.epoch < currentEpoch.epoch) {
-    await newEpoch(currentEpoch)
+    await newEpoch(currentEpoch, solvConfig)
     return 'Epoch has been updated!'
   }
 
