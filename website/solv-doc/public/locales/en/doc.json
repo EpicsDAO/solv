@@ -31,6 +31,7 @@
     "quickstart": {
       "groupTitle": "Quickstart",
       "start-solv": "Start solv",
+      "solv-mev-mode": "solv MEV Mode",
       "no-downtime-update": "No Downtime Update"
     },
     "tutorial": {
