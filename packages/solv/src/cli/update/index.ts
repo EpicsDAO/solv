@@ -120,7 +120,10 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         } else {
           version = CONFIG.TESTNET_SOLANA_VERSION
           updateVersion(version)
-          updateSolvConfig({ SOLANA_VERSION: version })
+          updateSolvConfig({
+            SOLANA_VERSION: version,
+            TESTNET_SOLANA_VERSION: version,
+          })
           Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
           monitorUpdate(deliquentStake, true)
           return
