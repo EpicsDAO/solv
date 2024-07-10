@@ -11,6 +11,7 @@ import {
   PresentationChartLineIcon,
   AcademicCapIcon,
   ShareIcon,
+  CurrencyDollarIcon,
 } from '@heroicons/react/24/outline'
 
 export const defaultMainNav = [
@@ -86,6 +87,11 @@ export const docMenuNav = [
         name: 'doc:menuNav.quickstart.start-solv',
         href: '/doc/quickstart/start-solv/',
         icon: RocketLaunchIcon,
+      },
+      {
+        name: 'doc:menuNav.quickstart.solv-mev-mode',
+        href: '/doc/quickstart/solv-mev-mode/',
+        icon: CurrencyDollarIcon,
       },
       {
         name: 'doc:menuNav.quickstart.no-downtime-update',
