@@ -4,6 +4,8 @@ title: solv MEV Mode
 description: Quickstart guide for solv, an open-source Solana validator tool - MEV Mode
 ---
 
+![solv MEV Mode](/news/2024/07/11/solvMEVMode.jpg)
+
 🌱 No more SSH login required for Solana/solv version update 🌱
 
 Introducing the new solv MEV mode that takes care of Solana/solv version updates seamlessly. Now, you can update the Solana/solv version without the need for SSH login to the server.
@@ -104,3 +106,36 @@ $ solv mev
 ? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
 ✅ Cron Job successfully removed.
 ```
+
+## What is elSOL?
+
+![elSOL](/news/2024/07/05/elSOLlst.jpg)
+
+elSOL is a tokenized representation (LST: Liquid Staking Token) of a staking account based on a high-quality validator pool managed by the solv development team. This pool is composed of multiple experienced and high-quality validators, ensuring high validator scores and stability by performing software updates with no downtime. These validators operate with a user fee of 0%, providing an efficient and cost-effective staking solution.
+
+elSOL - SOLscan: https://solscan.io/token/ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC
+
+elSOL utilizes the official Solana Stake Pool program, increasing the value of the underlying staking accounts after each epoch, which in turn increases the amount of SOL each elSOL represents.
+
+Solana Stake Pool Program: https://spl.solana.com/stake-pool
+
+## Why elSOL?
+
+The main advantage of elSOL is its composability. Tokenized staking accounts can be used by any program that operates on tokens. This allows elSOL to integrate with other Solana DeFi protocols like Jupiter, providing various financial services.
+
+Jupiter: https://jup.ag/swap/SOL-ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC
+
+elSOL is also listed in liquidity pools on Orca, where you can stake SOL into elSOL and supply it to liquidity pools to maximize your rewards.
+
+Orca elSOL Liquidity Pool (LP): https://www.orca.so/pools?tokens=ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC
+
+By holding elSOL, you can retain an asset that increases in value relative to SOL while using almost any Solana program. This opens up new opportunities to leverage staked assets.
+
+## Benefits of Holding elSOL
+
+1. **Ensured Immediate Liquidity:** With elSOL, you can ensure immediate liquidity without waiting for the end of an epoch. For example, if you need 5 SOL to purchase an NFT, you can instantly swap elSOL for SOL, while the remaining elSOL continues to earn rewards.
+2. **Automatic MEV Reward Collection and Compounding:** elSOL automatically collects MEV rewards and compounds them, increasing its value relative to SOL. This is more efficient than manually collecting and reinvesting MEV rewards.
+
+Currently, elSOL can be staked easily with just one command using the solv CLI. An elSOL application will soon be released, allowing staking via UI.
+
+※ This article is not intended for investment advice. The information contained in this article is based on the situation at the time of writing. Please check for the most current information. Always NFA/DYOR.
