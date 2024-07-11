@@ -21,6 +21,7 @@ import { sendDiscord } from '@/lib/sendDiscord'
 import mevOn from './mevOn'
 import { spawnSync } from 'child_process'
 import { getEpochInfo } from '@/lib/getEpochInfo'
+import { getSolanaAddress } from '@/lib/getSolanaAddress'
 
 const MINIMUM_AUTHORITY_BALANCE = 0.03
 
@@ -88,7 +89,7 @@ export const harvestCommands = (solvConfig: ConfigParams) => {
       if (solvConfig.config.IS_MEV_MODE) {
         const epoch = await getEpochInfo(SOLANA_RPC_URL)
         const msg = `💰 Harvested Rewards for ${epoch.epoch} 💰
-Validator Address: ${mainnetValidatorAuthorityKey}
+Validator Address: ${getSolanaAddress(mainnetValidatorAuthorityKey)}
 Total Reward: ${elSOLBalance} elSOL
 Harvest Address: ${harvestAddress}`
         await sendDiscord(msg)

@@ -5,9 +5,37 @@ export enum DISK_TYPES {
   SINGLE,
 }
 
+export enum MOUNT_TYPES {
+  SINGLE = 'single',
+  DOUBLE = 'double',
+}
+
 export enum NETWORK_TYPES {
   MAINNET = 'mainnet-beta',
   TESTNET = 'testnet',
+}
+
+export enum NODE_TYPES {
+  VALIDATOR = 'validator',
+  RPC = 'rpc',
+}
+
+export enum SOLANA_CLIENTS {
+  SOLANA = 'solana',
+  JITO = 'jito',
+  AGAVE = 'agave',
+  FIREDANCER = 'firedancer',
+}
+
+export enum JITO_TYPES {
+  CO_HOST_RELAYER = 'co-host-relayer',
+  SEPARATED_RELAYER = 'separated-relayer',
+  WITHOUT_RELAYER = 'without-relayer',
+}
+
+export enum FIREDANCER_TYPES {
+  FIREDANCER = 'firedancer',
+  FRANKENDANCER = 'frankendancer',
 }
 
 export enum SOLV_TYPES {
