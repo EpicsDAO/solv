@@ -22,6 +22,9 @@ import updateOpenSSH from './checkSSH/updateOpenSSH'
 import isRequiredUpdateOpenSSH from './checkSSH/isRequiredUpdateOpenSSH'
 import autoUpdate from './autoUpdate'
 import getSolvVersion from '../epochTimer/getSolvVersion'
+import { startTestnetAgaveValidatorScript } from '@/template/startupScripts/startTestnetAgaveValidatorScript'
+import { writeFileSync } from 'fs'
+import { STARTUP_SCRIPT } from '@/config/constants'
 
 export * from './update'
 
@@ -125,6 +128,12 @@ export const updateCommands = (solvConfig: ConfigParams) => {
             TESTNET_SOLANA_VERSION: version,
           })
           Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
+          // Update Startup Script to Agave
+          const script = startTestnetAgaveValidatorScript()
+          writeFileSync(STARTUP_SCRIPT, script, 'utf-8')
+          const cmd = `sudo chmod +x ${STARTUP_SCRIPT}`
+          spawnSync(cmd, { shell: true, stdio: 'inherit' })
+          console.log(chalk.green('✔️ Startup Script Updated to Agave CLI!'))
           monitorUpdate(deliquentStake, true)
           return
         }

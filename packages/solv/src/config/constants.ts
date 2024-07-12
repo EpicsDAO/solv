@@ -30,6 +30,9 @@ export const TESTNET_VALITATOR_AUTHORITY_KEY_PATH = `${SOLV_HOME}/${TESTNET_VALI
 // Log Path
 export const LOG_PATH = `${SOLV_HOME}/solana-validator.log`
 
+// Startup Script Path
+export const STARTUP_SCRIPT = SOLV_HOME + '/start-validator.sh'
+
 // Ledger and Account Paths
 export const LEDGER_PATH = '/mnt/ledger'
 export const ACCOUNTS_PATH = '/mnt/accounts'
