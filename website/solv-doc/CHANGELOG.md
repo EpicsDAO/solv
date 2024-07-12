@@ -1,5 +1,11 @@
 # solv-doc
 
+## 0.2.2
+
+### Patch Changes
+
+- [#230](https://github.com/EpicsDAO/solv/pull/230) [`e60d87b`](https://github.com/EpicsDAO/solv/commit/e60d87b8a4c0c34f9f20d4bc5b9f84106fb659f7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add solv MEV
+
 ## 0.2.1
 
 ### Patch Changes
