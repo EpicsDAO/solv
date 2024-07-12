@@ -102,7 +102,7 @@ async function main() {
       .alias('m')
       .description('Monitor Solana Node')
       .action(() => {
-        monitorSolana()
+        monitorSolana(solvConfig)
       })
 
     program

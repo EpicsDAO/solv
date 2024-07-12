@@ -1,7 +1,20 @@
-import { startupScriptPaths } from '@/config/config'
+import { NETWORK_TYPES } from '@/config/config'
+import {
+  AGAVE_VALIDATOR,
+  LEDGER_PATH,
+  SOLANA_VALIDATOR,
+} from '@/config/constants'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
+import agaveInstall from '../install/agaveInstall'
 
 export const updateVersion = (version: string) => {
+  const config = readOrCreateDefaultConfig()
+  const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+  if (isTestnet) {
+    agaveInstall(version)
+    return
+  }
   const cmd = [
     `sh -c "$(curl -sSfL https://release.solana.com/v${version}/install)"`,
   ]
@@ -10,12 +23,14 @@ export const updateVersion = (version: string) => {
 
 export const monitorUpdate = (
   maxDelinquentStake: number,
-  noMonitor = false
+  noMonitor = false,
 ) => {
-  const { ledger } = startupScriptPaths()
-  let cmd = `solana-validator --ledger ${ledger} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
+  const config = readOrCreateDefaultConfig()
+  const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+  const solanaValidatorClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  let cmd = `${solanaValidatorClient} --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
   if (noMonitor) {
-    cmd = `solana-validator --ledger ${ledger} exit --max-delinquent-stake ${maxDelinquentStake}`
+    cmd = `${solanaValidatorClient} --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake}`
   }
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }

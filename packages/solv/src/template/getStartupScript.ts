@@ -1,5 +1,5 @@
 import { SOLV_TYPES } from '@/config/config'
-import { startTestnetValidatorScript } from '@/template/startupScripts/startTestnetValidatorScript'
+import { startTestnetAgaveValidatorScript } from '@/template/startupScripts/startTestnetAgaveValidatorScript'
 import { startMainnetValidatorScript } from './startupScripts/startMainnetValidatorScript'
 import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
 import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
@@ -43,7 +43,7 @@ export const getStartupScript = async (
   }
   switch (solvTypes) {
     case SOLV_TYPES.TESTNET_VALIDATOR:
-      script = startTestnetValidatorScript()
+      script = startTestnetAgaveValidatorScript()
       break
     case SOLV_TYPES.MAINNET_VALIDATOR:
       script = startMainnetValidatorScript()
@@ -52,7 +52,7 @@ export const getStartupScript = async (
       script = startRPCNodeScript()
       break
     default:
-      script = startTestnetValidatorScript()
+      script = startTestnetAgaveValidatorScript()
       break
   }
   if (!fetchSnapshot) {

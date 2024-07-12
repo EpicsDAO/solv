@@ -7,8 +7,9 @@ import { monitorSolana } from './monitorSolana'
 import { showConfig } from './showConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { getSnapshot } from './snapshot'
-import { SOLV_TYPES } from '@/config/config'
+import { NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
 import { spawnSync } from 'node:child_process'
+import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 
 export const getCommands = (solvConfig: ConfigParams) => {
   const { locale, config } = solvConfig
@@ -61,15 +62,19 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .command('monitor')
     .alias('m')
     .description(locale.cmds.monitor)
-    .action(async () => {
-      monitorSolana()
+    .action(() => {
+      monitorSolana(solvConfig)
     })
 
   get
     .command('contact')
     .description('Show Validator Contact Information')
     .action(() => {
-      const cmd = `solana-validator --ledger /mnt/ledger/ contact-info`
+      const isTestnet = config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+      const solanaValidatorClient = isTestnet
+        ? AGAVE_VALIDATOR
+        : SOLANA_VALIDATOR
+      const cmd = `${solanaValidatorClient} --ledger /mnt/ledger/ contact-info`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 

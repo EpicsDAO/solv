@@ -1,11 +1,18 @@
 import { program } from '@/index'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'node:child_process'
-import { MT_PATHS } from '@/config/config'
+import { NETWORK_TYPES } from '@/config/config'
 import chalk from 'chalk'
+import {
+  AGAVE_VALIDATOR,
+  LEDGER_PATH,
+  SOLANA_VALIDATOR,
+} from '@/config/constants'
 
 export const restartCommand = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
+  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+  const solanaValidatorClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
   program
     .command('restart')
     .description(cmds.restart)
@@ -24,7 +31,7 @@ export const restartCommand = (solvConfig: ConfigParams) => {
       }
 
       const config = solvConfig.config
-      const cmd = `solana-validator --ledger ${MT_PATHS.LEDGER} exit --max-delinquent-stake ${config.MAINNET_DELINQUENT_STAKE}`
+      const cmd = `${solanaValidatorClient} --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${config.MAINNET_DELINQUENT_STAKE}`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 }
