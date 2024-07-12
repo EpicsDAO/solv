@@ -3,6 +3,7 @@ import { spawnSync } from 'child_process'
 import inquirer from 'inquirer'
 import { checkSSHConnection } from './scp/checkSSHConnection'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
+import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 
 export type ChangeType = 'Active to Inactive' | 'Inactive to Active'
 export const changeTypes = ['Active to Inactive', 'Inactive to Active']
@@ -108,9 +109,10 @@ Then, select 'Inactive to Active' and follow the instructions.`
 
 export const changeActiveSide = async (ip: string, isTest = false) => {
   const network = isTest ? 'testnet' : 'mainnet'
-  const restartWindowCmd = `solana-validator -l /mnt/ledger wait-for-restart-window --min-idle-time 2 --skip-new-snapshot-check`
+  const solanaValidatorClient = isTest ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  const restartWindowCmd = `${solanaValidatorClient} -l /mnt/ledger wait-for-restart-window --min-idle-time 2 --skip-new-snapshot-check`
   spawnSync(restartWindowCmd, { shell: true, stdio: 'inherit' })
-  const setIdentityCmd = `solana-validator -l /mnt/ledger set-identity /home/solv/unstaked-identity.json`
+  const setIdentityCmd = `${solanaValidatorClient} -l /mnt/ledger set-identity /home/solv/unstaked-identity.json`
   spawnSync(setIdentityCmd, { shell: true, stdio: 'inherit' })
   spawnSync(
     'ln -sf /home/solv/unstaked-identity.json /home/solv/identity.json',
@@ -124,7 +126,8 @@ export const changeActiveSide = async (ip: string, isTest = false) => {
 
 export const changeInactiveSide = async (isTest = false) => {
   const network = isTest ? 'testnet' : 'mainnet'
-  const restartWindowCmd = `solana-validator -l /mnt/ledger set-identity --require-tower /home/solv/${network}-validator-keypair.json`
+  const solanaValidatorClient = isTest ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  const restartWindowCmd = `${solanaValidatorClient} -l /mnt/ledger set-identity --require-tower /home/solv/${network}-validator-keypair.json`
   spawnSync(restartWindowCmd, { shell: true, stdio: 'inherit' })
   const setIdentityCmd = `ln -sf /home/solv/${network}-validator-keypair.json /home/solv/identity.json`
   spawnSync(setIdentityCmd, { shell: true, stdio: 'inherit' })

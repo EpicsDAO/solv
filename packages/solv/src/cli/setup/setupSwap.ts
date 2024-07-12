@@ -2,8 +2,6 @@ import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { spawnSync, execSync } from 'node:child_process'
 import { statfs } from 'fs/promises'
-import inquirer from 'inquirer'
-import { existsAsync } from '@skeet-framework/utils'
 import { isSwapAllocated } from '@/lib/isSwapAllocated'
 
 const SWAP_PATH = '/swapfile'

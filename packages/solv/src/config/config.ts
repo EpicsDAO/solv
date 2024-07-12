@@ -5,9 +5,37 @@ export enum DISK_TYPES {
   SINGLE,
 }
 
+export enum MOUNT_TYPES {
+  SINGLE = 'single',
+  DOUBLE = 'double',
+}
+
 export enum NETWORK_TYPES {
   MAINNET = 'mainnet-beta',
   TESTNET = 'testnet',
+}
+
+export enum NODE_TYPES {
+  VALIDATOR = 'validator',
+  RPC = 'rpc',
+}
+
+export enum SOLANA_CLIENTS {
+  SOLANA = 'solana',
+  JITO = 'jito',
+  AGAVE = 'agave',
+  FIREDANCER = 'firedancer',
+}
+
+export enum JITO_TYPES {
+  CO_HOST_RELAYER = 'co-host-relayer',
+  SEPARATED_RELAYER = 'separated-relayer',
+  WITHOUT_RELAYER = 'without-relayer',
+}
+
+export enum FIREDANCER_TYPES {
+  FIREDANCER = 'firedancer',
+  FRANKENDANCER = 'frankendancer',
 }
 
 export enum SOLV_TYPES {
@@ -26,7 +54,7 @@ export enum MAINNET_TYPES {
 
 // ⚠️ Please DO NOT forget to turn this to false if restart is not needed
 export const NODE_RESTART_REQUIRED_MAINNET = false
-export const NODE_RESTART_REQUIRED_TESTNET = false
+export const NODE_RESTART_REQUIRED_TESTNET = true
 
 export type CONFIG_TYPE = {
   ID: string
@@ -64,11 +92,11 @@ export const CONFIG: CONFIG_TYPE = {
   ID: 'solv',
   LANG: LANGS.EN,
   USERNAME: 'solv',
-  SOLANA_VERSION: '1.18.15',
-  TESTNET_SOLANA_VERSION: '1.18.17',
-  MAINNET_SOLANA_VERSION: '1.18.15',
+  SOLANA_VERSION: '1.18.18',
+  TESTNET_SOLANA_VERSION: '2.0.2',
+  MAINNET_SOLANA_VERSION: '1.18.18',
   NODE_VERSION: '20.15.1',
-  TESTNET_DELINQUENT_STAKE: 5,
+  TESTNET_DELINQUENT_STAKE: 7,
   MAINNET_DELINQUENT_STAKE: 5,
   COMMISSION: 7,
   SOLANA_NETWORK: NETWORK_TYPES.TESTNET,

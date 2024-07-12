@@ -52,7 +52,7 @@ export const getValidatorInfoCommands = async (solvConfig: ConfigParams) => {
       solanaCatchup()
       break
     case GET_CHOICES.MONITOR:
-      monitorSolana()
+      monitorSolana(solvConfig)
       break
     case GET_CHOICES.RETURN_TO_INSTALLER:
       await server(solvConfig)
