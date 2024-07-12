@@ -131,7 +131,7 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           // Update Startup Script to Agave
           const script = startTestnetAgaveValidatorScript()
           writeFileSync(STARTUP_SCRIPT, script, 'utf-8')
-          const cmd = `sudo chmod +x ${STARTUP_SCRIPT}`
+          const cmd = `chmod +x ${STARTUP_SCRIPT}`
           spawnSync(cmd, { shell: true, stdio: 'inherit' })
           console.log(chalk.green('✔️ Startup Script Updated to Agave CLI!'))
           monitorUpdate(deliquentStake, true)

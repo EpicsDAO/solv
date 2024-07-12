@@ -10,11 +10,11 @@ More information here:
 
 https://github.com/anza-xyz/agave/wiki/Agave-Transition
 
-## Changes
+## Breaking Changes for Testnet Validators from Agave v2.0.2
 
 If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
-If you are NOT using solv MEV mode, you need to update the Solana CLI to Agave CLI withe the following command:
+If you are NOT using solv MEV mode, you need to update the Solana CLI to Agave CLI with the following command:
 
 ```bash
 $ solv update && solv update -b

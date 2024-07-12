@@ -1,5 +1,6 @@
 import { execSync } from 'node:child_process'
 
+// Need to improve this function to use package.json to get the version
 const getSolvVersion = () => {
   const cmd = `solv -V`
   const result = execSync(cmd).toString().trim()
