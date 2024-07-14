@@ -11,6 +11,7 @@ import { sendDiscord } from '@/lib/sendDiscord'
 import { spawnSync } from 'child_process'
 import waitCatchup from './waitCatchup'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
+import sleep from '@/lib/sleep'
 
 // NODE_RESTART_REQUIRED_MAINNET/TESTNET is a boolean
 // This is a global variable that is not defined in this file
@@ -56,6 +57,7 @@ This will take a few minutes to catch up...
     await sendDiscord(
       `🙆 Your Node has been restarted!\nNow Catching up... 🚛💨`,
     )
+    await sleep(180 * 1000)
     // Wait for the node to catch up
     const catchup = await waitCatchup(solvConfig)
     if (catchup) {
