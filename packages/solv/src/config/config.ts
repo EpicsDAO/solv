@@ -53,8 +53,8 @@ export enum MAINNET_TYPES {
 }
 
 // ⚠️ Please DO NOT forget to turn this to false if restart is not needed
-export const NODE_RESTART_REQUIRED_MAINNET = false
-export const NODE_RESTART_REQUIRED_TESTNET = true
+export const NODE_RESTART_REQUIRED_MAINNET = true
+export const NODE_RESTART_REQUIRED_TESTNET = false
 
 export type CONFIG_TYPE = {
   ID: string
@@ -92,9 +92,9 @@ export const CONFIG: CONFIG_TYPE = {
   ID: 'solv',
   LANG: LANGS.EN,
   USERNAME: 'solv',
-  SOLANA_VERSION: '1.18.18',
+  SOLANA_VERSION: '1.18.20',
   TESTNET_SOLANA_VERSION: '2.0.3',
-  MAINNET_SOLANA_VERSION: '1.18.18',
+  MAINNET_SOLANA_VERSION: '1.18.20',
   NODE_VERSION: '20.15.1',
   TESTNET_DELINQUENT_STAKE: 7,
   MAINNET_DELINQUENT_STAKE: 5,
