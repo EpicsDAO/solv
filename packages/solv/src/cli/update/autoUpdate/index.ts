@@ -51,17 +51,26 @@ This will take a few minutes to catch up...
     try {
       spawnSync(`solv update -b`, { stdio: 'inherit', shell: true })
     } catch (error) {
-      await sendDiscord(`❌ Error in restarting the node: ${error}`)
+      const errorMsg = `❌ Error in restarting the node
+Address: ${address}
+Error: ${error}`
+      await sendDiscord(errorMsg)
       return false
     }
-    await sendDiscord(
-      `🙆 Your Node has been restarted!\nNow Catching up... 🚛💨`,
-    )
+    const restartMsg = `== 🙆 Your Node has been restarted! ==
+Address: ${address}
+Now Catching up... 🚛💨
+`
+    await sendDiscord(restartMsg)
     await sleep(180 * 1000)
     // Wait for the node to catch up
     const catchup = await waitCatchup(solvConfig)
     if (catchup) {
-      await sendDiscord(`🚀 Your Node has caught up!`)
+      const msg = `== 🟢 Your Node has caught up! ==
+Address: ${address}
+✨ Auto Update Completed ✨
+`
+      await sendDiscord(msg)
     }
     return catchup
   }

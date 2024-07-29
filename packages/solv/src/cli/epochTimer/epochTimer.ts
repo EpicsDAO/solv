@@ -37,16 +37,6 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   // Check Validator Account's Balance
   await checkBalance(solvConfig)
 
-  // Check if solv/Solana version update is required
-  const isSolvVersionSame = await isVersionSame()
-  if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
-    console.log(`Found new version of solv! Updating...`)
-    spawnSync(`solv update && solv update --auto`, {
-      stdio: 'inherit',
-      shell: true,
-    })
-  }
-
   // Check if Validator is running
   const { mainnetValidatorVoteKey, testnetValidatorVoteKey } = getAllKeyPaths()
   let voteAccountKey = isTestnet
@@ -62,6 +52,17 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
     )
   }
   console.log(`Validator is active: ${isActive.isActive}`)
+
+  // Check if solv/Solana version update is required
+  const isSolvVersionSame = await isVersionSame()
+  if (!isSolvVersionSame && solvConfig.config.AUTO_UPDATE) {
+    console.log(`Found new version of solv! Updating...`)
+    spawnSync(`solv update && solv update --auto`, {
+      stdio: 'inherit',
+      shell: true,
+    })
+    return 'Node has been restarted!'
+  }
 
   // New epoch has been updated
   if (getD1Epoch.epoch < currentEpoch.epoch) {
