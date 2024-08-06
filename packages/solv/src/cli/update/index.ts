@@ -18,8 +18,6 @@ import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
 import { setupLogrotate } from '../setup/setupLogrotate'
 import { updateFirewall } from '../setup/updateFirewall'
-import updateOpenSSH from './checkSSH/updateOpenSSH'
-import isRequiredUpdateOpenSSH from './checkSSH/isRequiredUpdateOpenSSH'
 import autoUpdate from './autoUpdate'
 import getSolvVersion from '../epochTimer/getSolvVersion'
 

@@ -7,7 +7,7 @@ import { relayerRestart } from './relayerRestart'
 export const relayerCommands = () => {
   const relayer = program
     .command('relayer')
-    .description('Jiro Relayer Commands')
+    .description('Jito Relayer Commands')
 
   relayer
     .command('status')
