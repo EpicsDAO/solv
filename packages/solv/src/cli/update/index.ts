@@ -32,7 +32,7 @@ export type UpdateOptions = {
   commission: number
   logrotate: boolean
   firewall: boolean
-  ssh: boolean
+  config: boolean
   auto: boolean
 }
 
@@ -52,24 +52,40 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('-c, --commission', 'Update Commission', false)
     .option('-l, --logrotate', 'Setup Logrotate', false)
     .option('-f, --firewall', 'Update Firewall', false)
-    .option('--ssh', 'Update OpenSSH', false)
+    .option('--config', 'Update Solv Config Default Solana Version', false)
     .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
       const solvVersion = getSolvVersion()
+      const isTest =
+        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
+          ? true
+          : false
+      const deliquentStake = isTest
+        ? CONFIG.TESTNET_DELINQUENT_STAKE
+        : CONFIG.MAINNET_DELINQUENT_STAKE
       console.log(chalk.white(`Current solv version: ${solvVersion}`))
+
       // Auto Update
       if (options.auto) {
         await autoUpdate(solvConfig)
         return
       }
-      // Temporary fix for OpenSSH
-      if (options.ssh) {
-        const updateRequired = isRequiredUpdateOpenSSH()
-        if (updateRequired) {
-          console.log(chalk.white('⏳ Updating OpenSSH...'))
-          updateOpenSSH()
-          console.log(chalk.green('✔️ OpenSSH Updated!'))
-        }
+      // Only Update solv.config.json default solana version
+      if (options.config) {
+        updateSolvConfig({
+          SOLANA_VERSION: CONFIG.SOLANA_VERSION,
+          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
+          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
+        })
+        updateJitoSolvConfig({
+          version: JITO_CONFIG.version,
+          tag: JITO_CONFIG.tag,
+        })
+        console.log(
+          chalk.green(
+            '✔️ Updated Solv Config Default Solana Version\n\n You can now run `solv i` to install the latest version',
+          ),
+        )
         return
       }
       if (options.logrotate) {
@@ -81,13 +97,7 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         await updateFirewall()
         return
       }
-      const isTest =
-        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
-          ? true
-          : false
-      const deliquentStake = isTest
-        ? CONFIG.TESTNET_DELINQUENT_STAKE
-        : CONFIG.MAINNET_DELINQUENT_STAKE
+
       if (options.monitor) {
         const version =
           solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR
