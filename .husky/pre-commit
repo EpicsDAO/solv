@@ -1,0 +1,2 @@
+pnpm install
+npx turbo build -F @epics-dao/solv

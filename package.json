@@ -31,7 +31,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "test": "turbo test",
-    "discord:epics": "tsx ./lib/runDiscordChangeLog.ts epics"
+    "discord:epics": "tsx ./lib/runDiscordChangeLog.ts epics",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
@@ -50,6 +51,7 @@
     "esbuild": "0.20.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
+    "husky": "^9.1.4",
     "nodemon": "3.0.3",
     "prettier": "3.2.5",
     "tsx": "4.7.1",
