@@ -5,18 +5,22 @@ import { existsSync } from 'fs'
 import inquirer from 'inquirer'
 import os from 'os'
 
-export const upload = async () => {
+export const upload = async (ip = '') => {
   const homeDirectory = os.userInfo().homedir
-  const answer = await inquirer.prompt<{ ip: string }>([
-    {
-      type: 'input',
-      name: 'ip',
-      message: 'Enter your Ubuntu Server IP',
-      default() {
-        return '1.1.1.1'
+  let migrateIP = ip
+  if (ip === '') {
+    const answer = await inquirer.prompt<{ ip: string }>([
+      {
+        type: 'input',
+        name: 'ip',
+        message: 'Enter your Ubuntu Server IP',
+        default() {
+          return '1.1.1.1'
+        },
       },
-    },
-  ])
+    ])
+    migrateIP = answer.ip
+  }
   let keyPath = `${homeDirectory}${SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH}`
   if (homeDirectory.includes('/home/solv')) {
     keyPath = SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH_LINUX
@@ -33,7 +37,7 @@ export const upload = async () => {
     if (!existsSync(filePath)) {
       continue
     }
-    const cmd = `scp -o StrictHostKeyChecking=no ${filePath} solv@${answer.ip}:${key}`
+    const cmd = `scp -o StrictHostKeyChecking=no ${filePath} solv@${migrateIP}:${key}`
     spawnSync(cmd, { shell: true, stdio: 'inherit' })
     console.log(`Successfully Uploaded - ${fileName} 🎉`)
   }

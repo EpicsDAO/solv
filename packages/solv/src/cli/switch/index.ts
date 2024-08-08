@@ -6,7 +6,6 @@ import { NETWORK_TYPES } from '@/config/config'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import {
   MAINNET_VALIDATOR_KEY_PATH,
-  TESTNET_VALIDATOR_KEY,
   TESTNET_VALIDATOR_KEY_PATH,
 } from '@/config/constants'
 import { changeIdentityOutgoing } from './changeIdentityOutgoing'
@@ -33,6 +32,9 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
           name: 'ip',
           type: 'input',
           message: 'What is the IP address of the new validator?',
+          default() {
+            return '1.1.1.1'
+          },
         },
       ])
       const result = checkSSHConnection(answer.ip)

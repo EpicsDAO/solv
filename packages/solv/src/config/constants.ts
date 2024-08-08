@@ -40,3 +40,7 @@ export const ACCOUNTS_PATH = '/mnt/accounts'
 // SOLANA VALIDATOR CLI
 export const SOLANA_VALIDATOR = 'solana-validator'
 export const AGAVE_VALIDATOR = 'agave-validator'
+
+// VS Upload Endpoint
+export const VS_UPLOAD_ENDPOINT =
+  'https://verify.validators.solutions/solv-migrate'
