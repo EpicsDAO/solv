@@ -4,7 +4,7 @@ import inquirer from 'inquirer'
 import { execSync, spawnSync } from 'child_process'
 import chalk from 'chalk'
 import sleep from '@/lib/sleep'
-import getHomeDir from '@/lib/getHomeDir'
+import { homedir } from 'os'
 
 const RETRY_DELAY = 1000
 
@@ -112,7 +112,7 @@ export const validateSolanaKey = (input: string): boolean | string => {
 }
 
 const selectFromKeypairs = async () => {
-  const homeDir = getHomeDir()
+  const homeDir = homedir()
   const authorityKey = 'mainnet-authority-keypair.json'
   const validatorKey = 'mainnet-validator-keypair.json'
   let toKeyPath = `${homeDir}/${authorityKey}`

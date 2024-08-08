@@ -1,3 +1,7 @@
+// solv config Path
+export const SOLV_CONFIG_PATH = '~/solv.config.json'
+export const SOLV_CONFIG_FILE = 'solv.config.json'
+
 // Linux System Config Files
 export const SOL_SERVICE = '/etc/systemd/system/solv.service'
 export const SOL_LOGROTATE = '/etc/logrotate.d/solana'

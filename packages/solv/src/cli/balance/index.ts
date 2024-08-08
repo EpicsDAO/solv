@@ -2,7 +2,7 @@ import { program } from '@/index'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { showKeypairsInfo } from '../server/getValidatorInfo/showKeypairsInfo'
 import { splBalance } from '@/lib/solana/splBalance'
-import getHomeDir from '@/lib/getHomeDir'
+import { homedir } from 'os'
 
 export type BalanceOptions = {
   spl: boolean
@@ -18,7 +18,7 @@ export const balanceCommands = (solvConfig: ConfigParams) => {
     .action(async (options: BalanceOptions) => {
       if (options.spl) {
         const defaultKey = 'mainnet-authority-keypair.json'
-        const keyPath = `${getHomeDir()}/${defaultKey}`
+        const keyPath = `${homedir()}/${defaultKey}`
         await splBalance(keyPath)
         return
       }

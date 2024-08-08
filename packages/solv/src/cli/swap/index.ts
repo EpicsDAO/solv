@@ -5,7 +5,6 @@ import {
   getAllKeyPaths,
 } from '@/config/config'
 import { SOLANA_RPC_URL, program } from '@/index'
-import getHomeDir from '@/lib/getHomeDir'
 import { getJupiterPrice } from '@/lib/jupiter/getJupiterPrice'
 import { jupiterSwap } from '@/lib/jupiter/jupiterSwap'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
@@ -26,7 +25,6 @@ export const swapCommands = (solvConfig: ConfigParams) => {
       console.log(chalk.blue('✨ Coming Soon...!'))
       return
       // console.log('Swap Command')
-      // const { mainnetValidatorAuthorityKey } = getAllKeyPaths(getHomeDir())
       // let keyPath = options.key || mainnetValidatorAuthorityKey
       // const inputMint = USDC_MINT_ADDRESS
       // const outputMint = SOL_MINT_ADDRESS

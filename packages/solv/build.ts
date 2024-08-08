@@ -26,7 +26,6 @@ void (async () => {
       '@skeet-framework/utils',
       '@solana/spl-stake-pool',
       '@solana/spl-token',
-      'bn.js',
       'bs58',
       'commander',
       'dotenv',
