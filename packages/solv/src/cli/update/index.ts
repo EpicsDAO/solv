@@ -75,10 +75,12 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
           MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
         })
-        updateJitoSolvConfig({
-          version: JITO_CONFIG.version,
-          tag: JITO_CONFIG.tag,
-        })
+        if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
+          updateJitoSolvConfig({
+            version: JITO_CONFIG.version,
+            tag: JITO_CONFIG.tag,
+          })
+        }
         console.log(
           chalk.green(
             '✔️ Updated Solv Config Default Solana Version\n\n You can now run `solv i` to install the latest version',
