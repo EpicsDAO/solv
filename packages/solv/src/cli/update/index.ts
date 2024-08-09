@@ -7,6 +7,7 @@ import { spawnSync } from 'child_process'
 import {
   CONFIG,
   MAINNET_TYPES,
+  NETWORK_TYPES,
   SERVICE_PATHS,
   SOLV_TYPES,
 } from '@/config/config'
@@ -36,15 +37,15 @@ export type UpdateOptions = {
 
 export const updateCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
+  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+  const version = isTestnet
+    ? CONFIG.TESTNET_SOLANA_VERSION
+    : CONFIG.MAINNET_SOLANA_VERSION
   program
     .command('update')
     .alias('u')
     .description(cmds.update)
-    .option(
-      '-v, --version <version>',
-      `Solana Version e.g ${CONFIG.SOLANA_VERSION}`,
-      CONFIG.SOLANA_VERSION,
-    )
+    .option('-v, --version <version>', `Solana Version e.g ${version}`, version)
     .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-c, --commission', 'Update Commission', false)
@@ -71,7 +72,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
       // Only Update solv.config.json default solana version
       if (options.config) {
         updateSolvConfig({
-          SOLANA_VERSION: CONFIG.SOLANA_VERSION,
           TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
           MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
         })
@@ -124,7 +124,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           version = CONFIG.MAINNET_SOLANA_VERSION
           updateVersion(version)
           updateSolvConfig({
-            SOLANA_VERSION: version,
             MAINNET_SOLANA_VERSION: version,
           })
           monitorUpdate(deliquentStake, true)
@@ -133,7 +132,6 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           version = CONFIG.TESTNET_SOLANA_VERSION
           updateVersion(version)
           updateSolvConfig({
-            SOLANA_VERSION: version,
             TESTNET_SOLANA_VERSION: version,
           })
           Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)

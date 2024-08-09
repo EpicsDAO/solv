@@ -9,7 +9,6 @@ export const mainnetUpdate = async () => {
   updateSolvConfig({
     MAINNET_SOLANA_VERSION: version,
     MAINNET_DELINQUENT_STAKE: CONFIG.MAINNET_DELINQUENT_STAKE,
-    SOLANA_VERSION: version,
   })
   updateVersion(version)
   Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)

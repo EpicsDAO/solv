@@ -2,7 +2,7 @@ import { getAllKeyPaths } from '@/config/config'
 import { SOLANA_RPC_URL } from '@/index'
 import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js'
 import loadKeypairFromFile from './loadKeypairFromFile'
-import getHomeDir from '../getHomeDir'
+import { homedir } from 'os'
 
 export enum KeyType {
   VALIDATOR = 'validator',
@@ -17,7 +17,7 @@ const getBalance = async (
 ) => {
   if (isTestnet) {
     const connection = new Connection(rpcUrl)
-    const home = getHomeDir()
+    const home = homedir()
     const {
       testnetValidatorVoteKey,
       testnetValidatorKey,
@@ -34,7 +34,7 @@ const getBalance = async (
     return SOL
   } else {
     const connection = new Connection(rpcUrl)
-    const home = getHomeDir()
+    const home = homedir()
     const {
       mainnetValidatorVoteKey,
       mainnetValidatorKey,

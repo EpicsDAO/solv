@@ -3,12 +3,10 @@ import { ensureFstabEntries } from '../check/ensureMountAndFiles'
 import { DISK_TYPES, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
 import { formatDisk } from './formatDisk'
 import { umount } from '../check/mt/umount'
-import { setupSwap } from './setupSwap'
 import { GetPreferredDisksResult } from '../check/mt/getLargestDisk'
 import { setupDirs } from './mkdirs'
 
 const setupMount = async (
-  swapsize: number,
   disks: GetPreferredDisksResult,
   solvType: SOLV_TYPES,
   commission: number,
@@ -32,9 +30,6 @@ const setupMount = async (
     const fileSystemName2 = '/dev/' + disks.disks[1].name
     const isDisk1Formatted = formatDisk(fileSystemName1)
     const isDisk2Formatted = formatDisk(fileSystemName2)
-
-    // Swap setup
-    await setupSwap(swapsize)
 
     let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
     let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''

@@ -8,6 +8,13 @@ import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { spawnSync } from 'child_process'
+import uploadVS from './uploadVS'
+
+export type UploadOptions = {
+  vs: boolean
+  ip: string
+}
 
 export const scpCommands = (solvConfig: ConfigParams) => {
   const { cmds } = solvConfig.locale
@@ -24,9 +31,15 @@ export const scpCommands = (solvConfig: ConfigParams) => {
   scp
     .command('upload')
     .alias('up')
+    .option('--vs', 'Upload Key to a New Validator Auto Operation Node', false)
+    .option('--ip <ip>', 'Upload Key to a Specific IP Address', '')
     .description('Upload Solana Validator Keypair')
-    .action(async () => {
-      await upload()
+    .action(async (options: UploadOptions) => {
+      if (options.vs) {
+        await uploadVS()
+        return
+      }
+      await upload(options.ip)
     })
 
   scp

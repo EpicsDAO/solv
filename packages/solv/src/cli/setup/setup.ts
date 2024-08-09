@@ -89,23 +89,7 @@ export const setup = async (solvConfig: ConfigParams) => {
         default: true,
       },
     ])
-    // Check if the root volume is larger than 256GB
-    // If not, set the default swap size to 30GB
-    // If the root volume is smaller than 30GB, set the default swap size to 4GB
-    const rootVolume = await getRootFreeSpaceGB()
-    let defaultSwapSize = rootVolume > 256 ? 256000 : 30000
-    const minOpenSpace = 30000
-    if (defaultSwapSize - 30000 < minOpenSpace) {
-      defaultSwapSize = 4000
-    }
-    const askSwapsize = await inquirer.prompt<{ swapsize: number }>([
-      {
-        name: 'swapsize',
-        type: 'number',
-        message: 'Enter swap size to create in MB:',
-        default: defaultSwapSize,
-      },
-    ])
+
     let blockEngineUrl = ''
     let hasRelayer = false
     if (isJitoMev) {
@@ -179,7 +163,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       )
     } else {
       // Mount the disk
-      await setupMount(askSwapsize.swapsize, disks, sType, commission, isTest)
+      await setupMount(disks, sType, commission, isTest)
     }
 
     const newSolvConfig = readOrCreateDefaultConfig()

@@ -7,11 +7,8 @@ export const ensureFstabEntries = (
   isLatitude = false,
 ) => {
   const mountPoint = isLatitude ? MT_PATHS.LEDGER : MT_PATHS.ROOT
-  const swapLine = `/swapfile  swap  swap  sw  0  0`
-  const mtLineSingle = `${swapLine}
-${fileSystem}        ${mountPoint}     ext4 auto 0 0`
-  const mtLineForDouble = `${swapLine}
-${fileSystem}        ${MT_PATHS.LEDGER}     ext4 auto 0 0
+  const mtLineSingle = `${fileSystem}        ${mountPoint}     ext4 auto 0 0`
+  const mtLineForDouble = `${fileSystem}        ${MT_PATHS.LEDGER}     ext4 auto 0 0
 ${fileSystem2}        ${MT_PATHS.ACCOUNTS}     ext4 auto 0 0
 `
   const mtLine = fileSystem2 !== '' ? mtLineForDouble : mtLineSingle

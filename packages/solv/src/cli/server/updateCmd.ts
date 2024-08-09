@@ -14,29 +14,36 @@ export const updateCmd = async (solvConfig: ConfigParams) => {
   const deliquentStake = isTest
     ? CONFIG.TESTNET_DELINQUENT_STAKE
     : CONFIG.MAINNET_DELINQUENT_STAKE
-  if (solvConfig.config.SOLANA_VERSION === version) {
-    console.log('Already up to date ⭐️')
-    return
-  }
+
   if (solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR) {
+    if (version === solvConfig.config.TESTNET_SOLANA_VERSION) {
+      console.log('Already up to date ✨')
+      return
+    }
     updateVersion(version)
     updateSolvConfig({
-      SOLANA_VERSION: version,
       TESTNET_SOLANA_VERSION: version,
     })
     monitorUpdate(deliquentStake, true)
     return
   } else {
     if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
+      if (version === solvConfig.config.MAINNET_SOLANA_VERSION) {
+        console.log('Already up to date ✨')
+        return
+      }
       jitoUpdate()
-      updateSolvConfig({ SOLANA_VERSION: version })
+      updateSolvConfig({ MAINNET_SOLANA_VERSION: version })
       updateJitoSolvConfig({ version, tag: `v${version}-jito` })
       monitorUpdate(deliquentStake, true)
       return
     }
+    if (version === solvConfig.config.MAINNET_SOLANA_VERSION) {
+      console.log('Already up to date ✨')
+      return
+    }
     updateVersion(version)
     updateSolvConfig({
-      SOLANA_VERSION: version,
       MAINNET_SOLANA_VERSION: version,
     })
     monitorUpdate(deliquentStake, true)

@@ -21,7 +21,7 @@ import { existsAsync } from '@skeet-framework/utils'
 import { elSOLdeposit } from './elSOLdeposit'
 import { depositeLST } from './depositLST'
 import { execSync } from 'child_process'
-import getHomeDir from '@/lib/getHomeDir'
+import { homedir } from 'os'
 
 export type StakeOptions = {
   lst: boolean
@@ -40,7 +40,7 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
     .action(async (options: StakeOptions) => {
       let amount = Number(options.amount)
       let poolAddress = SOLV_STAKE_POOL_ADDRESS
-      const keyRoot = getHomeDir()
+      const keyRoot = homedir()
       const keypairPath =
         config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
           ? `${keyRoot}/testnet-authority-keypair.json`

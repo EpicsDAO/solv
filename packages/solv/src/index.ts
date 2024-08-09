@@ -33,6 +33,7 @@ import { NETWORK_TYPES, SOLANA_TESTNET_RPC_URL } from './config/config'
 import { harvestCommands } from './cli/harvest'
 import { swapCommands } from './cli/swap'
 import { epochTimerCommands } from './cli/epochTimer'
+import { switchCommand } from './cli/switch'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -75,6 +76,7 @@ async function main() {
     dfCommands()
     swapCommands(solvConfig)
     epochTimerCommands(solvConfig)
+    switchCommand(program, solvConfig)
 
     program
       .command('rm:log')

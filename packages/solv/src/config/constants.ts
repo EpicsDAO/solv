@@ -1,3 +1,7 @@
+// solv config Path
+export const SOLV_CONFIG_PATH = '~/solv.config.json'
+export const SOLV_CONFIG_FILE = 'solv.config.json'
+
 // Linux System Config Files
 export const SOL_SERVICE = '/etc/systemd/system/solv.service'
 export const SOL_LOGROTATE = '/etc/logrotate.d/solana'
@@ -40,3 +44,7 @@ export const ACCOUNTS_PATH = '/mnt/accounts'
 // SOLANA VALIDATOR CLI
 export const SOLANA_VALIDATOR = 'solana-validator'
 export const AGAVE_VALIDATOR = 'agave-validator'
+
+// VS Upload Endpoint
+export const VS_UPLOAD_ENDPOINT =
+  'https://verify.validators.solutions/solv-migrate'

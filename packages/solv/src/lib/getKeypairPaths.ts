@@ -2,10 +2,10 @@ import path from 'path'
 import { readdirSync } from 'fs'
 import { ConfigParams } from './readOrCreateDefaultConfig'
 import { KEYPAIRS, NETWORK_TYPES } from '@/config/config'
-import getHomeDir from './getHomeDir'
+import { homedir } from 'os'
 
 export const getKeypairPaths = (solvConfig: ConfigParams) => {
-  const homeDir = getHomeDir()
+  const homeDir = homedir()
   const keyDir = solvConfig.config.IS_CLIENT
     ? path.join(homeDir, 'solvKeys', 'upload')
     : homeDir

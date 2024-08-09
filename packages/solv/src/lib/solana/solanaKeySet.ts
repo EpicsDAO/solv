@@ -4,7 +4,7 @@ import inquirer from 'inquirer'
 import { KEYPAIRS, NETWORK_TYPES } from '@/config/config'
 import path from 'path'
 import { readdirSync } from 'fs'
-import getHomeDir from '../getHomeDir'
+import { homedir } from 'os'
 
 export const solanaKeySet = async (solvConfig: ConfigParams) => {
   const { keypair, network } = await solanaKeySetAsk(solvConfig)
@@ -19,7 +19,7 @@ export type SolanaKeySetAskOption = {
 }
 
 export const solanaKeySetAsk = async (solvConfig: ConfigParams) => {
-  const keyDir = getHomeDir()
+  const keyDir = homedir()
   const defaultKey =
     solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.MAINNET
       ? path.join(keyDir, KEYPAIRS.MAINNET_VALIDATOR_KEY)
