@@ -119,6 +119,9 @@ importers:
       bigint-buffer:
         specifier: 1.1.5
         version: 1.1.5
+      bn.js:
+        specifier: ^5.2.1
+        version: 5.2.1
       bs58:
         specifier: 6.0.0
         version: 6.0.0
@@ -165,6 +168,9 @@ importers:
       '@skeet-framework/discord-utils':
         specifier: 0.4.0
         version: 0.4.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@types/bn.js':
+        specifier: 5.1.5
+        version: 5.1.5
       '@types/cli-progress':
         specifier: 3.11.5
         version: 3.11.5
@@ -1937,6 +1943,9 @@ packages:
   '@turbo/workspaces@1.13.4':
     resolution: {integrity: sha512-3uYg2b5TWCiupetbDFMbBFMHl33xQTvp5DNg0fZSYal73Z9AlFH9yWabHWMYw6ywmwM1evkYRpTVA2n7GgqT5A==}
     hasBin: true
+
+  '@types/bn.js@5.1.5':
+    resolution: {integrity: sha512-V46N0zwKRF5Q00AZ6hWtN0T8gGmDUaUzLWQvHFo5yThtVwK/VCenFY3wXVbOvNfajEpsTfQM4IN9k/d6gUVX3A==}
 
   '@types/cli-progress@3.11.5':
     resolution: {integrity: sha512-D4PbNRbviKyppS5ivBGyFO29POlySLmA2HyUFE4p5QGazAMM3CwkKWcvTl8gvElSuxRh6FPKL8XmidX873ou4g==}
@@ -8920,6 +8929,10 @@ snapshots:
       rimraf: 3.0.2
       semver: 7.6.2
       update-check: 1.5.4
+
+  '@types/bn.js@5.1.5':
+    dependencies:
+      '@types/node': 20.11.28
 
   '@types/cli-progress@3.11.5':
     dependencies:
