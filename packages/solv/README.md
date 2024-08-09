@@ -37,7 +37,7 @@ solv is an open-source tool designed to simplify the setup and operation of Sola
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.16/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.4.5/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -88,105 +88,33 @@ $ solv mev
 ? Enter your Discord Webhook URL (https://discord.com/api/webhooks/11111111/xxxxxxxx)
 ```
 
-### Epoch Timer
+## New Feature: solv switch - v4.4.5~
 
-Epoch Timer will be set in cron job to check the epoch timer every 5 minutes.
-(※ You need solv mev to enable MEV mode)
-
-### Epoch Timer Sends Discord Notification(SOL Balance Alert)
-
-Epoch Timer will send a Discord notification when the epoch is less than 1 day, 8 hours, 1 hour and the new epoch starts.
-
-- New Epoch
-- Less than 1 day
-- Less than 8 hours
-- Less than 1 hours
-  solv harvest will be executed automatically if solv MEV Mode is enabled.
-
-Besides, the epoch timer checks the Validator Account Balance and sends a notification when the balance is less than 0.5 SOL.
-
-### solv Harvest
-
-solv harvest will be executed automatically if solv MEV Mode is enabled.
-This will harvest your rewards to your authority account every right before the epoch ends.
-Then convert SOL to elSOL (LST) and send it to your desired account.
-
-1. Withdraw rewards from the Vote Account to the Validator Authority Account.
-2. Calculate the amount of SOL to be transferred from the Validator Account to the Authority Account.
-3. Convert the amount of SOL to elSOL (LST).
-4. Transfer the elSOL (LST) to the desired account.
-
-This strategy keeps the balance of SOL in your validator node low, enhancing security by mitigating the risk of large-scale SOL withdrawals. By immediately converting earned rewards to LST, it ensures high yield maintenance.
-
-## New Features - v4.2.0~v4.2.x
-
-- Added Solana Liquid Staking Command
-- Added Solana Transfer Command
-- Added Auto Reward Harvest Command
-- Added Epoch Timer
-- Improved setup command
-- Improved log command
-- Added solv df command
-- Migrated to ESM Module
-- Added Turbo Repo
-- Improved solv restart
-
-## New Features - v4.0.0~v4.1.0
-
-- Jito Relayer Setup
-- Jito RPC Setup
-- No Downtime Migration
-- Snapshot Download Speed Improved 100x~ Faster
-
-### Snapshot Download Speed Improved 100x~ Faster
-
-solv integrated with solana snapshot finders for Solana Mainnet and Testnet.
-This will improve the snapshot download speed 100x~ faster than before.
-Greatly reduce the time to start the Solana Validator.
-
-Special Thanks to c29r3 for the great OSS ⭐️
-
-- [Solana Snapshot Finder](https://github.com/c29r3/solana-snapshot-finder)
-
-### No Downtime Migration
-
-solv supports no downtime migration for Solana Validator.
-You can migrate your Solana Validator to other servers without restarting the Solana Validator.
-
-`solv change` command will help you to migrate your Solana Validator to other servers.
-
-Prepare your new server(Inactive) and current server(Active) with the latest slot.
-Then run the following command on new server(Inactive) and current server(Active).
-
-※ Please make sure to backup your keys before running the command.
-※ Please make sure to run the new server with solv4 as a dummy mode.
-
-Run the following command on the current server(Active).
-You will be asked to enter the new server IP address.
+`solv switch` command is better version of `solv change`.
 
 ```bash
-$ solv change
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+❯ Incoming
+  Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
 ```
 
-Then, you should quickly run the following command on the new server(Inactive).
+`solv change` required to connect both servers.
+Now you only need to connect one server with `solv switch`
 
-```bash
-$ solv change
-```
+This command has 2 types
 
-This function was created with reference to the following link.
+You choose the type of switch you want to perform.
+Then put IP address of anothor side of server.
 
-Special Thanks to pumpkins-pool for the great OSS ⭐️
+- Incoming
+  Run at Active Server. Active Validator Identity switches from this server to a remote server.
 
-- [Pumpkin's Pool - Identity Transition](https://pumpkins-pool.gitbook.io/pumpkins-pool)
+- Outgoing
+  Run at Inactive Server. Active Validator Identity switches to this server from a remote server.
 
-## Jito MEV Setup
-
-You can select the mainnet for Jito MEV or RPC Jito Client🎉
-
-![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
-
-Also you have option to select Jito Relayer.
+This command executes migration commands on both servers.
 
 ## Run solv Server CLI - from your validator server
 

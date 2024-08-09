@@ -39,7 +39,7 @@ Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.1.16/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.4.6/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
@@ -69,23 +69,33 @@ This will remove the snapshot and restart the Solana Validator from the new snap
 If snapshot download freezes, you can try Ctrl + C.
 Then setup will continue.
 
-## New Feature: solv MEV Mode - v4.3.0~
+## New Feature: solv switch - v4.4.5~
 
-🌱 No more SSH login required for Solana/solv version update 🌱
+`solv switch` command is better version of `solv change`.
 
-Introducing the new solv MEV mode that takes care of Solana/solv version updates seamlessly. Now, you can update the Solana/solv version without the need for SSH login to the server.
+```bash
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+❯ Incoming
+  Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
+```
 
-Key Features:
+`solv change` required to connect both servers.
+Now you only need to connect one server with `solv switch`
 
-- Automated Updates: solv MEV mode will automatically update the Solana/solv version for you, ensuring you are always running the latest version without manual intervention.
+This command has 2 types
 
-- Monitoring: solv MEV mode will monitor the health status of your validator and balance, sending notifications to Discord.
+You choose the type of switch you want to perform.
+Then put IP address of anothor side of server.
 
-- Automated Reward Harvesting: This mode will harvest your rewards to your authority account right before the epoch ends, optimizing your yield.
+- Incoming
+  Run at Active Server. Active Validator Identity switches from this server to a remote server.
 
-- Automated Staking: After harvesting, rewards will be converted from SOL to LST(Liquid Staking Token - elSOL) and sent to your desired account.
+- Outgoing
+  Run at Inactive Server. Active Validator Identity switches to this server from a remote server.
 
-- Enhanced Security: By keeping the balance of SOL in your validator node low and converting rewards to LST, this strategy mitigates the risk of large-scale SOL withdrawals, ensuring high yield maintenance.
+This command executes migration commands on both servers.
 
 ## What is solv MEV Mode?
 
