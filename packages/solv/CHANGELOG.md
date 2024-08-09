@@ -1,5 +1,19 @@
 # @epics-dao/solv
 
+## 4.4.6
+
+### Patch Changes
+
+- [`4e9286d`](https://github.com/EpicsDAO/solv/commit/4e9286de09ab5e099139814b1b799fc5e1f495e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv update --config
+
+  You can now update the solv configuration file with the following command:
+
+  ```bash
+  $ solv update --config
+  ```
+
+  This will update the default Solana version.
+
 ## 4.4.5
 
 ### Patch Changes
