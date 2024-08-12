@@ -1,5 +1,24 @@
 # @epics-dao/solv
 
+## 4.4.8
+
+### Patch Changes
+
+- [#247](https://github.com/EpicsDAO/solv/pull/247) [`e73103a`](https://github.com/EpicsDAO/solv/commit/e73103acf9bf1ac6bb1b8b583526fb49d1e91a2d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
+
+  Now solv scp download command will download the following files:
+
+  - mainnet-validator-keypair.json
+  - mainnet-vote-account-keypair.json
+  - mainnet-authority-keypair.json
+  - unstaked-identity.json
+  - relayer-identity.json
+  - testnet-validator-keypair.json
+  - testnet-vote-account-keypair.json
+  - testnet-authority-keypair.json
+
+  It will ignore if the files are not found in the destination node.
+
 ## 4.4.7
 
 ### Patch Changes
