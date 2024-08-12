@@ -1,10 +1,10 @@
 import { getAllKeyPaths } from '@/config/config'
 import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import { spawnSync } from 'child_process'
 import { existsSync, mkdirSync } from 'fs'
 import inquirer from 'inquirer'
-import os from 'os'
+import { homedir } from 'os'
 import { executeSCP } from './executeSCP'
+import { RELAYER_KEY, UNSTAKED_KEY } from '@/config/constants'
 
 export const download = async () => {
   const answer = await inquirer.prompt<{ ip: string }>([
@@ -18,7 +18,7 @@ export const download = async () => {
     },
   ])
   const solanaKeys = Object.values(getAllKeyPaths())
-  const homeDirectory = os.userInfo().homedir
+  const homeDirectory = homedir()
   const keyDir = homeDirectory.includes('/home/solv')
     ? '/home/solv'
     : homeDirectory + SOLV_CLIENT_PATHS.SOLV_KEYPAIR_DOWNLOAD_PATH
@@ -26,6 +26,9 @@ export const download = async () => {
     mkdirSync(keyDir, { recursive: true })
   }
   const isDownload = true
+  const unstakedKeyPath = homeDirectory + '/' + UNSTAKED_KEY
+  const relayerKeyPath = homeDirectory + '/' + RELAYER_KEY
+  solanaKeys.push(unstakedKeyPath, relayerKeyPath)
   for (const key of solanaKeys) {
     const splits = key.split('/')
     let fileName = splits[splits.length - 1]

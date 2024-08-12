@@ -4,37 +4,111 @@ title: ノーダウンタイムアップデート
 description: オープンソースのSolana バリデーター向けツールsolvのクイックスタート - ノーダウンタイムアップデート
 ---
 
-バリデーターノードのダウンタイム要件は、Solana ネットワークの安定性を維持するために非常に重要です。
-solv v4 では、バリデーターノードのノーダウンタイム移行をサポートするための新しいコマンドを追加しました。
+バリデーターノードのダウンタイムを最小限に抑えることは、
+Solana ネットワークの安定性を維持する上で非常に重要です。
+Solv v4 では、ダウンタイムなしでノードを移行できる新しいコマンドが導入されました。
 
-日々のアップデート作業においてもノーダウンタイム移行を行うことで、バリデータースコアを高く保ち信頼性を上げ、Solana ネットワークの安定性にも貢献できます。
-また、バリデーターノードの引っ越しにも有効で、戦略的・もしくは緊急の場合のノード移行においてもダウンタイム無く移行が可能なため、バリデーターの運用をより安定させることができます。
+2024 年 8 月現在、solv switch コマンドが追加され、
+さらに使いやすくなりました。従来の solv change コマンドは
+solv switch に置き換えられ、今後廃止される予定です。
+
+solv change では、移行前後の両方のノードでコマンドを実行する必要がありましたが、
+solv switch では片方のノードでのコマンド実行のみでノードの移行が完了します。
+
+このノーダウンタイム移行機能は、日々のアップデート作業だけでなく、
+バリデータースコアを高く保ち、信頼性を向上させるためにも重要です。
+それにより、Solana ネットワークの安定性にも貢献できます。
+
+また、バリデーターノードの移動においても、
+戦略的または緊急の状況でもダウンタイムなく移行が可能となり、
+バリデーターの運用をより安定させることができます。
+
+# Solv Switch コマンドの活用方法
+
+`solv switch` コマンドは、バリデーターノードのノーダウンタイム移行をサポートするための重要なコマンドです。  
+このコマンドを実行する前に、移行元と移行先のノードが正常に稼働していることを必ず確認してください。
+
+`solv switch` コマンドには、次の 2 つのモードがあります。
+
+- **Incoming**: 移行元のノードから移行先のノードへの切り替え
+- **Outgoing**: 移行先のノードから移行元のノードへの切り替え
+
+これらのモードを使い分けることで、ノードの移行をスムーズに行うことができます。
+
+本ドキュメントでは、一般的な Solana のバージョンアップ手順を例に挙げ、次の流れを説明します。
+
+1. Inactive ノードから `solv switch` の Incoming モードを実行します。
+2. Solana のバージョンを更新し、再起動します。
+3. Active になったノードから Outgoing モードを実行して、元の状態に戻します。
+
+`solv switch` コマンドは、アクティブノードとスペアノードの切り替え、  
+バリデーターノードの引っ越し、Solana バージョンのアップデートなど、  
+様々なシナリオで活用することができます。
 
 ## 事前準備
 
 移行元のノードと移行先のノードが正常に稼働していることを確認してください。
 投票を行っている移行元を Active、まだ投票を行っていない移行先を Inactive として説明します。
 
-solv change コマンドを使って移行するためには、以下の条件を満たしている必要があります。
+solv switch コマンドを使って移行するためには、以下の条件を満たしている必要があります。
 
-- solv v4 で起動したソラナバリデーターノードであること
-  (solv v4 以前のバージョンからも移行可能ですが、詳しくは Discord でお問い合わせください。)
-
+- solv v4 以降 で起動したソラナバリデーターノードであること
 - solv catchup で最新のブロックに追いついていること
-- SSH 接続が移行元（Active）から移行先（Inactive）へ可能であること
-- SSH 接続が移行先（Inactive）から移行元（Active）へ可能であること(※必須ではありませんが、鍵入れ替えのため)
+- SSH 接続が移行元（Active）から移行先（Inactive）へ可能であること（Outgoing の場合）
+- SSH 接続が移行先（Inactive）から移行元（Active）へ可能であること(Incoming の場合)
 
 以下、１台のノードがすでに稼働中で、２台目のノードを新たに立ち上げる場合の手順を説明します。
 
-## YouTube チュートリアル
+## SSH 接続の設定 (Inactive ノード)
 
-以下の YouTube チュートリアルをご覧いただくことで、手順をより詳しく確認することができます。
+鍵を Active ノードからダウンロードして、新規ノードに設定します。
 
-https://youtu.be/Hivsa0cgFqU?si=g2m_XVCkThli2geB
+まずは SSH キーを移行先のノードに設定します。
+
+```bash
+$ solv scp init
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/solv/.ssh/id_rsa):
+Created directory '/home/solv/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/solv/.ssh/id_rsa
+Your public key has been saved in /home/solv/.ssh/id_rsa.pub
+```
+
+そして SSH 公開鍵を表示します。
+
+```bash
+$ solv scp cat
+```
+
+表示された内容をコピーしておきます。
+
+## 鍵の移行 (Active ノード)
+
+次に、Active ノードに接続して、SSH 公開鍵を移行先ノードに追加します。
+
+```bash
+$ solv scp create
+? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
+```
+
+さきほどコピーした公開鍵を貼り付けます。
 
 ## 新規ノードの立ち上げ (Inactive ノード)
 
-新規ノードを立ち上げ、solv v4 で起動します。
+次に、Active ノードから鍵をダウンロードするために、
+移行先ノードに接続して、以下のコマンドを実行します。
+
+```bash
+$ solv scp download
+? Enter your Ubuntu Server IP x.x.x.x
+✔︎ Downloading mainnet-validator-keypair.json
+✔︎ Downloading mainnet-vote-account-keypair.json
+✔︎ Downloading mainnet-authority-keypair.json
+```
+
+それでは移行先で新規ノードを立ち上げます。
 
 ```bash
 $ solv setup
@@ -83,83 +157,12 @@ Jito Relayer を設定するかどうかを確認されます。必要に応じ�
 
 そして、コミッションレートを設定します。
 
-```bash
-? Enter swap size to create in MB: (256000)
-```
+これで新規ノードの立ち上げが完了しました。
 
-スワップサイズを設定します。
-
-そして起動開始直後、一度ノードを停止して、移行元の鍵に入れ替えます。
+ログを確認して、正常に立ち上がっていることを確認してください。
 
 ```bash
-$ solv stop
-```
-
-## SSH 接続の設定 (Inactive ノード)
-
-移行先ノードから移行元ノードへの SSH 接続を設定します。
-
-新規ノードに SSH Key Pair を生成します。
-
-```bash
-$ solv scp init
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/solv/.ssh/id_rsa):
-Created directory '/home/solv/.ssh'.
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/solv/.ssh/id_rsa
-Your public key has been saved in /home/solv/.ssh/id_rsa.pub
-```
-
-作成した公開鍵を表示します。
-
-```bash
-$ solv scp cat
-Your SSH Public Key is:
-
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ3EBp0IWcg9VvyKanqL+FiL4IY6u8mtrmarZrU25IzVTFxCNEnOeMzvUOnnWpIVJeVfJZSi0obrM8+emifGmHP1/qo4RNyo9RJnUpfdAfjHan0/tQ4lg4OHaKLWXm2d+snrSvLhIRUqevvbSHkrw4d/ZnpX4xTWbJ6tG1BUEX2J2kDDzHrPXmY4/hpJe0Ummd73bqB13p0uyts6E+inbIiV4OctQxXG5CTGKrudjIHjQXfe60I00USMp8yWFHNEs0D10kJGs+B0866pGEENWXCfD8NLn1zaDTj0MBv9RUlyIrOWbp8N+bgItm4nR/jpvRmerpGOxwVpaiz+d2Fr0qEPT+tW6SHeyjdiUiqVq2unIkqlAYyj2gyhSFwDDKELd0gYLnJ8L4Je73m/CqnLliyDwONwNYwBFB8uNQD/3LVNUaTP+Vucu8UWR8uDYsb11Cclvc3Lcikfic09tMHMw2Nnt/JnPoVDOFJJIWmLb/qgPmeDTbUy+DkC2pYsiJQ4S7PEWxJpTLFrQcIXPeQ3NCekYAo6EU9KJ3rJo6tkMlRB7ZBBxG7ezQ5tFMb8TBIqE+TVKxSvV/bSE3F8DZz/6S166Scd3+jhgmlrCIJ3cUaiFstUYOfL5qBB4lhzGPpOj+rjTN2/GqJGelw431SIMfhLeo0fzRzIBWSSYwzuMpHw== solv@c3-large-x86-ash-1
-```
-
-この公開鍵をコピーしておきます。
-
-## 新規ノード、移行元ノード間の SSH 接続設定 (Active ノード)
-
-移行元のノードから移行先のノードへ
-
-- mainnet-validator-keypair.json
-- mainnet-vote-account-keypair.json
-- mainnet-authority-keypair.json
-
-入れ替えるために、SSH 接続を設定します。
-
-移行元ノードで、公開鍵を追加します。
-
-```bash
-$ solv scp create
-? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
-```
-
-先ほどコピーした公開鍵を貼り付けます。
-
-## 移行元ノードの鍵の入れ替え (Inactive ノード)
-
-新規ノードに移行元ノードの鍵を入れ替えます。
-以下のコマンドを実行して、移行元ノードの鍵をダウンロードします。
-IP アドレスは移行元ノードの IP アドレスを入力してください。
-
-```bash
-solv scp download
-? Enter your Ubuntu Server IP x.x.x.x
-✔︎ Downloading mainnet-validator-keypair.json
-✔︎ Downloading mainnet-vote-account-keypair.json
-✔︎ Downloading mainnet-authority-keypair.json
-```
-
-鍵の交換後、先ほど停止した新規ノードを起動します。
-
-```bash
-$ solv start
+$ solv log
 ```
 
 そして、新規ノードが最新のブロックに追いつくまで待ちます。
@@ -176,96 +179,75 @@ $ solv monitor
 起動がうまくいっていない場合は、スナップショットのダウンロードをやり直してください。
 
 ```bash
-$ solv stop
-$ solv rm:snapshot
-$ solv get snapshot
-$ solv start
+$ solv restart --rm
 ```
 
 それでは以降の手順に進みます。
 
-## SSH 接続の設定 (Active ノード)
+## solv switch コマンドの実行 (Inactive ノード)
 
-Inactive ノードで行った手順と同様に、
-
-移行元ノードから移行先ノードへの SSH 接続を設定します。
+solv switch の Incoming モードを実行します。
 
 ```bash
-$ solv scp init
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+❯ Incoming
+  Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
 ```
 
-作成した公開鍵を表示します。
+Active ノードの IP アドレスを入力します。
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/switch/solv-switch-incoming.png)
+
+無事に Inactive ノードが Active ノードに切り替わりました！
+
+## Solana バージョンの更新、再起動
+
+solv switch 後、Active から Inactive へ切り替わったノードの Solana バージョンが最新でない場合は、
+以下のコマンドで Solana バージョンを更新し、再起動します。
 
 ```bash
-$ solv scp cat
-Your SSH Public Key is:
+$ solv update && solv update -b
 ```
 
-この公開鍵をコピーしておきます。
-
-## 移行先ノードへの SSH 接続設定 (Inactive ノード)
-
-移行先ノードで、公開鍵を追加します。
+これで、ノードの Solana バージョンが最新に更新され、再起動されます。
+手動でバージョンを更新する場合は、以下のコマンドを実行してください。
 
 ```bash
-$ solv scp create
-? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
+$ solv update --config
+$ solv i
 ```
 
-先ほどコピーした公開鍵を貼り付けます。
+このコマンドは、Solana バージョンを最新に更新しますが、再起動は行いません。
 
-## 移行元ノードから移行先ノードへの SSH 接続 (Active ノード)
-
-移行元ノードから移行先ノードへ SSH 接続します。
+Slot が最新の状態になるまで待ちます。
 
 ```bash
-$ ssh solv@<移行先ノードのIPアドレス>
+$ solv catchup
 ```
 
-接続が成功したら、移行元ノードから移行先ノードへの SSH 接続設定は完了です。
+最新の Slot に追いついたら、再び先ほどのノードに戻り、`solv switch` の `Outgoing` モードを実行します。
 
-## ノードの移行
+## solv switch コマンドの実行 (Active ノード)
 
-移行元ノードから移行先ノードへの移行を行います。
-この時、両方のノードが正常に稼働していることを確認してください。
+solv switch の Outgoing モードを実行します。
 
 ```bash
-$ solv monitor
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+  Incoming
+❯ Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
 ```
 
-`solv change` コマンドは
+Inactive ノードの IP アドレスを入力します。
 
-移行元 -> 移行先
+![](https://storage.googleapis.com/epics-bucket/solv/assets/switch/solv-switch-outgoing.png)
 
-という順番で実行します。
+無事に Active ノードが Inactive ノードに切り替わりました！
 
-それでは、移行元と移行先に接続しているターミナルをそれぞれ開いた状態で、以下の手順に従って移行を行います。
-
-## solv change の実行 (Active ノード)
-
-```bash
-$ solv change
-```
-
-移行先の IP アドレスを入力してください。
-y を選択すると、移行が開始されます。
-移行完了後、素早く Inactive ノードに移動して、
-`solv change` コマンドを実行してください。
-
-## solv change の実行 (Inactive ノード)
-
-```bash
-$ solv change
-```
-
-これで、ノードの移行が完了しました。
-
-```bash
-$ solv monitor
-```
-
-を実行すると、
-移行先ノードが最新のブロックに追いついていることを確認できます。
+これでスペアサーバーを削除しても問題ありません。
 
 ## EpicsDAO Discord チャンネル
 

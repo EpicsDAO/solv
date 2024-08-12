@@ -13,6 +13,7 @@ export const SOLANA_PATH = '/home/solv/.local/share/solana/install'
 // Solana Key Names
 export const IDENTITY_KEY = 'identity.json'
 export const UNSTAKED_KEY = 'unstaked-identity.json'
+export const RELAYER_KEY = 'relayer-keypair.json'
 export const MAINNET_VALIDATOR_KEY = 'mainnet-validator-keypair.json'
 export const MAINNET_VALIDATOR_VOTE_KEY = 'mainnet-vote-account-keypair.json'
 export const MAINNET_VALITATOR_AUTHORITY_KEY = 'mainnet-authority-keypair.json'

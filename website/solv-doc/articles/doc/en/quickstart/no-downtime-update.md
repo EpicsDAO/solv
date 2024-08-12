@@ -1,107 +1,59 @@
 ---
 id: quickstart-no-downtime-update
 title: No Downtime Update
-description: Update solv without downtime - Open Source Solana Validator Tool
+description: Quick Start Guide for Solv, an open-source tool for Solana validators - No Downtime Update
 ---
 
-## Validator Node Downtime Requirements for Solana Network Stability
+Minimizing downtime for validator nodes is crucial for maintaining the stability of the Solana network. Solv v4 introduces a new command that enables node migration without downtime.
 
-Maintaining uptime for validator nodes is crucial for ensuring the stability of the Solana network. With Solv v4, we have introduced a new command to support zero-downtime migration for validator nodes.
+As of August 2024, the `solv switch` command has been added to make the process even more user-friendly. The traditional `solv change` command has been replaced by `solv switch` and will be deprecated in the future.
 
-Performing zero-downtime migrations during daily updates helps keep validator scores high, increases reliability, and contributes to the stability of the Solana network.
-This is also effective for moving validator nodes, whether strategically or in emergencies, allowing seamless migrations without downtime, thereby enhancing the stability of validator operations.
+With `solv change`, it was necessary to execute commands on both the source and destination nodes. However, with `solv switch`, node migration is completed by executing the command on only one node.
 
-## Preparation
+This no-downtime migration feature is important not only for routine updates but also for maintaining a high validator score and enhancing reliability. It contributes to the stability of the Solana network.
 
-Ensure that both the source and destination nodes are operating normally.
-The source node that is currently voting will be referred to as Active, and the destination node that is not yet voting will be referred to as Inactive.
+Furthermore, in cases of validator node relocation, the ability to migrate without downtime ensures more stable validator operations, whether in strategic or emergency situations.
 
-To migrate using the solv change command, the following conditions must be met:
+# How to Use the Solv Switch Command
 
-- The Solana validator node must be running on Solv v4.
-  (It is possible to migrate from versions earlier than Solv v4; please contact us on Discord for more details.)
+The `solv switch` command is essential for supporting no-downtime migration of validator nodes.  
+Before executing this command, ensure that both the source and destination nodes are operating normally.
 
-- The node must be caught up to the latest block using solv catchup.
+The `solv switch` command has two modes:
 
-- SSH connections must be possible from the source (Active) to the destination (Inactive) node.
+- **Incoming**: Switch from the source node to the destination node
+- **Outgoing**: Switch from the destination node back to the source node
 
-- SSH connections from the destination (Inactive) to the source (Active) node (not mandatory but recommended for key replacement).
+By using these modes appropriately, you can smoothly migrate nodes.
 
-Below are the steps to follow when you have one node already running and need to set up a second node.
+This document explains a typical Solana version upgrade procedure as an example:
 
-## YouTube Tutorial
+1. Execute the `solv switch` Incoming mode from the inactive node.
+2. Update Solana's version and restart.
+3. Execute the `Outgoing` mode from the now-active node to return to the original state.
 
-You can check out the detailed steps by watching the YouTube tutorial linked below.
+The `solv switch` command can be utilized in various scenarios, such as switching between active and spare nodes,  
+moving validator nodes, and updating Solana versions.
 
-https://youtu.be/t4KHXqguTi8?si=HI0YJ0pKB72s671t
+## Prerequisites
 
-## Setting Up a New Node (Inactive Node)
+Ensure that both the source and destination nodes are operating normally.  
+In this explanation, the source node performing the voting is referred to as Active, and the destination node not yet performing the voting is referred to as Inactive.
 
-Set up a new node and start it with Solv v4.
+To migrate using the `solv switch` command, the following conditions must be met:
 
-```bash
-$ solv setup
-Setting up Solana Validator ...
-? Which solv types do you want to setup? (Use arrow keys)
-  TESTNET_VALIDATOR
-❯ MAINNET_VALIDATOR
-  RPC_NODE
-```
+- The node must be a Solana validator node started with Solv v4 or later.
+- The node must be caught up with the latest block using `solv catchup`.
+- SSH connection must be possible from the source (Active) to the destination (Inactive) for Outgoing mode.
+- SSH connection must be possible from the destination (Inactive) to the source (Active) for Incoming mode.
 
-Select the type of Solv setup.
-Then, select the Solana client.
+The following describes the steps for when one node is already operational, and a second node is being newly launched.
 
-```bash
-? Which mainnet mode do you want to setup?
-  SolanaClient
-❯ JitoMev
-  Firedancer
-JITO MEV Setup Mode on!
-? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
-```
+## Setting Up SSH Connection (Inactive Node)
 
-When prompted to set up as a dummy node, select y.
+Download the key from the Active node and set it up on the new node.
 
-```bash
-? Enter commission bps 1000
-? Select region (Use arrow keys)
-❯ Amsterdam
-  Frankfurt
-  NewYork
-  Tokyo
-```
-
-Set the commission bps and region.
-
-```bash
-? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
-```
-
-Confirm whether to set up Jito Relayer as needed. This setup requires at least 512GB of RAM.
-
-```bash
-? What is your commission rate? You can change it later (default: 10%)
-```
-
-Set the commission rate.
-
-```bash
-? Enter swap size to create in MB: (256000)
-```
-
-Set the swap size.
-
-After the initial setup, stop the node to replace the keys from the source node.
-
-```bash
-$ solv stop
-```
-
-## Setting Up SSH Connections (Inactive Node)
-
-Set up SSH connections from the destination node to the source node.
-
-Generate an SSH Key Pair on the new node.
+First, configure the SSH key on the destination node.
 
 ```bash
 $ solv scp init
@@ -114,47 +66,92 @@ Your identification has been saved in /home/solv/.ssh/id_rsa
 Your public key has been saved in /home/solv/.ssh/id_rsa.pub
 ```
 
-Display the generated public key.
+Then display the SSH public key.
 
 ```bash
 $ solv scp cat
-Your SSH Public Key is:
-
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ3EBp0IWcg9VvyKanqL+FiL4IY6u8mtrmarZrU25IzVTFxCNEnOeMzvUOnnWpIVJeVfJZSi0obrM8+emifGmHP1/qo4RNyo9RJnUpfdAfjHan0/tQ4lg4OHaKLWXm2d+snrSvLhIRUqevvbSHkrw4d/ZnpX4xTWbJ6tG1BUEX2J2kDDzHrPXmY4/hpJe0Ummd73bqB13p0uyts6E+inbIiV4OctQxXG5CTGKrudjIHjQXfe60I00USMp8yWFHNEs0D10kJGs+B0866pGEENWXCfD8NLn1zaDTj0MBv9RUlyIrOWbp8N+bgItm4nR/jpvRmerpGOxwVpaiz+d2Fr0qEPT+tW6SHeyjdiUiqVq2unIkqlAYyj2gyhSFwDDKELd0gYLnJ8L4Je73m/CqnLliyDwONwNYwBFB8uNQD/3LVNUaTP+Vucu8UWR8uDYsb11Cclvc3Lcikfic09tMHMw2Nnt/JnPoVDOFJJIWmLb/qgPmeDTbUy+DkC2pYsiJQ4S7PEWxJpTLFrQcIXPeQ3NCekYAo6EU9KJ3rJo6tkMlRB7ZBBxG7ezQ5tFMb8TBIqE+TVKxSvV/bSE3F8DZz/6S166Scd3+jhgmlrCIJ3cUaiFstUYOfL5qBB4lhzGPpOj+rjTN2/GqJGelw431SIMfhLeo0fzRzIBWSSYwzuMpHw== solv@c3-large-x86-ash-1
 ```
 
-Copy this public key.
+Copy the displayed content.
 
-## SSH Connection Setup on the Source Node (Active Node)
+## Transferring the Key (Active Node)
 
-Set up SSH connections from the source node to the destination node to replace the keys.
-
-Add the copied public key on the source node.
+Next, connect to the Active node and add the SSH public key to the destination node.
 
 ```bash
 $ solv scp create
 ? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
 ```
 
-Paste the copied public key.
+Paste the public key you copied earlier.
 
-## Replacing Keys on the Destination Node (Inactive Node)
+## Launching the New Node (Inactive Node)
 
-Replace the keys on the new node with the keys from the source node. Execute the following command to download the keys from the source node.
-Enter the IP address of the source node.
+Then, connect to the destination node to download the key from the Active node and execute the following command.
 
 ```bash
-solv scp download
+$ solv scp download
 ? Enter your Ubuntu Server IP x.x.x.x
 ✔︎ Downloading mainnet-validator-keypair.json
 ✔︎ Downloading mainnet-vote-account-keypair.json
 ✔︎ Downloading mainnet-authority-keypair.json
 ```
 
-After replacing the keys, start the new node that was previously stopped.
+Now, launch the new node at the destination.
 
 ```bash
-$ solv start
+$ solv setup
+Setting up Solana Validator ...
+? Which solv types do you want to setup? (Use arrow keys)
+  TESTNET_VALIDATOR
+❯ MAINNET_VALIDATOR
+  RPC_NODE
+```
+
+Select the type of Solv.  
+Then, select the Solana client.
+
+```bash
+? Which mainnet mode do you want to setup?
+  SolanaClient
+❯ JitoMev
+  Firedancer
+JITO MEV Setup Mode on!
+? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
+```
+
+You will be asked interactively if this is a dummy node, select y.
+
+```bash
+? Enter commission bps 1000
+? Select region (Use arrow keys)
+❯ Amsterdam
+  Frankfurt
+  NewYork
+  Tokyo
+```
+
+Set the bps commission and region.
+
+```bash
+? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
+```
+
+You will be asked if you want to set up Jito Relayer. Select y if needed.  
+This setup requires at least 512GB of RAM.
+
+```bash
+? What is your commission rate? You can change it later (default: 10%)
+```
+
+Set the commission rate.
+
+This completes the launch of the new node.
+
+Check the logs to ensure it is running properly.
+
+```bash
+$ solv log
 ```
 
 Wait for the new node to catch up to the latest block.
@@ -163,95 +160,86 @@ Wait for the new node to catch up to the latest block.
 $ solv monitor
 ```
 
-This waiting time depends on the network conditions and typically takes a few hours.
-If the computer specs are low or the network is unstable, it might not catch up. In such cases, recheck the network and specs.
+This waiting time depends on the network situation but usually takes several hours.  
+If your computer's specs are low or the network is unstable, it may not catch up.  
+In such cases, recheck the network or specifications.
 
-If the startup fails, you can retry downloading the snapshot with the following commands.
-
-```bash
-$ solv stop
-$ solv rm:snapshot
-$ solv get snapshot
-$ solv start
-```
-
-Then proceed with the subsequent steps.
-
-## Setting Up SSH Connections (Active Node)
-
-Repeat the SSH setup steps as done for the Inactive node, but from the Active node to the Inactive node.
+You can also redo the snapshot download with the following command.  
+If the startup is not successful, redo the snapshot download.
 
 ```bash
-$ solv scp init
+$ solv restart --rm
 ```
 
-Display the generated public key.
+Proceed with the following steps.
+
+## Executing the Solv Switch Command (Inactive Node)
+
+Execute the Incoming mode of `solv switch`.
 
 ```bash
-$ solv scp cat
-Your SSH Public Key is: xxxxxxxxpubkeyxxxxxxxx
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+❯ Incoming
+  Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
 ```
 
-Copy this public key.
+Enter the IP address of the Active node.
 
-## SSH Connection Setup on the Destination Node (Inactive Node)
+![Incoming Mode](https://storage.googleapis.com/epics-bucket/solv/assets/switch/solv-switch-incoming.png)
 
-Add the copied public key on the destination node.
+The inactive node has successfully switched to the active node!
+
+## Updating Solana Version and Restart
+
+After switching with `solv switch`, if the Solana version of the node that switched from Active to Inactive is not the latest,  
+update the Solana version and restart with the following command.
 
 ```bash
-$ solv scp create
-? Enter your SSH Public Key (xxxxxxxpubkeyxxxxxxxx)
+$ solv update && solv update -b
 ```
 
-Paste the copied public key.
-
-## SSH Connection from Source to Destination Node (Active Node)
-
-SSH from the source node to the destination node.
+This updates the node's Solana version to the latest and restarts it.  
+To manually update the version, execute the following command.
 
 ```bash
-$ ssh solv@<destination node IP address>
+$ solv update --config
+$ solv i
 ```
 
-If the connection is successful, the SSH connection setup from the source node to the destination node is complete.
+This command updates the Solana version to the latest but does not restart it.
 
-## Node Migration
-
-Perform the migration from the source node to the destination node. Ensure both nodes are operating normally.
+Wait until the Slot is up to date.
 
 ```bash
-$ solv monitor
-Run the solv change command in the order of source node -> destination node.
+$ solv catchup
 ```
 
-Open terminals for both nodes and follow the steps below for migration.
+Once you have caught up to the latest Slot, return to the previous node and execute the `Outgoing` mode of `solv switch`.
 
-## Executing solv change (Active Node)
+## Executing the Solv Switch Command (Active Node)
+
+Execute the Outgoing mode of `solv switch`.
 
 ```bash
-$ solv change
+$ solv switch
+? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
+  Incoming
+❯ Outgoing
+? What is the IP address of the new validator? (1.1.1.1)
 ```
 
-Enter the IP address of the destination node.
-Select y to start the migration.
-After the migration is complete, quickly switch to the Inactive node and execute the solv change command.
+Enter the IP address of the Inactive node.
 
-## Executing solv change (Inactive Node)
+![Outgoing Mode](https://storage.googleapis.com/epics-bucket/solv/assets/switch/solv-switch-outgoing.png)
 
-```bash
-$ solv change
-```
+The active node has successfully switched to the inactive node!
 
-This completes the node migration.
+You can now safely remove the spare server.
 
-```bash
-$ solv monitor
-```
+## EpicsDAO Discord Channel
 
-Running the command above will show that the destination node is caught up to the latest block.
+If you have any questions, please contact us on the EpicsDAO `solv` channel.
 
-## EpicsDAO Discord
-
-If you have any questions, please contact us in the EpicsDAO Solv channel on Discord.
-
-https://discord.gg/yxm5hJqRhg
+[https://discord.gg/yxm5hJqRhg](https://discord.gg/yxm5hJqRhg)
