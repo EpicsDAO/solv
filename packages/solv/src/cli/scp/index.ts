@@ -8,7 +8,6 @@ import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
-import { spawnSync } from 'child_process'
 import uploadVS from './uploadVS'
 
 export type UploadOptions = {
@@ -23,8 +22,13 @@ export const scpCommands = (solvConfig: ConfigParams) => {
   scp
     .command('download')
     .alias('dl')
+    .option('--ip <ip>', 'Download Key to a Specific IP Address', '')
     .description('Export Solana Validator Keypair')
-    .action(async () => {
+    .action(async (options: UploadOptions) => {
+      if (options.ip) {
+        await download(options.ip)
+        return
+      }
       await download()
     })
 
