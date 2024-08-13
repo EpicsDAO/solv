@@ -6,17 +6,21 @@ import { homedir } from 'os'
 import { executeSCP } from './executeSCP'
 import { RELAYER_KEY, UNSTAKED_KEY } from '@/config/constants'
 
-export const download = async () => {
-  const answer = await inquirer.prompt<{ ip: string }>([
-    {
-      type: 'input',
-      name: 'ip',
-      message: 'Enter your Ubuntu Server IP',
-      default() {
-        return '1.1.1.1'
+export const download = async (ip = '') => {
+  let migrateIP = ip
+  if (ip === '') {
+    const answer = await inquirer.prompt<{ ip: string }>([
+      {
+        type: 'input',
+        name: 'ip',
+        message: 'Enter your Ubuntu Server IP',
+        default() {
+          return '1.1.1.1'
+        },
       },
-    },
-  ])
+    ])
+    migrateIP = answer.ip
+  }
   const solanaKeys = Object.values(getAllKeyPaths())
   const homeDirectory = homedir()
   const keyDir = homeDirectory.includes('/home/solv')
@@ -34,9 +38,9 @@ export const download = async () => {
     let fileName = splits[splits.length - 1]
     fileName = homeDirectory.includes('/home/solv')
       ? fileName
-      : fileName.replace('.json', `-${answer.ip}.json`)
+      : fileName.replace('.json', `-${migrateIP}.json`)
     const filePath = `${keyDir}/${fileName}`
-    const result = executeSCP(answer.ip, key, filePath, isDownload)
+    const result = executeSCP(migrateIP, key, filePath, isDownload)
     if (result) {
       console.log(`Successfully Exported - ${filePath} 🎉`)
     }

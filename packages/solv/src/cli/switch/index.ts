@@ -10,42 +10,71 @@ import {
 } from '@/config/constants'
 import { changeIdentityOutgoing } from './changeIdentityOutgoing'
 import { checkSSHConnection } from '../scp/checkSSHConnection'
+import chalk from 'chalk'
+
+type SwitchType = 'Incoming' | 'Outgoing' | ''
+const SWITCH_TYPES: SwitchType[] = ['Incoming', 'Outgoing']
+
+type SwitchOptions = {
+  switchType: SwitchType
+  ip: string
+}
 
 export const switchCommand = async (program: Command, config: ConfigParams) => {
   program
     .command('switch')
+    .option('--ip <ip>', 'IP Address of the New Validator', '')
+    .option('--switchType <switchType>', 'Switch Type', '')
     .description('Switch Validator Identity with No Downtime(Mainnet Only)')
-    .action(async () => {
+    .action(async (options: SwitchOptions) => {
       const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
       const keyPath = isTestnet
         ? TESTNET_VALIDATOR_KEY_PATH
         : MAINNET_VALIDATOR_KEY_PATH
       const pubkey = getSolanaAddress(keyPath)
-      const answer = await inquirer.prompt<{ switchType: string; ip: string }>([
-        {
-          name: 'switchType',
-          type: 'list',
-          message: 'Which switch type do you want to perform?※Mainnet Only',
-          choices: ['Incoming', 'Outgoing'],
-        },
-        {
-          name: 'ip',
-          type: 'input',
-          message: 'What is the IP address of the new validator?',
-          default() {
-            return '1.1.1.1'
+      let switchType = options.switchType
+      let ip = options.ip
+      if (switchType === '' || ip === '') {
+        const answer = await inquirer.prompt<{
+          switchType: SwitchType
+          ip: string
+        }>([
+          {
+            name: 'switchType',
+            type: 'list',
+            message: 'Which switch type do you want to perform?※Mainnet Only',
+            choices: ['Incoming', 'Outgoing'],
           },
-        },
-      ])
-      const result = checkSSHConnection(answer.ip)
+          {
+            name: 'ip',
+            type: 'input',
+            message: 'What is the IP address of the new validator?',
+            default() {
+              return '1.1.1.1'
+            },
+          },
+        ])
+        switchType = answer.switchType
+        ip = answer.ip
+      }
+      if (!SWITCH_TYPES.includes(switchType)) {
+        console.log(
+          chalk.yellow(
+            '⚠️ Invalid Switch Type\nYou can choose only Incoming or Outgoing',
+          ),
+        )
+        return
+      }
+
+      const result = checkSSHConnection(ip)
       if (!result) {
         console.log('SSH Connection Failed')
         return
       }
-      if (answer.switchType === 'Incoming') {
-        await changeIdentityIncoming(answer.ip, pubkey)
+      if (switchType === 'Incoming') {
+        await changeIdentityIncoming(ip, pubkey)
       } else {
-        await changeIdentityOutgoing(answer.ip, pubkey)
+        await changeIdentityOutgoing(ip, pubkey)
       }
     })
 }
