@@ -49,3 +49,11 @@ export const AGAVE_VALIDATOR = 'agave-validator'
 // VS Upload Endpoint
 export const VS_UPLOAD_ENDPOINT =
   'https://verify.validators.solutions/solv-migrate'
+
+export const DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY =
+  'ELLB9W7ZCwRCV3FzWcCWoyKP6NjZJKArLyGtkqefnHcG'
+
+export const EPOCH_TIMER_FILE_PATH = '/home/solv/currentEpoch.json'
+export const MINIMUM_VALIDATOR_BALANCE = 0.5
+export const SOLANA_TESTNET_RPC_URL = 'https://api.testnet.solana.com'
+export const SOLANA_MAINNET_RPC_URL = 'https://api.mainnet-beta.solana.com'

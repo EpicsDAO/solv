@@ -43,13 +43,24 @@ export const changeIdentityOutgoing = async (ip: string, pubkey: string) => {
 
   // Set the identity on the identity key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
-  spawnSync(
+  const output = spawnSync(
     `ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no solv@${ip} -p 22 'cd ~ && source ~/.profile && solana-validator -l ${LEDGER_PATH} set-identity --require-tower ${MAINNET_VALIDATOR_KEY_PATH} && ln -sf ${MAINNET_VALIDATOR_KEY_PATH} ${IDENTITY_KEY_PATH}'`,
     {
       shell: true,
-      stdio: 'inherit',
+      stdio: 'pipe',
     },
   )
+  if (output.stdout.includes('failed') || output.stdout.includes('failed')) {
+    console.log(
+      chalk.red(`🔴 Error setting identity on the new validator
 
-  console.log(chalk.white('🟢 Identity changed successfully!'))
+Please run following command:
+
+$ ln -sf ${MAINNET_VALIDATOR_KEY_PATH} ${IDENTITY_KEY_PATH}
+$ ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no solv@${ip} -p 22 'cd ~ && source ~/.profile && solv stop && solv start'`),
+    )
+    console.log(chalk.red(output.stdout.toString()))
+  } else {
+    console.log(chalk.white('🟢 Identity changed successfully!'))
+  }
 }
