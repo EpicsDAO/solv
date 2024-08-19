@@ -39,6 +39,7 @@
     "@changesets/cli": "2.27.1",
     "@skeet-framework/discord-utils": "0.2.14",
     "@skeet-framework/utils": "1.2.4",
+    "@swc/core": "^1.7.12",
     "@types/node": "20.11.16",
     "@types/node-fetch": "2.6.11",
     "@typescript-eslint/eslint-plugin": "6.21.0",
@@ -52,7 +53,8 @@
     "husky": "^9.1.4",
     "nodemon": "3.0.3",
     "prettier": "3.2.5",
-    "tsx": "4.7.1",
+    "tsup": "8.2.4",
+    "tsx": "4.8.1",
     "turbo": "2.0.12",
     "typescript": "5.3.3"
   },
