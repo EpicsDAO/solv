@@ -25,6 +25,6 @@
     }
   },
   "compileOnSave": true,
-  "include": ["src/*", "src/**/*", "build.ts", "vitest.config.ts"],
+  "include": ["src/*", "src/**/*", "vitest.config.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

@@ -8,8 +8,9 @@ import { showConfig } from './showConfig'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { getSnapshot } from './snapshot'
 import { NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
-import { spawnSync } from 'node:child_process'
+import { execSync, spawnSync } from 'node:child_process'
 import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
+import chalk from 'chalk'
 
 export const getCommands = (solvConfig: ConfigParams) => {
   const { locale, config } = solvConfig
@@ -24,6 +25,15 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .action(() => {
       const epoch = getEpoch()
       console.log({ epoch })
+    })
+
+  get
+    .command('ip')
+    .description(`Show Validator's IP Address`)
+    .action(() => {
+      const cmd = `curl ifconfig.me`
+      const { stdout } = spawnSync(cmd, { shell: true, stdio: 'pipe' })
+      console.log(chalk.white(`${stdout}`))
     })
 
   get
