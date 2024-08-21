@@ -1,8 +1,8 @@
 import fs from 'fs'
 import { promisify } from 'util'
+import { execSync } from 'child_process'
 
 const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
 const access = promisify(fs.access)
 
 const path = '/etc/sysctl.conf'
@@ -14,7 +14,7 @@ net.core.rmem_max=134217728
 net.core.wmem_max=134217728
 
 # set minimum, default, and maximum tcp buffer sizes (10k, 87.38k (linux default), 128MB resp)
-net.ipv4.ttcp_rmem=10240 87380 134217728
+net.ipv4.tcp_rmem=10240 87380 134217728
 net.ipv4.tcp_wmem=10240 87380 134217728
 
 # Enable TCP westwood for kernels greater than or equal to 2.6.13
@@ -47,7 +47,9 @@ async function updateSysctlConfig(): Promise<void> {
     // Append new configuration
     updatedConfig += `\n${sysconfig}\n`
 
-    await writeFile(path, updatedConfig, 'utf8')
+    // Write to the file using execSync and sudo tee
+    execSync(`echo "${updatedConfig}" | sudo tee ${path} > /dev/null`)
+    execSync('sudo sysctl -p')
     console.log('sysctl.conf updated successfully')
   } catch (err) {
     console.error(`Error: ${err}`)
