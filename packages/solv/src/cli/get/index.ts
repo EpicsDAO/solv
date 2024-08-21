@@ -31,7 +31,7 @@ export const getCommands = (solvConfig: ConfigParams) => {
     .command('ip')
     .description(`Show Validator's IP Address`)
     .action(() => {
-      const cmd = `curl ifconfig.me`
+      const cmd = `curl ipinfo.io/ip`
       const { stdout } = spawnSync(cmd, { shell: true, stdio: 'pipe' })
       console.log(chalk.white(`${stdout}`))
     })
