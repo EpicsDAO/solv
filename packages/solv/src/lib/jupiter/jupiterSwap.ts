@@ -1,5 +1,5 @@
 import { sendPost } from '@skeet-framework/utils'
-import { Connection, PublicKey, VersionedTransaction } from '@solana/web3.js'
+import { Connection, VersionedTransaction } from '@solana/web3.js'
 import { Keypair } from '@solana/web3.js'
 import { SwapTransaction } from './jupiterResponse'
 import { JUP_URL, SOLV_POOL_MANAGER_ADDRESS } from '@/config/config'
@@ -36,10 +36,16 @@ export const jupiterSwap = async (
     transaction.sign([fromWallet])
 
     const rawTransaction = transaction.serialize()
-    const txid = await connection.sendRawTransaction(rawTransaction, {
-      skipPreflight: true,
-      maxRetries: 2,
-    })
+    let txid = ''
+    try {
+      txid = await connection.sendRawTransaction(rawTransaction, {
+        skipPreflight: true,
+        maxRetries: 2,
+      })
+    } catch (error) {
+      console.log(`sendRawTransaction: ${error}`)
+      return { signature: null }
+    }
     console.log(`Swapping...`)
     await connection.confirmTransaction(txid, 'finalized')
     console.log(`https://solscan.io/tx/${txid}`)

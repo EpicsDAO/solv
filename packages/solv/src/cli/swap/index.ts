@@ -22,10 +22,9 @@ export const swapCommands = (solvConfig: ConfigParams) => {
     .option('-k, --key <key>', 'Path to Wallet Key File')
     .description('Swap Solana Tokens')
     .action(async (options: SwapOptions) => {
-      console.log(chalk.blue('✨ Coming Soon...!'))
+      console.log('Swap Command')
       return
-      // console.log('Swap Command')
-      // let keyPath = options.key || mainnetValidatorAuthorityKey
+      // let keyPath = options.key || ''
       // const inputMint = USDC_MINT_ADDRESS
       // const outputMint = SOL_MINT_ADDRESS
       // const inputAmount = 1 * DECIMALS[inputMint]
@@ -37,7 +36,7 @@ export const swapCommands = (solvConfig: ConfigParams) => {
       // if (!quoteResponse) {
       //   return
       // }
-      // console.log(inspect(quoteResponse, false, null, true))
+      // // console.log(inspect(quoteResponse, false, null, true))
 
       // const fromWalletKey = JSON.parse(
       //   await readFile(keyPath, 'utf8'),

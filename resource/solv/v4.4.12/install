@@ -1,0 +1,132 @@
+#/bin/bash
+
+# Constants and configurable variables
+NODE_VERSION=20.16.0
+
+# This ensures the entire script is downloaded
+{
+set -e  # exit immediately if a command exits with a non-zero status
+
+usage() {
+    cat 1>&2 <<EOF
+Custom Install Script
+Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
+installs pnpm, node $NODE_VERSION, and sets it as the global version.
+Additionally, installs the @epics-dao/solv package globally.
+
+USAGE:
+    custom-install-script.sh [FLAGS]
+
+FLAGS:
+    -h, --help              Prints help information
+EOF
+}
+
+create_user() {
+    if getent passwd solv >/dev/null 2>&1; then
+        echo "User 'solv' already exists, skipping..."
+    else
+        echo "Creating user 'solv'..."
+        sudo adduser solv
+        sudo usermod -aG sudo solv
+    fi
+}
+
+install_docker() {
+    echo "Installing Docker..."
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce -y
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo usermod -aG docker solv
+}
+
+
+setup_firewall() {
+    echo "Configuring firewall"
+    echo "yes" | sudo ufw enable
+    sudo ufw allow ssh
+    sudo ufw allow 53 
+    sudo ufw allow 8899
+    sudo ufw allow 8899/udp
+    sudo ufw allow 8899/tcp
+    sudo ufw allow 8000:8898/udp
+    sudo ufw allow 8000:8898/tcp
+    sudo ufw allow 8900:10000/tcp
+    sudo ufw allow 8900:10000/udp
+    sudo ufw reload
+    sudo apt install fail2ban -y
+}
+
+install_rustup() {
+    sudo su - solv <<EOF_SOLV
+        echo "Installing rustup..."
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        echo 'export PATH="\$HOME/.cargo/env:\$PATH"' >> ~/.profile
+        source ~/.cargo/env
+        rustup component add rustfmt
+        rustup update
+EOF_SOLV
+}
+
+install_pnpm_and_packages() {
+    sudo su - solv <<EOF_SOLV
+        echo "Installing pnpm..."
+        curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+        echo "Setting pnpm environment variables..."
+        PNPM_HOME="/home/solv/.local/share/pnpm"
+        export PNPM_HOME
+        PATH="\$PNPM_HOME:\$PATH"
+        export PATH
+        echo 'export PNPM_HOME="\$HOME/.local/share/pnpm"' >> ~/.profile
+        echo 'export PATH="\$PNPM_HOME:\$PATH"' >> ~/.profile
+
+        echo "Sourcing ~/.bashrc in case it's needed..."
+        if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
+
+        echo "Installing node $NODE_VERSION..."
+        pnpm env use $NODE_VERSION --global
+
+        echo "Installing @epics-dao/solv..."
+        pnpm add -g @epics-dao/solv
+
+        echo "Sourcing ~/.profile in case it's needed..."
+        if [ -f ~/.profile ]; then source ~/.profile; fi
+
+        # Use the full path to solv if it's not found
+        /home/solv/.local/share/pnpm/solv i
+        /home/solv/.local/share/pnpm/solv get aa
+EOF_SOLV
+}
+
+
+
+main() {
+    for arg in "$@"; do
+      case "$arg" in
+        -h|--help)
+          usage
+          exit 0
+          ;;
+        *)
+          ;;
+      esac
+    done
+
+    create_user
+    setup_firewall
+    install_docker
+    install_rustup
+    install_pnpm_and_packages
+    echo "Enter solv user password 👇"
+    su solv
+}
+
+main "$@"
+
+} # this ensures the entire script is downloaded

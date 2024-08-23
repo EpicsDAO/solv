@@ -72,9 +72,9 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
         return
       }
       if (switchType === 'Incoming') {
-        await changeIdentityIncoming(ip, pubkey)
+        await changeIdentityIncoming(ip, pubkey, isTestnet)
       } else {
-        await changeIdentityOutgoing(ip, pubkey)
+        await changeIdentityOutgoing(ip, pubkey, isTestnet)
       }
     })
 }
