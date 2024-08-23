@@ -26,11 +26,14 @@ export const changeIdentityOutgoing = async (
   console.log(
     chalk.white('🟢 Checking If Destination Identity Key is the same...'),
   )
-  const localValidatorIdentityAddress = getSolanaAddress(validatorKeyPath)
+  const localValidatorIdentityAddress =
+    getSolanaAddress(validatorKeyPath).trim()
   const destinationValidatorIdentityAddress = scpSSH(
     ip,
     `solana-keygen pubkey ${validatorKeyPath}`,
-  ).stdout.toString()
+  )
+    .stdout.toString()
+    .trim()
 
   if (localValidatorIdentityAddress !== destinationValidatorIdentityAddress) {
     console.log(
