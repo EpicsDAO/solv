@@ -25,7 +25,7 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
     .command('switch')
     .option('--ip <ip>', 'IP Address of the New Validator', '')
     .option('--switchType <switchType>', 'Switch Type', '')
-    .description('Switch Validator Identity with No Downtime(Mainnet Only)')
+    .description('Switch Validator Identity with No Downtime')
     .action(async (options: SwitchOptions) => {
       const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
       const keyPath = isTestnet
@@ -42,7 +42,7 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
           {
             name: 'switchType',
             type: 'list',
-            message: 'Which switch type do you want to perform?※Mainnet Only',
+            message: 'Which switch type do you want to perform?',
             choices: ['Incoming', 'Outgoing'],
           },
           {
