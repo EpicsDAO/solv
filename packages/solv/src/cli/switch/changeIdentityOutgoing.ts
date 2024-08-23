@@ -1,5 +1,6 @@
 import {
   IDENTITY_KEY,
+  IDENTITY_KEY_PATH,
   LEDGER_PATH,
   MAINNET_VALIDATOR_KEY_PATH,
   SOLV_HOME,
@@ -10,6 +11,7 @@ import { join } from 'path'
 import chalk from 'chalk'
 import scpSSH from '@/lib/scpSSH'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
+import { spawnSync } from 'node:child_process'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
 const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
@@ -38,7 +40,7 @@ export const changeIdentityOutgoing = async (
   if (localValidatorIdentityAddress !== destinationValidatorIdentityAddress) {
     console.log(
       chalk.yellow(
-        `⚠️ Destination Identity Key is different. Please check your Validator\n$ ssh solv@${ip}\n\nLocal Identity Key: ${localValidatorIdentityAddress}\nDestination Identity Key: ${destinationValidatorIdentityAddress}`,
+        `⚠️ Destination Identity Key is different. Please check your Validator\n\nLocal Identity Key: ${localValidatorIdentityAddress}\nDestination Identity Key: ${destinationValidatorIdentityAddress}`,
       ),
     )
     return
@@ -46,11 +48,11 @@ export const changeIdentityOutgoing = async (
 
   console.log(chalk.white('🟢 Waiting for restart window...'))
   const restartWindowCmd = `${solanaClient} -l ${LEDGER_PATH} wait-for-restart-window --min-idle-time 2 --skip-new-snapshot-check`
-  const result1 = scpSSH(ip, restartWindowCmd)
+  const result1 = spawnSync(restartWindowCmd, { shell: true, stdio: 'pipe' })
   if (result1.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ wait-for-restart-window Failed. Please check your Validator\n$ ssh solv@${ip}\n\nFailed Cmd: ${restartWindowCmd}`,
+        `⚠️ wait-for-restart-window Failed. Please check your Validator\n\nFailed Cmd: ${restartWindowCmd}`,
       ),
     )
     return
@@ -59,11 +61,11 @@ export const changeIdentityOutgoing = async (
   // Set the identity to the unstaked key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const setIdentityCmd = `${solanaClient} -l ${LEDGER_PATH} set-identity ${unstakedKeyPath}`
-  const result2 = scpSSH(ip, setIdentityCmd)
+  const result2 = spawnSync(setIdentityCmd, { shell: true, stdio: 'pipe' })
   if (result2.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ set-identity Failed. Please check your Validator\n$ ssh solv@${ip}\n\nFailed Cmd: ${setIdentityCmd}`,
+        `⚠️ set-identity Failed. Please check your Validator\n\nFailed Cmd: ${setIdentityCmd}`,
       ),
     )
     return
@@ -74,11 +76,11 @@ export const changeIdentityOutgoing = async (
     chalk.white('🟢 Changing the Symlink to the new validator keypair...'),
   )
   const symlinkCmd = `ln -sf ${unstakedKeyPath} ${identityKeyPath}`
-  const result3 = scpSSH(ip, symlinkCmd)
+  const result3 = spawnSync(symlinkCmd, { shell: true, stdio: 'pipe' })
   if (result3.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Symlink Failed. Please check your Validator\n$ ssh solv@${ip}\n\nFailed Cmd: ${symlinkCmd}`,
+        `⚠️ Symlink Failed. Please check your Validator\n\nFailed Cmd: ${symlinkCmd}`,
       ),
     )
     return
@@ -89,11 +91,11 @@ export const changeIdentityOutgoing = async (
     chalk.white('🟢 Uploading the tower file to the new validator...'),
   )
   const cpTowerCmd = `scp ${LEDGER_PATH}/tower-1_9-${pubkey}.bin solv@${ip}:${LEDGER_PATH}`
-  const result4 = scpSSH(ip, cpTowerCmd)
+  const result4 = spawnSync(cpTowerCmd, { shell: true, stdio: 'pipe' })
   if (result4.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Upload Tower File Failed. Please check your Validator\n$ ssh solv@${ip}\n\nFailed Cmd: ${cpTowerCmd}`,
+        `⚠️ Upload Tower File Failed. Please check your Validator\n\nFailed Cmd: ${cpTowerCmd}`,
       ),
     )
     return
@@ -101,7 +103,7 @@ export const changeIdentityOutgoing = async (
 
   // Set the identity on the identity key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
-  const setIdentityCmd2 = `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`
+  const setIdentityCmd2 = `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath} && ln -sf ${MAINNET_VALIDATOR_KEY_PATH} ${IDENTITY_KEY_PATH}`
   const result5 = scpSSH(ip, setIdentityCmd2)
   if (result5.status !== 0) {
     console.log(
