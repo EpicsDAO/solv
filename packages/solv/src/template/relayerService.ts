@@ -1,5 +1,3 @@
-const KEY_PATH = '/home/solv'
-
 export const relayerService = (blockEngineUrl: string) => {
   const filePath = '/etc/systemd/system/relayer.service'
   const body = `# Example Systemd File for Co-Hosted Relayer
@@ -32,7 +30,7 @@ WantedBy=multi-user.target`
   return { filePath, body }
 }
 
-const jitoRelayerSeparateService = async (blockEngineUrl: string) => {
+export const jitoRelayerSeparateService = (blockEngineUrl: string) => {
   const filePath = '/etc/systemd/system/relayer.service'
   const body = `[Unit]
 Description=Solana transaction relayer
@@ -51,15 +49,16 @@ Restart=on-failure
 Environment=RUST_LOG=info
 Environment=SOLANA_METRICS_CONFIG="host=http://metrics.jito.wtf:8086,db=relayer,u=relayer-operators,p=jito-relayer-write"
 Environment=BLOCK_ENGINE_URL=${blockEngineUrl}
-Environment=RPC_SERVERS=https://grpc.validators.solutions/?api-key=elsouljapan
-Environment=WEBSOCKET_SERVERS=wss://grpc.validators.solutions/ws/?api-key=elsouljapan
-
+Environment=RPC_SERVERS=https://your.rpc.server
+Environment=WEBSOCKET_SERVERS=wss://your.websocket.server
 
 ExecStart=/home/solv/jito-relayer/target/release/jito-transaction-relayer \
           --keypair-path=/home/solv/relayer-keypair.json \
           --signing-key-pem-path=/home/solv/private.pem \
-          --verifying-key-pem-path=/home/solv/public.pem
+          --verifying-key-pem-path=/home/solv/public.pem \
+          --forward-all
 
 [Install]
 WantedBy=multi-user.target`
+  return { filePath, body }
 }

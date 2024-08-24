@@ -26,7 +26,7 @@ export const changeIdentityOutgoing = async (
     : MAINNET_VALIDATOR_KEY_PATH
   const solanaClient = isTestnet ? 'agave-validator' : 'solana-validator'
   console.log(
-    chalk.white('🟢 Checking If Destination Identity Key is the same...'),
+    chalk.white('🟢 Checking If Destination Validator Key is the same...'),
   )
   const localValidatorIdentityAddress =
     getSolanaAddress(validatorKeyPath).trim()

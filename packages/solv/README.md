@@ -37,7 +37,7 @@ solv is an open-source tool designed to simplify the setup and operation of Sola
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.4.5/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.4.12/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```

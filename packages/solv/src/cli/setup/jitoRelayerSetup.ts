@@ -1,8 +1,13 @@
-import { relayerService } from '@/template/relayerService'
+import {
+  jitoRelayerSeparateService,
+  relayerService,
+} from '@/template/relayerService'
 import { execSync, spawnSync } from 'child_process'
-import { writeFile } from 'fs/promises'
 
-export const jitoRelayerSetup = async (blockEngineUrl: string) => {
+export const jitoRelayerSetup = async (
+  blockEngineUrl: string,
+  isCoHost = true,
+) => {
   // Create openssl keypair
   spawnSync('openssl', ['genrsa', '-out', '/home/solv/private.pem'], {
     stdio: 'inherit',
@@ -54,15 +59,17 @@ export const jitoRelayerSetup = async (blockEngineUrl: string) => {
   })
 
   // Create relayer service
-  const { filePath, body } = relayerService(blockEngineUrl)
+  const { filePath, body } = isCoHost
+    ? relayerService(blockEngineUrl)
+    : jitoRelayerSeparateService(blockEngineUrl)
   execSync(`echo "${body}" | sudo tee ${filePath} > /dev/null`)
   spawnSync('sudo', ['systemctl', 'enable', 'relayer'], { stdio: 'inherit' })
-
   spawnSync('sudo', ['systemctl', 'start', 'relayer'], { stdio: 'inherit' })
 
   // Update firewall
   execSync('sudo ufw allow 11228', { stdio: 'inherit' })
   execSync('sudo ufw allow 11229', { stdio: 'inherit' })
+  execSync('sudo ufw allow 11226', { stdio: 'inherit' })
 
   // Update startup script
 }
