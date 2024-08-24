@@ -2,6 +2,7 @@ import { SOLV_TYPES } from '@/config/config'
 import { getKeypairsInfo } from './getKeypairsInfo'
 import chalk from 'chalk'
 import { spawnSync } from 'node:child_process'
+import { IDENTITY_KEY_PATH } from '@/config/constants'
 
 export const showKeypairsInfo = async (solvType: SOLV_TYPES) => {
   const keyInfo = getKeypairsInfo(solvType)
@@ -16,7 +17,7 @@ Address: ${keyInfo.authorityKeyAddress}
 Balance: ${keyInfo.authorityKeyBalance}
 Active Identity:`
   console.log(chalk.white(output))
-  spawnSync(`solana-keygen pubkey identity.json`, {
+  spawnSync(`solana-keygen pubkey ${IDENTITY_KEY_PATH}`, {
     stdio: 'inherit',
     shell: true,
   })

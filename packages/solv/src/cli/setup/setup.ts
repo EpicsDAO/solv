@@ -26,7 +26,6 @@ import { askJitoSetting } from './askJitoSetting'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { updateFirewall } from './updateFirewall'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
-import { getRootFreeSpaceGB } from './setupSwap'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import { createSymLink } from './createSymLink'
 import { getSnapshot } from '../get/snapshot'
@@ -231,8 +230,7 @@ You can only track error logs by running:
 
 $ solv log -e
 
-If you have any questions, please visit our Discord server:
-https://discord.gg/CU6CcXV9en
+EpicsDAO Discord: https://discord.gg/CU6CcXV9en
 `
     console.log(chalk.yellow(warning))
     return true
