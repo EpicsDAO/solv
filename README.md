@@ -87,7 +87,7 @@ Now you only need to connect one server with `solv switch`
 This command has 2 types
 
 You choose the type of switch you want to perform.
-Then put IP address of anothor side of server.
+Then put IP address of another side of server.
 
 - Incoming
   Run at Active Server. Active Validator Identity switches from this server to a remote server.
