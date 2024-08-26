@@ -1,5 +1,68 @@
 # @epics-dao/solv
 
+## 4.4.13
+
+### Patch Changes
+
+- [#259](https://github.com/EpicsDAO/solv/pull/259) [`b449f68`](https://github.com/EpicsDAO/solv/commit/b449f6878501d387fbe2711ba982bcdfc76e31bd) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.7
+
+  If you are using solv MEV mode, ignore this step, It will be automatically updated.
+
+  If you are NOT using solv MEV mode, you need to update with the following command:
+
+  ```bash
+  $ solv update && solv update -b
+  ```
+
+  ## How to use solv mev mode?
+
+  Run the following command:
+
+  ```bash
+  $ solv mev
+  ? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
+  ? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
+  ? Do you want to enable AUTO RESTART? (Recommended) (y/N)
+  ※ Please turn off if you are using no-downtime migration.
+  ? Enter your Discord Webhook URL (https://discord.com/api/webhooks/1234)
+  ```
+
+  1.  Enable solv MEV Mode.
+  2.  Enable AUTO UPDATE.
+  3.  Enable AUTO RESTART.
+      ※ Please turn off if you are using no-downtime migration.
+      ※ No-downtime migration requires spare server and manual restart.
+  4.  Enter your Discord Webhook URL.
+      ※ You can receive notifications about the Solana/solv version update.
+  5.  Enter RPC URL (Mainnet Only)
+  6.  Enter Harvest Account (Mainnet Only)
+
+  ## How to disable solv mev mode?
+
+  Run the following command:
+
+  ```bash
+  $ solv mev
+  ? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
+  ✅ Cron Job successfully removed.
+  ```
+
+  ## Added - solv update --config
+
+  You can now update the solv configuration file with the following command:
+
+  ```bash
+  $ solv update --config
+  ```
+
+  This command will update the default Solana version.
+
+  ## Validator Auto Operation Service
+
+  We are providing a validator auto-operation service for those who want to operate a validator without any hassle.
+
+  Epics DAO Discord: <https://discord.gg/HDTy96Wr2W>
+
 ## 4.4.12
 
 ### Patch Changes
