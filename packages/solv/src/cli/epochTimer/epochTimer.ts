@@ -33,7 +33,6 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   console.log(`Checking Epoch at ${now}`)
   const getD1Epoch = await initOrReadEpochFile()
   const currentEpoch = await getEpochInfo(rpcUrl)
-
   // Check Validator Account's Balance
   await checkBalance(solvConfig)
 

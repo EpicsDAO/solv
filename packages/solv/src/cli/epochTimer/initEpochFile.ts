@@ -3,12 +3,15 @@ import { existsAsync } from '@skeet-framework/utils'
 import { EpochData } from './epochTimer'
 import { readFile, writeFile } from 'fs/promises'
 import chalk from 'chalk'
+import { homedir } from 'os'
 
 const initOrReadEpochFile = async () => {
-  if (await existsAsync(EPOCH_TIMER_FILE_PATH)) {
-    return JSON.parse(
-      await readFile(EPOCH_TIMER_FILE_PATH, 'utf-8'),
-    ) as EpochData
+  const homeDir = homedir()
+  const epochFilePath = homeDir.includes('/home/solv')
+    ? EPOCH_TIMER_FILE_PATH
+    : `./currentEpoch.json`
+  if (await existsAsync(epochFilePath)) {
+    return JSON.parse(await readFile(epochFilePath, 'utf-8')) as EpochData
   }
   const initialData: EpochData = {
     epoch: 0,
@@ -16,11 +19,7 @@ const initOrReadEpochFile = async () => {
     isLessThan8Hours: false,
     isLessThan1Day: false,
   }
-  await writeFile(
-    EPOCH_TIMER_FILE_PATH,
-    JSON.stringify(initialData, null, 2),
-    'utf-8',
-  )
+  await writeFile(epochFilePath, JSON.stringify(initialData, null, 2), 'utf-8')
   console.log(chalk.white('✔️ Initial epoch data has been created!'))
   return initialData
 }

@@ -32,6 +32,7 @@ import { getSnapshot } from '../get/snapshot'
 import setupMount from './setupMount'
 import setupCpuGovernor from './setupCpuGovernor'
 import updateSysctlConfig from '@/template/updateSysctlConfig'
+import agaveInstall from '../install/agaveInstall'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -77,6 +78,9 @@ export const setup = async (solvConfig: ConfigParams) => {
         console.log('Coming soon...')
         return
       }
+    } else {
+      // Install Agave Client as default
+      agaveInstall(solvConfig.config.TESTNET_SOLANA_VERSION)
     }
 
     const askIfDummy = await inquirer.prompt<{ isDummy: boolean }>([

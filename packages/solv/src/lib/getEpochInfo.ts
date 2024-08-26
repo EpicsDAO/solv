@@ -11,10 +11,12 @@ export const getEpochInfo = async (rpcUrl: string) => {
     const connection = new Connection(rpcUrl)
     const epochInfo = await connection.getEpochInfo()
     if (epochInfo.slotsInEpoch === 0) {
+      console.log('hey')
       throw new Error('slotsInEpoch is 0, causing division by zero.')
     }
 
     const timePerSlotSeconds = await getAverageSlotTime(rpcUrl)
+    console.log('timePerSlotSeconds', timePerSlotSeconds)
     const remainingSlots = epochInfo.slotsInEpoch - epochInfo.slotIndex
     const estimatedSecondsUntilNextEpoch = remainingSlots * timePerSlotSeconds
     const displayRatio = (
