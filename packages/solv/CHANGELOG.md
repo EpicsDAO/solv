@@ -1,5 +1,15 @@
 # @epics-dao/solv
 
+## 4.4.14
+
+### Patch Changes
+
+- [#261](https://github.com/EpicsDAO/solv/pull/261) [`e64f0d0`](https://github.com/EpicsDAO/solv/commit/e64f0d0e055c732556f7bb353e14e9f7a39fa357) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
+
+  Fixes `solv epochTimer` for testnet
+
+  Update `solv setup` for RPC to use agave client as default
+
 ## 4.4.13
 
 ### Patch Changes
