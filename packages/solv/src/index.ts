@@ -23,7 +23,6 @@ import {
 import { balanceCommands } from './cli/balance'
 import { rmLogs } from './cli/setup/rmLogs'
 import { rmSnapshot } from './cli/setup/rmSnapshot'
-import { change } from './cli/change'
 import { monitorSolana } from './cli/get/monitorSolana'
 import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
@@ -34,6 +33,7 @@ import { harvestCommands } from './cli/harvest'
 import { swapCommands } from './cli/swap'
 import { epochTimerCommands } from './cli/epochTimer'
 import { switchCommand } from './cli/switch'
+import createSnapshot from './cli/get/createSnapshot'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -93,10 +93,10 @@ async function main() {
       })
 
     program
-      .command('change')
-      .description('Change Identity of Validator to New Validator')
+      .command('create:snapshot')
+      .description('Create Snapshot')
       .action(() => {
-        change()
+        createSnapshot()
       })
 
     program

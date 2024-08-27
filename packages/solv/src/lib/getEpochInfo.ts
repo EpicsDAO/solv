@@ -11,7 +11,6 @@ export const getEpochInfo = async (rpcUrl: string) => {
     const connection = new Connection(rpcUrl)
     const epochInfo = await connection.getEpochInfo()
     if (epochInfo.slotsInEpoch === 0) {
-      console.log('hey')
       throw new Error('slotsInEpoch is 0, causing division by zero.')
     }
 
