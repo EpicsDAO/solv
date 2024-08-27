@@ -29,6 +29,7 @@ export const setupCommands = (solvConfig: ConfigParams) => {
     .option('--vote', 'Setup Vote Account', false)
     .option('--key', 'Setup Validator Keypairs', false)
     .option('--swap', 'Setup Swap', false)
+    .option('--script', 'Update Solana Validator Startup Script', false)
     .action(async (options: SetupOptions) => {
       const config = readOrCreateDefaultConfig()
       if (options.vote) {
