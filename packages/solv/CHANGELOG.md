@@ -1,5 +1,23 @@
 # @epics-dao/solv
 
+## 4.4.15
+
+### Patch Changes
+
+- [#263](https://github.com/EpicsDAO/solv/pull/263) [`1fe901d`](https://github.com/EpicsDAO/solv/commit/1fe901d3830285d28b4f7e71401937e0eada5d0a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv setup --script, solv epochTimer
+
+  - Added `solv setup --script` command to update `start-validator.sh`, remove old snapshot, and restart.
+
+  ```bash
+  solv setup --script
+  ```
+
+  Solana Official Restart Instructions:
+
+  https://github.com/anza-xyz/agave/wiki/2024-08-26-Testnet-Restart
+
+  - Updated `solv epochTimer` to use Rust CLI.
+
 ## 4.4.14
 
 ### Patch Changes
