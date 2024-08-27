@@ -1,5 +1,4 @@
 import { EpochData } from './epochTimer'
-import { EpochInfoType } from '@/lib/getEpochInfo'
 import { spawnSync } from 'child_process'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
@@ -7,11 +6,12 @@ import chalk from 'chalk'
 import randomSleep from './randomSleep'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { NETWORK_TYPES } from '@/config/config'
+import { EpochInfoCLIType } from '@/lib/getEpochInfoByRust'
 
 const lessThan1Hour = async (
   totalMinutes: number,
   epochData: EpochData,
-  currentEpoch: EpochInfoType,
+  currentEpoch: EpochInfoCLIType,
   solvConfig: ConfigParams,
 ) => {
   const isMEV = solvConfig.config.IS_MEV_MODE

@@ -1,6 +1,4 @@
 import { format } from '@skeet-framework/utils'
-import { getEpochInfo } from '@/lib/getEpochInfo'
-import getTotalMinutes from '@/lib/getTotalMinutes'
 import isLessThan1Day from './lessThan1Day'
 import lessThan8Hour from './lessThan8Hour'
 import lessThan1Hour from './lessThan1Hour'
@@ -18,6 +16,7 @@ import { sendDiscord } from '@/lib/sendDiscord'
 import isVersionSame from './isVersionSame'
 import { spawnSync } from 'child_process'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
+import { getEpochInfoByRust } from '@/lib/getEpochInfoByRust'
 
 export type EpochData = {
   epoch: number
@@ -32,7 +31,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   const now = format(new Date(), 'yyyy-MM-dd HH:mm:ss')
   console.log(`Checking Epoch at ${now}`)
   const getD1Epoch = await initOrReadEpochFile()
-  const currentEpoch = await getEpochInfo(rpcUrl)
+  const currentEpoch = getEpochInfoByRust(rpcUrl)
   // Check Validator Account's Balance
   await checkBalance(solvConfig)
 
@@ -70,7 +69,7 @@ export const epochTimer = async (solvConfig: ConfigParams) => {
   }
 
   // Get the total minutes until the next epoch
-  const totalMinutes = getTotalMinutes(currentEpoch.estimatedTimeUntilNextEpoch)
+  const totalMinutes = currentEpoch.totalMinutes
 
   // Check conditions in sequence and stop if any condition is met
   const checks = [lessThan1Hour, lessThan8Hour, isLessThan1Day]

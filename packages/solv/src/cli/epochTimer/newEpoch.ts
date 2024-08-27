@@ -1,13 +1,13 @@
 import { EpochData } from './epochTimer'
-import { EpochInfoType } from '@/lib/getEpochInfo'
 import { sendDiscord } from '@/lib/sendDiscord'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { getAllKeyPaths, NETWORK_TYPES } from '@/config/config'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
+import { EpochInfoCLIType } from '@/lib/getEpochInfoByRust'
 
 const newEpoch = async (
-  currentEpoch: EpochInfoType,
+  currentEpoch: EpochInfoCLIType,
   solvConfig: ConfigParams,
 ) => {
   const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET

@@ -1,13 +1,13 @@
 import { EpochData } from './epochTimer'
-import { EpochInfoType } from '@/lib/getEpochInfo'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { EpochInfoCLIType } from '@/lib/getEpochInfoByRust'
 
 const isLessThan1Day = async (
   totalMinutes: number,
   epochData: EpochData,
-  currentEpoch: EpochInfoType,
+  currentEpoch: EpochInfoCLIType,
   solvConfig: ConfigParams,
 ) => {
   if (

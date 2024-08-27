@@ -19,7 +19,7 @@ exec solana-validator \\
 --dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
---wait-for-supermajority 254108257 \\
+--wait-for-supermajority 289624982 \\
 --expected-shred-version 35459 \\
 --expected-bank-hash 4rWEDhTyQVgTw6sPoCthXmUNmjeiwsdKQ5ZNvpEi3uvk \\
 --use-snapshot-archives-at-startup when-newest \\
