@@ -1,5 +1,14 @@
 # @epics-dao/solv
 
+## 4.4.16
+
+### Patch Changes
+
+- [`5e89d14`](https://github.com/EpicsDAO/solv/commit/5e89d14d822da860f6ea0dfc927b332df95a44a6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Last release did not include the `--script` option yet.
+  This patch release adds the `--script` option to the `solv setup` command.
+
+  Added - solv setup --script
+
 ## 4.4.15
 
 ### Patch Changes
