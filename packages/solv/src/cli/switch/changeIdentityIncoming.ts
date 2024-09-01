@@ -10,8 +10,6 @@ import {
 import { join } from 'path'
 import { spawnSync } from 'node:child_process'
 import chalk from 'chalk'
-import { getSolanaAddress } from '@/lib/getSolanaAddress'
-import scpSSH from '@/lib/scpSSH'
 import checkValidatorKey from './checkValidatorKey'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
