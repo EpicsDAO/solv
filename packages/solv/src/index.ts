@@ -30,7 +30,6 @@ import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
 import { NETWORK_TYPES, SOLANA_TESTNET_RPC_URL } from './config/config'
 import { harvestCommands } from './cli/harvest'
-import { swapCommands } from './cli/swap'
 import { epochTimerCommands } from './cli/epochTimer'
 import { switchCommand } from './cli/switch'
 import createSnapshot from './cli/get/createSnapshot'
@@ -74,7 +73,7 @@ async function main() {
     withdrawCommands(solvConfig)
     harvestCommands(solvConfig)
     dfCommands()
-    swapCommands(solvConfig)
+    // swapCommands(solvConfig)
     epochTimerCommands(solvConfig)
     switchCommand(program, solvConfig)
 

@@ -57,3 +57,24 @@ export const EPOCH_TIMER_FILE_PATH = '/home/solv/currentEpoch.json'
 export const MINIMUM_VALIDATOR_BALANCE = 0.5
 export const SOLANA_TESTNET_RPC_URL = 'https://api.testnet.solana.com'
 export const SOLANA_MAINNET_RPC_URL = 'https://api.mainnet-beta.solana.com'
+
+export enum SWAP_TOKEN {
+  SOL = 'SOL',
+  USDC = 'USDC',
+  elSOL = 'elSOL',
+  JitoSOL = 'JitoSOL',
+  mSOL = 'mSOL',
+  bSOL = 'bSOL',
+  EPCT = 'EPCT',
+  JUP = 'JUP',
+  BONK = 'BONK',
+  JTO = 'JTO',
+}
+
+export const SWAP_TOKENS = Object.values(SWAP_TOKEN)
+
+// SPL Token Mint
+export const SOL_TOKEN_MINT = 'So11111111111111111111111111111111111111112'
+export const USDC_TOKEN_MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+export const ELSOL_TOKEN_MINT = 'ELSoL1owwMWQ9foMsutweCsMKbTPVBD9pFqxQGidTaMC'
+export const EPCT_TOKEN_MINT = 'CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP'
