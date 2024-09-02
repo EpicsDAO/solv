@@ -94,7 +94,7 @@ export const changeIdentityOutgoing = async (
 
   // Set the identity on the identity key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
-  const result5 = scpSSH(ip, step5)
+  const result5 = scpSSH(ip, step5, 'inherit')
   console.log('result5', result5)
   if (result5.status !== 0) {
     console.log(
@@ -109,7 +109,7 @@ export const changeIdentityOutgoing = async (
   console.log(
     chalk.white('🟢 Changing the Symlink to the new validator keypair...'),
   )
-  const result6 = scpSSH(ip, step6)
+  const result6 = scpSSH(ip, step6, 'inherit')
   console.log('result6', result6.status)
   if (result6.status !== 0) {
     console.log(
