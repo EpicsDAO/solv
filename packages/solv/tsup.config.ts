@@ -12,7 +12,7 @@ const writer = async (file: string) => {
 }
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   outDir: 'dist',
   bundle: true,
   minify: true,
