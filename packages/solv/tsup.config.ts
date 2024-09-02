@@ -44,4 +44,3 @@ export default defineConfig({
     'cli-table3',
   ],
 })
-await writer('./dist/index.cjs')
