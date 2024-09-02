@@ -38,6 +38,7 @@ const defaultConfig: SolvConfigType = {
   HARVEST_ACCOUNT: '',
   IS_MEV_MODE: false,
   RPC_URL: SOLANA_MAINNET_RPC_URL,
+  KEYPAIR_PATH: '',
   DISCORD_WEBHOOK_URL: '',
   AUTO_UPDATE: false,
   AUTO_RESTART: false,

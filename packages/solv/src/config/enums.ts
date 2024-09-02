@@ -5,7 +5,7 @@ export enum LANG {
 
 export enum Network {
   MAINNET = 'mainnet',
-  DEVNET = 'devnet',
+  // DEVNET = 'devnet',
   TESTNET = 'testnet',
 }
 

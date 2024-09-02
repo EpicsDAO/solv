@@ -1,24 +1,19 @@
+import { SOLV_SWAP } from '@/config/constants'
 import { QuoteResponse } from '@jup-ag/api'
-
-// Referral fee in basis points 42 = 0.42%
-const PLATFORM_FEE_BPS = 42
 
 const getJupiterQuote = async (
   jupiterEndpoint: string,
-  apiKey: string,
   inputMint: string,
   outputMint: string,
   inputAmountLamport: number,
-  slippageBps: number = 50,
-  platformFeeBps: number = PLATFORM_FEE_BPS,
 ) => {
   try {
-    const url = `${jupiterEndpoint}/quote?inputMint=${inputMint}&outputMint=${outputMint}&amount=${inputAmountLamport}&slippageBps=${slippageBps}&platformFeeBps=${platformFeeBps}`
+    const url = `${jupiterEndpoint}/quote?inputMint=${inputMint}&outputMint=${outputMint}&amount=${inputAmountLamport}`
     const result = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${SOLV_SWAP}`,
       },
     })
     if (result.status === 429) {

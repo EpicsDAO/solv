@@ -1,0 +1,78 @@
+## Firedancer configuration doc: https://firedancer-io.github.io/firedancer/guide/configuring.html
+name = "solv1"
+user = "solv"
+scratch_directory = "/home/{user}/.firedancer/{name}"
+dynamic_port_range = "8900-9000"
+
+[log]
+    path = "/home/solv/validator.log"
+    colorize = "auto"
+    level_logfile = "INFO"
+    level_stderr = "NOTICE"
+    level_flush = "WARNING"
+
+[reporting]
+    solana_metrics_config = "host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea"
+
+[ledger]
+    path = "/mnt/ledger"
+    accounts_path = "/mnt/accounts"
+    limit_size = 200_000_000
+    account_indexes = []
+    account_index_exclude_keys = []
+    snapshot_archive_format = "zstd"
+    require_tower = false
+
+[gossip]
+    entrypoints = []
+    port_check = true
+    port = 8001
+    host = ""
+
+[rpc]
+    port = 0
+    full_api = false
+    private = false
+    transaction_history = false
+    extended_tx_metadata_storage = false
+    only_known = true
+    pubsub_enable_block_subscription = false
+    pubsub_enable_vote_subscription = false
+    bigtable_ledger_storage = false
+
+[snapshots]
+    incremental_snapshots = true
+    full_snapshot_interval_slots = 25000
+    incremental_snapshot_interval_slots = 100
+    path = ""
+
+[consensus]
+    identity_path = "/home/solv/identity.json"
+    vote_account_path = "/home/solv/testnet-vote-account-keypair.json"
+    authorized_voter_paths = [
+        "/home/solv/testnet-validator-keypair.json"
+    ]
+    snapshot_fetch = true
+    genesis_fetch = true
+    poh_speed_test = true
+    expected_genesis_hash = "4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY"
+    wait_for_supermajority_at_slot = 289624982
+    expected_bank_hash = "4rWEDhTyQVgTw6sPoCthXmUNmjeiwsdKQ5ZNvpEi3uvk"
+    expected_shred_version = 35459
+    wait_for_vote_to_start_leader = true
+    os_network_limits_test = true
+    hard_fork_at_slots = []
+    known_validators = ["5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on"]
+
+[layout]
+    affinity = "1-16"
+    agave_affinity = ""
+    solana_labs_affinity = "17-31"
+    net_tile_count = 1
+    quic_tile_count = 1
+    verify_tile_count = 4
+    bank_tile_count = 2
+    shred_tile_count = 2
+
+[hugetlbfs]
+    mount_path = "/mnt/.fd"

@@ -1,14 +1,15 @@
 import { startupScriptPaths } from '@/config/config'
+import { TESTNET_VALIDATOR_KEY_PATH } from '@/config/constants'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 
 export const startTestnetValidatorScript = () => {
   const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
-  const { identity, voteAccount, log, accounts } = startupScriptPaths()
+  const { voteAccount, log, accounts } = startupScriptPaths()
   const script = `#!/bin/bash
 exec solana-validator \\
 --identity /home/solv/identity.json \\
 --vote-account ${voteAccount} \\
---authorized-voter  ${identity} \\
+--authorized-voter  ${TESTNET_VALIDATOR_KEY_PATH} \\
 --log ${log} \\
 --accounts ${accounts} \\
 --ledger ${ledger} \\

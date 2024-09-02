@@ -25,6 +25,7 @@ export type SolvConfigType = {
   HARVEST_ACCOUNT: string
   IS_MEV_MODE: boolean
   RPC_URL: string
+  KEYPAIR_PATH: string
   DISCORD_WEBHOOK_URL: string
   AUTO_UPDATE: boolean
   AUTO_RESTART: boolean

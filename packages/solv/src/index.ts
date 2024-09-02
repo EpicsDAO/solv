@@ -33,6 +33,7 @@ import { harvestCommands } from './cli/harvest'
 import { epochTimerCommands } from './cli/epochTimer'
 import { switchCommand } from './cli/switch'
 import createSnapshot from './cli/get/createSnapshot'
+import { swapCommand } from './cli/swap'
 
 dotenv.config()
 const solvConfig = readOrCreateDefaultConfig()
@@ -73,7 +74,7 @@ async function main() {
     withdrawCommands(solvConfig)
     harvestCommands(solvConfig)
     dfCommands()
-    // swapCommands(solvConfig)
+    swapCommand(program, solvConfig)
     epochTimerCommands(solvConfig)
     switchCommand(program, solvConfig)
 

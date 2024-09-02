@@ -80,6 +80,7 @@ export type CONFIG_TYPE = {
   HARVEST_ACCOUNT: string
   IS_MEV_MODE: boolean
   RPC_URL: string
+  KEYPAIR_PATH: string
   DISCORD_WEBHOOK_URL: string
   AUTO_UPDATE: boolean
   AUTO_RESTART: boolean
@@ -112,6 +113,7 @@ export const CONFIG: CONFIG_TYPE = {
   HARVEST_ACCOUNT: '',
   IS_MEV_MODE: false,
   RPC_URL: 'https://mainnet-beta.solana.com',
+  KEYPAIR_PATH: '/home/solv/testnet-validator-keypair.json',
   DISCORD_WEBHOOK_URL: '',
   AUTO_UPDATE: false,
   AUTO_RESTART: false,
