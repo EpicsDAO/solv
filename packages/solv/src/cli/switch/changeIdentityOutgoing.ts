@@ -42,7 +42,7 @@ export const changeIdentityOutgoing = async (
   const step6 = `ln -sf ${MAINNET_VALIDATOR_KEY_PATH} ${IDENTITY_KEY_PATH}`
 
   console.log(chalk.white('🟢 Waiting for restart window...'))
-  const result1 = spawnSync(step1, { shell: true, stdio: 'pipe' })
+  const result1 = spawnSync(step1, { shell: true, stdio: 'inherit' })
   if (result1.status !== 0) {
     console.log(
       chalk.yellow(
@@ -54,7 +54,7 @@ export const changeIdentityOutgoing = async (
 
   // Set the identity to the unstaked key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
-  const result2 = spawnSync(step2, { shell: true, stdio: 'pipe' })
+  const result2 = spawnSync(step2, { shell: true, stdio: 'inherit' })
   if (result2.status !== 0) {
     console.log(
       chalk.yellow(
@@ -68,7 +68,7 @@ export const changeIdentityOutgoing = async (
   console.log(
     chalk.white('🟢 Changing the Symlink to the new validator keypair...'),
   )
-  const result3 = spawnSync(step3, { shell: true, stdio: 'pipe' })
+  const result3 = spawnSync(step3, { shell: true, stdio: 'inherit' })
   if (result3.status !== 0) {
     console.log(
       chalk.yellow(
@@ -82,7 +82,7 @@ export const changeIdentityOutgoing = async (
   console.log(
     chalk.white('🟢 Uploading the tower file to the new validator...'),
   )
-  const result4 = spawnSync(step4, { shell: true, stdio: 'pipe' })
+  const result4 = spawnSync(step4, { shell: true, stdio: 'inherit' })
   if (result4.status !== 0) {
     console.log(
       chalk.yellow(
@@ -95,7 +95,7 @@ export const changeIdentityOutgoing = async (
   // Set the identity on the identity key
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const result5 = scpSSH(ip, step5)
-  console.log('result5', result5.status)
+  console.log('result5', result5)
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(

@@ -102,21 +102,19 @@ export const changeIdentityIncoming = async (
       stdio: 'inherit',
     },
   )
-  console.log('result5', result5)
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
         `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}${validatorKeyPath}`,
       ),
     )
-    // return
+    return
   }
 
   const result6 = spawnSync(`ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`, {
     shell: true,
     stdio: 'inherit',
   })
-  console.log('result6', result6.status)
 
   if (result6.status !== 0) {
     console.log(

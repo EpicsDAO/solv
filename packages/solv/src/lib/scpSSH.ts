@@ -10,7 +10,7 @@ const scpSSH = (
   ip: string,
   cmd: string,
   username = 'solv',
-  stdio = 'pipe' as CommonSpawnOptions['stdio'],
+  stdio = 'inherit' as CommonSpawnOptions['stdio'],
   sshKeyPath = '~/.ssh/id_rsa',
 ) => {
   let scpSSHResult: ScpSSHResult
