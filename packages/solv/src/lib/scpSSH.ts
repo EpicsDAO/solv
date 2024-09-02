@@ -25,7 +25,7 @@ const scpSSH = (
       )
       scpSSHResult = {
         status: result.status,
-        stdout: result.stdout.toString(),
+        stdout: String(result.stdout),
         stderr: result.stderr.toString(),
       }
       return scpSSHResult
