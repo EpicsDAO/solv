@@ -96,7 +96,6 @@ export const changeIdentityOutgoing = async (
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const cmd5 = `ssh -i ${sshKeyPath} -o StrictHostKeyChecking=no solv@${ip} -p 22 'cd ~ && source ~/.profile && ${step5}'`
   const result5 = spawnSync(cmd5, { shell: true, stdio: 'inherit' })
-  console.log('result5', result5)
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
@@ -112,7 +111,6 @@ export const changeIdentityOutgoing = async (
   )
   const cmd6 = `ssh -i ${sshKeyPath} -o StrictHostKeyChecking=no solv@${ip} -p 22 'cd ~ && source ~/.profile && ${step6}'`
   const result6 = spawnSync(cmd6, { shell: true, stdio: 'inherit' })
-  console.log('result6', result6.status)
   if (result6.status !== 0) {
     console.log(
       chalk.yellow(
