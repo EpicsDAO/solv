@@ -31,28 +31,27 @@ Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 
 ## 📖 Server Spec
 
-- Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
+- Linux Ubuntu 24.04 LTS
 
 ## Solana Validator Setup
 
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.4.6/install")"
+$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
 ![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
 
-Then, select the type of node you want to target.
+- Choose Language
+- Choose Network
+- Choose Node Type
+- Choose RPC Type or Validator Type
 
-- `TESTNET_VALIDATOR`
-- `MAINNET_VALIDATOR`
-- `RPC_NODE`
-
-Then
+Then prompt will ask you for the initial setup.
 
 After startup, the snapshot download will start automatically.
 The Solana validator will start 🎊
@@ -69,33 +68,31 @@ This will remove the snapshot and restart the Solana Validator from the new snap
 If snapshot download freezes, you can try Ctrl + C.
 Then setup will continue.
 
-## New Feature: solv switch - v4.4.5~
+## New Features - solv v4.5.0 Release
 
-`solv switch` command is better version of `solv change`.
+- `solv setup` command is now more user-friendly
+- `solv swap` command is now available
+- `solv jupiter` command is now available
+- `solv relayer` command is now available
+- `solv get ip` command is now available
+- `solv scp` command is now improved with new options
+- `solv balance` alias command `solv b` is now available
+- `solv monitor` alias command `solv m` is now available
+- `solv catchup` alias command `solv c` is now available
+- `solv rm:snapshot` removes all the `/mnt/ledger` and `/mnt/accounts` directories
+- `solv restart --rm` command uses `solv rm:snapshot` command above and restarts the validator
 
-```bash
-$ solv switch
-? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
-❯ Incoming
-  Outgoing
-? What is the IP address of the new validator? (1.1.1.1)
-```
+## Changes
 
-`solv change` required to connect both servers.
-Now you only need to connect one server with `solv switch`
+`solv.config.json` file is now updated with new fields.
+But this will be deprecated in the future.
 
-This command has 2 types
+Now new config is migrating to `solv4.config.json` file.
 
-You choose the type of switch you want to perform.
-Then put IP address of anothor side of server.
+## Bug Fixes
 
-- Incoming
-  Run at Active Server. Active Validator Identity switches from this server to a remote server.
-
-- Outgoing
-  Run at Inactive Server. Active Validator Identity switches to this server from a remote server.
-
-This command executes migration commands on both servers.
+- `solv switch` command now works as expected.
+- `bigint` warning message is now resolved.
 
 ## What is solv MEV Mode?
 
@@ -258,9 +255,11 @@ Commands:
   help [cmd]             Display help for solv commands
 ```
 
-If you have any questions, please contact us on Discord.
+## Website
 
-https://discord.gg/yxm5hJqRhg
+Validators Solutions: https://validators.solutions
+Validator DAO: https://dao.validators.solutions
+elSOL: https://elsol.app/
 
 ## Contributing
 

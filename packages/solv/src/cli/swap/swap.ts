@@ -30,8 +30,10 @@ export const swap = async (
   if (typeof quoteResponse === 'string') {
     if (quoteResponse.includes('Unauthorized')) {
       console.error(
-        chalk.yellow('⚠️ Invalid API key, please check your API key ⚠️'),
+        chalk.yellow('⚠️ Invalid API key, please check your API key ⚠️\n'),
       )
+      console.log(chalk.white('Get Your API key 👇'))
+      console.log(chalk.white(WEB_VALIDATORS_SOLUTIONS + '\n'))
       return
     }
     const msg = `${chalk.yellow('⚠️ Too many requests, please try again later ⚠️')}
@@ -103,8 +105,10 @@ $ solv swap --input ${inputMint} --output ${outputMint} --amount ${inputAmountLa
   if (typeof swapResponse === 'string') {
     if (swapResponse.includes('Unauthorized')) {
       console.error(
-        chalk.yellow('⚠️ Invalid API key, please check your API key ⚠️'),
+        chalk.yellow('⚠️ Invalid API key, please check your API key ⚠️\n'),
       )
+      console.log(chalk.white('Get Your API key 👇'))
+      console.log(chalk.white(WEB_VALIDATORS_SOLUTIONS + '\n'))
       return
     }
     const msg = `${chalk.yellow('⚠️ Too many requests, please try again later ⚠️')}

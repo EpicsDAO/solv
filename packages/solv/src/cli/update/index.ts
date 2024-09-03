@@ -3,12 +3,10 @@ import { monitorUpdate, updateVersion } from './update'
 import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
-import { spawnSync } from 'child_process'
 import {
   CONFIG,
   MAINNET_TYPES,
   NETWORK_TYPES,
-  SERVICE_PATHS,
   SOLV_TYPES,
 } from '@/config/config'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
@@ -17,19 +15,17 @@ import { jitoUpdate } from './jitoUpdate'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
-import { setupLogrotate } from '../setup/setupLogrotate'
 import { updateFirewall } from '../setup/updateFirewall'
 import autoUpdate from './autoUpdate'
 import getSolvVersion from '../epochTimer/getSolvVersion'
+import { updateDefaultConfig } from '@/config/updateDefaultConfig'
 
 export * from './update'
 
 export type UpdateOptions = {
   version: string
-  monitor: boolean
   background: boolean
   commission: number
-  logrotate: boolean
   firewall: boolean
   config: boolean
   auto: boolean
@@ -46,10 +42,8 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .alias('u')
     .description(cmds.update)
     .option('-v, --version <version>', `Solana Version e.g ${version}`, version)
-    .option('-m, --monitor', 'Monitor Delinquent Stake Update', false)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-c, --commission', 'Update Commission', false)
-    .option('-l, --logrotate', 'Setup Logrotate', false)
     .option('-f, --firewall', 'Update Firewall', false)
     .option('--config', 'Update Solv Config Default Solana Version', false)
     .option('--auto', 'Auto Update', false)
@@ -75,6 +69,10 @@ export const updateCommands = (solvConfig: ConfigParams) => {
           TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
           MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
         })
+        updateDefaultConfig({
+          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
+          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
+        })
         if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
           updateJitoSolvConfig({
             version: JITO_CONFIG.version,
@@ -88,30 +86,17 @@ export const updateCommands = (solvConfig: ConfigParams) => {
         )
         return
       }
-      if (options.logrotate) {
-        spawnSync(`rm -rf ${SERVICE_PATHS.SOL_LOGROTATE}`, { shell: true })
-        setupLogrotate()
-        return
-      }
       if (options.firewall) {
         await updateFirewall()
         return
       }
 
-      if (options.monitor) {
-        const version =
-          solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR
-            ? CONFIG.MAINNET_SOLANA_VERSION
-            : CONFIG.TESTNET_SOLANA_VERSION
-        updateVersion(version)
-        Logger.normal(
-          `✔️ Monitoring Update with Max Delinquent Stake ${chalk.green(
-            deliquentStake,
-          )}`,
-        )
-        monitorUpdate(deliquentStake)
-      } else if (options.background) {
+      if (options.background) {
         let version = options.version
+        updateDefaultConfig({
+          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
+          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
+        })
         if (
           solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR ||
           solvConfig.config.SOLV_TYPE === SOLV_TYPES.RPC_NODE

@@ -13,6 +13,7 @@ export const balanceCommands = (solvConfig: ConfigParams) => {
   program
     .command('balance')
     .alias('bal')
+    .alias('b')
     .option('-s, --spl', 'Show SPL Token Balance', false)
     .description('Show Keypairs Balance')
     .action(async (options: BalanceOptions) => {

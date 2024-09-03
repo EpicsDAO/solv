@@ -29,31 +29,41 @@ export const setupCommands = (config: DefaultConfigType) => {
     .option('--skip-init-config', 'Skip Initial Config', false)
     .option('--skip-mount', 'Skip Mount', false)
     .action(async (options: SetupOptions) => {
-      if (options.vote) {
-        console.log(chalk.white('Setting up Vote Account ...'))
-        setupVoteAccount(config)
-        return
-      } else if (options.key) {
-        console.log(chalk.white('Setting up Validator Keypairs ...'))
-        createSolvKeyPairs(config)
-        return
-      } else if (options.relayer) {
-        console.log(chalk.white('Setting up Jito Relayer ...'))
-        const jitoConfig = await readOrCreateJitoConfig()
-        const blockEngineUrl = jitoConfig.blockEngineUrl
-        const isCoHost = false
-        await jitoRelayerSetup(blockEngineUrl, isCoHost)
-        console.log(
-          chalk.green('Jito Relayer Setup Completed\n\n$ solv relayer --help'),
-        )
-        daemonReload()
-        return
-      } else if (options.jupiter) {
-        console.log(chalk.white('Setting up Jupiter Swap API ...'))
-        await jupiterAPISetup()
-        daemonReload()
-        return
+      try {
+        if (options.vote) {
+          console.log(chalk.white('Setting up Vote Account ...'))
+          setupVoteAccount(config)
+          return
+        } else if (options.key) {
+          console.log(chalk.white('Setting up Validator Keypairs ...'))
+          createSolvKeyPairs(config)
+          return
+        } else if (options.relayer) {
+          console.log(chalk.white('Setting up Jito Relayer ...'))
+          const jitoConfig = await readOrCreateJitoConfig()
+          const blockEngineUrl = jitoConfig.blockEngineUrl
+          const isCoHost = false
+          await jitoRelayerSetup(blockEngineUrl, isCoHost)
+          console.log(
+            chalk.green(
+              'Jito Relayer Setup Completed\n\n$ solv relayer --help',
+            ),
+          )
+          daemonReload()
+          return
+        } else if (options.jupiter) {
+          console.log(chalk.white('Setting up Jupiter Swap API ...'))
+          await jupiterAPISetup()
+          daemonReload()
+          return
+        }
+        await setupV2(options.skipInitConfig, options.skipMount)
+      } catch (error: any) {
+        if (error.message.includes('User force closed the prompt')) {
+          console.error(chalk.cyan(`Exiting...🌛`))
+          return
+        }
+        console.error(chalk.red(`Setup Error: ${error.message}`))
       }
-      await setupV2(options.skipInitConfig, options.skipMount)
     })
 }
