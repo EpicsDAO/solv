@@ -11,6 +11,7 @@ import { TokenInfo } from '@/config/tokenInfo'
 import { swap } from './swap'
 import { Command } from 'commander'
 import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { ELSOL_MINT_ADDRESS } from '@/config/config'
 dotenv.config()
 
 export const swapCommand = async (
@@ -31,14 +32,22 @@ export const swapCommand = async (
         amount: number
         confirm: boolean
       }) => {
-        await swapCmd(
-          solvConfig.config.RPC_URL,
-          solvConfig.config.KEYPAIR_PATH,
-          options.input,
-          options.output,
-          Number(options.amount),
-          !options.confirm,
-        )
+        try {
+          await swapCmd(
+            solvConfig.config.RPC_URL,
+            solvConfig.config.KEYPAIR_PATH,
+            options.input,
+            options.output,
+            Number(options.amount),
+            !options.confirm,
+          )
+        } catch (error: any) {
+          if (error.message.includes('User force closed the prompt')) {
+            console.error(chalk.cyan(`Exiting...🌛`))
+            return
+          }
+          console.error(chalk.red(`Swap Error: ${error.message}`))
+        }
       },
     )
 }
@@ -51,18 +60,20 @@ const swapCmd = async (
   inputAmountLamport = 0,
   isNeedConfirm = true,
 ) => {
-  console.log('Solana RPC URL:', solanaRpcUrl)
+  console.log(chalk.white('Solana RPC URL:', solanaRpcUrl))
+  console.log(chalk.white('KeyfilePath:', keyfilePath))
   if (!keyfilePath) {
     console.log(
-      chalk.red(
-        'Please set the keypair path in the config file or provide it as an argument',
+      chalk.yellow(
+        `⚠️ Please set the KEYPAIR_PATH in the solv.config.json file to use this command ⚠️`,
       ),
     )
     return
   }
   const jupiterEndpoint = JUPITER_ENDPOINT
-  const inputTokenChoice = [...SWAP_TOKENS, 'Other']
+  let inputTokenChoice = [...SWAP_TOKENS, 'Other']
   let inputTokenAdress = inputMint
+  let inputTokenSymbol = '' as keyof typeof TokenInfo
   let outputTokenAdress = outputMint
   let inputAmount = inputAmountLamport
   //  If inputTokenAdress is not provided, prompt user to select input mint
@@ -87,13 +98,16 @@ const swapCmd = async (
       ])
       inputTokenAdress = inputTokenAddress.address
     } else {
-      const tokenName = inputToken.name as keyof typeof TokenInfo
-      inputTokenAdress = TokenInfo[tokenName].tokenMint
+      inputTokenSymbol = inputToken.name
+      inputTokenAdress = TokenInfo[inputTokenSymbol].tokenMint
     }
   }
 
   // If outputTokenAdress is not provided, prompt user to select output mint
   if (outputTokenAdress === '') {
+    inputTokenChoice = inputTokenChoice.filter(
+      (item) => item !== inputTokenSymbol,
+    )
     const outputToken = await inquirer.prompt([
       {
         type: 'list',
@@ -109,6 +123,7 @@ const swapCmd = async (
           type: 'input',
           name: 'address',
           message: 'Enter output mint address',
+          default: ELSOL_MINT_ADDRESS,
         },
       ])
       outputTokenAdress = outputTokenAddress.address
@@ -126,7 +141,7 @@ const swapCmd = async (
       {
         type: 'input',
         name: 'amount',
-        message: 'Enter input amount in LAMPORTS. Default: 0.01 SOL',
+        message: 'Enter input amount in LAMPORTS. e.g. 0.01 SOL',
         default: 10000000,
       },
     ])
@@ -145,7 +160,7 @@ const swapCmd = async (
     return
   }
   console.log(chalk.green('✔︎ Sent Tx Successfully!'))
-  console.log(`Check Your TX 👉: https://solscan.io/tx/${txid}`)
+  console.log(chalk.white(`Check Your TX 👉: https://solscan.io/tx/${txid}`))
 }
 
 export default swapCmd

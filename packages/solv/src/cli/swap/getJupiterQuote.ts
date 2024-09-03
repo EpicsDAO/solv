@@ -1,8 +1,8 @@
-import { SOLV_SWAP } from '@/config/constants'
 import { QuoteResponse } from '@jup-ag/api'
 
 const getJupiterQuote = async (
   jupiterEndpoint: string,
+  apiKey: string,
   inputMint: string,
   outputMint: string,
   inputAmountLamport: number,
@@ -13,7 +13,7 @@ const getJupiterQuote = async (
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${SOLV_SWAP}`,
+        Authorization: `Bearer ${apiKey}`,
       },
     })
     if (result.status === 429) {

@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 import { TokenInfoByMint } from '@/config/tokenInfo'
 import getJupiterQuote from './getJupiterQuote'
 import postJupiterSwap from './postJupiterSwap'
-import { WEB_VALIDATORS_SOLUTIONS } from '@/config/constants'
+import { SOLV_SWAP, WEB_VALIDATORS_SOLUTIONS } from '@/config/constants'
 dotenv.config()
 
 export const swap = async (
@@ -18,10 +18,10 @@ export const swap = async (
   inputAmountLamport: number,
   isNeedConfirm: boolean = true,
 ) => {
-  console.log('KeyfilePath:', keyfilePath)
   const connection = new Connection(solanaRpcUrl, 'confirmed')
   const quoteResponse = await getJupiterQuote(
     jupiterEndpoint,
+    SOLV_SWAP,
     inputMint,
     outputMint,
     inputAmountLamport,
@@ -57,6 +57,11 @@ Validators Solutions: ${WEB_VALIDATORS_SOLUTIONS}
 ※ This quote is based on the current market rate and may change before the swap is completed.
 `
   console.log(chalk.white(log))
+  console.log(
+    chalk.gray(`You can also swap using the following command: 
+$ solv swap --input ${inputMint} --output ${outputMint} --amount ${inputAmountLamport} --skip-confirm
+`),
+  )
   let confirm = false
   if (isNeedConfirm) {
     const answer = await inquirer.prompt([
