@@ -56,12 +56,16 @@ const initialConfigSetup = async () => {
       },
     ])
     if (answer.nodeType === NodeType.VALIDATOR) {
+      const validatorChoices =
+        answer.network === Network.MAINNET
+          ? [ValidatorType.JITO, ValidatorType.SOLANA]
+          : [ValidatorType.AGAVE, ValidatorType.JITO]
       validatorType = await inquirer
         .prompt<{ validatorType: ValidatorType }>({
           name: 'validatorType',
           type: 'list',
           message: 'Choose Validator Type',
-          choices: SOLANA_CLIENTS,
+          choices: validatorChoices,
           default: ValidatorType.AGAVE,
         })
         .then((answer) => answer.validatorType)
@@ -87,8 +91,7 @@ const initialConfigSetup = async () => {
         {
           name: 'commission',
           type: 'number',
-          message:
-            'What is your commission rate? You can change it later (default: 10%)',
+          message: `What is your commission rate? You can change it later (default: ${DEFAULT_CONFIG.COMMISSION}%)'`,
           default: DEFAULT_CONFIG.COMMISSION,
         },
         {

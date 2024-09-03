@@ -33,6 +33,7 @@ const setupMainnetValidator = async (config: DefaultConfigType) => {
     case ValidatorType.SOLANA:
       installSolana(version)
       startupScript = startMainnetValidatorScript()
+      break
     // case ValidatorType.AGAVE:
     //   console.log('Coming soon...🌉')
     //   break

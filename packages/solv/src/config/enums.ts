@@ -36,8 +36,6 @@ export const SOLANA_CLIENTS = Object.values(ValidatorType).filter(
 export enum RpcType {
   AGAVE = 'agave',
   JITO = 'jito',
-  // JUPITER_GEYSER = 'jupiter-geyser',
-  // DAS_API = 'das-api',
   NONE = 'none',
 }
 
