@@ -1,8 +1,9 @@
-import { AssociationAccount, SOLV_SWAP } from '@/config/constants'
+import { AssociationAccount } from '@/config/constants'
 import { QuoteResponse, SwapPostRequest, SwapResponse } from '@jup-ag/api'
 
 const postJupiterSwap = async (
   jupiterEndpoint: string,
+  jupiterApiKey: string,
   quoteResponse: QuoteResponse,
   fromWalletPubkey: string,
 ) => {
@@ -33,7 +34,7 @@ const postJupiterSwap = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${SOLV_SWAP}`,
+        Authorization: `Bearer ${jupiterApiKey}`,
       },
       body: JSON.stringify(swapBody.swapRequest),
     })

@@ -4,14 +4,12 @@ import { startMainnetValidatorScript } from './startupScripts/startMainnetValida
 import { startRPCNodeScript } from './startupScripts/startRPCNodeScript'
 import { startJitoValidatorScript } from './startupScripts/startJitoValidatorScript'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
-import { startJitoRelayerValidatorScript } from './startupScripts/startJitoRelayerValidatorScript'
 import { startJitoRPCScript } from './startupScripts/startJitoRPCScript'
 
 export const getStartupScript = async (
   fetchSnapshot = false,
   solvTypes = SOLV_TYPES.TESTNET_VALIDATOR,
   isJitoMev = false,
-  hasRelayer = false,
   isJitoRPC = false,
 ) => {
   let script = ''
@@ -21,14 +19,6 @@ export const getStartupScript = async (
       return startJitoRPCScript(
         jitoConfig.commissionBps,
         jitoConfig.relayerUrl,
-        jitoConfig.blockEngineUrl,
-        jitoConfig.shredReceiverAddr,
-      )
-    }
-
-    if (hasRelayer) {
-      return startJitoRelayerValidatorScript(
-        jitoConfig.commissionBps,
         jitoConfig.blockEngineUrl,
         jitoConfig.shredReceiverAddr,
       )

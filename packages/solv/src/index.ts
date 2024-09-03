@@ -34,10 +34,15 @@ import { epochTimerCommands } from './cli/epochTimer'
 import { switchCommand } from './cli/switch'
 import createSnapshot from './cli/get/createSnapshot'
 import { swapCommand } from './cli/swap'
+import readConfig from './config/readConfig'
+import { jupiterCommands } from './cli/jupiter'
 
 dotenv.config()
+
+// This config will be deprecated in the future - will migrate to solv4.config.json
 const solvConfig = readOrCreateDefaultConfig()
 
+// These default constants will be deprecated in the future
 export const SOLANA_RPC_URL =
   solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
     ? SOLANA_TESTNET_RPC_URL
@@ -54,6 +59,9 @@ program
 
 async function main() {
   try {
+    // This config will be new config file - solv4.config.json
+    const config = await readConfig()
+
     serverCommands(solvConfig)
     startCommand(solvConfig)
     restartCommand(solvConfig)
@@ -66,7 +74,7 @@ async function main() {
     getCommands(solvConfig)
     scpCommands(solvConfig)
     cronCommands(solvConfig)
-    setupCommands(solvConfig)
+    setupCommands(config)
     balanceCommands(solvConfig)
     mountCommands(solvConfig)
     relayerCommands()
@@ -74,9 +82,10 @@ async function main() {
     withdrawCommands(solvConfig)
     harvestCommands(solvConfig)
     dfCommands()
-    swapCommand(program, solvConfig)
+    swapCommand(program, config)
     epochTimerCommands(solvConfig)
     switchCommand(program, solvConfig)
+    jupiterCommands()
 
     program
       .command('rm:log')

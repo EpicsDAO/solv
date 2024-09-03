@@ -6,13 +6,13 @@ import {
 } from '@/config/constants'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
-import agaveInstall from '../install/agaveInstall'
+import installAgave from '../install/installAgave'
 
 export const updateVersion = (version: string) => {
   const config = readOrCreateDefaultConfig()
   const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
   if (isTestnet) {
-    agaveInstall(version)
+    installAgave(version)
     return
   }
   const cmd = [

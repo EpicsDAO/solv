@@ -11,6 +11,7 @@ import { join } from 'path'
 import chalk from 'chalk'
 import { spawnSync } from 'node:child_process'
 import checkValidatorKey from './checkValidatorKey'
+import { updateDefaultConfig } from '@/config/updateDefaultConfig'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
 const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
@@ -120,4 +121,7 @@ export const changeIdentityOutgoing = async (
     return
   }
   console.log(chalk.white('🟢 Identity changed successfully!'))
+  await updateDefaultConfig({
+    IS_DUMMY: true,
+  })
 }

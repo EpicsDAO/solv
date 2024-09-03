@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import {
   JUPITER_ENDPOINT,
   SOL_TOKEN_MINT,
+  SOLV_SWAP,
   SWAP_TOKENS,
   USDC_TOKEN_MINT,
 } from '@/config/constants'
@@ -10,13 +11,13 @@ import chalk from 'chalk'
 import { TokenInfo } from '@/config/tokenInfo'
 import { swap } from './swap'
 import { Command } from 'commander'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { ELSOL_MINT_ADDRESS } from '@/config/config'
+import { DefaultConfigType } from '@/config/types'
 dotenv.config()
 
 export const swapCommand = async (
   program: Command,
-  solvConfig: ConfigParams,
+  config: DefaultConfigType,
 ) => {
   program
     .command('swap')
@@ -34,8 +35,9 @@ export const swapCommand = async (
       }) => {
         try {
           await swapCmd(
-            solvConfig.config.RPC_URL,
-            solvConfig.config.KEYPAIR_PATH,
+            config.RPC_URL,
+            config.KEYPAIR_PATH,
+            config.API_KEY,
             options.input,
             options.output,
             Number(options.amount),
@@ -55,6 +57,7 @@ export const swapCommand = async (
 const swapCmd = async (
   solanaRpcUrl: string,
   keyfilePath: string,
+  jupiterApiKey: string,
   inputMint = '',
   outputMint = '',
   inputAmountLamport = 0,
@@ -62,10 +65,10 @@ const swapCmd = async (
 ) => {
   console.log(chalk.white('Solana RPC URL:', solanaRpcUrl))
   console.log(chalk.white('KeyfilePath:', keyfilePath))
-  if (!keyfilePath) {
+  if (!keyfilePath || keyfilePath === '') {
     console.log(
       chalk.yellow(
-        `⚠️ Please set the KEYPAIR_PATH in the solv.config.json file to use this command ⚠️`,
+        `⚠️ Please set the KEYPAIR_PATH in the solv4.config.json file to use this command ⚠️`,
       ),
     )
     return
@@ -142,14 +145,18 @@ const swapCmd = async (
         type: 'input',
         name: 'amount',
         message: 'Enter input amount in LAMPORTS. e.g. 0.01 SOL',
-        default: 10000000,
+        default: '10000000',
       },
     ])
     inputAmount = Number(inputAmountPrompt.amount)
   }
+
+  const apiKey =
+    !jupiterApiKey || jupiterApiKey === '' ? SOLV_SWAP : jupiterApiKey
   const txid = await swap(
     solanaRpcUrl,
     jupiterEndpoint,
+    apiKey,
     keyfilePath,
     inputTokenAdress,
     outputTokenAdress,

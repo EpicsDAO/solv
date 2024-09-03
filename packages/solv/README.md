@@ -159,13 +159,13 @@ Usage: solv [options] [command]
 💎 Solana Validator All-in-One CLI 💎
 
 Options:
-  -V                   Output the current version
-  -h, --help           Display help for solv commands
+  -V                     Output the current version
+  -h, --help             Display help for solv commands
 
 Commands:
   server|s               Open solv Dashboard
   start                  Start Solana Validator
-  restart                Restart Solana Validator
+  restart [options]      Restart Solana Validator
   stop                   Stop Solana Validator
   status                 Show Solana Validator Status
   update|u [options]     Update Solana Validator Version
@@ -180,17 +180,19 @@ Commands:
   balance|bal [options]  Show Keypairs Balance
   mtr                    Mount Reload Command
   disks                  Show unmounted disks
-  relayer                Jiro Relayer Commands
+  relayer                Jito Relayer Commands
   transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
   withdraw [options]     Withdraw SOL from Vote Account to Authority Account
   harvest|hv             Harvest SOL from Validator Account to Authority Account
   mev                    Enable MEV Mode
   df                     Disk Free Command
-  swap [options]         Swap Solana Tokens
+  swap [options]         Swap tokens
   epochTimer             Check Solana Epoch Timer
+  switch [options]       Switch Validator Identity with No Downtime
+  jupiter                Jupiter API Commands
   rm:log                 Remove Logs
   rm:snapshot            Remove Snapshot
-  change                 Change Identity of Validator to New Validator
+  create:snapshot        Create Snapshot
   monitor|m              Monitor Solana Node
   catchup|c              Check Solana Catchup Status
   config                 Show Solv Config

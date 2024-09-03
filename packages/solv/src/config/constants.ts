@@ -5,6 +5,7 @@ export const WEB_VALIDATORS_SOLUTIONS = 'https://validators.solutions'
 // solv config Path
 export const SOLV_CONFIG_PATH = '~/solv.config.json'
 export const SOLV_CONFIG_FILE = 'solv.config.json'
+export const SOLV4_CONFIG_FILE = 'solv4.config.json'
 
 // Linux System Config Files
 export const SOL_SERVICE = '/etc/systemd/system/solv.service'

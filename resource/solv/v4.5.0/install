@@ -1,7 +1,7 @@
 #/bin/bash
 
 # Constants and configurable variables
-NODE_VERSION=20.16.0
+NODE_VERSION=20.17.0
 
 # This ensures the entire script is downloaded
 {
@@ -63,6 +63,14 @@ setup_firewall() {
     sudo ufw reload
     sudo apt install fail2ban -y
     sudo apt-get install libsasl2-dev build-essential -y
+    sudo apt-get install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler
+}
+
+setup_lib() {
+    echo "Installing Packages..."
+    sudo apt install fail2ban -y
+    sudo apt-get install libsasl2-dev build-essential -y
+    sudo apt-get install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler
 }
 
 install_rustup() {
@@ -123,6 +131,7 @@ main() {
 
     create_user
     setup_firewall
+    setup_lib
     install_docker
     install_rustup
     install_pnpm_and_packages

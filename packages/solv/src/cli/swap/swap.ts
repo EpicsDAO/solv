@@ -6,12 +6,13 @@ import dotenv from 'dotenv'
 import { TokenInfoByMint } from '@/config/tokenInfo'
 import getJupiterQuote from './getJupiterQuote'
 import postJupiterSwap from './postJupiterSwap'
-import { SOLV_SWAP, WEB_VALIDATORS_SOLUTIONS } from '@/config/constants'
+import { WEB_VALIDATORS_SOLUTIONS } from '@/config/constants'
 dotenv.config()
 
 export const swap = async (
   solanaRpcUrl: string,
   jupiterEndpoint: string,
+  JupiterApiKey: string,
   keyfilePath: string,
   inputMint: string,
   outputMint: string,
@@ -21,7 +22,7 @@ export const swap = async (
   const connection = new Connection(solanaRpcUrl, 'confirmed')
   const quoteResponse = await getJupiterQuote(
     jupiterEndpoint,
-    SOLV_SWAP,
+    JupiterApiKey,
     inputMint,
     outputMint,
     inputAmountLamport,
@@ -95,6 +96,7 @@ $ solv swap --input ${inputMint} --output ${outputMint} --amount ${inputAmountLa
 
   const swapResponse = await postJupiterSwap(
     jupiterEndpoint,
+    JupiterApiKey,
     quoteResponse,
     fromWallet.publicKey.toString(),
   )

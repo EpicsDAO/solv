@@ -1,54 +1,41 @@
 import { spawnSync } from 'child_process'
-import { existsSync, mkdirSync, readdirSync, rmSync } from 'fs'
-import os from 'os'
-import { KEYPAIRS, SOLV_TYPES } from '@/config/config'
-import { SOLV_CLIENT_PATHS } from '@/config/solvClient'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { existsSync, readdirSync, rmSync } from 'fs'
+import { homedir } from 'os'
+import { KEYPAIRS } from '@/config/config'
 import path from 'path'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType } from '@/config/enums'
 
-export const createSolvKeyPairs = (solvConfig: ConfigParams) => {
-  const solvType = solvConfig.config.SOLV_TYPE
+export const createSolvKeyPairs = (config: DefaultConfigType) => {
   let genKeys = []
   let keyNum = 0
-  switch (solvType) {
-    case SOLV_TYPES.MAINNET_VALIDATOR:
-      genKeys = [
-        KEYPAIRS.MAINNET_VALIDATOR_KEY,
-        KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY,
-        KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY,
-      ]
-      keyNum = 3
-      console.log('Mainnet Validator')
-      break
-    case SOLV_TYPES.TESTNET_VALIDATOR:
-      genKeys = [
-        KEYPAIRS.TESTNET_VALIDATOR_KEY,
-        KEYPAIRS.TESTNET_VALITATOR_AUTHORITY_KEY,
-        KEYPAIRS.TESTNET_VALIDATOR_VOTE_KEY,
-        KEYPAIRS.MAINNET_VALIDATOR_KEY,
-        KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY,
-        KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY,
-      ]
-      keyNum = 6
-      console.log('Testnet Validator')
-      break
-    case SOLV_TYPES.RPC_NODE:
-      genKeys = [KEYPAIRS.MAINNET_VALIDATOR_KEY]
-      keyNum = 1
-      console.log('RPC Node')
-      break
+  if (config.NODE_TYPE === NodeType.RPC) {
+    genKeys = [KEYPAIRS.MAINNET_VALIDATOR_KEY]
+    keyNum = 1
+  }
+  if (config.NETWORK === Network.TESTNET) {
+    genKeys = [
+      KEYPAIRS.TESTNET_VALIDATOR_KEY,
+      KEYPAIRS.TESTNET_VALITATOR_AUTHORITY_KEY,
+      KEYPAIRS.TESTNET_VALIDATOR_VOTE_KEY,
+      KEYPAIRS.MAINNET_VALIDATOR_KEY,
+      KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY,
+      KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY,
+    ]
+    keyNum = 6
+  } else {
+    genKeys = [
+      KEYPAIRS.MAINNET_VALIDATOR_KEY,
+      KEYPAIRS.MAINNET_VALITATOR_AUTHORITY_KEY,
+      KEYPAIRS.MAINNET_VALIDATOR_VOTE_KEY,
+    ]
+    keyNum = 3
   }
 
   const cmd = `solana-keygen grind --starts-and-ends-with E:SV:${keyNum}`
   spawnSync(cmd, { shell: true, stdio: 'ignore' })
   const files = readdirSync('./').filter((f) => f.endsWith('SV.json'))
-  const homeDirectory = os.userInfo().homedir
-  const keyDir = solvConfig.config.IS_CLIENT
-    ? homeDirectory + SOLV_CLIENT_PATHS.SOLV_KEYPAIR_UPLOAD_PATH
-    : homeDirectory
-  if (!existsSync(keyDir)) {
-    mkdirSync(keyDir, { recursive: true })
-  }
+  const keyDir = homedir()
   let i = 0
   for (const file of files) {
     const keyPath = path.join(keyDir, genKeys[i])

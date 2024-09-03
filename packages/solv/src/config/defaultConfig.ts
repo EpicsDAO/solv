@@ -1,4 +1,4 @@
-import { SolvConfigType } from '@/config/types'
+import { DefaultConfigType } from '@/config/types'
 import {
   LANG,
   MNT_DISK_TYPE,
@@ -20,12 +20,12 @@ import {
   SOLANA_MAINNET_RPC_URL,
 } from '@/config/constants'
 
-const defaultConfig: SolvConfigType = {
+const DEFAULT_CONFIG: DefaultConfigType = {
   LANG: LANG.EN,
   NETWORK: Network.TESTNET,
-  NODE_TYPE: NodeType.VALIDATOR,
-  VALIDATOR_TYPE: ValidatorType.SOLANA,
-  RPC_TYPE: RpcType.SOLANA,
+  NODE_TYPE: NodeType.RPC,
+  VALIDATOR_TYPE: ValidatorType.NONE,
+  RPC_TYPE: RpcType.AGAVE,
   MNT_DISK_TYPE: MNT_DISK_TYPE.SINGLE,
   TESTNET_SOLANA_VERSION: VERSION_TESTNET,
   MAINNET_SOLANA_VERSION: VERSION_MAINNET,
@@ -42,7 +42,8 @@ const defaultConfig: SolvConfigType = {
   DISCORD_WEBHOOK_URL: '',
   AUTO_UPDATE: false,
   AUTO_RESTART: false,
+  IS_DUMMY: false,
   API_KEY: '',
 }
 
-export default defaultConfig
+export default DEFAULT_CONFIG

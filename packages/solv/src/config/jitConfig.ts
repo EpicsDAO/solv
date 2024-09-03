@@ -38,4 +38,9 @@ export const JITO_REGIONS = {
     RELAYER_URL: 'http://tokyo.mainnet.relayer.jito.wtf:8100',
     SHRED_RECEIVER_ADDR: '202.8.9.160:1002',
   },
+  SaltLakeCity: {
+    BLOCK_ENGINE_URL: 'https://slc.mainnet.block-engine.jito.wtf',
+    RELAYER_URL: 'http://slc.mainnet.relayer.jito.wtf:8100',
+    SHRED_RECEIVER_ADDR: '64.130.53.8:1002',
+  },
 }

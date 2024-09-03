@@ -32,7 +32,7 @@ import { getSnapshot } from '../get/snapshot'
 import setupMount from './setupMount'
 import setupCpuGovernor from './setupCpuGovernor'
 import updateSysctlConfig from '@/template/updateSysctlConfig'
-import agaveInstall from '../install/agaveInstall'
+import installAgave from '../install/installAgave'
 
 export const setup = async (solvConfig: ConfigParams) => {
   try {
@@ -80,7 +80,7 @@ export const setup = async (solvConfig: ConfigParams) => {
       }
     } else {
       // Install Agave Client as default
-      agaveInstall(solvConfig.config.TESTNET_SOLANA_VERSION)
+      installAgave(solvConfig.config.TESTNET_SOLANA_VERSION)
     }
 
     const askIfDummy = await inquirer.prompt<{ isDummy: boolean }>([
@@ -100,10 +100,6 @@ export const setup = async (solvConfig: ConfigParams) => {
       await readOrCreateJitoConfig()
       await updateJitoSolvConfig(jitoConfig)
       blockEngineUrl = jitoConfig.blockEngineUrl
-
-      if (jitoConfig.hasRelayer) {
-        hasRelayer = true
-      }
     }
 
     let commission = CONFIG.COMMISSION
@@ -173,20 +169,14 @@ export const setup = async (solvConfig: ConfigParams) => {
     setupPermissions()
 
     // Generate startup script
-    await genStartupValidatorScript(
-      true,
-      sType,
-      isJitoMev,
-      hasRelayer,
-      isJitoRPC,
-    )
-    makeServices(isTest, hasRelayer, blockEngineUrl)
+    await genStartupValidatorScript(true, sType, isJitoMev, isJitoRPC)
+    makeServices(isTest)
     daemonReload()
 
-    setupKeys(newSolvConfig)
+    //setupKeys(newSolvConfig)
     createSymLink(askIfDummy.isDummy, isTest)
 
-    enableSolv(hasRelayer)
+    enableSolv()
     restartLogrotate()
 
     if (isJitoMev) {
@@ -199,7 +189,7 @@ export const setup = async (solvConfig: ConfigParams) => {
     }
 
     // Set CPU governor to performance
-    await setupCpuGovernor()
+    setupCpuGovernor()
 
     // Update Sysctl Config if needed
     await updateSysctlConfig()

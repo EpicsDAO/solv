@@ -15,6 +15,8 @@ export type GetPreferredDisksResult = {
   hasUsed1250GB: boolean
 }
 
+// This method can be improved later - Prioritize the NVMe disks over SATA disks
+// Currently, it is just selecting the first disk
 function getPreferredDisks(): GetPreferredDisksResult {
   const commandOutput = execSync('lsblk -l -b -o NAME,SIZE,MOUNTPOINT', {
     encoding: 'utf8',

@@ -1,11 +1,5 @@
-import { spawnSync } from 'child_process'
+import { spawnSync } from 'node:child_process'
 
-export const enableSolv = (hasRelayer = false) => {
+export const enableSolv = () => {
   spawnSync('sudo systemctl enable solv', { shell: true, stdio: 'inherit' })
-  if (hasRelayer) {
-    spawnSync('sudo systemctl enable relayer', {
-      shell: true,
-      stdio: 'inherit',
-    })
-  }
 }
