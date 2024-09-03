@@ -38,8 +38,7 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
       // Mount /mnt/ledger and /mnt/accounts
       mountDirs()
     }
-    // Setup Permissions
-    setupPermissions()
+
     // Generate Systemd Service
     makeServices(isTest)
     // Restart Logrotate
@@ -63,6 +62,8 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
       default:
         throw new Error('Unknown Node Type')
     }
+    // Setup Permissions
+    setupPermissions()
     // Reload Daemon
     daemonReload()
     // Enable Solv Service

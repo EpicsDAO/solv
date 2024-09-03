@@ -1,23 +1,16 @@
-import { startupScriptPaths } from '@/config/config'
-import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
+import { ACCOUNTS_PATH, LEDGER_PATH, LOG_PATH } from '@/config/constants'
 
 export const startJitoRPCScript = (
-  commissionBps = 1000,
   relayerUrl: string,
   blockEngineUrl: string,
   shredReceiverAddr: string,
 ) => {
-  const isTest = false
-  const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
-  const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec agave-validator \\
 --identity /home/solv/identity.json \\
---vote-account ${voteAccount} \\
---authorized-voter  ${identity} \\
---log ${log} \\
---accounts ${accounts} \\
---ledger ${ledger} \\
+--log ${LOG_PATH} \\
+--accounts ${ACCOUNTS_PATH} \\
+--ledger ${LEDGER_PATH} \\
 --entrypoint entrypoint.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \\
@@ -32,7 +25,6 @@ exec agave-validator \\
 --tip-payment-program-pubkey T1pyyaTNZsKv2WcRAB8oVnk93mLJw2XzjtVYqCsaHqt \\
 --tip-distribution-program-pubkey 4R3gSG8BpU4t19KYj8CfnbtRpnT8gtk4dvTHxVRwc2r7 \\
 --merkle-root-upload-authority GZctHpWXmsZC1YHACTGGcHhYxjdRqQvTpYkb9LMvxDib \\
---commission-bps ${commissionBps} \\
 --relayer-url ${relayerUrl} \\
 --rpc-bind-address 0.0.0.0 \\
 --block-engine-url ${blockEngineUrl} \\
@@ -41,6 +33,8 @@ exec agave-validator \\
 --rpc-port 8899 \\
 --private-rpc \\
 --full-rpc-api \\
+--enable-rpc-transaction-history \\
+--no-voting \\
 --account-index program-id \\
 --account-index-include-key AddressLookupTab1e1111111111111111111111111 \\
 --use-snapshot-archives-at-startup when-newest \\

@@ -22,7 +22,6 @@ const setupRpcNode = async (config: DefaultConfigType) => {
       console.log('JITO RPC Node Setup')
       installJito(config.TESTNET_SOLANA_VERSION)
       startupScript = startJitoRPCScript(
-        jitoConfig.commissionBps,
         jitoConfig.relayerUrl,
         jitoConfig.blockEngineUrl,
         jitoConfig.shredReceiverAddr,
