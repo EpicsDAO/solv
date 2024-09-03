@@ -5,29 +5,14 @@ import { relayerStop } from './relayerStop'
 import { relayerRestart } from './relayerRestart'
 import { relayerLog } from './relayerLog'
 import chalk from 'chalk'
-import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
-import { jitoRelayerSetup } from '../setup/jitoRelayerSetup'
 import { LEDGER_PATH } from '@/config/constants'
 import { spawnSync } from 'child_process'
+import { relayerEnable } from './relayerEnable'
 
 export const relayerCommands = () => {
   const relayer = program
     .command('relayer')
     .description('Jito Relayer Commands')
-
-  relayer
-    .command('setup')
-    .description('Show Relayer Status')
-    .action(async () => {
-      console.log(chalk.white('Setting up Jito Relayer ...'))
-      const jitoConfig = await readOrCreateJitoConfig()
-      const blockEngineUrl = jitoConfig.blockEngineUrl
-      const isCoHost = false
-      await jitoRelayerSetup(blockEngineUrl, isCoHost)
-      console.log(
-        chalk.green('Jito Relayer Setup Completed\n\n$ solv relayer --help'),
-      )
-    })
 
   relayer
     .command('status')
@@ -63,6 +48,13 @@ export const relayerCommands = () => {
     .description('Restart Relayer')
     .action(() => {
       relayerRestart()
+    })
+
+  relayer
+    .command('enable')
+    .description('Enable Relayer')
+    .action(() => {
+      relayerEnable()
     })
 
   relayer

@@ -21,13 +21,6 @@ export const askJitoSetting = async () => {
       message: 'Select region',
       choices: jitRegions,
     },
-    {
-      name: 'isRelayer',
-      type: 'confirm',
-      message:
-        'Do you want to setup Relayer Also?(※This requires more than 512GB RAM)',
-      default: false,
-    },
   ])
   const regionKey = answer.region as keyof typeof JITO_REGIONS
   const regionArgs = JITO_REGIONS[regionKey]
@@ -38,7 +31,6 @@ export const askJitoSetting = async () => {
     blockEngineUrl: regionArgs.BLOCK_ENGINE_URL,
     relayerUrl: regionArgs.RELAYER_URL,
     shredReceiverAddr: regionArgs.SHRED_RECEIVER_ADDR,
-    hasRelayer: answer.isRelayer,
   } as JitoConfig
 
   return result

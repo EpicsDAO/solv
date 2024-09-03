@@ -10,8 +10,8 @@ import {
 import { join } from 'path'
 import { spawnSync } from 'node:child_process'
 import chalk from 'chalk'
-import { getSolanaAddress } from '@/lib/getSolanaAddress'
-import scpSSH from '@/lib/scpSSH'
+import checkValidatorKey from './checkValidatorKey'
+import { updateDefaultConfig } from '@/config/updateDefaultConfig'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
 const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
@@ -25,28 +25,9 @@ export const changeIdentityIncoming = async (
     ? TESTNET_VALIDATOR_KEY_PATH
     : MAINNET_VALIDATOR_KEY_PATH
   const solanaClient = isTestnet ? 'agave-validator' : 'solana-validator'
-  console.log(
-    chalk.white('🟢 Checking If Destination Validator Key is the same...'),
-  )
-  const localValidatorIdentityAddress =
-    getSolanaAddress(validatorKeyPath).trim()
-  const destinationValidatorIdentityAddress = scpSSH(
-    ip,
-    `solana-keygen pubkey ${validatorKeyPath}`,
-  )
-    .stdout.toString()
-    .trim()
-  if (localValidatorIdentityAddress !== destinationValidatorIdentityAddress) {
-    console.log(
-      chalk.yellow(
-        `⚠️ Destination Identity Key is different. 
-Please check your Validator
-$ ssh solv@${ip}
 
-Local Identity Key: ${localValidatorIdentityAddress}
-Destination Identity Key: ${destinationValidatorIdentityAddress}`,
-      ),
-    )
+  const isKeyOkay = checkValidatorKey(validatorKeyPath, ip)
+  if (!isKeyOkay) {
     return
   }
 
@@ -116,7 +97,7 @@ Destination Identity Key: ${destinationValidatorIdentityAddress}`,
   // Set the identity on the new validator
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const result5 = spawnSync(
-    `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath} && ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+    `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`,
     {
       shell: true,
       stdio: 'inherit',
@@ -125,11 +106,28 @@ Destination Identity Key: ${destinationValidatorIdentityAddress}`,
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath} && ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+      ),
+    )
+    return
+  }
+
+  const result6 = spawnSync(`ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`, {
+    shell: true,
+    stdio: 'inherit',
+  })
+
+  if (result6.status !== 0) {
+    console.log(
+      chalk.yellow(
+        `⚠️ Chaning Identity Key Symlink Failed. Please check your Validator\n\nFailed Cmd: ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
       ),
     )
     return
   }
 
   console.log(chalk.white('🟢 Identity changed successfully!'))
+  await updateDefaultConfig({
+    IS_DUMMY: false,
+  })
 }

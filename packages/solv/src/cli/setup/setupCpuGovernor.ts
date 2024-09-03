@@ -1,6 +1,6 @@
-import { execSync } from 'child_process'
+import { execSync } from 'node:child_process'
 
-const setupCpuGovernor = async () => {
+const setupCpuGovernor = () => {
   try {
     const cmd = `echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor`
     execSync(cmd)

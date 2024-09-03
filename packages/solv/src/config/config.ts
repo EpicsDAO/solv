@@ -80,6 +80,7 @@ export type CONFIG_TYPE = {
   HARVEST_ACCOUNT: string
   IS_MEV_MODE: boolean
   RPC_URL: string
+  KEYPAIR_PATH: string
   DISCORD_WEBHOOK_URL: string
   AUTO_UPDATE: boolean
   AUTO_RESTART: boolean
@@ -91,9 +92,9 @@ export const CONFIG: CONFIG_TYPE = {
   ID: 'solv',
   LANG: LANGS.EN,
   USERNAME: 'solv',
-  TESTNET_SOLANA_VERSION: '2.0.7',
-  MAINNET_SOLANA_VERSION: '1.18.22',
-  NODE_VERSION: '20.16.0',
+  TESTNET_SOLANA_VERSION: '2.0.8',
+  MAINNET_SOLANA_VERSION: '1.18.23',
+  NODE_VERSION: '20.17.0',
   TESTNET_DELINQUENT_STAKE: 5,
   MAINNET_DELINQUENT_STAKE: 5,
   COMMISSION: 5,
@@ -112,6 +113,7 @@ export const CONFIG: CONFIG_TYPE = {
   HARVEST_ACCOUNT: '',
   IS_MEV_MODE: false,
   RPC_URL: 'https://mainnet-beta.solana.com',
+  KEYPAIR_PATH: '/home/solv/testnet-validator-keypair.json',
   DISCORD_WEBHOOK_URL: '',
   AUTO_UPDATE: false,
   AUTO_RESTART: false,

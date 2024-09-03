@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process'
 
-// Agave Install e.g. agaveInstall('0.1.0')
-const agaveInstall = (version: string) => {
+// Agave Install e.g. installAgave('0.1.0')
+const installAgave = (version: string) => {
   spawnSync(
     `sh -c "$(curl -sSfL https://release.anza.xyz/v${version}/install)"`,
     {
@@ -11,4 +11,4 @@ const agaveInstall = (version: string) => {
   )
 }
 
-export default agaveInstall
+export default installAgave

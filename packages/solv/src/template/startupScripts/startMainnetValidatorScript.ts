@@ -1,18 +1,21 @@
-import { startupScriptPaths } from '@/config/config'
-import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
+import {
+  ACCOUNTS_PATH,
+  IDENTITY_KEY_PATH,
+  LEDGER_PATH,
+  LOG_PATH,
+  MAINNET_VALIDATOR_KEY_PATH,
+  MAINNET_VALIDATOR_VOTE_KEY_PATH,
+} from '@/config/constants'
 
 export const startMainnetValidatorScript = () => {
-  const isTest = false
-  const ledger = readOrCreateDefaultConfig().config.LEDGER_PATH
-  const { identity, voteAccount, log, accounts } = startupScriptPaths(isTest)
   const script = `#!/bin/bash
 exec solana-validator \\
---identity /home/solv/identity.json \\
---vote-account ${voteAccount} \\
---authorized-voter  ${identity} \\
---log ${log} \\
---accounts ${accounts} \\
---ledger ${ledger} \\
+--identity ${IDENTITY_KEY_PATH} \\
+--vote-account ${MAINNET_VALIDATOR_VOTE_KEY_PATH} \\
+--authorized-voter  ${MAINNET_VALIDATOR_KEY_PATH} \\
+--log ${LOG_PATH} \\
+--accounts ${ACCOUNTS_PATH} \\
+--ledger ${LEDGER_PATH} \\
 --entrypoint entrypoint.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \\

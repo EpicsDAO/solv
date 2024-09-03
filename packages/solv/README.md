@@ -27,10 +27,12 @@ The utility tool for Solana Validators
 
 solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
 
+Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
+
 ## 📖 Server Spec
 
-- Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
+- Linux Ubuntu 24.04 LTS
 
 ## Solana Validator Setup
 
@@ -44,13 +46,12 @@ $ solv setup
 
 ![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
 
-Then, select the type of node you want to target.
+- Choose Language
+- Choose Network
+- Choose Node Type
+- Choose RPC Type or Validator Type
 
-- `TESTNET_VALIDATOR`
-- `MAINNET_VALIDATOR`
-- `RPC_NODE`
-
-Then
+Then prompt will ask you for the initial setup.
 
 After startup, the snapshot download will start automatically.
 The Solana validator will start 🎊
@@ -59,62 +60,117 @@ The Solana validator will start 🎊
 
 If your node does not start, you can try the following command.
 
-This will remove the snapshot and restart the Solana Validator from the new snapshot.
-
 ```bash
 $ solv restart --rm
 ```
 
-equivalent to
+This will remove the snapshot and restart the Solana Validator from the new snapshot.
+If snapshot download freezes, you can try Ctrl + C.
+Then setup will continue.
 
-```bash
-$ solv stop
-$ solv rm:snapshot
-$ solv get snapshot
-$ solv start
-```
+## New Features - solv v4.5.0 Release
 
-## solv MEV Mode
+- `solv setup` command is now more user-friendly
+- `solv swap` command is now available
+- `solv jupiter` command is now available
+- `solv relayer` command is now available
+- `solv get ip` command is now available
+- `solv scp` command is now improved with new options
+- `solv balance` alias command `solv b` is now available
+- `solv monitor` alias command `solv m` is now available
+- `solv catchup` alias command `solv c` is now available
+- `solv rm:snapshot` removes all the `/mnt/ledger` and `/mnt/accounts` directories
+- `solv restart --rm` command uses `solv rm:snapshot` command above and restarts the validator
 
-This will enable solv MEV Mode on your validator instance.
-MEV Mode will allow you to harvest your rewards to your authority account every right before the epoch ends.
-Then convert SOL to elSOL (LST) and send it to your desired account.
+## Changes
+
+`solv.config.json` file is now updated with new fields.
+But this will be deprecated in the future.
+
+Now new config is migrating to `solv4.config.json` file.
+
+## Bug Fixes
+
+- `solv switch` command now works as expected.
+- `bigint` warning message is now resolved.
+
+## What is solv MEV Mode?
+
+solv MEV Mode is a feature designed to automate the maintenance of your Solana validator by regularly checking and updating the Solana/solv status and version.
+
+## How it works
+
+- solv epochTimer: This function will be set as a cron job to automatically monitor the health status of your validator and perform updates as needed.
+
+- Automatic Restarts: If necessary, solv epochTimer will restart the validator to ensure optimal performance.
+
+## solv epochTimer Monitors:
+
+epochTimer will monitor the following aspects of your validator:
+
+### Check Validator Account Balance
+
+- Send a notification if the balance is less than 0.5 SOL.
+
+### Check Validator Health Status
+
+- Send a notification if the validator is not voting or is delinquent.
+
+### Check Solana/solv Version Update
+
+- Send a notification if the Solana/solv version is not up-to-date.
+- Update the Solana/solv version automatically.
+- Restart validator if it is required.
+- Send a notification after the Solana/solv version update.
+
+### Auto Harvest (Mainnet Only)
+
+- Withdraw the rewards from vote account to the authority account.
+- Calculate the balance needed for the next epoch.
+- Transfer the balance from the validator account to the authority account.
+- Convert SOL to LST(Liquid Staking Token) and send it to the harvest account.
+
+By implementing solv MEV mode, you can maintain high security, ensure optimal performance, and enjoy the convenience of automated updates and reward management.
+
+## How to use solv mev mode?
+
+Run the following command:
 
 ```bash
 $ solv mev
-? Do you want to enable solv MEV Mode? (y/N) y
-? Enter your RPC URL (https://api.mainnet-beta.solana.com)
-? Enter your Harvest Address (your solana address)
-? Enter your Discord Webhook URL (https://discord.com/api/webhooks/11111111/xxxxxxxx)
+? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
+? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
+? Do you want to enable AUTO RESTART? (Recommended) (y/N)
+※ Please turn off if you are using no-downtime migration.
+? Enter your Discord Webhook URL (https://discord.com/api/webhooks/1234)
 ```
 
-## New Feature: solv switch - v4.4.5~
+1.  Enable solv MEV Mode.
+2.  Enable AUTO UPDATE.
+3.  Enable AUTO RESTART.
 
-`solv switch` command is better version of `solv change`.
+※ Please turn off if you are using no-downtime migration.
+
+※ No-downtime migration requires spare server and manual restart.
+
+4.  Enter your Discord Webhook URL.
+
+※ You can receive notifications about the Solana/solv version update.
+
+5.  Enter RPC URL (Mainnet Only)
+6.  Enter Harvest Account (Mainnet Only)
+
+※ Please DO NOT keep harvest account in the validator node.
+
+## How to disable solv mev mode?
+
+Run the following command:
 
 ```bash
-$ solv switch
-? Which switch type do you want to perform?※Mainnet Only (Use arrow keys)
-❯ Incoming
-  Outgoing
-? What is the IP address of the new validator? (1.1.1.1)
+$ solv mev
+? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
+✅ Cron Job successfully removed.
 ```
-
-`solv change` required to connect both servers.
-Now you only need to connect one server with `solv switch`
-
-This command has 2 types
-
-You choose the type of switch you want to perform.
-Then put IP address of anothor side of server.
-
-- Incoming
-  Run at Active Server. Active Validator Identity switches from this server to a remote server.
-
-- Outgoing
-  Run at Inactive Server. Active Validator Identity switches to this server from a remote server.
-
-This command executes migration commands on both servers.
 
 ## Run solv Server CLI - from your validator server
 
@@ -159,13 +215,13 @@ Usage: solv [options] [command]
 💎 Solana Validator All-in-One CLI 💎
 
 Options:
-  -V                   Output the current version
-  -h, --help           Display help for solv commands
+  -V                     Output the current version
+  -h, --help             Display help for solv commands
 
 Commands:
   server|s               Open solv Dashboard
   start                  Start Solana Validator
-  restart                Restart Solana Validator
+  restart [options]      Restart Solana Validator
   stop                   Stop Solana Validator
   status                 Show Solana Validator Status
   update|u [options]     Update Solana Validator Version
@@ -180,26 +236,30 @@ Commands:
   balance|bal [options]  Show Keypairs Balance
   mtr                    Mount Reload Command
   disks                  Show unmounted disks
-  relayer                Jiro Relayer Commands
+  relayer                Jito Relayer Commands
   transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
   withdraw [options]     Withdraw SOL from Vote Account to Authority Account
   harvest|hv             Harvest SOL from Validator Account to Authority Account
   mev                    Enable MEV Mode
   df                     Disk Free Command
-  swap [options]         Swap Solana Tokens
+  swap [options]         Swap tokens
   epochTimer             Check Solana Epoch Timer
+  switch [options]       Switch Validator Identity with No Downtime
+  jupiter                Jupiter API Commands
   rm:log                 Remove Logs
   rm:snapshot            Remove Snapshot
-  change                 Change Identity of Validator to New Validator
+  create:snapshot        Create Snapshot
   monitor|m              Monitor Solana Node
   catchup|c              Check Solana Catchup Status
   config                 Show Solv Config
   help [cmd]             Display help for solv commands
 ```
 
-If you have any questions, please contact us on Discord.
+## Website
 
-https://discord.gg/yxm5hJqRhg
+Validators Solutions: https://validators.solutions
+Validator DAO: https://dao.validators.solutions
+elSOL: https://elsol.app/
 
 ## Contributing
 

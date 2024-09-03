@@ -1,56 +1,46 @@
-import { spawnSync } from 'child_process'
-import { KEYPAIRS, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
-import { updateSolvConfig } from '@/lib/updateSolvConfig'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { spawnSync } from 'node:child_process'
 import { createSolvKeyPairs } from '@/lib/createSolvKeys'
 import { setupVoteAccount } from '@/cli/setup/setupVoteAccount'
-import { homedir } from 'os'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType } from '@/config/enums'
+import {
+  MAINNET_VALIDATOR_KEY_PATH,
+  TESTNET_VALIDATOR_KEY_PATH,
+} from '@/config/constants'
 
-export const setupKeys = (solvConfig: ConfigParams) => {
+export const setupKeys = (config: DefaultConfigType) => {
   try {
-    createSolvKeyPairs(solvConfig)
-    const keyDir = homedir()
-    let validatorKey = `${keyDir}/${KEYPAIRS.TESTNET_VALIDATOR_KEY}`
-    let network = NETWORK_TYPES.TESTNET
-    const solvType = solvConfig.config.SOLV_TYPE
-    const cmds: string[] = []
-    switch (solvType) {
-      case SOLV_TYPES.MAINNET_VALIDATOR:
-        network = NETWORK_TYPES.MAINNET
-        validatorKey = `${keyDir}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
-        cmds.push(
-          `solana config set --keypair ${validatorKey} --url ${network}`,
-        )
-        spawnSync(cmds.join(' && '), { shell: true, stdio: 'inherit' })
-        break
-      case SOLV_TYPES.RPC_NODE:
-        network = NETWORK_TYPES.MAINNET
-        validatorKey = `${keyDir}/${KEYPAIRS.MAINNET_VALIDATOR_KEY}`
-        cmds.push(
-          `solana config set --keypair ${validatorKey} --url ${network}`,
-        )
-        spawnSync(cmds.join(' && '), { shell: true, stdio: 'inherit' })
-        break
-      case SOLV_TYPES.TESTNET_VALIDATOR:
-        cmds.push(
-          `solana config set --keypair ${validatorKey} --url ${network}`,
-          `solana airdrop 1`,
-          `solana airdrop 1`,
-        )
-        spawnSync(cmds.join(' && '), { shell: true, stdio: 'inherit' })
-        setupVoteAccount(solvConfig)
-        break
-      default:
-        cmds.push(
-          `solana config set --keypair ${validatorKey} --url ${network}`,
-          `solana airdrop 1`,
-          `solana airdrop 1`,
-        )
-        spawnSync(cmds.join(' && '), { shell: true, stdio: 'inherit' })
-        setupVoteAccount(solvConfig)
-        break
+    createSolvKeyPairs(config)
+    const network = config.NETWORK
+    // AirDrop 1 SOL if it's a testnet
+    if (network === Network.TESTNET) {
+      spawnSync(
+        `solana config set --url ${network} -k ${TESTNET_VALIDATOR_KEY_PATH}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
+      spawnSync(
+        `solana airdrop 1 --url ${network} -k ${TESTNET_VALIDATOR_KEY_PATH}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
+    } else {
+      spawnSync(
+        `solana config set --url ${network} -k ${MAINNET_VALIDATOR_KEY_PATH}`,
+        {
+          shell: true,
+          stdio: 'inherit',
+        },
+      )
     }
-    updateSolvConfig({ SOLANA_NETWORK: network, SOLV_TYPE: solvType })
+
+    if (config.NODE_TYPE !== NodeType.RPC) {
+      setupVoteAccount(config)
+    }
     return true
   } catch (error) {
     throw new Error(`setupKeys Error: ${error}`)
