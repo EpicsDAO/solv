@@ -97,7 +97,7 @@ export const changeIdentityIncoming = async (
   // Set the identity on the new validator
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const result5 = spawnSync(
-    `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`,
+    `${solanaClient} -l ${LEDGER_PATH} set-identity ${validatorKeyPath}`,
     {
       shell: true,
       stdio: 'inherit',
@@ -106,7 +106,7 @@ export const changeIdentityIncoming = async (
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
       ),
     )
     return

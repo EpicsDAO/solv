@@ -39,7 +39,7 @@ export const changeIdentityOutgoing = async (
   const step4 = `scp ${LEDGER_PATH}/tower-1_9-${pubkey}.bin solv@${ip}:${LEDGER_PATH}`
 
   // SCP Command to run on the destination validator - scpSSH
-  const step5 = `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`
+  const step5 = `${solanaClient} -l ${LEDGER_PATH} set-identity ${validatorKeyPath}`
   const step6 = `ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`
 
   console.log(chalk.white('🟢 Waiting for restart window...'))
