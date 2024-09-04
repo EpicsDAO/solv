@@ -102,7 +102,7 @@ importers:
   packages/solv:
     dependencies:
       '@jup-ag/api':
-        specifier: ^6.0.27
+        specifier: 6.0.27
         version: 6.0.27
       '@metaplex-foundation/mpl-token-metadata':
         specifier: 3.2.1
@@ -158,9 +158,6 @@ importers:
       inquirer:
         specifier: 10.2.0
         version: 10.2.0
-      node-cron:
-        specifier: 3.0.3
-        version: 3.0.3
       node-fetch:
         specifier: 3.3.2
         version: 3.3.2
@@ -178,7 +175,7 @@ importers:
         specifier: 0.4.2
         version: 0.4.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@swc/core':
-        specifier: ^1.7.21
+        specifier: 1.7.21
         version: 1.7.21(@swc/helpers@0.5.12)
       '@types/bn.js':
         specifier: 5.1.5
@@ -195,9 +192,6 @@ importers:
       '@types/node':
         specifier: 22.5.1
         version: 22.5.1
-      '@types/node-cron':
-        specifier: 3.0.11
-        version: 3.0.11
       '@types/node-fetch':
         specifier: 2.6.11
         version: 2.6.11
@@ -2598,9 +2592,6 @@ packages:
 
   '@types/mute-stream@0.0.4':
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
-
-  '@types/node-cron@3.0.11':
-    resolution: {integrity: sha512-0ikrnug3/IyneSHqCBeslAhlK2aBfYek1fGo4bP4QnZPmiqSGRK+Oy7ZMisLWkesffJvQ1cqAcBnJC+8+nxIAg==}
 
   '@types/node-fetch@2.6.11':
     resolution: {integrity: sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==}
@@ -5802,10 +5793,6 @@ packages:
 
   no-case@2.3.2:
     resolution: {integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==}
-
-  node-cron@3.0.3:
-    resolution: {integrity: sha512-dOal67//nohNgYWb+nWmg5dkFdIwDm8EpeGYMekPMrngV3637lqnX0lbUcCtgibHTz6SEz7DAIjKvKDFYCnO1A==}
-    engines: {node: '>=6.0.0'}
 
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
@@ -10330,8 +10317,6 @@ snapshots:
     dependencies:
       '@types/node': 20.16.2
 
-  '@types/node-cron@3.0.11': {}
-
   '@types/node-fetch@2.6.11':
     dependencies:
       '@types/node': 22.5.1
@@ -14679,10 +14664,6 @@ snapshots:
   no-case@2.3.2:
     dependencies:
       lower-case: 1.1.4
-
-  node-cron@3.0.3:
-    dependencies:
-      uuid: 8.3.2
 
   node-domexception@1.0.0: {}
 
