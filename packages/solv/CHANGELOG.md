@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.5.1
+
+### Patch Changes
+
+- [`6718de8`](https://github.com/EpicsDAO/solv/commit/6718de89c621a0a68394b049b72327c0192347c6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Jito Mainnet
+
 ## 4.5.0
 
 ### Minor Changes
