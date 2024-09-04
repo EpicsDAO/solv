@@ -1,16 +1,16 @@
 import { isValidatorActive } from '@/cli/epochTimer/isValidatorActive'
-import { getAllKeyPaths, NETWORK_TYPES } from '@/config/config'
-import { SOLANA_RPC_URL } from '@/index'
+import { getAllKeyPaths } from '@/config/config'
+import { Network } from '@/config/enums'
+import { DefaultConfigType } from '@/config/types'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import sleep from '@/lib/sleep'
 import { sendDiscord } from '@skeet-framework/utils'
 
 const MAX_RETRIES = 60
 
-const waitCatchup = async (solvConfig: ConfigParams) => {
+const waitCatchup = async (config: DefaultConfigType) => {
   try {
-    const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+    const isTestnet = config.NETWORK === Network.TESTNET
     const { mainnetValidatorVoteKey, testnetValidatorVoteKey } =
       getAllKeyPaths()
     const validatorKey = isTestnet
@@ -18,7 +18,7 @@ const waitCatchup = async (solvConfig: ConfigParams) => {
       : mainnetValidatorVoteKey
     const validatorPubkey = getSolanaAddress(validatorKey)
     let result = await isValidatorActive(
-      SOLANA_RPC_URL,
+      config.RPC_URL,
       validatorPubkey,
       isTestnet,
     )
@@ -39,7 +39,7 @@ Message: Max retries reached, exiting catchup check...
       // Wait for 1 minute
       await sleep(60 * 1000)
       result = await isValidatorActive(
-        SOLANA_RPC_URL,
+        config.RPC_URL,
         validatorPubkey,
         isTestnet,
       )

@@ -1,9 +1,8 @@
 import { program } from '@/index'
 import { spawnSync } from 'child_process'
 import getPreferredDisk from './getLargestDisk'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
-export const mountCommands = (solvConfig: ConfigParams) => {
+export const mountCommands = () => {
   program
     .command('mtr')
     .description('Mount Reload Command')

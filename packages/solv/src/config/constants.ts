@@ -56,6 +56,7 @@ export const DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY =
 
 export const EPOCH_TIMER_FILE_PATH = '/home/solv/currentEpoch.json'
 export const MINIMUM_VALIDATOR_BALANCE = 0.5
+export const MAX_RETRIES = 3
 
 // Endpoint
 export const SOLANA_TESTNET_RPC_URL = 'https://api.testnet.solana.com'

@@ -1,12 +1,10 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { df } from './df/df'
 import { displayTable } from '@/lib/logger/table'
 import getPreferredDisks, { GetPreferredDisksResult } from './mt/getLargestDisk'
 
-export const checkCommands = (solvConfig: ConfigParams) => {
-  const { locale } = solvConfig
-  const check = program.command('check').description(locale.cmds.check)
+export const checkCommands = () => {
+  const check = program.command('check').description('Check System Status')
 
   check
     .command('df')

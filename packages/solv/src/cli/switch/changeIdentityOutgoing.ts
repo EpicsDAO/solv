@@ -1,8 +1,10 @@
 import {
+  AGAVE_VALIDATOR,
   IDENTITY_KEY,
   IDENTITY_KEY_PATH,
   LEDGER_PATH,
   MAINNET_VALIDATOR_KEY_PATH,
+  SOLANA_VALIDATOR,
   SOLV_HOME,
   TESTNET_VALIDATOR_KEY_PATH,
   UNSTAKED_KEY,
@@ -12,6 +14,8 @@ import chalk from 'chalk'
 import { spawnSync } from 'node:child_process'
 import checkValidatorKey from './checkValidatorKey'
 import { updateDefaultConfig } from '@/config/updateDefaultConfig'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType } from '@/config/enums'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
 const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
@@ -20,12 +24,20 @@ const sshKeyPath = '~/.ssh/id_rsa'
 export const changeIdentityOutgoing = async (
   ip: string,
   pubkey: string,
-  isTestnet = false,
+  config: DefaultConfigType,
 ) => {
-  const validatorKeyPath = isTestnet
+  const isTestnet = config.NETWORK === Network.TESTNET
+  const isRPC = config.NODE_TYPE === NodeType.RPC
+  let validatorKeyPath = isTestnet
     ? TESTNET_VALIDATOR_KEY_PATH
     : MAINNET_VALIDATOR_KEY_PATH
-  const solanaClient = isTestnet ? 'agave-validator' : 'solana-validator'
+  if (isRPC) {
+    validatorKeyPath = TESTNET_VALIDATOR_KEY_PATH
+  }
+  let solanaClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  if (isRPC) {
+    solanaClient = AGAVE_VALIDATOR
+  }
 
   const isKeyOkay = checkValidatorKey(validatorKeyPath, ip)
   if (!isKeyOkay) {
@@ -39,7 +51,7 @@ export const changeIdentityOutgoing = async (
   const step4 = `scp ${LEDGER_PATH}/tower-1_9-${pubkey}.bin solv@${ip}:${LEDGER_PATH}`
 
   // SCP Command to run on the destination validator - scpSSH
-  const step5 = `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`
+  const step5 = `${solanaClient} -l ${LEDGER_PATH} set-identity ${validatorKeyPath}`
   const step6 = `ln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`
 
   console.log(chalk.white('🟢 Waiting for restart window...'))

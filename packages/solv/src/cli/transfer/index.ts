@@ -1,10 +1,11 @@
-import { MAX_RETRIES, SOLANA_RPC_URL, program } from '@/index'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
+import { program } from '@/index'
 import inquirer from 'inquirer'
 import { execSync, spawnSync } from 'child_process'
 import chalk from 'chalk'
 import sleep from '@/lib/sleep'
 import { homedir } from 'os'
+import { MAX_RETRIES } from '@/config/constants'
+import { DefaultConfigType } from '@/config/types'
 
 const RETRY_DELAY = 1000
 
@@ -31,7 +32,7 @@ export type SelectTransferRes = {
 
 export const transferFromArray: string[] = Object.values(TransferFrom)
 
-export const transferCommands = (solvConfig: ConfigParams) => {
+export const transferCommands = (config: DefaultConfigType) => {
   program
     .command('transfer')
     .alias('tr')
@@ -44,14 +45,14 @@ export const transferCommands = (solvConfig: ConfigParams) => {
             '✨ Coming Soon\nThis Feature is Currently Under Development\nPlease Check Back Later',
           ),
         )
-        return
+        process.exit(0)
       }
       const { fromWalletPath, fromAddress, toAddress } =
         await selectFromKeypairs()
       let toBalance = '0'
       try {
         const out = spawnSync(
-          `solana balance ${toAddress} --url ${SOLANA_RPC_URL}`,
+          `solana balance ${toAddress} --url ${config.RPC_URL}`,
           { shell: true },
         )
         if (out.status !== 0) {
@@ -63,11 +64,11 @@ export const transferCommands = (solvConfig: ConfigParams) => {
         console.log(
           chalk.red(`❌ To Wallet is Invalid\nPlease Check the Wallet Address`),
         )
-        return
+        process.exit(0)
       }
 
       const fromBalance = execSync(
-        `solana balance ${fromAddress} --url ${SOLANA_RPC_URL}`,
+        `solana balance ${fromAddress} --url ${config.RPC_URL}`,
       ).toString()
 
       console.log(
@@ -86,7 +87,7 @@ export const transferCommands = (solvConfig: ConfigParams) => {
           default: 0.1,
         },
       ])
-      const cmd = `solana transfer ${toAddress} ${amount} --allow-unfunded-recipient --keypair ${fromWalletPath} --url ${SOLANA_RPC_URL}`
+      const cmd = `solana transfer ${toAddress} ${amount} --allow-unfunded-recipient --keypair ${fromWalletPath} --url ${config.RPC_URL}`
       let result = spawnSync(cmd, { shell: true, stdio: 'inherit' })
       let maxRetries = MAX_RETRIES
       while (result.status !== 0 && maxRetries > 0) {
@@ -99,7 +100,7 @@ export const transferCommands = (solvConfig: ConfigParams) => {
         result = spawnSync(cmd, { shell: true, stdio: 'inherit' })
         maxRetries--
       }
-      return
+      process.exit(0)
     })
 }
 

@@ -1,9 +1,10 @@
+import readConfig from '@/config/readConfig'
 import fetch from 'node-fetch'
-import { DISCORD_WEBHOOK_URL } from '..'
 
 export const sendDiscord = async (content: string) => {
   try {
-    if (DISCORD_WEBHOOK_URL === '')
+    const config = await readConfig()
+    if (config.DISCORD_WEBHOOK_URL === '')
       throw new Error(
         'DISCORD_WEBHOOK_URL is empty\nPlease set DISCORD_WEBHOOK_URL in .env',
       )
@@ -12,7 +13,7 @@ export const sendDiscord = async (content: string) => {
       content,
       username: '🪄 Solv Notifier',
     }
-    const res = await fetch(DISCORD_WEBHOOK_URL, {
+    const res = await fetch(config.DISCORD_WEBHOOK_URL, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },

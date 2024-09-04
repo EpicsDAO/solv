@@ -46,9 +46,10 @@ export const swapCommand = async (
         } catch (error: any) {
           if (error.message.includes('User force closed the prompt')) {
             console.error(chalk.cyan(`Exiting...🌛`))
-            return
+            process.exit(0)
           }
           console.error(chalk.red(`Swap Error: ${error.message}`))
+          process.exit(0)
         }
       },
     )
@@ -164,7 +165,7 @@ const swapCmd = async (
     isNeedConfirm,
   )
   if (!txid) {
-    return
+    process.exit(0)
   }
   console.log(chalk.green('✔︎ Sent Tx Successfully!'))
   console.log(chalk.white(`Check Your TX 👉: https://solscan.io/tx/${txid}`))

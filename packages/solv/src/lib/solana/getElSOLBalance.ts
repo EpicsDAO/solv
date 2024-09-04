@@ -1,14 +1,13 @@
 import { ELSOL_MINT_ADDRESS, getAllKeyPaths } from '@/config/config'
-import { SOLANA_RPC_URL } from '@/index'
 import chalk from 'chalk'
 import { execSync } from 'child_process'
 import { homedir } from 'os'
 
-const getElSOLBalance = async () => {
+const getElSOLBalance = async (rpcUrl: string) => {
   try {
     const home = homedir()
     const { mainnetValidatorAuthorityKey } = getAllKeyPaths(home)
-    const cmd = `spl-token balance ${ELSOL_MINT_ADDRESS} --owner ${mainnetValidatorAuthorityKey} --url ${SOLANA_RPC_URL}`
+    const cmd = `spl-token balance ${ELSOL_MINT_ADDRESS} --owner ${mainnetValidatorAuthorityKey} --url ${rpcUrl}`
     const balance = execSync(cmd).toString().trim()
     return Number(balance)
   } catch (error) {

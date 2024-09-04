@@ -1,5 +1,4 @@
 import { getAllKeyPaths } from '@/config/config'
-import { SOLANA_RPC_URL } from '@/index'
 import { execSync, spawnSync } from 'child_process'
 import { getHarvestBalance } from './getHarvestBalance'
 import getBalance, { KeyType } from '@/lib/solana/getBalance'
@@ -12,11 +11,11 @@ import { LAMPORTS_PER_SOL } from '@solana/web3.js'
 // 1. Withdraw all SOL from Vote Account to Authority Account
 // 2. Transfer SOL from Validator Account to Authority Account
 
-export const collectSOL = async () => {
+export const collectSOL = async (rpcUrl: string) => {
   const { mainnetValidatorAuthorityKey, mainnetValidatorKey } = getAllKeyPaths()
 
   // Check Vote Account Balance
-  const voteAccountBalance = await getBalance(SOLANA_RPC_URL, KeyType.VOTE)
+  const voteAccountBalance = await getBalance(rpcUrl, KeyType.VOTE)
 
   // Skip this step if Vote Account Balance is less than 1 SOL
   if (voteAccountBalance < 1) {
@@ -33,7 +32,7 @@ export const collectSOL = async () => {
   }
 
   // Check Validator Key Balance
-  const validatorTransferableBalance = await getHarvestBalance()
+  const validatorTransferableBalance = await getHarvestBalance(rpcUrl)
   console.log(
     chalk.white(`Transferable Balance: ${validatorTransferableBalance} SOL`),
   )
@@ -59,12 +58,7 @@ export const collectSOL = async () => {
       await readFile(mainnetValidatorKey, 'utf-8'),
     ) as number[]
 
-    await solanaTransfer(
-      SOLANA_RPC_URL,
-      fromWalletKey,
-      toAddress,
-      transferLamports,
-    )
+    await solanaTransfer(rpcUrl, fromWalletKey, toAddress, transferLamports)
   }
   return true
 }

@@ -1,12 +1,12 @@
-import { NETWORK_TYPES } from '@/config/config'
-import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
+import { Network } from '@/config/enums'
+import readConfig from '@/config/readConfig'
 import { spawnSync } from 'child_process'
 
 export const deactivateStake = async (stakeAccountPubkey: string) => {
   try {
-    const config = readOrCreateDefaultConfig()
+    const config = await readConfig()
     const authorityKeyPath =
-      config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+      config.NETWORK === Network.TESTNET
         ? '~/testnet-authority-keypair.json'
         : '~/mainnet-authority-keypair.json'
     const cmd = `solana deactivate-stake ${stakeAccountPubkey} --stake-authority ${authorityKeyPath}`

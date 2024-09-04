@@ -1,13 +1,12 @@
 import { program } from '@/index'
 import { startSolana } from './startSolana'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
-export const startCommand = (solvConfig: ConfigParams) => {
-  const { cmds } = solvConfig.locale
+export const startCommand = () => {
   program
     .command('start')
-    .description(cmds.start)
+    .description('Start Solana Validator')
     .action(() => {
       startSolana()
+      process.exit(0)
     })
 }

@@ -1,8 +1,10 @@
 import {
+  AGAVE_VALIDATOR,
   IDENTITY_KEY,
   IDENTITY_KEY_PATH,
   LEDGER_PATH,
   MAINNET_VALIDATOR_KEY_PATH,
+  SOLANA_VALIDATOR,
   SOLV_HOME,
   TESTNET_VALIDATOR_KEY_PATH,
   UNSTAKED_KEY,
@@ -12,6 +14,8 @@ import { spawnSync } from 'node:child_process'
 import chalk from 'chalk'
 import checkValidatorKey from './checkValidatorKey'
 import { updateDefaultConfig } from '@/config/updateDefaultConfig'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType } from '@/config/enums'
 
 const unstakedKeyPath = join(SOLV_HOME, UNSTAKED_KEY)
 const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
@@ -19,12 +23,20 @@ const identityKeyPath = join(SOLV_HOME, IDENTITY_KEY)
 export const changeIdentityIncoming = async (
   ip: string,
   pubkey: string,
-  isTestnet = false,
+  config: DefaultConfigType,
 ) => {
-  const validatorKeyPath = isTestnet
+  const isTestnet = config.NETWORK === Network.TESTNET
+  const isRPC = config.NODE_TYPE === NodeType.RPC
+  let validatorKeyPath = isTestnet
     ? TESTNET_VALIDATOR_KEY_PATH
     : MAINNET_VALIDATOR_KEY_PATH
-  const solanaClient = isTestnet ? 'agave-validator' : 'solana-validator'
+  if (isRPC) {
+    validatorKeyPath = TESTNET_VALIDATOR_KEY_PATH
+  }
+  let solanaClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  if (isRPC) {
+    solanaClient = AGAVE_VALIDATOR
+  }
 
   const isKeyOkay = checkValidatorKey(validatorKeyPath, ip)
   if (!isKeyOkay) {
@@ -97,7 +109,7 @@ export const changeIdentityIncoming = async (
   // Set the identity on the new validator
   console.log(chalk.white('🟢 Setting identity on the new validator...'))
   const result5 = spawnSync(
-    `${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower ${validatorKeyPath}`,
+    `${solanaClient} -l ${LEDGER_PATH} set-identity ${validatorKeyPath}`,
     {
       shell: true,
       stdio: 'inherit',
@@ -106,7 +118,7 @@ export const changeIdentityIncoming = async (
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity --require-tower\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
       ),
     )
     return

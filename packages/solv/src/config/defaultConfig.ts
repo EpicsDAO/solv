@@ -21,7 +21,6 @@ import {
 } from '@/config/constants'
 
 const DEFAULT_CONFIG: DefaultConfigType = {
-  LANG: LANG.EN,
   NETWORK: Network.TESTNET,
   NODE_TYPE: NodeType.RPC,
   VALIDATOR_TYPE: ValidatorType.NONE,

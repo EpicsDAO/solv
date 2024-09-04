@@ -1,39 +1,40 @@
 import { program } from '@/index'
 import { updateVersion } from '../update'
-import { CONFIG, MAINNET_TYPES, NETWORK_TYPES } from '@/config/config'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { jitoUpdate } from '../update/jitoUpdate'
-import { JITO_CONFIG } from '@/config/jitConfig'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType, ValidatorType } from '@/config/enums'
+import {
+  VERSION_JITO_MAINNET,
+  VERSION_MAINNET,
+  VERSION_SOLANA_RPC,
+  VERSION_TESTNET,
+} from '@/config/versionConfig'
 
-export const installCommands = (solvConfig: ConfigParams) => {
-  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-  const version = isTestnet
-    ? CONFIG.TESTNET_SOLANA_VERSION
-    : CONFIG.MAINNET_SOLANA_VERSION
-  const { cmds } = solvConfig.locale
+export const installCommands = (config: DefaultConfigType) => {
+  const isTestnet = config.NETWORK === Network.TESTNET
+  let version = isTestnet ? VERSION_TESTNET : VERSION_MAINNET
   program
     .command('install')
     .alias('i')
-    .description(cmds.install)
+    .description('Install Solana Client')
     .option(
       '-v, --version <version>',
       `Solana Version e.g. ${version}`,
       version,
     )
-    .action((options: { version: string }) => {
-      const isJito = solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV
+    .action(async (options: { version: string }) => {
+      const isJito = config.VALIDATOR_TYPE === ValidatorType.JITO
       if (isJito) {
-        const jitoVersion = options.version || JITO_CONFIG.version
+        const jitoVersion = options.version || VERSION_JITO_MAINNET
         const jitoTag = `v${jitoVersion}-jito`
         jitoUpdate(jitoTag)
         return
       }
-      const isTestnet =
-        solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-      const solanaVersion = isTestnet
-        ? CONFIG.TESTNET_SOLANA_VERSION
-        : CONFIG.MAINNET_SOLANA_VERSION
-      const solanaCLIVersion = options.version || solanaVersion
-      updateVersion(solanaCLIVersion)
+      const isRPC = config.NODE_TYPE === NodeType.RPC
+      if (isRPC) {
+        version = VERSION_SOLANA_RPC
+      }
+      const solanaCLIVersion = options.version || version
+      await updateVersion(solanaCLIVersion)
     })
 }

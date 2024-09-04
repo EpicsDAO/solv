@@ -1,5 +1,4 @@
 import { getAllKeyPaths } from '@/config/config'
-import { SOLANA_RPC_URL } from '@/index'
 import { Connection, LAMPORTS_PER_SOL } from '@solana/web3.js'
 import loadKeypairFromFile from './loadKeypairFromFile'
 import { homedir } from 'os'
@@ -11,7 +10,7 @@ export enum KeyType {
 }
 
 const getBalance = async (
-  rpcUrl = SOLANA_RPC_URL,
+  rpcUrl: string,
   key = KeyType.AUTH,
   isTestnet = false,
 ) => {

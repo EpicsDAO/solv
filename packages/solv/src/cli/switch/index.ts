@@ -1,8 +1,6 @@
 import { Command } from 'commander'
 import inquirer from 'inquirer'
 import { changeIdentityIncoming } from './changeIdentityIncoming'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
-import { NETWORK_TYPES } from '@/config/config'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import {
   MAINNET_VALIDATOR_KEY_PATH,
@@ -11,6 +9,8 @@ import {
 import { changeIdentityOutgoing } from './changeIdentityOutgoing'
 import { checkSSHConnection } from '../scp/checkSSHConnection'
 import chalk from 'chalk'
+import { DefaultConfigType } from '@/config/types'
+import { Network, NodeType } from '@/config/enums'
 
 type SwitchType = 'Incoming' | 'Outgoing' | ''
 const SWITCH_TYPES: SwitchType[] = ['Incoming', 'Outgoing']
@@ -20,7 +20,10 @@ type SwitchOptions = {
   ip: string
 }
 
-export const switchCommand = async (program: Command, config: ConfigParams) => {
+export const switchCommand = async (
+  program: Command,
+  config: DefaultConfigType,
+) => {
   program
     .command('switch')
     .option('--ip <ip>', 'IP Address of the New Validator', '')
@@ -28,10 +31,16 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
     .description('Switch Validator Identity with No Downtime')
     .action(async (options: SwitchOptions) => {
       try {
-        const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-        const keyPath = isTestnet
+        const isTestnet = config.NETWORK === Network.TESTNET
+        const isRPC = config.NODE_TYPE === NodeType.RPC
+        let keyPath = isTestnet
           ? TESTNET_VALIDATOR_KEY_PATH
           : MAINNET_VALIDATOR_KEY_PATH
+
+        if (isRPC) {
+          keyPath = TESTNET_VALIDATOR_KEY_PATH
+        }
+
         const pubkey = getSolanaAddress(keyPath)
         let switchType = options.switchType
         let ip = options.ip
@@ -73,16 +82,18 @@ export const switchCommand = async (program: Command, config: ConfigParams) => {
           return
         }
         if (switchType === 'Incoming') {
-          await changeIdentityIncoming(ip, pubkey, isTestnet)
+          await changeIdentityIncoming(ip, pubkey, config)
         } else {
-          await changeIdentityOutgoing(ip, pubkey, isTestnet)
+          await changeIdentityOutgoing(ip, pubkey, config)
         }
+        process.exit(0)
       } catch (error: any) {
         if (error.message.includes('User force closed the prompt')) {
           console.error(chalk.cyan(`Exiting...🌛`))
-          return
+          process.exit(0)
         }
         console.error(chalk.red(`Switch Error: ${error.message}`))
+        process.exit(0)
       }
     })
 }

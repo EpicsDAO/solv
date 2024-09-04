@@ -24,10 +24,7 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
       console.log(chalk.white(`🟢 Initializing Setup`))
       // Init Config File - solv4.config.json is the new config file
       await readConfig()
-      const init = await initialConfigSetup()
-      if (!init) {
-        throw new Error('Error in initialConfigSetup')
-      }
+      await initialConfigSetup()
     }
 
     const latestConfig = await readConfig()

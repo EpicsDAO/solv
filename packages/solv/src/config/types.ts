@@ -1,5 +1,4 @@
 import {
-  LANG,
   MNT_DISK_TYPE,
   NodeType,
   Network,
@@ -8,7 +7,6 @@ import {
 } from '@/config/enums'
 
 export type DefaultConfigType = {
-  LANG: LANG
   NETWORK: Network
   NODE_TYPE: NodeType
   VALIDATOR_TYPE: ValidatorType

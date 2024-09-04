@@ -9,7 +9,7 @@ import {
 } from '@solana/web3.js'
 import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 import sleep from '../sleep'
-import { MAX_RETRIES } from '@/index'
+import { MAX_RETRIES } from '@/config/constants'
 
 export const solanaTransfer = async (
   endpoint: string,
