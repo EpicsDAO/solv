@@ -33,11 +33,11 @@ export const setupCommands = (config: DefaultConfigType) => {
         if (options.vote) {
           console.log(chalk.white('Setting up Vote Account ...'))
           setupVoteAccount(config)
-          return
+          process.exit(0)
         } else if (options.key) {
           console.log(chalk.white('Setting up Validator Keypairs ...'))
           createSolvKeyPairs(config)
-          return
+          process.exit(0)
         } else if (options.relayer) {
           console.log(chalk.white('Setting up Jito Relayer ...'))
           const jitoConfig = await readOrCreateJitoConfig()
@@ -50,20 +50,24 @@ export const setupCommands = (config: DefaultConfigType) => {
             ),
           )
           daemonReload()
-          return
+          process.exit(0)
         } else if (options.jupiter) {
           console.log(chalk.white('Setting up Jupiter Swap API ...'))
           await jupiterAPISetup()
           daemonReload()
-          return
+          process.exit(0)
         }
         await setupV2(options.skipInitConfig, options.skipMount)
       } catch (error: any) {
-        if (error.message.includes('User force closed the prompt')) {
+        if (
+          error.message.includes('User force closed the prompt') ||
+          error.message.includes('initialConfigSetup')
+        ) {
           console.error(chalk.cyan(`Exiting...🌛`))
-          return
+          process.exit(0)
         }
         console.error(chalk.red(`Setup Error: ${error.message}`))
+        process.exit(0)
       }
     })
 }

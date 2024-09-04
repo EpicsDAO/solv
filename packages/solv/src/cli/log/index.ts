@@ -1,12 +1,10 @@
 import { program } from '@/index'
 import { tail } from './tail'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 
-export const logCommands = (solvConfig: ConfigParams) => {
-  const { cmds } = solvConfig.locale
+export const logCommands = () => {
   program
     .command('log')
-    .description(cmds.log)
+    .description('tail logs')
     .alias('l')
     .description('tail logs')
     .option('-i, --info', 'Follow INFO output', false)

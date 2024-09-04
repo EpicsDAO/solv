@@ -2,26 +2,27 @@ import { program } from '@/index'
 import { getEpoch } from '../cron/getEpoch'
 import { getSlot } from '../cron/getSlot'
 import { Logger } from '@/lib/logger'
-import { solanaCatchup } from './solanaCatchup'
-import { monitorSolana } from './monitorSolana'
 import { showConfig } from './showConfig'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { getSnapshot } from './snapshot'
-import { NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
-import { execSync, spawnSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
 import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 import chalk from 'chalk'
+import { DefaultConfigType } from '@/config/types'
+import { Network } from '@/config/enums'
 
-export const getCommands = (solvConfig: ConfigParams) => {
-  const { locale, config } = solvConfig
+export const getCommands = (config: DefaultConfigType) => {
+  const isTest = config.NETWORK === Network.TESTNET
   const get = program
     .command('get')
-    .description(locale.cmds.get)
-    .argument('<cmd>', locale.cmds.get)
+    .description(`Get Solana Validator's Information`)
+    .argument(
+      '<cmd>',
+      `Subcommands: epoch, slot, catchup, snapshot, contact, config`,
+    )
 
   get
     .command('epoch')
-    .description(locale.cmds.epoch)
+    .description(`Show Validator's Epoch`)
     .action(() => {
       const epoch = getEpoch()
       console.log({ epoch })
@@ -38,18 +39,10 @@ export const getCommands = (solvConfig: ConfigParams) => {
 
   get
     .command('slot')
-    .description(locale.cmds.slot)
+    .description(`Show Current Slot`)
     .action(() => {
       const slot = getSlot()
       console.log({ slot })
-    })
-
-  get
-    .command('catchup')
-    .alias('ca')
-    .description(locale.cmds.catchup)
-    .action(() => {
-      solanaCatchup()
     })
 
   get
@@ -62,35 +55,22 @@ export const getCommands = (solvConfig: ConfigParams) => {
     )
     .description(`Download the latest snapshot`)
     .action((options) => {
-      const isTest =
-        config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR ? true : false
       const minDonwloadSpeed = options.minDownloadSpeed
       getSnapshot(isTest, minDonwloadSpeed)
-    })
-
-  get
-    .command('monitor')
-    .alias('m')
-    .description(locale.cmds.monitor)
-    .action(() => {
-      monitorSolana(solvConfig)
     })
 
   get
     .command('contact')
     .description('Show Validator Contact Information')
     .action(() => {
-      const isTestnet = config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-      const solanaValidatorClient = isTestnet
-        ? AGAVE_VALIDATOR
-        : SOLANA_VALIDATOR
+      const solanaValidatorClient = isTest ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
       const cmd = `${solanaValidatorClient} --ledger /mnt/ledger/ contact-info`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })
 
   get
     .command('config')
-    .description(locale.cmds.config)
+    .description('Show Solv Config')
     .alias('c')
     .action(async () => {
       showConfig()
@@ -98,7 +78,7 @@ export const getCommands = (solvConfig: ConfigParams) => {
 
   get
     .command('aa')
-    .description(locale.cmds.solv)
+    .description('Show Solv AA')
     .option('-c, --client', 'Show Solv Client Mode AA', false)
     .action((options: { client: boolean }) => {
       Logger.solvAA()
@@ -108,5 +88,5 @@ export const getCommands = (solvConfig: ConfigParams) => {
         Logger.installMessage()
       }
     })
-  get.addHelpCommand('help [cmd]', locale.cmds.subcmdHelp)
+  get.addHelpCommand('help [cmd]', 'Get Solana Validator Information')
 }

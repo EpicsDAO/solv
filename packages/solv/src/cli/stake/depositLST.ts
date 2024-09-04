@@ -1,4 +1,3 @@
-import { SOLANA_RPC_URL } from '@/index'
 import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { askAmount } from '.'
 import { PriorityLevel } from '@/lib/solana/priorityFee'
@@ -11,12 +10,13 @@ import { sleep } from '@skeet-framework/utils'
 import { getStakePoolInfo } from '@/lib/solana/getStakePoolInfo'
 
 export const depositeLST = async (
+  rpcUrl: string,
   poolAddress: string,
   amount: number,
   fromWalletKey: number[],
   symbol?: string,
 ) => {
-  const connection = new Connection(SOLANA_RPC_URL)
+  const connection = new Connection(rpcUrl)
   if (amount === 0) {
     amount = await askAmount()
   }
@@ -28,7 +28,7 @@ export const depositeLST = async (
   )
   const priorityFee = PriorityLevel.MEDIUM
   const stakePoolAddress = new PublicKey(poolAddress)
-  const stakePool = await getStakePoolInfo(SOLANA_RPC_URL, poolAddress)
+  const stakePool = await getStakePoolInfo(rpcUrl, poolAddress)
   if (!stakePool) {
     console.log('Stake Pool not found')
     return false
@@ -39,13 +39,13 @@ export const depositeLST = async (
   const mintAddress = stakePool.poolMint
   const depositAuthority = Keypair.fromSecretKey(new Uint8Array(fromWalletKey))
   const destinationTokenAccount = await getOrCreateDestinationAddress(
-    SOLANA_RPC_URL,
+    rpcUrl,
     fromWalletKey,
     mintAddress,
     depositAuthority.publicKey,
   )
   const solvAssociatedTokenAccount = await getOrCreateDestinationAddress(
-    SOLANA_RPC_URL,
+    rpcUrl,
     fromWalletKey,
     mintAddress,
     new PublicKey(SOLV_POOL_MANAGER_ADDRESS),

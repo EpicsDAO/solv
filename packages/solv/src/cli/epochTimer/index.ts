@@ -1,12 +1,13 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import epochTimer from './epochTimer'
+import { DefaultConfigType } from '@/config/types'
 
-export const epochTimerCommands = (solvConfig: ConfigParams) => {
+export const epochTimerCommands = (config: DefaultConfigType) => {
   program
     .command('epochTimer')
     .description('Check Solana Epoch Timer')
     .action(async () => {
-      await epochTimer(solvConfig)
+      await epochTimer(config)
+      process.exit(0)
     })
 }

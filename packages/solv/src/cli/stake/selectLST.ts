@@ -1,5 +1,4 @@
 import { SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
-import { SOLANA_RPC_URL } from '@/index'
 import { getStakePoolInfo } from '@/lib/solana/getStakePoolInfo'
 import { TokenInfo, getTokenInfo } from '@/lib/solana/getTokenAccount'
 import chalk from 'chalk'
@@ -9,7 +8,7 @@ export interface StakePoolInfo extends TokenInfo {
   stakePoolAddress: string
 }
 
-export const selectLST = async () => {
+export const selectLST = async (rpcUrl: string) => {
   const answer = await inquirer.prompt<{ stakePoolAddress: string }>([
     {
       type: 'input',
@@ -19,10 +18,7 @@ export const selectLST = async () => {
     },
   ])
   try {
-    const poolInfo = await getStakePoolInfo(
-      SOLANA_RPC_URL,
-      answer.stakePoolAddress,
-    )
+    const poolInfo = await getStakePoolInfo(rpcUrl, answer.stakePoolAddress)
     if (!poolInfo) {
       console.log(
         chalk.yellow(
@@ -38,7 +34,7 @@ export const selectLST = async () => {
     }
 
     const poolMint = poolInfo.poolMint
-    let tokenInfo = await getTokenInfo(SOLANA_RPC_URL, poolMint)
+    let tokenInfo = await getTokenInfo(rpcUrl, poolMint)
 
     if (!tokenInfo) {
       tokenInfo = {

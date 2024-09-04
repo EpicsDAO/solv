@@ -1,4 +1,3 @@
-import { SOLANA_RPC_URL } from '@/index'
 import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { askAmount } from '.'
 import { PriorityLevel } from '@/lib/solana/priorityFee'
@@ -10,11 +9,12 @@ import { depositSol } from '@/lib/solana/depositSOL'
 import { sleep } from '@skeet-framework/utils'
 
 export const elSOLdeposit = async (
+  rpcUrl: string,
   poolAddress: string,
   amount: number,
   fromWalletKey: number[],
 ) => {
-  let connection = new Connection(SOLANA_RPC_URL)
+  let connection = new Connection(rpcUrl)
   if (amount === 0) {
     amount = await askAmount()
   }
@@ -32,7 +32,7 @@ export const elSOLdeposit = async (
     chalk.green(`🔍 Getting or Creating AssociatedTokenAccount`),
   )
   const destinationTokenAccount = await getOrCreateDestinationAddress(
-    SOLANA_RPC_URL,
+    rpcUrl,
     fromWalletKey,
     mintAddress,
     depositAuthority.publicKey,
@@ -61,7 +61,7 @@ export const elSOLdeposit = async (
     }
     spinner.setSpinnerTitle(chalk.yellow(`⏳ ${retryCount} Times Retrying...`))
     await sleep(3000)
-    connection = new Connection(SOLANA_RPC_URL)
+    connection = new Connection(rpcUrl)
     sig = await depositSol(
       connection,
       fromWalletKey,

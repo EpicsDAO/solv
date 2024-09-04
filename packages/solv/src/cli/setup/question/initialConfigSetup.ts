@@ -1,14 +1,11 @@
 import DEFAULT_CONFIG from '@/config/defaultConfig'
 import {
-  LANG,
-  LANGS,
   Network,
   NETWORK_TYPES,
   NODE_TYPES,
   NodeType,
   RPC_MODE,
   RpcType,
-  SOLANA_CLIENTS,
   ValidatorType,
 } from '@/config/enums'
 import { updateDefaultConfig } from '@/config/updateDefaultConfig'
@@ -19,7 +16,6 @@ import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
 import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 
 type SolvInitialConfig = {
-  lang: LANG
   network: Network
   nodeType: NodeType
 }
@@ -33,13 +29,6 @@ const initialConfigSetup = async () => {
     let commission = DEFAULT_CONFIG.COMMISSION
     let isDummy = false
     const answer = await inquirer.prompt<SolvInitialConfig>([
-      {
-        name: 'lang',
-        type: 'list',
-        message: 'Choose Language',
-        choices: LANGS,
-        default: LANG.EN,
-      },
       {
         name: 'network',
         type: 'list',
@@ -111,8 +100,7 @@ const initialConfigSetup = async () => {
       }
     }
 
-    const { lang, network, nodeType } = answer
-    console.log(chalk.white('Language:', lang))
+    const { network, nodeType } = answer
     console.log(chalk.white('Network:', network))
     console.log(chalk.white('Node Type:', nodeType))
     console.log(chalk.white('Validator Type:', validatorType))
@@ -120,8 +108,8 @@ const initialConfigSetup = async () => {
     if (nodeType === NodeType.VALIDATOR) {
       console.log(chalk.white('Commission:', commission))
     }
+
     await updateDefaultConfig({
-      LANG: lang,
       NETWORK: network,
       NODE_TYPE: nodeType,
       VALIDATOR_TYPE: validatorType,
@@ -131,12 +119,7 @@ const initialConfigSetup = async () => {
     })
     return true
   } catch (error: any) {
-    if (error.message.includes('User force closed the prompt')) {
-      console.error(chalk.cyan(`Exiting...🌛`))
-      return false
-    }
-    console.error(chalk.red(`Switch Error: ${error.message}`))
-    return false
+    throw new Error(error)
   }
 }
 

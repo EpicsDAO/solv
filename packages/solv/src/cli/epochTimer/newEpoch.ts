@@ -1,16 +1,17 @@
 import { EpochData } from './epochTimer'
 import { sendDiscord } from '@/lib/sendDiscord'
 import writeEpochDataToFile from './writeEpochDataToFile'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
-import { getAllKeyPaths, NETWORK_TYPES } from '@/config/config'
+import { getAllKeyPaths } from '@/config/config'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import { EpochInfoCLIType } from '@/lib/getEpochInfoByRust'
+import { DefaultConfigType } from '@/config/types'
+import { Network } from '@/config/enums'
 
 const newEpoch = async (
   currentEpoch: EpochInfoCLIType,
-  solvConfig: ConfigParams,
+  config: DefaultConfigType,
 ) => {
-  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+  const isTestnet = config.NETWORK === Network.TESTNET
   const params: EpochData = {
     epoch: currentEpoch.epoch,
     isLessThan1Hour: false,
@@ -26,7 +27,7 @@ const newEpoch = async (
 
   const content = `===⏳ ${currentEpoch.epoch} ⏳===
 Validator: ${address}
-Network: ${solvConfig.config.SOLANA_NETWORK}
+Network: ${config.NETWORK}
 CurrentEpoch: ${currentEpoch.epoch}
 Epoch has been updated!
 Until Next Epoch: Approximately 2 days`

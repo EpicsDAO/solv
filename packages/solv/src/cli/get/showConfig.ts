@@ -1,6 +1,6 @@
 import { SERVICE_PATHS, startupScriptPaths } from '@/config/config'
 import chalk from 'chalk'
-import { spawnSync } from 'child_process'
+import { spawnSync } from 'node:child_process'
 
 export const showConfig = () => {
   const cmd = `solana config get`

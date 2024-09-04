@@ -1,17 +1,18 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { withdraw } from './withdraw'
+import { DefaultConfigType } from '@/config/types'
 
 type WithdrawOptions = {
   all: boolean
 }
 
-export const withdrawCommands = (solvConfig: ConfigParams) => {
+export const withdrawCommands = (config: DefaultConfigType) => {
   program
     .command('withdraw')
     .option('-a, --all', 'Withdraw All SOL', false)
     .description('Withdraw SOL from Vote Account to Authority Account')
     .action(async (options: WithdrawOptions) => {
-      await withdraw(solvConfig, options.all)
+      await withdraw(config, options.all)
+      process.exit(0)
     })
 }

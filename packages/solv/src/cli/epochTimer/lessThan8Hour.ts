@@ -1,14 +1,14 @@
 import { EpochData } from './epochTimer'
 import writeEpochDataToFile from './writeEpochDataToFile'
 import alertMessage from './alertMessage'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { EpochInfoCLIType } from '@/lib/getEpochInfoByRust'
+import { DefaultConfigType } from '@/config/types'
 
 const lessThan8Hour = async (
   totalMinutes: number,
   epochData: EpochData,
   currentEpoch: EpochInfoCLIType,
-  solvConfig: ConfigParams,
+  config: DefaultConfigType,
 ) => {
   if (
     totalMinutes < 8 * 60 &&
@@ -17,7 +17,7 @@ const lessThan8Hour = async (
   ) {
     // Update the database and send a notification
     await writeEpochDataToFile({ ...epochData, isLessThan8Hours: true })
-    await alertMessage(currentEpoch, '8 Hours', solvConfig)
+    await alertMessage(currentEpoch, '8 Hours', config)
   }
 }
 

@@ -1,18 +1,15 @@
 import getBalance, { KeyType } from '@/lib/solana/getBalance'
-import {
-  MINIMUM_VALIDATOR_BALANCE,
-  NETWORK_TYPES,
-  getAllKeyPaths,
-} from '@/config/config'
+import { MINIMUM_VALIDATOR_BALANCE, getAllKeyPaths } from '@/config/config'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import { sendDiscord } from '@/lib/sendDiscord'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import chalk from 'chalk'
 import { SOLANA_TESTNET_RPC_URL } from '@/config/constants'
+import { DefaultConfigType } from '@/config/types'
+import { Network } from '@/config/enums'
 
-const checkBalance = async (solvConfig: ConfigParams) => {
-  let rpcUrl = solvConfig.config.RPC_URL
-  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+const checkBalance = async (config: DefaultConfigType) => {
+  let rpcUrl = config.RPC_URL
+  const isTestnet = config.NETWORK === Network.TESTNET
   if (isTestnet) {
     rpcUrl = SOLANA_TESTNET_RPC_URL
   }

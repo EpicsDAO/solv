@@ -1,12 +1,10 @@
 import { program } from '@/index'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
 
-export const statusCommands = (solvConfig: ConfigParams) => {
-  const { cmds } = solvConfig.locale
+export const statusCommands = () => {
   program
     .command('status')
-    .description(cmds.status)
+    .description('Check Solana Validator Status')
     .action(() => {
       systemctlStatusSolv()
     })
@@ -15,4 +13,5 @@ export const statusCommands = (solvConfig: ConfigParams) => {
 export const systemctlStatusSolv = () => {
   const cmd = `sudo systemctl status solv`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
+  process.exit(0)
 }

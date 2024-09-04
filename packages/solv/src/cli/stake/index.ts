@@ -1,19 +1,11 @@
 import { program } from '@/index'
 import { delegateStake } from './delegateStake'
 export * from './delegateStake'
-import {
-  ConfigParams,
-  readOrCreateDefaultConfig,
-} from '@/lib/readOrCreateDefaultConfig'
 import { stakeAccountQuestion } from './stakeAccountQuestion'
 import { deactivateStake } from './deactivateStake'
 import { withdrawStake } from './withdrawStake'
-import { delegateStakeAsk } from '../server/stake/delegateStakeAsk'
-import { deactivateStakeAsk } from '../server/stake/deactivateStakeAsk'
-import { unstakeAsk } from '../server/stake/unstakeAsk'
-import { withdrawStakeAsk } from '../server/stake/withdrawStakeAsk'
 import chalk from 'chalk'
-import { NETWORK_TYPES, SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
+import { SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
 import { selectLST } from './selectLST'
 import { readFile } from 'fs/promises'
 import inquirer from 'inquirer'
@@ -22,29 +14,30 @@ import { elSOLdeposit } from './elSOLdeposit'
 import { depositeLST } from './depositLST'
 import { execSync } from 'child_process'
 import { homedir } from 'os'
+import { DefaultConfigType } from '@/config/types'
+import { Network } from '@/config/enums'
+import readConfig from '@/config/readConfig'
 
 export type StakeOptions = {
   lst: boolean
   elsol: boolean
   amount: string
 }
-export const stakeCommands = (solvConfig: ConfigParams) => {
-  const { config, locale } = solvConfig
-  const { cmds } = locale
+export const stakeCommands = (config: DefaultConfigType) => {
   program
     .command('stake')
-    .description(cmds.stake)
+    .description('Stake SOL')
     .option('-l, --lst', 'Convert to Liquid Stake Token')
     .option('-e, --elsol', 'Convert to elSOL', false)
     .option('-a, --amount <amount>', 'Amount of SOL to stake', '0')
     .action(async (options: StakeOptions) => {
       let amount = Number(options.amount)
       let poolAddress = SOLV_STAKE_POOL_ADDRESS
+      const isTestnet = config.NETWORK === Network.TESTNET
       const keyRoot = homedir()
-      const keypairPath =
-        config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-          ? `${keyRoot}/testnet-authority-keypair.json`
-          : `${keyRoot}/mainnet-authority-keypair.json`
+      const keypairPath = isTestnet
+        ? `${keyRoot}/testnet-authority-keypair.json`
+        : `${keyRoot}/mainnet-authority-keypair.json`
       execSync(`solana config set --keypair ${keypairPath}`)
       if (!(await existsAsync(keypairPath))) {
         console.log(
@@ -60,24 +53,30 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
       ) as number[]
       if (options.elsol) {
         // Deposit SOL to elSOL
-        await elSOLdeposit(poolAddress, amount, fromWalletKey)
+        await elSOLdeposit(config.RPC_URL, poolAddress, amount, fromWalletKey)
         return
       } else if (options.lst) {
-        const lst = await selectLST()
+        const lst = await selectLST(config.RPC_URL)
         if (!lst) {
           return
         }
         poolAddress = lst.stakePoolAddress
         // Deposit SOL to LST
-        await depositeLST(poolAddress, amount, fromWalletKey, lst.symbol)
+        await depositeLST(
+          config.RPC_URL,
+          poolAddress,
+          amount,
+          fromWalletKey,
+          lst.symbol,
+        )
         return
       } else {
         // Solana Native Stake
-        const result = await stakeAccountQuestion(solvConfig)
+        const result = await stakeAccountQuestion(config)
         if (!result) {
           return
         }
-        const newSolvConfig = readOrCreateDefaultConfig()
+        const newSolvConfig = await readConfig()
         const { validatorVoteAccount, stakeAccounts } =
           await delegateStakeAsk(newSolvConfig)
         for await (const stakeAccount of stakeAccounts) {
@@ -96,7 +95,7 @@ export const stakeCommands = (solvConfig: ConfigParams) => {
 
   program
     .command('unstake')
-    .description(cmds.stake)
+    .description('Unstake SOL')
     .action(async () => {
       const { unstakeOption } = await unstakeAsk()
       if (unstakeOption === 'Deactivate Stake') {
@@ -140,13 +139,121 @@ export const askAmount = async () => {
       '⚠️ 0.03 SOL will be remaining in the account if you just press enter.',
     ),
   )
-  const answer = await inquirer.prompt<{ amount: number }>([
+  const answer = await inquirer.prompt<{ amount: string }>([
     {
       type: 'input',
       name: 'amount',
       message: 'Enter amount of SOL to stake:',
-      default: Number(currentVoteAccountBalance) - 0.03,
+      default: String(Number(currentVoteAccountBalance) - 0.03),
     },
   ])
   return Number(answer.amount)
+}
+
+type deactivateStakeAskOption = {
+  stakeAccounts: string[]
+}
+
+const deactivateStakeAsk = async () => {
+  const config = await readConfig()
+  const answer = await inquirer.prompt<deactivateStakeAskOption>([
+    {
+      type: 'checkbox',
+      name: 'stakeAccounts',
+      message: `Which Stake Account would you like to deactivate stake from?`,
+      choices: config.STAKE_ACCOUNTS,
+    },
+  ])
+  return answer
+}
+
+type delegateStakeOption = {
+  stakeAccounts: string[]
+  validatorVoteAccount: string
+}
+
+const delegateStakeAsk = async (config: DefaultConfigType) => {
+  const stakeAccount = config.STAKE_ACCOUNTS
+  const defaultAddress =
+    config.NETWORK === Network.TESTNET
+      ? getVoteAccountAddress(config)
+      : config.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY
+  const answer = await inquirer.prompt<delegateStakeOption>([
+    {
+      type: 'checkbox',
+      name: 'stakeAccounts',
+      message: `Which Stake Account would you like to delegate stake to?`,
+      choices: stakeAccount,
+    },
+    {
+      type: 'input',
+      name: 'validatorVoteAccount',
+      message: `What is the Validator Vote Account Address?`,
+      default() {
+        return defaultAddress
+      },
+    },
+  ])
+  return answer
+}
+
+const getVoteAccountAddress = (config: DefaultConfigType) => {
+  const isTest = config.NETWORK === Network.TESTNET
+  const voteAccount = isTest ? 'testnet-vote-account' : 'mainnet-vote-account'
+  const cmd = `/home/solv/${voteAccount}-keypair.json`
+  const address = execSync(`solana-keygen pubkey ${cmd}`).toString()
+  return address
+}
+
+type unstakeAskOption = {
+  unstakeOption: string
+}
+
+const unstakeAsk = async () => {
+  const unstakeOptions = ['Deactivate Stake', 'Withdraw Stake']
+  const answer = await inquirer.prompt<unstakeAskOption>([
+    {
+      type: 'list',
+      name: 'unstakeOption',
+      message: 'What would you like to do?',
+      choices: unstakeOptions,
+      default: unstakeOptions[0],
+    },
+  ])
+  return answer
+}
+
+type withdrawStakeAskOption = {
+  stakeAccounts: string
+  destinationAddress: string
+  solAmount: string
+}
+
+const withdrawStakeAsk = async () => {
+  const stakeAccount = (await readConfig()).STAKE_ACCOUNTS
+  const answer = await inquirer.prompt<withdrawStakeAskOption>([
+    {
+      type: 'checkbox',
+      name: 'stakeAccounts',
+      message: `Which Stake Account would you like to withdraw stake from?`,
+      choices: stakeAccount,
+    },
+    {
+      type: 'input',
+      name: 'destinationAddress',
+      message: `What is the destination address for the withdrawn SOL?`,
+      default() {
+        return 'xxxxxxxx'
+      },
+    },
+    {
+      type: 'input',
+      name: 'solAmount',
+      message: `How many SOL would you like to withdraw?`,
+      default() {
+        return '1'
+      },
+    },
+  ])
+  return answer
 }

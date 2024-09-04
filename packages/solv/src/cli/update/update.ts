@@ -1,16 +1,16 @@
-import { NETWORK_TYPES } from '@/config/config'
 import {
   AGAVE_VALIDATOR,
   LEDGER_PATH,
   SOLANA_VALIDATOR,
 } from '@/config/constants'
-import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import { spawnSync } from 'child_process'
 import installAgave from '../install/installAgave'
+import readConfig from '@/config/readConfig'
+import { Network, NodeType } from '@/config/enums'
 
-export const updateVersion = (version: string) => {
-  const config = readOrCreateDefaultConfig()
-  const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+export const updateVersion = async (version: string) => {
+  const config = await readConfig()
+  const isTestnet = config.NETWORK === Network.TESTNET
   if (isTestnet) {
     installAgave(version)
     return
@@ -21,13 +21,15 @@ export const updateVersion = (version: string) => {
   spawnSync(cmd.join(' && '), { shell: true, stdio: 'inherit' })
 }
 
-export const monitorUpdate = (
+export const monitorUpdate = async (
   maxDelinquentStake: number,
   noMonitor = false,
 ) => {
-  const config = readOrCreateDefaultConfig()
-  const isTestnet = config.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-  const solanaValidatorClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+  const config = await readConfig()
+  const isTestnet = config.NETWORK === Network.TESTNET
+  const isRPC = config.NODE_TYPE === NodeType.RPC
+  let solanaValidatorClient =
+    isRPC || isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
   let cmd = `${solanaValidatorClient} --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake} --monitor`
   if (noMonitor) {
     cmd = `${solanaValidatorClient} --ledger ${LEDGER_PATH} exit --max-delinquent-stake ${maxDelinquentStake}`

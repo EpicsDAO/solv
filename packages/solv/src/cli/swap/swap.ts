@@ -34,7 +34,7 @@ export const swap = async (
       )
       console.log(chalk.white('Get Your API key 👇'))
       console.log(chalk.white(WEB_VALIDATORS_SOLUTIONS + '\n'))
-      return
+      process.exit(0)
     }
     const msg = `${chalk.yellow('⚠️ Too many requests, please try again later ⚠️')}
 
@@ -43,7 +43,7 @@ Get Your API key 👇
 Validators Solutions: ${WEB_VALIDATORS_SOLUTIONS}
 `
     console.error(chalk.white(msg))
-    return
+    process.exit(0)
   }
   const inputTokneInfo =
     TokenInfoByMint[inputMint as keyof typeof TokenInfoByMint]
@@ -82,11 +82,11 @@ $ solv swap --input ${inputMint} --output ${outputMint} --amount ${inputAmountLa
   }
   if (!confirm) {
     console.log(chalk.yellow('⚠️ Swap cancelled'))
-    return
+    process.exit(0)
   }
 
   if (!quoteResponse) {
-    return
+    process.exit(0)
   }
 
   const fromWalletKey = JSON.parse(
@@ -109,7 +109,7 @@ $ solv swap --input ${inputMint} --output ${outputMint} --amount ${inputAmountLa
       )
       console.log(chalk.white('Get Your API key 👇'))
       console.log(chalk.white(WEB_VALIDATORS_SOLUTIONS + '\n'))
-      return
+      process.exit(0)
     }
     const msg = `${chalk.yellow('⚠️ Too many requests, please try again later ⚠️')}
 
@@ -118,7 +118,7 @@ Get Your API key 👇
 Validators Solutions: ${WEB_VALIDATORS_SOLUTIONS}
 `
     console.error(chalk.white(msg))
-    return
+    process.exit(0)
   }
 
   const swapTransactionBuf = Buffer.from(

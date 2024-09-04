@@ -1,24 +1,32 @@
 import { program } from '@/index'
 import { monitorUpdate, updateVersion } from './update'
-import { Logger } from '@/lib/logger'
 import chalk from 'chalk'
 import { updateSolv } from './updateSolv'
-import {
-  CONFIG,
-  MAINNET_TYPES,
-  NETWORK_TYPES,
-  SOLV_TYPES,
-} from '@/config/config'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
-import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import { jitoUpdate } from './jitoUpdate'
 import { updateJitoSolvConfig } from '@/lib/updateJitoSolvConfig'
-import { JITO_CONFIG } from '@/config/jitConfig'
 import { updateCommission, updateCommissionAsk } from './updateCommission'
 import { updateFirewall } from '../setup/updateFirewall'
 import autoUpdate from './autoUpdate'
 import getSolvVersion from '../epochTimer/getSolvVersion'
 import { updateDefaultConfig } from '@/config/updateDefaultConfig'
+import { DefaultConfigType } from '@/config/types'
+import {
+  MNT_DISK_TYPE,
+  Network,
+  NodeType,
+  RpcType,
+  ValidatorType,
+} from '@/config/enums'
+import {
+  VERSION_JITO_MAINNET,
+  VERSION_JITO_RPC,
+  VERSION_JITO_TESTNET,
+  VERSION_MAINNET,
+  VERSION_SOLANA_RPC,
+  VERSION_TESTNET,
+} from '@/config/versionConfig'
+import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
+import { MAINNET_TYPES, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
 
 export * from './update'
 
@@ -31,16 +39,27 @@ export type UpdateOptions = {
   auto: boolean
 }
 
-export const updateCommands = (solvConfig: ConfigParams) => {
-  const { cmds } = solvConfig.locale
-  const isTestnet = solvConfig.config.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
-  const version = isTestnet
-    ? CONFIG.TESTNET_SOLANA_VERSION
-    : CONFIG.MAINNET_SOLANA_VERSION
+export const updateCommands = (config: DefaultConfigType) => {
+  const isTestnet = config.NETWORK === Network.TESTNET
+  const isRPC = config.NODE_TYPE === NodeType.RPC
+  const isJito = config.VALIDATOR_TYPE === ValidatorType.JITO
+  let version = isTestnet ? VERSION_TESTNET : VERSION_MAINNET
+  if (isJito) {
+    version = VERSION_JITO_MAINNET
+    if (isTestnet) {
+      version = VERSION_JITO_TESTNET
+    }
+  }
+  if (isRPC) {
+    version = VERSION_SOLANA_RPC
+    if (isJito) {
+      version = VERSION_JITO_RPC
+    }
+  }
   program
     .command('update')
     .alias('u')
-    .description(cmds.update)
+    .description('Update Command')
     .option('-v, --version <version>', `Solana Version e.g ${version}`, version)
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-c, --commission', 'Update Commission', false)
@@ -49,34 +68,71 @@ export const updateCommands = (solvConfig: ConfigParams) => {
     .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
       const solvVersion = getSolvVersion()
-      const isTest =
-        solvConfig.config.SOLV_TYPE === SOLV_TYPES.TESTNET_VALIDATOR
-          ? true
-          : false
-      const deliquentStake = isTest
-        ? CONFIG.TESTNET_DELINQUENT_STAKE
-        : CONFIG.MAINNET_DELINQUENT_STAKE
+      const deliquentStake = isTestnet
+        ? config.TESTNET_DELINQUENT_STAKE
+        : config.MAINNET_DELINQUENT_STAKE
       console.log(chalk.white(`Current solv version: ${solvVersion}`))
 
       // Auto Update
       if (options.auto) {
-        await autoUpdate(solvConfig)
+        await autoUpdate(config)
         return
       }
       // Only Update solv.config.json default solana version
       if (options.config) {
-        updateSolvConfig({
-          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
-          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
-        })
+        // Temporarily!!
+        // Migrate solv.config.json to solv4.config.json
+        const oldConfig = readOrCreateDefaultConfig().config
+        const isTestnetOld = oldConfig.SOLANA_NETWORK === NETWORK_TYPES.TESTNET
+        const isRPCOld = oldConfig.SOLV_TYPE === SOLV_TYPES.RPC_NODE
+        const isJitoOld = oldConfig.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV
+        const newConfigBody: DefaultConfigType = {
+          NETWORK: isTestnetOld ? Network.TESTNET : Network.MAINNET,
+          NODE_TYPE: isRPCOld ? NodeType.RPC : NodeType.VALIDATOR,
+          MNT_DISK_TYPE:
+            oldConfig.DISK_TYPES === 0
+              ? MNT_DISK_TYPE.DOUBLE
+              : MNT_DISK_TYPE.SINGLE,
+          RPC_TYPE: RpcType.JITO,
+          VALIDATOR_TYPE: isJitoOld
+            ? ValidatorType.JITO
+            : isTestnetOld
+              ? ValidatorType.AGAVE
+              : ValidatorType.SOLANA,
+          TESTNET_SOLANA_VERSION: oldConfig.TESTNET_SOLANA_VERSION,
+          MAINNET_SOLANA_VERSION: oldConfig.MAINNET_SOLANA_VERSION,
+          NODE_VERSION: oldConfig.NODE_VERSION,
+          TESTNET_DELINQUENT_STAKE: oldConfig.TESTNET_DELINQUENT_STAKE,
+          MAINNET_DELINQUENT_STAKE: oldConfig.MAINNET_DELINQUENT_STAKE,
+          COMMISSION: oldConfig.COMMISSION,
+          DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY:
+            oldConfig.DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY,
+          STAKE_ACCOUNTS: oldConfig.STAKE_ACCOUNT,
+          HARVEST_ACCOUNT: oldConfig.HARVEST_ACCOUNT,
+          IS_MEV_MODE: oldConfig.IS_MEV_MODE,
+          RPC_URL: oldConfig.RPC_URL,
+          KEYPAIR_PATH: oldConfig.KEYPAIR_PATH,
+          DISCORD_WEBHOOK_URL: oldConfig.DISCORD_WEBHOOK_URL,
+          AUTO_UPDATE: oldConfig.AUTO_UPDATE,
+          AUTO_RESTART: oldConfig.AUTO_RESTART,
+          IS_DUMMY: false,
+          API_KEY: '',
+        }
+
+        updateDefaultConfig(newConfigBody)
+        // --- End of Temporarily!!
+
         updateDefaultConfig({
-          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
-          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
+          TESTNET_SOLANA_VERSION: VERSION_TESTNET,
+          MAINNET_SOLANA_VERSION: VERSION_MAINNET,
         })
-        if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
+        if (isJito) {
+          const jitoVersion = isTestnet
+            ? VERSION_JITO_TESTNET
+            : VERSION_JITO_MAINNET
           updateJitoSolvConfig({
-            version: JITO_CONFIG.version,
-            tag: JITO_CONFIG.tag,
+            version: jitoVersion,
+            tag: `v${jitoVersion}-jito`,
           })
         }
         console.log(
@@ -94,40 +150,22 @@ export const updateCommands = (solvConfig: ConfigParams) => {
       if (options.background) {
         let version = options.version
         updateDefaultConfig({
-          TESTNET_SOLANA_VERSION: CONFIG.TESTNET_SOLANA_VERSION,
-          MAINNET_SOLANA_VERSION: CONFIG.MAINNET_SOLANA_VERSION,
+          TESTNET_SOLANA_VERSION: config.TESTNET_SOLANA_VERSION,
+          MAINNET_SOLANA_VERSION: config.MAINNET_SOLANA_VERSION,
         })
-        if (
-          solvConfig.config.SOLV_TYPE === SOLV_TYPES.MAINNET_VALIDATOR ||
-          solvConfig.config.SOLV_TYPE === SOLV_TYPES.RPC_NODE
-        ) {
-          if (solvConfig.config.MAINNET_TYPE === MAINNET_TYPES.JITO_MEV) {
-            version = JITO_CONFIG.version
-            jitoUpdate()
-            updateJitoSolvConfig({ version, tag: `v${version}-jito` })
-            monitorUpdate(deliquentStake, true)
-            return
-          }
-          version = CONFIG.MAINNET_SOLANA_VERSION
-          updateVersion(version)
-          updateSolvConfig({
-            MAINNET_SOLANA_VERSION: version,
-          })
-          monitorUpdate(deliquentStake, true)
-          return
-        } else {
-          version = CONFIG.TESTNET_SOLANA_VERSION
-          updateVersion(version)
-          updateSolvConfig({
-            TESTNET_SOLANA_VERSION: version,
-          })
-          Logger.normal(`✔️ Update to Solana Version ${chalk.green(version)}`)
+
+        if (isJito) {
+          jitoUpdate()
+          updateJitoSolvConfig({ version, tag: `v${version}-jito` })
           monitorUpdate(deliquentStake, true)
           return
         }
+        await updateVersion(version)
+        monitorUpdate(deliquentStake, true)
+        return
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
-        updateCommission(ansewr.commission, isTest)
+        updateCommission(ansewr.commission, isTestnet)
       } else {
         updateSolv()
       }

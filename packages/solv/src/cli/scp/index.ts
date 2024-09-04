@@ -7,7 +7,6 @@ import { init } from './init'
 import { processPaths, search } from './search'
 import chalk from 'chalk'
 import { Presets, SingleBar } from 'cli-progress'
-import { ConfigParams } from '@/lib/readOrCreateDefaultConfig'
 import uploadVS from './uploadVS'
 
 export type UploadOptions = {
@@ -15,9 +14,11 @@ export type UploadOptions = {
   ip: string
 }
 
-export const scpCommands = (solvConfig: ConfigParams) => {
-  const { cmds } = solvConfig.locale
-  const scp = program.command('scp').description(cmds.scp).argument('<cmd>')
+export const scpCommands = () => {
+  const scp = program
+    .command('scp')
+    .description(`Scp Commands`)
+    .argument('<cmd>')
 
   scp
     .command('download')
