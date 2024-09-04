@@ -1,5 +1,17 @@
 # @epics-dao/solv
 
+## 4.5.2
+
+### Patch Changes
+
+- [#269](https://github.com/EpicsDAO/solv/pull/269) [`e3850de`](https://github.com/EpicsDAO/solv/commit/e3850dee92480fafe036a63751a514653295902b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv.config.json to solv4.config.json
+
+  solv.config.json will be deprecated in the future, please update your config file to solv4.config.json with the following command:
+
+  ```bash
+  solv update --config
+  ```
+
 ## 4.5.1
 
 ### Patch Changes
