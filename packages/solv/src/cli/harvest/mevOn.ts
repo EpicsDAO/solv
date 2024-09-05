@@ -41,12 +41,7 @@ const mevOn = async (config: DefaultConfigType) => {
       // Delete the cron job
       await removeCronJob()
     }
-    updateSolvConfig({
-      IS_MEV_MODE: ask.mevOn,
-      AUTO_UPDATE: false,
-      AUTO_RESTART: false,
-    })
-    updateDefaultConfig({
+    await updateDefaultConfig({
       IS_MEV_MODE: ask.mevOn,
       AUTO_UPDATE: false,
       AUTO_RESTART: false,
@@ -113,15 +108,7 @@ AUTO RESTART: If you enable this, solv will restart automatically when the solan
     rpcUrl = ask3.rpcUrl
   }
 
-  updateSolvConfig({
-    HARVEST_ACCOUNT: harvestAddress,
-    IS_MEV_MODE: ask.mevOn,
-    RPC_URL: rpcUrl,
-    DISCORD_WEBHOOK_URL: ask2.discordWebhookUrl,
-    AUTO_UPDATE: askIfAuto.autoUpdate,
-    AUTO_RESTART: askIfAuto.autoRestart,
-  })
-  updateDefaultConfig({
+  await updateDefaultConfig({
     HARVEST_ACCOUNT: harvestAddress,
     IS_MEV_MODE: ask.mevOn,
     RPC_URL: rpcUrl,
