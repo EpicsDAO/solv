@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.5.4
+
+### Patch Changes
+
+- [#273](https://github.com/EpicsDAO/solv/pull/273) [`acf7b1a`](https://github.com/EpicsDAO/solv/commit/acf7b1a6771e7a950aecbcf0a9094bf4cf5e055d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
+
 ## 4.5.3
 
 ### Patch Changes
