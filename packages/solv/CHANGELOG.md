@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.5.3
+
+### Patch Changes
+
+- [#271](https://github.com/EpicsDAO/solv/pull/271) [`317e858`](https://github.com/EpicsDAO/solv/commit/317e8589b4bb2a95deaf1516388deab648efba6a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Migrate solv.config.json cmd - solv update --config
+
 ## 4.5.2
 
 ### Patch Changes
