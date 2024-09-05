@@ -131,7 +131,7 @@ export const getHarvestAddress = async (config: DefaultConfigType) => {
         validate: validateSolanaKey,
       },
     ])
-    updateDefaultConfig({ HARVEST_ACCOUNT: answer.harvestAddress })
+    await updateDefaultConfig({ HARVEST_ACCOUNT: answer.harvestAddress })
     return answer.harvestAddress as string
   }
 }

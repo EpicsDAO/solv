@@ -119,10 +119,10 @@ export const updateCommands = (config: DefaultConfigType) => {
           API_KEY: '',
         }
 
-        updateDefaultConfig(newConfigBody)
+        await updateDefaultConfig(newConfigBody)
         // --- End of Temporarily!!
 
-        updateDefaultConfig({
+        await updateDefaultConfig({
           TESTNET_SOLANA_VERSION: VERSION_TESTNET,
           MAINNET_SOLANA_VERSION: VERSION_MAINNET,
         })
@@ -130,7 +130,7 @@ export const updateCommands = (config: DefaultConfigType) => {
           const jitoVersion = isTestnet
             ? VERSION_JITO_TESTNET
             : VERSION_JITO_MAINNET
-          updateJitoSolvConfig({
+          await updateJitoSolvConfig({
             version: jitoVersion,
             tag: `v${jitoVersion}-jito`,
           })
@@ -149,19 +149,19 @@ export const updateCommands = (config: DefaultConfigType) => {
 
       if (options.background) {
         let version = options.version
-        updateDefaultConfig({
+        await updateDefaultConfig({
           TESTNET_SOLANA_VERSION: config.TESTNET_SOLANA_VERSION,
           MAINNET_SOLANA_VERSION: config.MAINNET_SOLANA_VERSION,
         })
 
         if (isJito) {
           jitoUpdate()
-          updateJitoSolvConfig({ version, tag: `v${version}-jito` })
-          monitorUpdate(deliquentStake, true)
+          await updateJitoSolvConfig({ version, tag: `v${version}-jito` })
+          await monitorUpdate(deliquentStake, true)
           return
         }
         await updateVersion(version)
-        monitorUpdate(deliquentStake, true)
+        await monitorUpdate(deliquentStake, true)
         return
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
