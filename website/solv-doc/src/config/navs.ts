@@ -12,6 +12,7 @@ import {
   AcademicCapIcon,
   ShareIcon,
   CurrencyDollarIcon,
+  ArrowUpRightIcon,
 } from '@heroicons/react/24/outline'
 
 export const defaultMainNav = [
@@ -89,47 +90,52 @@ export const docMenuNav = [
         icon: RocketLaunchIcon,
       },
       {
+        name: 'doc:menuNav.quickstart.solv-swap',
+        href: '/doc/quickstart/solv-swap/',
+        icon: ArrowPathIcon,
+      },
+      {
         name: 'doc:menuNav.quickstart.solv-mev-mode',
         href: '/doc/quickstart/solv-mev-mode/',
-        icon: CurrencyDollarIcon,
+        icon: AcademicCapIcon,
       },
       {
         name: 'doc:menuNav.quickstart.no-downtime-update',
         href: '/doc/quickstart/no-downtime-update/',
-        icon: ArrowPathIcon,
+        icon: ArrowUpRightIcon,
       },
     ],
   },
-  {
-    name: 'doc:menuNav.tutorial.groupTitle',
-    children: [
-      {
-        name: 'doc:menuNav.tutorial.chapter1',
-        href: '/doc/tutorial/chapter1/',
-        icon: AcademicCapIcon,
-      },
-      {
-        name: 'doc:menuNav.tutorial.chapter2',
-        href: '/doc/tutorial/chapter2/',
-        icon: CircleStackIcon,
-      },
-      {
-        name: 'doc:menuNav.tutorial.chapter3',
-        href: '/doc/tutorial/chapter3/',
-        icon: CloudIcon,
-      },
-      {
-        name: 'doc:menuNav.tutorial.chapter4',
-        href: '/doc/tutorial/chapter4/',
-        icon: PresentationChartLineIcon,
-      },
-      {
-        name: 'doc:menuNav.tutorial.chapter5',
-        href: '/doc/tutorial/chapter5/',
-        icon: ShareIcon,
-      },
-    ],
-  },
+  // {
+  //   name: 'doc:menuNav.tutorial.groupTitle',
+  //   children: [
+  //     {
+  //       name: 'doc:menuNav.tutorial.chapter1',
+  //       href: '/doc/tutorial/chapter1/',
+  //       icon: AcademicCapIcon,
+  //     },
+  //     {
+  //       name: 'doc:menuNav.tutorial.chapter2',
+  //       href: '/doc/tutorial/chapter2/',
+  //       icon: CircleStackIcon,
+  //     },
+  //     {
+  //       name: 'doc:menuNav.tutorial.chapter3',
+  //       href: '/doc/tutorial/chapter3/',
+  //       icon: CloudIcon,
+  //     },
+  //     {
+  //       name: 'doc:menuNav.tutorial.chapter4',
+  //       href: '/doc/tutorial/chapter4/',
+  //       icon: PresentationChartLineIcon,
+  //     },
+  //     {
+  //       name: 'doc:menuNav.tutorial.chapter5',
+  //       href: '/doc/tutorial/chapter5/',
+  //       icon: ShareIcon,
+  //     },
+  //   ],
+  // },
 ]
 
 export const docHeaderNav = [

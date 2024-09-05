@@ -13,8 +13,8 @@
       "body": "Learn to use solv in three easy steps! This guide quickly introduces you to the essentials of the solv."
     },
     "tutorial": {
-      "title": "Tutorial",
-      "body": "A guide to actually starting the operation of a Solana validator using solv."
+      "title": "Swap Solana Tokens",
+      "body": "A guide to swapping Solana tokens using solv swap command. This guide will help you understand how to swap Solana tokens using solv."
     },
     "update": {
       "title": "No Downtime Update",
@@ -31,16 +31,9 @@
     "quickstart": {
       "groupTitle": "Quickstart",
       "start-solv": "Start solv",
+      "solv-swap": "solv Swap",
       "solv-mev-mode": "solv MEV Mode",
       "no-downtime-update": "No Downtime Update"
-    },
-    "tutorial": {
-      "groupTitle": "Tutorial",
-      "chapter1": "1. Solana Setup",
-      "chapter2": "2. Backup & Migrate",
-      "chapter3": "3. Cloud & Monitor",
-      "chapter4": "4. Revenue Analysis",
-      "chapter5": "5. Setup RPC Node"
     }
   },
   "headerNav": {

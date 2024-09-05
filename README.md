@@ -39,14 +39,13 @@ Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
-$ cd ~ && source ~/.profile
-$ solv setup
+bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
+cd ~ && source ~/.profile
+solv setup
 ```
 
 ![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
 
-- Choose Language
 - Choose Network
 - Choose Node Type
 - Choose RPC Type or Validator Type
@@ -61,7 +60,7 @@ The Solana validator will start 🎊
 If your node does not start, you can try the following command.
 
 ```bash
-$ solv restart --rm
+solv restart --rm
 ```
 
 This will remove the snapshot and restart the Solana Validator from the new snapshot.
@@ -88,6 +87,12 @@ Then setup will continue.
 But this will be deprecated in the future.
 
 Now new config is migrating to `solv4.config.json` file.
+
+Please update your config file to `solv4.config.json` file.
+
+```bash
+solv update --config
+```
 
 ## Bug Fixes
 
@@ -137,7 +142,7 @@ By implementing solv MEV mode, you can maintain high security, ensure optimal pe
 Run the following command:
 
 ```bash
-$ solv mev
+solv mev
 ? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
 ? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
 ? Do you want to enable AUTO RESTART? (Recommended) (y/N)
@@ -167,7 +172,7 @@ $ solv mev
 Run the following command:
 
 ```bash
-$ solv mev
+solv mev
 ? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
 ✅ Cron Job successfully removed.
 ```
@@ -175,7 +180,7 @@ $ solv mev
 ## Run solv Server CLI - from your validator server
 
 ```bash
-$ solv s
+solv s
 ```
 
 ![solv s](https://storage.googleapis.com/epics-bucket/solv/assets/solv-s.png)
@@ -183,7 +188,7 @@ $ solv s
 ## Solana Validator Logs
 
 ```bash
-$ solv log
+solv log
 ```
 
 or
@@ -191,7 +196,7 @@ or
 Show only error logs
 
 ```bash
-$ solv log -e
+solv log -e
 ```
 
 ## Show Solana Validator Config
@@ -199,7 +204,7 @@ $ solv log -e
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-$ solv config
+solv config
 ```
 
 ## Solana Delegation Program
@@ -209,7 +214,7 @@ https://solana.org/delegation-program
 ## solv CLI
 
 ```bash
-$ solv --help
+solv --help
 Usage: solv [options] [command]
 
 💎 Solana Validator All-in-One CLI 💎

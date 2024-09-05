@@ -13,5 +13,6 @@ export const logCommands = () => {
     .option('-a, --all', 'Follow All output', false)
     .action((options) => {
       tail(options)
+      process.exit(0)
     })
 }

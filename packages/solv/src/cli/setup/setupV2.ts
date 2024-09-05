@@ -28,7 +28,7 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
     }
 
     const latestConfig = await readConfig()
-    const isTest = latestConfig.TESTNET_SOLANA_VERSION === Network.TESTNET
+    const isTest = latestConfig.NETWORK === Network.TESTNET
     // Generate /mnt/ledger and /mnt/accounts
     setupDirs()
     if (!skipMount) {
