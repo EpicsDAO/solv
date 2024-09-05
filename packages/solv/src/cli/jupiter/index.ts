@@ -36,6 +36,7 @@ export const jupiterCommands = () => {
     .description('Show Jupiter Logs')
     .action((options: { error: boolean }) => {
       jupiterLog(options.error)
+      process.exit(0)
     })
 
   jupiter

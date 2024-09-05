@@ -28,9 +28,9 @@ const actions = [
     iconBackground: 'bg-yellow-50',
   },
   {
-    title: 'doc:actions.tutorial.title',
-    body: 'doc:actions.tutorial.body',
-    href: '/doc/tutorial/chapter1',
+    title: 'doc:actions.quickstart.title',
+    body: 'doc:actions.quickstart.body',
+    href: '/doc/quickstart/solv-swap',
     icon: AcademicCapIcon,
     iconForeground: 'text-green-700',
     iconBackground: 'bg-green-50',

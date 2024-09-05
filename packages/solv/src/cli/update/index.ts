@@ -93,7 +93,7 @@ export const updateCommands = (config: DefaultConfigType) => {
             oldConfig.DISK_TYPES === 0
               ? MNT_DISK_TYPE.DOUBLE
               : MNT_DISK_TYPE.SINGLE,
-          RPC_TYPE: RpcType.JITO,
+          RPC_TYPE: isRPCOld ? RpcType.JITO : RpcType.NONE,
           VALIDATOR_TYPE: isJitoOld
             ? ValidatorType.JITO
             : isTestnetOld
