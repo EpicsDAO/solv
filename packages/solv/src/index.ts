@@ -119,10 +119,8 @@ async function main() {
     await program
       .addHelpCommand('help [cmd]', 'Display help for command')
       .parseAsync(process.argv)
-    process.exit(0)
   } catch (error) {
     console.log(error)
-    process.exit(0)
   }
 }
 

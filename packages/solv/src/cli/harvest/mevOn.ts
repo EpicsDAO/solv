@@ -1,4 +1,3 @@
-import { updateSolvConfig } from '@/lib/updateSolvConfig'
 import inquirer from 'inquirer'
 import { validateSolanaKey } from '../transfer'
 import hasEpochTimer from '../cron/hasEpochTimer'
