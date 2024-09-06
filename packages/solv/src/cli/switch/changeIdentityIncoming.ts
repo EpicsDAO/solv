@@ -118,7 +118,7 @@ export const changeIdentityIncoming = async (
   if (result5.status !== 0) {
     console.log(
       chalk.yellow(
-        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
+        `⚠️ Set Identity Failed. Please check your Validator\n\nFailed Cmd: ${solanaClient} -l ${LEDGER_PATH} set-identity ${validatorKeyPath}\nln -sf ${validatorKeyPath} ${IDENTITY_KEY_PATH}`,
       ),
     )
     return

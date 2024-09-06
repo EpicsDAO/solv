@@ -1,5 +1,5 @@
 import { startupScriptPaths } from '@/config/config'
-import { spawn } from 'child_process'
+import { spawnSync } from 'node:child_process'
 
 export type TailOptions = {
   info: boolean
@@ -18,16 +18,24 @@ export const tail = (options: TailOptions) => {
       cmd += ` | grep INFO`
     } else if (options.warning) {
       cmd += ` | grep WARN`
-    } else {
     }
 
     console.log(cmd)
-    const child = spawn(cmd, { shell: true, stdio: 'inherit' })
+    const result = spawnSync(cmd, { shell: true, stdio: 'inherit' })
 
-    child.on('error', (error) => {
-      throw new Error(`tail Error: ${error}`)
-    })
+    if (result.error) {
+      throw result.error
+    }
+
+    if (result.signal === 'SIGINT') {
+      console.log('Child process terminated due to receipt of SIGINT signal')
+      process.exit(0)
+    } else if (result.status !== 0) {
+      console.error(`Child process exited with code ${result.status}`)
+      process.exit(result.status)
+    }
   } catch (error) {
-    throw new Error(`tail Error: ${error}`)
+    console.error(`tail Error: ${error}`)
+    process.exit(1)
   }
 }
