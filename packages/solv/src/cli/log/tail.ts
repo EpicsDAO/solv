@@ -22,11 +22,16 @@ export const tail = (options: TailOptions) => {
 
     console.log(cmd)
     const child = spawn(cmd, { shell: true, stdio: 'inherit' })
+    const childPid = child.pid
+    if (!childPid) {
+      throw new Error('Failed to start tail process')
+    }
 
     // Handle the SIGINT signal (Ctrl+C)
     process.on('SIGINT', () => {
       console.log('Caught interrupt signal, stopping tail...')
-      child.kill('SIGINT') // Send SIGINT to child process
+      process.kill(childPid, 'SIGINT') // Send SIGINT to child process
+      process.exit(0)
     })
 
     child.on('exit', (code, signal) => {
@@ -40,9 +45,12 @@ export const tail = (options: TailOptions) => {
     })
 
     child.on('error', (error) => {
-      throw new Error(`tail Error: ${error}`)
+      console.error(`tail Error: ${error}`)
+      process.kill(childPid, 'SIGINT') // Ensure child process is terminated on error
+      process.exit(1)
     })
   } catch (error) {
-    throw new Error(`tail Error: ${error}`)
+    console.error(`tail Error: ${error}`)
+    process.exit(1)
   }
 }
