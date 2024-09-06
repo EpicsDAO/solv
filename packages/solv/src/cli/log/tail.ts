@@ -27,7 +27,16 @@ export const tail = (options: TailOptions) => {
     process.on('SIGINT', () => {
       console.log('Caught interrupt signal, stopping tail...')
       child.kill('SIGINT') // Send SIGINT to child process
-      process.exit()
+    })
+
+    child.on('exit', (code, signal) => {
+      if (signal === 'SIGINT') {
+        console.log('Child process terminated due to receipt of SIGINT signal')
+        process.exit(0)
+      } else if (code !== 0) {
+        console.error(`Child process exited with code ${code}`)
+        process.exit(code)
+      }
     })
 
     child.on('error', (error) => {
