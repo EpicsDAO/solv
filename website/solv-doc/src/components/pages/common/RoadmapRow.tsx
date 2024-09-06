@@ -83,16 +83,28 @@ const activity = [
     dateTime: '2024-05-02T10:00',
   },
   {
-    type: 'yet',
+    type: 'done',
     text: 'common:RoadmapRow.2024.8',
     date: '2024.8',
     dateTime: '2024-08-02T10:00',
   },
   {
     type: 'yet',
-    text: 'common:RoadmapRow.2024.10',
-    date: '2024.10',
-    dateTime: '2024-010-02T10:00',
+    text: 'common:RoadmapRow.2024.11',
+    date: '2024.11',
+    dateTime: '2024-11-02T10:00',
+  },
+  {
+    type: 'yet',
+    text: 'common:RoadmapRow.2024.12',
+    date: '2024.12',
+    dateTime: '2024-12-02T10:00',
+  },
+  {
+    type: 'yet',
+    text: 'common:RoadmapRow.2025.3',
+    date: '2025.3',
+    dateTime: '2025-03-02T10:00',
   },
   {
     type: 'yet',
@@ -105,6 +117,18 @@ const activity = [
     text: 'common:RoadmapRow.2025.9',
     date: '2025.9',
     dateTime: '2025-09-02T10:00',
+  },
+  {
+    type: 'yet',
+    text: 'common:RoadmapRow.2025.11',
+    date: '2025.11',
+    dateTime: '2025-11-02T10:00',
+  },
+  {
+    type: 'yet',
+    text: 'common:RoadmapRow.2026.1',
+    date: '2026.1',
+    dateTime: '2026-01-02T10:00',
   },
   {
     type: 'yet',
