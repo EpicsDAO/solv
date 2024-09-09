@@ -9,7 +9,6 @@ import {
 import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 import { SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
 import * as solanaStakePool from '@solana/spl-stake-pool'
-import chalk from 'chalk'
 
 export type DepositSOLResponse = {
   status: 'success' | 'error'
@@ -65,7 +64,9 @@ export const depositSol = async (
     tx.feePayer = fromWallet.publicKey
     tx.recentBlockhash = latestBlockhashAndContext.value.blockhash
     tx.sign(...signers, fromWallet)
-    const signature = await connection.sendRawTransaction(tx.serialize())
+    const signature = await connection.sendRawTransaction(tx.serialize(), {
+      skipPreflight: true,
+    })
 
     await connection.confirmTransaction(
       {
@@ -76,6 +77,7 @@ export const depositSol = async (
     )
     return { status: 'success', signature } as DepositSOLResponse
   } catch (error) {
+    console.log('depositSol error', error)
     return { status: 'error', error } as DepositSOLResponse
   }
 }

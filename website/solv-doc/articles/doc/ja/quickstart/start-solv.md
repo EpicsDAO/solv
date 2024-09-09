@@ -27,24 +27,16 @@ $ cd ~ && source ~/.profile
 $ solv setup
 ```
 
-- 新しいインストール写真
-
-![](url)
-
 `solv setup` コマンドを実行すると、以下のようなプロンプトが表示されます。
 ネットワーク、ノードタイプ、RPC タイプまたはバリデータータイプを選択してください。
 
-```
-? Choose Network (Use arrow keys)
-❯ mainnet-beta
-  testnet
-? Choose Node Type (Use arrow keys)
-❯ rpc
-  validator
-? Choose RPC Type (Use arrow keys)
-❯ agave
-  jito
-```
+例：　 RPC ノードの場合
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-rpc.png)
+
+例：　バリデーターの場合
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-jito-v.png)
 
 バリデータータイプの場合は、コミッションなどもここで設定できます。
 
@@ -66,6 +58,10 @@ solv log
 ```bash
 solv m
 ```
+
+`m` は `monitor` の省略形です。
+
+※モニターコマンドはスナップショットのダウンロードが完了するまで使用できません。
 
 ## solv setup のオプション
 

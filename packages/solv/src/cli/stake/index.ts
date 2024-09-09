@@ -32,6 +32,7 @@ export const stakeCommands = (config: DefaultConfigType) => {
     .option('-a, --amount <amount>', 'Amount of SOL to stake', '0')
     .action(async (options: StakeOptions) => {
       let amount = Number(options.amount)
+      console.log('RPC URL:', config.RPC_URL)
       let poolAddress = SOLV_STAKE_POOL_ADDRESS
       const isTestnet = config.NETWORK === Network.TESTNET
       const keyRoot = homedir()
