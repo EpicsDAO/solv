@@ -14,6 +14,7 @@ export const elSOLdeposit = async (
   amount: number,
   fromWalletKey: number[],
 ) => {
+  console.log(chalk.white('Solana RPC URL:', rpcUrl))
   let connection = new Connection(rpcUrl)
   if (amount === 0) {
     amount = await askAmount()

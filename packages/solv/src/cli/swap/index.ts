@@ -31,7 +31,7 @@ export const swapCommand = async (
         input: string
         output: string
         amount: number
-        confirm: boolean
+        skipConfirm: boolean
       }) => {
         try {
           await swapCmd(
@@ -41,7 +41,7 @@ export const swapCommand = async (
             options.input,
             options.output,
             Number(options.amount),
-            !options.confirm,
+            !options.skipConfirm,
           )
         } catch (error: any) {
           if (error.message.includes('User force closed the prompt')) {

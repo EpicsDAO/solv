@@ -101,52 +101,7 @@ Now, launch the new node at the destination.
 
 ```bash
 $ solv setup
-Setting up Solana Validator ...
-? Which solv types do you want to setup? (Use arrow keys)
-  TESTNET_VALIDATOR
-❯ MAINNET_VALIDATOR
-  RPC_NODE
 ```
-
-Select the type of Solv.  
-Then, select the Solana client.
-
-```bash
-? Which mainnet mode do you want to setup?
-  SolanaClient
-❯ JitoMev
-  Firedancer
-JITO MEV Setup Mode on!
-? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
-```
-
-You will be asked interactively if this is a dummy node, select y.
-
-```bash
-? Enter commission bps 1000
-? Select region (Use arrow keys)
-❯ Amsterdam
-  Frankfurt
-  NewYork
-  Tokyo
-```
-
-Set the bps commission and region.
-
-```bash
-? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
-```
-
-You will be asked if you want to set up Jito Relayer. Select y if needed.  
-This setup requires at least 512GB of RAM.
-
-```bash
-? What is your commission rate? You can change it later (default: 10%)
-```
-
-Set the commission rate.
-
-This completes the launch of the new node.
 
 Check the logs to ensure it is running properly.
 
@@ -237,9 +192,3 @@ Enter the IP address of the Inactive node.
 The active node has successfully switched to the inactive node!
 
 You can now safely remove the spare server.
-
-## EpicsDAO Discord Channel
-
-If you have any questions, please contact us on the EpicsDAO `solv` channel.
-
-[https://discord.gg/yxm5hJqRhg](https://discord.gg/yxm5hJqRhg)

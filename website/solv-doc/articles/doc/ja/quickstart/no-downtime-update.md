@@ -112,52 +112,7 @@ $ solv scp download
 
 ```bash
 $ solv setup
-Setting up Solana Validator ...
-? Which solv types do you want to setup? (Use arrow keys)
-  TESTNET_VALIDATOR
-❯ MAINNET_VALIDATOR
-  RPC_NODE
 ```
-
-solv のタイプを選択します。
-そして、Solana のクライアントを選択します。
-
-```bash
-? Which mainnet mode do you want to setup?
-  SolanaClient
-❯ JitoMev
-  Firedancer
-JITO MEV Setup Mode on!
-? Do you want to setup as a dummy(Inactive) node?(※For Migration) (y/N)
-```
-
-ダミーノードかどうかを対話式で確認されますので、y を選択してください。
-
-```bash
-? Enter commission bps 1000
-? Select region (Use arrow keys)
-❯ Amsterdam
-  Frankfurt
-  NewYork
-  Tokyo
-```
-
-bps コミッションとリージョンを設定します。
-
-```bash
-? Do you want to setup Relayer Also?(※This requires more than 512GB RAM) (y/N)
-```
-
-Jito Relayer を設定するかどうかを確認されます。必要に応じて y を選択してください。
-この設定は、最低でも 512GB 以上の RAM を必要とします。
-
-```bash
-? What is your commission rate? You can change it later (default: 10%)
-```
-
-そして、コミッションレートを設定します。
-
-これで新規ノードの立ち上げが完了しました。
 
 ログを確認して、正常に立ち上がっていることを確認してください。
 
@@ -248,9 +203,3 @@ Inactive ノードの IP アドレスを入力します。
 無事に Active ノードが Inactive ノードに切り替わりました！
 
 これでスペアサーバーを削除しても問題ありません。
-
-## EpicsDAO Discord チャンネル
-
-ご質問がある場合は、EpicsDAO の solv チャンネルでお問い合わせください。
-
-https://discord.gg/yxm5hJqRhg
