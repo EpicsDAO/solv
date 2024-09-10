@@ -17,6 +17,7 @@ import updateSysctlConfig from '@/template/updateSysctlConfig'
 import { restartLogrotate } from '@/lib/restartLogrotate'
 import { enableSolv } from '@/lib/enableSolv'
 import { createSymLink } from './createSymLink'
+import rpcLog from '@/utils/rpcLog'
 
 export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
   try {
@@ -70,39 +71,8 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
     // Start Solana
     startSolana()
     console.log(chalk.white(`🟢 Setup Completed`))
-    lastMsg()
+    rpcLog()
   } catch (error: any) {
     throw new Error(`Setup Error: ${error.message}`)
   }
-}
-
-const lastMsg = () => {
-  const warning = `===⚠️ Frequently Asked Questions ⚠️===
-Q: How long does it take to catch up with the latest slot?
-Q: Error: error sending request for url (http://localhost:8899/)
-Q: Can't connect to Solana RPC Node
-
-A:
-It will take an hour to a several hours to catch up with the latest slot.
-This time may vary depending on your network speed and hardware.
-Solana Validator requires at least 256GB RAM and 12 CPU cores.
-RPC Node requires at least 512GB RAM and 16 CPU cores.
-It may not finish catching up if your hardware does not meet the requirements.
-
-You can check current status by running:
-
-$ solv monitor
-
-(Above cmd only works when the snapshot is downloaded and the validator is running.)
-If above cmd doesn't work, please check if your node has finished downloading the snapshot by running:
-
-$ solv log
-
-You can only track error logs by running:
-
-$ solv log -e
-
-Validators Solutions: https://validators.solutions
-`
-  console.log(chalk.yellow(warning))
 }

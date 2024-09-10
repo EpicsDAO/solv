@@ -2,6 +2,7 @@ import { spawnSync } from 'child_process'
 import jupiterAPIService from '@/cli/setup/template/jupiter/jupiterAPIService'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
+import rpcLog from '@/utils/rpcLog'
 
 type JupiterAPISetupOptions = {
   rpcUrl: string
