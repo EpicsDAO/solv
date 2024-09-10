@@ -65,6 +65,7 @@ export const updateCommands = (config: DefaultConfigType) => {
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-c, --commission', 'Update Commission', false)
     .option('-f, --firewall', 'Update Firewall', false)
+    .option('--migrate-config', 'Migrate Solv Config', false)
     .option('--config', 'Update Solv Config Default Solana Version', false)
     .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
