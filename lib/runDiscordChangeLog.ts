@@ -1,26 +1,20 @@
-import { discordChangeLog } from '@skeet-framework/discord-utils'
-import { dotenv } from '@skeet-framework/utils'
+import dotenv from 'dotenv'
+import { discordChangeLog } from './discordChangeLog'
+import { messageChannel } from './messageChannel'
 dotenv.config()
 
 const REPO_NAME = 'epicsDAO/solv'
 
-const run = async (project: 'labo' | 'epics') => {
-  if (project === 'labo') {
-    console.log('labo')
-    const token = process.env.DISCORD_TOKEN_LABO || ''
-    const channelId = process.env.LABO_SKEET_CHANNEL_ID || ''
-    await discordChangeLog(token, REPO_NAME, [channelId])
-  } else if (project === 'epics') {
-    console.log('epics')
-    const token = process.env.DISCORD_TOKEN || ''
-    const channelId = process.env.DISCORD_CHANNEL_ID || ''
-    const channelIdJA = process.env.DISCORD_CHANNEL_ID_JA || ''
-    await discordChangeLog(token, REPO_NAME, [channelId])
-    await discordChangeLog(token, REPO_NAME, [channelIdJA], 'ja')
-  } else {
-    console.log('invalid project name')
+const run = async () => {
+  const langs = ['en', 'ja']
+  const token = process.env.DISCORD_TOKEN || ''
+  const channelIdEN = '1279918138149834793'
+  const channelIdJA = '1279911696571437057'
+  for (const lang of langs) {
+    const channelId = lang === 'en' ? channelIdEN : channelIdJA
+    const text = await discordChangeLog(REPO_NAME, lang)
+    console.log(text)
+    await messageChannel(token, channelId, { content: text })
   }
 }
-
-const project = process.argv[2] as 'labo' | 'epics'
-run(project)
+run()

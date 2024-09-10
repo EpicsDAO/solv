@@ -85,7 +85,7 @@
   ## Update Install Script URL
 
   ```
-  $ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
+  $ bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
   ```
 
   ## This update includes Solana version update for mainnet-beta and testnet.

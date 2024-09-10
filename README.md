@@ -39,7 +39,7 @@ Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
+bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
 cd ~ && source ~/.profile
 solv setup
 ```
@@ -269,6 +269,12 @@ elSOL: https://elsol.app/
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Dependencies
+
+- pnpm - Package Manager
+- aws-cli - To upload install script to cloud bucket
+- tsup - To build the package
 
 ## License
 

@@ -7,7 +7,7 @@ import { getSolBalance } from '@/lib/getSolBalance'
 import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import { Network, NodeType } from '@/config/enums'
 import chalk from 'chalk'
-import { spawnSync } from 'child_process'
+import { spawnSync } from 'node:child_process'
 import { IDENTITY_KEY_PATH } from '@/config/constants'
 
 export type BalanceOptions = {
@@ -59,9 +59,9 @@ export const getKeypairsInfo = (config: DefaultConfigType) => {
 
   if (isRPC) {
     return {
-      validatorKey: keypairs.testnetValidatorKey,
-      validatorKeyAddress: getSolanaAddress(keypairs.testnetValidatorKey),
-      validatorKeyBalance: getSolBalance(keypairs.testnetValidatorKey),
+      validatorKey: keypairs.mainnetValidatorKey,
+      validatorKeyAddress: getSolanaAddress(keypairs.mainnetValidatorKey),
+      validatorKeyBalance: getSolBalance(keypairs.mainnetValidatorKey),
     }
   }
 

@@ -15,7 +15,7 @@ import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-const commandStep1 = `bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/${siteConfig.solvInstallerVersion}/install")"`
+const commandStep1 = `bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"`
 const commandStep2 = 'cd ~ && source ~/.profile'
 const commandStep3 = 'solv setup'
 

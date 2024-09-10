@@ -6,68 +6,78 @@ description: Quickstart of solv, an open-source tool for Solana validator
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-The utility tool for Solana Validators
+By using solv, setting up a Solana validator node server becomes much easier. This powerful tool simplifies blockchain operations and allows you to start a Solana validator with just a single command.
 
-solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
+By eliminating the complexity of setting up and managing a validator, solv opens the door for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
+
+Whether you're an experienced developer or a blockchain enthusiast venturing into the world of validators, solv provides a solution for simple and fast setup.
+
+Dive into the world of Solana, explore the capabilities of solv, and become a part of the blockchain revolution with minimal effort and maximum efficiency.
 
 ## 📖 Server Spec
 
 - Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
+- Linux Ubuntu 24.04 LTS
 
 ## Solana Validator Setup
 
-Login in to your Validator server by ssh and run the following command.
+When you run the `solv setup` command, a prompt like the following will appear.
+Select the network, node type, and either RPC type or validator type.
+
+Example: For an RPC node
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-rpc.png)
+
+Example: For a Validator
+
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-jito-v.png)
+
+For the validator type, you can also set options like commission here.
+
+Once the setup is complete, the snapshot download will automatically begin,
+and your Solana validator will start 🎊
+
+If the snapshot download doesn't complete, press Ctrl + C to stop,
+and then run the `solv restart --rm` command again.
+
+Starting a new Solana validator can take anywhere from several minutes to several hours.
+You can check the logs using the following command:
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
-$ cd ~ && source ~/.profile
-$ solv setup
+solv log
 ```
 
-[![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
-
-And then, select the type of node you want to target.
-
-![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
-
-- `TESTNET_VALIDATOR`
-- `MAINNET_VALIDATOR`
-- `RPC_NODE`
-
-Then
-
-After startup, the snapshot download will start automatically.
-The Solana validator will start 🎊
-
-If your node does not start, you can try the following command.
+or
 
 ```bash
-$ solv stop
-$ solv rm:snapshot
-$ solv get snapshot
-$ solv start
+solv m
 ```
 
-## New Jito MEV Setup
+`m` is an alias for the `monitor` command.
 
-You can select the mainnet for Jito MEV or RPC Jito Client🎉
+※`solv monitor` does not work until the snapshot download is complete.
 
-![](https://storage.googleapis.com/epics-bucket/solv/assets/mainnet-select.png)
+## solv setup のオプション
 
-Also you have option to select Jito Relayer.
+solv setup のオプションを使用して、特定の機能を有効にすることができます。
 
-## Run solv Server CLI - from your validator server
-
-```bash
-$ solv s
 ```
+solv setup --help
+Usage: solv setup [options]
 
-![solv s](https://storage.googleapis.com/epics-bucket/solv/assets/solv-s.png)
+Setup Solana Validator
 
-### Solana Delegation Program
-
-https://solana.org/delegation-program
+Options:
+  --vote              Setup Vote Account (default: false)
+  --key               Setup Validator Keypairs (default: false)
+  --relayer           Setup Jito Relayer (default: false)
+  --jupiter           Setup Jupiter Swap API (default: false)
+  --skip-init-config  Skip Initial Config (default: false)
+  --migrate-config    Migrate Config (default: false)
+  --skip-mount        Skip Mount (default: false)
+  -h, --help          Display help for command
+```
 
 ## Start Solana Validator
 
@@ -161,3 +171,11 @@ Commands:
   config               Show Solv Config
   help [cmd]           Display help for solv commands
 ```
+
+### Solana Foudation Delegation Program
+
+By participating in the Solana Foundation Delegation Program, you can receive the SOL delegation to operate as a Solana validator, just as many other validators do.
+
+For more details, please check the following link:
+
+https://solana.org/delegation-program

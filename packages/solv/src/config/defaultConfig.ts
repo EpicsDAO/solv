@@ -1,6 +1,5 @@
 import { DefaultConfigType } from '@/config/types'
 import {
-  LANG,
   MNT_DISK_TYPE,
   NodeType,
   Network,
