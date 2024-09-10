@@ -18,6 +18,7 @@ Solana の世界に飛び込み、solv の機能を探求し、努力を最小�
 
 - Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
+- Linux Ubuntu 24.04 LTS
 
 ## Solana バリデーターのセットアップ
 
@@ -79,6 +80,7 @@ Options:
   --relayer           Setup Jito Relayer (default: false)
   --jupiter           Setup Jupiter Swap API (default: false)
   --skip-init-config  Skip Initial Config (default: false)
+  --migrate-config    Migrate Config (default: false)
   --skip-mount        Skip Mount (default: false)
   -h, --help          Display help for command
 ```
