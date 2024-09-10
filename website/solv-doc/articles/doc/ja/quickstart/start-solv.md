@@ -22,7 +22,7 @@ Solana の世界に飛び込み、solv の機能を探求し、努力を最小�
 ## Solana バリデーターのセットアップ
 
 ```bash
-$ bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
+$ bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
 $ cd ~ && source ~/.profile
 $ solv setup
 ```

@@ -39,7 +39,7 @@ Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 Login in to your Validator server by ssh and run the following command.
 
 ```bash
-bash -c "$(curl -sSfL "https://storage.googleapis.com/epics-bucket/resource/solv/v4.5.0/install")"
+bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
 cd ~ && source ~/.profile
 solv setup
 ```
