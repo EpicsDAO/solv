@@ -13,6 +13,8 @@ import { swap } from './swap'
 import { Command } from 'commander'
 import { ELSOL_MINT_ADDRESS } from '@/config/config'
 import { DefaultConfigType } from '@/config/types'
+import { updateDefaultConfig } from '@/config/updateDefaultConfig'
+import rpcLog from '@/utils/rpcLog'
 dotenv.config()
 
 export const swapCommand = async (
@@ -63,16 +65,12 @@ const swapCmd = async (
   outputMint = '',
   inputAmountLamport = 0,
   isNeedConfirm = true,
+  initConfig = false,
 ) => {
   console.log(chalk.white('Solana RPC URL:', solanaRpcUrl))
   console.log(chalk.white('KeyfilePath:', keyfilePath))
-  if (!keyfilePath || keyfilePath === '') {
-    console.log(
-      chalk.yellow(
-        `⚠️ Please set the KEYPAIR_PATH in the solv4.config.json file to use this command ⚠️`,
-      ),
-    )
-    return
+  if (!keyfilePath || keyfilePath === '' || initConfig) {
+    await askForConfig()
   }
   const jupiterEndpoint = JUPITER_ENDPOINT
   let inputTokenChoice = [...SWAP_TOKENS, 'Other']
@@ -172,3 +170,35 @@ const swapCmd = async (
 }
 
 export default swapCmd
+
+export type SwapConfig = {
+  RPC_URL: string
+  KEYPAIR_PATH: string
+  API_KEY: string
+}
+
+const askForConfig = async () => {
+  const config = await inquirer.prompt<SwapConfig>([
+    {
+      type: 'input',
+      name: 'RPC_URL',
+      message: 'Enter Solana RPC URL',
+      default: 'https://api.mainnet-beta.solana.com',
+    },
+    {
+      type: 'input',
+      name: 'KEYPAIR_PATH',
+      message: 'Enter Keypair Path',
+      default: '/home/solv/mainnet-validator-keypair.json',
+    },
+    {
+      type: 'input',
+      name: 'API_KEY',
+      message: 'Enter Jupiter API Key(Optional)',
+      default: '',
+    },
+  ])
+  await updateDefaultConfig(config)
+  console.log(chalk.green('✔︎ Config Updated Successfully!\n'))
+  rpcLog()
+}

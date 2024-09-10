@@ -8,6 +8,7 @@ import { readOrCreateJitoConfig } from '@/lib/readOrCreateJitoConfig'
 import { daemonReload } from '@/lib/daemonReload'
 import { setupV2 } from './setupV2'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
+import rpcLog from '@/utils/rpcLog'
 
 type SetupOptions = {
   vote: boolean
@@ -50,11 +51,13 @@ export const setupCommands = (config: DefaultConfigType) => {
             ),
           )
           daemonReload()
+          rpcLog()
           process.exit(0)
         } else if (options.jupiter) {
           console.log(chalk.white('Setting up Jupiter Swap API ...'))
           await jupiterAPISetup()
           daemonReload()
+          rpcLog()
           process.exit(0)
         }
         await setupV2(options.skipInitConfig, options.skipMount)

@@ -36,6 +36,7 @@ export type UpdateOptions = {
   commission: number
   firewall: boolean
   config: boolean
+  migrateConfig: boolean
   auto: boolean
 }
 
@@ -64,6 +65,7 @@ export const updateCommands = (config: DefaultConfigType) => {
     .option('-b, --background', 'No Monitor Delinquent Stake Update', false)
     .option('-c, --commission', 'Update Commission', false)
     .option('-f, --firewall', 'Update Firewall', false)
+    .option('--migrate-config', 'Migrate Solv Config', false)
     .option('--config', 'Update Solv Config Default Solana Version', false)
     .option('--auto', 'Auto Update', false)
     .action(async (options: UpdateOptions) => {
@@ -78,8 +80,8 @@ export const updateCommands = (config: DefaultConfigType) => {
         await autoUpdate(config)
         return
       }
-      // Only Update solv.config.json default solana version
-      if (options.config) {
+
+      if (options.migrateConfig) {
         // Temporarily!!
         // Migrate solv.config.json to solv4.config.json
         const oldConfig = readOrCreateDefaultConfig().config
@@ -121,7 +123,8 @@ export const updateCommands = (config: DefaultConfigType) => {
 
         await updateDefaultConfig(newConfigBody)
         // --- End of Temporarily!!
-
+      }
+      if (options.config) {
         await updateDefaultConfig({
           TESTNET_SOLANA_VERSION: VERSION_TESTNET,
           MAINNET_SOLANA_VERSION: VERSION_MAINNET,
@@ -150,8 +153,8 @@ export const updateCommands = (config: DefaultConfigType) => {
       if (options.background) {
         let version = options.version
         await updateDefaultConfig({
-          TESTNET_SOLANA_VERSION: config.TESTNET_SOLANA_VERSION,
-          MAINNET_SOLANA_VERSION: config.MAINNET_SOLANA_VERSION,
+          TESTNET_SOLANA_VERSION: VERSION_TESTNET,
+          MAINNET_SOLANA_VERSION: VERSION_MAINNET,
         })
 
         if (isJito) {
