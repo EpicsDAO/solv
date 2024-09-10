@@ -270,6 +270,12 @@ elSOL: https://elsol.app/
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+## Dependencies
+
+- pnpm - Package Manager
+- aws-cli - To upload install script to cloud bucket
+- tsup - To build the package
+
 ## License
 
 The package is available as open source under the terms of the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).

@@ -26,6 +26,7 @@
   "scripts": {
     "ci:version": "changeset version",
     "ci:publish": "changeset publish",
+    "upload:script": "cd ./resource/solv/latest && aws --endpoint-url=https://8a313f35be0eb4e99ad5bed9cb7aa99d.r2.cloudflarestorage.com s3 cp install s3://solv/install --content-disposition 'attachment; filename=install'",
     "solv": "pnpm -F \"@epics-dao/solv\"",
     "build": "turbo build",
     "dev": "turbo dev",
@@ -37,7 +38,6 @@
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.1",
-    "@skeet-framework/discord-utils": "0.2.14",
     "@skeet-framework/utils": "1.2.4",
     "@swc/core": "1.7.12",
     "@types/node": "20.11.16",
@@ -58,5 +58,8 @@
     "turbo": "2.1.1",
     "typescript": "5.3.3"
   },
-  "packageManager": "pnpm@9.3.0"
+  "packageManager": "pnpm@9.3.0",
+  "dependencies": {
+    "discord.js": "^14.16.1"
+  }
 }
