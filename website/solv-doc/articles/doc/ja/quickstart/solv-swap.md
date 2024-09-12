@@ -1,7 +1,7 @@
 ---
 id: quickstart-solv-swap
-title: solv SWAP コマンド
-description: オープンソースのSolana バリデーター向けツールsolvのクイックスタート - SWAP コマンド
+title: Solana Token Swap を solv CLI で簡単に実行
+description: オープンソースのSolana バリデーター向けツールsolvのクイックスタート - Solana Token Swap コマンド
 ---
 
 https://youtu.be/Q_Yzd8sE7eY

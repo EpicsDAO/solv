@@ -1,12 +1,12 @@
 ---
 id: quickstart-solv-swap
-title: solv SWAP Command
-description: Quickstart for open-source Solana Validator tool solv - SWAP Command
+title: Solana Token Swap with solv CLI
+description: A quick start guide to Solana Token Swap command with solv CLI
 ---
 
 https://youtu.be/51c7BzvcBjk
 
-The solv swap command is a tool that allows you to swap Solana tokens and SPL tokens in a simple and intuitive way.
+The `solv swap` command is a tool that allows you to swap Solana Tokens/SPL Tokens simply and intuitively.
 You can select tokens interactively and execute swaps, or complete swaps quickly using a one-liner command, making token swap operations easy to integrate into your programs.
 
 This solv swap is offered with _0% fees_ ,
