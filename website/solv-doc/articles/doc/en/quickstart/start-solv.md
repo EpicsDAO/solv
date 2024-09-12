@@ -58,9 +58,9 @@ solv m
 
 ※`solv monitor` does not work until the snapshot download is complete.
 
-## solv setup のオプション
+## solv setup Options
 
-solv setup のオプションを使用して、特定の機能を有効にすることができます。
+solv setup command has the following options:
 
 ```
 solv setup --help
@@ -135,41 +135,46 @@ $ solv config
 $ solv --help
 Usage: solv [options] [command]
 
-💎 Solana Validator All-in-One CLI 💎
+🪄  solv - Solana Validator Tool ✨
 
 Options:
-  -V                   Output the current version
-  -h, --help           Display help for solv commands
+  -V                     Display version
+  -h, --help             Display help for command
 
 Commands:
-  server|s             Open solv Dashboard
-  start                Start Solana Validator
-  restart [options]    Restart Solana Validator
-  stop                 Stop Solana Validator
-  status               Show Solana Validator Status
-  update|u [options]   Update Solana Validator Version
-  log|l [options]      tail logs
-  install|i [options]  Install/Update Solana Version
-  stake                Solana Delegate Stake
-  unstake              Solana Delegate Stake
-  get <cmd>            Get Solana Validator Info Commands
-  scp <cmd>            Download/Upload Solana Validator Keypairs
-  cron <cmd>           Run Schedule Tasks
-  setup [options]      Setup Solana Validator
-  client|c             Open solv Client Dashboard
-  balance|bal          Show Keypairs Balance
-  mtr                  Mount Reload Command
-  disks                Show unmounted disks
-  relayer              Jiro Relayer Commands
-  rm:log               Remove Logs
-  rm:snapshot          Remove Snapshot
-  withdraw             Withdraw SOL from Vote Account to Authority Account
-  login                Login to Validatoors Cloud
-  change               Change Identity of Validator to New Validator
-  monitor|m            Monitor Solana Node
-  catchup|ca           Check Solana Catchup Status
-  config               Show Solv Config
-  help [cmd]           Display help for solv commands
+  start                  Start Solana Validator
+  restart [options]      Restart Solana Validator
+  stop                   Stop Solana Validator
+  status                 Check Solana Validator Status
+  update|u [options]     Update Command
+  log|l [options]        tail logs
+  install|i [options]    Install Solana Client
+  stake [options]        Stake SOL
+  unstake                Unstake SOL
+  get <cmd>              Get Solana Validator's Information
+  scp <cmd>              Scp Commands
+  cron                   Cron Job Commands
+  setup [options]        Setup Solana Validator
+  balance|bal [options]  Show Keypairs Balance
+  mtr                    Mount Reload Command
+  disks                  Show unmounted disks
+  relayer                Jito Relayer Commands
+  transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
+  withdraw [options]     Withdraw SOL from Vote Account to Authority Account
+  harvest|hv             Harvest SOL from Validator Account to Authority Account
+  mev                    Enable MEV Mode
+  df                     Disk Free Command
+  swap [options]         Swap tokens
+  epochTimer             Check Solana Epoch Timer
+  switch [options]       Switch Validator Identity with No Downtime
+  jupiter                Jupiter API Commands
+  rm:log                 Remove Logs
+  rm:snapshot            Remove Snapshot
+  create:snapshot        Create Snapshot
+  monitor|m              Monitor Solana Node
+  catchup|c              Check Solana Catchup Status
+  config                 Show Solv Config
+  help [cmd]             Display help for command
 ```
 
 ### Solana Foudation Delegation Program
