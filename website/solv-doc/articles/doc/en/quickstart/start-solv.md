@@ -22,6 +22,12 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 
 ## Solana Validator Setup
 
+```bash
+$ bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
+$ cd ~ && source ~/.profile
+$ solv setup
+```
+
 When you run the `solv setup` command, a prompt like the following will appear.
 Select the network, node type, and either RPC type or validator type.
 

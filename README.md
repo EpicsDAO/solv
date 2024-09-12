@@ -41,6 +41,12 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 
 ## Solana Validator Setup
 
+```bash
+bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
+cd ~ && source ~/.profile
+solv setup
+```
+
 When you run the `solv setup` command, a prompt like the following will appear.
 Select the network, node type, and either RPC type or validator type.
 
@@ -101,43 +107,43 @@ Options:
 ## Start Solana Validator
 
 ```bash
-$ solv start
+solv start
 ```
 
 ## Stop Solana Validator
 
 ```bash
-$ solv stop
+solv stop
 ```
 
 ## Monitor Solana Validator
 
 ```bash
-$ solv monitor
+solv monitor
 ```
 
 ## Solana Validator Status
 
 ```bash
-$ solv status
+solv status
 ```
 
 ## Solana Validator Logs
 
 ```bash
-$ solv log
+solv log
 ```
 
 ## Show Solana Balance and Keypairs
 
 ```bash
-$ solv balance
+solv balance
 ```
 
 ## Show Solana Validator Catchup Status
 
 ```bash
-$ solv catchup
+solv catchup
 ```
 
 ## Show Solana Validator Config
@@ -145,13 +151,13 @@ $ solv catchup
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-$ solv config
+solv config
 ```
 
 ## solv CLI
 
 ```bash
-$ solv --help
+solv --help
 Usage: solv [options] [command]
 
 🪄  solv - Solana Validator Tool ✨
