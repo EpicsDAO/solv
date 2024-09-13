@@ -1,5 +1,33 @@
 # @epics-dao/solv
 
+## 4.5.7
+
+### Patch Changes
+
+- [#283](https://github.com/EpicsDAO/solv/pull/283) [`e204751`](https://github.com/EpicsDAO/solv/commit/e2047519b597d2b390d8713f567a1c6eadcd3194) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet v2.0.9
+
+  ```bash
+  solv update
+  ```
+
+  ```bash
+  solv update --config
+  ```
+
+  ```bash
+  solv restart
+  ```
+
+  or
+
+  ```bash
+  solv update && solv update -b
+  ```
+
+  Validators DAO:
+
+  https://discord.gg/C7ZQSrCkYR
+
 ## 4.5.6
 
 ### Patch Changes
