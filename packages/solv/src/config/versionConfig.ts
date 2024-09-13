@@ -1,9 +1,9 @@
-export const VERSION_TESTNET = '2.0.8'
+export const VERSION_TESTNET = '2.0.9'
 export const VERSION_MAINNET = '1.18.23'
-export const VERSION_JITO_TESTNET = '2.0.8'
+export const VERSION_JITO_TESTNET = '2.0.9'
 export const VERSION_JITO_MAINNET = '1.18.23'
-export const VERSION_JITO_RPC = '2.0.8'
-export const VERSION_SOLANA_RPC = '2.0.8'
+export const VERSION_JITO_RPC = '2.0.9'
+export const VERSION_SOLANA_RPC = '2.0.9'
 export const DELINQUENT_STAKE_TESTNET = 5
 export const DELINQUENT_STAKE_MAINNET = 5
 export const COMMISSION = 5
