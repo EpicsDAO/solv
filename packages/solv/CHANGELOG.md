@@ -1,5 +1,14 @@
 # @epics-dao/solv
 
+## 4.5.8
+
+### Patch Changes
+
+- [#285](https://github.com/EpicsDAO/solv/pull/285) [`7627876`](https://github.com/EpicsDAO/solv/commit/762787679adf98f600d6930132bbd879d34e534f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - rm priority fee
+
+  - small bug fix
+  - added new option to `solv swap` command
+
 ## 4.5.7
 
 ### Patch Changes
