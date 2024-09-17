@@ -1,6 +1,6 @@
 import { Network } from '@/config/enums'
 import readConfig from '@/config/readConfig'
-import { spawnSync } from 'child_process'
+import { spawnSync } from 'node:child_process'
 
 export const deactivateStake = async (stakeAccountPubkey: string) => {
   try {

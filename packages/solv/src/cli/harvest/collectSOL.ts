@@ -1,5 +1,5 @@
 import { getAllKeyPaths } from '@/config/config'
-import { execSync, spawnSync } from 'child_process'
+import { execSync, spawnSync } from 'node:child_process'
 import { getHarvestBalance } from './getHarvestBalance'
 import getBalance, { KeyType } from '@/lib/solana/getBalance'
 import chalk from 'chalk'

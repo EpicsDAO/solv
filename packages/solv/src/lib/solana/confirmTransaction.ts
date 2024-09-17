@@ -5,14 +5,12 @@ import {
   TransactionMessage,
   VersionedTransaction,
 } from '@solana/web3.js'
-import { PriorityLevel } from './priorityFee'
 import { getTestVersionedTxResult } from './getTestVersionedTxResult'
 
 export const confirmTransaction = async (
   connection: Connection,
   fromWalletKeyString: string,
   instructions: TransactionInstruction[],
-  priorityFee: PriorityLevel = PriorityLevel.LOW,
 ) => {
   try {
     const fromWalletKey = fromWalletKeyString.split(',').map(Number)
@@ -23,7 +21,6 @@ export const confirmTransaction = async (
       connection,
       fromWalletKeyString,
       instructions,
-      priorityFee,
     )
     const versionedTx = new VersionedTransaction(
       new TransactionMessage({

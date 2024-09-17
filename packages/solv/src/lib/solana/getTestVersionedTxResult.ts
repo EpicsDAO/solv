@@ -6,13 +6,11 @@ import {
   TransactionMessage,
   VersionedTransaction,
 } from '@solana/web3.js'
-import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 
 export const getTestVersionedTxResult = async (
   connection: Connection,
   fromWalletKeyString: string,
   instructions: TransactionInstruction[],
-  priorityFee: PriorityLevel = PriorityLevel.LOW,
 ) => {
   const fromWalletKey = fromWalletKeyString.split(',').map(Number)
   const fromWallet = Keypair.fromSecretKey(
@@ -46,15 +44,10 @@ export const getTestVersionedTxResult = async (
     },
   )
   testVersionedTx.sign([fromWallet])
-  const estimatedFee = await getPriorityFeeEstimate(
-    connection.rpcEndpoint,
-    testVersionedTx,
-    priorityFee,
-  )
 
   const result = {
     testVersionedTx,
-    estimatedFee: estimatedFee.priorityFeeEstimate,
+    estimatedFee: 1000,
     simulationResult,
     latestBlockhashAndContext,
   }
