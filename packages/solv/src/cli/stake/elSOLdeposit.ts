@@ -1,6 +1,5 @@
 import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { askAmount } from '.'
-import { PriorityLevel } from '@/lib/solana/priorityFee'
 import { ELSOL_MINT_ADDRESS, SOLV_ELSOL_ACCOUNT_ADDRESS } from '@/config/config'
 import { getOrCreateDestinationAddress } from '@/lib/solana/getOrCreateDestinationAddress'
 import { Spinner } from 'cli-spinner'
@@ -25,7 +24,6 @@ export const elSOLdeposit = async (
   spinner.setSpinnerTitle(
     chalk.green(`✔︎ Checking Stake Pool ${poolAddress}...`),
   )
-  const priorityFee = PriorityLevel.MEDIUM
   const stakePoolAddress = new PublicKey(poolAddress)
   const depositAuthority = Keypair.fromSecretKey(new Uint8Array(fromWalletKey))
   const mintAddress = ELSOL_MINT_ADDRESS
@@ -45,7 +43,6 @@ export const elSOLdeposit = async (
     connection,
     fromWalletKey,
     amount,
-    priorityFee,
     stakePoolAddress,
     new PublicKey(destinationTokenAccount),
     new PublicKey(SOLV_ELSOL_ACCOUNT_ADDRESS),
@@ -67,7 +64,6 @@ export const elSOLdeposit = async (
       connection,
       fromWalletKey,
       amount,
-      priorityFee,
       stakePoolAddress,
       new PublicKey(destinationTokenAccount),
       new PublicKey(SOLV_ELSOL_ACCOUNT_ADDRESS),

@@ -7,7 +7,6 @@ import {
   VersionedTransaction,
   TransactionMessage,
 } from '@solana/web3.js'
-import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 import sleep from '../sleep'
 import { MAX_RETRIES } from '@/config/constants'
 
@@ -67,12 +66,6 @@ export const solanaTransfer = async (
 
         testVersionedTx.sign([fromWallet])
 
-        const estimatedFee = await getPriorityFeeEstimate(
-          connection.rpcEndpoint,
-          testVersionedTx,
-          PriorityLevel.MEDIUM,
-        )
-
         const instructions = [
           SystemProgram.transfer({
             fromPubkey: fromWallet.publicKey,
@@ -85,7 +78,7 @@ export const solanaTransfer = async (
               : 200_000,
           }),
           ComputeBudgetProgram.setComputeUnitPrice({
-            microLamports: Math.ceil(estimatedFee.priorityFeeEstimate),
+            microLamports: 1000,
           }),
         ]
 

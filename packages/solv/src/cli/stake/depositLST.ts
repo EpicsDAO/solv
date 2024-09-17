@@ -1,6 +1,5 @@
 import { Connection, Keypair, PublicKey } from '@solana/web3.js'
 import { askAmount } from '.'
-import { PriorityLevel } from '@/lib/solana/priorityFee'
 import { SOLV_POOL_MANAGER_ADDRESS } from '@/config/config'
 import { getOrCreateDestinationAddress } from '@/lib/solana/getOrCreateDestinationAddress'
 import { Spinner } from 'cli-spinner'
@@ -26,7 +25,6 @@ export const depositeLST = async (
   spinner.setSpinnerTitle(
     chalk.green(`✔︎ Checking Stake Pool ${poolAddress}...`),
   )
-  const priorityFee = PriorityLevel.MEDIUM
   const stakePoolAddress = new PublicKey(poolAddress)
   const stakePool = await getStakePoolInfo(rpcUrl, poolAddress)
   if (!stakePool) {
@@ -59,7 +57,6 @@ export const depositeLST = async (
     connection,
     fromWalletKey,
     amount,
-    priorityFee,
     stakePoolAddress,
     new PublicKey(destinationTokenAccount),
     new PublicKey(solvAssociatedTokenAccount),
@@ -80,7 +77,6 @@ export const depositeLST = async (
       connection,
       fromWalletKey,
       amount,
-      priorityFee,
       stakePoolAddress,
       new PublicKey(destinationTokenAccount),
       new PublicKey(solvAssociatedTokenAccount),

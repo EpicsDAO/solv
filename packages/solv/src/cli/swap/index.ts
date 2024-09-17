@@ -28,12 +28,14 @@ export const swapCommand = async (
     .option('-o, --output <output>', 'Output token mint', '')
     .option('-a, --amount <amount>', 'Input amount in lamports', '0')
     .option('-s, --skip-confirm', 'Skip confirmation', false)
+    .option('-c, --init-config', 'Initialize config', false)
     .action(
       async (options: {
         input: string
         output: string
         amount: number
         skipConfirm: boolean
+        initConfig: boolean
       }) => {
         try {
           await swapCmd(
@@ -44,6 +46,7 @@ export const swapCommand = async (
             options.output,
             Number(options.amount),
             !options.skipConfirm,
+            options.initConfig,
           )
         } catch (error: any) {
           if (error.message.includes('User force closed the prompt')) {

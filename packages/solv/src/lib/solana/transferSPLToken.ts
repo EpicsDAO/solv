@@ -11,7 +11,6 @@ import {
   createTransferInstruction,
   TOKEN_PROGRAM_ID,
 } from '@solana/spl-token'
-import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 
 export const transferSPLToken = async (
   endpoint: string,
@@ -88,12 +87,6 @@ export const transferSPLToken = async (
         )
         testVersionedTx.sign([fromWallet])
 
-        const estimatedFee = await getPriorityFeeEstimate(
-          connection.rpcEndpoint,
-          testVersionedTx,
-          PriorityLevel.MEDIUM,
-        )
-
         const instructions = [
           createTransferInstruction(
             fromTokenAccount.address,
@@ -109,7 +102,7 @@ export const transferSPLToken = async (
               : 200_000,
           }),
           ComputeBudgetProgram.setComputeUnitPrice({
-            microLamports: Math.ceil(estimatedFee.priorityFeeEstimate),
+            microLamports: 1000,
           }),
         ]
         const versionedTx = new VersionedTransaction(

@@ -6,7 +6,6 @@ import {
   ComputeBudgetProgram,
   LAMPORTS_PER_SOL,
 } from '@solana/web3.js'
-import { PriorityLevel, getPriorityFeeEstimate } from './priorityFee'
 import { SOLV_STAKE_POOL_ADDRESS } from '@/config/config'
 import * as solanaStakePool from '@solana/spl-stake-pool'
 
@@ -20,7 +19,6 @@ export const depositSol = async (
   connection: Connection,
   fromWalletKey: number[],
   SOL: number,
-  priorityFee: PriorityLevel = PriorityLevel.LOW,
   stakePoolAddress: PublicKey = new PublicKey(SOLV_STAKE_POOL_ADDRESS),
   destinationTokenAccount?: PublicKey,
   referrerTokenAccount?: PublicKey,
@@ -49,15 +47,9 @@ export const depositSol = async (
     txForEstimate.recentBlockhash = latestBlockhashAndContext.value.blockhash
     txForEstimate.sign(...signers, fromWallet)
 
-    const estimatedFee = await getPriorityFeeEstimate(
-      connection.rpcEndpoint,
-      txForEstimate,
-      priorityFee,
-    )
-
     const tx = new Transaction().add(...instructions).add(
       ComputeBudgetProgram.setComputeUnitPrice({
-        microLamports: Math.ceil(estimatedFee.priorityFeeEstimate),
+        microLamports: 1000,
       }),
     )
 
