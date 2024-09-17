@@ -88,13 +88,13 @@ importers:
         specifier: 6.0.0
         version: 6.0.0(@next/eslint-plugin-next@14.2.7)(eslint@9.10.0(jiti@1.21.6))(prettier@3.3.3)(typescript@5.3.3)(vitest@2.0.5(@types/node@22.5.4)(terser@5.31.6))
       eslint-config-prettier:
-        specifier: ^9.1.0
+        specifier: 9.1.0
         version: 9.1.0(eslint@9.10.0(jiti@1.21.6))
       eslint-config-turbo:
-        specifier: ^2.1.2
+        specifier: 2.1.2
         version: 2.1.2(eslint@9.10.0(jiti@1.21.6))
       eslint-plugin-only-warn:
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0
       typescript:
         specifier: 5.3.3
