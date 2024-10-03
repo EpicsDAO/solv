@@ -5,7 +5,7 @@ scratch_directory = "/home/{user}/firedancer"
 dynamic_port_range = "8900-9000"
 
 [log]
-    path = "/home/solv/validator.log"
+    path = "/home/solv/solana-validator.log"
     colorize = "auto"
     level_logfile = "INFO"
     level_stderr = "NOTICE"
@@ -83,5 +83,5 @@ dynamic_port_range = "8900-9000"
     shred_tile_count = 2
 
 [hugetlbfs]
-    mount_path = "/mnt"
+    mount_path = "/mnt/.fd"
     

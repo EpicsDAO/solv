@@ -9,46 +9,45 @@ export enum KeyType {
   VOTE = 'vote',
 }
 
+type NetworkPrefix = 'mainnet' | 'testnet'
+
+type KeySuffix = 'ValidatorKey' | 'ValidatorVoteKey' | 'ValidatorAuthorityKey'
+
+type AccountKey =
+  | 'mainnetValidatorKey'
+  | 'mainnetValidatorVoteKey'
+  | 'mainnetValidatorAuthorityKey'
+  | 'testnetValidatorKey'
+  | 'testnetValidatorVoteKey'
+  | 'testnetValidatorAuthorityKey'
+
+const keySuffixMap: Record<KeyType, KeySuffix> = {
+  [KeyType.VALIDATOR]: 'ValidatorKey',
+  [KeyType.AUTH]: 'ValidatorAuthorityKey',
+  [KeyType.VOTE]: 'ValidatorVoteKey',
+}
+
 const getBalance = async (
   rpcUrl: string,
-  key = KeyType.AUTH,
-  isTestnet = false,
-) => {
-  if (isTestnet) {
-    const connection = new Connection(rpcUrl)
-    const home = homedir()
-    const {
-      testnetValidatorVoteKey,
-      testnetValidatorKey,
-      testnetValidatorAuthorityKey,
-    } = getAllKeyPaths(home)
-    let account = testnetValidatorAuthorityKey
-    if (key === KeyType.VALIDATOR) account = testnetValidatorKey
-    if (key === KeyType.VOTE) account = testnetValidatorVoteKey
-    const publicKey = await loadKeypairFromFile(account)
-    const balance = await connection.getBalance(publicKey.publicKey)
-    const lamports = Number(balance)
-    const SOL = lamports / LAMPORTS_PER_SOL
-    if (isNaN(lamports)) throw new Error('Failed to get balance')
-    return SOL
-  } else {
-    const connection = new Connection(rpcUrl)
-    const home = homedir()
-    const {
-      mainnetValidatorVoteKey,
-      mainnetValidatorKey,
-      mainnetValidatorAuthorityKey,
-    } = getAllKeyPaths(home)
-    let account = mainnetValidatorAuthorityKey
-    if (key === KeyType.VALIDATOR) account = mainnetValidatorKey
-    if (key === KeyType.VOTE) account = mainnetValidatorVoteKey
-    const publicKey = await loadKeypairFromFile(account)
-    const balance = await connection.getBalance(publicKey.publicKey)
-    const lamports = Number(balance)
-    const SOL = lamports / LAMPORTS_PER_SOL
-    if (isNaN(lamports)) throw new Error('Failed to get balance')
-    return SOL
-  }
+  key: KeyType = KeyType.AUTH,
+  isTestnet: boolean = false,
+): Promise<number> => {
+  const connection = new Connection(rpcUrl)
+  const home = homedir()
+  const keyPaths = getAllKeyPaths(home)
+
+  const prefix: NetworkPrefix = isTestnet ? 'testnet' : 'mainnet'
+
+  const accountKey = `${prefix}${keySuffixMap[key]}` as AccountKey
+  const account = keyPaths[accountKey]
+
+  const keypair = await loadKeypairFromFile(account)
+  const balance = await connection.getBalance(keypair.publicKey)
+  const lamports = Number(balance)
+  const SOL = lamports / LAMPORTS_PER_SOL
+
+  if (isNaN(SOL)) throw new Error('Failed to get balance')
+  return SOL
 }
 
 export default getBalance

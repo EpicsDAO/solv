@@ -9,12 +9,16 @@ import { daemonReload } from '@/lib/daemonReload'
 import { setupV2 } from './setupV2'
 import { jitoRelayerSetup } from './jitoRelayerSetup'
 import rpcLog from '@/utils/rpcLog'
+import { yellowstoneGeyser } from './template/geyser/yellowstoneGeyser'
+import setupFiredancer from './firedancer/setupFiredancer'
 
 type SetupOptions = {
   vote: boolean
   key: boolean
   relayer: boolean
   jupiter: boolean
+  geyser: boolean
+  firedancer: boolean
   skipInitConfig: boolean
   skipMount: boolean
 }
@@ -27,6 +31,8 @@ export const setupCommands = (config: DefaultConfigType) => {
     .option('--key', 'Setup Validator Keypairs', false)
     .option('--relayer', 'Setup Jito Relayer', false)
     .option('--jupiter', 'Setup Jupiter Swap API', false)
+    .option('--geyser', 'Setup Geyser', false)
+    .option('--firedancer', 'Setup Firedancer', false)
     .option('--skip-init-config', 'Skip Initial Config', false)
     .option('--skip-mount', 'Skip Mount', false)
     .action(async (options: SetupOptions) => {
@@ -59,6 +65,14 @@ export const setupCommands = (config: DefaultConfigType) => {
           daemonReload()
           rpcLog()
           process.exit(0)
+        } else if (options.geyser) {
+          console.log(chalk.white('Setting up Geyser ...'))
+          await yellowstoneGeyser()
+          return
+        } else if (options.firedancer) {
+          console.log(chalk.white('🔥 Setting up Firedancer ...'))
+          await setupFiredancer()
+          return
         }
         await setupV2(options.skipInitConfig, options.skipMount)
       } catch (error: any) {
