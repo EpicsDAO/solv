@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.6.1
+
+### Patch Changes
+
+- [#292](https://github.com/EpicsDAO/solv/pull/292) [`22ec57d`](https://github.com/EpicsDAO/solv/commit/22ec57d386585c1e6901826cb89b869808ceca91) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.13 for Testnet Validator
+
 ## 4.6.0
 
 ### Minor Changes
