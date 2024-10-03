@@ -1,5 +1,23 @@
 # @epics-dao/solv
 
+## 4.6.0
+
+### Minor Changes
+
+- [#290](https://github.com/EpicsDAO/solv/pull/290) [`20728ed`](https://github.com/EpicsDAO/solv/commit/20728ed0b4f208fa2c2c70a4811840b10f1ddfd3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Geyser/Firedancer Setup Option
+
+  ## Setup Geyser Yellowstone
+
+  ```
+  solv setup --geyser
+  ```
+
+  ## Setup Firedancer (Frankendancer)
+
+  ```
+  solv setup --firedancer
+  ```
+
 ## 4.5.9
 
 ### Patch Changes
