@@ -38,15 +38,15 @@ export const setupCommands = (config: DefaultConfigType) => {
     .action(async (options: SetupOptions) => {
       try {
         if (options.vote) {
-          console.log(chalk.white('Setting up Vote Account ...'))
+          console.log(chalk.white('🗳️ Setting up Vote Account ...'))
           setupVoteAccount(config)
           process.exit(0)
         } else if (options.key) {
-          console.log(chalk.white('Setting up Validator Keypairs ...'))
+          console.log(chalk.white('🔑 Setting up Validator Keypairs ...'))
           createSolvKeyPairs(config)
           process.exit(0)
         } else if (options.relayer) {
-          console.log(chalk.white('Setting up Jito Relayer ...'))
+          console.log(chalk.white('🛰️ Setting up Jito Relayer ...'))
           const jitoConfig = await readOrCreateJitoConfig()
           const blockEngineUrl = jitoConfig.blockEngineUrl
           const isCoHost = false
@@ -60,13 +60,13 @@ export const setupCommands = (config: DefaultConfigType) => {
           rpcLog()
           process.exit(0)
         } else if (options.jupiter) {
-          console.log(chalk.white('Setting up Jupiter Swap API ...'))
+          console.log(chalk.white('🌏 Setting up Jupiter Swap API ...'))
           await jupiterAPISetup()
           daemonReload()
           rpcLog()
           process.exit(0)
         } else if (options.geyser) {
-          console.log(chalk.white('Setting up Geyser ...'))
+          console.log(chalk.white('⚡️ Setting up Geyser ...'))
           await yellowstoneGeyser()
           return
         } else if (options.firedancer) {

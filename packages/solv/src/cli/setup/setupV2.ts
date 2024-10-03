@@ -1,6 +1,6 @@
 import readConfig from '@/config/readConfig'
 import initialConfigSetup from './question/initialConfigSetup'
-import { Network, NodeType } from '@/config/enums'
+import { Network, NodeType, ValidatorType } from '@/config/enums'
 import setupRpcNode from './rpc'
 import setupValidatorNode from './validator'
 import chalk from 'chalk'
@@ -18,6 +18,7 @@ import { restartLogrotate } from '@/lib/restartLogrotate'
 import { enableSolv } from '@/lib/enableSolv'
 import { createSymLink } from './createSymLink'
 import rpcLog from '@/utils/rpcLog'
+import setupFiredancer from './firedancer/setupFiredancer'
 
 export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
   try {
@@ -56,6 +57,10 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
         break
       case NodeType.VALIDATOR:
         await setupValidatorNode(latestConfig)
+        // Setup Firedancer if needed
+        if (latestConfig.VALIDATOR_TYPE === ValidatorType.FRANKENDANCER) {
+          await setupFiredancer()
+        }
         break
       default:
         throw new Error('Unknown Node Type')
@@ -64,12 +69,14 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
     setupPermissions()
     // Reload Daemon
     daemonReload()
-    // Enable Solv Service
-    enableSolv()
-    // Download Snapshot
-    getSnapshot(isTest)
+    if (latestConfig.VALIDATOR_TYPE !== ValidatorType.FRANKENDANCER) {
+      // Enable Solv Service
+      enableSolv()
+      // Download Snapshot
+      getSnapshot(isTest)
+    }
     // Start Solana
-    startSolana()
+    startSolana(latestConfig)
     console.log(chalk.white(`🟢 Setup Completed`))
     rpcLog()
   } catch (error: any) {

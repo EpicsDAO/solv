@@ -28,7 +28,7 @@ export const yellowstoneGeyser = async () => {
     cwd: '/home/solv/yellowstone-grpc',
   })
   const { filePath, defaultConfig } = geyserConfig(xToken)
-  const json = JSON.stringify(defaultConfig, null, 2)
+  const json = JSON.parse(JSON.stringify(defaultConfig, null, 2))
   spawnSync(`echo "${json}" | sudo tee ${filePath} > /dev/null`, {
     shell: true,
     stdio: 'inherit',

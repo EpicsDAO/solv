@@ -1,6 +1,6 @@
 const firedancerService = () => {
-  const filePath = '/etc/systemd/system/firedancer.service'
-  const conf = `[Unit]
+  const filePath = '/etc/systemd/system/frankendancer.service'
+  const body = `[Unit]
 Description=Firedancer Solana
 After=network.target
 StartLimitIntervalSec=0
@@ -20,7 +20,7 @@ WantedBy=multi-user.target
 
   return {
     filePath,
-    conf,
+    body,
   }
 }
 

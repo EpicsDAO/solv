@@ -47,10 +47,10 @@ async function main() {
     // This config will be new config file - solv4.config.json
     const config = await readConfig()
 
-    startCommand()
+    startCommand(config)
     restartCommand(config)
-    stopCommand()
-    statusCommands()
+    stopCommand(config)
+    statusCommands(config)
     updateCommands(config)
     logCommands()
     installCommands(config)

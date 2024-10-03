@@ -11,7 +11,8 @@ import { Network, NodeType } from '@/config/enums'
 export const updateVersion = async (version: string) => {
   const config = await readConfig()
   const isTestnet = config.NETWORK === Network.TESTNET
-  if (isTestnet) {
+  const isRPC = config.NODE_TYPE === NodeType.RPC
+  if (isTestnet || isRPC) {
     installAgave(version)
     return
   }
