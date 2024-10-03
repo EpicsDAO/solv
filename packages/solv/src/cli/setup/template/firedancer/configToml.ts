@@ -13,7 +13,7 @@ dynamic_port_range = "8900-9000"
     level_flush = "WARNING"
 
 [reporting]
-    solana_metrics_config = "host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea"
+    solana_metrics_config = \"host=https://metrics.solana.com:8086,db=tds,u=testnet_write,p=c4fa841aa918bf8274e3e2a44d77568d9861b3ea\"
 
 [ledger]
     path = "/mnt/ledger"

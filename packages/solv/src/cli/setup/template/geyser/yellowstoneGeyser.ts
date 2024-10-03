@@ -2,6 +2,7 @@ import { spawnSync } from 'node:child_process'
 import geyserConfig from './geyserConfig'
 import addConfigToStartupScript from './addConfigToStartupScript'
 import inquirer from 'inquirer'
+import { writeFile } from 'node:fs/promises'
 
 export const yellowstoneGeyser = async () => {
   const xTokenAnswer = await inquirer.prompt<{ xToken: string }>([
@@ -28,11 +29,8 @@ export const yellowstoneGeyser = async () => {
     cwd: '/home/solv/yellowstone-grpc',
   })
   const { filePath, defaultConfig } = geyserConfig(xToken)
-  const json = JSON.parse(JSON.stringify(defaultConfig, null, 2))
-  spawnSync(`echo "${json}" | sudo tee ${filePath} > /dev/null`, {
-    shell: true,
-    stdio: 'inherit',
-  })
+  const jsonString = JSON.stringify(defaultConfig, null, 2)
+  await writeFile(filePath, jsonString, { encoding: 'utf8' })
 
   // Add config to startup script
   await addConfigToStartupScript()

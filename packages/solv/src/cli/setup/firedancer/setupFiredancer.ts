@@ -36,6 +36,7 @@ const setupFiredancer = async () => {
     shell: true,
     stdio: 'inherit',
   })
+  spawnSync(`chmod +x ${filePath}`, { shell: true, stdio: 'inherit' })
   const fdService = firedancerService()
   spawnSync(
     `echo "${fdService.body}" | sudo tee ${fdService.filePath} > /dev/null`,
