@@ -5,7 +5,7 @@ scratch_directory = "/home/{user}/firedancer"
 dynamic_port_range = "8900-9000"
 
 [log]
-    path = "/home/solv/validator.log"
+    path = "/home/solv/solana-validator.log"
     colorize = "auto"
     level_logfile = "INFO"
     level_stderr = "NOTICE"
@@ -18,7 +18,7 @@ dynamic_port_range = "8900-9000"
     path = "/mnt/ledger"
     accounts_path = "/mnt/accounts"
     limit_size = 200_000_000
-    account_indexes = []
+    account_indexes = ["program-id", "spl-token-mint", "spl-token-owner"]
     account_index_exclude_keys = []
     snapshot_archive_format = "zstd"
     require_tower = false
@@ -54,10 +54,6 @@ dynamic_port_range = "8900-9000"
 
 [consensus]
     identity_path = "/home/solv/mainnet-validator-keypair.json"
-    vote_account_path = "/home/solv/mainnet-vote-account-keypair.json"
-    authorized_voter_paths = [
-        "/home/solv/mainnet-validator-keypair.json"
-    ]
     snapshot_fetch = true
     genesis_fetch = true
     poh_speed_test = true
@@ -83,5 +79,5 @@ dynamic_port_range = "8900-9000"
     shred_tile_count = 2
 
 [hugetlbfs]
-    mount_path = "/mnt"
+    mount_path = "/mnt/.fd"
     

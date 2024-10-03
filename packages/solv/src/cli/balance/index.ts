@@ -35,7 +35,7 @@ export const balanceCommands = (config: DefaultConfigType) => {
 
 const showKeypairsInfo = async (config: DefaultConfigType) => {
   const keyInfo = getKeypairsInfo(config)
-  const output = `Validator Key: ${keyInfo.validatorKey}
+  let output = `Validator Key: ${keyInfo.validatorKey}
 Address: ${keyInfo.validatorKeyAddress}
 Balance: ${keyInfo.validatorKeyBalance}
 Vote Key: ${keyInfo.voteKey} 
@@ -45,6 +45,12 @@ Authority Key: ${keyInfo.authorityKey}
 Address: ${keyInfo.authorityKeyAddress}
 Balance: ${keyInfo.authorityKeyBalance}
 Active Identity:`
+  if (config.NODE_TYPE === NodeType.RPC) {
+    output = `Validator Key: ${keyInfo.validatorKey}
+Address: ${keyInfo.validatorKeyAddress}
+Balance: ${keyInfo.validatorKeyBalance}
+Active Identity:`
+  }
   console.log(chalk.white(output))
   spawnSync(`solana-keygen pubkey ${IDENTITY_KEY_PATH}`, {
     stdio: 'inherit',

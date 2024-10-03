@@ -11,6 +11,11 @@ exec agave-validator \\
 --log ${LOG_PATH} \\
 --accounts ${ACCOUNTS_PATH} \\
 --ledger ${LEDGER_PATH} \\
+--entrypoint entrypoint.mainnet-beta.solana.com:8001 \\
+--entrypoint entrypoint2.mainnet-beta.solana.com:8001 \\
+--entrypoint entrypoint3.mainnet-beta.solana.com:8001 \\
+--entrypoint entrypoint4.mainnet-beta.solana.com:8001 \\
+--entrypoint entrypoint5.mainnet-beta.solana.com:8001 \\
 --known-validator Certusm1sa411sMpV9FPqU5dXAYhmmhygvxJ23S6hJ24 \\
 --known-validator 7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2 \\
 --known-validator GdnSyH3YtwcxFvQrVVJMm1JhTS4QVX7MFsX56uJLUfiZ \\

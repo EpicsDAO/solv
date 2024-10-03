@@ -24,7 +24,7 @@ export enum ValidatorType {
   SOLANA = 'solana',
   AGAVE = 'agave',
   JITO = 'jito',
-  // FRANKENDANCER = 'frankendancer',
+  FRANKENDANCER = 'frankendancer',
   // FIREDANCER = 'firedancer',
   NONE = 'none',
 }

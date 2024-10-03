@@ -48,7 +48,11 @@ const initialConfigSetup = async () => {
       const validatorChoices =
         answer.network === Network.MAINNET
           ? [ValidatorType.JITO, ValidatorType.SOLANA]
-          : [ValidatorType.AGAVE, ValidatorType.JITO]
+          : [
+              ValidatorType.AGAVE,
+              ValidatorType.JITO,
+              ValidatorType.FRANKENDANCER,
+            ]
       validatorType = await inquirer
         .prompt<{ validatorType: ValidatorType }>({
           name: 'validatorType',

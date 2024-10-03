@@ -8,3 +8,4 @@ export const DELINQUENT_STAKE_TESTNET = 5
 export const DELINQUENT_STAKE_MAINNET = 5
 export const COMMISSION = 5
 export const VERSION_NODE = '20.17.0'
+export const VERSION_FIREDANCER = '0.113.20007'

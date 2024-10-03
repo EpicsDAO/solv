@@ -5,10 +5,11 @@ const setupCpuGovernor = () => {
     const cmd = `echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor`
     execSync(cmd)
   } catch (error) {
-    console.error(
-      'Error setting up CPU Governor\nPlease Check your cpu governor yourself',
-      error,
-    )
+    // ppl complain if they see error messages
+    // console.error(
+    //   'Error setting up CPU Governor\nPlease Check your cpu governor yourself',
+    //   error,
+    // )
   }
 }
 
