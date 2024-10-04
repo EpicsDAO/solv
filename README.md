@@ -98,8 +98,9 @@ Options:
   --key               Setup Validator Keypairs (default: false)
   --relayer           Setup Jito Relayer (default: false)
   --jupiter           Setup Jupiter Swap API (default: false)
+  --geyser            Setup Geyser (default: false)
+  --firedancer        Setup Firedancer (default: false)
   --skip-init-config  Skip Initial Config (default: false)
-  --migrate-config    Migrate Config (default: false)
   --skip-mount        Skip Mount (default: false)
   -h, --help          Display help for command
 ```
