@@ -1,4 +1,3 @@
-## Firedancer configuration doc: https://firedancer-io.github.io/firedancer/guide/configuring.html
 name = "solv"
 user = "solv"
 scratch_directory = "/home/{user}/firedancer"
@@ -83,5 +82,5 @@ dynamic_port_range = "8900-9000"
     shred_tile_count = 2
 
 [hugetlbfs]
-    mount_path = "/mnt/.fd"
+    mount_path = "/mnt"
     

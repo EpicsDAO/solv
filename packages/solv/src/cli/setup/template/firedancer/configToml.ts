@@ -50,7 +50,7 @@ dynamic_port_range = "8900-9000"
 
 
 [hugetlbfs]
-    mount_path = "/mnt/.fd"`
+    mount_path = "/mnt"`
   return { filePath, body }
 }
 

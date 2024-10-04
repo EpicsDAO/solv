@@ -13,6 +13,9 @@ import {
 export const installCommands = (config: DefaultConfigType) => {
   const isTestnet = config.NETWORK === Network.TESTNET
   let version = isTestnet ? VERSION_TESTNET : VERSION_MAINNET
+  if (config.NODE_TYPE === NodeType.RPC) {
+    version = VERSION_SOLANA_RPC
+  }
   program
     .command('install')
     .alias('i')
