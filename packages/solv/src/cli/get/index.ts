@@ -53,11 +53,25 @@ export const getCommands = (config: DefaultConfigType) => {
       'Minimum download speed',
       '45',
     )
+    .option('-l, --ledgerPath <ledgerPath>', 'Ledger Path', '/mnt/ledger')
+    .option(
+      '-s, --snapshotPath <snapshotPath>',
+      'Snapshot Path',
+      '/mnt/ledger/snapshot',
+    )
     .description(`Download the latest snapshot`)
-    .action((options) => {
-      const minDonwloadSpeed = options.minDownloadSpeed
-      getSnapshot(isTest, minDonwloadSpeed)
-    })
+    .action(
+      (options: {
+        minDownloadSpeed: string
+        ledgerPath: string
+        snapshotPath: string
+      }) => {
+        const minDonwloadSpeed = options.minDownloadSpeed
+        const ledgerPath = options.ledgerPath
+        const snapshotPath = options.snapshotPath
+        getSnapshot(isTest, minDonwloadSpeed, ledgerPath, snapshotPath)
+      },
+    )
 
   get
     .command('contact')

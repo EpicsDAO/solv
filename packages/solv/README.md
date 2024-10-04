@@ -46,7 +46,6 @@ $ solv setup
 
 ![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
 
-- Choose Language
 - Choose Network
 - Choose Node Type
 - Choose RPC Type or Validator Type
@@ -68,31 +67,28 @@ This will remove the snapshot and restart the Solana Validator from the new snap
 If snapshot download freezes, you can try Ctrl + C.
 Then setup will continue.
 
-## New Features - solv v4.5.0 Release
+## New Features - solv v4.6.x Release
 
-- `solv setup` command is now more user-friendly
-- `solv swap` command is now available
-- `solv jupiter` command is now available
-- `solv relayer` command is now available
-- `solv get ip` command is now available
-- `solv scp` command is now improved with new options
-- `solv balance` alias command `solv b` is now available
-- `solv monitor` alias command `solv m` is now available
-- `solv catchup` alias command `solv c` is now available
-- `solv rm:snapshot` removes all the `/mnt/ledger` and `/mnt/accounts` directories
-- `solv restart --rm` command uses `solv rm:snapshot` command above and restarts the validator
+Now you can easily setup Yellowstone Geyser plugin and Firedancer!
 
-## Changes
+### Yellowstone Geyser gRPC Interface Support
 
-`solv.config.json` file is now updated with new fields.
-But this will be deprecated in the future.
+```bash
+solv setup --geyser
+```
 
-Now new config is migrating to `solv4.config.json` file.
+- Yellowstone Geyser Doc - [https://github.com/rpcpool/yellowstone-grpc](https://github.com/rpcpool/yellowstone-grpc)
 
-## Bug Fixes
+### Firedancer Setup Support (Frankendancer)
 
-- `solv switch` command now works as expected.
-- `bigint` warning message is now resolved.
+```bash
+solv setup --firedancer
+```
+
+Please update the VALIDATOR_TYPE value to `frankendancer` in the `solv4.config.json` file.
+solv start will automatically read firedancer.service instead of solv.service.
+
+- Firedancer Doc - [https://firedancer-io.github.io/firedancer/](https://firedancer-io.github.io/firedancer/)
 
 ## What is solv MEV Mode?
 
