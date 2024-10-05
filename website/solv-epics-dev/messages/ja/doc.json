@@ -1,0 +1,21 @@
+{
+  "doc": {
+    "title": "ドキュメント",
+    "caution": "注意",
+    "youLookingOldDoc": "これは Skeet v{version} のドキュメントです。",
+    "toNewDoc": "新バージョン",
+    "nav": {
+      "title": "ドキュメント一覧",
+      "general": {
+        "getting-started": "Getting Started"
+      },
+      "quickstart": {
+        "firedancer": "Firedancer",
+        "geyser-plugin": "Geyser プラグイン",
+        "no-downtime-update": "ノーダウンタイムアップデート",
+        "solv-mev-mode": "solv MEV モード",
+        "solv-swap": "solv スワップ"
+      }
+    }
+  }
+}

@@ -1,29 +1,12 @@
-<p align="center">
-  <a href="https://solv.epics.dev/">
-    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
-  </a>
+---
+id: general-getting-started
+title: Getting Started
+description: solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
+---
 
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
-    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
-  </a>
-  <br/>
-  <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/v/@epics-dao/solv">
-  </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@epics-dao/solv">
-  </a>
-  <a aria-label="License" href="https://github.com/EpicsDAO/solv/blob/master/LICENSE.txt">
-    <img alt="" src="https://badgen.net/badge/license/Apache/blue">
-  </a>
-    <a aria-label="Code of Conduct" href="https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md">
-    <img alt="" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg">
-  </a>
-</p>
+![solv](https://solv-storage.validators.solutions/ogp.jpg)
 
 ## CLI Tool for Managing Solana Validators - "solv"
-
-Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 
 By using solv, setting up a Solana validator node server becomes much easier. This powerful tool simplifies blockchain operations and allows you to start a Solana validator with just a single command.
 
@@ -42,9 +25,9 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 ## Solana Validator Setup
 
 ```bash
-bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-cd ~ && source ~/.profile
-solv setup
+$ bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
+$ cd ~ && source ~/.profile
+$ solv setup
 ```
 
 When you run the `solv setup` command, a prompt like the following will appear.
@@ -98,9 +81,8 @@ Options:
   --key               Setup Validator Keypairs (default: false)
   --relayer           Setup Jito Relayer (default: false)
   --jupiter           Setup Jupiter Swap API (default: false)
-  --geyser            Setup Geyser (default: false)
-  --firedancer        Setup Firedancer (default: false)
   --skip-init-config  Skip Initial Config (default: false)
+  --migrate-config    Migrate Config (default: false)
   --skip-mount        Skip Mount (default: false)
   -h, --help          Display help for command
 ```
@@ -108,43 +90,43 @@ Options:
 ## Start Solana Validator
 
 ```bash
-solv start
+$ solv start
 ```
 
 ## Stop Solana Validator
 
 ```bash
-solv stop
+$ solv stop
 ```
 
 ## Monitor Solana Validator
 
 ```bash
-solv monitor
+$ solv monitor
 ```
 
 ## Solana Validator Status
 
 ```bash
-solv status
+$ solv status
 ```
 
 ## Solana Validator Logs
 
 ```bash
-solv log
+$ solv log
 ```
 
 ## Show Solana Balance and Keypairs
 
 ```bash
-solv balance
+$ solv balance
 ```
 
 ## Show Solana Validator Catchup Status
 
 ```bash
-solv catchup
+$ solv catchup
 ```
 
 ## Show Solana Validator Config
@@ -152,13 +134,13 @@ solv catchup
 This command will show your all config paths which are used by solana validator.
 
 ```bash
-solv config
+$ solv config
 ```
 
 ## solv CLI
 
 ```bash
-solv --help
+$ solv --help
 Usage: solv [options] [command]
 
 🪄  solv - Solana Validator Tool ✨
@@ -203,32 +185,10 @@ Commands:
   help [cmd]             Display help for command
 ```
 
-## Website
+### Solana Foudation Delegation Program
 
-Validators Solutions: https://validators.solutions
+By participating in the Solana Foundation Delegation Program, you can receive the SOL delegation to operate as a Solana validator, just as many other validators do.
 
-Validator DAO: https://dao.validators.solutions
+For more details, please check the following link:
 
-elSOL: https://elsol.app/
-
-## Solana Token Swap - "solv swap"
-
-https://youtu.be/51c7BzvcBjk
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Dependencies
-
-- pnpm - Package Manager
-- aws-cli - To upload install script to cloud bucket
-- tsup - To build the package
-
-## License
-
-The package is available as open source under the terms of the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
-
-## Code of Conduct
-
-Everyone interacting in the SKEET project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+https://solana.org/delegation-program
