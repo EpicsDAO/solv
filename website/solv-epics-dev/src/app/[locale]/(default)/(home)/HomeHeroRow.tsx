@@ -61,7 +61,7 @@ export default function HomeHeroRow() {
 
   return (
     <>
-      <div className="relative mx-auto max-w-[1920px] p-3">
+      <div className="relative mx-auto max-w-[1720px] p-3">
         <div className="absolute left-0 top-0 -z-10 opacity-20 dark:opacity-40">
           <Image
             src={OPOSDeveloperToolkit}
@@ -85,10 +85,10 @@ export default function HomeHeroRow() {
         </div>
 
         <div className="relative mx-auto grid max-w-7xl gap-8 py-24 sm:gap-16 md:grid-cols-2 md:py-40 lg:gap-0.5 xl:gap-8">
-          <div className="flex flex-col items-center gap-4 text-center md:items-start md:text-left xl:gap-6">
+          <div className="mx-auto flex flex-col items-center gap-4 p-4 text-center md:items-start md:text-left xl:gap-6">
             <h1
               className={cn(
-                'py-2 text-4xl font-bold tracking-tighter sm:text-7xl md:text-5xl lg:text-6xl xl:text-7xl',
+                'py-2 text-4xl font-bold tracking-tighter sm:text-6xl md:text-4xl lg:text-5xl xl:text-6xl',
                 mainShardGradation,
               )}
             >

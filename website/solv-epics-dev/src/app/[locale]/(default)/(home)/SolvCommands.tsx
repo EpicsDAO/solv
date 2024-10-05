@@ -22,7 +22,7 @@ export default function SolvCommands() {
   return (
     <>
       <div className="grid w-full gap-4 p-3">
-        <div className="mx-auto w-full max-w-lg">
+        <div className="mx-auto w-full max-w-md">
           <div
             className={cn(
               'mb-3 flex flex-wrap items-baseline',
@@ -56,7 +56,7 @@ export default function SolvCommands() {
             </div>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-lg">
+        <div className="mx-auto w-full max-w-md">
           <div
             className={cn(
               'mb-3 flex flex-wrap items-baseline',
@@ -90,7 +90,7 @@ export default function SolvCommands() {
             </div>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-lg">
+        <div className="mx-auto w-full max-w-md">
           <div
             className={cn(
               'mb-3 flex flex-wrap items-baseline',
