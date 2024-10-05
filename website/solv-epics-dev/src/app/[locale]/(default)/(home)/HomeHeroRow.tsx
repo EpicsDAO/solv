@@ -61,7 +61,7 @@ export default function HomeHeroRow() {
 
   return (
     <>
-      <div className="max-w-8xl relative mx-auto p-3">
+      <div className="relative mx-auto max-w-[1920px] p-3">
         <div className="absolute left-0 top-0 -z-10 opacity-20 dark:opacity-40">
           <Image
             src={OPOSDeveloperToolkit}
