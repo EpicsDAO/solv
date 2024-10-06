@@ -43,9 +43,9 @@ import SolvProductImg from '@/assets/img/products/solv.jpg'
 import ValidatrosSolutionsProductImg from '@/assets/img/products/ValidatorsSolutions.jpg'
 import ERPCProductImg from '@/assets/img/products/ERPC.jpg'
 
-import EdgeComputeNetworkImg from '@/assets/img/merit/EdgeComputeNetwork.png'
-import MonorepoArchitectureImg from '@/assets/img/merit/MonorepoArchitecture.png'
-import Web3CompatibleImg from '@/assets/img/merit/Web3Compatible.png'
+import AdaptiveSolutionsImg from '@/assets/img/merit/AdaptiveSolutions.png'
+import EasyStartValidatorImg from '@/assets/img/merit/EasyStartValidator.png'
+import QualityOperationsImg from '@/assets/img/merit/QualityOperations.png'
 
 export {
   logoHorizontal,
@@ -88,7 +88,7 @@ export {
   SolvProductImg,
   ValidatrosSolutionsProductImg,
   ERPCProductImg,
-  EdgeComputeNetworkImg,
-  MonorepoArchitectureImg,
-  Web3CompatibleImg,
+  AdaptiveSolutionsImg,
+  EasyStartValidatorImg,
+  QualityOperationsImg,
 }
