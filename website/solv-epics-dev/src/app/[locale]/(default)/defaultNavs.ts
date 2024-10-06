@@ -1,6 +1,10 @@
 export enum DEFAULT_PATHS {
   home = '/',
   doc = '/doc/general/getting-started',
+  geyser = '/doc/quickstart/geyser-plugin',
+  firedancer = '/doc/quickstart/firedancer',
+  nodowntime = '/doc/quickstart/no-downtime-update',
+  mevmode = '/doc/quickstart/solv-mev-mode',
   news = '/news',
   privacy = '/legal/privacy-policy',
 }

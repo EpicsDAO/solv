@@ -13,26 +13,26 @@
       "subtitle1": "Launch Validator and RPC nodes ",
       "subtitle2": "with just 3 steps."
     },
-    "GlobalEdgeServersRow": {
-      "title": "The Full Power of Serverless",
-      "summary": "Globally scalable from the moment you deploy. No more waiting for cold starts.",
-      "description": "Apps created with Skeet can be deployed instantly and are scalable globally from the moment they go live. The cold start delay, a common issue with serverless, has been resolved. With over 300 edge servers around the world, your app will respond immediately to users anywhere. You'll also be freed from the complexities of regional management, enjoying a simple yet powerful deployment experience.",
-      "button1": "Join Us",
-      "button2": "Edge Locations"
+    "EasyStartValidatorRow": {
+      "title": "Effortless Validator Operation",
+      "summary": "Set up validators and RPC in just 3 steps and start hassle-free operations.",
+      "description": "With solv, you can complete validator and RPC setup in just 3 steps. Both small, routine updates and large, complex ones can be executed with a single command. Freed from the cumbersome installation process and repeated update tasks, you can drastically reduce the time and effort needed for operation. Simplify the complexity of validator operations and focus your resources on other important tasks.",
+      "button1": "Getting Started",
+      "button2": "Join Us"
     },
-    "ManageableMicroServicesRow": {
-      "title": "Easily Manageable Microservices",
-      "summary": "Skeet Monorepo is easy to start with and easy to maintain. Start small and scale big from your concept.",
-      "description": "Skeet features a monorepo structure that makes managing even complex microservice architectures intuitive and streamlined. It allows you to maintain a clear view of the entire system while enjoying the benefits of microservices, with each app scaling automatically as needed. With Skeet’s monorepo, you can easily begin with a small idea and grow it into a large-scale project. Designed to reduce the workload for developers, it ensures that both management and development proceed smoothly.",
-      "button1": "Join Us",
-      "button2": "Documentation"
+    "AdaptiveSolutionsRow": {
+      "title": "Adapt to Various Requirements",
+      "summary": "Supports Geyser plugins and the latest Firedancer.",
+      "description": "solv supports not only the Jito validator client but also the Geyser plugin for Solana RPC and the latest Firedancer. The Geyser plugin enables faster hook actions and high-speed trades, supporting more efficient transactions. Firedancer improves energy efficiency and maximizes hardware performance, providing highly cost-effective operations. solv continues to adapt to technological advancements, constantly optimizing your operations.",
+      "button1": "Geyser Setup",
+      "button2": "Firedancer Setup"
     },
-    "Web3CompatibleRow": {
-      "title": "Into the World of Web3",
-      "summary": "Don’t worry. You can develop just as before using REST APIs and SDKs with TypeScript.",
-      "description": "Skeet’s rapid app development platform allows you to easily adapt to Web3 simply by adding a Web3 adapter. Once you start using Skeet, you're already prepared for Web3. We provide extensive support for Solana, a blockchain beloved by our development team for its technological excellence. With tailored boilerplates and code generations for various situations, you’ll find that development is smooth and efficient.",
-      "button1": "Join Us",
-      "button2": "Documentation"
+    "QualityOperationsRow": {
+      "title": "Enhance Operational Quality",
+      "summary": "Supports no-downtime migrations, updates, and automated operations.",
+      "description": "High-quality validator operations require not only machine specifications and geographic placement but also no-downtime updates and migrations. solv automates all of these high-end operational processes, significantly reducing the operational burden. By enabling solv MEV Mode, even daily management tasks such as staking rewards, calculating Voting costs, and distributing rewards are fully automated. In addition, if any issues arise, you will be notified immediately via Discord, ensuring peace of mind while managing operations.",
+      "button1": "No-Downtime Update",
+      "button2": "solv MEV Mode"
     }
   }
 }

@@ -1,15 +1,13 @@
+import { QualityOperationsImg } from '@/assets/img'
+import { Button } from '@/components/ui/button'
 import { mainShardGradation } from '@/lib/decoration'
 import { cn } from '@/lib/utils'
-import { useTranslations } from 'next-intl'
-import { EdgeComputeNetworkImg } from '@/assets/img'
-import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import appInfo from '@appInfo'
-import { faDiscord } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { DEFAULT_PATHS } from '../defaultNavs'
 
-export default function GlobalEdgeServersRow() {
+export default function QualityOperationsRow() {
   const t = useTranslations()
   return (
     <>
@@ -20,25 +18,18 @@ export default function GlobalEdgeServersRow() {
             mainShardGradation,
           )}
         >
-          {t('(home).GlobalEdgeServersRow.title')}
+          {t('(home).QualityOperationsRow.title')}
         </h2>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-7">
-          <div className="px-16 py-24 sm:col-span-3 sm:px-0">
-            <div
-              className={cn(
-                'dark:bg-gradient-to-b',
-                'dark:from-zinc-950 dark:via-white dark:to-zinc-950',
-              )}
-            >
-              <Image
-                src={EdgeComputeNetworkImg}
-                alt={t('(home).GlobalEdgeServersRow.title')}
-                className="w-full"
-                unoptimized
-                width={1920}
-                height={1080}
-              />
-            </div>
+          <div className="px-16 sm:col-span-3 sm:px-0">
+            <Image
+              src={QualityOperationsImg}
+              alt={t('(home).QualityOperationsRow.title')}
+              className="w-full"
+              unoptimized
+              width={256}
+              height={256}
+            />
           </div>
           <div className="hidden sm:col-span-3 sm:block" />
           <div className="hidden sm:col-span-3 sm:block" />
@@ -49,7 +40,7 @@ export default function GlobalEdgeServersRow() {
                 mainShardGradation,
               )}
             >
-              {t('(home).GlobalEdgeServersRow.summary')}
+              {t('(home).QualityOperationsRow.summary')}
             </h3>
             <p
               className={cn(
@@ -57,29 +48,21 @@ export default function GlobalEdgeServersRow() {
                 'text-zinc-500 dark:text-zinc-300',
               )}
             >
-              {t('(home).GlobalEdgeServersRow.description')}
+              {t('(home).QualityOperationsRow.description')}
             </p>
             <div className="flex flex-wrap items-center justify-start gap-3 pt-6">
               <Link
-                href={appInfo.discordInviteURL}
+                href={DEFAULT_PATHS.nodowntime}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {/* @ts-ignore */}
-                <Button>
-                  <FontAwesomeIcon icon={faDiscord} className="mr-2 h-5 w-5" />
-
-                  {t('(home).GlobalEdgeServersRow.button1')}
-                </Button>
+                <Button>{t('(home).QualityOperationsRow.button1')}</Button>
               </Link>
-              <Link
-                href={'https://www.cloudflare.com/network/'}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={DEFAULT_PATHS.mevmode}>
                 {/* @ts-ignore */}
                 <Button variant="outline">
-                  {t('(home).GlobalEdgeServersRow.button2')}
+                  {t('(home).QualityOperationsRow.button2')}
                 </Button>
               </Link>
             </div>
