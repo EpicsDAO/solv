@@ -1,7 +1,7 @@
 export const VERSION_TESTNET = '2.0.13'
-export const VERSION_MAINNET = '1.18.23'
+export const VERSION_MAINNET = '1.18.25'
 export const VERSION_JITO_TESTNET = '2.0.10'
-export const VERSION_JITO_MAINNET = '1.18.23'
+export const VERSION_JITO_MAINNET = '1.18.25'
 export const VERSION_JITO_RPC = '2.0.10'
 export const VERSION_SOLANA_RPC = '2.0.13'
 export const DELINQUENT_STAKE_TESTNET = 5
