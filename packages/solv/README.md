@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://solv.epics.dev/">
-    <img src="https://storage.googleapis.com/epics-bucket/solv/assets/v3/solvEN.png" alt="solv" />
+    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
   </a>
 
-  <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
-    <img src="https://img.shields.io/twitter/follow/EpicsDAO2.svg?label=Follow%20@EpicsDAO2" alt="Follow @EpicsDAO2" />
+  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
+    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
   </a>
   <br/>
   <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
@@ -23,243 +23,131 @@
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
-The utility tool for Solana Validators
-
-solv is an open-source tool designed to simplify the setup and operation of Solana validators and RPC nodes.
-
 Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
+
+By using solv, setting up a Solana validator node server becomes much easier. This powerful tool simplifies blockchain operations and allows you to start a Solana validator with just a single command.
+
+By eliminating the complexity of setting up and managing a validator, solv opens the door for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
+
+Whether you're an experienced developer or a blockchain enthusiast venturing into the world of validators, solv provides a solution for simple and fast setup.
+
+Dive into the world of Solana, explore the capabilities of solv, and become a part of the blockchain revolution with minimal effort and maximum efficiency.
 
 ## 📖 Server Spec
 
+- Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
 - Linux Ubuntu 24.04 LTS
 
 ## Solana Validator Setup
 
-Login in to your Validator server by ssh and run the following command.
-
 ```bash
-$ bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-$ cd ~ && source ~/.profile
-$ solv setup
+bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
+cd ~ && source ~/.profile
+solv setup
 ```
 
-![](https://storage.googleapis.com/zenn-user-upload/949db29fc401-20240131.png)
+When you run the `solv setup` command, a prompt like the following will appear.
+Select the network, node type, and either RPC type or validator type.
 
-- Choose Network
-- Choose Node Type
-- Choose RPC Type or Validator Type
+Example: For an RPC node
 
-Then prompt will ask you for the initial setup.
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-rpc.png)
 
-After startup, the snapshot download will start automatically.
-The Solana validator will start 🎊
+Example: For a Validator
 
-[![solv](https://storage.googleapis.com/epics-bucket/Validator/solv-install-top.gif)](https://youtu.be/rY4bajhRJgw)
+![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-jito-v.png)
 
-If your node does not start, you can try the following command.
+For the validator type, you can also set options like commission here.
 
-```bash
-$ solv restart --rm
-```
+Once the setup is complete, the snapshot download will automatically begin,
+and your Solana validator will start 🎊
 
-This will remove the snapshot and restart the Solana Validator from the new snapshot.
-If snapshot download freezes, you can try Ctrl + C.
-Then setup will continue.
+If the snapshot download doesn't complete, press Ctrl + C to stop,
+and then run the `solv restart --rm` command again.
 
-## New Features - solv v4.6.x Release
-
-Now you can easily setup Yellowstone Geyser plugin and Firedancer!
-
-### Yellowstone Geyser gRPC Interface Support
+Starting a new Solana validator can take anywhere from several minutes to several hours.
+You can check the logs using the following command:
 
 ```bash
-solv setup --geyser
-```
-
-- Yellowstone Geyser Doc - [https://github.com/rpcpool/yellowstone-grpc](https://github.com/rpcpool/yellowstone-grpc)
-
-### Firedancer Setup Support (Frankendancer)
-
-```bash
-solv setup --firedancer
-```
-
-Please update the VALIDATOR_TYPE value to `frankendancer` in the `solv4.config.json` file.
-solv start will automatically read firedancer.service instead of solv.service.
-
-- Firedancer Doc - [https://firedancer-io.github.io/firedancer/](https://firedancer-io.github.io/firedancer/)
-
-## What is solv MEV Mode?
-
-solv MEV Mode is a feature designed to automate the maintenance of your Solana validator by regularly checking and updating the Solana/solv status and version.
-
-## How it works
-
-- solv epochTimer: This function will be set as a cron job to automatically monitor the health status of your validator and perform updates as needed.
-
-- Automatic Restarts: If necessary, solv epochTimer will restart the validator to ensure optimal performance.
-
-## solv epochTimer Monitors:
-
-epochTimer will monitor the following aspects of your validator:
-
-### Check Validator Account Balance
-
-- Send a notification if the balance is less than 0.5 SOL.
-
-### Check Validator Health Status
-
-- Send a notification if the validator is not voting or is delinquent.
-
-### Check Solana/solv Version Update
-
-- Send a notification if the Solana/solv version is not up-to-date.
-- Update the Solana/solv version automatically.
-- Restart validator if it is required.
-- Send a notification after the Solana/solv version update.
-
-### Auto Harvest (Mainnet Only)
-
-- Withdraw the rewards from vote account to the authority account.
-- Calculate the balance needed for the next epoch.
-- Transfer the balance from the validator account to the authority account.
-- Convert SOL to LST(Liquid Staking Token) and send it to the harvest account.
-
-By implementing solv MEV mode, you can maintain high security, ensure optimal performance, and enjoy the convenience of automated updates and reward management.
-
-## How to use solv mev mode?
-
-Run the following command:
-
-```bash
-$ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
-? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
-? Do you want to enable AUTO RESTART? (Recommended) (y/N)
-※ Please turn off if you are using no-downtime migration.
-? Enter your Discord Webhook URL (https://discord.com/api/webhooks/1234)
-```
-
-1.  Enable solv MEV Mode.
-2.  Enable AUTO UPDATE.
-3.  Enable AUTO RESTART.
-
-※ Please turn off if you are using no-downtime migration.
-
-※ No-downtime migration requires spare server and manual restart.
-
-4.  Enter your Discord Webhook URL.
-
-※ You can receive notifications about the Solana/solv version update.
-
-5.  Enter RPC URL (Mainnet Only)
-6.  Enter Harvest Account (Mainnet Only)
-
-※ Please DO NOT keep harvest account in the validator node.
-
-## How to disable solv mev mode?
-
-Run the following command:
-
-```bash
-$ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
-✅ Cron Job successfully removed.
-```
-
-## Run solv Server CLI - from your validator server
-
-```bash
-$ solv s
-```
-
-![solv s](https://storage.googleapis.com/epics-bucket/solv/assets/solv-s.png)
-
-## Solana Validator Logs
-
-```bash
-$ solv log
+solv log
 ```
 
 or
 
-Show only error logs
-
 ```bash
-$ solv log -e
+solv m
 ```
 
-## Show Solana Validator Config
+`m` is an alias for the `monitor` command.
 
-This command will show your all config paths which are used by solana validator.
+※`solv monitor` does not work until the snapshot download is complete.
 
-```bash
-$ solv config
+## solv setup Options
+
+solv setup command has the following options:
+
 ```
+solv setup --help
+Usage: solv setup [options]
 
-## Solana Delegation Program
-
-https://solana.org/delegation-program
-
-## solv CLI
-
-```bash
-$ solv --help
-Usage: solv [options] [command]
-
-💎 Solana Validator All-in-One CLI 💎
+Setup Solana Validator
 
 Options:
-  -V                     Output the current version
-  -h, --help             Display help for solv commands
-
-Commands:
-  server|s               Open solv Dashboard
-  start                  Start Solana Validator
-  restart [options]      Restart Solana Validator
-  stop                   Stop Solana Validator
-  status                 Show Solana Validator Status
-  update|u [options]     Update Solana Validator Version
-  log|l [options]        tail logs
-  install|i [options]    Install/Update Solana Version
-  stake [options]        Solana Delegate Stake
-  unstake                Solana Delegate Stake
-  get <cmd>              Get Solana Validator Info Commands
-  scp <cmd>              Download/Upload Solana Validator Keypairs
-  cron <cmd>             Run Schedule Tasks
-  setup [options]        Setup Solana Validator
-  balance|bal [options]  Show Keypairs Balance
-  mtr                    Mount Reload Command
-  disks                  Show unmounted disks
-  relayer                Jito Relayer Commands
-  transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
-  withdraw [options]     Withdraw SOL from Vote Account to Authority Account
-  harvest|hv             Harvest SOL from Validator Account to Authority Account
-  mev                    Enable MEV Mode
-  df                     Disk Free Command
-  swap [options]         Swap tokens
-  epochTimer             Check Solana Epoch Timer
-  switch [options]       Switch Validator Identity with No Downtime
-  jupiter                Jupiter API Commands
-  rm:log                 Remove Logs
-  rm:snapshot            Remove Snapshot
-  create:snapshot        Create Snapshot
-  monitor|m              Monitor Solana Node
-  catchup|c              Check Solana Catchup Status
-  config                 Show Solv Config
-  help [cmd]             Display help for solv commands
+  --vote              Setup Vote Account (default: false)
+  --key               Setup Validator Keypairs (default: false)
+  --relayer           Setup Jito Relayer (default: false)
+  --jupiter           Setup Jupiter Swap API (default: false)
+  --geyser            Setup Geyser (default: false)
+  --firedancer        Setup Firedancer (default: false)
+  --skip-init-config  Skip Initial Config (default: false)
+  --skip-mount        Skip Mount (default: false)
+  -h, --help          Display help for command
 ```
 
 ## Website
 
 Validators Solutions: https://validators.solutions
+
 Validator DAO: https://dao.validators.solutions
+
 elSOL: https://elsol.app/
+
+## Solana Token Swap - "solv swap"
+
+https://youtu.be/51c7BzvcBjk
+
+## elSOL - Solana Liquid Staking Token (LST)
+
+✨ The elSOL pool is simple. ✨
+
+The elSOL staking pool exclusively includes validators with;
+
+✅ - 0% vote commission
+
+✅ - 0% Jito MEV commission
+
+✅ - 0% pool management fee,
+
+thus, elSOL offers higher True APY in long-term staking.
+
+website: [https://elsol.app](https://elsol.app)
+
+## Enhanced Solana RPC
+
+The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
+
+website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Dependencies for Development
+
+- pnpm - Package Manager
+- aws-cli - To upload install script to cloud bucket
+- tsup - To build the package
 
 ## License
 
@@ -267,4 +155,4 @@ The package is available as open source under the terms of the [Apache-2.0 Licen
 
 ## Code of Conduct
 
-Everyone interacting in the SKEET project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).

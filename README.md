@@ -105,118 +105,6 @@ Options:
   -h, --help          Display help for command
 ```
 
-## New Features - solv v4.6.x Release
-
-Now you can easily setup Yellowstone Geyser plugin and Firedancer!
-
-### Yellowstone Geyser gRPC Interface Support
-
-```bash
-solv setup --geyser
-```
-
-- Yellowstone Geyser Doc - [https://github.com/rpcpool/yellowstone-grpc](https://github.com/rpcpool/yellowstone-grpc)
-
-### Firedancer Setup Support (Frankendancer)
-
-## Start Solana Validator
-
-```bash
-solv start
-```
-
-## Stop Solana Validator
-
-```bash
-solv stop
-```
-
-## Monitor Solana Validator
-
-```bash
-solv monitor
-```
-
-## Solana Validator Status
-
-```bash
-solv status
-```
-
-## Solana Validator Logs
-
-```bash
-solv log
-```
-
-## Show Solana Balance and Keypairs
-
-```bash
-solv balance
-```
-
-## Show Solana Validator Catchup Status
-
-```bash
-solv catchup
-```
-
-## Show Solana Validator Config
-
-This command will show your all config paths which are used by solana validator.
-
-```bash
-solv config
-```
-
-## solv CLI
-
-```bash
-solv --help
-Usage: solv [options] [command]
-
-🪄  solv - Solana Validator Tool ✨
-
-Options:
-  -V                     Display version
-  -h, --help             Display help for command
-
-Commands:
-  start                  Start Solana Validator
-  restart [options]      Restart Solana Validator
-  stop                   Stop Solana Validator
-  status                 Check Solana Validator Status
-  update|u [options]     Update Command
-  log|l [options]        tail logs
-  install|i [options]    Install Solana Client
-  stake [options]        Stake SOL
-  unstake                Unstake SOL
-  get <cmd>              Get Solana Validator's Information
-  scp <cmd>              Scp Commands
-  cron                   Cron Job Commands
-  setup [options]        Setup Solana Validator
-  balance|bal [options]  Show Keypairs Balance
-  mtr                    Mount Reload Command
-  disks                  Show unmounted disks
-  relayer                Jito Relayer Commands
-  transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
-  withdraw [options]     Withdraw SOL from Vote Account to Authority Account
-  harvest|hv             Harvest SOL from Validator Account to Authority Account
-  mev                    Enable MEV Mode
-  df                     Disk Free Command
-  swap [options]         Swap tokens
-  epochTimer             Check Solana Epoch Timer
-  switch [options]       Switch Validator Identity with No Downtime
-  jupiter                Jupiter API Commands
-  rm:log                 Remove Logs
-  rm:snapshot            Remove Snapshot
-  create:snapshot        Create Snapshot
-  monitor|m              Monitor Solana Node
-  catchup|c              Check Solana Catchup Status
-  config                 Show Solv Config
-  help [cmd]             Display help for command
-```
-
 ## Website
 
 Validators Solutions: https://validators.solutions
@@ -229,11 +117,33 @@ elSOL: https://elsol.app/
 
 https://youtu.be/51c7BzvcBjk
 
+## elSOL - Solana Liquid Staking Token (LST)
+
+✨ The elSOL pool is simple. ✨
+
+The elSOL staking pool exclusively includes validators with;
+
+✅ - 0% vote commission
+
+✅ - 0% Jito MEV commission
+
+✅ - 0% pool management fee,
+
+thus, elSOL offers higher True APY in long-term staking.
+
+website: [https://elsol.app](https://elsol.app)
+
+## Enhanced Solana RPC
+
+The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
+
+website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-## Dependencies
+## Dependencies for Development
 
 - pnpm - Package Manager
 - aws-cli - To upload install script to cloud bucket
@@ -245,4 +155,4 @@ The package is available as open source under the terms of the [Apache-2.0 Licen
 
 ## Code of Conduct
 
-Everyone interacting in the SKEET project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
