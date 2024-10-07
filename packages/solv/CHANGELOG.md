@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.6.3
+
+### Patch Changes
+
+- [#301](https://github.com/EpicsDAO/solv/pull/301) [`873a77c`](https://github.com/EpicsDAO/solv/commit/873a77ceea50a08c6abdd672b6d7abc8605a707b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update firedancer config
+
 ## 4.6.2
 
 ### Patch Changes
