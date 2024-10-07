@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://solv.epics.dev/">
-    <img src="https://storage.googleapis.com/epics-bucket/solv/assets/v3/solvEN.png" alt="solv" />
+    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
   </a>
 
-  <a href="https://twitter.com/intent/follow?screen_name=EpicsDAO2">
-    <img src="https://img.shields.io/twitter/follow/EpicsDAO2.svg?label=Follow%20@EpicsDAO2" alt="Follow @EpicsDAO2" />
+  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
+    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
   </a>
   <br/>
   <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
