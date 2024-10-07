@@ -44,8 +44,6 @@ dynamic_port_range = "8900-9000"
     snapshot_fetch = true
     genesis_fetch = true
     expected_genesis_hash = "4uhcVJyU9pJkvQyS88uRDiswHXSCkY3zQawwpjk2NsNY"
-    known_validators = ["5D1fNXzvv5NjV1ysLjirC4WY92RNsVH18vjmcszZd8on"]
-
 
 [hugetlbfs]
     mount_path = "/mnt"

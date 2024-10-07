@@ -36,14 +36,14 @@ dynamic_port_range = "8900-9000"
 
 [rpc]
     port = 0
-    full_api = true
-    private = true
-    transaction_history = true
-    extended_tx_metadata_storage = true
-    only_known = true
-    pubsub_enable_block_subscription = true
-    pubsub_enable_vote_subscription = true
-    bigtable_ledger_storage = true
+    full_api = false
+    private = false
+    transaction_history = false
+    extended_tx_metadata_storage = false
+    only_known = false
+    pubsub_enable_block_subscription = false
+    pubsub_enable_vote_subscription = false
+    bigtable_ledger_storage = false
 
 [snapshots]
     incremental_snapshots = true
