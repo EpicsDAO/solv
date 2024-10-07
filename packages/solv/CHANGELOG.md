@@ -1,5 +1,35 @@
 # @epics-dao/solv
 
+## 4.6.4
+
+### Patch Changes
+
+- [#303](https://github.com/EpicsDAO/solv/pull/303) [`dabdd7d`](https://github.com/EpicsDAO/solv/commit/dabdd7d1c821aba57031e183c820baef0e60117b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update Solana Mainnet Version v1.18.25
+
+  First, update the solv version and update configuration.
+
+  ```bash
+  solv update && solv update --config
+  ```
+
+  Then, update the Solana Mainnet version.
+
+  ```bash
+  solv i
+  ```
+
+  Finally, restart the Solana Validator.
+
+  ```bash
+  solv restart
+  ```
+
+  ## No-Downtime Update
+
+  If you want no-downtime updates, please refer to the following guide:
+
+  https://solv.epics.dev/en/doc/quickstart/no-downtime-update/
+
 ## 4.6.3
 
 ### Patch Changes
