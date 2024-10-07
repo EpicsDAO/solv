@@ -105,6 +105,20 @@ Options:
   -h, --help          Display help for command
 ```
 
+## New Features - solv v4.6.x Release
+
+Now you can easily setup Yellowstone Geyser plugin and Firedancer!
+
+### Yellowstone Geyser gRPC Interface Support
+
+```bash
+solv setup --geyser
+```
+
+- Yellowstone Geyser Doc - [https://github.com/rpcpool/yellowstone-grpc](https://github.com/rpcpool/yellowstone-grpc)
+
+### Firedancer Setup Support (Frankendancer)
+
 ## Start Solana Validator
 
 ```bash

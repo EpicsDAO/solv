@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">   
+      
+  <url>
+    <loc>https://solv.epics.dev/en/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/dao/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/enterprise/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/press-kits/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/legal/privacy-policy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/general/motivation/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/quickstart/backup/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/quickstart/solv-mev-mode/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/quickstart/no-downtime-update/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/quickstart/start-solv/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/tutorial/chapter1/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/tutorial/chapter2/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/tutorial/chapter5/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/tutorial/chapter3/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/doc/tutorial/chapter4/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/09/14/solv-how-to-start-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/08/17/epics-released-solana-validator-tool-solv/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/11/02/hosted-a-side-event-at-solana-breakpoint-2023/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/11/06/solana-breakpoint-2023-recap/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/10/23/solana-breakpoint-2023-side-event-latitude-epics-wework/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/10/27/elsoul-latitude-business-collaboration-enhance-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/10/29/elsoul-latitude-business-collaboration-enhance-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2023/12/08/solana-validator-master-guide-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/01/23/solv-ver3-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/01/29/solv-can-build-solana-rpc-node/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/03/12/epics-has-raised-total-750k-in-seed-funding/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/02/21/solv-v-3-3-0-faster-update-easy-restart/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/04/05/elsoul-labo-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/02/06/solv-can-build-jito-mev-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/07/11/solv-mev-mode-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/07/05/elsol-lst-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/06/epics-dao-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/16/skeet-launched-indias-only-solana-blockchain-data-center/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/07/skeet-dev-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/27/epics-dao-sponsored-webx-2024/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/23/solv-100x-faster-snapshot-download/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/24/solv4-solana-validator-complete-guide/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/en/news/2024/05/20/solv-v4-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/dao/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/enterprise/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/press-kits/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/legal/privacy-policy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/general/motivation/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/quickstart/no-downtime-update/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/quickstart/backup/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/quickstart/solv-mev-mode/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/tutorial/chapter1/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/quickstart/start-solv/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/tutorial/chapter2/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/tutorial/chapter3/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/tutorial/chapter4/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/doc/tutorial/chapter5/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/09/14/solv-how-to-start-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/08/17/epics-released-solana-validator-tool-solv/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/11/02/hosted-a-side-event-at-solana-breakpoint-2023/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/10/23/solana-breakpoint-2023-side-event-latitude-epics-wework/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/11/06/solana-breakpoint-2023-recap/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/10/29/elsoul-latitude-business-collaboration-enhance-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/10/27/elsoul-latitude-business-collaboration-enhance-solana-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2023/12/08/solana-validator-master-guide-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/01/23/solv-ver3-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/03/12/epics-has-raised-total-750k-in-seed-funding/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/01/29/solv-can-build-solana-rpc-node/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/02/21/solv-v-3-3-0-faster-update-easy-restart/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/02/06/solv-can-build-jito-mev-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/04/05/elsoul-labo-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/06/epics-dao-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/07/skeet-dev-ascends-to-solana-mainnet-validator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/20/solv-v4-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/16/skeet-launched-indias-only-solana-blockchain-data-center/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/23/solv-100x-faster-snapshot-download/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/24/solv4-solana-validator-complete-guide/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/05/27/epics-dao-sponsored-webx-2024/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/07/05/elsol-lst-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+  <url>
+    <loc>https://solv.epics.dev/ja/news/2024/07/11/solv-mev-mode-released/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+              
+</urlset>
+  

@@ -1,0 +1,97 @@
+#!/bin/sh
+
+# Constants and configurable variables
+SOLANA_VERSION=1.17.2
+NODE_VERSION=18.18.1
+
+# This ensures the entire script is downloaded
+{
+set -e  # exit immediately if a command exits with a non-zero status
+
+usage() {
+    cat 1>&2 <<EOF
+Custom Install Script
+Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
+installs nodenv, node $NODE_VERSION, and sets it as the global version.
+Additionally, installs the @epics-dao/solv2 package globally.
+
+USAGE:
+    custom-install-script.sh [FLAGS]
+
+FLAGS:
+    -h, --help              Prints help information
+EOF
+}
+
+create_user() {
+    echo "Creating user 'solv'..."
+    sudo adduser solv
+    sudo usermod -aG sudo solv
+}
+
+setup_firewall() {
+    echo "Configuring firewall"
+    echo "yes" | sudo ufw enable
+    sudo ufw allow ssh
+    sudo ufw allow 53 
+    sudo ufw allow 8000:10000/udp
+    sudo ufw allow 8000:10000/tcp
+    sudo ufw reload
+}
+
+
+install_nodenv_and_node() {
+    sudo su - solv <<EOF_SOLV
+        echo "Installing nodenv..."
+        git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+        echo 'export PATH="\$HOME/.nodenv/bin:\$PATH"' >> ~/.profile
+        echo 'eval "\$(nodenv init -)"' >> ~/.profile
+        source ~/.profile
+
+        echo "Installing node-build..."
+        git clone https://github.com/nodenv/node-build.git "\$(nodenv root)"/plugins/node-build
+
+        echo "Installing node $NODE_VERSION..."
+        nodenv install $NODE_VERSION
+        nodenv global $NODE_VERSION
+
+        echo "Installing @epics-dao/solv2..."
+        npm i -g @epics-dao/solv2
+
+        echo "Sourcing ~/.profile..."
+        source ~/.profile
+        
+        echo "Node installation completed!"
+EOF_SOLV
+}
+
+install_solana() {
+    SOLV_HOME=$(eval echo ~solv)
+    export SOLANA_INSTALL_DIR="$SOLV_HOME/.local/share/solana/install"
+    sudo -u solv sh -c "$(curl -sSfL https://release.solana.com/v${SOLANA_VERSION}/install)"
+}
+
+main() {
+    for arg in "$@"; do
+      case "$arg" in
+        -h|--help)
+          usage
+          exit 0
+          ;;
+        *)
+          ;;
+      esac
+    done
+
+    create_user
+    setup_firewall
+    install_nodenv_and_node
+    install_solana
+
+    sudo -u solv bash -c 'source ~/.profile && solv solv'
+    su solv
+}
+
+main "$@"
+
+} # this ensures the entire script is downloaded
