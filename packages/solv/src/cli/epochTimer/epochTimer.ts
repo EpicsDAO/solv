@@ -28,15 +28,17 @@ export const epochTimer = async (config: DefaultConfigType) => {
   const now = format(new Date(), 'yyyy-MM-dd HH:mm:ss')
   console.log(`Checking Epoch at ${now}`)
   const getD1Epoch = await initOrReadEpochFile()
-  const currentEpoch = getEpochInfoByRust(rpcUrl)
-  // Check Validator Account's Balance
-  await checkBalance(config)
+  if (getD1Epoch.epoch === 700) {
+    return 'Node has been stopped!'
+  }
 
+  const currentEpoch = getEpochInfoByRust(rpcUrl)
   // Check if Validator is running
   const { mainnetValidatorVoteKey, testnetValidatorVoteKey } = getAllKeyPaths()
   let voteAccountKey = isTestnet
     ? testnetValidatorVoteKey
     : mainnetValidatorVoteKey
+
   const isActive = await isValidatorActive(
     rpcUrl,
     getSolanaAddress(voteAccountKey),
@@ -47,6 +49,8 @@ export const epochTimer = async (config: DefaultConfigType) => {
     )
   }
   console.log(`Validator is active: ${isActive.isActive}`)
+  // Check Validator Account's Balance
+  await checkBalance(config)
 
   // Check if solv/Solana version update is required
   const isSolvVersionSame = await isVersionSame()
