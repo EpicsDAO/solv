@@ -2,7 +2,7 @@
   "metadata": {
     "appTitle": "solv - Solana Validator Tool",
     "defaultTitle": "Home",
-    "defaultDescription": "The utility tool for Solana Validators and the RPC nodes.",
-    "keywords": "Solana, Validator, Tool, RPC, Geyser, Firedancer, Jito, Agave"
+    "defaultDescription": "The utility tool for Solana Validators and the RPC nodes. You can easily setup the validator and RPC with 3 steps.",
+    "keywords": "Solana, Validator, Tool, RPC, Setup, Geyser, Firedancer, Jito, Agave"
   }
 }
