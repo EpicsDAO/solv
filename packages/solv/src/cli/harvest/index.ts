@@ -100,8 +100,9 @@ Harvest Address: ${harvestAddress}`
     })
 
   program
-    .command('mev')
-    .description('Enable MEV Mode')
+    .command('auto')
+    .alias('mev')
+    .description('Enable Auto Operation Mode')
     .action(async () => {
       const res = await mevOn(config)
       if (res) {
@@ -109,7 +110,7 @@ Harvest Address: ${harvestAddress}`
           stdio: 'inherit',
           shell: true,
         })
-        console.log(chalk.green('✔︎ MEV Mode Enabled'))
+        console.log(chalk.green('✔︎ Auto Operation Mode Enabled'))
       }
       process.exit(0)
     })

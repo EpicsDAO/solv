@@ -30,7 +30,8 @@ const mevOn = async (config: DefaultConfigType) => {
     {
       type: 'confirm',
       name: 'mevOn',
-      message: 'Do you want to enable solv MEV Mode?(You can change it again)',
+      message:
+        'Do you want to enable solv Auto Operation Mode?(You can change it again)',
       default: false,
     },
   ])
