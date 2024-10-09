@@ -1,5 +1,19 @@
 # @epics-dao/solv
 
+## 4.6.7
+
+### Patch Changes
+
+- [`3af615b`](https://github.com/EpicsDAO/solv/commit/3af615be8683e75c0d9960cfbc9239e13782c562) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
+
+  - Update epochTimer to enable auto update
+
+  Please update solv version to the v4.6.7 to enable auto update.
+
+  ```bash
+  $ solv update
+  ```
+
 ## 4.6.6
 
 ### Patch Changes
