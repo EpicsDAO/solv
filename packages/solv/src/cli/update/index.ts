@@ -27,6 +27,13 @@ import {
 } from '@/config/versionConfig'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import { MAINNET_TYPES, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
+import { rmSnapshot } from '../setup/rmSnapshot'
+import createSnapshot from '../get/createSnapshot'
+import { startTestnetAgaveValidatorScript } from '@/template/startupScripts/startTestnetAgaveValidatorScript'
+import { writeFile } from 'fs/promises'
+import { spawnSync } from 'child_process'
+import { STARTUP_SCRIPT } from '@/config/constants'
+import updateStartupScriptPermission from '../setup/updateStartupScriptPermission'
 
 export * from './update'
 
@@ -163,9 +170,30 @@ export const updateCommands = (config: DefaultConfigType) => {
           await monitorUpdate(deliquentStake, true)
           return
         }
-        await updateVersion(version)
-        await monitorUpdate(deliquentStake, true)
-        return
+        if (isTestnet) {
+          // Downgrade to 1.18.25
+          const testnetDowngradeVersion = '1.18.25'
+          await updateVersion(testnetDowngradeVersion)
+          rmSnapshot()
+          try {
+            createSnapshot()
+          } catch (error) {
+            rmSnapshot()
+          }
+          const newStartupScript = startTestnetAgaveValidatorScript()
+          await writeFile(STARTUP_SCRIPT, newStartupScript)
+          updateStartupScriptPermission()
+          spawnSync(`solv start`, { stdio: 'inherit', shell: true })
+          console.log(
+            chalk.white(
+              `Successfully downgraded to ${testnetDowngradeVersion}`,
+            ),
+          )
+        } else {
+          await updateVersion(version)
+          await monitorUpdate(deliquentStake, true)
+          return
+        }
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
         updateCommission(ansewr.commission, isTestnet)

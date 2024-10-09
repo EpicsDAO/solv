@@ -33,6 +33,7 @@ import createSnapshot from './cli/get/createSnapshot'
 import { swapCommand } from './cli/swap'
 import readConfig from './config/readConfig'
 import { jupiterCommands } from './cli/jupiter'
+import chalk from 'chalk'
 dotenv.config()
 
 export const program = new Command()
@@ -88,8 +89,11 @@ async function main() {
     program
       .command('create:snapshot')
       .description('Create Snapshot')
-      .action(() => {
-        createSnapshot()
+      .option('-s, --slot <slot>', 'Slot')
+      .option('-l, --ledger <ledger>', 'Ledger')
+      .action((options: { slot: string; ledger: string }) => {
+        console.log(chalk.white(`📝 Creating Snapshot...`))
+        createSnapshot(options.slot, options.ledger)
       })
 
     program
