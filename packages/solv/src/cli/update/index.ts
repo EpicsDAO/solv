@@ -31,9 +31,8 @@ import { rmSnapshot } from '../setup/rmSnapshot'
 import createSnapshot from '../get/createSnapshot'
 import { startTestnetAgaveValidatorScript } from '@/template/startupScripts/startTestnetAgaveValidatorScript'
 import { writeFile } from 'fs/promises'
-import { spawnSync } from 'child_process'
+import { spawnSync } from 'node:child_process'
 import { STARTUP_SCRIPT } from '@/config/constants'
-import updateStartupScriptPermission from '../setup/updateStartupScriptPermission'
 
 export * from './update'
 
@@ -171,24 +170,26 @@ export const updateCommands = (config: DefaultConfigType) => {
           return
         }
         if (isTestnet) {
-          // Downgrade to 1.18.25
-          const testnetDowngradeVersion = '1.18.25'
-          await updateVersion(testnetDowngradeVersion)
-          rmSnapshot()
+          // Restart Instruction
+          // https://github.com/anza-xyz/agave/wiki/2024-10-09-Testnet-Rollback-and-Restart
+          spawnSync(`solv stop`, { shell: true, stdio: 'inherit' })
+          spawnSync(`agave-install init v2.0.13`, {
+            shell: true,
+            stdio: 'inherit',
+          })
           try {
             createSnapshot()
           } catch (error) {
             rmSnapshot()
           }
-          const newStartupScript = startTestnetAgaveValidatorScript()
-          await writeFile(STARTUP_SCRIPT, newStartupScript)
-          updateStartupScriptPermission()
-          spawnSync(`solv start`, { stdio: 'inherit', shell: true })
-          console.log(
-            chalk.white(
-              `Successfully downgraded to ${testnetDowngradeVersion}`,
-            ),
-          )
+          spawnSync(`agave-install init v1.18.26`, {
+            shell: true,
+            stdio: 'inherit',
+          })
+          const script = startTestnetAgaveValidatorScript()
+          await writeFile(STARTUP_SCRIPT, script, { mode: 0o755 })
+          spawnSync(`solv start`, { shell: true, stdio: 'inherit' })
+          console.log(chalk.white(`Successfully Updated!`))
         } else {
           await updateVersion(version)
           await monitorUpdate(deliquentStake, true)
