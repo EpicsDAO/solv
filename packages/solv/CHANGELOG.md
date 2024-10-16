@@ -1,5 +1,23 @@
 # @epics-dao/solv
 
+## 4.6.8
+
+### Patch Changes
+
+- [`3b50531`](https://github.com/EpicsDAO/solv/commit/3b505316ae82d1c65e8a1f2c69236591c993e65b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Instruction
+
+  If you are usin Solv Auto Operation mode, ignore this change.
+
+  If you are using Solv Manual Operation mode, please follow the instruction below:
+
+  ```bash
+  $ solv update && solv update -b
+  ```
+
+  Official Solana Testnet Instruction:
+
+  https://github.com/anza-xyz/agave/wiki/2024-10-09-Testnet-Rollback-and-Restart
+
 ## 4.6.7
 
 ### Patch Changes
