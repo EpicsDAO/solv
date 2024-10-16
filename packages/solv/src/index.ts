@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+import 'dotenv/config'
 import { Command } from 'commander'
 import { VERSION } from '@/lib/version'
 import {
@@ -34,7 +34,6 @@ import { swapCommand } from './cli/swap'
 import readConfig from './config/readConfig'
 import { jupiterCommands } from './cli/jupiter'
 import chalk from 'chalk'
-dotenv.config()
 
 export const program = new Command()
 program
