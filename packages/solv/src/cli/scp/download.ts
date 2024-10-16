@@ -30,9 +30,8 @@ export const download = async (ip = '') => {
     mkdirSync(keyDir, { recursive: true })
   }
   const isDownload = true
-  const unstakedKeyPath = homeDirectory + '/' + UNSTAKED_KEY
   const relayerKeyPath = homeDirectory + '/' + RELAYER_KEY
-  solanaKeys.push(unstakedKeyPath, relayerKeyPath)
+  solanaKeys.push(relayerKeyPath)
   for (const key of solanaKeys) {
     const splits = key.split('/')
     let fileName = splits[splits.length - 1]

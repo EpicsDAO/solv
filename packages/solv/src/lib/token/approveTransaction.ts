@@ -9,14 +9,18 @@ const approveTransaction = async (
   owner: PublicKey,
   amount: number,
 ) => {
-  const transactionSignature = await approve(
-    connection,
-    payer,
-    account,
-    delegate,
-    owner,
-    amount,
-  )
-  return transactionSignature
+  try {
+    const transactionSignature = await approve(
+      connection,
+      payer,
+      account,
+      delegate,
+      owner,
+      amount,
+    )
+    return transactionSignature
+  } catch (error) {
+    throw new Error(`approveTransaction: ${error}`)
+  }
 }
 export default approveTransaction

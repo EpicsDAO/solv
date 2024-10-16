@@ -36,6 +36,13 @@ export const createSolvKeyPairs = (config: DefaultConfigType) => {
   spawnSync(cmd, { shell: true, stdio: 'ignore' })
   const files = readdirSync('./').filter((f) => f.endsWith('SV.json'))
   const keyDir = homedir()
+  const unstakedKeyPath = path.join(keyDir, 'unstaked-identity.json')
+  if (existsSync(unstakedKeyPath)) {
+    spawnSync(`mv ${unstakedKeyPath} ${keyDir}/unstaked-identity.backup.json`, {
+      shell: true,
+      stdio: 'ignore',
+    })
+  }
   let i = 0
   for (const file of files) {
     const keyPath = path.join(keyDir, genKeys[i])
