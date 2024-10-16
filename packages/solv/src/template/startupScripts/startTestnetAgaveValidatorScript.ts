@@ -25,9 +25,9 @@ exec agave-validator \\
 --dynamic-port-range 8000-8020 \\
 --rpc-port 8899 \\
 --wal-recovery-mode skip_any_corrupted_record \\
---wait-for-supermajority 296876256 \\
---expected-shred-version 10323 \\
---expected-bank-hash Ea1SMrWMbGnCiYV7cAZP3gWTeFeu5UkEBb7oDp8VKaLr \\
+--wait-for-supermajority 296877184 \\
+--expected-shred-version 27799 \\
+--expected-bank-hash ABuvd5grMYhbrjeLmu3qCNqiD8DaDRw6oyboMgZfaQS5 \\
 --use-snapshot-archives-at-startup when-newest \\
 --limit-ledger-size \\
 --block-production-method central-scheduler \\

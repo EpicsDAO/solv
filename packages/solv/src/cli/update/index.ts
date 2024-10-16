@@ -171,9 +171,9 @@ export const updateCommands = (config: DefaultConfigType) => {
         }
         if (isTestnet) {
           // Restart Instruction
-          // https://github.com/anza-xyz/agave/wiki/2024-10-09-Testnet-Rollback-and-Restart
+          // https://github.com/anza-xyz/agave/wiki/2024-10-16-Testnet-Rollback-and-Restart
           spawnSync(`solv stop`, { shell: true, stdio: 'inherit' })
-          spawnSync(`agave-install init v2.0.13`, {
+          spawnSync(`agave-install init v1.18.26`, {
             shell: true,
             stdio: 'inherit',
           })
@@ -182,10 +182,6 @@ export const updateCommands = (config: DefaultConfigType) => {
           } catch (error) {
             rmSnapshot()
           }
-          spawnSync(`agave-install init v1.18.26`, {
-            shell: true,
-            stdio: 'inherit',
-          })
           const script = startTestnetAgaveValidatorScript()
           await writeFile(STARTUP_SCRIPT, script, { mode: 0o755 })
           spawnSync(`solv start`, { shell: true, stdio: 'inherit' })
