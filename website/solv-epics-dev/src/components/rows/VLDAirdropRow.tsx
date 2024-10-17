@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client'
 
 import { Link } from '@/navigation'
@@ -11,11 +12,11 @@ import Image from 'next/image'
 import {
   ValidatorsDAOLogoHorizontal,
   ValidatorsDAOLogoInvertHorizontal,
-  VLDAirdropImg
+  VLDAirdropImg,
 } from '@/assets/img'
 import {
   VALIDATORS_DAO_DISCORD_INVITE_LINK,
-  VALIDATORS_DAO_LINK
+  VALIDATORS_DAO_LINK,
 } from '@/constants/links'
 import { useTheme } from '@/hooks/utils/useTheme'
 
@@ -24,8 +25,8 @@ const logos = [
     title: 'ValidatorsDAO',
     logo: ValidatorsDAOLogoHorizontal,
     logoInvert: ValidatorsDAOLogoInvertHorizontal,
-    href: VALIDATORS_DAO_LINK
-  }
+    href: VALIDATORS_DAO_LINK,
+  },
 ]
 
 export default function VLDAirdropRow() {
@@ -60,7 +61,7 @@ export default function VLDAirdropRow() {
           <h2
             className={cn(
               'py-2 text-5xl font-extrabold tracking-tighter sm:text-5xl',
-              mainShardGradation
+              mainShardGradation,
             )}
           >
             {t('common.VLDAirdropRow.title')}

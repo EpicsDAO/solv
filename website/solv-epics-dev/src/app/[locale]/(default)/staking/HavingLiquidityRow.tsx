@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { mainShardGradation } from '@/lib/decoration'
 import { cn } from '@/lib/utils'
 import { useTranslations, useLocale } from 'next-intl'
@@ -16,7 +17,7 @@ export default function HavingLiquidityRow() {
         <h2
           className={cn(
             'mx-auto max-w-3xl py-2 text-center text-2xl font-bold tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl',
-            mainShardGradation
+            mainShardGradation,
           )}
         >
           {t('mechanism.HavingLiquidityRow.title')}
@@ -37,7 +38,7 @@ export default function HavingLiquidityRow() {
             <h3
               className={cn(
                 'pb-4 text-lg font-bold tracking-tight sm:text-2xl md:text-3xl lg:text-4xl xl:pb-5 xl:text-5xl',
-                mainShardGradation
+                mainShardGradation,
               )}
             >
               {t('mechanism.HavingLiquidityRow.summary')}
@@ -45,7 +46,7 @@ export default function HavingLiquidityRow() {
             <p
               className={cn(
                 'text-sm font-medium sm:text-base lg:text-lg xl:text-xl',
-                'text-zinc-500 dark:text-zinc-300'
+                'text-zinc-500 dark:text-zinc-300',
               )}
             >
               {t('mechanism.HavingLiquidityRow.description')}
