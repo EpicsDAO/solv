@@ -1,5 +1,7 @@
 import logoHorizontal from '@/assets/img/logo/solvLogoHorizontal.svg'
 import logoHorizontalInvert from '@/assets/img/logo/solvLogoInvertHorizontal.svg'
+import ValidatorsDAOLogoHorizontal from '@/assets/img/logo/ValidatorsDAOLogoHorizontal.svg'
+import ValidatorsDAOLogoInvertHorizontal from '@/assets/img/logo/ValidatorsDAOLogoInvertHorizontal.svg'
 
 import AgaveLogoHorizontal from '@/assets/img/logo/partners/AgaveLogoHorizontal.svg'
 import AgaveLogoInvertHorizontal from '@/assets/img/logo/partners/AgaveLogoInvertHorizontal.svg'
@@ -23,6 +25,11 @@ import NextLogoInvertHorizontal from '@/assets/img/logo/partners/NextLogoInvertH
 import PrismaLogoHorizontal from '@/assets/img/logo/partners/PrismaLogoHorizontal.svg'
 import PrismaLogoInvertHorizontal from '@/assets/img/logo/partners/PrismaLogoInvertHorizontal.svg'
 import TypeScriptLogoHorizontal from '@/assets/img/logo/partners/TypeScriptLogoHorizontal.svg'
+import OrcaLogoHorizontal from '@/assets/img/logo/partners/OrcaLogoHorizontal.svg'
+import OrcaLogoInvertHorizontal from '@/assets/img/logo/partners/OrcaLogoInvertHorizontal.svg'
+
+import Why1SOLnot1elSOLImg from '@/assets/img/icon/mechanism/Why1SOLnot1elSOL.png'
+import HavingLiquidityImg from '@/assets/img/icon/mechanism/HavingLiquidity.png'
 
 import OPOSClimate from '@/assets/img/icon/opos/Climate.png'
 import OPOSClosedCube from '@/assets/img/icon/opos/ClosedCube.png'
@@ -38,6 +45,15 @@ import OPOSParallelTransactions from '@/assets/img/icon/opos/ParallelTransaction
 import OPOSSagaPhone from '@/assets/img/icon/opos/SagaPhone.png'
 import OPOSSecurity from '@/assets/img/icon/opos/Security.png'
 
+import elSOLcoin from '@/assets/img/coin/elSOLcoin.png'
+import elSOLcoins from '@/assets/img/coin/elSOLcoins.png'
+import elSOLAngledLeft from '@/assets/img/coin/elSOLAngledLeft.png'
+import elSOLAngledRight from '@/assets/img/coin/elSOLAngledRight.png'
+import VLDcoin from '@/assets/img/coin/VLDcoin.png'
+import VLDcoins from '@/assets/img/coin/VLDcoins.png'
+import VLDAngledLeft from '@/assets/img/coin/VLDAngledLeft.png'
+import VLDAngledRight from '@/assets/img/coin/VLDAngledRight.png'
+
 import ElsolProductImg from '@/assets/img/products/elSOL.jpg'
 import SolvProductImg from '@/assets/img/products/solv.jpg'
 import ValidatrosSolutionsProductImg from '@/assets/img/products/ValidatorsSolutions.jpg'
@@ -46,10 +62,13 @@ import ERPCProductImg from '@/assets/img/products/ERPC.jpg'
 import AdaptiveSolutionsImg from '@/assets/img/merit/AdaptiveSolutions.png'
 import EasyStartValidatorImg from '@/assets/img/merit/EasyStartValidator.png'
 import QualityOperationsImg from '@/assets/img/merit/QualityOperations.png'
+import VLDAirdropImg from '@/assets/img/icon/rows/VLDAirdrop.png'
 
 export {
   logoHorizontal,
   logoHorizontalInvert,
+  ValidatorsDAOLogoHorizontal,
+  ValidatorsDAOLogoInvertHorizontal,
   AgaveLogoHorizontal,
   AgaveLogoInvertHorizontal,
   JitoFoundationLogoHorizontal,
@@ -71,6 +90,18 @@ export {
   PrismaLogoHorizontal,
   PrismaLogoInvertHorizontal,
   TypeScriptLogoHorizontal,
+  OrcaLogoHorizontal,
+  OrcaLogoInvertHorizontal,
+  Why1SOLnot1elSOLImg,
+  HavingLiquidityImg,
+  elSOLcoin,
+  elSOLcoins,
+  elSOLAngledLeft,
+  elSOLAngledRight,
+  VLDcoin,
+  VLDcoins,
+  VLDAngledLeft,
+  VLDAngledRight,
   OPOSClimate,
   OPOSClosedCube,
   OPOSCompressedCoil,
@@ -91,4 +122,5 @@ export {
   AdaptiveSolutionsImg,
   EasyStartValidatorImg,
   QualityOperationsImg,
+  VLDAirdropImg,
 }
