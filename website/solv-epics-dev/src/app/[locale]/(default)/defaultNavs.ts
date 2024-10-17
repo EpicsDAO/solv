@@ -6,6 +6,7 @@ export enum DEFAULT_PATHS {
   nodowntime = '/doc/quickstart/no-downtime-update',
   mevmode = '/doc/quickstart/solv-mev-mode',
   news = '/news',
+  staking = '/staking',
   privacy = '/legal/privacy-policy',
 }
 
@@ -13,6 +14,10 @@ export const defaultHeaderNav = [
   {
     path: DEFAULT_PATHS.doc,
     label: 'doc.title',
+  },
+  {
+    path: DEFAULT_PATHS.staking,
+    label: 'staking.title',
   },
   {
     path: DEFAULT_PATHS.news,
@@ -24,6 +29,10 @@ export const defaultFooterNav = [
   {
     path: DEFAULT_PATHS.doc,
     label: 'doc.title',
+  },
+  {
+    path: DEFAULT_PATHS.staking,
+    label: 'staking.title',
   },
   {
     path: DEFAULT_PATHS.news,
