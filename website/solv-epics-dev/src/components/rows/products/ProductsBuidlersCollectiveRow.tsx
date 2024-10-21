@@ -53,6 +53,7 @@ export default function ProductsBuidlersCollectiveRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button>
                 {t('common.ProductsBuidlersCollectiveRow.button1')}
               </Button>
@@ -62,6 +63,7 @@ export default function ProductsBuidlersCollectiveRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button variant="outline">
                 <FontAwesomeIcon icon={faDiscord} className="mr-2 h-5 w-5" />
                 {t('common.ProductsBuidlersCollectiveRow.button2')}

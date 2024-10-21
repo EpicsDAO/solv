@@ -51,6 +51,7 @@ export default function ProductsSkeetRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button>{t('common.ProductsSkeetRow.button1')}</Button>
             </Link>
             <Link
@@ -58,6 +59,7 @@ export default function ProductsSkeetRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button variant="outline">
                 <FontAwesomeIcon icon={faDiscord} className="mr-2 h-5 w-5" />
                 {t('common.ProductsSkeetRow.button2')}
