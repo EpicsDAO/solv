@@ -18,6 +18,8 @@ import {
   ValidatorType,
 } from '@/config/enums'
 import {
+  DELINQUENT_STAKE_MAINNET,
+  DELINQUENT_STAKE_TESTNET,
   VERSION_JITO_MAINNET,
   VERSION_JITO_RPC,
   VERSION_JITO_TESTNET,
@@ -27,12 +29,6 @@ import {
 } from '@/config/versionConfig'
 import { readOrCreateDefaultConfig } from '@/lib/readOrCreateDefaultConfig'
 import { MAINNET_TYPES, NETWORK_TYPES, SOLV_TYPES } from '@/config/config'
-import { rmSnapshot } from '../setup/rmSnapshot'
-import createSnapshot from '../get/createSnapshot'
-import { startTestnetAgaveValidatorScript } from '@/template/startupScripts/startTestnetAgaveValidatorScript'
-import { writeFile } from 'fs/promises'
-import { spawnSync } from 'node:child_process'
-import { STARTUP_SCRIPT } from '@/config/constants'
 
 export * from './update'
 
@@ -169,28 +165,13 @@ export const updateCommands = (config: DefaultConfigType) => {
           await monitorUpdate(deliquentStake, true)
           return
         }
-        if (isTestnet) {
-          // Restart Instruction
-          // https://github.com/anza-xyz/agave/wiki/2024-10-16-Testnet-Rollback-and-Restart
-          spawnSync(`solv stop`, { shell: true, stdio: 'inherit' })
-          spawnSync(`agave-install init v1.18.26`, {
-            shell: true,
-            stdio: 'inherit',
-          })
-          try {
-            createSnapshot()
-          } catch (error) {
-            rmSnapshot()
-          }
-          const script = startTestnetAgaveValidatorScript()
-          await writeFile(STARTUP_SCRIPT, script, { mode: 0o755 })
-          spawnSync(`solv start`, { shell: true, stdio: 'inherit' })
-          console.log(chalk.white(`Successfully Updated!`))
-        } else {
-          await updateVersion(version)
-          await monitorUpdate(deliquentStake, true)
-          return
-        }
+
+        await updateVersion(version)
+        const deliquentStakeNum = isTestnet
+          ? DELINQUENT_STAKE_TESTNET
+          : DELINQUENT_STAKE_MAINNET
+        await monitorUpdate(deliquentStakeNum, true)
+        return
       } else if (options.commission) {
         const ansewr = await updateCommissionAsk()
         updateCommission(ansewr.commission, isTestnet)
