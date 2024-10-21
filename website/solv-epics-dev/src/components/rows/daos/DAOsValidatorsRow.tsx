@@ -53,6 +53,7 @@ export default function DAOsValidatorsRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button>{t('common.DAOsValidatorsRow.button1')}</Button>
             </Link>
             <Link
@@ -60,6 +61,7 @@ export default function DAOsValidatorsRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button variant="outline">
                 <FontAwesomeIcon icon={faDiscord} className="mr-2 h-5 w-5" />
                 {t('common.DAOsValidatorsRow.button2')}

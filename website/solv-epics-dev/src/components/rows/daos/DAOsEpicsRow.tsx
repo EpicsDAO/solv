@@ -54,6 +54,7 @@ export default function DAOsEpicsRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button>{t('common.DAOsEpicsRow.button1')}</Button>
             </Link>
             <Link
@@ -61,6 +62,7 @@ export default function DAOsEpicsRow() {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/*@ts-ignore*/}
               <Button variant="outline">
                 <FontAwesomeIcon icon={faDiscord} className="mr-2 h-5 w-5" />
                 {t('common.DAOsEpicsRow.button2')}
