@@ -63,6 +63,10 @@ import AdaptiveSolutionsImg from '@/assets/img/merit/AdaptiveSolutions.png'
 import EasyStartValidatorImg from '@/assets/img/merit/EasyStartValidator.png'
 import QualityOperationsImg from '@/assets/img/merit/QualityOperations.png'
 import VLDAirdropImg from '@/assets/img/icon/rows/VLDAirdrop.png'
+import SkeetProductImg from '@/assets/img/products/Skeet.jpg'
+import BuidlersCollectiveImg from '@/assets/img/products/BuidlersCollective.jpg'
+import EpicsDAOImg from '@/assets/img/daos/EpicsDAO.jpg'
+import ValidatorsDAOImg from '@/assets/img/daos/ValidatorsDAO.jpg'
 
 export {
   logoHorizontal,
@@ -123,4 +127,8 @@ export {
   EasyStartValidatorImg,
   QualityOperationsImg,
   VLDAirdropImg,
+  EpicsDAOImg,
+  SkeetProductImg,
+  BuidlersCollectiveImg,
+  ValidatorsDAOImg,
 }
