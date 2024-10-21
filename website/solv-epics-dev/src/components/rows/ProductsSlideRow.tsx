@@ -4,9 +4,12 @@ import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import ProductsElsolRow from './products/ProductsElsolRow'
 import ProductsErpcRow from './products/ProductsErpcRow'
-// import ProductsSolvRow from './products/ProductsSolvRow'
 import ProductsValidatorsSolutionsRow from './products/ProductsValidatorsSolutionsRow'
 import { cn } from '@/lib/utils'
+import ProductsSkeetRow from './products/ProductsSkeetRow'
+import ProductsBuidlersCollectiveRow from './products/ProductsBuidlersCollectiveRow'
+import DAOsValidatorsRow from './daos/DAOsValidatorsRow'
+import DAOsEpicsRow from './daos/DAOsEpicsRow'
 
 export default function ProductsSlideRow() {
   return (
@@ -26,9 +29,6 @@ export default function ProductsSlideRow() {
       >
         {/*@ts-ignore*/}
         <CarouselContent>
-          {/* <CarouselItem>
-            <ProductsSolvRow />
-          </CarouselItem> */}
           {/*@ts-ignore*/}
           <CarouselItem>
             <ProductsValidatorsSolutionsRow />
@@ -40,6 +40,22 @@ export default function ProductsSlideRow() {
           {/*@ts-ignore*/}
           <CarouselItem>
             <ProductsErpcRow />
+          </CarouselItem>
+          {/*@ts-ignore*/}
+          <CarouselItem>
+            <ProductsSkeetRow />
+          </CarouselItem>
+          {/*@ts-ignore*/}
+          <CarouselItem>
+            <ProductsBuidlersCollectiveRow />
+          </CarouselItem>
+          {/*@ts-ignore*/}
+          <CarouselItem>
+            <DAOsValidatorsRow />
+          </CarouselItem>
+          {/*@ts-ignore*/}
+          <CarouselItem>
+            <DAOsEpicsRow />
           </CarouselItem>
         </CarouselContent>
       </Carousel>
