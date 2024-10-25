@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.6.13
+
+### Patch Changes
+
+- [#327](https://github.com/EpicsDAO/solv/pull/327) [`27adb05`](https://github.com/EpicsDAO/solv/commit/27adb050d7694d7183c2a312c4c68b35e3cb8a8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv auto update notification
+
 ## 4.6.12
 
 ### Patch Changes
