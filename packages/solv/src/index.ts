@@ -34,6 +34,7 @@ import { swapCommand } from './cli/swap'
 import readConfig from './config/readConfig'
 import { jupiterCommands } from './cli/jupiter'
 import chalk from 'chalk'
+import getSolanaVersion from './cli/epochTimer/getSolanaVersion'
 
 export const program = new Command()
 program
@@ -117,6 +118,14 @@ async function main() {
       .description('Show Solv Config')
       .action(() => {
         showConfig()
+      })
+
+    program
+      .command('vv')
+      .description('Show Solv Version')
+      .action(() => {
+        const version = getSolanaVersion()
+        console.log('version:', version)
       })
 
     await program

@@ -12,6 +12,7 @@ import { getSolanaAddress } from '@/lib/getSolanaAddress'
 import sleep from '@/lib/sleep'
 import { DefaultConfigType } from '@/config/types'
 import { Network } from '@/config/enums'
+import getSolanaVersion from '@/cli/epochTimer/getSolanaVersion'
 
 // NODE_RESTART_REQUIRED_MAINNET/TESTNET is a boolean
 // This is a global variable that is not defined in this file
@@ -22,7 +23,7 @@ const autoUpdate = async (config: DefaultConfigType) => {
   const isMainnet = config.NETWORK === Network.MAINNET
   const { mainnetValidatorKey, testnetValidatorKey } = getAllKeyPaths()
   const validatorKey = isMainnet ? mainnetValidatorKey : testnetValidatorKey
-  const solanaVersion = getSolvVersion()
+  const solanaVersion = getSolanaVersion()
   // Notify the user about the update
   let isUpdateRequired = isMainnet
     ? NODE_RESTART_REQUIRED_MAINNET
