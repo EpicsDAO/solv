@@ -1,5 +1,18 @@
 # @epics-dao/solv
 
+## 4.6.14
+
+### Patch Changes
+
+- [#329](https://github.com/EpicsDAO/solv/pull/329) [`0b6be61`](https://github.com/EpicsDAO/solv/commit/0b6be61d2790de537846c04c988b62ccf490194b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - auto update solana version notification
+
+  === ✨ solv updated to the latest version ✨ ===
+  Validator Address: xxxxxxxx
+  solv Version: 4.6.13
+  Solana Version: 2.0.14
+  Network: Testnet
+  isNodeRestartRequired: false
+
 ## 4.6.13
 
 ### Patch Changes
