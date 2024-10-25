@@ -22,9 +22,7 @@ const autoUpdate = async (config: DefaultConfigType) => {
   const isMainnet = config.NETWORK === Network.MAINNET
   const { mainnetValidatorKey, testnetValidatorKey } = getAllKeyPaths()
   const validatorKey = isMainnet ? mainnetValidatorKey : testnetValidatorKey
-  const solanaVersion = isMainnet
-    ? CONFIG.MAINNET_SOLANA_VERSION
-    : CONFIG.TESTNET_SOLANA_VERSION
+  const solanaVersion = getSolvVersion()
   // Notify the user about the update
   let isUpdateRequired = isMainnet
     ? NODE_RESTART_REQUIRED_MAINNET
