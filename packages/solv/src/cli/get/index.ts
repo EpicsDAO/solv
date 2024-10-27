@@ -8,10 +8,15 @@ import { spawnSync } from 'node:child_process'
 import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 import chalk from 'chalk'
 import { DefaultConfigType } from '@/config/types'
-import { Network } from '@/config/enums'
+import { Network, NodeType } from '@/config/enums'
+import { VERSION_MAINNET, VERSION_SOLANA_RPC, VERSION_TESTNET } from '@/config/versionConfig'
 
 export const getCommands = (config: DefaultConfigType) => {
   const isTest = config.NETWORK === Network.TESTNET
+  let version = isTest ? VERSION_TESTNET : VERSION_MAINNET
+  if (config.NODE_TYPE === NodeType.RPC) {
+    version = VERSION_SOLANA_RPC
+  }
   const get = program
     .command('get')
     .description(`Get Solana Validator's Information`)
@@ -59,17 +64,24 @@ export const getCommands = (config: DefaultConfigType) => {
       'Snapshot Path',
       '/mnt/ledger/snapshot',
     )
+    .option(
+      '-v, --version <version>',
+      'Specific Version Node',
+      version,
+    )
     .description(`Download the latest snapshot`)
     .action(
       (options: {
         minDownloadSpeed: string
         ledgerPath: string
         snapshotPath: string
+        version: string
       }) => {
-        const minDonwloadSpeed = options.minDownloadSpeed
+        const minDownloadSpeed = options.minDownloadSpeed
         const ledgerPath = options.ledgerPath
         const snapshotPath = options.snapshotPath
-        getSnapshot(isTest, minDonwloadSpeed, ledgerPath, snapshotPath)
+        const version = options.version
+        getSnapshot(isTest, minDownloadSpeed, ledgerPath, snapshotPath, version)
       },
     )
 

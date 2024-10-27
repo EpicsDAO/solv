@@ -3,12 +3,13 @@ import { spawnSync } from 'node:child_process'
 
 export const getSnapshot = (
   isTest = false,
-  minDonwloadSpeed = '45',
+  minDownloadSpeed = '45',
   ledgerPath = MT_PATHS.LEDGER,
   snapshotPath = `${ledgerPath}/snapshot`,
+  version: string
 ) => {
   try {
-    let cmd = `docker run -it --rm -v ${ledgerPath}:${snapshotPath} --user $(id -u):$(id -g) c29r3/solana-snapshot-finder:latest --snapshot_path ${snapshotPath} --min_download_speed ${minDonwloadSpeed}`
+    let cmd = `docker run -it --rm -v ${ledgerPath}:${snapshotPath} --user $(id -u):$(id -g) c29r3/solana-snapshot-finder:latest --snapshot_path ${snapshotPath} --min_download_speed ${minDownloadSpeed} --version ${version}`
     if (isTest) {
       spawnSync(
         `wget --trust-server-names https://snapshots.avorio.network/testnet/snapshot.tar.bz2 https://snapshots.avorio.network/testnet/incremental-snapshot.tar.bz2`,
