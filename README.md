@@ -105,6 +105,12 @@ Options:
   -h, --help          Display help for command
 ```
 
+## Update - solv get snapshot v4.6.15
+
+Version control for snapshot-finder
+
+https://github.com/EpicsDAO/solv/pull/331
+
 ## Website
 
 Validators Solutions: https://validators.solutions
