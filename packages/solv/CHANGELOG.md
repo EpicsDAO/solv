@@ -1,5 +1,19 @@
 # @epics-dao/solv
 
+## 4.6.15
+
+### Patch Changes
+
+- [`4df32b1`](https://github.com/EpicsDAO/solv/commit/4df32b12194b28f02ea3dae4a05e839a02f408c9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - feat(add): version control for snapshot-finder
+
+  ## Update - solv get snapshot v4.6.15
+
+  Version control for snapshot-finder
+
+  https://github.com/EpicsDAO/solv/pull/331
+
+  @gabrielhicks, Thank you for your contribution 🎊
+
 ## 4.6.14
 
 ### Patch Changes
