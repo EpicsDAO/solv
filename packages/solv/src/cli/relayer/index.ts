@@ -8,6 +8,7 @@ import chalk from 'chalk'
 import { LEDGER_PATH } from '@/config/constants'
 import { spawnSync } from 'child_process'
 import { relayerEnable } from './relayerEnable'
+import getSolanaCLI from '@/config/getSolanaCLI'
 
 export const relayerCommands = () => {
   const relayer = program
@@ -66,7 +67,7 @@ export const relayerCommands = () => {
         console.log(chalk.red('Please provide a URL'))
         return
       }
-      const cmd = `solana-validator --ledger ${LEDGER_PATH} set-relayer-config --relayer-url ${options.url}`
+      const cmd = `${getSolanaCLI()} --ledger ${LEDGER_PATH} set-relayer-config --relayer-url ${options.url}`
       console.log(chalk.white('Setting Relayer URL ...'))
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
       console.log(chalk.green('🟢 Relayer URL Set'))

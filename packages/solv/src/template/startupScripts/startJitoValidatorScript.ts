@@ -12,9 +12,10 @@ export const startJitoValidatorScript = (
   relayerUrl: string,
   blockEngineUrl: string,
   shredReceiverAddr: string,
+  solanaCLI = 'agave-validator',
 ) => {
   const script = `#!/bin/bash
-exec solana-validator \\
+exec ${solanaCLI} \\
 --identity ${IDENTITY_KEY_PATH} \\
 --vote-account ${MAINNET_VALIDATOR_VOTE_KEY_PATH} \\
 --authorized-voter  ${MAINNET_VALIDATOR_KEY_PATH} \\

@@ -9,7 +9,12 @@ import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 import chalk from 'chalk'
 import { DefaultConfigType } from '@/config/types'
 import { Network, NodeType } from '@/config/enums'
-import { VERSION_MAINNET, VERSION_SOLANA_RPC, VERSION_TESTNET } from '@/config/versionConfig'
+import {
+  VERSION_MAINNET,
+  VERSION_SOLANA_RPC,
+  VERSION_TESTNET,
+} from '@/config/versionConfig'
+import getSolanaCLI from '@/config/getSolanaCLI'
 
 export const getCommands = (config: DefaultConfigType) => {
   const isTest = config.NETWORK === Network.TESTNET
@@ -64,11 +69,7 @@ export const getCommands = (config: DefaultConfigType) => {
       'Snapshot Path',
       '/mnt/ledger/snapshot',
     )
-    .option(
-      '-v, --version <version>',
-      'Specific Version Node',
-      version,
-    )
+    .option('-v, --version <version>', 'Specific Version Node', version)
     .description(`Download the latest snapshot`)
     .action(
       (options: {
@@ -89,7 +90,7 @@ export const getCommands = (config: DefaultConfigType) => {
     .command('contact')
     .description('Show Validator Contact Information')
     .action(() => {
-      const solanaValidatorClient = isTest ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
+      const solanaValidatorClient = getSolanaCLI()
       const cmd = `${solanaValidatorClient} --ledger /mnt/ledger/ contact-info`
       spawnSync(cmd, { shell: true, stdio: 'inherit' })
     })

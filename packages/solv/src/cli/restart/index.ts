@@ -1,21 +1,12 @@
 import { program } from '@/index'
 import { spawnSync } from 'node:child_process'
 import chalk from 'chalk'
-import {
-  AGAVE_VALIDATOR,
-  LEDGER_PATH,
-  SOLANA_VALIDATOR,
-} from '@/config/constants'
+import { LEDGER_PATH } from '@/config/constants'
 import { DefaultConfigType } from '@/config/types'
-import { Network, NodeType } from '@/config/enums'
+import getSolanaCLI from '@/config/getSolanaCLI'
 
 export const restartCommand = (config: DefaultConfigType) => {
-  const isTestnet = config.NETWORK === Network.TESTNET
-  const isRPC = config.NODE_TYPE === NodeType.RPC
-  let solanaValidatorClient = isTestnet ? AGAVE_VALIDATOR : SOLANA_VALIDATOR
-  if (isRPC) {
-    solanaValidatorClient = AGAVE_VALIDATOR
-  }
+  let solanaValidatorClient = getSolanaCLI()
   program
     .command('restart')
     .description('Restart Solana Validator')

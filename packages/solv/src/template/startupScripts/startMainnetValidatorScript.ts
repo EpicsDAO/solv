@@ -7,9 +7,9 @@ import {
   MAINNET_VALIDATOR_VOTE_KEY_PATH,
 } from '@/config/constants'
 
-export const startMainnetValidatorScript = () => {
+export const startMainnetValidatorScript = (solanaCLI = 'agave-validator') => {
   const script = `#!/bin/bash
-exec solana-validator \\
+exec ${solanaCLI} \\
 --identity ${IDENTITY_KEY_PATH} \\
 --vote-account ${MAINNET_VALIDATOR_VOTE_KEY_PATH} \\
 --authorized-voter  ${MAINNET_VALIDATOR_KEY_PATH} \\
