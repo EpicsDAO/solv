@@ -9,7 +9,7 @@ import {
 
 export const startTestnetValidatorScript = () => {
   const script = `#!/bin/bash
-exec solana-validator \\
+exec agave-validator \\
 --identity ${IDENTITY_KEY_PATH} \\
 --vote-account ${TESTNET_VALIDATOR_VOTE_KEY_PATH} \\
 --authorized-voter  ${TESTNET_VALIDATOR_KEY_PATH} \\

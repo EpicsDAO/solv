@@ -11,6 +11,7 @@ import { checkSSHConnection } from '../scp/checkSSHConnection'
 import chalk from 'chalk'
 import { DefaultConfigType } from '@/config/types'
 import { Network, NodeType } from '@/config/enums'
+import { changeIdentityIncomingV1toV2 } from './changeIdentityIncomingV1toV2'
 
 type SwitchType = 'Incoming' | 'Outgoing' | ''
 const SWITCH_TYPES: SwitchType[] = ['Incoming', 'Outgoing']
@@ -18,6 +19,7 @@ const SWITCH_TYPES: SwitchType[] = ['Incoming', 'Outgoing']
 type SwitchOptions = {
   switchType: SwitchType
   ip: string
+  v2MigrateIncoming: boolean
 }
 
 export const switchCommand = async (
@@ -28,6 +30,7 @@ export const switchCommand = async (
     .command('switch')
     .option('--ip <ip>', 'IP Address of the New Validator', '')
     .option('--switchType <switchType>', 'Switch Type', '')
+    .option('--v2-migrate-incoming', 'Switch V1 to V2 Incoming', false)
     .description('Switch Validator Identity with No Downtime')
     .action(async (options: SwitchOptions) => {
       try {
@@ -82,6 +85,23 @@ export const switchCommand = async (
           return
         }
         if (switchType === 'Incoming') {
+          if (options.v2MigrateIncoming) {
+            const confirm = await inquirer.prompt<{ confirm: boolean }>([
+              {
+                name: 'confirm',
+                type: 'confirm',
+                message:
+                  'Are you sure you want to migrate V1 to V2 Incoming? This node must be running V2 and the remote node must be running V1.',
+              },
+            ])
+            if (!confirm.confirm) {
+              console.log(chalk.cyan(`Exiting...🌛`))
+              process.exit(0)
+            }
+            console.log(chalk.white('🟢 Migrating V1 to V2 Incoming...'))
+            await changeIdentityIncomingV1toV2(ip, pubkey, config)
+            return
+          }
           await changeIdentityIncoming(ip, pubkey, config)
         } else {
           await changeIdentityOutgoing(ip, pubkey, config)
