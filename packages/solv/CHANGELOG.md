@@ -1,5 +1,18 @@
 # @epics-dao/solv
 
+## 4.7.0
+
+### Minor Changes
+
+- [`74afffc`](https://github.com/EpicsDAO/solv/commit/74afffc39efa4d126aab4a14240d352d6f3fa99d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Now that we have the v2 version of the solv cli, we need to update the solv cli versioin.
+  So, we are adding a new function `getSolanaCLI` to get the solana cli version for agave/solana.
+  Also, solv switch incoming for v1 to v2.
+
+  Add - getSolanaCLI to get the solana cli version for agave/solana
+  Add - solv switch incoming for v1 to v2
+
+  solana version: 1.x.x will be deprecated soon, so we need to switch to v2.
+
 ## 4.6.15
 
 ### Patch Changes
