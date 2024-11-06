@@ -13,6 +13,7 @@ const getJupiterQuote = async (
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'x-api-key': apiKey,
         Authorization: `Bearer ${apiKey}`,
       },
     })
