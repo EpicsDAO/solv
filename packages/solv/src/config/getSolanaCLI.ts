@@ -8,8 +8,6 @@ export type SolanaCLI = typeof SOLANA_CLI | typeof AGAVE_CLI
 const getSolanaCLI = (): SolanaCLI => {
   try {
     const solanaVersion = getSolanaVersion()
-    console.log(solanaVersion)
-    // convert solanaVersion to number. e.g. 1.2.0 to 120
     const hasVersion20 = solanaVersion.includes('2.0')
     if (hasVersion20) {
       return AGAVE_CLI
