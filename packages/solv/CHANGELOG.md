@@ -1,5 +1,11 @@
 # @epics-dao/solv
 
+## 4.7.1
+
+### Patch Changes
+
+- [`cefcd04`](https://github.com/EpicsDAO/solv/commit/cefcd04de51345035b339aa3c15a337b7abaf053) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - rm console log
+
 ## 4.7.0
 
 ### Minor Changes
