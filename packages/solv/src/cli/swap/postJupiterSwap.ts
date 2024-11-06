@@ -19,6 +19,9 @@ const postJupiterSwap = async (
           quoteResponse,
           userPublicKey: fromWalletPubkey,
           feeAccount: associationAccount,
+          dynamicComputeUnitLimit: true,
+          prioritizationFeeLamports: 'auto',
+          dynamicSlippage: { maxBps: 300 },
         },
       }
     } else {
@@ -26,6 +29,9 @@ const postJupiterSwap = async (
         swapRequest: {
           quoteResponse,
           userPublicKey: fromWalletPubkey,
+          dynamicComputeUnitLimit: true,
+          prioritizationFeeLamports: 'auto',
+          dynamicSlippage: { maxBps: 300 },
         },
       }
     }
@@ -34,6 +40,7 @@ const postJupiterSwap = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-api-key': jupiterApiKey,
         Authorization: `Bearer ${jupiterApiKey}`,
       },
       body: JSON.stringify(swapBody.swapRequest),
