@@ -1,5 +1,14 @@
 # @epics-dao/solv
 
+## 4.7.4
+
+### Patch Changes
+
+- [`2f8e760`](https://github.com/EpicsDAO/solv/commit/2f8e7602595356fbb3385f29f4d4d15e64471858) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - remove solana client
+
+  `solv i` had a dependency on the solana client, which is not needed for v2.x.x.
+  This change removes the dependency on the solana client.
+
 ## 4.7.3
 
 ### Patch Changes
