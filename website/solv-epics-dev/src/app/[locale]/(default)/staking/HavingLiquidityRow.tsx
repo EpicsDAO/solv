@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { useTranslations, useLocale } from 'next-intl'
 import { HavingLiquidityImg } from '@/assets/img'
 import { Button } from '@/components/ui/button'
-import { Link } from '@/navigation'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
 export default function HavingLiquidityRow() {
