@@ -44,7 +44,7 @@ export default function ArticleIndex({
                     width={160}
                     height={90}
                     alt={article.title as string}
-                    className="w-full rounded-t-xl"
+                    className="h-full w-full rounded-t-xl object-cover"
                   />
                 </Link>
               </AspectRatio>
