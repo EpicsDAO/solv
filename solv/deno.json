@@ -11,8 +11,7 @@
     "install": "deno install -Afg src/index.ts --name saver --allow-scripts=npm:bigint-buffer@1.1.5,npm:bufferutil@4.0.8,npm:utf-8-validate@5.0.10"
   },
   "imports": {
-    "@/": "./src/",
-    "/": "./"
+    "@/": "./src/"
   },
   "fmt": {
     "semiColons": false,

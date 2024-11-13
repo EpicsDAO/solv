@@ -1,0 +1,63 @@
+name: Publish and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Read version from deno.json
+        id: get_version
+        run: |
+          VERSION=$(cat deno.json | jq -r '.version')
+          echo "version=$VERSION" >> $GITHUB_ENV
+          echo "::set-output name=version::$VERSION"
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          TAG_EXISTS=$(git tag -l "${{ steps.get_version.outputs.version }}")
+          echo "tag_exists=$TAG_EXISTS" >> $GITHUB_ENV
+          echo "::set-output name=tag_exists::$TAG_EXISTS"
+
+      - name: Create GitHub Tag
+        if: steps.check_tag.outputs.tag_exists == ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = `${process.env.version}`;
+            const latestCommitSha = context.sha;
+            await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/tags/${tag}`,
+              sha: latestCommitSha,
+            });
+
+      - name: Create a Release
+        if: steps.check_tag.outputs.tag_exists == ''
+        uses: elgohr/Github-Release-Action@v5
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: "${{ steps.get_version.outputs.version }}"
+          title: "${{ steps.get_version.outputs.version }}"
+
+      - name: Publish package
+        if: steps.check_tag.outputs.tag_exists == ''
+        run: deno publish

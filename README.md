@@ -3,7 +3,7 @@
     <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
   </a>
 
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
+<a href="https://twitter.com/intent/follow?screen_name=solvSolana">
     <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
   </a>
   <br/>
@@ -25,85 +25,25 @@
 
 Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 
-By using solv, setting up a Solana validator node server becomes much easier. This powerful tool simplifies blockchain operations and allows you to start a Solana validator with just a single command.
+By using solv, setting up a Solana validator node server becomes much easier.
+This powerful tool simplifies blockchain operations and allows you to start a
+Solana validator with just a single command.
 
-By eliminating the complexity of setting up and managing a validator, solv opens the door for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
+By eliminating the complexity of setting up and managing a validator, solv opens
+the door for more individuals to participate in the blockchain network, making
+the Solana ecosystem more accessible.
 
-Whether you're an experienced developer or a blockchain enthusiast venturing into the world of validators, solv provides a solution for simple and fast setup.
+Whether you're an experienced developer or a blockchain enthusiast venturing
+into the world of validators, solv provides a solution for simple and fast
+setup.
 
-Dive into the world of Solana, explore the capabilities of solv, and become a part of the blockchain revolution with minimal effort and maximum efficiency.
+Dive into the world of Solana, explore the capabilities of solv, and become a
+part of the blockchain revolution with minimal effort and maximum efficiency.
 
 ## 📖 Server Spec
 
-- Linux Ubuntu 20.04 LTS
 - Linux Ubuntu 22.04 LTS
 - Linux Ubuntu 24.04 LTS
-
-## Solana Validator Setup
-
-```bash
-bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-cd ~ && source ~/.profile
-solv setup
-```
-
-When you run the `solv setup` command, a prompt like the following will appear.
-Select the network, node type, and either RPC type or validator type.
-
-Example: For an RPC node
-
-![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-rpc.png)
-
-Example: For a Validator
-
-![](https://storage.googleapis.com/epics-bucket/solv/assets/setup-jito-v.png)
-
-For the validator type, you can also set options like commission here.
-
-Once the setup is complete, the snapshot download will automatically begin,
-and your Solana validator will start 🎊
-
-If the snapshot download doesn't complete, press Ctrl + C to stop,
-and then run the `solv restart --rm` command again.
-
-Starting a new Solana validator can take anywhere from several minutes to several hours.
-You can check the logs using the following command:
-
-```bash
-solv log
-```
-
-or
-
-```bash
-solv m
-```
-
-`m` is an alias for the `monitor` command.
-
-※`solv monitor` does not work until the snapshot download is complete.
-
-## solv setup Options
-
-solv setup command has the following options:
-
-```
-solv setup --help
-Usage: solv setup [options]
-
-Setup Solana Validator
-
-Options:
-  --vote              Setup Vote Account (default: false)
-  --key               Setup Validator Keypairs (default: false)
-  --relayer           Setup Jito Relayer (default: false)
-  --jupiter           Setup Jupiter Swap API (default: false)
-  --geyser            Setup Geyser (default: false)
-  --firedancer        Setup Firedancer (default: false)
-  --skip-init-config  Skip Initial Config (default: false)
-  --skip-mount        Skip Mount (default: false)
-  -h, --help          Display help for command
-```
 
 ## Update - solv get snapshot v4.6.15
 
@@ -141,13 +81,18 @@ website: [https://elsol.app](https://elsol.app)
 
 ## Enhanced Solana RPC
 
-The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
+The Enhanced Solana RPC is a high-performance Solana RPC API service that
+provides a reliable and scalable infrastructure for Solana developers and
+validators.
 
 website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/EpicsDAO/solv This project is intended to be a safe,
+welcoming space for collaboration, and contributors are expected to adhere to
+the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Dependencies for Development
 
@@ -157,8 +102,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsD
 
 ## License
 
-The package is available as open source under the terms of the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+The package is available as open source under the terms of the
+[Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## Code of Conduct
 
-Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the solv project’s codebases, issue trackers, chat rooms
+and mailing lists is expected to follow the
+[code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).

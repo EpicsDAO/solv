@@ -1,18 +1,23 @@
 {
+  "name": "@solv/cli",
+  "version": "5.0.0rc",
+  "description": "solv - Solana Validator Tool CLI",
+  "runtimes": ["deno"],
+  "exports": "./dist/exe",
   "workspace": ["./solv"],
-  "variables": {
-    "schema_rpc_data": "./cmn/prisma/rpc-data/rpc-data.prisma"
-  },
   "tasks": {
+    "build": "deno compile -A --target x86_64-unknown-linux-gnu --no-check --output dist/exe solv/src/index.ts",
+    "build:mac": "deno compile -A --target x86_64-apple-darwin --no-check --output dist/exe solv/src/index.ts",
     "dev": "deno run -A --watch solv/src/index.ts",
     "s": "deno run -A solv/src/index.ts"
   },
   "imports": {
-    "@solana/web3.js": "npm:@solana/web3.js@1.95.3",
+    "@solana/web3.js": "npm:@solana/web3.js@2.0.0",
     "@std/assert": "jsr:@std/assert@1",
     "@std/dotenv": "jsr:@std/dotenv@0.225.2",
     "@std/text": "jsr:@std/text@1.0.8",
-    "@cliffy": "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts"
+    "@cliffy": "https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts",
+    "@cliffy/color": "https://deno.land/x/cliffy@v1.0.0-rc.4/ansi/colors.ts"
   },
   "fmt": {
     "lineWidth": 80,
