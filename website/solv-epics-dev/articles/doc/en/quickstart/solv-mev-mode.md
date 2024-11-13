@@ -1,20 +1,20 @@
 ---
 id: quickstart-solv-mev-mode
-title: solv MEV Mode
-description: Quickstart guide for solv, an open-source Solana validator tool - MEV Mode
+title: solv Auto Update Mode
+description: Quickstart guide for solv, an open-source Solana validator tool - Auto Update Mode
 ---
 
-![solv MEV Mode](/news/2024/07/11/solvMEVMode.jpg)
+![solv Auto Update Mode](/news/2024/07/11/solvMEVMode.jpg)
 
 🌱 No more SSH login required for Solana/solv version update 🌱
 
-Introducing the new solv MEV mode that takes care of Solana/solv version updates seamlessly. Now, you can update the Solana/solv version without the need for SSH login to the server.
+Introducing the new solv Auto Update Mode that takes care of Solana/solv version updates seamlessly. Now, you can update the Solana/solv version without the need for SSH login to the server.
 
 Key Features:
 
-- Automated Updates: solv MEV mode will automatically update the Solana/solv version for you, ensuring you are always running the latest version without manual intervention.
+- Automated Updates: solv Auto Update Mode will automatically update the Solana/solv version for you, ensuring you are always running the latest version without manual intervention.
 
-- Monitoring: solv MEV mode will monitor the health status of your validator and balance, sending notifications to Discord.
+- Monitoring: solv Auto Update Mode will monitor the health status of your validator and balance, sending notifications to Discord.
 
 - Automated Reward Harvesting: This mode will harvest your rewards to your authority account right before the epoch ends, optimizing your yield.
 
@@ -22,9 +22,9 @@ Key Features:
 
 - Enhanced Security: By keeping the balance of SOL in your validator node low and converting rewards to LST, this strategy mitigates the risk of large-scale SOL withdrawals, ensuring high yield maintenance.
 
-## What is solv MEV Mode?
+## What is solv Auto Update Mode?
 
-solv MEV Mode is a feature designed to automate the maintenance of your Solana validator by regularly checking and updating the Solana/solv status and version.
+solv Auto Update Mode is a feature designed to automate the maintenance of your Solana validator by regularly checking and updating the Solana/solv status and version.
 
 ## How it works
 
@@ -66,22 +66,22 @@ epochTimer will monitor the following aspects of your validator:
 
 ![solv](/doc/harvest-msg.png)
 
-By implementing solv MEV mode, you can maintain high security, ensure optimal performance, and enjoy the convenience of automated updates and reward management.
+By implementing solv Auto Update Mode, you can maintain high security, ensure optimal performance, and enjoy the convenience of automated updates and reward management.
 
-## How to use solv mev mode?
+## How to use solv Auto Update Mode?
 
 Run the following command:
 
 ```bash
 $ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
+? Do you want to enable solv Auto Update Mode?(You can change it again) (y/N)
 ? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
 ? Do you want to enable AUTO RESTART? (Recommended) (y/N)
 ※ Please turn off if you are using no-downtime migration.
 ? Enter your Discord Webhook URL (https://discord.com/api/webhooks/1234)
 ```
 
-1.  Enable solv MEV Mode.
+1.  Enable solv Auto Update Mode.
 2.  Enable AUTO UPDATE.
 3.  Enable AUTO RESTART.
 
@@ -97,13 +97,13 @@ $ solv mev
 
 ※ Please DO NOT keep harvest account in the validator node.
 
-## How to disable solv mev mode?
+## How to disable solv Auto Update Mode?
 
 Run the following command:
 
 ```bash
 $ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
+? Do you want to enable solv Auto Update Mode?(You can change it again) (y/N) n
 ✅ Cron Job successfully removed.
 ```
 

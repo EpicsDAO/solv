@@ -170,7 +170,7 @@ Commands:
   transfer|tr [options]  Transfer Solana Tokens/SPL Tokens
   withdraw [options]     Withdraw SOL from Vote Account to Authority Account
   harvest|hv             Harvest SOL from Validator Account to Authority Account
-  mev                    Enable MEV Mode
+  auto                   Enable Auto Update Mode
   df                     Disk Free Command
   swap [options]         Swap tokens
   epochTimer             Check Solana Epoch Timer

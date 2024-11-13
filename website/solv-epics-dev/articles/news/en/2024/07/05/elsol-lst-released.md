@@ -40,15 +40,15 @@ Currently, elSOL can be staked easily with just one command using the solv CLI. 
 
 solv: https://solv.epics.dev/en/
 
-## New Feature: About solv MEV Mode
+## New Feature: About solv Auto Update Mode
 
-MEV stands for Maximum Extractable Value, referring to the pursuit of extracting as much profit as possible. solv features an MEV mode, allowing validators to easily configure settings to maximize their earnings.
+solv features an Auto Update mode, allowing validators to easily configure settings to maximize their earnings.
 
-Using the new MEV mode in solv, you can automate and manage rewards frequently, maximizing your earnings.
+Using the new Auto Update mode in solv, you can automate and manage rewards frequently, maximizing your earnings.
 
 The epoch timer checks the state of epochs, which are revenue cycles, and executes appropriate tasks at the right times.
 
-These tasks include collecting and redistributing rewards required for each epoch. MEV mode allows you to always convert the appropriate amount of SOL to elSOL and send it to a specified account, enabling you to automatically compound staking rewards effortlessly.
+These tasks include collecting and redistributing rewards required for each epoch. Auto Update mode allows you to always convert the appropriate amount of SOL to elSOL and send it to a specified account, enabling you to automatically compound staking rewards effortlessly.
 
 For more details, please refer to the release notes below.
 

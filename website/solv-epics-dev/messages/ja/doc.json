@@ -13,7 +13,7 @@
         "firedancer": "Firedancer",
         "geyser-plugin": "Geyser プラグイン",
         "no-downtime-update": "ノーダウンタイムアップデート",
-        "solv-mev-mode": "solv MEV モード",
+        "solv-mev-mode": "solv 自動更新モード",
         "solv-swap": "solv スワップ"
       }
     }

@@ -1,20 +1,20 @@
 ---
 id: quickstart-solv-mev-mode
-title: solv MEV モード
-description: オープンソースのSolana バリデーター向けツールsolvのクイックスタート - MEV モード
+title: solv 自動更新モード
+description: オープンソースのSolana バリデーター向けツールsolvのクイックスタート - 自動更新モード
 ---
 
 ![solv MEV Mode](/news/2024/07/11/solvMEVMode.jpg)
 
 🌱 Solana/solv バージョン更新のための SSH ログイン不要 🌱
 
-新しい solv MEV モードの導入により、Solana/solv バージョンの更新がシームレスに行えるようになりました。これにより、サーバーへの SSH ログインなしで Solana/solv バージョンを更新できるようになります。
+新しい solv 自動更新モードの導入により、Solana/solv バージョンの更新がシームレスに行えるようになりました。これにより、サーバーへの SSH ログインなしで Solana/solv バージョンを更新できるようになります。
 
 主な特徴:
 
-- 自動更新: solv MEV モードは Solana/solv バージョンを自動的に更新し、手動の介入なしで常に最新バージョンを実行できるようにします。
+- 自動更新: solv 自動更新モードは Solana/solv バージョンを自動的に更新し、手動の介入なしで常に最新バージョンを実行できるようにします。
 
-- モニタリング: solv MEV モードは、バリデータの健康状態と残高を監視し、Discord に通知を送信します。
+- モニタリング: solv 自動更新モードは、バリデータの健康状態と残高を監視し、Discord に通知を送信します。
 
 - 報酬の自動収穫: このモードでは、エポック終了直前に報酬を権限アカウントに収穫し、利回りを最適化します。
 
@@ -22,9 +22,9 @@ description: オープンソースのSolana バリデーター向けツールsol
 
 - セキュリティの強化: バリデータノードの SOL 残高を低く保ち、報酬を LST に変換することで、大規模な SOL 引き出しのリスクを軽減し、高い利回りを維持します。
 
-## solv MEV モードとは？
+## solv 自動更新モードとは？
 
-solv MEV モードは、Solana バリデータのメンテナンスを自動化するために設計された機能で、Solana/solv の状態とバージョンを定期的にチェックおよび更新します。
+solv 自動更新モードは、Solana バリデータのメンテナンスを自動化するために設計された機能で、Solana/solv の状態とバージョンを定期的にチェックおよび更新します。
 
 ## 仕組み
 
@@ -66,22 +66,22 @@ epochTimer は次の項目についてバリデータを監視します:
 
 ![solv](/doc/harvest-msg.png)
 
-solv MEV モードを実装することで、高いセキュリティを維持し、最適なパフォーマンスを確保し、自動更新および報酬管理の利便性を享受することができます。
+solv 自動更新モードを実装することで、高いセキュリティを維持し、最適なパフォーマンスを確保し、自動更新および報酬管理の利便性を享受することができます。
 
-## solv MEV モードを有効にする方法
+## solv 自動更新モードを有効にする方法
 
 以下のコマンドを実行します:
 
 ```bash
 $ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N)
+? Do you want to enable solv Auto Update Mode?(You can change it again) (y/N)
 ? Do you want to enable AUTO UPDATE? (Recommended) (y/N)
 ? Do you want to enable AUTO RESTART? (Recommended) (y/N)
 ※ Please turn off if you are using no-downtime migration.
 ? Enter your Discord Webhook URL (https://discord.com/api/webhooks/1234)
 ```
 
-1.  solv MEV モードを有効にします。
+1.  solv 自動更新モードを有効にします。
 2.  AUTO UPDATE を有効にします。
 3.  AUTO RESTART を有効にします。
 
@@ -97,13 +97,13 @@ $ solv mev
 
 ※ バリデーターノードにハーベストアカウントを保持しないでください。
 
-## solv MEV モードを無効にする方法
+## solv 自動更新モードを無効にする方法
 
 以下のコマンドを実行します:
 
 ```bash
-$ solv mev
-? Do you want to enable solv MEV Mode?(You can change it again) (y/N) n
+$ solv auto
+? Do you want to enable solv Auto Update Mode?(You can change it again) (y/N) n
 ✅ Cron Job successfully removed.
 ```
 

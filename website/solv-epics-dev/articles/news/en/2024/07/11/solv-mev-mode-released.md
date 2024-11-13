@@ -1,13 +1,13 @@
 ---
 id: solv-mev-mode-released
-title: Introducing the New 'solv MEV Mode' - Automating Solana Validator Operations and Optimizing Rewards
+title: Introducing the New 'solv Auto Update Mode' - Automating Solana Validator Operations and Optimizing Rewards
 category: Press Release
 thumbnail: /news/2024/07/11/solvMEVMode.jpg
 ---
 
 ELSOUL LABO B.V. (Headquarters: Amsterdam, Netherlands, CEO: Fumitake Kawasaki) and Epics DAO, an organization established by ELSOUL LABO to support open-source software development and operate a Web3 NFT card game, are promoting innovation and sustainable development in blockchain technology through the development and operation of the open-source software "solv" for Solana blockchain validators. After 18 months of operation, its performance and reliability have been proven, and it is now widely used by many users on both the Solana mainnet and testnet.
 
-We are pleased to announce the release of the new "solv MEV Mode," which automates Solana validator operations and optimizes rewards.
+We are pleased to announce the release of the new "solv Auto Update Mode," which automates Solana validator operations and optimizes rewards.
 
 ## Challenges in Solana Validator Operations
 
@@ -17,19 +17,19 @@ Validators are distributed globally and operate while balancing family and work 
 
 Furthermore, validators need to manage voting and validation costs as well as rewards. The Solana blockchain operates on an epoch-based system, with evaluations and reward calculations occurring every epoch. However, since an epoch is not linked to a 24-hour cycle, regular management is challenging.
 
-## About the New "solv MEV Mode"
+## About the New "solv Auto Update Mode"
 
-The new "solv MEV Mode" frees validators from daily SSH access to their nodes and enables automated reward maximization and compounding. The node's status is constantly monitored, and any anomalies are immediately notified via Discord, allowing validators to operate with peace of mind.
+The new "solv Auto Update Mode" frees validators from daily SSH access to their nodes and enables automated reward maximization and compounding. The node's status is constantly monitored, and any anomalies are immediately notified via Discord, allowing validators to operate with peace of mind.
 
 **Key Features:**
 
-- **Automatic Updates:** Solv MEV Mode automatically updates the Solana validator client and solv software version, ensuring the latest version is always running.
+- **Automatic Updates:** Solv Auto Update Mode automatically updates the Solana validator client and solv software version, ensuring the latest version is always running.
 - **Monitoring:** It monitors the health and balance of validators and sends notifications to Discord if any anomalies are detected.
 - **Automatic Reward Harvesting:** Rewards are harvested just before the end of an epoch to optimize returns.
 - **Automatic Staking:** Harvested rewards are converted to LST (Liquid Staking Token - elSOL) and sent to the specified account.
 - **Enhanced Security:** By keeping the SOL balance of the validator node low and converting rewards to LST, it mitigates the risk of large SOL withdrawals and maintains high returns.
 
-For more details on solv MEV Mode and configuration instructions, please refer to the following documentation:
+For more details on solv Auto Update Mode and configuration instructions, please refer to the following documentation:
 
 https://solv.epics.dev/en/doc/quickstart/solv-mev-mode/
 
