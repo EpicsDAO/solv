@@ -3,6 +3,6 @@
     "appTitle": "solv - Solana Validator Tool",
     "defaultTitle": "ホーム",
     "defaultDescription": "The utility tool for Solana Validators and the RPC nodes. 3 ステップで簡単にバリデータ及びRPCのセットアップを完了できます。",
-    "keywords": "Solana, Validator, Tool, RPC, Setup, セットアップ, Geyser, Firedancer, Jito, Agave"
+    "keywords": "Solana, Validator, Tool, RPC, Setup, セットアップ, Geyser, Firedancer, Jito, Agave, gRPC"
   }
 }
