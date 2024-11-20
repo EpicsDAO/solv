@@ -1,5 +1,13 @@
 # @epics-dao/solv
 
+## 4.7.6
+
+### Patch Changes
+
+- [`99f7f96`](https://github.com/EpicsDAO/solv/commit/99f7f96b418f455ebaf953974f25beb6fbdbac65) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update getSolanaCLI
+
+  Remove solana-cli since now `agave-validator` is used for mainnet-beta and testnet.
+
 ## 4.7.5
 
 ### Patch Changes
