@@ -21,7 +21,7 @@ const postJupiterSwap = async (
           feeAccount: associationAccount,
           dynamicComputeUnitLimit: true,
           prioritizationFeeLamports: 'auto',
-          dynamicSlippage: { maxBps: 300 },
+          dynamicSlippage: { maxBps: 500 },
         },
       }
     } else {
@@ -31,7 +31,7 @@ const postJupiterSwap = async (
           userPublicKey: fromWalletPubkey,
           dynamicComputeUnitLimit: true,
           prioritizationFeeLamports: 'auto',
-          dynamicSlippage: { maxBps: 300 },
+          dynamicSlippage: { maxBps: 500 },
         },
       }
     }
