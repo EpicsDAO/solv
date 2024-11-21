@@ -44,7 +44,7 @@
     "@solana/wallet-adapter-react-ui": "0.9.35",
     "@solana/wallet-standard-features": "1.2.0",
     "@solana/wallet-standard-util": "1.1.1",
-    "@solana/web3.js": "1.95.3",
+    "@solana/web3.js": "1.95.4",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
     "date-fns": "4.1.0",
