@@ -31,10 +31,10 @@ export const setupV2 = async (skipInitConfig = false, skipMount = false) => {
 
     const latestConfig = await readConfig()
     const isTest = latestConfig.NETWORK === Network.TESTNET
-    // Generate /mnt/ledger and /mnt/accounts
+    // Generate /mnt/ledger, /mnt/accounts and /mnt/snapshots if third disk is available
     setupDirs()
     if (!skipMount) {
-      // Mount /mnt/ledger and /mnt/accounts
+      // Mount /mnt/ledger, /mnt/accounts and /mnt/snapshots if third disk is available
       mountDirs()
     }
 

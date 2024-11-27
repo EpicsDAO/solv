@@ -1,17 +1,17 @@
 import {
-  ACCOUNTS_PATH,
   IDENTITY_KEY_PATH,
-  LEDGER_PATH,
   LOG_PATH,
   MAINNET_VALIDATOR_KEY_PATH,
   MAINNET_VALIDATOR_VOTE_KEY_PATH,
 } from '@/config/constants'
+import { DefaultConfigType } from '@/config/types'
 
 export const startJitoValidatorScript = (
   commissionBps = 1000,
   relayerUrl: string,
   blockEngineUrl: string,
   shredReceiverAddr: string,
+  config: DefaultConfigType,
   solanaCLI = 'agave-validator',
 ) => {
   const script = `#!/bin/bash
@@ -20,8 +20,9 @@ exec ${solanaCLI} \\
 --vote-account ${MAINNET_VALIDATOR_VOTE_KEY_PATH} \\
 --authorized-voter  ${MAINNET_VALIDATOR_KEY_PATH} \\
 --log ${LOG_PATH} \\
---accounts ${ACCOUNTS_PATH} \\
---ledger ${LEDGER_PATH} \\
+--accounts ${config.ACCOUNTS_PATH} \\
+--ledger ${config.LEDGER_PATH} \\
+--snapshots ${config.SNAPSHOTS_PATH} \\
 --entrypoint entrypoint.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \\
 --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \\

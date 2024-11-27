@@ -6,14 +6,15 @@ export const getSnapshot = (
   minDownloadSpeed = '45',
   ledgerPath = LEDGER_PATH,
   snapshotPath = SNAPSHOTS_PATH,
-  version: string
+  version: string,
+  rpcUrl = isTest ? 'https://api.testnet.solana.com' : 'https://api.mainnet-beta.solana.com',
 ) => {
   try {
-    let cmd = `docker run -it --rm -v ${ledgerPath}:${snapshotPath} --user $(id -u):$(id -g) c29r3/solana-snapshot-finder:latest --snapshot_path ${snapshotPath} --min_download_speed ${minDownloadSpeed} --version ${version}`
+    let cmd = `docker run -it --rm -v ${ledgerPath}:${snapshotPath} --user $(id -u):$(id -g) c29r3/solana-snapshot-finder:latest --snapshot_path ${snapshotPath} --min_download_speed ${minDownloadSpeed} --version ${version} --rpc ${rpcUrl}`
     if (isTest) {
       spawnSync(
         `wget --trust-server-names https://snapshots.avorio.network/testnet/snapshot.tar.bz2 https://snapshots.avorio.network/testnet/incremental-snapshot.tar.bz2`,
-        { shell: true, stdio: 'inherit', cwd: '/mnt/ledger' },
+        { shell: true, stdio: 'inherit', cwd: snapshotPath },
       )
       return
     }

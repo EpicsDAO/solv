@@ -32,7 +32,7 @@ const setupMainnetValidator = async (config: DefaultConfigType) => {
   switch (validatorType) {
     case ValidatorType.SOLANA:
       installSolana(version)
-      startupScript = startMainnetValidatorScript()
+      startupScript = startMainnetValidatorScript(config)
       break
     // case ValidatorType.AGAVE:
     //   console.log('Coming soon...🌉')
@@ -46,6 +46,7 @@ const setupMainnetValidator = async (config: DefaultConfigType) => {
         jitoConfig.relayerUrl,
         jitoConfig.blockEngineUrl,
         jitoConfig.shredReceiverAddr,
+        config
       )
       break
     // case ValidatorType.FRANKENDANCER:
@@ -72,11 +73,11 @@ const setupTestnetValidator = async (config: DefaultConfigType) => {
   switch (validatorType) {
     case ValidatorType.SOLANA:
       installSolana(config.TESTNET_SOLANA_VERSION)
-      startupScript = startTestnetAgaveValidatorScript()
+      startupScript = startTestnetAgaveValidatorScript(config)
     case ValidatorType.AGAVE:
       console.log('Agave Validator Setup for Testnet')
       installAgave(config.TESTNET_SOLANA_VERSION)
-      startupScript = startTestnetAgaveValidatorScript()
+      startupScript = startTestnetAgaveValidatorScript(config)
       break
     case ValidatorType.JITO:
       console.log('JITO Validator Setup for Testnet')
@@ -87,6 +88,7 @@ const setupTestnetValidator = async (config: DefaultConfigType) => {
         jitoConfig.relayerUrl,
         jitoConfig.blockEngineUrl,
         jitoConfig.shredReceiverAddr,
+        config
       )
       break
     // case ValidatorType.FRANKENDANCER:

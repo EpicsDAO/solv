@@ -1,21 +1,21 @@
 import {
-  ACCOUNTS_PATH,
   IDENTITY_KEY_PATH,
-  LEDGER_PATH,
   LOG_PATH,
   TESTNET_VALIDATOR_KEY_PATH,
   TESTNET_VALIDATOR_VOTE_KEY_PATH,
 } from '@/config/constants'
+import { DefaultConfigType } from '@/config/types'
 
-export const startTestnetAgaveValidatorScript = () => {
+export const startTestnetAgaveValidatorScript = (config: DefaultConfigType) => {
   const script = `#!/bin/bash
 exec agave-validator \\
 --identity ${IDENTITY_KEY_PATH} \\
 --vote-account ${TESTNET_VALIDATOR_VOTE_KEY_PATH} \\
 --authorized-voter  ${TESTNET_VALIDATOR_KEY_PATH} \\
 --log ${LOG_PATH} \\
---accounts ${ACCOUNTS_PATH} \\
---ledger ${LEDGER_PATH} \\
+--accounts ${config.ACCOUNTS_PATH} \\
+--ledger ${config.LEDGER_PATH} \\
+--snapshots ${config.SNAPSHOTS_PATH} \\
 --entrypoint entrypoint.testnet.solana.com:8001 \\
 --entrypoint entrypoint2.testnet.solana.com:8001 \\
 --entrypoint entrypoint3.testnet.solana.com:8001 \\
