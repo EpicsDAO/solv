@@ -83,7 +83,7 @@ async function main() {
       .command('rm:snapshot')
       .description('Remove Snapshot')
       .action(() => {
-        rmSnapshot()
+        rmSnapshot(config)
       })
 
     program
@@ -93,7 +93,7 @@ async function main() {
       .option('-l, --ledger <ledger>', 'Ledger')
       .action((options: { slot: string; ledger: string }) => {
         console.log(chalk.white(`📝 Creating Snapshot...`))
-        createSnapshot(options.slot, options.ledger)
+        createSnapshot(options.slot, options.ledger, config)
       })
 
     program

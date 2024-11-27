@@ -15,7 +15,10 @@ import {
   VERSION_TESTNET,
 } from '@/config/versionConfig'
 import {
+  ACCOUNTS_PATH,
   DEFAULT_VALIDATOR_VOTE_ACCOUNT_PUBKEY,
+  LEDGER_PATH,
+  SNAPSHOTS_PATH,
   SOLANA_MAINNET_RPC_URL,
 } from '@/config/constants'
 
@@ -42,6 +45,9 @@ const DEFAULT_CONFIG: DefaultConfigType = {
   AUTO_RESTART: false,
   IS_DUMMY: false,
   API_KEY: '',
+  LEDGER_PATH: LEDGER_PATH,
+  ACCOUNTS_PATH: ACCOUNTS_PATH,
+  SNAPSHOTS_PATH: SNAPSHOTS_PATH,
 }
 
 export default DEFAULT_CONFIG

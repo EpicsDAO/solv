@@ -1,11 +1,11 @@
-import { MT_PATHS } from '@/config/config'
+import { LEDGER_PATH, SNAPSHOTS_PATH } from '@/config/constants'
 import { spawnSync } from 'node:child_process'
 
 export const getSnapshot = (
   isTest = false,
   minDownloadSpeed = '45',
-  ledgerPath = MT_PATHS.LEDGER,
-  snapshotPath = `${ledgerPath}/snapshot`,
+  ledgerPath = LEDGER_PATH,
+  snapshotPath = SNAPSHOTS_PATH,
   version: string
 ) => {
   try {

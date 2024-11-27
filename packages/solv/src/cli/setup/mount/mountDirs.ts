@@ -13,8 +13,33 @@ const mountDirs = async () => {
   const disks: GetPreferredDisksResult = getPreferredDisks()
 
   const mountPoint = disks.disks[0].mountpoint
-  // Detect if DISK_TYPE is DOUBLE or SINGLE
-  if (disks.has850GB && disks.has400GB) {
+  // Detect if DISK_TYPE is TRIPLE, DOUBLE or SINGLE
+  if (disks.has850GB && disks.has400GB && disks.disks.length >= 3) {
+    // TRIPLE
+    console.log('Setting up TRIPLE DISK...')
+
+    await updateDefaultConfig({
+      MNT_DISK_TYPE: MNT_DISK_TYPE.TRIPLE,
+    })
+    const fileSystemName1 = '/dev/' + disks.disks[0].name
+    const fileSystemName2 = '/dev/' + disks.disks[1].name
+    const fileSystemName3 = '/dev/' + disks.disks[2].name
+    const isDisk1Formatted = formatDisk(fileSystemName1)
+    const isDisk2Formatted = formatDisk(fileSystemName2)
+    const isDisk3Formatted = formatDisk(fileSystemName3)
+
+    let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
+    let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''
+    let fileSystem3 = isDisk3Formatted ? fileSystemName3 : ''
+
+    ensureFstabEntries(
+      isDisk1Formatted ? fileSystem1 : '',
+      isDisk2Formatted ? fileSystem2 : '',
+      isDisk3Formatted ? fileSystem3 : '',
+      false, // isDouble
+      true // isTriple
+    )
+  } else if (disks.has850GB && disks.has400GB) {
     // DOUBLE
     console.log('Setting up DOUBLE DISK...')
 
@@ -28,13 +53,13 @@ const mountDirs = async () => {
 
     let fileSystem1 = isDisk1Formatted ? fileSystemName1 : ''
     let fileSystem2 = isDisk2Formatted ? fileSystemName2 : ''
-    let isLatitude = false
-    if (fileSystem1 === '' && fileSystem2) {
-      fileSystem1 = fileSystem2
-      fileSystem2 = ''
-      isLatitude = true
-    }
-    ensureFstabEntries(fileSystem1, fileSystem2, isLatitude)
+
+    ensureFstabEntries(
+      isDisk1Formatted ? fileSystem1 : '',
+      isDisk2Formatted ? fileSystem2 : '',
+      '', // No third disk
+      true // isDouble
+    )
   } else {
     // SINGLE
     console.log('Setting up SINGLE DISK...')

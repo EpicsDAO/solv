@@ -43,9 +43,10 @@ export const LOG_PATH = `${SOLV_HOME}/solana-validator.log`
 // Startup Script Path
 export const STARTUP_SCRIPT = SOLV_HOME + '/start-validator.sh'
 
-// Ledger and Account Paths
+// Ledger, Account, Snapshots Paths
 export const LEDGER_PATH = '/mnt/ledger'
 export const ACCOUNTS_PATH = '/mnt/accounts'
+export const SNAPSHOTS_PATH = `${LEDGER_PATH}`
 
 // SOLANA VALIDATOR CLI
 export const SOLANA_VALIDATOR = 'solana-validator'

@@ -128,6 +128,7 @@ export const MT_PATHS = {
   ROOT: '/mnt',
   ACCOUNTS: '/mnt/accounts',
   LEDGER: '/mnt/ledger',
+  SNAPSHOTS: '/mnt/snapshots',
 }
 
 export const FILES = {

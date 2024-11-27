@@ -1,11 +1,12 @@
 import { LEDGER_PATH } from '@/config/constants'
+import { DefaultConfigType } from '@/config/types'
 import { spawnSync } from 'node:child_process'
 
-const createSnapshot = (slot = '296877183', ledgerPath = LEDGER_PATH) => {
+const createSnapshot = (slot = '296877183', ledgerPath = LEDGER_PATH, config: DefaultConfigType) => {
   try {
     const cmd = `agave-ledger-tool --ledger ${ledgerPath} create-snapshot \
 --incremental \
---snapshot-archive-path  ${ledgerPath} \
+--snapshot-archive-path  ${config.SNAPSHOTS_PATH} \
 --hard-fork ${slot} \
 --deactivate-feature-gate \
 7uZBkJXJ1HkuP6R3MJfZs7mLwymBcDbKdqbF51ZWLier \

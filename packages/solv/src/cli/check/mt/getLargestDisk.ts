@@ -6,6 +6,7 @@ export type DiskInfo = {
   mountpoint: string
   isMounted: boolean
   hasPartition: boolean
+  type: 'NVMe' | 'SATA'
 }
 
 export type GetPreferredDisksResult = {
@@ -13,6 +14,7 @@ export type GetPreferredDisksResult = {
   has850GB: boolean
   has400GB: boolean
   hasUsed1250GB: boolean
+  hasThirdDisk400GB: boolean
 }
 
 // This method can be improved later - Prioritize the NVMe disks over SATA disks
@@ -32,6 +34,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
   let has850GB = false
   let has400GB = false
   let hasUsed1250GB = false
+  let hasThirdDisk400GB = false
   let rootDiskName = ''
 
   for (const line of lines) {
@@ -46,6 +49,9 @@ function getPreferredDisks(): GetPreferredDisksResult {
       (diskName) => diskName !== name && diskName.startsWith(name),
     )
 
+    // Soft check if a drive is an NVMe based on its name
+    const isNVMe = name.startsWith('nvme')
+    const diskType = isNVMe ? 'NVMe' : 'SATA'
     if (size >= 400 * 1024 * 1024 * 1024) {
       disks.push({
         name,
@@ -53,6 +59,7 @@ function getPreferredDisks(): GetPreferredDisksResult {
         mountpoint: mountpoint || '',
         isMounted,
         hasPartition,
+        type: diskType
       })
     }
   }
@@ -70,26 +77,48 @@ function getPreferredDisks(): GetPreferredDisksResult {
   // Sort disks by size
   const sortedDisks = checkedDisks.sort((a, b) => b.size - a.size)
 
+  // Separate NVMe and SATA disks, and sort by size (largest first)
+  const nvmeDisks = sortedDisks
+    .filter((disk) => disk.type === 'NVMe')
+    .sort((a, b) => b.size - a.size);
+  const sataDisks = sortedDisks
+    .filter((disk) => disk.type === 'SATA')
+    .sort((a, b) => b.size - a.size);
+
+  // Combine NVMe and SATA disks, prioritizing NVMe first
+  const prioritizedDisks = [...nvmeDisks, ...sataDisks];
+
   // Check conditions based on sorted disks
-  if (sortedDisks.length > 0) {
-    const largestDisk = sortedDisks[0]
+  if (prioritizedDisks.length > 0) {
+    const largestDisk = prioritizedDisks[0]
     if (largestDisk.size >= 850 * 1024 * 1024 * 1024 && !largestDisk.isMounted)
       has850GB = true
     if (largestDisk.size >= 1250 * 1024 * 1024 * 1024 && largestDisk.isMounted)
       hasUsed1250GB = true
 
     // Check second largest disk for has400GB
-    if (sortedDisks.length > 1) {
-      const secondLargestDisk = sortedDisks[1]
+    if (prioritizedDisks.length > 1) {
+      const secondLargestDisk = prioritizedDisks[1]
       if (
         secondLargestDisk.size >= 400 * 1024 * 1024 * 1024 &&
         !secondLargestDisk.isMounted
       )
         has400GB = true
     }
+
+    // Check if a third disk is present
+    if (prioritizedDisks.length > 2) {
+      const thirdDisk = prioritizedDisks[2]
+      if (
+        thirdDisk.size >= 400 * 1024 * 1024 * 1024 &&
+        !thirdDisk.isMounted
+      ) {
+        hasThirdDisk400GB = true
+      }
+    }
   }
 
-  return { disks: sortedDisks, has850GB, has400GB, hasUsed1250GB }
+  return { disks: prioritizedDisks, has850GB, has400GB, hasUsed1250GB, hasThirdDisk400GB }
 }
 
 export default getPreferredDisks

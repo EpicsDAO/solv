@@ -46,4 +46,5 @@ export const RPC_MODE = Object.values(RpcType).filter(
 export enum MNT_DISK_TYPE {
   SINGLE = 'single',
   DOUBLE = 'double',
+  TRIPLE = 'triple',
 }

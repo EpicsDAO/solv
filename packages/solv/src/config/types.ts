@@ -29,4 +29,7 @@ export type DefaultConfigType = {
   AUTO_RESTART: boolean
   IS_DUMMY: boolean
   API_KEY: string
+  LEDGER_PATH: string
+  ACCOUNTS_PATH: string
+  SNAPSHOTS_PATH: string
 }

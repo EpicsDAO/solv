@@ -5,7 +5,6 @@ import { Logger } from '@/lib/logger'
 import { showConfig } from './showConfig'
 import { getSnapshot } from './snapshot'
 import { spawnSync } from 'node:child_process'
-import { AGAVE_VALIDATOR, SOLANA_VALIDATOR } from '@/config/constants'
 import chalk from 'chalk'
 import { DefaultConfigType } from '@/config/types'
 import { Network, NodeType } from '@/config/enums'
@@ -63,11 +62,11 @@ export const getCommands = (config: DefaultConfigType) => {
       'Minimum download speed',
       '45',
     )
-    .option('-l, --ledgerPath <ledgerPath>', 'Ledger Path', '/mnt/ledger')
+    .option('-l, --ledgerPath <ledgerPath>', 'Ledger Path', config.LEDGER_PATH)
     .option(
       '-s, --snapshotPath <snapshotPath>',
       'Snapshot Path',
-      '/mnt/ledger/snapshot',
+      config.SNAPSHOTS_PATH,
     )
     .option('-v, --version <version>', 'Specific Version Node', version)
     .description(`Download the latest snapshot`)
