@@ -23,7 +23,6 @@ const geyserConfig = (xToken: string) => {
     prometheus: {
       address: '0.0.0.0:8999',
     },
-    block_fail_action: 'log',
   }
   return {
     filePath,
