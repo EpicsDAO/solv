@@ -1,5 +1,30 @@
 # @epics-dao/solv
 
+## 4.7.7
+
+### Patch Changes
+
+- [#365](https://github.com/EpicsDAO/solv/pull/365) [`3ffd06a`](https://github.com/EpicsDAO/solv/commit/3ffd06a7a018c940be039d9262b8bed0deb7a488) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version - Testnet/Mainnet
+
+  Update solv version and the default config.
+
+  ```bash
+  solv update && solv update --config
+  solv i
+  ```
+
+  Then manually restart the node.
+
+  ```bash
+  solv restart
+  ```
+
+  or stop and start the node.
+
+  ```bash
+  solv stop && solv start
+  ```
+
 ## 4.7.6
 
 ### Patch Changes
