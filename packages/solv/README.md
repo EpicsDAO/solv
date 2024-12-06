@@ -7,16 +7,16 @@
     <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
   </a>
   <br/>
-  <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/v/@epics-dao/solv">
+  <a aria-label="npm version" href="https://www.npmjs.com/package/@gabrielhicks/solv">
+    <img alt="" src="https://badgen.net/npm/v/@gabrielhicks/solv">
   </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@epics-dao/solv">
+  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@gabrielhicks/solv">
+    <img alt="" src="https://badgen.net/npm/dt/@gabrielhicks/solv">
   </a>
-  <a aria-label="License" href="https://github.com/EpicsDAO/solv/blob/master/LICENSE.txt">
+  <a aria-label="License" href="https://github.com/gabrielhicks/solv/blob/master/LICENSE.txt">
     <img alt="" src="https://badgen.net/badge/license/Apache/blue">
   </a>
-    <a aria-label="Code of Conduct" href="https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md">
+    <a aria-label="Code of Conduct" href="https://github.com/gabrielhicks/solv/blob/master/CODE_OF_CONDUCT.md">
     <img alt="" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg">
   </a>
 </p>
@@ -109,7 +109,7 @@ Options:
 
 Version control for snapshot-finder
 
-https://github.com/EpicsDAO/solv/pull/331
+https://github.com/gabrielhicks/solv/pull/331
 
 ## Website
 
@@ -147,7 +147,7 @@ website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/gabrielhicks/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Dependencies for Development
 
@@ -161,4 +161,4 @@ The package is available as open source under the terms of the [Apache-2.0 Licen
 
 ## Code of Conduct
 
-Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/gabrielhicks/solv/blob/master/CODE_OF_CONDUCT.md).

@@ -37,7 +37,7 @@ solv aims to improve the overall quality and efficiency of the Solana network an
 For more information and updates on solv, please visit:
 
 - solv Official Documentation: https://solv.epics.dev/en
-- GitHub: https://github.com/EpicsDAO/solv
+- GitHub: https://github.com/gabrielhicks/solv
 - Validators DAO Official Discord: https://discord.gg/C7ZQSrCkYR
 
 ELSOUL LABO B.V., Epics DAO, and Validators DAO are committed to improving the quality of the Solana network in collaboration with the community. Stay tuned for further updates.

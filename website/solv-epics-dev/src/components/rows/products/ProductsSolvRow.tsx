@@ -53,7 +53,7 @@ export default function ProductsSolvRow() {
               <Button>{t('common.ProductsSolvRow.button1')}</Button>
             </Link>
             <Link
-              href={`https://github.com/EpicsDAO/solv`}
+              href={`https://github.com/gabrielhicks/solv`}
               target="_blank"
               rel="noopener noreferrer"
             >

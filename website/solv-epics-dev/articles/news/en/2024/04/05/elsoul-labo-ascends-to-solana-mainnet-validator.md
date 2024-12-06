@@ -85,7 +85,7 @@ Thank you for your continued support.
 - Established: June 2022
 - Awards: 5th place at Solana Summer Camp Hackathon 2022
 - DAO URL: https://epics.dev
-- Twitter(X) URL: https://twitter.com/EpicsDAO2
+- Twitter(X) URL: https://twitter.com/gabrielhicks2
 - Official Discord: https://discord.gg/GmHYfyRamx
 
 ※ This article is not intended for investment advice. The information contained in this article is based on the situation at the time of writing. Please check for the most current information. Always NFA/DYOR.

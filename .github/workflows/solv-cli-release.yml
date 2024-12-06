@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Build and Add Line
-        run: npx turbo -F @epics-dao/solv build
+        run: npx turbo -F @gabrielhicks/solv build
 
       - name: Creating .npmrc
         run: |

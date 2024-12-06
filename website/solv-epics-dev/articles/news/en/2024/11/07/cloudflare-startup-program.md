@@ -25,7 +25,7 @@ Skeet: https://skeet.dev/
 
 ## Epics DAO
 
-![Epics DAO](/news/2024/11/06/EpicsDAO.jpg)
+![Epics DAO](/news/2024/11/06/gabrielhicks.jpg)
 
 Epics DAO is a platform that supports sustainable open-source development through a competitive NFT trading card game. By combining the fun of gaming with social contribution, it promotes the growth of open-source software through tokenomics and gamification. Collect cards, compete, and contribute to the future of open-source development.
 

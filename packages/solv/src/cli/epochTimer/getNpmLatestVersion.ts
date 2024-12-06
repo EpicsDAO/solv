@@ -1,4 +1,4 @@
-async function getNpmLatestVersion(packageName = '@epics-dao/solv') {
+async function getNpmLatestVersion(packageName = '@gabrielhicks/solv') {
   try {
     const url = `https://registry.npmjs.org/${packageName}`
     const response = await fetch(url)

@@ -52,7 +52,7 @@ solv の新しい Auto Update モードを使用すると、報酬の管理を�
 
 詳細については、下記のリリースノートをご覧ください。
 
-solv v4.2.8 - リリースノート（GitHub）: https://github.com/EpicsDAO/solv/releases/tag/%40epics-dao%2Fsolv%404.2.8
+solv v4.2.8 - リリースノート（GitHub）: https://github.com/gabrielhicks/solv/releases/tag/%40gabrielhicks%2Fsolv%404.2.8
 
 ## エルソウルラボ及び Epics DAO について
 
@@ -116,7 +116,7 @@ ENASE 2024: https://enase.scitevents.org/
 - 設立: 2022 年 6 月
 - 受賞: Solana Summer Camp Hackathon 2022 5 位
 - DAO URL: https://epics.dev
-- Twitter URL: https://twitter.com/EpicsDAO2
+- Twitter URL: https://twitter.com/gabrielhicks2
 - 公式 Discord: https://discord.gg/GmHYfyRamx
 
 ![Epics Platform Buidlers Guild](/news/2024/04/19/AboutOpenSourceProblemJA.jpg)

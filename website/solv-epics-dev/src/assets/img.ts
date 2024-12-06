@@ -65,7 +65,7 @@ import QualityOperationsImg from '@/assets/img/merit/QualityOperations.png'
 import VLDAirdropImg from '@/assets/img/icon/rows/VLDAirdrop.png'
 import SkeetProductImg from '@/assets/img/products/Skeet.jpg'
 import BuidlersCollectiveImg from '@/assets/img/products/BuidlersCollective.jpg'
-import EpicsDAOImg from '@/assets/img/daos/EpicsDAO.jpg'
+import gabrielhicksImg from '@/assets/img/daos/gabrielhicks.jpg'
 import ValidatorsDAOImg from '@/assets/img/daos/ValidatorsDAO.jpg'
 
 export {
@@ -127,7 +127,7 @@ export {
   EasyStartValidatorImg,
   QualityOperationsImg,
   VLDAirdropImg,
-  EpicsDAOImg,
+  gabrielhicksImg,
   SkeetProductImg,
   BuidlersCollectiveImg,
   ValidatorsDAOImg,

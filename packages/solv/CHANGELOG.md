@@ -1,10 +1,10 @@
-# @epics-dao/solv
+# @gabrielhicks/solv
 
 ## 4.7.7
 
 ### Patch Changes
 
-- [#365](https://github.com/EpicsDAO/solv/pull/365) [`3ffd06a`](https://github.com/EpicsDAO/solv/commit/3ffd06a7a018c940be039d9262b8bed0deb7a488) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version - Testnet/Mainnet
+- [#365](https://github.com/gabrielhicks/solv/pull/365) [`3ffd06a`](https://github.com/gabrielhicks/solv/commit/3ffd06a7a018c940be039d9262b8bed0deb7a488) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version - Testnet/Mainnet
 
   Update solv version and the default config.
 
@@ -29,7 +29,7 @@
 
 ### Patch Changes
 
-- [`99f7f96`](https://github.com/EpicsDAO/solv/commit/99f7f96b418f455ebaf953974f25beb6fbdbac65) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update getSolanaCLI
+- [`99f7f96`](https://github.com/gabrielhicks/solv/commit/99f7f96b418f455ebaf953974f25beb6fbdbac65) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update getSolanaCLI
 
   Remove solana-cli since now `agave-validator` is used for mainnet-beta and testnet.
 
@@ -37,7 +37,7 @@
 
 ### Patch Changes
 
-- [`0210ade`](https://github.com/EpicsDAO/solv/commit/0210ade38b17be654e2f660cff86158ccbb457cd) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet/Mainnet
+- [`0210ade`](https://github.com/gabrielhicks/solv/commit/0210ade38b17be654e2f660cff86158ccbb457cd) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet/Mainnet
 
   Update solv version and the default config.
 
@@ -63,7 +63,7 @@
 
 ### Patch Changes
 
-- [`2f8e760`](https://github.com/EpicsDAO/solv/commit/2f8e7602595356fbb3385f29f4d4d15e64471858) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - remove solana client
+- [`2f8e760`](https://github.com/gabrielhicks/solv/commit/2f8e7602595356fbb3385f29f4d4d15e64471858) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - remove solana client
 
   `solv i` had a dependency on the solana client, which is not needed for v2.x.x.
   This change removes the dependency on the solana client.
@@ -72,7 +72,7 @@
 
 ### Patch Changes
 
-- [`66f2978`](https://github.com/EpicsDAO/solv/commit/66f2978b712cd9d339bab0022a6526356336c4a3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.15 for Mainnet/Testnet
+- [`66f2978`](https://github.com/gabrielhicks/solv/commit/66f2978b712cd9d339bab0022a6526356336c4a3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.15 for Mainnet/Testnet
 
   - For users who are not using solv Auto Operation Mode: Please follow the instructions below.
 
@@ -109,7 +109,7 @@
 
 ### Patch Changes
 
-- [#335](https://github.com/EpicsDAO/solv/pull/335) [`6438adc`](https://github.com/EpicsDAO/solv/commit/6438adc3ccd0b298a8a7250f99e770ba3d684883) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv swap
+- [#335](https://github.com/gabrielhicks/solv/pull/335) [`6438adc`](https://github.com/gabrielhicks/solv/commit/6438adc3ccd0b298a8a7250f99e770ba3d684883) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv swap
 
   Added new default options to the `solv swap` command.
 
@@ -128,13 +128,13 @@
 
 ### Patch Changes
 
-- [`cefcd04`](https://github.com/EpicsDAO/solv/commit/cefcd04de51345035b339aa3c15a337b7abaf053) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - rm console log
+- [`cefcd04`](https://github.com/gabrielhicks/solv/commit/cefcd04de51345035b339aa3c15a337b7abaf053) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - rm console log
 
 ## 4.7.0
 
 ### Minor Changes
 
-- [`74afffc`](https://github.com/EpicsDAO/solv/commit/74afffc39efa4d126aab4a14240d352d6f3fa99d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Now that we have the v2 version of the solv cli, we need to update the solv cli versioin.
+- [`74afffc`](https://github.com/gabrielhicks/solv/commit/74afffc39efa4d126aab4a14240d352d6f3fa99d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Now that we have the v2 version of the solv cli, we need to update the solv cli versioin.
   So, we are adding a new function `getSolanaCLI` to get the solana cli version for agave/solana.
   Also, solv switch incoming for v1 to v2.
 
@@ -147,13 +147,13 @@
 
 ### Patch Changes
 
-- [`4df32b1`](https://github.com/EpicsDAO/solv/commit/4df32b12194b28f02ea3dae4a05e839a02f408c9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - feat(add): version control for snapshot-finder
+- [`4df32b1`](https://github.com/gabrielhicks/solv/commit/4df32b12194b28f02ea3dae4a05e839a02f408c9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - feat(add): version control for snapshot-finder
 
   ## Update - solv get snapshot v4.6.15
 
   Version control for snapshot-finder
 
-  https://github.com/EpicsDAO/solv/pull/331
+  https://github.com/gabrielhicks/solv/pull/331
 
   @gabrielhicks, Thank you for your contribution 🎊
 
@@ -161,7 +161,7 @@
 
 ### Patch Changes
 
-- [#329](https://github.com/EpicsDAO/solv/pull/329) [`0b6be61`](https://github.com/EpicsDAO/solv/commit/0b6be61d2790de537846c04c988b62ccf490194b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - auto update solana version notification
+- [#329](https://github.com/gabrielhicks/solv/pull/329) [`0b6be61`](https://github.com/gabrielhicks/solv/commit/0b6be61d2790de537846c04c988b62ccf490194b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - auto update solana version notification
 
   === ✨ solv updated to the latest version ✨ ===
   Validator Address: xxxxxxxx
@@ -174,13 +174,13 @@
 
 ### Patch Changes
 
-- [#327](https://github.com/EpicsDAO/solv/pull/327) [`27adb05`](https://github.com/EpicsDAO/solv/commit/27adb050d7694d7183c2a312c4c68b35e3cb8a8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv auto update notification
+- [#327](https://github.com/gabrielhicks/solv/pull/327) [`27adb05`](https://github.com/gabrielhicks/solv/commit/27adb050d7694d7183c2a312c4c68b35e3cb8a8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv auto update notification
 
 ## 4.6.12
 
 ### Patch Changes
 
-- [`e153c6d`](https://github.com/EpicsDAO/solv/commit/e153c6dd893e5c90fe60836b293f8ee9ecb2a557) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet v2.0.14
+- [`e153c6d`](https://github.com/gabrielhicks/solv/commit/e153c6dd893e5c90fe60836b293f8ee9ecb2a557) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet v2.0.14
 
   - For users who are not using solv Auto Operation Mode: Please follow the instructions below.
 
@@ -225,7 +225,7 @@
 
 ### Patch Changes
 
-- [`f039622`](https://github.com/EpicsDAO/solv/commit/f0396220c61acf8debe41799aa1844b7ff6b61b8) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Downgrade Solana Testnet v1.18.26
+- [`f039622`](https://github.com/gabrielhicks/solv/commit/f0396220c61acf8debe41799aa1844b7ff6b61b8) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Downgrade Solana Testnet v1.18.26
 
   - For users who are not using solv Auto Operation Mode: Please follow the instructions below.
 
@@ -270,7 +270,7 @@
 
 ### Patch Changes
 
-- [`bd9c764`](https://github.com/EpicsDAO/solv/commit/bd9c76498ac9fd56a40bbfdb78261c03361a77a0) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.14
+- [`bd9c764`](https://github.com/gabrielhicks/solv/commit/bd9c76498ac9fd56a40bbfdb78261c03361a77a0) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.14
 
   - For users who are not using solv Auto Operation Mode: Please follow the instructions below.
 
@@ -315,7 +315,7 @@
 
 ### Patch Changes
 
-- [#314](https://github.com/EpicsDAO/solv/pull/314) [`ebb5584`](https://github.com/EpicsDAO/solv/commit/ebb5584ad43b91c21dcd4783de529e0f92c88905) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Testnet Rollback and Restart
+- [#314](https://github.com/gabrielhicks/solv/pull/314) [`ebb5584`](https://github.com/gabrielhicks/solv/commit/ebb5584ad43b91c21dcd4783de529e0f92c88905) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Testnet Rollback and Restart
 
   This release is to support the Testnet Rollback and Restart.
 
@@ -347,7 +347,7 @@
 
 ### Patch Changes
 
-- [`3b50531`](https://github.com/EpicsDAO/solv/commit/3b505316ae82d1c65e8a1f2c69236591c993e65b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Instruction
+- [`3b50531`](https://github.com/gabrielhicks/solv/commit/3b505316ae82d1c65e8a1f2c69236591c993e65b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Instruction
 
   If you are usin Solv Auto Operation mode, ignore this change.
 
@@ -365,7 +365,7 @@
 
 ### Patch Changes
 
-- [`3af615b`](https://github.com/EpicsDAO/solv/commit/3af615be8683e75c0d9960cfbc9239e13782c562) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
+- [`3af615b`](https://github.com/gabrielhicks/solv/commit/3af615be8683e75c0d9960cfbc9239e13782c562) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
 
   - Update epochTimer to enable auto update
 
@@ -379,7 +379,7 @@
 
 ### Patch Changes
 
-- [#308](https://github.com/EpicsDAO/solv/pull/308) [`510c692`](https://github.com/EpicsDAO/solv/commit/510c69279054ee65a1fce3dcd1b4557b09747b66) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Downgrade Instruction for Testnet
+- [#308](https://github.com/gabrielhicks/solv/pull/308) [`510c692`](https://github.com/gabrielhicks/solv/commit/510c69279054ee65a1fce3dcd1b4557b09747b66) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Downgrade Instruction for Testnet
 
   Solana Official Instructions: https://github.com/anza-xyz/agave/wiki/2024-10-09-Testnet-Rollback-and-Restart
 
@@ -436,7 +436,7 @@
 
 ### Patch Changes
 
-- [#305](https://github.com/EpicsDAO/solv/pull/305) [`cd15799`](https://github.com/EpicsDAO/solv/commit/cd1579960798e3005a454948b53ab92886ec26e4) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update EpochTimer for Testnet Update Instructions
+- [#305](https://github.com/gabrielhicks/solv/pull/305) [`cd15799`](https://github.com/gabrielhicks/solv/commit/cd1579960798e3005a454948b53ab92886ec26e4) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update EpochTimer for Testnet Update Instructions
 
   Official Instructions: https://gist.github.com/willhickey/0c90b7929550a08712cd9adeb8b693c1
   Release Schedule: https://github.com/anza-xyz/agave/wiki/v2.0-Release-Schedule
@@ -490,7 +490,7 @@
 
 ### Patch Changes
 
-- [#303](https://github.com/EpicsDAO/solv/pull/303) [`dabdd7d`](https://github.com/EpicsDAO/solv/commit/dabdd7d1c821aba57031e183c820baef0e60117b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update Solana Mainnet Version v1.18.25
+- [#303](https://github.com/gabrielhicks/solv/pull/303) [`dabdd7d`](https://github.com/gabrielhicks/solv/commit/dabdd7d1c821aba57031e183c820baef0e60117b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update Solana Mainnet Version v1.18.25
 
   First, update the solv version and update configuration.
 
@@ -520,13 +520,13 @@
 
 ### Patch Changes
 
-- [#301](https://github.com/EpicsDAO/solv/pull/301) [`873a77c`](https://github.com/EpicsDAO/solv/commit/873a77ceea50a08c6abdd672b6d7abc8605a707b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update firedancer config
+- [#301](https://github.com/gabrielhicks/solv/pull/301) [`873a77c`](https://github.com/gabrielhicks/solv/commit/873a77ceea50a08c6abdd672b6d7abc8605a707b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update firedancer config
 
 ## 4.6.2
 
 ### Patch Changes
 
-- [#294](https://github.com/EpicsDAO/solv/pull/294) [`602f0c3`](https://github.com/EpicsDAO/solv/commit/602f0c3aecc4125d02c563cb7eee71b3e703e52a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - solv v4.6.x Release
+- [#294](https://github.com/gabrielhicks/solv/pull/294) [`602f0c3`](https://github.com/gabrielhicks/solv/commit/602f0c3aecc4125d02c563cb7eee71b3e703e52a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - solv v4.6.x Release
 
   Now you can easily setup Yellowstone Geyser plugin and Firedancer!
 
@@ -553,13 +553,13 @@
 
 ### Patch Changes
 
-- [#292](https://github.com/EpicsDAO/solv/pull/292) [`22ec57d`](https://github.com/EpicsDAO/solv/commit/22ec57d386585c1e6901826cb89b869808ceca91) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.13 for Testnet Validator
+- [#292](https://github.com/gabrielhicks/solv/pull/292) [`22ec57d`](https://github.com/gabrielhicks/solv/commit/22ec57d386585c1e6901826cb89b869808ceca91) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.13 for Testnet Validator
 
 ## 4.6.0
 
 ### Minor Changes
 
-- [#290](https://github.com/EpicsDAO/solv/pull/290) [`20728ed`](https://github.com/EpicsDAO/solv/commit/20728ed0b4f208fa2c2c70a4811840b10f1ddfd3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Geyser/Firedancer Setup Option
+- [#290](https://github.com/gabrielhicks/solv/pull/290) [`20728ed`](https://github.com/gabrielhicks/solv/commit/20728ed0b4f208fa2c2c70a4811840b10f1ddfd3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Geyser/Firedancer Setup Option
 
   ## Setup Geyser Yellowstone
 
@@ -577,7 +577,7 @@
 
 ### Patch Changes
 
-- [`a51e3cd`](https://github.com/EpicsDAO/solv/commit/a51e3cd12bb69c76b895ff965a6d5c4e20de13e2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.10
+- [`a51e3cd`](https://github.com/gabrielhicks/solv/commit/a51e3cd12bb69c76b895ff965a6d5c4e20de13e2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.10
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -630,7 +630,7 @@
 
 ### Patch Changes
 
-- [#285](https://github.com/EpicsDAO/solv/pull/285) [`7627876`](https://github.com/EpicsDAO/solv/commit/762787679adf98f600d6930132bbd879d34e534f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - rm priority fee
+- [#285](https://github.com/gabrielhicks/solv/pull/285) [`7627876`](https://github.com/gabrielhicks/solv/commit/762787679adf98f600d6930132bbd879d34e534f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - rm priority fee
 
   - small bug fix
   - added new option to `solv swap` command
@@ -639,7 +639,7 @@
 
 ### Patch Changes
 
-- [#283](https://github.com/EpicsDAO/solv/pull/283) [`e204751`](https://github.com/EpicsDAO/solv/commit/e2047519b597d2b390d8713f567a1c6eadcd3194) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet v2.0.9
+- [#283](https://github.com/gabrielhicks/solv/pull/283) [`e204751`](https://github.com/gabrielhicks/solv/commit/e2047519b597d2b390d8713f567a1c6eadcd3194) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet v2.0.9
 
   ```bash
   solv update
@@ -667,7 +667,7 @@
 
 ### Patch Changes
 
-- [#279](https://github.com/EpicsDAO/solv/pull/279) [`1dfeedd`](https://github.com/EpicsDAO/solv/commit/1dfeedd21caa5f4fae9cda555e8e34b1856ff526) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv update --migrate-config
+- [#279](https://github.com/gabrielhicks/solv/pull/279) [`1dfeedd`](https://github.com/gabrielhicks/solv/commit/1dfeedd21caa5f4fae9cda555e8e34b1856ff526) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv update --migrate-config
 
   ## Summary
 
@@ -701,25 +701,25 @@
 
 ### Patch Changes
 
-- [#277](https://github.com/EpicsDAO/solv/pull/277) [`f4fa6d7`](https://github.com/EpicsDAO/solv/commit/f4fa6d754f161609b89a5b4745774d04223e7b4c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv log
+- [#277](https://github.com/gabrielhicks/solv/pull/277) [`f4fa6d7`](https://github.com/gabrielhicks/solv/commit/f4fa6d754f161609b89a5b4745774d04223e7b4c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv log
 
 ## 4.5.4
 
 ### Patch Changes
 
-- [#273](https://github.com/EpicsDAO/solv/pull/273) [`acf7b1a`](https://github.com/EpicsDAO/solv/commit/acf7b1a6771e7a950aecbcf0a9094bf4cf5e055d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
+- [#273](https://github.com/gabrielhicks/solv/pull/273) [`acf7b1a`](https://github.com/gabrielhicks/solv/commit/acf7b1a6771e7a950aecbcf0a9094bf4cf5e055d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
 
 ## 4.5.3
 
 ### Patch Changes
 
-- [#271](https://github.com/EpicsDAO/solv/pull/271) [`317e858`](https://github.com/EpicsDAO/solv/commit/317e8589b4bb2a95deaf1516388deab648efba6a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Migrate solv.config.json cmd - solv update --config
+- [#271](https://github.com/gabrielhicks/solv/pull/271) [`317e858`](https://github.com/gabrielhicks/solv/commit/317e8589b4bb2a95deaf1516388deab648efba6a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Migrate solv.config.json cmd - solv update --config
 
 ## 4.5.2
 
 ### Patch Changes
 
-- [#269](https://github.com/EpicsDAO/solv/pull/269) [`e3850de`](https://github.com/EpicsDAO/solv/commit/e3850dee92480fafe036a63751a514653295902b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv.config.json to solv4.config.json
+- [#269](https://github.com/gabrielhicks/solv/pull/269) [`e3850de`](https://github.com/gabrielhicks/solv/commit/e3850dee92480fafe036a63751a514653295902b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv.config.json to solv4.config.json
 
   solv.config.json will be deprecated in the future, please update your config file to solv4.config.json with the following command:
 
@@ -731,13 +731,13 @@
 
 ### Patch Changes
 
-- [`6718de8`](https://github.com/EpicsDAO/solv/commit/6718de89c621a0a68394b049b72327c0192347c6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Jito Mainnet
+- [`6718de8`](https://github.com/gabrielhicks/solv/commit/6718de89c621a0a68394b049b72327c0192347c6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Jito Mainnet
 
 ## 4.5.0
 
 ### Minor Changes
 
-- [#266](https://github.com/EpicsDAO/solv/pull/266) [`3d1393e`](https://github.com/EpicsDAO/solv/commit/3d1393e754d327ce4539caa2582c509b4d802f46) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Minor Update - solv v4.5.0 Release
+- [#266](https://github.com/gabrielhicks/solv/pull/266) [`3d1393e`](https://github.com/gabrielhicks/solv/commit/3d1393e754d327ce4539caa2582c509b4d802f46) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Minor Update - solv v4.5.0 Release
 
   Mainly We updated `solv setup` command!
 
@@ -807,7 +807,7 @@
 
 ### Patch Changes
 
-- [`5e89d14`](https://github.com/EpicsDAO/solv/commit/5e89d14d822da860f6ea0dfc927b332df95a44a6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Last release did not include the `--script` option yet.
+- [`5e89d14`](https://github.com/gabrielhicks/solv/commit/5e89d14d822da860f6ea0dfc927b332df95a44a6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Last release did not include the `--script` option yet.
   This patch release adds the `--script` option to the `solv setup` command.
 
   Added - solv setup --script
@@ -816,7 +816,7 @@
 
 ### Patch Changes
 
-- [#263](https://github.com/EpicsDAO/solv/pull/263) [`1fe901d`](https://github.com/EpicsDAO/solv/commit/1fe901d3830285d28b4f7e71401937e0eada5d0a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv setup --script, solv epochTimer
+- [#263](https://github.com/gabrielhicks/solv/pull/263) [`1fe901d`](https://github.com/gabrielhicks/solv/commit/1fe901d3830285d28b4f7e71401937e0eada5d0a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv setup --script, solv epochTimer
 
   - Added `solv setup --script` command to update `start-validator.sh`, remove old snapshot, and restart.
 
@@ -834,7 +834,7 @@
 
 ### Patch Changes
 
-- [#261](https://github.com/EpicsDAO/solv/pull/261) [`e64f0d0`](https://github.com/EpicsDAO/solv/commit/e64f0d0e055c732556f7bb353e14e9f7a39fa357) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
+- [#261](https://github.com/gabrielhicks/solv/pull/261) [`e64f0d0`](https://github.com/gabrielhicks/solv/commit/e64f0d0e055c732556f7bb353e14e9f7a39fa357) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update epochTimer
 
   Fixes `solv epochTimer` for testnet
 
@@ -844,7 +844,7 @@
 
 ### Patch Changes
 
-- [#259](https://github.com/EpicsDAO/solv/pull/259) [`b449f68`](https://github.com/EpicsDAO/solv/commit/b449f6878501d387fbe2711ba982bcdfc76e31bd) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.7
+- [#259](https://github.com/gabrielhicks/solv/pull/259) [`b449f68`](https://github.com/gabrielhicks/solv/commit/b449f6878501d387fbe2711ba982bcdfc76e31bd) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Testnet Version v2.0.7
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -907,7 +907,7 @@
 
 ### Patch Changes
 
-- [#256](https://github.com/EpicsDAO/solv/pull/256) [`4bbf087`](https://github.com/EpicsDAO/solv/commit/4bbf0872ebd092a02d356f8ce4edf4a7cb506177) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update - solv relayer
+- [#256](https://github.com/gabrielhicks/solv/pull/256) [`4bbf087`](https://github.com/gabrielhicks/solv/commit/4bbf0872ebd092a02d356f8ce4edf4a7cb506177) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update - solv relayer
 
   - Added solv relayer setup to setup separate Jito Relayer
   - Added solv relayer set:url to set Relayer URL on Validator
@@ -954,7 +954,7 @@
 
 ### Patch Changes
 
-- [#254](https://github.com/EpicsDAO/solv/pull/254) [`5e8d471`](https://github.com/EpicsDAO/solv/commit/5e8d471aefcc78dede33eb36c995020b310a1a8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Downgrade Solana Testnet Version to v2.0.5
+- [#254](https://github.com/gabrielhicks/solv/pull/254) [`5e8d471`](https://github.com/gabrielhicks/solv/commit/5e8d471aefcc78dede33eb36c995020b310a1a8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Downgrade Solana Testnet Version to v2.0.5
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1017,7 +1017,7 @@
 
 ### Patch Changes
 
-- [#252](https://github.com/EpicsDAO/solv/pull/252) [`f6e0c34`](https://github.com/EpicsDAO/solv/commit/f6e0c340047b6071410a75eaa6c26092e70f892b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update Solana Version v2.0.6 for Testnet
+- [#252](https://github.com/gabrielhicks/solv/pull/252) [`f6e0c34`](https://github.com/gabrielhicks/solv/commit/f6e0c340047b6071410a75eaa6c26092e70f892b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update Solana Version v2.0.6 for Testnet
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1080,7 +1080,7 @@
 
 ### Patch Changes
 
-- [#250](https://github.com/EpicsDAO/solv/pull/250) [`31efecb`](https://github.com/EpicsDAO/solv/commit/31efecb8227e4bc84a252a5b6b736f037a3bdc02) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Add options - solv scp download/solv switch
+- [#250](https://github.com/gabrielhicks/solv/pull/250) [`31efecb`](https://github.com/gabrielhicks/solv/commit/31efecb8227e4bc84a252a5b6b736f037a3bdc02) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Add options - solv scp download/solv switch
 
   Now you can use the argument `--switchType` and `--ip` to specify the switch type.
 
@@ -1104,13 +1104,13 @@
 
   ## Migrate to Validator Auto Operation Support Service
 
-  Discord: [EpicsDAO Discord](https://discord.gg/HDTy96Wr2W)
+  Discord: [gabrielhicks Discord](https://discord.gg/HDTy96Wr2W)
 
 ## 4.4.8
 
 ### Patch Changes
 
-- [#247](https://github.com/EpicsDAO/solv/pull/247) [`e73103a`](https://github.com/EpicsDAO/solv/commit/e73103acf9bf1ac6bb1b8b583526fb49d1e91a2d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
+- [#247](https://github.com/gabrielhicks/solv/pull/247) [`e73103a`](https://github.com/gabrielhicks/solv/commit/e73103acf9bf1ac6bb1b8b583526fb49d1e91a2d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
 
   Now solv scp download command will download the following files:
 
@@ -1129,13 +1129,13 @@
 
 ### Patch Changes
 
-- [`50d9167`](https://github.com/EpicsDAO/solv/commit/50d9167780604f379e2b3929aad757d0fab797b9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
+- [`50d9167`](https://github.com/gabrielhicks/solv/commit/50d9167780604f379e2b3929aad757d0fab797b9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
 
 ## 4.4.6
 
 ### Patch Changes
 
-- [`4e9286d`](https://github.com/EpicsDAO/solv/commit/4e9286de09ab5e099139814b1b799fc5e1f495e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv update --config
+- [`4e9286d`](https://github.com/gabrielhicks/solv/commit/4e9286de09ab5e099139814b1b799fc5e1f495e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv update --config
 
   You can now update the solv configuration file with the following command:
 
@@ -1149,7 +1149,7 @@
 
 ### Patch Changes
 
-- [#242](https://github.com/EpicsDAO/solv/pull/242) [`74d5d1b`](https://github.com/EpicsDAO/solv/commit/74d5d1b75632ef13dcf531ced8cf00d69ba8077f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for mainnet/testnet
+- [#242](https://github.com/gabrielhicks/solv/pull/242) [`74d5d1b`](https://github.com/gabrielhicks/solv/commit/74d5d1b75632ef13dcf531ced8cf00d69ba8077f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for mainnet/testnet
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1206,7 +1206,7 @@
 
 ### Patch Changes
 
-- [#240](https://github.com/EpicsDAO/solv/pull/240) [`7b00e5e`](https://github.com/EpicsDAO/solv/commit/7b00e5e78060ba84adee6cf0f97d47a66e0c4ea3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.4 for Testnet
+- [#240](https://github.com/gabrielhicks/solv/pull/240) [`7b00e5e`](https://github.com/gabrielhicks/solv/commit/7b00e5e78060ba84adee6cf0f97d47a66e0c4ea3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v2.0.4 for Testnet
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1263,7 +1263,7 @@
 
 ### Patch Changes
 
-- [#238](https://github.com/EpicsDAO/solv/pull/238) [`ac2945a`](https://github.com/EpicsDAO/solv/commit/ac2945a7be326c5c20c502dfca75842a887832d3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v1.18.20 for mainnet
+- [#238](https://github.com/gabrielhicks/solv/pull/238) [`ac2945a`](https://github.com/gabrielhicks/solv/commit/ac2945a7be326c5c20c502dfca75842a887832d3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version v1.18.20 for mainnet
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1310,7 +1310,7 @@
 
 ### Patch Changes
 
-- [#236](https://github.com/EpicsDAO/solv/pull/236) [`01870b9`](https://github.com/EpicsDAO/solv/commit/01870b9f9e6355c90cff5d05a9e4b08310a0d2c6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet v2.0.3
+- [#236](https://github.com/gabrielhicks/solv/pull/236) [`01870b9`](https://github.com/gabrielhicks/solv/commit/01870b9f9e6355c90cff5d05a9e4b08310a0d2c6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet v2.0.3
 
   If you are using solv MEV mode, ignore this step, It will be automatically updated.
 
@@ -1357,7 +1357,7 @@
 
 ### Patch Changes
 
-- [#234](https://github.com/EpicsDAO/solv/pull/234) [`23214b7`](https://github.com/EpicsDAO/solv/commit/23214b782d9f97593d7365aa190add7a94eff4f7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana version v1.18.18 for mainnet
+- [#234](https://github.com/gabrielhicks/solv/pull/234) [`23214b7`](https://github.com/gabrielhicks/solv/commit/23214b782d9f97593d7365aa190add7a94eff4f7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana version v1.18.18 for mainnet
 
   If you are running a validator on mainnet, please update your solana version to v1.18.18.
 
@@ -1377,7 +1377,7 @@
 
 ### Minor Changes
 
-- [#232](https://github.com/EpicsDAO/solv/pull/232) [`b6a7ad1`](https://github.com/EpicsDAO/solv/commit/b6a7ad1e49048fc40d75c985d60514fc8387b9dc) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Migrate Solana CLI to Agave CLI for testnet
+- [#232](https://github.com/gabrielhicks/solv/pull/232) [`b6a7ad1`](https://github.com/gabrielhicks/solv/commit/b6a7ad1e49048fc40d75c985d60514fc8387b9dc) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Migrate Solana CLI to Agave CLI for testnet
 
   It is time to upgrade testnet to v2.0.2.
   If you're running the Solana Labs client you will need to transition to Agave.
@@ -1432,7 +1432,7 @@
 
 ### Minor Changes
 
-- [#227](https://github.com/EpicsDAO/solv/pull/227) [`d8c5219`](https://github.com/EpicsDAO/solv/commit/d8c52190fc36274b16633bd4a38e7b04b448e19f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## No more SSH login required for Solana/solv version update!
+- [#227](https://github.com/gabrielhicks/solv/pull/227) [`d8c5219`](https://github.com/gabrielhicks/solv/commit/d8c52190fc36274b16633bd4a38e7b04b448e19f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## No more SSH login required for Solana/solv version update!
 
   Auto Solana/solv version update by solv mev
 
@@ -1501,7 +1501,7 @@
 
 ### Patch Changes
 
-- [#225](https://github.com/EpicsDAO/solv/pull/225) [`5b00ad8`](https://github.com/EpicsDAO/solv/commit/5b00ad89270b5077f66508a169b6e08228600c44) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv setup for cpu governor/sysctl.conf
+- [#225](https://github.com/gabrielhicks/solv/pull/225) [`5b00ad8`](https://github.com/gabrielhicks/solv/commit/5b00ad89270b5077f66508a169b6e08228600c44) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv setup for cpu governor/sysctl.conf
 
   ## Update - solv setup for cpu governor/sysctl.conf
 
@@ -1553,13 +1553,13 @@
 
 ### Patch Changes
 
-- [`efa7050`](https://github.com/EpicsDAO/solv/commit/efa70508071851e348c67d8657e7d4087f9977e1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - randomSleep
+- [`efa7050`](https://github.com/gabrielhicks/solv/commit/efa70508071851e348c67d8657e7d4087f9977e1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - randomSleep
 
 ## 4.2.8
 
 ### Patch Changes
 
-- [#221](https://github.com/EpicsDAO/solv/pull/221) [`17bf2a5`](https://github.com/EpicsDAO/solv/commit/17bf2a5ec10f44a77db77e956e97782d155c60d9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update - epochTimer/solv restart
+- [#221](https://github.com/gabrielhicks/solv/pull/221) [`17bf2a5`](https://github.com/gabrielhicks/solv/commit/17bf2a5ec10f44a77db77e956e97782d155c60d9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## Update - epochTimer/solv restart
 
   ### Epoch Timer
 
@@ -1624,7 +1624,7 @@
 
 ### Patch Changes
 
-- [#219](https://github.com/EpicsDAO/solv/pull/219) [`b7eea28`](https://github.com/EpicsDAO/solv/commit/b7eea282e409a231660fed87653003b4ae559f73) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - # ⚠️ Security Patch
+- [#219](https://github.com/gabrielhicks/solv/pull/219) [`b7eea28`](https://github.com/gabrielhicks/solv/commit/b7eea282e409a231660fed87653003b4ae559f73) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - # ⚠️ Security Patch
 
   If you are using other than the 1:8.9p1-3ubuntu0.10 version of OpenSSH, you should update it to the latest version.
   This version fixes a security vulnerability that allows an attacker to execute arbitrary code on the server.
@@ -1648,25 +1648,25 @@
 
 ### Patch Changes
 
-- [`8edc764`](https://github.com/EpicsDAO/solv/commit/8edc7649914cb6fc0179dfa93123148278fef34e) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix decimal
+- [`8edc764`](https://github.com/gabrielhicks/solv/commit/8edc7649914cb6fc0179dfa93123148278fef34e) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix decimal
 
 ## 4.2.5
 
 ### Patch Changes
 
-- [`dc7742e`](https://github.com/EpicsDAO/solv/commit/dc7742eed4a543136716a7048afe1198e33ee0d7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
+- [`dc7742e`](https://github.com/gabrielhicks/solv/commit/dc7742eed4a543136716a7048afe1198e33ee0d7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - small bug fix
 
 ## 4.2.4
 
 ### Patch Changes
 
-- [`fcc24d7`](https://github.com/EpicsDAO/solv/commit/fcc24d7bf991fec6dd72a47fa45c8d31a710bb4b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv hv
+- [`fcc24d7`](https://github.com/gabrielhicks/solv/commit/fcc24d7bf991fec6dd72a47fa45c8d31a710bb4b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv hv
 
 ## 4.2.3
 
 ### Patch Changes
 
-- [#214](https://github.com/EpicsDAO/solv/pull/214) [`5c2b014`](https://github.com/EpicsDAO/solv/commit/5c2b014423303e41d3ae93581482156c3cecc9c3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add - solv MEV Mode
+- [#214](https://github.com/gabrielhicks/solv/pull/214) [`5c2b014`](https://github.com/gabrielhicks/solv/commit/5c2b014423303e41d3ae93581482156c3cecc9c3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add - solv MEV Mode
 
   This will enable solv MEV Mode on your validator instance.
   MEV Mode will allow you to harvest your rewards to your authority account every right before the epoch ends.
@@ -1686,13 +1686,13 @@
 
 ### Patch Changes
 
-- [#212](https://github.com/EpicsDAO/solv/pull/212) [`e716714`](https://github.com/EpicsDAO/solv/commit/e7167146aca72c71467a9cd4c5feeed600a1de69) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv tr
+- [#212](https://github.com/gabrielhicks/solv/pull/212) [`e716714`](https://github.com/gabrielhicks/solv/commit/e7167146aca72c71467a9cd4c5feeed600a1de69) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv tr
 
 ## 4.2.1
 
 ### Patch Changes
 
-- [#210](https://github.com/EpicsDAO/solv/pull/210) [`5c1451e`](https://github.com/EpicsDAO/solv/commit/5c1451e93695ce7364939967ccd43b2b03388c12) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - v4.2.0~v4.2.1
+- [#210](https://github.com/gabrielhicks/solv/pull/210) [`5c1451e`](https://github.com/gabrielhicks/solv/commit/5c1451e93695ce7364939967ccd43b2b03388c12) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - v4.2.0~v4.2.1
 
   - Added Solana Liquid Staking Command
   - Added Solana Transfer Command
@@ -1781,7 +1781,7 @@
 
 ### Minor Changes
 
-- [#204](https://github.com/EpicsDAO/solv/pull/204) [`bd8cf63`](https://github.com/EpicsDAO/solv/commit/bd8cf63feed2459ee1f467b3582e94153de7f74f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv stake/setup/bal - added LST stake, improved solv setup, added solv bal --spl option
+- [#204](https://github.com/gabrielhicks/solv/pull/204) [`bd8cf63`](https://github.com/gabrielhicks/solv/commit/bd8cf63feed2459ee1f467b3582e94153de7f74f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv stake/setup/bal - added LST stake, improved solv setup, added solv bal --spl option
 
   - Added LST stake command
 
@@ -1830,19 +1830,19 @@
 
 ### Patch Changes
 
-- [#202](https://github.com/EpicsDAO/solv/pull/202) [`3b09abb`](https://github.com/EpicsDAO/solv/commit/3b09abb3f5a11323ca8b47109b72e80a47a462a9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana version testnet
+- [#202](https://github.com/gabrielhicks/solv/pull/202) [`3b09abb`](https://github.com/gabrielhicks/solv/commit/3b09abb3f5a11323ca8b47109b72e80a47a462a9) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana version testnet
 
 ## 4.1.16
 
 ### Patch Changes
 
-- [#200](https://github.com/EpicsDAO/solv/pull/200) [`3fb68b7`](https://github.com/EpicsDAO/solv/commit/3fb68b7cc1a1a5c3fec6878e66c28c59505be06d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv change for testnet
+- [#200](https://github.com/gabrielhicks/solv/pull/200) [`3fb68b7`](https://github.com/gabrielhicks/solv/commit/3fb68b7cc1a1a5c3fec6878e66c28c59505be06d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv change for testnet
 
 ## 4.1.15
 
 ### Patch Changes
 
-- [#198](https://github.com/EpicsDAO/solv/pull/198) [`567b6fa`](https://github.com/EpicsDAO/solv/commit/567b6fa795d3eebc8a7f72e5fb9420fdd5b713f6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - testnet setup
+- [#198](https://github.com/gabrielhicks/solv/pull/198) [`567b6fa`](https://github.com/gabrielhicks/solv/commit/567b6fa795d3eebc8a7f72e5fb9420fdd5b713f6) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - testnet setup
 
   Removed `--known-validator` flag due to the testnet entrypoint is having some problems with it.
 
@@ -1852,25 +1852,25 @@
 
 ### Patch Changes
 
-- [#196](https://github.com/EpicsDAO/solv/pull/196) [`992cd1d`](https://github.com/EpicsDAO/solv/commit/992cd1d5fc802effb9c35fc6b91eec9ddfb29983) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv stake
+- [#196](https://github.com/gabrielhicks/solv/pull/196) [`992cd1d`](https://github.com/gabrielhicks/solv/commit/992cd1d5fc802effb9c35fc6b91eec9ddfb29983) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv stake
 
 ## 4.1.13
 
 ### Patch Changes
 
-- [#194](https://github.com/EpicsDAO/solv/pull/194) [`e05a340`](https://github.com/EpicsDAO/solv/commit/e05a340f1b4ef482529841b949c9e20cddd42382) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv stake
+- [#194](https://github.com/gabrielhicks/solv/pull/194) [`e05a340`](https://github.com/gabrielhicks/solv/commit/e05a340f1b4ef482529841b949c9e20cddd42382) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv stake
 
 ## 4.1.12
 
 ### Patch Changes
 
-- [#192](https://github.com/EpicsDAO/solv/pull/192) [`5621656`](https://github.com/EpicsDAO/solv/commit/562165657731993f88ada0aba1ce49df6df9cca7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
+- [#192](https://github.com/gabrielhicks/solv/pull/192) [`5621656`](https://github.com/gabrielhicks/solv/commit/562165657731993f88ada0aba1ce49df6df9cca7) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
 
 ## 4.1.11
 
 ### Patch Changes
 
-- [#190](https://github.com/EpicsDAO/solv/pull/190) [`f5f9712`](https://github.com/EpicsDAO/solv/commit/f5f97128a65c60ba6b30a166a89f3942dab4b9ed) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Updated - solv stake/bal
+- [#190](https://github.com/gabrielhicks/solv/pull/190) [`f5f9712`](https://github.com/gabrielhicks/solv/commit/f5f97128a65c60ba6b30a166a89f3942dab4b9ed) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Updated - solv stake/bal
   Added - `--block-production-method` Option to start up script
 
   1. Updated solv stake Command
@@ -1913,13 +1913,13 @@
 
 ### Patch Changes
 
-- [#188](https://github.com/EpicsDAO/solv/pull/188) [`c500e86`](https://github.com/EpicsDAO/solv/commit/c500e86eb40903023c09990d246a95694d34d378) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
+- [#188](https://github.com/gabrielhicks/solv/pull/188) [`c500e86`](https://github.com/gabrielhicks/solv/commit/c500e86eb40903023c09990d246a95694d34d378) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
 
 ## 4.1.9
 
 ### Patch Changes
 
-- [#185](https://github.com/EpicsDAO/solv/pull/185) [`818aed9`](https://github.com/EpicsDAO/solv/commit/818aed976deb29aec95c1e72db8ff08b1b13a9c1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet
+- [#185](https://github.com/gabrielhicks/solv/pull/185) [`818aed9`](https://github.com/gabrielhicks/solv/commit/818aed976deb29aec95c1e72db8ff08b1b13a9c1) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet
 
   ```bash
   $ solv update && solv update -b
@@ -1929,7 +1929,7 @@
 
 ### Patch Changes
 
-- [#183](https://github.com/EpicsDAO/solv/pull/183) [`ca2fdec`](https://github.com/EpicsDAO/solv/commit/ca2fdecbf8168953ad7ef4e40b1f1398029932e3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv restart
+- [#183](https://github.com/gabrielhicks/solv/pull/183) [`ca2fdec`](https://github.com/gabrielhicks/solv/commit/ca2fdecbf8168953ad7ef4e40b1f1398029932e3) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv restart
 
   ```bash
   $ solv restart
@@ -1956,25 +1956,25 @@
 
 ### Patch Changes
 
-- [#181](https://github.com/EpicsDAO/solv/pull/181) [`47fd22d`](https://github.com/EpicsDAO/solv/commit/47fd22d65837a2f47e8a7a98119adbb7ee43aa33) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
+- [#181](https://github.com/gabrielhicks/solv/pull/181) [`47fd22d`](https://github.com/gabrielhicks/solv/commit/47fd22d65837a2f47e8a7a98119adbb7ee43aa33) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
 
 ## 4.1.6
 
 ### Patch Changes
 
-- [#179](https://github.com/EpicsDAO/solv/pull/179) [`afae6e3`](https://github.com/EpicsDAO/solv/commit/afae6e3d9e8c948ed3b120218fcd0d38734529ac) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv change inactive side
+- [#179](https://github.com/gabrielhicks/solv/pull/179) [`afae6e3`](https://github.com/gabrielhicks/solv/commit/afae6e3d9e8c948ed3b120218fcd0d38734529ac) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solv change inactive side
 
 ## 4.1.5
 
 ### Patch Changes
 
-- [#177](https://github.com/EpicsDAO/solv/pull/177) [`1d208f8`](https://github.com/EpicsDAO/solv/commit/1d208f8dfa6dd6cb2d780b21754ff2e334e23c2f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
+- [#177](https://github.com/gabrielhicks/solv/pull/177) [`1d208f8`](https://github.com/gabrielhicks/solv/commit/1d208f8dfa6dd6cb2d780b21754ff2e334e23c2f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for testnet
 
 ## 4.1.4
 
 ### Patch Changes
 
-- [#168](https://github.com/EpicsDAO/solv/pull/168) [`dcf0a7f`](https://github.com/EpicsDAO/solv/commit/dcf0a7f663ea3e8eb9dd3a1d5b6de1b9c0c8047a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version for testnet
+- [#168](https://github.com/gabrielhicks/solv/pull/168) [`dcf0a7f`](https://github.com/gabrielhicks/solv/commit/dcf0a7f663ea3e8eb9dd3a1d5b6de1b9c0c8047a) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version for testnet
 
   ## Update solv
 
@@ -2000,7 +2000,7 @@
 
 ### Patch Changes
 
-- [#166](https://github.com/EpicsDAO/solv/pull/166) [`a148b48`](https://github.com/EpicsDAO/solv/commit/a148b48f076036c4fb3515633c70381c90261035) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
+- [#166](https://github.com/gabrielhicks/solv/pull/166) [`a148b48`](https://github.com/gabrielhicks/solv/commit/a148b48f076036c4fb3515633c70381c90261035) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv scp download
 
   fix small bug in scp download
 
@@ -2016,13 +2016,13 @@
 
 ### Patch Changes
 
-- [#160](https://github.com/EpicsDAO/solv/pull/160) [`2618df8`](https://github.com/EpicsDAO/solv/commit/2618df89bbfd69a59f3e673792cf0d5c02728720) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv change alert
+- [#160](https://github.com/gabrielhicks/solv/pull/160) [`2618df8`](https://github.com/gabrielhicks/solv/commit/2618df89bbfd69a59f3e673792cf0d5c02728720) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv change alert
 
 ## 4.1.1
 
 ### Patch Changes
 
-- [#158](https://github.com/EpicsDAO/solv/pull/158) [`fb61089`](https://github.com/EpicsDAO/solv/commit/fb61089e000178b936349fa0d2ee402c3821d2f2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv get snapshot
+- [#158](https://github.com/gabrielhicks/solv/pull/158) [`fb61089`](https://github.com/gabrielhicks/solv/commit/fb61089e000178b936349fa0d2ee402c3821d2f2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - solv get snapshot
 
   Install script updated
 
@@ -2036,7 +2036,7 @@
 
 ### Minor Changes
 
-- [#156](https://github.com/EpicsDAO/solv/pull/156) [`39205e5`](https://github.com/EpicsDAO/solv/commit/39205e573877208ca8cfa643f4dd5de232cb2523) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - v4.0.0~v4.1.0
+- [#156](https://github.com/gabrielhicks/solv/pull/156) [`39205e5`](https://github.com/gabrielhicks/solv/commit/39205e573877208ca8cfa643f4dd5de232cb2523) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - ## New Features - v4.0.0~v4.1.0
 
   - Jito Relayer Setup
   - Jito RPC Setup
@@ -2107,7 +2107,7 @@
 
 ### Patch Changes
 
-- [#154](https://github.com/EpicsDAO/solv/pull/154) [`10a667f`](https://github.com/EpicsDAO/solv/commit/10a667f10913906eeed2626d8ae313c3e739613e) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet
+- [#154](https://github.com/gabrielhicks/solv/pull/154) [`10a667f`](https://github.com/gabrielhicks/solv/commit/10a667f10913906eeed2626d8ae313c3e739613e) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet
 
       ## Update solv
 
@@ -2133,13 +2133,13 @@
 
 ### Patch Changes
 
-- [#149](https://github.com/EpicsDAO/solv/pull/149) [`b98ad4d`](https://github.com/EpicsDAO/solv/commit/b98ad4d6b465b0f00ceedf598ef214091886b5a2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version for testnet
+- [#149](https://github.com/gabrielhicks/solv/pull/149) [`b98ad4d`](https://github.com/gabrielhicks/solv/commit/b98ad4d6b465b0f00ceedf598ef214091886b5a2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solana version for testnet
 
 ## 4.0.0
 
 ### Major Changes
 
-- [#147](https://github.com/EpicsDAO/solv/pull/147) [`0043376`](https://github.com/EpicsDAO/solv/commit/0043376b943840960cc59b5ec9707c03c12dfa56) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv4
+- [#147](https://github.com/gabrielhicks/solv/pull/147) [`0043376`](https://github.com/gabrielhicks/solv/commit/0043376b943840960cc59b5ec9707c03c12dfa56) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv4
 
   ## New Features
 
@@ -2218,7 +2218,7 @@
 
 ### Patch Changes
 
-- [#143](https://github.com/EpicsDAO/solv/pull/143) [`17e62da`](https://github.com/EpicsDAO/solv/commit/17e62da9f0d8230bd2d30da1f4f54415b018596d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet
+- [#143](https://github.com/gabrielhicks/solv/pull/143) [`17e62da`](https://github.com/gabrielhicks/solv/commit/17e62da9f0d8230bd2d30da1f4f54415b018596d) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet
 
   ## Update solv
 
@@ -2244,7 +2244,7 @@
 
 ### Patch Changes
 
-- [#139](https://github.com/EpicsDAO/solv/pull/139) [`174e1fc`](https://github.com/EpicsDAO/solv/commit/174e1fc9aed3b7a5c0e605acb956b7ea75edc962) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Mainnet Version
+- [#139](https://github.com/gabrielhicks/solv/pull/139) [`174e1fc`](https://github.com/gabrielhicks/solv/commit/174e1fc9aed3b7a5c0e605acb956b7ea75edc962) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Mainnet Version
 
   ## Update solv
 
@@ -2270,13 +2270,13 @@
 
 ### Minor Changes
 
-- [`c2b1863`](https://github.com/EpicsDAO/solv/commit/c2b1863aa8cc845dc0c80c588e979e01ba6f0dbb) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Msg after setup
+- [`c2b1863`](https://github.com/gabrielhicks/solv/commit/c2b1863aa8cc845dc0c80c588e979e01ba6f0dbb) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add Msg after setup
 
 ## 3.3.21
 
 ### Patch Changes
 
-- [`a8f9299`](https://github.com/EpicsDAO/solv/commit/a8f929917e4c16b066675244e5e70da447c622b2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv withdraw
+- [`a8f9299`](https://github.com/gabrielhicks/solv/commit/a8f929917e4c16b066675244e5e70da447c622b2) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv withdraw
 
   ```bash
   $ solv withdraw
@@ -2289,7 +2289,7 @@
 
 ### Patch Changes
 
-- [#129](https://github.com/EpicsDAO/solv/pull/129) [`d30d3d9`](https://github.com/EpicsDAO/solv/commit/d30d3d9488f701e254c1e9b7a51f64e3a655e43b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana testnet version to v1.18.12
+- [#129](https://github.com/gabrielhicks/solv/pull/129) [`d30d3d9`](https://github.com/gabrielhicks/solv/commit/d30d3d9488f701e254c1e9b7a51f64e3a655e43b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solana testnet version to v1.18.12
 
   ```
   $ solv update && solv update -b
@@ -2309,21 +2309,21 @@
 
 ### Patch Changes
 
-- [`4999c70`](https://github.com/EpicsDAO/solv/commit/4999c70c633778cf3d6136336bd68a5c7420b620) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - setup for latitude mainnet
+- [`4999c70`](https://github.com/gabrielhicks/solv/commit/4999c70c633778cf3d6136336bd68a5c7420b620) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - setup for latitude mainnet
 
-- [`79a5be3`](https://github.com/EpicsDAO/solv/commit/79a5be3e181153d6062c4b26c13c94134dda86be) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - setup for mainnet swapfile
+- [`79a5be3`](https://github.com/gabrielhicks/solv/commit/79a5be3e181153d6062c4b26c13c94134dda86be) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - fix - setup for mainnet swapfile
 
 ## 3.3.18
 
 ### Patch Changes
 
-- [`b9ad64c`](https://github.com/EpicsDAO/solv/commit/b9ad64c910b425ad547cca88621a794c1076b80f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv setup for latitude
+- [`b9ad64c`](https://github.com/gabrielhicks/solv/commit/b9ad64c910b425ad547cca88621a794c1076b80f) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update solv setup for latitude
 
 ## 3.3.17
 
 ### Patch Changes
 
-- [#124](https://github.com/EpicsDAO/solv/pull/124) [`7b41a2b`](https://github.com/EpicsDAO/solv/commit/7b41a2b3ce377a89d20d74f53fcc7759fa2dac51) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - Solana Validator Mainnet
+- [#124](https://github.com/gabrielhicks/solv/pull/124) [`7b41a2b`](https://github.com/gabrielhicks/solv/commit/7b41a2b3ce377a89d20d74f53fcc7759fa2dac51) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - Solana Validator Mainnet
 
   ## Update solv
 
@@ -2349,19 +2349,19 @@
 
 ### Patch Changes
 
-- [#121](https://github.com/EpicsDAO/solv/pull/121) [`e2ef168`](https://github.com/EpicsDAO/solv/commit/e2ef168da49900e6cc1f593db562b27775749d69) Thanks [@256hax](https://github.com/256hax)! - update solana version(1.18.11 on Testnet)
+- [#121](https://github.com/gabrielhicks/solv/pull/121) [`e2ef168`](https://github.com/gabrielhicks/solv/commit/e2ef168da49900e6cc1f593db562b27775749d69) Thanks [@256hax](https://github.com/256hax)! - update solana version(1.18.11 on Testnet)
 
 ## 3.3.15
 
 ### Patch Changes
 
-- [`56a56a9`](https://github.com/EpicsDAO/solv/commit/56a56a9d4f3ade5b76f99df1d7b91b8716fde9ce) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv setup --swap
+- [`56a56a9`](https://github.com/gabrielhicks/solv/commit/56a56a9d4f3ade5b76f99df1d7b91b8716fde9ce) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update - solv setup --swap
 
 ## 3.3.14
 
 ### Patch Changes
 
-- [#118](https://github.com/EpicsDAO/solv/pull/118) [`46694f9`](https://github.com/EpicsDAO/solv/commit/46694f9c02a34a5ded45af6a1f64005e7798b846) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add - solv setup --swap
+- [#118](https://github.com/gabrielhicks/solv/pull/118) [`46694f9`](https://github.com/gabrielhicks/solv/commit/46694f9c02a34a5ded45af6a1f64005e7798b846) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Add - solv setup --swap
 
   ※ This is for mainnet only.
 
@@ -2402,19 +2402,19 @@
 
 ### Patch Changes
 
-- [`5b5d107`](https://github.com/EpicsDAO/solv/commit/5b5d10727d0aa724f8ac9a4270ac9b2eacefd774) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
+- [`5b5d107`](https://github.com/gabrielhicks/solv/commit/5b5d10727d0aa724f8ac9a4270ac9b2eacefd774) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv stake
 
 ## 3.3.12
 
 ### Patch Changes
 
-- [#111](https://github.com/EpicsDAO/solv/pull/111) [`32f23dd`](https://github.com/EpicsDAO/solv/commit/32f23dd0a59acf90dc1dee07b4291be6c8f80c0b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv stake
+- [#111](https://github.com/gabrielhicks/solv/pull/111) [`32f23dd`](https://github.com/gabrielhicks/solv/commit/32f23dd0a59acf90dc1dee07b4291be6c8f80c0b) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update - solv stake
 
 ## 3.3.11
 
 ### Patch Changes
 
-- [#108](https://github.com/EpicsDAO/solv/pull/108) [`2bafc7e`](https://github.com/EpicsDAO/solv/commit/2bafc7e1f42c6fca34d43df2abac74732fb6542c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv setup for jitoMEV
+- [#108](https://github.com/gabrielhicks/solv/pull/108) [`2bafc7e`](https://github.com/gabrielhicks/solv/commit/2bafc7e1f42c6fca34d43df2abac74732fb6542c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Fix - solv setup for jitoMEV
 
   ```bash
   $ solv setup
@@ -2424,7 +2424,7 @@
 
 ### Patch Changes
 
-- [`18a7eeb`](https://github.com/EpicsDAO/solv/commit/18a7eebf683ec1bbab3a1964dd7a9fb4dfaa90e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet
+- [`18a7eeb`](https://github.com/gabrielhicks/solv/commit/18a7eebf683ec1bbab3a1964dd7a9fb4dfaa90e5) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update Solana Version for Testnet
 
       ## Update solv
 
@@ -2450,13 +2450,13 @@
 
 ### Patch Changes
 
-- [`70980e7`](https://github.com/EpicsDAO/solv/commit/70980e780500e491ec93351d89581feb23457b8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Remove unnecessary dependencies
+- [`70980e7`](https://github.com/gabrielhicks/solv/commit/70980e780500e491ec93351d89581feb23457b8c) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Remove unnecessary dependencies
 
 ## 3.3.8
 
 ### Patch Changes
 
-- [#103](https://github.com/EpicsDAO/solv/pull/103) [`bc8eb0a`](https://github.com/EpicsDAO/solv/commit/bc8eb0af632d7d2b5cc1ad1b2192cafc02dd64fb) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet/testnet
+- [#103](https://github.com/gabrielhicks/solv/pull/103) [`bc8eb0a`](https://github.com/gabrielhicks/solv/commit/bc8eb0af632d7d2b5cc1ad1b2192cafc02dd64fb) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - Update solana version for mainnet/testnet
 
   ## Update solv
 
@@ -2482,4 +2482,4 @@
 
 ### Patch Changes
 
-- [`0b2cb2c`](https://github.com/EpicsDAO/solv/commit/0b2cb2c1aae8d4a995d594efb0acc3b7a156ed28) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update changeset
+- [`0b2cb2c`](https://github.com/gabrielhicks/solv/commit/0b2cb2c1aae8d4a995d594efb0acc3b7a156ed28) Thanks [@POPPIN-FUMI](https://github.com/POPPIN-FUMI)! - update changeset

@@ -135,7 +135,7 @@ We will continue promoting innovation, engaging in open-source software developm
 - Founded: June 2022
 - Award: 5th place, Solana Summer Camp Hackathon 2022
 - URL: https://epics.dev
-- Twitter: https://twitter.com/EpicsDAO2
+- Twitter: https://twitter.com/gabrielhicks2
 - Discord: https://discord.gg/GmHYfyRamx
 
 ※ This article is not intended for investment advice. The information contained in this article is based on the situation at the time of writing. Please check for the most current information. Always NFA/DYOR.

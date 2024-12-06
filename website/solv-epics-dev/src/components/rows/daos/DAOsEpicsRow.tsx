@@ -7,7 +7,7 @@ import { mainShardGradation } from '@/lib/decoration'
 import { faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-import { EpicsDAOImg } from '@/assets/img'
+import { gabrielhicksImg } from '@/assets/img'
 import {
   EPICS_DAO_DISCORD_INVITE_LINK,
   EPICS_DAO_WEB_LINK,
@@ -27,7 +27,7 @@ export default function DAOsEpicsRow() {
             className="hover:opacity-80"
           >
             <Image
-              src={EpicsDAOImg}
+              src={gabrielhicksImg}
               alt="Epics DAO"
               className="w-full rounded-lg shadow-lg"
               unoptimized

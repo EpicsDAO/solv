@@ -37,7 +37,7 @@ solv は、Solana ネットワーク全体の品質と運用効率を向上さ�
 solv の詳細情報やアップデートは、以下をご確認ください：
 
 - solv 公式ドキュメント: https://solv.epics.dev/ja
-- GitHub: https://github.com/EpicsDAO/solv
+- GitHub: https://github.com/gabrielhicks/solv
 - Validators DAO 公式 Discord: https://discord.gg/C7ZQSrCkYR
 
 ELSOUL LABO B.V. と Epics DAO、Validators DAO は、Solana ネットワークの品質向上に向けて、コミュニティと共に発展を続けてまいります。引き続きご注目ください。

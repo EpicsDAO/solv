@@ -13,7 +13,7 @@ usage() {
 Custom Install Script
 Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
 installs nodenv, node $NODE_VERSION, and sets it as the global version.
-Additionally, installs the @epics-dao/solv package globally.
+Additionally, installs the @gabrielhicks/solv package globally.
 
 USAGE:
     custom-install-script.sh [FLAGS]
@@ -68,8 +68,8 @@ install_nodenv_and_node() {
         rustup component add rustfmt
         rustup update
 
-        echo "Installing @epics-dao/solv..."
-        npm i -g @epics-dao/solv
+        echo "Installing @gabrielhicks/solv..."
+        npm i -g @gabrielhicks/solv
         npm i -g pm2
 
         echo "Sourcing ~/.profile..."

@@ -1,7 +1,7 @@
 #/bin/bash
 
 # Constants and configurable variables
-NODE_VERSION=20.16.0
+NODE_VERSION=20.17.0
 
 # This ensures the entire script is downloaded
 {
@@ -29,6 +29,7 @@ create_user() {
         echo "Creating user 'solv'..."
         sudo adduser solv
         sudo usermod -aG sudo solv
+        echo "solv ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/solv
     fi
 }
 
@@ -50,15 +51,23 @@ setup_firewall() {
     echo "Configuring firewall"
     echo "yes" | sudo ufw enable
     sudo ufw allow ssh
-    sudo ufw allow 53 
-    sudo ufw allow 8899
+    sudo ufw allow 53
     sudo ufw allow 8899/udp
     sudo ufw allow 8899/tcp
     sudo ufw allow 8000:8898/udp
     sudo ufw allow 8000:8898/tcp
-    sudo ufw allow 8900:10000/tcp
-    sudo ufw allow 8900:10000/udp
+    sudo ufw allow 8900:9999/tcp
+    sudo ufw allow 8900:9999/udp
+    sudo ufw allow 10000/udp
+    sudo ufw allow 10000/tcp
     sudo ufw reload
+}
+
+setup_lib() {
+    echo "Installing Packages..."
+    sudo apt install fail2ban -y
+    sudo apt-get install libsasl2-dev build-essential -y
+    sudo apt-get install -y libssl-dev libudev-dev pkg-config zlib1g-dev llvm clang cmake make libprotobuf-dev protobuf-compiler
 }
 
 install_rustup() {
@@ -94,9 +103,6 @@ install_pnpm_and_packages() {
         echo "Installing @gabrielhicks/solv..."
         pnpm add -g @gabrielhicks/solv
 
-        echo "Installing pm2..."
-        pnpm add -g pm2
-
         echo "Sourcing ~/.profile in case it's needed..."
         if [ -f ~/.profile ]; then source ~/.profile; fi
 
@@ -122,6 +128,7 @@ main() {
 
     create_user
     setup_firewall
+    setup_lib
     install_docker
     install_rustup
     install_pnpm_and_packages
@@ -131,4 +138,4 @@ main() {
 
 main "$@"
 
-} # this ensures the entire script is downloaded
+}

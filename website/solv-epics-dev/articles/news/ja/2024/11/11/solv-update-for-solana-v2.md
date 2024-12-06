@@ -19,7 +19,7 @@ solvを利用することで、v2.0.15への移行が迅速に行えるだけで
 
 詳しくは solv のリリースノートをご確認ください。
 
-リリースノート (solv v4.7.3): https://github.com/EpicsDAO/solv/releases/tag/%40epics-dao%2Fsolv%404.7.3
+リリースノート (solv v4.7.3): https://github.com/gabrielhicks/solv/releases/tag/%40gabrielhicks%2Fsolv%404.7.3
 
 ## Solana バリデーターツール - solv
 

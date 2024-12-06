@@ -119,7 +119,7 @@ ENASE 2024: https://enase.scitevents.org/
 - 設立: 2022 年 6 月
 - 受賞: Solana Summer Camp Hackathon 2022 5 位
 - DAO URL: https://epics.dev
-- Twitter URL: https://twitter.com/EpicsDAO2
+- Twitter URL: https://twitter.com/gabrielhicks2
 - 公式 Discord: https://discord.gg/GmHYfyRamx
 
 ※ 本記事は投資助言などを目的としたものではありません。また、本記事に記載された情報は、執筆時点のものです。最新の情報をご確認ください。常に NFA / DYOR でお願いいたします。

@@ -24,7 +24,7 @@ export const airdrop = () => {
       console.log(chalk.white(`and Try Again with this command;\n`))
       console.log(chalk.green(`$ solv setup --vote\n`))
       console.log(
-        chalk.white(`To get Testnet SOL,\nVisit EpicsDAO's Discord Channel:`)
+        chalk.white(`To get Testnet SOL,\nVisit gabrielhicks's Discord Channel:`)
       )
       console.log(chalk.blue(`\n${SOLV_DISCORD_INVITE}\n`))
     }

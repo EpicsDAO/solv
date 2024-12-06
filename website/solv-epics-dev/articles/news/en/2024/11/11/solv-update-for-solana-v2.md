@@ -19,7 +19,7 @@ By using solv, validators can swiftly migrate to v2.0.15 while benefiting from s
 
 For more details, please refer to the solv release notes.
 
-Release Notes (solv v4.7.3): https://github.com/EpicsDAO/solv/releases/tag/%40epics-dao%2Fsolv%404.7.3
+Release Notes (solv v4.7.3): https://github.com/gabrielhicks/solv/releases/tag/%40gabrielhicks%2Fsolv%404.7.3
 
 ## Solana Validator Tool - solv
 
