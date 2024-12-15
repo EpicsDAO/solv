@@ -136,40 +136,6 @@ Version control for snapshot-finder
 
 https://github.com/vsx-labs/solv/pull/331
 
-## Website
-
-Validators Solutions: https://validators.solutions
-
-Validator DAO: https://dao.validators.solutions
-
-elSOL: https://elsol.app/
-
-## Solana Token Swap - "solv swap"
-
-https://youtu.be/51c7BzvcBjk
-
-## elSOL - Solana Liquid Staking Token (LST)
-
-✨ The elSOL pool is simple. ✨
-
-The elSOL staking pool exclusively includes validators with;
-
-✅ - 0% vote commission
-
-✅ - 0% Jito MEV commission
-
-✅ - 0% pool management fee,
-
-thus, elSOL offers higher True APY in long-term staking.
-
-website: [https://elsol.app](https://elsol.app)
-
-## Enhanced Solana RPC
-
-The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
-
-website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/vsx-labs/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
