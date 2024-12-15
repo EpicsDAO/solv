@@ -21,6 +21,11 @@
   </a>
 </p>
 
+> NOTE: this is a fork of https://github.com/EpicsDAO/solv, rebranded to avoid
+> confusion with upstream, with defaults changed (e.g., do not default to
+> EpicsDAO vote accounts).  We plan to stay reasonably current with the upstream
+> and contribute back bugfixes and new features.
+
 ## CLI Tool for Managing Solana Validators - "solv"
 
 Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
@@ -41,11 +46,27 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 
 ## Solana Validator Setup
 
+Setup node:
 ```bash
-bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-cd ~ && source ~/.profile
-solv setup
+nvm ls-remote
+nvm install v22.12.0 # latest LTS
+node --version
+v22.12.0
 ```
+
+Setup pnpm (ensure up-to-date):
+```bash
+brew upgrade pnpm
+pnpm --version
+9.15.0
+```
+
+Setup project:
+```bash
+pnpm install
+```
+
+
 
 When you run the `solv setup` command, a prompt like the following will appear.
 Select the network, node type, and either RPC type or validator type.
