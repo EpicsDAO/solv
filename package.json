@@ -4,7 +4,7 @@
   "description": "The utility tool for Solana Validators",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EpicsDAO/solv.git"
+    "url": "https://github.com/vsx-labs/solv.git"
   },
   "private": false,
   "type": "module",
@@ -16,7 +16,7 @@
     "Node.js",
     "web3"
   ],
-  "author": "EpicsDAO",
+  "author": "vsx-labs",
   "license": "Apache-2.0",
   "engines": {
     "pnpm": ">=9",
