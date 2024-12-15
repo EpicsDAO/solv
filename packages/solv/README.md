@@ -1,17 +1,7 @@
 <p align="center">
-  <a href="https://solv.epics.dev/">
-    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
-  </a>
-
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
-    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
-  </a>
   <br/>
   <a aria-label="npm version" href="https://www.npmjs.com/package/@vsx-labs/solv">
     <img alt="" src="https://badgen.net/npm/v/@vsx-labs/solv">
-  </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@vsx-labs/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@vsx-labs/solv">
   </a>
   <a aria-label="License" href="https://github.com/vsx-labs/solv/blob/master/LICENSE.txt">
     <img alt="" src="https://badgen.net/badge/license/Apache/blue">

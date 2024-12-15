@@ -16,7 +16,7 @@
     "Node.js",
     "web3"
   ],
-  "author": "vsx-labs",
+  "author": "epics-dao+vsx-labs",
   "license": "Apache-2.0",
   "engines": {
     "pnpm": ">=9",

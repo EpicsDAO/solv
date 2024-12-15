@@ -1,17 +1,6 @@
 <p align="center">
-  <a href="https://solv.epics.dev/">
-    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
-  </a>
-
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
-    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
-  </a>
-  <br/>
   <a aria-label="npm version" href="https://www.npmjs.com/package/@vsx-labs/solv">
     <img alt="" src="https://badgen.net/npm/v/@vsx-labs/solv">
-  </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@vsx-labs/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@vsx-labs/solv">
   </a>
   <a aria-label="License" href="https://github.com/vsx-labs/solv/blob/master/LICENSE.txt">
     <img alt="" src="https://badgen.net/badge/license/Apache/blue">
@@ -21,22 +10,13 @@
   </a>
 </p>
 
-> NOTE: this is a fork of https://github.com/EpicsDAO/solv, rebranded to avoid
-> confusion with upstream, with defaults changed (e.g., do not default to
-> EpicsDAO vote accounts).  We plan to stay reasonably current with the upstream
-> and contribute back bugfixes and new features.
+> NOTE: this is a fork of https://github.com/EpicsDAO/solv monorepo, rebranded
+> to avoid confusion with upstream, with defaults changed (e.g., do not default
+> to EpicsDAO vote accounts), and with several features not related to core
+> validator operation removed.  We plan to stay reasonably current with the
+> upstream and contribute back bugfixes and new features.
 
 ## CLI Tool for Managing Solana Validators - "solv"
-
-Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
-
-By using solv, setting up a Solana validator node server becomes much easier. This powerful tool simplifies blockchain operations and allows you to start a Solana validator with just a single command.
-
-By eliminating the complexity of setting up and managing a validator, solv opens the door for more individuals to participate in the blockchain network, making the Solana ecosystem more accessible.
-
-Whether you're an experienced developer or a blockchain enthusiast venturing into the world of validators, solv provides a solution for simple and fast setup.
-
-Dive into the world of Solana, explore the capabilities of solv, and become a part of the blockchain revolution with minimal effort and maximum efficiency.
 
 ## 📖 Server Spec
 
@@ -65,8 +45,6 @@ Setup project:
 ```bash
 pnpm install
 ```
-
-
 
 When you run the `solv setup` command, a prompt like the following will appear.
 Select the network, node type, and either RPC type or validator type.
