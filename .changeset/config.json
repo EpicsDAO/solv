@@ -1,6 +1,11 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "EpicsDAO/solv" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "vsx-labs/solv"
+    }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],

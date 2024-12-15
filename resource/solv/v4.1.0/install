@@ -12,7 +12,7 @@ usage() {
 Custom Install Script
 Creates a new user 'solv', adds the user to the sudo group, logs in as 'solv',
 installs pnpm, node $NODE_VERSION, and sets it as the global version.
-Additionally, installs the @epics-dao/solv package globally.
+Additionally, installs the @vsx-labs/solv package globally.
 
 USAGE:
     custom-install-script.sh [FLAGS]
@@ -87,8 +87,8 @@ install_pnpm_and_packages() {
         echo "Installing node $NODE_VERSION..."
         pnpm env use $NODE_VERSION --global
 
-        echo "Installing @epics-dao/solv..."
-        pnpm add -g @epics-dao/solv
+        echo "Installing @vsx-labs/solv..."
+        pnpm add -g @vsx-labs/solv
 
         echo "Installing pm2..."
         pnpm add -g pm2

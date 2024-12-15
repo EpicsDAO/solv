@@ -4,7 +4,7 @@
   "description": "The utility tool for Solana Validators",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EpicsDAO/solv.git"
+    "url": "https://github.com/vsx-labs/solv.git"
   },
   "private": false,
   "type": "module",
@@ -16,7 +16,7 @@
     "Node.js",
     "web3"
   ],
-  "author": "EpicsDAO",
+  "author": "vsx-labs",
   "license": "Apache-2.0",
   "engines": {
     "pnpm": ">=9",
@@ -27,7 +27,7 @@
     "ci:version": "changeset version",
     "ci:publish": "changeset publish",
     "upload:script": "cd ./resource/solv/latest && aws --endpoint-url=https://8a313f35be0eb4e99ad5bed9cb7aa99d.r2.cloudflarestorage.com s3 cp install s3://solv/install --content-disposition 'attachment; filename=install'",
-    "solv": "pnpm -F \"@epics-dao/solv\"",
+    "solv": "pnpm -F \"@vsx-labs/solv\"",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",

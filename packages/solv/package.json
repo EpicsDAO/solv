@@ -1,10 +1,10 @@
 {
-  "name": "@epics-dao/solv",
+  "name": "@vsx-labs/solv",
   "version": "4.7.7",
   "description": "Solana Validator CLI SOLV",
   "main": "dist/index.js",
   "type": "module",
-  "repository": "https://github.com/EpicsDAO/solv",
+  "repository": "https://github.com/vsx-labs/solv",
   "keywords": [
     "solana",
     "validator",

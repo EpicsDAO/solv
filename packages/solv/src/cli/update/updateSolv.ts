@@ -8,6 +8,6 @@ export const updateSolv = () => {
     shell: true,
     stdio: 'inherit',
   })
-  const cmd = `pnpm add -g @epics-dao/solv`
+  const cmd = `pnpm add -g @vsx-labs/solv`
   spawnSync(cmd, { shell: true, stdio: 'inherit' })
 }
