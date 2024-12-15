@@ -1,2 +1,2 @@
 pnpm install
-npx turbo build -F @epics-dao/solv
+npx turbo build -F @vsx-labs/solv

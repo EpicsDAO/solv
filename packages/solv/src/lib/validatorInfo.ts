@@ -15,7 +15,7 @@ export const validatorInfo = async () => {
       name: 'ValidatorName',
       message: 'What is the validator name?',
       default() {
-        return 'solv validator'
+        return 'vsx.dev validator'
       },
     },
     {
@@ -23,7 +23,7 @@ export const validatorInfo = async () => {
       name: 'Description',
       message: 'What is the validator description?',
       default() {
-        return 'solv validator description'
+        return 'independent high-performance validator'
       },
     },
     {
@@ -31,7 +31,7 @@ export const validatorInfo = async () => {
       name: 'website',
       message: 'What is the validator website?',
       default() {
-        return 'https://solv.epics.dev'
+        return 'https://vsx.dev'
       },
     },
     {
@@ -39,7 +39,7 @@ export const validatorInfo = async () => {
       name: 'iconUrl',
       message: 'What is the icon url?',
       default() {
-        return 'https://icon.epics.dev'
+        return 'https://icon.vsx.dev'
       },
     },
   ])

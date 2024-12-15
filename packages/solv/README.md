@@ -1,25 +1,20 @@
 <p align="center">
-  <a href="https://solv.epics.dev/">
-    <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
-  </a>
-
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
-    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
-  </a>
   <br/>
-  <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/v/@epics-dao/solv">
+  <a aria-label="npm version" href="https://www.npmjs.com/package/@vsx-labs/solv">
+    <img alt="" src="https://badgen.net/npm/v/@vsx-labs/solv">
   </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@epics-dao/solv">
-  </a>
-  <a aria-label="License" href="https://github.com/EpicsDAO/solv/blob/master/LICENSE.txt">
+  <a aria-label="License" href="https://github.com/vsx-labs/solv/blob/master/LICENSE.txt">
     <img alt="" src="https://badgen.net/badge/license/Apache/blue">
   </a>
-    <a aria-label="Code of Conduct" href="https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md">
+    <a aria-label="Code of Conduct" href="https://github.com/vsx-labs/solv/blob/master/CODE_OF_CONDUCT.md">
     <img alt="" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg">
   </a>
 </p>
+
+> NOTE: this is a fork of https://github.com/EpicsDAO/solv, rebranded to avoid
+> confusion with upstream, with defaults changed (e.g., do not default to
+> EpicsDAO vote accounts).  We plan to stay reasonably current with the upstream
+> and contribute back bugfixes and new features.
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
@@ -41,9 +36,29 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 
 ## Solana Validator Setup
 
+
+Setup node:
 ```bash
-bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-cd ~ && source ~/.profile
+nvm ls-remote
+nvm install v22.12.0 # latest LTS
+node --version
+v22.12.0
+```
+
+Setup pnpm (ensure up-to-date):
+```bash
+brew upgrade pnpm
+pnpm --version
+9.15.0
+```
+
+Setup project:
+```bash
+pnpm install
+```
+
+Setup solv:
+```bash
 solv setup
 ```
 
@@ -109,45 +124,11 @@ Options:
 
 Version control for snapshot-finder
 
-https://github.com/EpicsDAO/solv/pull/331
-
-## Website
-
-Validators Solutions: https://validators.solutions
-
-Validator DAO: https://dao.validators.solutions
-
-elSOL: https://elsol.app/
-
-## Solana Token Swap - "solv swap"
-
-https://youtu.be/51c7BzvcBjk
-
-## elSOL - Solana Liquid Staking Token (LST)
-
-✨ The elSOL pool is simple. ✨
-
-The elSOL staking pool exclusively includes validators with;
-
-✅ - 0% vote commission
-
-✅ - 0% Jito MEV commission
-
-✅ - 0% pool management fee,
-
-thus, elSOL offers higher True APY in long-term staking.
-
-website: [https://elsol.app](https://elsol.app)
-
-## Enhanced Solana RPC
-
-The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
-
-website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
+https://github.com/vsx-labs/solv/pull/331
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/EpicsDAO/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vsx-labs/solv This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Dependencies for Development
 
@@ -161,4 +142,4 @@ The package is available as open source under the terms of the [Apache-2.0 Licen
 
 ## Code of Conduct
 
-Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/EpicsDAO/solv/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the solv project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/vsx-labs/solv/blob/master/CODE_OF_CONDUCT.md).

@@ -6,7 +6,6 @@ import {
   startCommand,
   stopCommand,
   updateCommands,
-  stakeCommands,
   setupCommands,
   restartCommand,
   installCommands,
@@ -26,7 +25,6 @@ import { solanaCatchup } from './cli/get/solanaCatchup'
 import { showConfig } from './cli/get/showConfig'
 import { transferCommands } from './cli/transfer'
 import { withdrawCommands } from './cli/withdraw'
-import { harvestCommands } from './cli/harvest'
 import { epochTimerCommands } from './cli/epochTimer'
 import { switchCommand } from './cli/switch'
 import createSnapshot from './cli/get/createSnapshot'
@@ -55,7 +53,6 @@ async function main() {
     updateCommands(config)
     logCommands()
     installCommands(config)
-    stakeCommands(config)
     getCommands(config)
     scpCommands()
     cronCommands()
@@ -65,7 +62,6 @@ async function main() {
     relayerCommands()
     transferCommands(config)
     withdrawCommands(config)
-    harvestCommands(config)
     dfCommands()
     swapCommand(program, config)
     epochTimerCommands(config)

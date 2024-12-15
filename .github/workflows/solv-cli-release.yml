@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Build and Add Line
-        run: npx turbo -F @epics-dao/solv build
+        run: npx turbo -F @vsx-labs/solv build
 
       - name: Creating .npmrc
         run: |
@@ -53,13 +53,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Send a Discord/X Notification if a publish happens
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          pnpm discord:epics
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-          DISCORD_CHANNEL_ID_JA: ${{ secrets.DISCORD_CHANNEL_ID_JA }}
