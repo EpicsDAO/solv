@@ -1,5 +1,5 @@
 {
-  "name": "@epics-dao/solv",
+  "name": "@vsx-labs/solv",
   "version": "4.7.7",
   "description": "Solana Validator CLI SOLV",
   "main": "dist/index.js",

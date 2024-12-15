@@ -1,4 +1,4 @@
-# @epics-dao/solv
+# @vsx-labs/solv
 
 ## 4.7.7
 

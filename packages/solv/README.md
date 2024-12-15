@@ -7,11 +7,11 @@
     <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
   </a>
   <br/>
-  <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/v/@epics-dao/solv">
+  <a aria-label="npm version" href="https://www.npmjs.com/package/@vsx-labs/solv">
+    <img alt="" src="https://badgen.net/npm/v/@vsx-labs/solv">
   </a>
-  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@epics-dao/solv">
-    <img alt="" src="https://badgen.net/npm/dt/@epics-dao/solv">
+  <a aria-label="Downloads Number" href="https://www.npmjs.com/package/@vsx-labs/solv">
+    <img alt="" src="https://badgen.net/npm/dt/@vsx-labs/solv">
   </a>
   <a aria-label="License" href="https://github.com/vsx-labs/solv/blob/master/LICENSE.txt">
     <img alt="" src="https://badgen.net/badge/license/Apache/blue">
@@ -20,6 +20,11 @@
     <img alt="" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg">
   </a>
 </p>
+
+> NOTE: this is a fork of https://github.com/EpicsDAO/solv, rebranded to avoid
+> confusion with upstream, with defaults changed (e.g., do not default to
+> EpicsDAO vote accounts).  We plan to stay reasonably current with the upstream
+> and contribute back bugfixes and new features.
 
 ## CLI Tool for Managing Solana Validators - "solv"
 
@@ -41,9 +46,29 @@ Dive into the world of Solana, explore the capabilities of solv, and become a pa
 
 ## Solana Validator Setup
 
+
+Setup node:
 ```bash
-bash -c "$(curl -sSfL "https://solv-storage.validators.solutions/install")"
-cd ~ && source ~/.profile
+nvm ls-remote
+nvm install v22.12.0 # latest LTS
+node --version
+v22.12.0
+```
+
+Setup pnpm (ensure up-to-date):
+```bash
+brew upgrade pnpm
+pnpm --version
+9.15.0
+```
+
+Setup project:
+```bash
+pnpm install
+```
+
+Setup solv:
+```bash
 solv setup
 ```
 

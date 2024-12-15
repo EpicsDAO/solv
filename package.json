@@ -27,7 +27,7 @@
     "ci:version": "changeset version",
     "ci:publish": "changeset publish",
     "upload:script": "cd ./resource/solv/latest && aws --endpoint-url=https://8a313f35be0eb4e99ad5bed9cb7aa99d.r2.cloudflarestorage.com s3 cp install s3://solv/install --content-disposition 'attachment; filename=install'",
-    "solv": "pnpm -F \"@epics-dao/solv\"",
+    "solv": "pnpm -F \"@vsx-labs/solv\"",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
