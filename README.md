@@ -143,7 +143,7 @@ website: [https://elsol.app](https://elsol.app)
 
 The Enhanced Solana RPC is a high-performance Solana RPC API service that provides a reliable and scalable infrastructure for Solana developers and validators.
 
-website: [https://erpc.validators.solutions](https://erpc.validators.solutions)
+website: [https://erpc.global](https://erpc.global)
 
 ## Contributing
 
