@@ -71,7 +71,7 @@ export default function DefaultFooter() {
               Validators Solutions
             </Link>
             <Link
-              href={`https://erpc.validators.solutions`}
+              href={`https://erpc.global`}
               className={cn(
                 'text-zinc-500 dark:text-zinc-300',
                 'flex items-center gap-4 py-2 text-sm hover:opacity-70',
