@@ -67,7 +67,8 @@ export default function ArticleContents({ content }: Props) {
               const videoId = getYouTubeVideoId(href)
               if (isYouTube && videoId) {
                 return (
-                  //@ts-ignore
+                  <>
+                  {/* @ts-ignore */}
                   <AspectRatio ratio={16 / 9}>
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}`}
@@ -75,6 +76,8 @@ export default function ArticleContents({ content }: Props) {
                       className="h-full w-full rounded-xl object-cover"
                     />
                   </AspectRatio>
+                  </>
+                  
                 )
               }
 
