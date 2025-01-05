@@ -98,6 +98,12 @@
       "body": "Everything you need for Solana development is here. Launch validators, RPC, and dApps at blazing speed. With support for Jito MEV, the Geyser gRPC plugin, and the latest Firedancer, you can achieve high-speed trading, efficient RPC, and energy-efficient validator operations. Additionally, full remote management and keyless operations strengthen security, while robust support features like Discord alerts provide powerful backup for large-scale Solana operations.",
       "button1": "SLV",
       "button2": "GitHub"
+    },
+    "EvolvingToSLVRow": {
+      "title": "What...? solv is evolving to SLV!",
+      "body": "solv was originally developed as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead. Currently, solv continues to operate by accessing nodes and modifying settings within them. However, because it depends on the state of remote nodes and adjusts its behavior accordingly, management can become complex. We’ve been exploring solutions to address this challenge and have released SLV, which improves and strengthens security even further through remote management and keyless operations. Going forward, we will fully migrate the solv development platform to SLV, enabling complete local configuration management and reproducible remote operations for both RPC and validator nodes.",
+      "button1": "SLV",
+      "button2": "GitHub"
     }
   }
 }
