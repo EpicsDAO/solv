@@ -21,7 +21,7 @@
   </a>
 </p>
 
-# What...? Skeet is evolving to SLV!
+# What...? solv is evolving to SLV!
 
 <a href="https://slv.dev/">
   <img src="https://storage.slv.dev/SLVogp.jpg" alt="SLV" />
