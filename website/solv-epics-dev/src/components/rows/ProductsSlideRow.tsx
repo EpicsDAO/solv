@@ -10,6 +10,7 @@ import ProductsSkeetRow from './products/ProductsSkeetRow'
 import ProductsBuidlersCollectiveRow from './products/ProductsBuidlersCollectiveRow'
 import DAOsValidatorsRow from './daos/DAOsValidatorsRow'
 import DAOsEpicsRow from './daos/DAOsEpicsRow'
+import ProductsSLVRow from './products/ProductsSLVRow'
 
 export default function ProductsSlideRow() {
   return (
@@ -31,6 +32,10 @@ export default function ProductsSlideRow() {
         <CarouselContent>
           {/*@ts-ignore*/}
           <CarouselItem>
+            <ProductsErpcRow />
+          </CarouselItem>
+          {/*@ts-ignore*/}
+          <CarouselItem>
             <ProductsValidatorsSolutionsRow />
           </CarouselItem>
           {/*@ts-ignore*/}
@@ -39,7 +44,7 @@ export default function ProductsSlideRow() {
           </CarouselItem>
           {/*@ts-ignore*/}
           <CarouselItem>
-            <ProductsErpcRow />
+            <ProductsSLVRow />
           </CarouselItem>
           {/*@ts-ignore*/}
           <CarouselItem>
