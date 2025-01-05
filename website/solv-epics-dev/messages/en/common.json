@@ -101,7 +101,7 @@
     },
     "EvolvingToSLVRow": {
       "title": "What...? solv is evolving to SLV!",
-      "body": "solv was originally developed as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead. Currently, solv continues to operate by accessing nodes and modifying settings within them. However, because it depends on the state of remote nodes and adjusts its behavior accordingly, management can become complex. We’ve been exploring solutions to address this challenge and have released SLV, which improves and strengthens security even further through remote management and keyless operations. Going forward, we will fully migrate the solv development platform to SLV, enabling complete local configuration management and reproducible remote operations for both RPC and validator nodes.",
+      "body": "solv was originally developed by Epics DAO as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead. Currently, solv continues to operate by accessing nodes and modifying settings within them. However, because it depends on the state of remote nodes and adjusts its behavior accordingly, management can become complex. We’ve been exploring solutions to address this challenge and have released SLV, which improves and strengthens security even further through remote management and keyless operations. Going forward, we will fully migrate the solv development platform to SLV, enabling complete local configuration management and reproducible remote operations for both RPC and validator nodes.",
       "button1": "SLV",
       "button2": "GitHub"
     }

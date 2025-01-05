@@ -27,7 +27,7 @@
   <img src="https://storage.slv.dev/SLVogp.jpg" alt="SLV" />
 </a>
 
-solv was originally developed as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead.
+solv was originally developed by Epics DAO as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead.
 
 Currently, solv continues to operate by accessing nodes and modifying settings within them. However, because it depends on the state of remote nodes and adjusts its behavior accordingly, management can become complex.
 
