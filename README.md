@@ -3,8 +3,8 @@
     <img src="https://solv-storage.validators.solutions/ogp.jpg" alt="solv" />
   </a>
 
-  <a href="https://twitter.com/intent/follow?screen_name=solvSolana">
-    <img src="https://img.shields.io/twitter/follow/solvSolana.svg?label=Follow%20@solvSolana" alt="Follow @solvSolana" />
+  <a href="https://twitter.com/intent/follow?screen_name=slvSOLANA">
+    <img src="https://img.shields.io/twitter/follow/slvSOLANA.svg?label=Follow%20@slvSOLANA" alt="Follow @slvSOLANA" />
   </a>
   <br/>
   <a aria-label="npm version" href="https://www.npmjs.com/package/@epics-dao/solv">
@@ -21,7 +21,27 @@
   </a>
 </p>
 
-## CLI Tool for Managing Solana Validators - "solv"
+# What...? Skeet is evolving to SLV!
+
+<a href="https://slv.dev/">
+  <img src="https://storage.slv.dev/SLVogp.jpg" alt="SLV" />
+</a>
+
+solv was originally developed as an open-source tool to easily launch Solana validators and RPC nodes, significantly reducing operational overhead.
+
+Currently, solv continues to operate by accessing nodes and modifying settings within them. However, because it depends on the state of remote nodes and adjusts its behavior accordingly, management can become complex.
+
+We’ve been exploring solutions to address this challenge and have released SLV, which improves and strengthens security even further through remote management and keyless operations.
+
+Going forward, we will fully migrate the solv development platform to SLV, enabling complete local configuration management and reproducible remote operations for both RPC and validator nodes.
+
+SLV Web: https://slv.dev/
+
+SLV GitHub: https://github.com/ValidatorsDAO/slv
+
+Validators DAO Discord Community: https://discord.gg/C7ZQSrCkYR
+
+## 🚧 CLI Tool for Managing Solana Validators - "solv"
 
 Documentation: [https://solv.epics.dev/](https://solv.epics.dev/)
 

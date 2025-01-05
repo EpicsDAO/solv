@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { SLVImg } from '@/assets/img'
 import { SLV_GITHUB_LINK, SLV_WEB_LINK } from '@/constants/links'
 
-export default function ProductsSLVRow() {
+export default function EvolvingToSLVRow() {
   const t = useTranslations()
   const locale = useLocale()
   return (
@@ -39,15 +39,15 @@ export default function ProductsSLVRow() {
               mainShardGradation,
             )}
           >
-            {t('common.ProductsSLVRow.title')}
+            {t('common.EvolvingToSLVRow.title')}
           </h2>
           <p className="max-w-xl text-lg font-medium tracking-tight text-zinc-500 dark:text-zinc-300 sm:text-xl">
-            {t('common.ProductsSLVRow.body')}
+            {t('common.EvolvingToSLVRow.body')}
           </p>
           <div className="flex flex-wrap gap-3 pt-6">
             <Link href={`${SLV_WEB_LINK}/${locale}`} target="_blank">
               {/* @ts-ignore */}
-              <Button>{t('common.ProductsSLVRow.button1')}</Button>
+              <Button>{t('common.EvolvingToSLVRow.button1')}</Button>
             </Link>
             <Link
               href={SLV_GITHUB_LINK}
@@ -57,7 +57,7 @@ export default function ProductsSLVRow() {
               {/* @ts-ignore */}
               <Button variant="outline">
                 <FontAwesomeIcon icon={faGithub} className="mr-2 h-5 w-5" />
-                {t('common.ProductsSLVRow.button2')}
+                {t('common.EvolvingToSLVRow.button2')}
               </Button>
             </Link>
           </div>

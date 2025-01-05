@@ -8,6 +8,7 @@ import ProductsSlideRow from '@/components/rows/ProductsSlideRow'
 import EasyStartValidatorRow from './EasyStartValidatorRow'
 import AdaptiveSolutionsRow from './AdaptiveSolutionsRow'
 import QualityOperationsRow from './QualityOperationsRow'
+import EvolvingToSLVRow from './EvolvingToSLVRow'
 
 const groupDir = '(home)'
 const { generateMetadata } = getDataForPageByGroupDir(groupDir)
@@ -26,6 +27,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <HomeHeroRow />
+      <EvolvingToSLVRow />
       <EasyStartValidatorRow />
       <AdaptiveSolutionsRow />
       <QualityOperationsRow />
